@@ -1,9 +1,0 @@
-﻿@using Newtonsoft.Json
-@using Newtonsoft.Json.Serialization
-<div id="app"></div>
-@section scripts {
-	<script>
-		window.prerenderedData = @Html.Raw(JsonConvert.SerializeObject(Model.AspPrerenderDataObject, new JsonSerializerSettings { ContractResolver = new CamelCasePropertyNamesContractResolver() }))
-	</script>
-	<script src="~/dist/main-client.js" asp-append-version="true"></script>
-}
