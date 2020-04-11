@@ -1,0 +1,55 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+	<PropertyGroup>
+		<TargetFramework>netcoreapp3.1</TargetFramework>
+		<AssemblyName>Havit.GoranG3.Web</AssemblyName>
+		<RootNamespace>Havit.GoranG3.Web</RootNamespace>
+		<TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
+		<TypeScriptToolsVersion>Latest</TypeScriptToolsVersion>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Havit.AspNetCore.Mvc" Version="2.0.1" />
+		<PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.12.0" />
+		<PackageReference Include="TypeLite.Lib" Version="1.8.4" NoWarn="NU1701" />
+	</ItemGroup>
+
+	<Target Name="RunWebpack" BeforeTargets="Build">
+		<!-- Ensure Node.js is installed -->
+		<Exec Command="node --version" ContinueOnError="true">
+			<Output TaskParameter="ExitCode" PropertyName="ErrorCode" />
+		</Exec>
+		<Error Condition="'$(ErrorCode)' != '0'" Text="Node.js is required to build and run this project. To continue, please install Node.js from https://nodejs.org/, and then restart your command prompt or IDE." />
+
+		<Exec Command="yarn --version" ContinueOnError="true">
+			<Output TaskParameter="ExitCode" PropertyName="ErrorCode" />
+		</Exec>
+		<Exec Condition="'$(ErrorCode)' != '0'" Command="npm install yarn -g" />
+
+		<Message Importance="high" Text="Webpack build..." />
+
+		<Exec Command="yarn run build:dev" Condition=" '$(Configuration)' == 'Debug' " />
+
+		<!-- yarn nepouštíme v Debugu, neboť předpokládáme, že npm balíčky se při vývoji dostanou na disk díky IDE, které zpracovává package.json -->
+		<Exec Command="yarn install --check-files" Condition=" '$(Configuration)' != 'Debug' " />
+		<Exec Command="yarn run build:prod" Condition=" '$(Configuration)' != 'Debug' " />
+	</Target>
+
+	<Target Name="PublishRunWebpack" AfterTargets="ComputeFilesToPublish">
+		<!-- Include the built files in the publish output -->
+		<ItemGroup>
+			<DistFiles Include="wwwroot\dist\**; ClientApp\dist\**" />
+			<ResolvedFileToPublish Include="@(DistFiles->'%(FullPath)')" Exclude="@(ResolvedFileToPublish)">
+				<RelativePath>%(DistFiles.Identity)</RelativePath>
+				<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+			</ResolvedFileToPublish>
+		</ItemGroup>
+	</Target>
+
+	<Target Name="TfsPublish" AfterTargets="AfterPublish" Condition="'$(PublishDirectory)' != ''">
+		<ItemGroup>
+			<PublishToCopy Include="obj\Release\TfsPublish\*.zip" />
+		</ItemGroup>
+		<Copy SourceFiles="@(PublishToCopy)" DestinationFolder="$(PublishDirectory)\Web" />
+	</Target>
+</Project>
