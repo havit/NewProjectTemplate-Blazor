@@ -1,24 +1,17 @@
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Components.Authorization;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.ResponseCompression;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System.Linq;
 using Havit.GoranG3.Facades.Infrastructure.Security.Identity;
 using Havit.GoranG3.Model.Security;
-using Havit.GoranG3.Entity;
 using Havit.GoranG3.DependencyInjection;
 using Microsoft.AspNetCore.Http;
 using Havit.GoranG3.Web.Server.Tools;
 using Havit.GoranG3.Facades.Infrastructure.Security.Authentication;
 using Havit.GoranG3.Web.Server.Infrastructure.Security;
+using IdentityServer4.Models;
 
 namespace Havit.GoranG3.Web.Server
 {
@@ -49,7 +42,14 @@ namespace Havit.GoranG3.Web.Server
 				.AddUserStore<UserStore>();
 
 			services.AddIdentityServer()
-				.AddApiAuthorization<User, ApplicationDbContext>();
+				.AddAspNetIdentity<User>()
+				.AddClients()
+				.AddSigningCredentials()
+				.AddInMemoryIdentityResources(new[] { new IdentityResources.OpenId() })
+				.AddInMemoryApiResources(new[] { new ApiResource()
+				{
+					// TODO IdentityServer ApiResources
+				}});
 
 			services.AddAuthentication()
 				.AddIdentityServerJwt();
