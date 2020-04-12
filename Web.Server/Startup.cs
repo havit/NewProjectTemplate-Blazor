@@ -45,7 +45,11 @@ namespace Havit.GoranG3.Web.Server
 				.AddAspNetIdentity<User>()
 				.AddClients()
 				.AddSigningCredentials()
-				.AddInMemoryIdentityResources(new[] { new IdentityResources.OpenId() })
+				.AddInMemoryIdentityResources(new IdentityResource[]
+				{
+					new IdentityResources.OpenId(),
+					new IdentityResources.Profile()
+				})
 				.AddInMemoryApiResources(new[] { new ApiResource()
 				{
 					// TODO IdentityServer ApiResources
