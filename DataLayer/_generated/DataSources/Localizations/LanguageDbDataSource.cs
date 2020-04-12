@@ -17,7 +17,7 @@ using Havit.Data.EntityFrameworkCore.Patterns.SoftDeletes;
 namespace Havit.GoranG3.DataLayer.DataSources.Localizations
 {
 	[System.CodeDom.Compiler.GeneratedCode("Havit.Data.EntityFrameworkCore.CodeGenerator", "1.0")]
-	public class LanguageDbDataSource : DbDataSource<Havit.GoranG3.Model.Localizations.Language>, ILanguageDataSource
+	public partial class LanguageDbDataSource : DbDataSource<Havit.GoranG3.Model.Localizations.Language>, ILanguageDataSource
 	{
 		public LanguageDbDataSource(IDbContext dbContext, ISoftDeleteManager softDeleteManager)
 			: base(dbContext, softDeleteManager)

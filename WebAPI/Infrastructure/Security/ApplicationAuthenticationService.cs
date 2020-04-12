@@ -21,13 +21,13 @@ namespace Havit.GoranG3.WebAPI.Infrastructure.Security
     {
         private readonly IHttpContextAccessor httpContextAccessor;
 
-	    private readonly Lazy<LoginAccount> loginAccountLazy; 
+	    private readonly Lazy<User> userLazy; 
 
-		public ApplicationAuthenticationService(IHttpContextAccessor httpContextAccessor, ILoginAccountRepository loginAccountRepository)
+		public ApplicationAuthenticationService(IHttpContextAccessor httpContextAccessor, IUserRepository userRepository)
         {
             this.httpContextAccessor = httpContextAccessor;
 
-	        loginAccountLazy = new Lazy<LoginAccount>(() => loginAccountRepository.GetObject(GetCurrentClaimsPrincipal().GetLoginAccountId()));
+	        userLazy = new Lazy<User>(() => userRepository.GetObject(GetCurrentClaimsPrincipal().GetUserId()));
 		}
 
         public ClaimsPrincipal GetCurrentClaimsPrincipal()
@@ -35,6 +35,6 @@ namespace Havit.GoranG3.WebAPI.Infrastructure.Security
 			return httpContextAccessor.HttpContext.User;
         }
 
-	    public LoginAccount GetCurrentLoginAccount() => loginAccountLazy.Value;
+	    public User GetCurrentUser() => userLazy.Value;
 	}
 }

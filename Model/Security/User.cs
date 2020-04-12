@@ -7,14 +7,19 @@ using System.Threading.Tasks;
 
 namespace Havit.GoranG3.Model.Security
 {
-	public class LoginAccount
+    public class User
 	{
 		public int Id { get; set; }
 
-		/// <summary>
-		/// Identifikátor uživatele v externím systému.
-		/// </summary>
-		[MaxLength(32)]
+		[MaxLength(50)]
 		public string Username { get; set; }
+
+		[MaxLength(255)]
+		public string Email { get; set; }
+
+		public bool EmailConfirmed { get; set; }
+
+		[MaxLength(Int32.MaxValue)]
+		public string PasswordHash { get; set; }
 	}
 }

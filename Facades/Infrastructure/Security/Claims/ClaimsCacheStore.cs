@@ -7,11 +7,11 @@ using Microsoft.Extensions.Caching.Memory;
 
 namespace Havit.GoranG3.Facades.Infrastructure.Security.Claims
 {
-    /// <summary>
-    /// (In-memory) cache claimů. 
-    /// </summary>
-    [Service(Profile = ServiceProfiles.WebAPI)]
-    public class ClaimsCacheStore : IClaimsCacheStore
+	/// <summary>
+	/// (In-memory) cache claimů. 
+	/// </summary>
+	//[Service(Profile = ServiceProfiles.WebServer)]
+	public class ClaimsCacheStore : IClaimsCacheStore
     {
         private readonly IMemoryCache cache;
 

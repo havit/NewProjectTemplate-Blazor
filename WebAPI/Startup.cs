@@ -41,7 +41,7 @@ namespace Havit.GoranG3.WebAPI
         /// </summary>
         public void ConfigureServices(IServiceCollection services)
         {
-			services.ConfigureForWebAPI(configuration);
+			services.ConfigureForWebServer(configuration);
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 

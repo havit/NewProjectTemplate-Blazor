@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Authorization.Infrastructure;
 
 namespace Havit.GoranG3.Facades.Infrastructure.Security.Claims
 {
-    [Service(Profile = ServiceProfiles.WebAPI)]
+    //[Service(Profile = ServiceProfiles.WebServer)]
     public class CustomClaimsBuilder : ICustomClaimsBuilder
     {
 	    private readonly IUserContextInfoBuilder userContextInfoBuilder;

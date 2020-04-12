@@ -23,8 +23,8 @@ namespace Havit.GoranG3.DataLayer.Repositories.Common
 	[System.CodeDom.Compiler.GeneratedCode("Havit.Data.EntityFrameworkCore.CodeGenerator", "1.0")]
 	public partial class ApplicationSettingsDbRepository : ApplicationSettingsDbRepositoryBase, IApplicationSettingsRepository
 	{
-		public ApplicationSettingsDbRepository(IDbContext dbContext, Havit.GoranG3.DataLayer.DataSources.Common.IApplicationSettingsDataSource dataSource, IEntityKeyAccessor<Havit.GoranG3.Model.Common.ApplicationSettings, int> entityKeyAccessor, IDataLoader dataLoader, IDataLoaderAsync dataLoaderAsync, ISoftDeleteManager softDeleteManager, IEntityCacheManager entityCacheManager)
-			: base(dbContext, dataSource, entityKeyAccessor, dataLoader, dataLoaderAsync, softDeleteManager, entityCacheManager)
+		public ApplicationSettingsDbRepository(IDbContext dbContext, Havit.GoranG3.DataLayer.DataSources.Common.IApplicationSettingsDataSource dataSource, IEntityKeyAccessor<Havit.GoranG3.Model.Common.ApplicationSettings, int> entityKeyAccessor, IDataLoader dataLoader, ISoftDeleteManager softDeleteManager, IEntityCacheManager entityCacheManager)
+			: base(dbContext, dataSource, entityKeyAccessor, dataLoader, softDeleteManager, entityCacheManager)
 		{
 		}
 	}

@@ -18,14 +18,14 @@ namespace Havit.GoranG3.DataLayer.DataSources.Security.Fakes
 {
 	[Fake]
 	[System.CodeDom.Compiler.GeneratedCode("Havit.Data.EntityFrameworkCore.CodeGenerator", "1.0")]
-	public class FakeLoginAccountDataSource : FakeDataSource<Havit.GoranG3.Model.Security.LoginAccount>, Havit.GoranG3.DataLayer.DataSources.Security.ILoginAccountDataSource
+	public class FakeUserDataSource : FakeDataSource<Havit.GoranG3.Model.Security.User>, Havit.GoranG3.DataLayer.DataSources.Security.IUserDataSource
 	{
-		public FakeLoginAccountDataSource(params Havit.GoranG3.Model.Security.LoginAccount[] data)
-			: this((IEnumerable<Havit.GoranG3.Model.Security.LoginAccount>)data)
+		public FakeUserDataSource(params Havit.GoranG3.Model.Security.User[] data)
+			: this((IEnumerable<Havit.GoranG3.Model.Security.User>)data)
 		{			
 		}
 
-		public FakeLoginAccountDataSource(IEnumerable<Havit.GoranG3.Model.Security.LoginAccount> data, ISoftDeleteManager softDeleteManager = null)
+		public FakeUserDataSource(IEnumerable<Havit.GoranG3.Model.Security.User> data, ISoftDeleteManager softDeleteManager = null)
 			: base(data, softDeleteManager)
 		{
 		}

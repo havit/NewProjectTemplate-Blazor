@@ -21,10 +21,10 @@ using Havit.Data.Patterns.Infrastructure;
 namespace Havit.GoranG3.DataLayer.Repositories.Security
 {
 	[System.CodeDom.Compiler.GeneratedCode("Havit.Data.EntityFrameworkCore.CodeGenerator", "1.0")]
-	public abstract class LoginAccountDbRepositoryBase : DbRepository<Havit.GoranG3.Model.Security.LoginAccount>
+	public abstract class UserDbRepositoryBase : DbRepository<Havit.GoranG3.Model.Security.User>
 	{
-		protected LoginAccountDbRepositoryBase(IDbContext dbContext, Havit.GoranG3.DataLayer.DataSources.Security.ILoginAccountDataSource dataSource, IEntityKeyAccessor<Havit.GoranG3.Model.Security.LoginAccount, int> entityKeyAccessor, IDataLoader dataLoader, IDataLoaderAsync dataLoaderAsync, ISoftDeleteManager softDeleteManager, IEntityCacheManager entityCacheManager)
-			: base(dbContext, dataSource, entityKeyAccessor, dataLoader, dataLoaderAsync, softDeleteManager, entityCacheManager)
+		protected UserDbRepositoryBase(IDbContext dbContext, Havit.GoranG3.DataLayer.DataSources.Security.IUserDataSource dataSource, IEntityKeyAccessor<Havit.GoranG3.Model.Security.User, int> entityKeyAccessor, IDataLoader dataLoader, ISoftDeleteManager softDeleteManager, IEntityCacheManager entityCacheManager)
+			: base(dbContext, dataSource, entityKeyAccessor, dataLoader, softDeleteManager, entityCacheManager)
 		{
 		}
 

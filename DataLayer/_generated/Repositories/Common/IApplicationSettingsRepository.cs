@@ -15,7 +15,7 @@ using Havit.Data.Patterns.Repositories;
 namespace Havit.GoranG3.DataLayer.Repositories.Common
 {
 	[System.CodeDom.Compiler.GeneratedCode("Havit.Data.EntityFrameworkCore.CodeGenerator", "1.0")]
-	public partial interface IApplicationSettingsRepository : IRepository<Havit.GoranG3.Model.Common.ApplicationSettings>, IRepositoryAsync<Havit.GoranG3.Model.Common.ApplicationSettings>
+	public partial interface IApplicationSettingsRepository : IRepository<Havit.GoranG3.Model.Common.ApplicationSettings>
 	{
 	}
 }

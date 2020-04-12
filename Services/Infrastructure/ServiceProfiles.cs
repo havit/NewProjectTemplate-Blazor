@@ -8,6 +8,6 @@ namespace Havit.GoranG3.Services.Infrastructure
 {
     public static class ServiceProfiles
     {
-        public const string WebAPI = "WebAPI";
+        public const string WebServer = "WebAPI";
     }
 }

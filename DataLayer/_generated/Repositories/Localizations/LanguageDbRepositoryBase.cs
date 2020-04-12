@@ -23,8 +23,8 @@ namespace Havit.GoranG3.DataLayer.Repositories.Localizations
 	[System.CodeDom.Compiler.GeneratedCode("Havit.Data.EntityFrameworkCore.CodeGenerator", "1.0")]
 	public abstract class LanguageDbRepositoryBase : DbRepository<Havit.GoranG3.Model.Localizations.Language>
 	{
-		protected LanguageDbRepositoryBase(IDbContext dbContext, Havit.GoranG3.DataLayer.DataSources.Localizations.ILanguageDataSource dataSource, IEntityKeyAccessor<Havit.GoranG3.Model.Localizations.Language, int> entityKeyAccessor, IDataLoader dataLoader, IDataLoaderAsync dataLoaderAsync, ISoftDeleteManager softDeleteManager, IEntityCacheManager entityCacheManager)
-			: base(dbContext, dataSource, entityKeyAccessor, dataLoader, dataLoaderAsync, softDeleteManager, entityCacheManager)
+		protected LanguageDbRepositoryBase(IDbContext dbContext, Havit.GoranG3.DataLayer.DataSources.Localizations.ILanguageDataSource dataSource, IEntityKeyAccessor<Havit.GoranG3.Model.Localizations.Language, int> entityKeyAccessor, IDataLoader dataLoader, ISoftDeleteManager softDeleteManager, IEntityCacheManager entityCacheManager)
+			: base(dbContext, dataSource, entityKeyAccessor, dataLoader, softDeleteManager, entityCacheManager)
 		{
 		}
 

@@ -9,12 +9,12 @@ using Microsoft.AspNetCore.Authentication;
 
 namespace Havit.GoranG3.Facades.Infrastructure.Security.Claims
 {
-    /// <summary>
-    /// Přidá do claims z JWT další claims.    
-    /// Jako side-efekt (v implementacích) zajistí založení LoginAccountu, pokud ještě neexistuje.
-    /// Optimalizace: Claims jsou drženy v cache, aby je nebylo nutné každý request skládat znovu a znovu.
-    /// </summary>
-    [Service(Profile = ServiceProfiles.WebAPI)]
+	/// <summary>
+	/// Přidá do claims z JWT další claims.    
+	/// Jako side-efekt (v implementacích) zajistí založení LoginAccountu, pokud ještě neexistuje.
+	/// Optimalizace: Claims jsou drženy v cache, aby je nebylo nutné každý request skládat znovu a znovu.
+	/// </summary>
+	//[Service(Profile = ServiceProfiles.WebServer)]
 	public class ApplicationClaimsTransformation : IClaimsTransformation // TODO: Vyžaduje závislost na Microsoft.AspNetCore.Authentication (který je však naposled ve verzi 2.2.0), výhledově proto přesuneme třídu do WebAPI.
 	{
         private readonly IClaimsCacheStore claimsCacheStore;

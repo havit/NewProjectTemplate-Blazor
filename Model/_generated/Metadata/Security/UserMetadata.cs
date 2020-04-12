@@ -10,12 +10,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Havit.Data.Patterns.DataSources;
 
-namespace Havit.GoranG3.DataLayer.DataSources.Security
+namespace Havit.GoranG3.Model.Metadata.Security
 {
 	[System.CodeDom.Compiler.GeneratedCode("Havit.Data.EntityFrameworkCore.CodeGenerator", "1.0")]
-	public interface ILoginAccountDataSource : IDataSource<Havit.GoranG3.Model.Security.LoginAccount>
+	public static class UserMetadata
 	{
+		public const int EmailMaxLength = 255;
+		public const int PasswordHashMaxLength = 2147483647;
+		public const int UsernameMaxLength = 50;
 	}
 }

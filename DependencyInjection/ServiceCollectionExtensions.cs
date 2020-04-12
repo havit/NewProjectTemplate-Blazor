@@ -1,7 +1,6 @@
 ﻿using System;
 using System.IO;
 using System.Runtime.CompilerServices;
-using Havit.GoranG3.DataLayer.DataSources.Security;
 using Havit.GoranG3.DataLayer.Seeds.Core.Common;
 using Havit.GoranG3.Entity;
 using Havit.GoranG3.Services.Infrastructure;
@@ -17,18 +16,19 @@ using Havit.Services.Caching;
 using System.Runtime.Caching;
 using Microsoft.Extensions.DependencyInjection;
 using Havit.Data.EntityFrameworkCore.Patterns.DependencyInjection;
+using Havit.GoranG3.DataLayer.DataSources.Common;
 
 namespace Havit.GoranG3.DependencyInjection
 {
 	public static class ServiceCollectionExtensions
 	{
 		[MethodImpl(MethodImplOptions.NoInlining)]
-		public static IServiceCollection ConfigureForWebAPI(this IServiceCollection services, IConfiguration configuration)
+		public static IServiceCollection ConfigureForWebServer(this IServiceCollection services, IConfiguration configuration)
 		{
 			InstallConfiguration installConfiguration = new InstallConfiguration
 			{
 				DatabaseConnectionString = configuration.GetConnectionString("Database"),
-				ServiceProfiles = new[] { ServiceAttribute.DefaultProfile, ServiceProfiles.WebAPI },
+				ServiceProfiles = new[] { ServiceAttribute.DefaultProfile, ServiceProfiles.WebServer },
 			};
 
 			return services.ConfigureForAll(installConfiguration);
@@ -78,7 +78,7 @@ namespace Havit.GoranG3.DependencyInjection
 				.AddEntityPatterns()
 				//.AddLocalizationServices<Language>()
 				.AddDbContext<GoranG3DbContext>(options)
-				.AddDataLayer(typeof(ILoginAccountDataSource).Assembly);
+				.AddDataLayer(typeof(IApplicationSettingsDataSource).Assembly);
 		}
 
 		private static void InstallHavitServices(IServiceCollection services)

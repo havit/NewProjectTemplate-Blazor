@@ -3,15 +3,13 @@
     public static class ClaimConstants
     {
 	    /// <summary>
-	    /// Název claim pro uložení LoginAccount.Id
+	    /// Název claim pro uložení User.Id
 	    /// </summary>
-	    public const string LoginAccountIdClaim = "LoginAccountId";
+	    public const string UserIdClaim = "UserId";
 
 	    /// <summary>
         /// Název vystavitele claimů, vystavených aplikací.
         /// </summary>
         public const string ApplicationIssuer = "GoranG3";
-
     }
-
 }
