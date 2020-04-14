@@ -6,4 +6,8 @@
     <RootNamespace>Havit.GoranG3.Contracts</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="System.ServiceModel.Primitives" Version="4.7.0" />
+  </ItemGroup>
+
 </Project>

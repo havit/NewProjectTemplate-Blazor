@@ -12,6 +12,8 @@ using Havit.GoranG3.Web.Server.Tools;
 using Havit.GoranG3.Facades.Infrastructure.Security.Authentication;
 using Havit.GoranG3.Web.Server.Infrastructure.Security;
 using IdentityServer4.Models;
+using ProtoBuf.Grpc.Server;
+using Havit.GoranG3.Facades.GrpcTests;
 
 namespace Havit.GoranG3.Web.Server
 {
@@ -62,6 +64,16 @@ namespace Havit.GoranG3.Web.Server
 			services.AddRazorPages();
 
 			services.AddScoped<IApplicationAuthenticationService, ApplicationAuthenticationService>();
+
+			// GRPC TESTS
+			services.AddCodeFirstGrpc(config =>
+			{
+				config.ResponseCompressionLevel = System.IO.Compression.CompressionLevel.Optimal;
+			});
+			services.AddGrpcWeb(options =>
+			{
+				options.GrpcWebEnabled = true;
+			});
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -88,6 +100,9 @@ namespace Havit.GoranG3.Web.Server
 
 			app.UseRouting();
 
+			// GRPC TESTS
+			app.UseGrpcWeb();
+
 			app.UseAuthentication();
 			app.UseIdentityServer();
 			app.UseAuthorization();
@@ -97,6 +112,9 @@ namespace Havit.GoranG3.Web.Server
 				endpoints.MapRazorPages();
 				endpoints.MapControllers();
 				endpoints.MapFallbackToFile("index.html");
+
+				// GRPC TESTs
+				endpoints.MapGrpcService<TestFacade>();
 			});
 
 			app.UpgradeDatabaseSchemaAndData();
