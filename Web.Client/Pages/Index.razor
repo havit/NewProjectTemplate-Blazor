@@ -1,6 +1,9 @@
 ﻿@page "/"
 @using Havit.GoranG3.Contracts.GrpcTests;
 @using ProtoBuf.Grpc.Client;
+@using Microsoft.AspNetCore.Components.WebAssembly.Authentication
+@inject IAccessTokenProvider AccessTokenProvider
+@inject NavigationManager NavigationManager
 
 <h1>Hello, world!</h1>
 <EditForm Model="@request" OnValidSubmit="Submit">
@@ -11,8 +14,10 @@
 
 @if (result != null)
 {
-	@result.Message<br/>
-	@result.Value<br/>
+	@result.Message
+	<br />
+	@result.Value
+	<br />
 }
 
 
@@ -23,11 +28,23 @@
 
 	async Task Submit()
 	{
-		var handler = new Grpc.Net.Client.Web.GrpcWebHandler(Grpc.Net.Client.Web.GrpcWebMode.GrpcWeb, new HttpClientHandler());
-		using (var channel = Grpc.Net.Client.GrpcChannel.ForAddress("https://localhost:44377/", new Grpc.Net.Client.GrpcChannelOptions() { HttpClient = new HttpClient(handler) }))
+
+		var tokenResult = await AccessTokenProvider.RequestAccessToken();
+
+		if (tokenResult.TryGetToken(out var token))
 		{
-			var testFacade = channel.CreateGrpcService<Havit.GoranG3.Contracts.GrpcTests.ITestFacade>();
-			this.result = await testFacade.DoSomething(request);
+			var handler = new Grpc.Net.Client.Web.GrpcWebHandler(Grpc.Net.Client.Web.GrpcWebMode.GrpcWeb, new HttpClientHandler());
+			var httpClient = new HttpClient(handler);
+			httpClient.DefaultRequestHeaders.Add("Authorization", $"Bearer {token.Value}");
+			using (var channel = Grpc.Net.Client.GrpcChannel.ForAddress("https://localhost:44377/", new Grpc.Net.Client.GrpcChannelOptions() { HttpClient = httpClient }))
+			{
+				var testFacade = channel.CreateGrpcService<Havit.GoranG3.Contracts.GrpcTests.ITestFacade>();
+				this.result = await testFacade.DoSomething(request);
+			}
+		}
+		else
+		{
+			NavigationManager.NavigateTo(tokenResult.RedirectUrl);
 		}
 	}
 }

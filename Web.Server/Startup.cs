@@ -47,15 +47,8 @@ namespace Havit.GoranG3.Web.Server
 				.AddAspNetIdentity<User>()
 				.AddClients()
 				.AddSigningCredentials()
-				.AddInMemoryIdentityResources(new IdentityResource[]
-				{
-					new IdentityResources.OpenId(),
-					new IdentityResources.Profile()
-				})
-				.AddInMemoryApiResources(new[] { new ApiResource()
-				{
-					// TODO IdentityServer ApiResources
-				}});
+				.AddIdentityResources()
+				.AddApiResources();
 
 			services.AddAuthentication()
 				.AddIdentityServerJwt();
@@ -65,7 +58,6 @@ namespace Havit.GoranG3.Web.Server
 
 			services.AddScoped<IApplicationAuthenticationService, ApplicationAuthenticationService>();
 
-			// GRPC TESTS
 			services.AddCodeFirstGrpc(config =>
 			{
 				config.ResponseCompressionLevel = System.IO.Compression.CompressionLevel.Optimal;
@@ -100,12 +92,11 @@ namespace Havit.GoranG3.Web.Server
 
 			app.UseRouting();
 
-			// GRPC TESTS
-			app.UseGrpcWeb();
-
 			app.UseAuthentication();
 			app.UseIdentityServer();
 			app.UseAuthorization();
+
+			app.UseGrpcWeb();
 
 			app.UseEndpoints(endpoints =>
 			{
