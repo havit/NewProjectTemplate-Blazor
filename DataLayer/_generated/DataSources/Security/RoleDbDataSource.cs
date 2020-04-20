@@ -10,17 +10,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Havit.Data.EntityFrameworkCore;
+using Havit.Data.EntityFrameworkCore.Patterns.DataSources;
+using Havit.Data.EntityFrameworkCore.Patterns.SoftDeletes;
 
-namespace Havit.GoranG3.Model.Metadata.Security
+namespace Havit.GoranG3.DataLayer.DataSources.Security
 {
 	[System.CodeDom.Compiler.GeneratedCode("Havit.Data.EntityFrameworkCore.CodeGenerator", "1.0")]
-	public static class UserMetadata
+	public partial class RoleDbDataSource : DbDataSource<Havit.GoranG3.Model.Security.Role>, IRoleDataSource
 	{
-		public const int EmailMaxLength = 255;
-		public const int NormalizedEmailMaxLength = 255;
-		public const int NormalizedUsernameMaxLength = 50;
-		public const int PasswordHashMaxLength = 2147483647;
-		public const int SecurityStampMaxLength = 255;
-		public const int UsernameMaxLength = 50;
+		public RoleDbDataSource(IDbContext dbContext, ISoftDeleteManager softDeleteManager)
+			: base(dbContext, softDeleteManager)
+		{
+		}
 	}
 }

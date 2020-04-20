@@ -14,6 +14,9 @@ using Havit.GoranG3.Web.Server.Infrastructure.Security;
 using IdentityServer4.Models;
 using ProtoBuf.Grpc.Server;
 using Havit.GoranG3.Facades.GrpcTests;
+using Microsoft.AspNetCore.Identity;
+using Web.Server.Infrastructure.Security;
+using System.IdentityModel.Tokens.Jwt;
 
 namespace Havit.GoranG3.Web.Server
 {
@@ -41,17 +44,23 @@ namespace Havit.GoranG3.Web.Server
 			// TODO services.AddApplicationInsightsTelemetry(configuration);
 
 			services.AddDefaultIdentity<User>(options => options.SignIn.RequireConfirmedAccount = true)
-				.AddUserStore<UserStore>();
+				.AddRoles<Role>()
+				.AddUserStore<UserStore>()
+				.AddRoleStore<RoleStore>();
 
 			services.AddIdentityServer()
 				.AddAspNetIdentity<User>()
 				.AddClients()
 				.AddSigningCredentials()
 				.AddIdentityResources()
-				.AddApiResources();
+				.AddApiResources()
+				.AddProfileService<IdentityServerProfileService>();
 
 			services.AddAuthentication()
 				.AddIdentityServerJwt();
+			
+			// server-side support for User.IsInRole(), see https://leastprivilege.com/2016/08/21/why-does-my-authorize-attribute-not-work/
+			JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
 
 			services.AddControllersWithViews();
 			services.AddRazorPages();

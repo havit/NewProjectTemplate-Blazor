@@ -11,5 +11,7 @@ namespace Havit.GoranG3.Contracts.GrpcTests
 	public interface ITestFacade
     {
 		ValueTask<DoSomethingResult> DoSomething(DoSomethingRequest request);
-    }
+
+		Task AddRole();
+	}
 }

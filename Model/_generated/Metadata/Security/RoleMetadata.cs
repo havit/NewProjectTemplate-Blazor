@@ -14,13 +14,9 @@ using System.Threading.Tasks;
 namespace Havit.GoranG3.Model.Metadata.Security
 {
 	[System.CodeDom.Compiler.GeneratedCode("Havit.Data.EntityFrameworkCore.CodeGenerator", "1.0")]
-	public static class UserMetadata
+	public static class RoleMetadata
 	{
-		public const int EmailMaxLength = 255;
-		public const int NormalizedEmailMaxLength = 255;
-		public const int NormalizedUsernameMaxLength = 50;
-		public const int PasswordHashMaxLength = 2147483647;
-		public const int SecurityStampMaxLength = 255;
-		public const int UsernameMaxLength = 50;
+		public const int NameMaxLength = 255;
+		public const int NormalizedNameMaxLength = 255;
 	}
 }

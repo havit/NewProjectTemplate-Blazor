@@ -12,6 +12,17 @@
 	<input type="submit" value="Submit" />
 </EditForm>
 
+<div><button @onclick="AddRole">Add role</button></div>
+
+<div>
+	<AuthorizeView Roles="SystemAdministrator">
+		Has SystemAdministrator role.
+	</AuthorizeView>
+	<AuthorizeView Roles="UserSettingsAdministrator">
+		Has UserSettingsAdministrator role.
+	</AuthorizeView>
+</div>
+
 @if (result != null)
 {
 	@result.Message
@@ -28,7 +39,6 @@
 
 	async Task Submit()
 	{
-
 		var tokenResult = await AccessTokenProvider.RequestAccessToken();
 
 		if (tokenResult.TryGetToken(out var token))
@@ -40,6 +50,27 @@
 			{
 				var testFacade = channel.CreateGrpcService<Havit.GoranG3.Contracts.GrpcTests.ITestFacade>();
 				this.result = await testFacade.DoSomething(request);
+			}
+		}
+		else
+		{
+			NavigationManager.NavigateTo(tokenResult.RedirectUrl);
+		}
+	}
+
+	async Task AddRole()
+	{
+		var tokenResult = await AccessTokenProvider.RequestAccessToken();
+
+		if (tokenResult.TryGetToken(out var token))
+		{
+			var handler = new Grpc.Net.Client.Web.GrpcWebHandler(Grpc.Net.Client.Web.GrpcWebMode.GrpcWeb, new HttpClientHandler());
+			var httpClient = new HttpClient(handler);
+			httpClient.DefaultRequestHeaders.Add("Authorization", $"Bearer {token.Value}");
+			using (var channel = Grpc.Net.Client.GrpcChannel.ForAddress("https://localhost:44377/", new Grpc.Net.Client.GrpcChannelOptions() { HttpClient = httpClient }))
+			{
+				var testFacade = channel.CreateGrpcService<Havit.GoranG3.Contracts.GrpcTests.ITestFacade>();
+				await testFacade.AddRole();
 			}
 		}
 		else
