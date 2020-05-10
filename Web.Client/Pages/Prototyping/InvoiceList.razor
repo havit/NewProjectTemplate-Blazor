@@ -1,0 +1,74 @@
+﻿@page "/invoices"
+@inherits PageComponentBase
+
+<HxListLayout Title="Faktury vystavené">
+	<NamedViewsSection>
+		<HxNamedViewList Data="@NamedViews" OnSelected="@NamedViewSelected" /> @* Možná přímo navázat na centrální BindData? *@
+	</NamedViewsSection>
+	<SearchSection>
+		<HxSearchBox OnQueryTextChanged="@SearchRequested" /> @* Možná přímo navázat na centrální BindData? *@
+	</SearchSection>
+	<FilterSection>
+		<HxFilterView Data="@Filter" OnChange="@FilterChanged">
+			@* Možná přímo navázat na centrální BindData? *@
+			<Criteria>
+				<HxDateRangeFilter @bind="context.IssuedDateRange" Label="Vystavení" />
+				<HxDateRangeFilter @bind="context.TaxDateRange" Label="Účinnost" />
+				<GoranProjectFilter @bind="context.ProjectId" Label="Projekt" />
+				<GoranContactFilter @bind="context.BusinessPartner" Label="Partner" />
+				<HxCustomFilter Label="Typ faktury">
+					<FilterTemplate>
+						<HxDropDownList @bind="context.InvoiceTypeId" Data="@CodebooksStore.InvoiceTypes" NameField="Name" ValueField="Id" />
+					</FilterTemplate>
+					<ChipTemplate>
+						<chip>
+							<label>Typ:</label>
+							<value>@CodebooksStore.InvoiceTypes.GetNameById(context.InvoiceTypeId)</value>
+						</chip>
+					</ChipTemplate>
+				</HxCustomFilter>
+			</Criteria>
+		</HxFilterView>
+
+	</FilterSection>
+	<CommandsSection>
+		@* nebo pojmenovat ButtonsSection? *@
+		<HxButton Text="Přidat fakturu" Skin="NewItem" OnClick="@NewInvoiceClicked" />
+		@* ...případná další tlačítka, např. export, generátor opakovaných plateb, hromadné změny? ... *@
+		@* ...tlačítko může být i "rozbalovací? *@
+	</CommandsSection>
+	<DataSection>
+		<HxGrid Data="@Invoices"
+				@bind-SelectedDataItem="@CurrentInvoice"
+				AllowSelection="true"
+				AllowSorting="true">
+			<Columns>
+				<HxBoundFieldGridColumn FieldName=@nameof(InvoiceDto.IssuedDate) HeaderText="Vystavení" DataFormatString="g" />
+				<HxBoundFieldGridColumn FieldName=@nameof(InvoiceDto.TaxDate) HeaderText="Účinnost" DataFormatString="g" />
+				<HxBoundFieldGridColumn FieldName=@nameof(InvoiceDto.Description) HeaderText="Popis" />
+				<HxCustomGridColumn HeaderText="Partner">
+					<Template>
+						bžbž @(context.BusinessPartnerName.Trim()) !!
+					</Template>
+				</HxCustomGridColumn>
+			</Columns>
+			<ContextMenu>
+				<HxContextMenu>
+					<HxContextMenuItem Title="Smazat" CommandArgument="@context.InvoiceId" OnClick="@DeleteClicked" />
+					<HxContextMenuItem Title="Duplikovat" CommandArgument="@context.InvoiceId" OnClick="@DuplicateClicked" />
+					<HxContextMenuItem Title="Vytisknout" CommandArgument="@context.InvoiceId" OnClick="@PrintClicked" />
+				</HxContextMenu>
+			</ContextMenu>
+		</HxGrid>
+	</DataSection>
+	<DetailSection>
+		<InvoiceDetail @bind-Invoice="CurrentInvoice" />
+	</DetailSection>
+</HxListLayout>
+
+@*
+	Inpirace viz:
+		DevExpress https://demos.devexpress.com/blazor/GridColumnTypes
+		SyncFusion https://blazor.syncfusion.com/demos/datagrid/context-menu?theme=bootstrap4
+		Telerik https://demos.telerik.com/blazor-ui/
+*@
