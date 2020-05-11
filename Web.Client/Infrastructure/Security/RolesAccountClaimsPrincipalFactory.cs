@@ -19,17 +19,21 @@ namespace Havit.GoranG3.Web.Client.Infrastructure.Security
 
 		public override ValueTask<ClaimsPrincipal> CreateUserAsync(RemoteUserAccount account, RemoteAuthenticationUserOptions options)
 		{
-			var roles = account.AdditionalProperties["role"] as JsonElement?;
-			if (roles?.ValueKind == JsonValueKind.Array)
-			{
-				account.AdditionalProperties.Remove("role");
-				var claimsPrincipal = base.CreateUserAsync(account, options).Result;
 
-				foreach (JsonElement element in roles.Value.EnumerateArray())
+			if (account != null)
+			{
+				var roles = account.AdditionalProperties["role"] as JsonElement?;
+				if (roles?.ValueKind == JsonValueKind.Array)
 				{
-					((ClaimsIdentity)claimsPrincipal.Identity).AddClaim(new Claim("role", element.GetString()));
+					account.AdditionalProperties.Remove("role");
+					var claimsPrincipal = base.CreateUserAsync(account, options).Result;
+
+					foreach (JsonElement element in roles.Value.EnumerateArray())
+					{
+						((ClaimsIdentity)claimsPrincipal.Identity).AddClaim(new Claim("role", element.GetString()));
+					}
+					return new ValueTask<ClaimsPrincipal>(claimsPrincipal);
 				}
-				return new ValueTask<ClaimsPrincipal>(claimsPrincipal);
 			}
 
 			return base.CreateUserAsync(account, options);
