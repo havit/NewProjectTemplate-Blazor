@@ -48,6 +48,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Web.Client", "Web.Client\We
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Contracts", "Contracts\Contracts.csproj", "{CF770CA3-11AC-42A1-9EBF-F62B274FB194}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Havit.Blazor.Components.Web", "Havit.Blazor.Components.Web\Havit.Blazor.Components.Web.csproj", "{36448102-95F7-49D8-80D9-DE188DC12E09}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Havit.Blazor.Components.Web.Bootstrap", "Havit.Blazor.Components.Web.Bootstrap\Havit.Blazor.Components.Web.Bootstrap.csproj", "{DF3BFD84-8CAA-47EB-9B17-6E3C8CCB8687}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -126,6 +130,14 @@ Global
 		{CF770CA3-11AC-42A1-9EBF-F62B274FB194}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CF770CA3-11AC-42A1-9EBF-F62B274FB194}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CF770CA3-11AC-42A1-9EBF-F62B274FB194}.Release|Any CPU.Build.0 = Release|Any CPU
+		{36448102-95F7-49D8-80D9-DE188DC12E09}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36448102-95F7-49D8-80D9-DE188DC12E09}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{36448102-95F7-49D8-80D9-DE188DC12E09}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36448102-95F7-49D8-80D9-DE188DC12E09}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF3BFD84-8CAA-47EB-9B17-6E3C8CCB8687}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF3BFD84-8CAA-47EB-9B17-6E3C8CCB8687}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF3BFD84-8CAA-47EB-9B17-6E3C8CCB8687}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF3BFD84-8CAA-47EB-9B17-6E3C8CCB8687}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
