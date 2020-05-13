@@ -3,7 +3,6 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
     <RazorLangVersion>3.0</RazorLangVersion>
-	<Nullable>Enable</Nullable>
   </PropertyGroup>
 
   <!-- NuGet -->
@@ -21,6 +20,10 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Havit.Blazor.Components.Web\Havit.Blazor.Components.Web.csproj" />
   </ItemGroup>
 
 </Project>
