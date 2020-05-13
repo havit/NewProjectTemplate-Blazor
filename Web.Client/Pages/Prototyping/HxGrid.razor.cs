@@ -28,7 +28,7 @@ namespace Havit.GoranG3.Web.Client.Pages.Prototyping
 		public T SelectedDataItem { get; set; }
 
 		[Parameter]
-		public EventCallback<T>SelectedDataItemChanged { get; set; }
+		public EventCallback<T> SelectedDataItemChanged { get; set; }
 
 	}
 }
