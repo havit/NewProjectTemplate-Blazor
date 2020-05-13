@@ -16,7 +16,9 @@ namespace Havit.Blazor.Components.Web.Bootstrap
 		public const string ChipGeneratorRegistrationCascadingValueName = "ChipGeneratorsRegistration";
 
 		// pokud bude parametrem, pozor, že hodnotu měníme (OnParameterSet ji přepíše).
+#pragma warning disable CS0414
 		private bool isExpanded = false; //https://github.com/dotnet/aspnetcore/issues/20137
+#pragma warning restore CS0414
 
 		[Parameter]
 		// TODO: Pojmenování? Filter? Value?
