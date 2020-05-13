@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using Havit.Blazor.Components.Web.Bootstrap.NamedViews;
+using Microsoft.AspNetCore.Components;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,23 +8,29 @@ using System.Threading.Tasks;
 
 namespace Havit.GoranG3.Web.Client.Pages.Prototyping
 {
-    public partial class InvoiceList : PageComponentBase
+    public partial class InvoiceList
     {
 		protected List<InvoiceDto> Invoices { get; set; }
 		protected InvoiceDto CurrentInvoice { get; set; }
-		protected InvoiceListFilterDto Filter { get; set; }
+		protected InvoiceListFilterDto Filter { get; set; } = new InvoiceListFilterDto();
 
-		protected readonly IEnumerable<KeyValuePair<string, string>> NamedViews = new Dictionary<string, string>()
+
+		protected readonly IEnumerable<NamedView> NamedViews = new List<NamedView>()
 		{
-			{ "ThisYear", "Letos vystavené" },
-			{ "PaymentDue", "Neuhrazené po splatnosti" },
-			{ "PaymentDue30Days", "Po splatnosti > 30 dnů" },
+			new NamedView("Letos vystavené"),
+			new NamedView("Neuhrazené po splatnosti"),
+			new NamedView("Po splatnosti > 30 dnů")
 		};
 
-		public override string Title => "Faktury vystavené";
+		//public override string Title => "Faktury vystavené";
 
-		protected Task NamedViewSelected(EventArgs eventArgs)
+		protected Task NamedViewSelected(NamedView namedView)
 		{
+			//Filter.Reset();
+			if (namedView == new NamedView() /* nějaká instance */)
+			{
+				//Filter.IssuedDateRange = null; /* atd. */
+			}
 			// Tady by bylo něco jako BindData()
 			return Task.CompletedTask;
 		}
@@ -34,7 +41,7 @@ namespace Havit.GoranG3.Web.Client.Pages.Prototyping
 			return Task.CompletedTask;
 		}
 
-		protected Task SearchRequested(EventArgs eventArgs)
+		protected Task SearchRequested(string eventArgs)
 		{
 			// Tady by bylo něco jako BindData()
 			return Task.CompletedTask;

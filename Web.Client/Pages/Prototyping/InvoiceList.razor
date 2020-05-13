@@ -1,9 +1,8 @@
-﻿@page "/invoices"
-@inherits PageComponentBase
+﻿@page "/"
 
 <HxListLayout Title="Faktury vystavené">
 	<NamedViewsSection>
-		<HxNamedViewList Data="@NamedViews" OnSelected="@NamedViewSelected" /> @* Možná přímo navázat na centrální BindData? *@
+		<HxNamedViewList Data="@NamedViews" OnNamedViewChanged="@NamedViewSelected" /> @* Možná přímo navázat na centrální BindData? *@
 	</NamedViewsSection>
 	<SearchSection>
 		<HxSearchBox OnQueryTextChanged="@SearchRequested" /> @* Možná přímo navázat na centrální BindData? *@
@@ -12,21 +11,22 @@
 		<HxFilterView Data="@Filter" OnChange="@FilterChanged">
 			@* Možná přímo navázat na centrální BindData? *@
 			<Criteria>
-				<HxDateRangeFilter @bind="context.IssuedDateRange" Label="Vystavení" />
-				<HxDateRangeFilter @bind="context.TaxDateRange" Label="Účinnost" />
-				<GoranProjectFilter @bind="context.ProjectId" Label="Projekt" />
-				<GoranContactFilter @bind="context.BusinessPartner" Label="Partner" />
-				<HxCustomFilter Label="Typ faktury">
-					<FilterTemplate>
-						<HxDropDownList @bind="context.InvoiceTypeId" Data="@CodebooksStore.InvoiceTypes" NameField="Name" ValueField="Id" />
-					</FilterTemplate>
-					<ChipTemplate>
-						<chip>
-							<label>Typ:</label>
-							<value>@CodebooksStore.InvoiceTypes.GetNameById(context.InvoiceTypeId)</value>
-						</chip>
-					</ChipTemplate>
-				</HxCustomFilter>
+				<HxDateRangeFilter @bind-Value="context.IssuedDateRange" Label="Vystavení" />
+		<HxDateRangeFilter @bind-Value="context.TaxDateRange" Label="Účinnost" />
+		<HxTextFilter @bind-Value="context.Text" Label="Nějaký text" />
+		<GoranProjectFilter @bind-Value="context.ProjectId" Label="Projekt" />
+		<GoranContactFilter @bind-Value="context.BusinessPartnerId" Label="Partner" />
+		@*<HxCustomFilter Label="Typ faktury">
+			<FilterTemplate>
+				<HxDropDownList @bind="context.InvoiceTypeId" Data="@CodebooksStore.InvoiceTypes" NameField="Name" ValueField="Id" />
+				</FilterTemplate>
+				<ChipTemplate>
+					<chip>
+						<label>Typ:</label>
+						<value>@CodebooksStore.InvoiceTypes.GetNameById(context.InvoiceTypeId)</value>
+					</chip>
+				</ChipTemplate>
+				</HxCustomFilter>*@
 			</Criteria>
 		</HxFilterView>
 

@@ -6,18 +6,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Havit.GoranG3.Web.Client.Pages.Prototyping
+namespace Havit.Blazor.Components.Web.Bootstrap.Filters
 {
-    public class GoranProjectFilter : HxFilterBase<int>
+    public partial class HxDateRangeFilter : HxFilterBase<DateRange>
     {
         //public override IEnumerable<FilterChip> GetChips()
         //{
-        //    throw new NotImplementedException();
+        //    yield break;            
         //}
 
         //public override RenderFragment GetFilter()
         //{
-        //    throw new NotImplementedException();
+        //    return "HxDateRangeFilter - Not implemented".ToRenderFragment();
         //}
     }
 }

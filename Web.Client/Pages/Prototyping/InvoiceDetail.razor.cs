@@ -11,5 +11,8 @@ namespace Havit.GoranG3.Web.Client.Pages.Prototyping
     {
 		[Parameter]
 		public InvoiceDto Invoice { get; set; }
+
+		[Parameter]
+		public EventCallback<InvoiceDto> InvoiceChanged { get; set; }
 	}
 }

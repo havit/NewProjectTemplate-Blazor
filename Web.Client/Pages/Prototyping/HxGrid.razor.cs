@@ -23,5 +23,12 @@ namespace Havit.GoranG3.Web.Client.Pages.Prototyping
 
 		[Parameter]
 		public RenderFragment<T> ContextMenu { get; set; }
+
+		[Parameter]
+		public T SelectedDataItem { get; set; }
+
+		[Parameter]
+		public EventCallback<T>SelectedDataItemChanged { get; set; }
+
 	}
 }
