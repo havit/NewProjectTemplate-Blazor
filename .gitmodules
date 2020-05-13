@@ -1,0 +1,3 @@
+[submodule "002.HFW-HavitBlazor"]
+	path = 002.HFW-HavitBlazor
+	url = https://havit@dev.azure.com/havit/DEV/_git/002.HFW-HavitBlazor
