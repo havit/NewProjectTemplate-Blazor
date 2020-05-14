@@ -32,4 +32,10 @@
     </PackageReference>
   </ItemGroup>
 
+  <Target Name="TfsPublish" AfterTargets="AfterPublish" Condition="'$(PublishDirectory)' != ''">
+    <ItemGroup>
+      <PublishToCopy Include="obj\Release\TfsPublish\*.zip" />
+    </ItemGroup>
+    <Copy SourceFiles="@(PublishToCopy)" DestinationFolder="$(PublishDirectory)\Web" />
+  </Target>
 </Project>
