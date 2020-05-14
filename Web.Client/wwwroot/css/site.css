@@ -207,12 +207,13 @@ app {
 
 .title .named-views {
 	display: none;
+	font-size: 16px;
 }
 
-.title .named-views.show {
+.title.show .named-views {
 	position: absolute;
 	display: block;
-	bottom: 5px;
+	top: 35px;
 	background: white;
 	border: 5px;
 }
