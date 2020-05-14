@@ -89,7 +89,6 @@ app {
 
 .sidebar .nav-item a {
 	color: #c0c5d2;
-	border-radius: 4px;
 	height: 3rem;
 	display: flex;
 	align-items: center;
@@ -207,13 +206,27 @@ app {
 
 .title .named-views {
 	display: none;
-	font-size: 16px;
+	font-size: 14px;
 }
 
 .title.show .named-views {
 	position: absolute;
 	display: block;
 	top: 35px;
+	left: -15px;
 	background: white;
 	border: 5px;
+}
+
+.title.show .named-views {
+	position: absolute;
+	display: block;
+	top: 35px;
+	left: -15px;
+	background: white;
+	border: 5px;
+}
+
+.named-views > li:hover {
+	background-color: #fafbfc;
 }
