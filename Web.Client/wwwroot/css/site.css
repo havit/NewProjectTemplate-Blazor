@@ -4,12 +4,15 @@
 	--primary-color: #2e75f0;
 	--border-gray: #eaeaea;
 	--sidebar-link-hover: #f2f9ff;
+	--drawer-width: 30vw;
+	--box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
 	/* --primary-color: #2097d0; HAVIT LIGHT BLUE */
 }
 
 html,
 body {
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	position: relative;
 }
 
 a,
@@ -229,4 +232,22 @@ app {
 
 .named-views > li:hover {
 	background-color: #fafbfc;
+}
+
+.drawer {
+	position: absolute;
+	height: 100%;
+	width: var(--drawer-width);
+	top: 0;
+	background: white;
+	transition: all 0.5s;
+}
+
+.drawer.open {
+	right: 0;
+	box-shadow: var(--box-shadow);
+}
+
+.drawer.close {
+	right: calc(-1 * var(--drawer-width));
 }
