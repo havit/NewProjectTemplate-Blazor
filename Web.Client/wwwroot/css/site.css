@@ -240,14 +240,14 @@ app {
 	width: var(--drawer-width);
 	top: 0;
 	background: white;
-	transition: all 0.5s;
+	transition: all 0.35s;
 }
 
-.drawer.open {
+.drawer.show {
 	right: 0;
 	box-shadow: var(--box-shadow);
 }
 
-.drawer.close {
+.drawer.hide {
 	right: calc(-1 * var(--drawer-width));
 }
