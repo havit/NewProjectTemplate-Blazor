@@ -10,12 +10,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Havit.Data.Patterns.Repositories;
 
-namespace Havit.GoranG3.Model.Metadata.Finance
+namespace Havit.GoranG3.DataLayer.Repositories.Finance
 {
 	[System.CodeDom.Compiler.GeneratedCode("Havit.Data.EntityFrameworkCore.CodeGenerator", "1.0")]
-	public static class CurrencyMetadata
+	public partial interface IExchangeRateRepository : IRepository<Havit.GoranG3.Model.Finance.ExchangeRate>
 	{
-		public const int CodeMaxLength = 50;
 	}
 }

@@ -14,8 +14,7 @@ using System.Threading.Tasks;
 namespace Havit.GoranG3.Model.Metadata.Finance
 {
 	[System.CodeDom.Compiler.GeneratedCode("Havit.Data.EntityFrameworkCore.CodeGenerator", "1.0")]
-	public static class CurrencyMetadata
+	public static class ExchangeRateMetadata
 	{
-		public const int CodeMaxLength = 50;
 	}
 }

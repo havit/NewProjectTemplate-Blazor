@@ -10,12 +10,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Havit.Data.EntityFrameworkCore;
+using Havit.Data.EntityFrameworkCore.Patterns.DataSources;
+using Havit.Data.EntityFrameworkCore.Patterns.SoftDeletes;
 
-namespace Havit.GoranG3.Model.Metadata.Finance
+namespace Havit.GoranG3.DataLayer.DataSources.Finance
 {
 	[System.CodeDom.Compiler.GeneratedCode("Havit.Data.EntityFrameworkCore.CodeGenerator", "1.0")]
-	public static class CurrencyMetadata
+	public partial class ExchangeRateDbDataSource : DbDataSource<Havit.GoranG3.Model.Finance.ExchangeRate>, IExchangeRateDataSource
 	{
-		public const int CodeMaxLength = 50;
+		public ExchangeRateDbDataSource(IDbContext dbContext, ISoftDeleteManager softDeleteManager)
+			: base(dbContext, softDeleteManager)
+		{
+		}
 	}
 }
