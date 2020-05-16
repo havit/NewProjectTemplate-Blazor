@@ -90,12 +90,11 @@ app {
 	padding-bottom: 1rem;
 }
 
+.sidebar .nav-item > div,
 .sidebar .nav-item a {
-	color: #c0c5d2;
-	height: 3rem;
+	color: #6e84a3;
 	display: flex;
 	align-items: center;
-	line-height: 3rem;
 }
 
 .sidebar .nav-item a.active {
@@ -103,9 +102,18 @@ app {
 	color: var(--primary-color);
 }
 
-.sidebar .nav-item a:hover {
+.sidebar .nav-item a:hover,
+.sidebar .nav-item > div:hover {
 	background-color: var(--sidebar-link-hover);
 	color: var(--primary-color);
+}
+
+.sidebar .nav-item .bi.bi-chevron-down {
+	transition: transform 0.2s;
+}
+
+.sidebar .nav-item.expanded .bi.bi-chevron-down {
+	transform: rotate(180deg);
 }
 
 .content {
