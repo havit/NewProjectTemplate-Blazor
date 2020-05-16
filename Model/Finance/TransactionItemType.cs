@@ -11,7 +11,7 @@ namespace Havit.GoranG3.Model.Finance
 	/// G2: TypFakturaItem
 	/// </summary>
 	[Cache(Priority = CacheItemPriority.High)]
-	public class TransactionItemType
+	public class TransactionItemType // TODO
     {
 		public int Id { get; set; }
 

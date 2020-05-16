@@ -110,6 +110,10 @@ namespace Havit.GoranG3.Model.HumanResources
 
 		public List<TeamMembership> TeamMemberships { get; } = new List<TeamMembership>();
 
+		public string FullName => (this.TitlePrefix + " " + this.FirstName + " " + this.LastName + ", " + this.TitleSuffix).Trim(' ', ',');
+		public string Initials => ((!String.IsNullOrWhiteSpace(FirstName)) ? FirstName.Substring(0, 1) : String.Empty) + LastName.Substring(0, 1);
+		public string DisplayAs => (this.LastName + " " + this.FirstName).Trim();
+
 		public Employee()
 		{
 			this.Histories = new FilteringCollection<EmployeeHistory>(this.HistoriesIncludingDeleted, h => h.Deleted is null);

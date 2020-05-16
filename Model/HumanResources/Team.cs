@@ -31,5 +31,10 @@ namespace Havit.GoranG3.Model.HumanResources
 		public DateTime? Deleted { get; set; }
 
 		public IEnumerable<Employee> Members => TeamMemberships.Select(tm => tm.Employee);
+
+		public enum Entry
+		{
+			Everyone = -1
+		}
 	}
 }
