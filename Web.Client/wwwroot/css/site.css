@@ -34,6 +34,7 @@ app {
 	position: relative;
 	display: flex;
 	flex-direction: column;
+	overflow: hidden;
 }
 
 .top-row {
@@ -77,6 +78,15 @@ app {
 	font-size: 1.1rem;
 }
 
+.sidebar .nav .nav {
+	overflow: hidden;
+	height: 0;
+}
+
+.sidebar .nav .expanded .nav {
+	height: auto;
+}
+
 .sidebar .nav-item {
 	font-size: 0.9rem;
 	padding-bottom: 0.5rem;
@@ -108,8 +118,16 @@ app {
 	color: var(--primary-color);
 }
 
+/* TODO: Hack kvuli poskakovani v Safari pri transformaci */
+.sidebar .nav-item > div > span {
+	line-height: 18px;
+	height: 18px;
+}
+
 .sidebar .nav-item .bi.bi-chevron-down {
 	transition: transform 0.2s;
+	transform-origin: center center;
+	backface-visibility: hidden;
 }
 
 .sidebar .nav-item.expanded .bi.bi-chevron-down {
