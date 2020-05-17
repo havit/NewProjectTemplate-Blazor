@@ -10,14 +10,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Havit.Data.Patterns.Repositories;
 
-namespace Havit.GoranG3.Model.Metadata.Sequences
+namespace Havit.GoranG3.DataLayer.Repositories.Sequences
 {
 	[System.CodeDom.Compiler.GeneratedCode("Havit.Data.EntityFrameworkCore.CodeGenerator", "1.0")]
-	public static class NumberSequenceMetadata
+	public partial interface INumberSequenceUnusedNumberRepository : IRepository<Havit.GoranG3.Model.Sequences.NumberSequenceUnusedNumber>
 	{
-		public const int NameMaxLength = 50;
-		public const int PrefixMaxLength = 10;
-		public const int SuffixMaxLength = 10;
 	}
 }

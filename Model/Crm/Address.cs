@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Havit.Data.EntityFrameworkCore.Attributes;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace Havit.GoranG3.Model.Crm
@@ -6,6 +7,7 @@ namespace Havit.GoranG3.Model.Crm
 	/// <summary>
 	/// G2: AdresaSubjektu
 	/// </summary>
+	[Cache(Priority = CacheItemPriority.Low)]
 	public class Address
 	{
 		public int Id { get; set; }

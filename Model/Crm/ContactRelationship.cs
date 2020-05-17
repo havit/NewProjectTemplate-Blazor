@@ -2,6 +2,9 @@
 
 namespace Havit.GoranG3.Model.Crm
 {
+	/// <summary>
+	/// G2: VztahSubjektu
+	/// </summary>
 	public class ContactRelationship
 	{
 		public int Id { get; set; }

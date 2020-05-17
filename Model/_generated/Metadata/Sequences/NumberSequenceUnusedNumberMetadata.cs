@@ -14,10 +14,7 @@ using System.Threading.Tasks;
 namespace Havit.GoranG3.Model.Metadata.Sequences
 {
 	[System.CodeDom.Compiler.GeneratedCode("Havit.Data.EntityFrameworkCore.CodeGenerator", "1.0")]
-	public static class NumberSequenceMetadata
+	public static class NumberSequenceUnusedNumberMetadata
 	{
-		public const int NameMaxLength = 50;
-		public const int PrefixMaxLength = 10;
-		public const int SuffixMaxLength = 10;
 	}
 }

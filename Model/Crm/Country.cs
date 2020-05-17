@@ -1,9 +1,11 @@
-﻿using Havit.GoranG3.Model.Localizations;
+﻿using Havit.Data.EntityFrameworkCore.Attributes;
+using Havit.GoranG3.Model.Localizations;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace Havit.GoranG3.Model.Crm
 {
+	[Cache]
 	public class Country : ILocalized<CountryLocalization>
 	{
 		public int Id { get; set; }
