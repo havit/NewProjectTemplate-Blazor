@@ -16,5 +16,19 @@ namespace Havit.GoranG3.Model.Metadata.Crm
 	[System.CodeDom.Compiler.GeneratedCode("Havit.Data.EntityFrameworkCore.CodeGenerator", "1.0")]
 	public static class ContactMetadata
 	{
+		public const int BankAccountIbanMaxLength = 40;
+		public const int BankAccountNumberMaxLength = 50;
+		public const int BankAccountSwiftBicMaxLength = 11;
+		public const int BankNameMaxLength = 400;
+		public const int CertificateOfIncorporationMaxLength = 100;
+		public const int CompanyRegistrationNumberMaxLength = 15;
+		public const int EmailMaxLength = 200;
+		public const int ExternalCodeMaxLength = 50;
+		public const int MobileMaxLength = 20;
+		public const int NameMaxLength = 200;
+		public const int NoteMaxLength = 0;
+		public const int PhoneMaxLength = 20;
+		public const int TaxRegistrationNumberMaxLength = 15;
+		public const int WebMaxLength = 200;
 	}
 }
