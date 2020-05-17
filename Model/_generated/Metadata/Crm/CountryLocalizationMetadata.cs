@@ -14,11 +14,8 @@ using System.Threading.Tasks;
 namespace Havit.GoranG3.Model.Metadata.Crm
 {
 	[System.CodeDom.Compiler.GeneratedCode("Havit.Data.EntityFrameworkCore.CodeGenerator", "1.0")]
-	public static class AddressMetadata
+	public static class CountryLocalizationMetadata
 	{
-		public const int CityMaxLength = 200;
-		public const int Line1MaxLength = 50;
-		public const int Line2MaxLength = 200;
-		public const int ZipMaxLength = 20;
+		public const int NameMaxLength = 50;
 	}
 }

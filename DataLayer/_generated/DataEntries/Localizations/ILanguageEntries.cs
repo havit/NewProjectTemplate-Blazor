@@ -10,15 +10,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Havit.Data.Patterns.DataEntries;
 
-namespace Havit.GoranG3.Model.Metadata.Crm
+namespace Havit.GoranG3.DataLayer.DataEntries.Localizations
 {
 	[System.CodeDom.Compiler.GeneratedCode("Havit.Data.EntityFrameworkCore.CodeGenerator", "1.0")]
-	public static class AddressMetadata
+	public interface ILanguageEntries : IDataEntries
 	{
-		public const int CityMaxLength = 200;
-		public const int Line1MaxLength = 50;
-		public const int Line2MaxLength = 200;
-		public const int ZipMaxLength = 20;
+		Havit.GoranG3.Model.Localizations.Language Czech { get; }
+			
+		Havit.GoranG3.Model.Localizations.Language English { get; }
+			
 	}
 }

@@ -16,7 +16,10 @@ namespace Havit.GoranG3.Model.Localizations
 		[MaxLength(10)]
 		public string UiCulture { get; set; }
 
-		[MaxLength(50)]
-		public string Symbol { get; set; }
+		public enum Entry
+		{
+			Czech = -1,
+			English = -2
+		}
 	}
 }

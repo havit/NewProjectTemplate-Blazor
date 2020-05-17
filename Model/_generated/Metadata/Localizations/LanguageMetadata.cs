@@ -18,7 +18,6 @@ namespace Havit.GoranG3.Model.Metadata.Localizations
 	{
 		public const int CultureMaxLength = 10;
 		public const int NameMaxLength = 200;
-		public const int SymbolMaxLength = 50;
 		public const int UiCultureMaxLength = 10;
 	}
 }

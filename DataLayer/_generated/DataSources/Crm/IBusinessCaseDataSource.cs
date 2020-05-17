@@ -10,15 +10,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Havit.Data.Patterns.DataSources;
 
-namespace Havit.GoranG3.Model.Metadata.Crm
+namespace Havit.GoranG3.DataLayer.DataSources.Crm
 {
 	[System.CodeDom.Compiler.GeneratedCode("Havit.Data.EntityFrameworkCore.CodeGenerator", "1.0")]
-	public static class AddressMetadata
+	public interface IBusinessCaseDataSource : IDataSource<Havit.GoranG3.Model.Crm.BusinessCase>
 	{
-		public const int CityMaxLength = 200;
-		public const int Line1MaxLength = 50;
-		public const int Line2MaxLength = 200;
-		public const int ZipMaxLength = 20;
 	}
 }
