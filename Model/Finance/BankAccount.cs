@@ -11,7 +11,8 @@ namespace Havit.GoranG3.Model.Finance
 	/// <summary>
 	/// G2: BankovniUcet
 	/// </summary>
-	public class BankAccount // TODO
+	[Cache(Priority = CacheItemPriority.Low)]
+	public class BankAccount
     {
 		public int Id { get; set; }
 
@@ -20,7 +21,7 @@ namespace Havit.GoranG3.Model.Finance
 		/// </summary>
 		[Required]
 		[MaxLength(50)]
-		public string Nazev { get; set; }
+		public string Name { get; set; }
 
 		/// <summary>
 		/// G2: Banka

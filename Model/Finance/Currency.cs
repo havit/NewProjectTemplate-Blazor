@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace Havit.GoranG3.Model.Finance
 {
 	[Cache(Priority = CacheItemPriority.High)]
-	public class Currency // TODO
+	public class Currency
 	{
 		public int Id { get; set; }
 

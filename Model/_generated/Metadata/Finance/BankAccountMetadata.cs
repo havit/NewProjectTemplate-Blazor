@@ -19,7 +19,7 @@ namespace Havit.GoranG3.Model.Metadata.Finance
 		public const int AccountNumberMaxLength = 50;
 		public const int BankNameMaxLength = 50;
 		public const int IbanMaxLength = 50;
-		public const int NazevMaxLength = 50;
+		public const int NameMaxLength = 50;
 		public const int SwiftBicMaxLength = 50;
 	}
 }
