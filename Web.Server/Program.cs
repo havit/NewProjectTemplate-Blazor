@@ -31,8 +31,8 @@ namespace Havit.GoranG3.Web.Server
 					// delete all default configuration providers
 					config.Sources.Clear();
 					config
-						.AddJsonFile("appsettings.Web.Server.json", optional: false)
-						.AddJsonFile($"appsettings.Web.Server.{hostContext.HostingEnvironment.EnvironmentName}.json", optional: true)
+						.AddJsonFile("appsettings.WebServer.json", optional: false)
+						.AddJsonFile($"appsettings.WebServer.{hostContext.HostingEnvironment.EnvironmentName}.json", optional: true)
 						.AddEnvironmentVariables();
 				})
 				.ConfigureLogging((hostingContext, logging) =>
