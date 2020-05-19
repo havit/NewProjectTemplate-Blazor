@@ -38,27 +38,27 @@
 		@* ...tlačítko může být i "rozbalovací? *@
 	</CommandsSection>
 	<DataSection>
-		<HxGrid Data="@Invoices"
-				@bind-SelectedDataItem="@CurrentInvoice"
-				AllowSelection="true"
-				AllowSorting="true">
+		@*@bind-SelectedDataItem="@CurrentInvoice"
+		AllowSelection="true"
+		AllowSorting="true"*@
+		<HxGrid Data="@Invoices">
 			<Columns>
-				<HxBoundFieldGridColumn FieldName=@nameof(InvoiceDto.IssuedDate) HeaderText="Vystavení" DataFormatString="g" />
-				<HxBoundFieldGridColumn FieldName=@nameof(InvoiceDto.TaxDate) HeaderText="Účinnost" DataFormatString="g" />
-				<HxBoundFieldGridColumn FieldName=@nameof(InvoiceDto.Description) HeaderText="Popis" />
-				<HxCustomGridColumn HeaderText="Partner">
-					<Template>
-						bžbž @(context.BusinessPartnerName.Trim()) !!
-					</Template>
-				</HxCustomGridColumn>
+				<HxGridColumn TItemType="InvoiceDto" HeaderText="Vystavení" ItemText="@(item => item.IssuedDate.ToShortDateString())" />
+				<HxGridColumn TItemType="InvoiceDto" HeaderText="Účinnost" ItemText="@(item => item.TaxDate.ToShortDateString())" />
+				<HxGridColumn TItemType="InvoiceDto" HeaderText="Popis" ItemText="@(item => item.Description)" />
+				<HxGridColumn TItemType="InvoiceDto" Context="item" HeaderText="Partner">
+					<ItemTemplate>
+						Partner: @item.BusinessPartnerName.Left(50)
+					</ItemTemplate>
+				</HxGridColumn>
 			</Columns>
-			<ContextMenu>
+			@*<ContextMenu>
 				<HxContextMenu>
 					<HxContextMenuItem Title="Smazat" CommandArgument="@context.InvoiceId" OnClick="@DeleteClicked" />
 					<HxContextMenuItem Title="Duplikovat" CommandArgument="@context.InvoiceId" OnClick="@DuplicateClicked" />
 					<HxContextMenuItem Title="Vytisknout" CommandArgument="@context.InvoiceId" OnClick="@PrintClicked" />
 				</HxContextMenu>
-			</ContextMenu>
+			</ContextMenu>*@
 		</HxGrid>
 	</DataSection>
 	<DetailSection>
