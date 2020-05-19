@@ -134,6 +134,10 @@ app {
 	transform: rotate(180deg);
 }
 
+.sidebar .sub-item {
+	font-size: 13px;
+}
+
 .content {
 	padding-top: 1.1rem;
 }
@@ -254,6 +258,10 @@ app {
 	left: -15px;
 	background: white;
 	border: 5px;
+}
+
+.named-views {
+	z-index: 1010;
 }
 
 .named-views > li:hover {
