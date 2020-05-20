@@ -12,24 +12,23 @@
 			@* Možná přímo navázat na centrální BindData? *@
 			<Criteria>
 				<HxDateRangeFilter @bind-Value="context.IssuedDateRange" Label="Vystavení" />
-		<HxDateRangeFilter @bind-Value="context.TaxDateRange" Label="Účinnost" />
-		<HxTextFilter @bind-Value="context.Text" Label="Nějaký text" />
-		<GoranProjectFilter @bind-Value="context.ProjectId" Label="Projekt" />
-		<GoranContactFilter @bind-Value="context.BusinessPartnerId" Label="Partner" />
-		@*<HxCustomFilter Label="Typ faktury">
-			<FilterTemplate>
-				<HxDropDownList @bind="context.InvoiceTypeId" Data="@CodebooksStore.InvoiceTypes" NameField="Name" ValueField="Id" />
-				</FilterTemplate>
-				<ChipTemplate>
-					<chip>
-						<label>Typ:</label>
-						<value>@CodebooksStore.InvoiceTypes.GetNameById(context.InvoiceTypeId)</value>
-					</chip>
-				</ChipTemplate>
-				</HxCustomFilter>*@
+				<HxDateRangeFilter @bind-Value="context.TaxDateRange" Label="Účinnost" />
+				<HxTextFilter @bind-Value="context.Text" Label="Nějaký text" />
+				<GoranProjectFilter @bind-Value="context.ProjectId" Label="Projekt" />
+				<GoranContactFilter @bind-Value="context.BusinessPartnerId" Label="Partner" />
+				@*<HxFilter Label="Typ faktury">
+					<FilterTemplate>
+						HxDropDownList @@bind="context.InvoiceTypeId" Data="@@CodebooksStore.InvoiceTypes" NameField="Name" ValueField="Id" />
+					</FilterTemplate>
+					<ChipTemplate>
+						<chip>
+							<label>Typ:</label>
+							<value>@CodebooksStore.InvoiceTypes.GetNameById(context.InvoiceTypeId)</value>
+						</chip>
+					</ChipTemplate>
+				</HxFilter>*@
 			</Criteria>
 		</HxFilterView>
-
 	</FilterSection>
 	<CommandsSection>
 		@* nebo pojmenovat ButtonsSection? *@
@@ -52,13 +51,15 @@
 					</ItemTemplate>
 				</HxGridColumn>
 			</Columns>
-			@*<ContextMenu>
+			<ContextMenu Context="item">
 				<HxContextMenu>
-					<HxContextMenuItem Title="Smazat" CommandArgument="@context.InvoiceId" OnClick="@DeleteClicked" />
-					<HxContextMenuItem Title="Duplikovat" CommandArgument="@context.InvoiceId" OnClick="@DuplicateClicked" />
-					<HxContextMenuItem Title="Vytisknout" CommandArgument="@context.InvoiceId" OnClick="@PrintClicked" />
+					<HxContextMenuItem OnItemClick="async () => await DeleteClicked(item)">
+						Smazat fakturu @(item.InvoiceNumber)?
+					</HxContextMenuItem>
+					<HxContextMenuItem Title="Duplikovat" OnItemClick="async () => await DuplicateClicked(item)"  />
+					<HxContextMenuItem Title="Vytisknout" OnItemClick="async () => await PrintClicked(item)"  />
 				</HxContextMenu>
-			</ContextMenu>*@
+			</ContextMenu>
 		</HxGrid>
 	</DataSection>
 	<DetailSection>

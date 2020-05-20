@@ -41,36 +41,36 @@ namespace Havit.GoranG3.Web.Client.Pages.Prototyping
 			return Task.CompletedTask;
 		}
 
-		protected Task FilterChanged(EventArgs eventArgs)
+		protected Task FilterChanged()
 		{
 			// Tady by bylo něco jako BindData()
 			return Task.CompletedTask;
 		}
 
-		protected Task SearchRequested(string eventArgs)
+		protected Task SearchRequested()
 		{
 			// Tady by bylo něco jako BindData()
 			return Task.CompletedTask;
 		}
 
-		protected Task NewInvoiceClicked(EventArgs eventArgs)
+		protected Task NewInvoiceClicked()
 		{
 			this.CurrentInvoice = new InvoiceDto();
 			// OpenDetail() ?
 			return Task.CompletedTask;
 		}
 
-		protected Task DeleteClicked(EventArgs eventArgs)
+		protected Task DeleteClicked(InvoiceDto invoiceDto)
 		{
 			return Task.CompletedTask;
 		}
 
-		protected Task DuplicateClicked(EventArgs eventArgs)
+		protected Task DuplicateClicked(InvoiceDto invoiceDto)
 		{
 			return Task.CompletedTask;
 		}
 
-		protected Task PrintClicked(EventArgs eventArgs)
+		protected Task PrintClicked(InvoiceDto invoiceDto)
 		{
 			return Task.CompletedTask;
 		}
