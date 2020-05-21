@@ -11,12 +11,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Havit.GoranG3.Model.Metadata.Projects
+namespace Havit.GoranG3.Model.Metadata.Attrida
 {
 	[System.CodeDom.Compiler.GeneratedCode("Havit.Data.EntityFrameworkCore.CodeGenerator", "1.0")]
-	public static class ProjectMetadata
+	public static class AttridaCommentMetadata
 	{
-		public const int NameMaxLength = 100;
-		public const int ProjectCodeMaxLength = 20;
+		public const int TextMaxLength = 0;
 	}
 }

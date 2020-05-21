@@ -10,13 +10,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Havit.Data.Patterns.Repositories;
 
-namespace Havit.GoranG3.Model.Metadata.Projects
+namespace Havit.GoranG3.DataLayer.Repositories.Attrida
 {
 	[System.CodeDom.Compiler.GeneratedCode("Havit.Data.EntityFrameworkCore.CodeGenerator", "1.0")]
-	public static class ProjectMetadata
+	public partial interface IAttridaCommentRepository : IRepository<Havit.GoranG3.Model.Attrida.AttridaComment>
 	{
-		public const int NameMaxLength = 100;
-		public const int ProjectCodeMaxLength = 20;
 	}
 }
