@@ -126,23 +126,11 @@ app {
 .sidebar .sub-item {
   font-size: 13px; }
 
-.content {
-  padding-top: 1.1rem; }
-
 .navbar-light .navbar-brand {
   color: var(--primary-color); }
 
 .navbar-toggler {
   background-color: rgba(255, 255, 255, 0.1); }
-
-.valid.modified:not([type="checkbox"]) {
-  outline: 1px solid #26b050; }
-
-.invalid {
-  outline: 1px solid red; }
-
-.validation-message {
-  color: red; }
 
 #blazor-error-ui {
   background: lightyellow;

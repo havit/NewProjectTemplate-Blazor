@@ -1,5 +1,38 @@
-﻿@*
-	<HxDetailLayout>
-
-	</HxDetailLayout>
-*@
+﻿<div class="d-flex flex-column flex-grow-1">
+	<div>
+		<form>
+			<div class="form-group">
+				<label>Protistrana</label>
+				<input type="text" class="form-control">
+			</div>
+			<div class="form-group">
+				<label>Popis</label>
+				<input type="text" class="form-control">
+			</div>
+			<div class="form-group">
+				<label>Datum vystavení</label>
+				<input type="date" class="form-control">
+			</div>
+			<div class="form-group">
+				<label>Datum splatnosti</label>
+				<input type="date" class="form-control">
+			</div>
+			<div class="form-group">
+				<label>Datum účinosti</label>
+				<input type="date" class="form-control">
+			</div>
+			<div class="form-group">
+			<label>Tagy</label>
+				<HxTagInput />
+			</div>
+			<div class="form-group form-check">
+				<input type="checkbox" class="form-check-input" id="exampleCheck1">
+				<label class="form-check-label" for="exampleCheck1">Check me out</label>
+			</div>
+		</form>
+	</div>
+	<div class="mt-auto d-flex justify-content-between">
+		<button type="submit" class="btn btn-light">Zrušit</button>
+  		<button type="submit" class="btn btn-primary">Pokračovat</button>
+	</div>
+</div>
