@@ -1,4 +1,5 @@
 ﻿using Havit.Data.EntityFrameworkCore.Attributes;
+using Havit.GoranG3.Model.Attrida;
 using Havit.Model.Collections.Generic;
 using System;
 using System.Collections.Generic;
@@ -129,6 +130,9 @@ namespace Havit.GoranG3.Model.Crm
 		[Required]
 		[MaxLength(50)]
 		public string ExternalCode { get; set; }
+
+		public AttridaObject AttridaObject { get; set; }
+		public int AttridaObjectId { get; set; }
 
 		public DateTime Created { get; set; }
 		public DateTime? Deleted { get; set; }

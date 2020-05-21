@@ -1,4 +1,5 @@
-﻿using Havit.GoranG3.Model.Crm;
+﻿using Havit.GoranG3.Model.Attrida;
+using Havit.GoranG3.Model.Crm;
 using Havit.GoranG3.Model.Security;
 using Havit.Model.Collections.Generic;
 using System;
@@ -100,6 +101,9 @@ namespace Havit.GoranG3.Model.HumanResources
 		public bool TimesheetNotificationsEnabled { get; set; }
 
 		public bool IsActive { get; set; } = true;
+
+		public AttridaObject AttridaObject { get; set; }
+		public int AttridaObjectId { get; set; }
 
 		public DateTime Created { get; set; }
 		public DateTime? Deleted { get; set; }

@@ -16,9 +16,13 @@ namespace Havit.GoranG3.Model.Attrida
 		public List<AttridaDocument> DocumentsIncludingDeleted { get; } = new List<AttridaDocument>();
 		public FilteringCollection<AttridaDocument> Documents { get; }
 
+		public List<AttridaComment> CommentsIncludingDeleted { get; } = new List<AttridaComment>();
+		public FilteringCollection<AttridaComment> Comments { get; }
+
 		public AttridaObject()
 		{
 			this.Documents = new FilteringCollection<AttridaDocument>(this.DocumentsIncludingDeleted, d => d.Deleted is null);
+			this.Comments = new FilteringCollection<AttridaComment>(this.CommentsIncludingDeleted, d => d.Deleted is null);
 		}
 	}
 }

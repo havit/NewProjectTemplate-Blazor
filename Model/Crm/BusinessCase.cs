@@ -1,4 +1,5 @@
-﻿using Havit.GoranG3.Model.Projects;
+﻿using Havit.GoranG3.Model.Attrida;
+using Havit.GoranG3.Model.Projects;
 using Havit.GoranG3.Model.Security;
 using System;
 using System.Collections.Generic;
@@ -67,6 +68,9 @@ namespace Havit.GoranG3.Model.Crm
 		/// G2: StavObchodniPrilezitostiId
 		/// </summary>
 		public BusinessCaseState State { get; set; }
+
+		public AttridaObject AttridaObject { get; set; }
+		public int AttridaObjectId { get; set; }
 
 		public DateTime Created { get; set; }
 		public DateTime? Deleted { get; set; }

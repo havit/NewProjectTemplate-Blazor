@@ -14,6 +14,7 @@ namespace Havit.GoranG3.Entity.Configurations.Attrida
 		public void Configure(EntityTypeBuilder<AttridaObject> builder)
 		{
 			builder.Ignore(ao => ao.Documents);
+			builder.Ignore(ao => ao.Comments);
 		}
 	}
 }

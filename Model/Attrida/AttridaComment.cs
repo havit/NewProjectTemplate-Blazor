@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Havit.GoranG3.Model.Security;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -8,9 +9,9 @@ using System.Threading.Tasks;
 namespace Havit.GoranG3.Model.Attrida
 {
     /// <summary>
-	/// G2: Document, DocumentRelation
+	/// G2: Zapisek
 	/// </summary>
-	public class AttridaDocument
+	public class AttridaComment
     {
 		public int Id { get; set; }
 
@@ -18,17 +19,11 @@ namespace Havit.GoranG3.Model.Attrida
 		public int AttridaObjectId { get; set; }
 
 		[Required]
-		[MaxLength(200)]
-		public string OriginalFilename { get; set; }
+		[MaxLength]
+		public string Text { get; set; }
 
-		[Required]
-		[MaxLength(200)]
-		public string StorageFilename { get; set; }
-
-		public FileType FileType { get; set; }
-
-		[MaxLength(100)]
-		public string Description { get; set; }
+		public User CreatedBy { get; set; }
+		public int CreatedById { get; set; }
 
 		public DateTime Created { get; set; }
 		public DateTime? Deleted { get; set; }
