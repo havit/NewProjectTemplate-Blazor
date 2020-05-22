@@ -19,6 +19,9 @@
 .drawer.hide {
   right: calc(-1 * var(--drawer-width)); }
 
+.hx-tag-input input:focus {
+  outline: none; }
+
 :root {
   --primary-color: #2e75f0;
   --border-gray: #eaeaea;
