@@ -78,6 +78,5 @@ namespace Havit.GoranG3.ModelTests.Projects
 			// assert
 			Assert.IsTrue(project11.IsActiveEffective);
 		}
-
 	}
 }
