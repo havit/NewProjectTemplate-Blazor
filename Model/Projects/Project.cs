@@ -3,6 +3,7 @@ using Havit.Diagnostics.Contracts;
 using Havit.GoranG3.Model.Attrida;
 using Havit.GoranG3.Model.Crm;
 using Havit.GoranG3.Model.Security;
+using Havit.Model.Collections.Generic;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -14,7 +15,7 @@ using System.Threading.Tasks;
 namespace Havit.GoranG3.Model.Projects
 {
 	[Cache]
-	public class Project
+	public class Project : IValidatableObject
 	{
 		private const string FullNameSeparator = "~";
 
@@ -152,7 +153,8 @@ namespace Havit.GoranG3.Model.Projects
 		/// Direct children.
 		/// Not to be manipulated directly, set Project.Parent.
 		/// </summary>
-		public List<Project> Children { get; } = new List<Project>();
+		public List<Project> ChildrenIncludingDeleted { get; } = new List<Project>();
+		public FilteringCollection<Project> Children { get; }
 
 		public AttridaObject AttridaObject { get; set; }
 		public int AttridaObjectId { get; set; }
@@ -182,6 +184,8 @@ namespace Havit.GoranG3.Model.Projects
 
 		public Project()
 		{
+			this.Children = new FilteringCollection<Project>(this.ChildrenIncludingDeleted, p => p.Deleted is null);
+
 			this.AllChildrenAndMeRelations.Add(new ProjectRelation() { HigherProject = this, LowerProject = this });
 			this.AllParentsAndMeRelations.Add(new ProjectRelation() { HigherProject = this, LowerProject = this });
 		}
@@ -194,7 +198,7 @@ namespace Havit.GoranG3.Model.Projects
 			this.ProjectManagerEffectiveId = projektManagerEffective?.Id;
 			if (changing)
 			{
-				Children.ForEach(project => project.UpdateProjectManagerEffective());
+				ChildrenIncludingDeleted.ForEach(project => project.UpdateProjectManagerEffective());
 			}
 		}
 
@@ -206,7 +210,7 @@ namespace Havit.GoranG3.Model.Projects
 			this.BusinessPartnerEffectiveId = businessPartnerEffective?.Id;
 			if (changing)
 			{
-				Children.ForEach(project => project.UpdateBusinessPartnerEffective());
+				ChildrenIncludingDeleted.ForEach(project => project.UpdateBusinessPartnerEffective());
 			}
 		}
 
@@ -217,7 +221,7 @@ namespace Havit.GoranG3.Model.Projects
 			this.OverheadToPersonalCostsRatioEffective = overheadToPersonalCostsRatioEffective;
 			if (changing)
 			{
-				Children.ForEach(project => project.UpdateOverheadToPersonalCostsRatioEffective());
+				ChildrenIncludingDeleted.ForEach(project => project.UpdateOverheadToPersonalCostsRatioEffective());
 			}
 		}
 
@@ -228,7 +232,7 @@ namespace Havit.GoranG3.Model.Projects
 			this.IsActiveEffective = isActiveEffective;
 			if (changing)
 			{
-				Children.ForEach(project => project.UpdateIsActiveEffective());
+				ChildrenIncludingDeleted.ForEach(project => project.UpdateIsActiveEffective());
 			}
 		}
 
@@ -249,7 +253,7 @@ namespace Havit.GoranG3.Model.Projects
 			if (oldParent != null)
 			{
 				// odebereme se z kolekce Children původního parenta
-				oldParent.Children.Remove(this);
+				oldParent.ChildrenIncludingDeleted.Remove(this);
 
 				// odstraníme původního parenta a jeho parenty z kolekce AllParentsAndMe své a projektů níže
 				tempProject = oldParent; // ...původního parenta
@@ -275,7 +279,7 @@ namespace Havit.GoranG3.Model.Projects
 			}
 
 			// přidáme se do kolekce Children nového parenta
-			newParent.Children.Add(this);
+			newParent.ChildrenIncludingDeleted.Add(this);
 
 			// přidáme nového parenta a jeho parenty do kolekce AllParentsAndMe své a projektů níže
 			tempProject = newParent; // ...nového parenta
@@ -317,6 +321,19 @@ namespace Havit.GoranG3.Model.Projects
 			foreach (var item in this.AllChildrenAndMe)
 			{
 				item.Depth = item.Depth - oldDepth + newDepth;
+			}
+		}
+
+		public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+		{
+			if ((this.Parent == null) && (this.Id != (int)Project.Entry.Root))
+			{
+				yield return new ValidationResult($"Property {nameof(Parent)} is allowed to be null only for Root project.");
+			}
+
+			if ((this.Depth == 0) && (this.Id != (int)Project.Entry.Root))
+			{
+				yield return new ValidationResult($"Value 0 of {nameof(Depth)} property is allowed only for Root project.");
 			}
 		}
 

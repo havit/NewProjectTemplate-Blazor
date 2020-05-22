@@ -24,7 +24,7 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.HumanResources
 				}
 			};
 
-			//Seed(For(teams).PairBy(t => t.Id)); // TODO Seed
+			Seed(For(teams).PairBy(t => t.Id));
 		}
 	}
 }

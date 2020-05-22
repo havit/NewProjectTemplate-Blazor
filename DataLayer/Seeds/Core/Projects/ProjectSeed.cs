@@ -23,7 +23,7 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Projects
 				}
 			};
 
-			//Seed(For(projects).PairBy(p => p.Id).WithoutUpdate()); // TODO
+			//Seed(For(projects).PairBy(p => p.Id).WithoutUpdate()); // TODO Seed s private/protected settery
 		}
 	}
 }

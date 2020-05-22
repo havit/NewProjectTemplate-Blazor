@@ -17,6 +17,7 @@ using System.Runtime.Caching;
 using Microsoft.Extensions.DependencyInjection;
 using Havit.Data.EntityFrameworkCore.Patterns.DependencyInjection;
 using Havit.GoranG3.DataLayer.DataSources.Common;
+using Havit.Data.EntityFrameworkCore.Patterns.UnitOfWorks.EntityValidation;
 
 namespace Havit.GoranG3.DependencyInjection
 {
@@ -79,6 +80,8 @@ namespace Havit.GoranG3.DependencyInjection
 				//.AddLocalizationServices<Language>()
 				.AddDbContext<GoranG3DbContext>(options)
 				.AddDataLayer(typeof(IApplicationSettingsDataSource).Assembly);
+
+			services.AddSingleton<IEntityValidator<object>, ValidatableObjectEntityValidator>();
 		}
 
 		private static void InstallHavitServices(IServiceCollection services)

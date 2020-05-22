@@ -30,7 +30,7 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Localizations
 				}
 			};
 
-			//Seed(For(languages).PairBy(language => language.Id));  // TODO SqlException: Cannot insert explicit value for identity column in table 'Language' when IDENTITY_INSERT is set to OFF.
+			Seed(For(languages).PairBy(language => language.Id));
 		}
 	}
 }

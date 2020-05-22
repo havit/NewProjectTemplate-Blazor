@@ -30,6 +30,7 @@ namespace Havit.GoranG3.Entity
 			base.CustomizeModelCreating(modelBuilder);
 
 			modelBuilder.HasSequence<int>("ProjectSequence");
+			modelBuilder.HasSequence<int>("TeamSequence");
 
 			modelBuilder.RegisterModelFromAssembly(typeof(Havit.GoranG3.Model.Localizations.Language).Assembly);
 			modelBuilder.ApplyConfigurationsFromAssembly(this.GetType().Assembly);

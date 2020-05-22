@@ -17,6 +17,7 @@ namespace Havit.GoranG3.Entity.Configurations.Projects
 			builder.Ignore(project => project.AllChildrenAndMe);
 			builder.Ignore(project => project.AllParentsAndMe);
 			builder.Ignore(project => project.PaymentDueDaysDefaultEffective);
+			builder.Ignore(project => project.Children);
 		}
 	}
 }
