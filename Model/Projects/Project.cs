@@ -126,7 +126,7 @@ namespace Havit.GoranG3.Model.Projects
 				UpdateIsActiveEffective();
 			}
 		}
-		private bool? _isActive = true;
+		private bool? _isActive;
 
 		/// <summary>
 		/// G2: StavProjektuEffective (Running => true, null => null, else => false)

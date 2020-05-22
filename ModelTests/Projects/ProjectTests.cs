@@ -51,7 +51,7 @@ namespace Havit.GoranG3.ModelTests.Projects
 		public void Project_IsActiveEffective_Inheritance()
 		{
 			// arrange
-			var root = new Project() { Id = (int)Project.Entry.Root };
+			var root = new Project() { Id = (int)Project.Entry.Root, IsActive = true };
 			var project1 = new Project() { Parent = root };
 			var project11 = new Project() { Parent = project1 };
 
@@ -67,7 +67,7 @@ namespace Havit.GoranG3.ModelTests.Projects
 		public void Project_IsActiveEffective_HierarchyChange()
 		{
 			// arrange
-			var root = new Project() { Id = (int)Project.Entry.Root };
+			var root = new Project() { Id = (int)Project.Entry.Root, IsActive = true };
 			var project1 = new Project() { Parent = root, IsActive = false };
 			var project11 = new Project() { Parent = project1 };
 			var project2 = new Project() { Parent = root };
