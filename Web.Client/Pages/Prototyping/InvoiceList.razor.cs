@@ -10,13 +10,17 @@ namespace Havit.GoranG3.Web.Client.Pages.Prototyping
 {
     public partial class InvoiceList
     {
-		protected List<InvoiceDto> Invoices { get; set; } = new List<InvoiceDto>
-		{
-			new InvoiceDto { InvoiceId = 1, InvoiceNumber = "1/2000", IssuedDate = new DateTime(2020, 1, 1), TaxDate = new DateTime(2020, 1, 1), BusinessPartnerName = "Zákazník 1", Description = "Provoz aplikací v Azure" },
-			new InvoiceDto { InvoiceId = 2, InvoiceNumber = "2/2000", IssuedDate = new DateTime(2020, 2, 28), TaxDate = new DateTime(2020, 1, 1), BusinessPartnerName = "Zákazník 2", Description = "Provoz aplikací v Azure" },
-			new InvoiceDto { InvoiceId = 3, InvoiceNumber = "3/2000", IssuedDate = new DateTime(2020, 3, 16), TaxDate = new DateTime(2020, 1, 1), BusinessPartnerName = "Zákazník 3", Description = "Provoz aplikací v Azure" },
-			new InvoiceDto { InvoiceId = 4, InvoiceNumber = "4/2000", IssuedDate = new DateTime(2020, 5, 8), TaxDate = new DateTime(2020, 1, 1), BusinessPartnerName = "Zákazník 👍", Description = "Provoz aplikací v <strong>Azure</strong>" }
-		};
+		protected List<InvoiceDto> Invoices { get; set; } = Enumerable.Range(0, 250)
+			.Select(i => new InvoiceDto
+			{
+				InvoiceId = i,
+				InvoiceNumber = $"{i}/2000",
+				IssuedDate = new DateTime(2020, 1, 1).AddDays(3 * i),
+				TaxDate = new DateTime(2020, 1, 1).AddDays(3 * i),
+				BusinessPartnerName = $"Zákazník {i}",
+				Description = "Provoz aplikací v Azure"
+			})
+			.ToList();
 
 		protected InvoiceDto CurrentInvoice { get; set; }
 		protected InvoiceListFilterDto Filter { get; set; } = new InvoiceListFilterDto();

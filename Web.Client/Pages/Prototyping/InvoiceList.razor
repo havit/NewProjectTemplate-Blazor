@@ -40,7 +40,7 @@
 		@*@bind-SelectedDataItem="@CurrentInvoice"
 		AllowSelection="true"
 		AllowSorting="true"*@
-		<HxGrid Data="@Invoices">
+		<HxGrid Data="@Invoices" PageSize="50">
 			<Columns>
 				<HxGridColumn TItemType="InvoiceDto" HeaderText="Vystavení" ItemText="@(item => item.IssuedDate.ToShortDateString())" />
 				<HxGridColumn TItemType="InvoiceDto" HeaderText="Účinnost" ItemText="@(item => item.TaxDate.ToShortDateString())" />
@@ -54,7 +54,7 @@
 			<ContextMenu Context="item">
 				<HxContextMenu>
 					<HxContextMenuItem OnItemClick="async () => await DeleteClicked(item)">
-						Smazat fakturu @(item.InvoiceNumber)?
+						Smazat fakturu @(item.InvoiceNumber)
 					</HxContextMenuItem>
 					<HxContextMenuItem Title="Duplikovat" OnItemClick="async () => await DuplicateClicked(item)"  />
 					<HxContextMenuItem Title="Vytisknout" OnItemClick="async () => await PrintClicked(item)"  />
