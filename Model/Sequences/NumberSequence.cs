@@ -61,5 +61,30 @@ namespace Havit.GoranG3.Model.Sequences
 		/// G2: Targets 
 		/// </summary>
 		public NumberSequenceTarget Targets;
+
+		/// <summary>
+		/// Returns value formatted according to NumberSequence settings.
+		/// </summary>
+		private string FormatNumber(int value) // G2
+		{
+			string result = value.ToString("f0");
+
+			if (this.DigitCount != null)
+			{
+				result = result.PadLeft(this.DigitCount.Value, '0');
+			}
+
+			if (!String.IsNullOrEmpty(this.Prefix))
+			{
+				result = this.Prefix + result;
+			}
+
+			if (!String.IsNullOrEmpty(this.Suffix))
+			{
+				result = result + this.Suffix;
+			}
+
+			return result;
+		}
 	}
 }

@@ -237,7 +237,7 @@ namespace Havit.GoranG3.Model.Finance
 		public int? BankAccountId { get; set; }
 
 		public AttridaObject AttridaObject { get; set; }
-		public int AttridaObjectId { get; set; }
+		public int? AttridaObjectId { get; set; }
 
 		public DateTime Created { get; set; }
 

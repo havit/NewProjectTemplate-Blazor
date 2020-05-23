@@ -16,7 +16,7 @@ namespace Havit.GoranG3.Model.Crm
 	/// G2: Subjekt
 	/// </summary>
 	[Cache]
-	public class Contact // TODO Tags (G2: KategorieSubjektu)
+	public class Contact
 	{
 		public int Id { get; set; }
 
@@ -127,12 +127,11 @@ namespace Havit.GoranG3.Model.Crm
 		/// </summary>
 		public bool IsBasicContact { get; set; } = true;
 
-		[Required]
 		[MaxLength(50)]
 		public string ExternalCode { get; set; }
 
 		public AttridaObject AttridaObject { get; set; }
-		public int AttridaObjectId { get; set; }
+		public int? AttridaObjectId { get; set; }
 
 		public DateTime Created { get; set; }
 		public DateTime? Deleted { get; set; }
@@ -151,5 +150,10 @@ namespace Havit.GoranG3.Model.Crm
 		/// Relationships where this contact is parent (= list of details).
 		/// </summary>
 		public List<ContactRelationship> DetailContactRelationships { get; } = new List<ContactRelationship>();
+
+		public enum Entry
+		{
+			Self = -1
+		}
 	}
 }

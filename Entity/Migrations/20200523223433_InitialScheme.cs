@@ -3,10 +3,13 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Havit.GoranG3.Entity.Migrations
 {
-    public partial class Initial : Migration
+    public partial class InitialScheme : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateSequence<int>(
+                name: "ContactSequence");
+
             migrationBuilder.CreateSequence<int>(
                 name: "ProjectSequence");
 
@@ -93,6 +96,21 @@ namespace Havit.GoranG3.Entity.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Country", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "DateInfo",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Date = table.Column<DateTime>(nullable: false),
+                    IsHoliday = table.Column<bool>(nullable: false),
+                    Description = table.Column<string>(maxLength: 50, nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_DateInfo", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -497,8 +515,7 @@ namespace Havit.GoranG3.Entity.Migrations
                 name: "Contact",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<int>(nullable: false, defaultValueSql: "NEXT VALUE FOR ContactSequence"),
                     Name = table.Column<string>(maxLength: 200, nullable: false),
                     RegisteredAddressId = table.Column<int>(nullable: true),
                     ContactAddressId = table.Column<int>(nullable: true),
@@ -517,8 +534,8 @@ namespace Havit.GoranG3.Entity.Migrations
                     Note = table.Column<string>(nullable: true),
                     IsArchived = table.Column<bool>(nullable: false),
                     IsBasicContact = table.Column<bool>(nullable: false),
-                    ExternalCode = table.Column<string>(maxLength: 50, nullable: false),
-                    AttridaObjectId = table.Column<int>(nullable: false),
+                    ExternalCode = table.Column<string>(maxLength: 50, nullable: true),
+                    AttridaObjectId = table.Column<int>(nullable: true),
                     Created = table.Column<DateTime>(nullable: false),
                     Deleted = table.Column<DateTime>(nullable: true),
                     HasNoVatForInvoicesIssued = table.Column<bool>(nullable: false)
@@ -597,7 +614,7 @@ namespace Havit.GoranG3.Entity.Migrations
                     TimesheetsAutoApproved = table.Column<bool>(nullable: false),
                     TimesheetNotificationsEnabled = table.Column<bool>(nullable: false),
                     IsActive = table.Column<bool>(nullable: false),
-                    AttridaObjectId = table.Column<int>(nullable: false),
+                    AttridaObjectId = table.Column<int>(nullable: true),
                     Created = table.Column<DateTime>(nullable: false),
                     Deleted = table.Column<DateTime>(nullable: true)
                 },
@@ -656,7 +673,7 @@ namespace Havit.GoranG3.Entity.Migrations
                     IsActiveEffective = table.Column<bool>(nullable: false),
                     Created = table.Column<DateTime>(nullable: false),
                     Deleted = table.Column<DateTime>(nullable: true),
-                    AttridaObjectId = table.Column<int>(nullable: false)
+                    AttridaObjectId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -730,7 +747,7 @@ namespace Havit.GoranG3.Entity.Migrations
                     DocumentTemplateId = table.Column<int>(nullable: true),
                     RelatedTransactionId = table.Column<int>(nullable: false),
                     BankAccountId = table.Column<int>(nullable: true),
-                    AttridaObjectId = table.Column<int>(nullable: false),
+                    AttridaObjectId = table.Column<int>(nullable: true),
                     Created = table.Column<DateTime>(nullable: false),
                     Deleted = table.Column<DateTime>(nullable: true)
                 },
@@ -903,7 +920,7 @@ namespace Havit.GoranG3.Entity.Migrations
                     AssignedToId = table.Column<int>(nullable: false),
                     Description = table.Column<string>(nullable: true),
                     State = table.Column<int>(nullable: false),
-                    AttridaObjectId = table.Column<int>(nullable: false),
+                    AttridaObjectId = table.Column<int>(nullable: true),
                     Created = table.Column<DateTime>(nullable: false),
                     Deleted = table.Column<DateTime>(nullable: true),
                     ModifiedById = table.Column<int>(nullable: true)
@@ -1456,6 +1473,9 @@ namespace Havit.GoranG3.Entity.Migrations
                 name: "CountryLocalization");
 
             migrationBuilder.DropTable(
+                name: "DateInfo");
+
+            migrationBuilder.DropTable(
                 name: "EmployeeHistory");
 
             migrationBuilder.DropTable(
@@ -1547,6 +1567,9 @@ namespace Havit.GoranG3.Entity.Migrations
 
             migrationBuilder.DropTable(
                 name: "Country");
+
+            migrationBuilder.DropSequence(
+                name: "ContactSequence");
 
             migrationBuilder.DropSequence(
                 name: "ProjectSequence");

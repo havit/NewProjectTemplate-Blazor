@@ -103,7 +103,7 @@ namespace Havit.GoranG3.Model.HumanResources
 		public bool IsActive { get; set; } = true;
 
 		public AttridaObject AttridaObject { get; set; }
-		public int AttridaObjectId { get; set; }
+		public int? AttridaObjectId { get; set; }
 
 		public DateTime Created { get; set; }
 		public DateTime? Deleted { get; set; }

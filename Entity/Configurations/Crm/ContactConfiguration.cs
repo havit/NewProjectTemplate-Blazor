@@ -13,6 +13,7 @@ namespace Havit.GoranG3.Entity.Configurations.Crm
 	{
 		public void Configure(EntityTypeBuilder<Contact> builder)
 		{
+			builder.Property(c => c.Id).ValueGeneratedNever().HasDefaultValueSql("NEXT VALUE FOR ContactSequence");
 			builder.HasMany(c => c.DetailContactRelationships).WithOne(cr => cr.ParentContact);
 			builder.HasMany(c => c.ParentContactRelationships).WithOne(cr => cr.DetailContact);
 		}

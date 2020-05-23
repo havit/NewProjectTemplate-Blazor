@@ -29,6 +29,7 @@ namespace Havit.GoranG3.Entity
 		{
 			base.CustomizeModelCreating(modelBuilder);
 
+			modelBuilder.HasSequence<int>("ContactSequence");
 			modelBuilder.HasSequence<int>("ProjectSequence");
 			modelBuilder.HasSequence<int>("TeamSequence");
 

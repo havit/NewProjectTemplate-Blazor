@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Havit.GoranG3.Entity.Migrations
 {
     [DbContext(typeof(GoranG3DbContext))]
-    [Migration("20200522172847_Initial")]
-    partial class Initial
+    [Migration("20200523223433_InitialScheme")]
+    partial class InitialScheme
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,6 +20,7 @@ namespace Havit.GoranG3.Entity.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.1")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
+                .HasAnnotation("Relational:Sequence:.ContactSequence", "'ContactSequence', '', '1', '1', '', '', 'Int32', 'False'")
                 .HasAnnotation("Relational:Sequence:.ProjectSequence", "'ProjectSequence', '', '1', '1', '', '', 'Int32', 'False'")
                 .HasAnnotation("Relational:Sequence:.TeamSequence", "'TeamSequence', '', '1', '1', '', '', 'Int32', 'False'")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -155,6 +156,28 @@ namespace Havit.GoranG3.Entity.Migrations
                     b.ToTable("ApplicationSettings");
                 });
 
+            modelBuilder.Entity("Havit.GoranG3.Model.Common.DateInfo", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(50)")
+                        .HasMaxLength(50);
+
+                    b.Property<bool>("IsHoliday")
+                        .HasColumnType("bit");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("DateInfo");
+                });
+
             modelBuilder.Entity("Havit.GoranG3.Model.Crm.Address", b =>
                 {
                     b.Property<int>("Id")
@@ -207,7 +230,7 @@ namespace Havit.GoranG3.Entity.Migrations
                     b.Property<int>("AssignedToId")
                         .HasColumnType("int");
 
-                    b.Property<int>("AttridaObjectId")
+                    b.Property<int?>("AttridaObjectId")
                         .HasColumnType("int");
 
                     b.Property<int>("BusinessCaseType")
@@ -266,11 +289,10 @@ namespace Havit.GoranG3.Entity.Migrations
             modelBuilder.Entity("Havit.GoranG3.Model.Crm.Contact", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasDefaultValueSql("NEXT VALUE FOR ContactSequence");
 
-                    b.Property<int>("AttridaObjectId")
+                    b.Property<int?>("AttridaObjectId")
                         .HasColumnType("int");
 
                     b.Property<string>("BankAccountIban")
@@ -311,7 +333,6 @@ namespace Havit.GoranG3.Entity.Migrations
                         .HasMaxLength(200);
 
                     b.Property<string>("ExternalCode")
-                        .IsRequired()
                         .HasColumnType("nvarchar(50)")
                         .HasMaxLength(50);
 
@@ -615,7 +636,7 @@ namespace Havit.GoranG3.Entity.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("AttridaObjectId")
+                    b.Property<int?>("AttridaObjectId")
                         .HasColumnType("int");
 
                     b.Property<int?>("BankAccountId")
@@ -891,7 +912,7 @@ namespace Havit.GoranG3.Entity.Migrations
                     b.Property<bool>("AbsencesAutoApproved")
                         .HasColumnType("bit");
 
-                    b.Property<int>("AttridaObjectId")
+                    b.Property<int?>("AttridaObjectId")
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("BirthDate")
@@ -1150,7 +1171,7 @@ namespace Havit.GoranG3.Entity.Migrations
                         .HasColumnType("int")
                         .HasDefaultValueSql("NEXT VALUE FOR ProjectSequence");
 
-                    b.Property<int>("AttridaObjectId")
+                    b.Property<int?>("AttridaObjectId")
                         .HasColumnType("int");
 
                     b.Property<int?>("BusinessPartnerEffectiveId")
@@ -1581,8 +1602,7 @@ namespace Havit.GoranG3.Entity.Migrations
                     b.HasOne("Havit.GoranG3.Model.Attrida.AttridaObject", "AttridaObject")
                         .WithMany()
                         .HasForeignKey("AttridaObjectId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("Havit.GoranG3.Model.Crm.Contact", "BusinessPartner")
                         .WithMany()
@@ -1605,8 +1625,7 @@ namespace Havit.GoranG3.Entity.Migrations
                     b.HasOne("Havit.GoranG3.Model.Attrida.AttridaObject", "AttridaObject")
                         .WithMany()
                         .HasForeignKey("AttridaObjectId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("Havit.GoranG3.Model.Crm.Address", "ContactAddress")
                         .WithMany()
@@ -1690,8 +1709,7 @@ namespace Havit.GoranG3.Entity.Migrations
                     b.HasOne("Havit.GoranG3.Model.Attrida.AttridaObject", "AttridaObject")
                         .WithMany()
                         .HasForeignKey("AttridaObjectId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("Havit.GoranG3.Model.Finance.BankAccount", "BankAccount")
                         .WithMany()
@@ -1782,8 +1800,7 @@ namespace Havit.GoranG3.Entity.Migrations
                     b.HasOne("Havit.GoranG3.Model.Attrida.AttridaObject", "AttridaObject")
                         .WithMany()
                         .HasForeignKey("AttridaObjectId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("Havit.GoranG3.Model.HumanResources.Employee", "Boss")
                         .WithMany()
@@ -1848,8 +1865,7 @@ namespace Havit.GoranG3.Entity.Migrations
                     b.HasOne("Havit.GoranG3.Model.Attrida.AttridaObject", "AttridaObject")
                         .WithMany()
                         .HasForeignKey("AttridaObjectId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("Havit.GoranG3.Model.Crm.Contact", "BusinessPartnerEffective")
                         .WithMany()

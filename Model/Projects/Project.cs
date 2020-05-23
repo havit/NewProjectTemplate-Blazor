@@ -157,7 +157,7 @@ namespace Havit.GoranG3.Model.Projects
 		public FilteringCollection<Project> Children { get; }
 
 		public AttridaObject AttridaObject { get; set; }
-		public int AttridaObjectId { get; set; }
+		public int? AttridaObjectId { get; set; }
 
 		public string FullName
 		{
