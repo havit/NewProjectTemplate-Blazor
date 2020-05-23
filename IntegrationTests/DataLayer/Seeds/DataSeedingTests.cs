@@ -7,24 +7,21 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.Extensions.DependencyInjection;
 using Havit.Services.Caching;
+using Havit.GoranG3.TestHelpers;
 
-namespace Havit.GoranG3.TestsForLocalDebugging.DataLayer.Seeds
+namespace Havit.GoranG3.IntegrationTests.DataLayer.Seeds
 {
 	[TestClass]
-	public class DataSeedingTests : TestForLocalDebuggingBase
+	public class DataSeedingTests : IntegrationTestBase
 	{
 		protected override bool UseLocalDb => true;
+		protected override bool DeleteDbData => true; // default, but to be sure :D
 
-		//[TestMethod]
-		[TestCategory("Explicit")]
-		public void DataSeedRunner_SeedCoreProfile()
+		[TestMethod]
+		public void DataSeeds_CoreProfile()
 		{
 			// arrange
-			var dbContext = ServiceProvider.GetRequiredService<IDbContext>();
 			var seedRunner = ServiceProvider.GetRequiredService<IDataSeedRunner>();
-			dbContext.Database.EnsureDeleted();
-			dbContext.Database.EnsureCreated();
-			dbContext.Database.Migrate();
 
 			// act
 			seedRunner.SeedData<CoreProfile>();
