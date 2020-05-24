@@ -4,7 +4,6 @@ using System.Runtime.CompilerServices;
 using Havit.GoranG3.DataLayer.Seeds.Core.Common;
 using Havit.GoranG3.Entity;
 using Havit.GoranG3.Services.Infrastructure;
-using Havit.GoranG3.Services.Infrastructure.TimeService;
 using Havit.Extensions.DependencyInjection.Abstractions;
 using Havit.Extensions.DependencyInjection;
 using Havit.Services;
@@ -18,6 +17,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Havit.Data.EntityFrameworkCore.Patterns.DependencyInjection;
 using Havit.GoranG3.DataLayer.DataSources.Common;
 using Havit.Data.EntityFrameworkCore.Patterns.UnitOfWorks.EntityValidation;
+using Havit.GoranG3.Services.TimeServices;
 
 namespace Havit.GoranG3.DependencyInjection
 {
@@ -65,6 +65,8 @@ namespace Havit.GoranG3.DependencyInjection
 			InstallAuthorizationHandlers(services);
 
 			services.AddMemoryCache(); // ie. IClaimsCacheStorage
+
+			services.AddTransient<IWorkingDaysCalculator, WorkingDaysCalculator>();
 
 			return services;
 		}
