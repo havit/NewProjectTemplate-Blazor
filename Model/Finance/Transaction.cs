@@ -9,6 +9,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Havit.GoranG3.Model.Finance
@@ -262,6 +263,11 @@ namespace Havit.GoranG3.Model.Finance
 			this.Payments = new FilteringCollection<Payment>(this.PaymentsIncludingDeleted, p => p.Deleted is null);
 			this.Items.CollectionChanged += Items_CollectionChanged;
 			this.PaymentsIncludingDeleted.CollectionChanged += Payments_CollectionChanged;
+		}
+
+		public string GetVariableSymbol() // G2
+		{
+			return Regex.Replace(this.OurReference, @"[^\d]", String.Empty);
 		}
 
 		private void Payments_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)

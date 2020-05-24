@@ -200,6 +200,10 @@ namespace Havit.GoranG3.Model.Finance
 		/// </summary>
 		public int ItemOrder { get; set; }
 
+		public decimal AmountWithoutVatInTransactionCurrency => this.Transaction.IsForeignCurrency ? this.AmountWithoutVatInForeignCurrency.GetValueOrDefault() : this.AmountWithoutVat;
+		public decimal AmountIncludingVatInTransactionCurrency => this.Transaction.IsForeignCurrency ? this.AmountIncludingVatInForeignCurrency.GetValueOrDefault() : this.AmountIncludingVat;
+		public decimal VatAmountInTransactionCurrency => this.Transaction.IsForeignCurrency ? this.VatAmountInForeignCurrency.GetValueOrDefault() : this.VatAmount;
+
 		internal void RecalculateAmounts()
 		{
 			this.AmountIncludingVat = this.AmountWithoutVat + this.VatAmount;
