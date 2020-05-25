@@ -61,7 +61,7 @@ namespace Havit.GoranG3.TestHelpers
 			}
 			this.ServiceProvider = null;
 		}
-		
+
 		protected virtual IServiceCollection CreateServiceCollection()
 		{
 			IServiceCollection services = new ServiceCollection();

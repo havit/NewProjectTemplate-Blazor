@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace Havit.GoranG3.Model.Security
 {
-    [Cache(Priority = CacheItemPriority.High)]
+	[Cache(Priority = CacheItemPriority.High)]
 	public class Role
-    {
+	{
 		public int Id { get; set; }
 
 		[MaxLength(255)]

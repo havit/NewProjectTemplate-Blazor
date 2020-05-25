@@ -2,15 +2,15 @@
 
 namespace Havit.GoranG3.Facades.Infrastructure.Security
 {
-    /// <summary>
-    /// Aplikační requirements pro ověření oprávnění k resource.
-    /// </summary>
-    public static class Operations
-    {
+	/// <summary>
+	/// Aplikační requirements pro ověření oprávnění k resource.
+	/// </summary>
+	public static class Operations
+	{
 		/// <summary>
 		/// Práva pro čtení.
 		/// </summary>
-        public static OperationAuthorizationRequirement Read { get; } = new OperationAuthorizationRequirement { Name = nameof(Read) };
+		public static OperationAuthorizationRequirement Read { get; } = new OperationAuthorizationRequirement { Name = nameof(Read) };
 
 		/// <summary>
 		/// Requirement na administraci systému.
@@ -18,5 +18,5 @@ namespace Havit.GoranG3.Facades.Infrastructure.Security
 		/// ale pro praktické zjednodušení administrativní záležitosti shlukujeme pod administraci systému.
 		/// </summary>
 		public static OperationAuthorizationRequirement SystemAdministration { get; } = new OperationAuthorizationRequirement { Name = nameof(SystemAdministration) };
-    }
+	}
 }

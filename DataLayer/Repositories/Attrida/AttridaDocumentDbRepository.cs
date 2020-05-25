@@ -14,6 +14,6 @@ namespace Havit.GoranG3.DataLayer.Repositories.Attrida
 {
 	public partial class AttridaDocumentDbRepository : IAttridaDocumentRepository
 	{
-		
+
 	}
 }

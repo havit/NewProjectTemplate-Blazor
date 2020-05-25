@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace Havit.GoranG3.Model.Attrida
 {
-    public class AttridaObject
-    {
+	public class AttridaObject
+	{
 		public int Id { get; set; }
 
 		public List<AttridaTag> Tags { get; set; }

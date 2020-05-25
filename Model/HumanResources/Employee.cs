@@ -12,11 +12,11 @@ using System.Threading.Tasks;
 
 namespace Havit.GoranG3.Model.HumanResources
 {
-    /// <summary>
+	/// <summary>
 	/// G2: Pracovnik
 	/// </summary>
 	public class Employee
-    {
+	{
 		public int Id { get; set; }
 
 		public User User { get; set; }

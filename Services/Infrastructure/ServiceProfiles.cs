@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Havit.GoranG3.Services.Infrastructure
 {
-    public static class ServiceProfiles
-    {
-        public const string WebServer = "WebAPI";
-    }
+	public static class ServiceProfiles
+	{
+		public const string WebServer = "WebAPI";
+	}
 }

@@ -14,6 +14,6 @@ namespace Havit.GoranG3.DataLayer.Repositories.Sequences
 {
 	public partial class NumberSequenceDbRepository : INumberSequenceRepository
 	{
-		
+
 	}
 }

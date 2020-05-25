@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace Havit.GoranG3.Web.Client.Pages.Prototyping
 {
-    public class HxDropDownList<T> : ComponentBase
-    {
-        [Parameter]
+	public class HxDropDownList<T> : ComponentBase
+	{
+		[Parameter]
 		public T Value { get; set; }
 
 		[Parameter]

@@ -14,6 +14,6 @@ namespace Havit.GoranG3.DataLayer.Repositories.Localizations
 {
 	public partial class LanguageDbRepository
 	{
-		
+
 	}
 }

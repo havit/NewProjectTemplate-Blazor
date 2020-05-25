@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Havit.GoranG3.Model.Attrida
 {
-    public enum FileType
-    {
+	public enum FileType
+	{
 		/// <summary>
 		/// G2: -1
 		/// </summary>
@@ -22,5 +22,5 @@ namespace Havit.GoranG3.Model.Attrida
 		Jpeg = -9,
 		Png = -10,
 		Bmp = -11
-    }
+	}
 }

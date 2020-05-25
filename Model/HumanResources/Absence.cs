@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace Havit.GoranG3.Model.HumanResources
 {
-    /// <summary>
+	/// <summary>
 	/// G2: PracovniVolno
 	/// </summary>
 	public class Absence
-    {
+	{
 		public int Id { get; set; }
 
 		/// <summary>

@@ -12,7 +12,7 @@ namespace Havit.GoranG3.Model.Finance
 	/// </summary>
 	[Cache(Priority = CacheItemPriority.High)]
 	public class TransactionItemType // TODO
-    {
+	{
 		public int Id { get; set; }
 
 		public enum Entry // TODO

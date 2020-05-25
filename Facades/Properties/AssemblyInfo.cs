@@ -5,8 +5,8 @@ using System.Runtime.CompilerServices;
 
 namespace Havit.GoranG3.Facades.Properties
 {
-    public class AssemblyInfo
-    {
+	public class AssemblyInfo
+	{
 
-    }
+	}
 }

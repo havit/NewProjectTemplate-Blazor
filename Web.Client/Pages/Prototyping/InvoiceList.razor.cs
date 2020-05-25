@@ -8,8 +8,8 @@ using System.Threading.Tasks;
 
 namespace Havit.GoranG3.Web.Client.Pages.Prototyping
 {
-    public partial class InvoiceList
-    {
+	public partial class InvoiceList
+	{
 		protected List<InvoiceDto> Invoices { get; set; } = Enumerable.Range(0, 250)
 			.Select(i => new InvoiceDto
 			{

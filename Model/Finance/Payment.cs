@@ -91,7 +91,7 @@ namespace Havit.GoranG3.Model.Finance
 		public int? CreatedById { get; set; }
 
 		public DateTime? Deleted { get; set; }
-		
+
 		public bool IsForeignCurrency => this.Currency != null;
 
 		public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)

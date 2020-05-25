@@ -11,12 +11,12 @@ using System.Threading.Tasks;
 
 namespace Havit.GoranG3.Model.Crm
 {
-    /// <summary>
+	/// <summary>
 	/// Business opportunity / risk
 	/// G2: ObchodniPrilezitost
 	/// </summary>
 	public class BusinessCase // TODO RH: Sjednotit s úkoly?
-    {
+	{
 		public int Id { get; set; }
 
 		/// <summary>

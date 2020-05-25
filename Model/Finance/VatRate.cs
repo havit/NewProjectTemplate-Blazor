@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace Havit.GoranG3.Model.Finance
 {
-    public class VatRate
-    {
+	public class VatRate
+	{
 		public int Id { get; set; }
 
 		/// <summary>

@@ -14,6 +14,6 @@ namespace Havit.GoranG3.DataLayer.Repositories.HumanResources
 {
 	public partial class AbsenceTypeDbRepository : IAbsenceTypeRepository
 	{
-		
+
 	}
 }

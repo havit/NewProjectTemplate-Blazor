@@ -14,27 +14,27 @@ using Havit.GoranG3.Facades.Infrastructure.Security.Claims;
 
 namespace Havit.GoranG3.Web.Server.Infrastructure.Security
 {
-    /// <summary>
-    /// Poskytuje uživatele z HttpContextu.
-    /// </summary>
-    public class ApplicationAuthenticationService : IApplicationAuthenticationService
-    {
-        private readonly IHttpContextAccessor httpContextAccessor;
+	/// <summary>
+	/// Poskytuje uživatele z HttpContextu.
+	/// </summary>
+	public class ApplicationAuthenticationService : IApplicationAuthenticationService
+	{
+		private readonly IHttpContextAccessor httpContextAccessor;
 
-	    private readonly Lazy<User> userLazy; 
+		private readonly Lazy<User> userLazy;
 
 		public ApplicationAuthenticationService(IHttpContextAccessor httpContextAccessor, IUserRepository userRepository)
-        {
-            this.httpContextAccessor = httpContextAccessor;
+		{
+			this.httpContextAccessor = httpContextAccessor;
 
-	        userLazy = new Lazy<User>(() => userRepository.GetObject(GetCurrentClaimsPrincipal().GetUserId()));
+			userLazy = new Lazy<User>(() => userRepository.GetObject(GetCurrentClaimsPrincipal().GetUserId()));
 		}
 
-        public ClaimsPrincipal GetCurrentClaimsPrincipal()
-        {
+		public ClaimsPrincipal GetCurrentClaimsPrincipal()
+		{
 			return httpContextAccessor.HttpContext.User;
-        }
+		}
 
-	    public User GetCurrentUser() => userLazy.Value;
+		public User GetCurrentUser() => userLazy.Value;
 	}
 }

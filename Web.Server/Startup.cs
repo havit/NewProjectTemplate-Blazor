@@ -58,7 +58,7 @@ namespace Havit.GoranG3.Web.Server
 
 			services.AddAuthentication()
 				.AddIdentityServerJwt();
-			
+
 			// server-side support for User.IsInRole(), see https://leastprivilege.com/2016/08/21/why-does-my-authorize-attribute-not-work/
 			JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
 

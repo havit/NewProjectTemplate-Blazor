@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Havit.GoranG3.Model.Security
 {
-    public class User
+	public class User
 	{
 		public int Id { get; set; }
 

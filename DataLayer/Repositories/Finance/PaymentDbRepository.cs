@@ -14,6 +14,6 @@ namespace Havit.GoranG3.DataLayer.Repositories.Finance
 {
 	public partial class PaymentDbRepository : IPaymentRepository
 	{
-		
+
 	}
 }

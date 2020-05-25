@@ -14,6 +14,6 @@ namespace Havit.GoranG3.DataLayer.Repositories.Crm
 {
 	public partial class CountryDbRepository : ICountryRepository
 	{
-		
+
 	}
 }

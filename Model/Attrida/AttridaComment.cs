@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace Havit.GoranG3.Model.Attrida
 {
-    /// <summary>
+	/// <summary>
 	/// G2: Zapisek
 	/// </summary>
 	public class AttridaComment
-    {
+	{
 		public int Id { get; set; }
 
 		public AttridaObject AttridaObject { get; set; }

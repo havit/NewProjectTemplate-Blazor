@@ -13,7 +13,7 @@ namespace Havit.GoranG3.Model.Finance
 	/// </summary>
 	[Cache(Priority = CacheItemPriority.Low)]
 	public class BankAccount
-    {
+	{
 		public int Id { get; set; }
 
 		/// <summary>

@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Havit.GoranG3.Model.Projects
 {
-    public class ProjectRelation
-    {
+	public class ProjectRelation
+	{
 		public int HigherProjectId { get; set; }
 		public Project HigherProject { get; set; }
 

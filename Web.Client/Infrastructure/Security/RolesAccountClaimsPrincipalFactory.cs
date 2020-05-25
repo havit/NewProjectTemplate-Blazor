@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Havit.GoranG3.Web.Client.Infrastructure.Security
 {
-    public class RolesAccountClaimsPrincipalFactory : AccountClaimsPrincipalFactory<RemoteUserAccount>
+	public class RolesAccountClaimsPrincipalFactory : AccountClaimsPrincipalFactory<RemoteUserAccount>
 	{
 		public RolesAccountClaimsPrincipalFactory(IAccessTokenProviderAccessor accessor) : base(accessor)
 		{

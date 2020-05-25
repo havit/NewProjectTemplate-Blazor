@@ -2,8 +2,8 @@
 
 namespace Havit.GoranG3.DataLayer.Properties
 {
-    public class AssemblyInfo
-    {
+	public class AssemblyInfo
+	{
 
-    }
+	}
 }

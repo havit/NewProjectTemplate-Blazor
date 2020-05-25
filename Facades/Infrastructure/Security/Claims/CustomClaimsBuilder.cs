@@ -10,30 +10,30 @@ using Microsoft.AspNetCore.Authorization.Infrastructure;
 
 namespace Havit.GoranG3.Facades.Infrastructure.Security.Claims
 {
-    //[Service(Profile = ServiceProfiles.WebServer)]
-    public class CustomClaimsBuilder : ICustomClaimsBuilder
-    {
-	    private readonly IUserContextInfoBuilder userContextInfoBuilder;
+	//[Service(Profile = ServiceProfiles.WebServer)]
+	public class CustomClaimsBuilder : ICustomClaimsBuilder
+	{
+		private readonly IUserContextInfoBuilder userContextInfoBuilder;
 
-	    public CustomClaimsBuilder(IUserContextInfoBuilder userContextInfoBuilder)
-        {
-	        this.userContextInfoBuilder = userContextInfoBuilder;
-        }
+		public CustomClaimsBuilder(IUserContextInfoBuilder userContextInfoBuilder)
+		{
+			this.userContextInfoBuilder = userContextInfoBuilder;
+		}
 
 		/// <summary>
 		/// Získá custom claims pro daný principal.
 		/// </summary>
-        public List<Claim> GetCustomClaims(ClaimsPrincipal principal)
-        {
+		public List<Claim> GetCustomClaims(ClaimsPrincipal principal)
+		{
 			Contract.Requires(principal.Identity.IsAuthenticated);
 
-	        List<Claim> result = new List<Claim>();
+			List<Claim> result = new List<Claim>();
 
-	        UserContextInfo userContextInfo = userContextInfoBuilder.GetUserContextInfo(principal);
-			
+			UserContextInfo userContextInfo = userContextInfoBuilder.GetUserContextInfo(principal);
+
 			// TODO: Doplnit custom claims (nebo odstranit celou mašinérii v této složce).
 
 			return result;
-        }
-    }
+		}
+	}
 }

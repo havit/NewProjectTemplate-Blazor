@@ -9,20 +9,20 @@ using Microsoft.Extensions.DependencyInjection;
 namespace Havit.GoranG3.Facades.Infrastructure.Security.AuthorizationHandlers
 {
 	// TODO: Ukázka autorization handleru (negenerického, což není obvyklé). Implementovat nebo odstranit třídu.
-    [Service(Lifetime = ServiceLifetime.Singleton)]
-    public class SystemAdministrationAuthorizationHandler : AuthorizationHandler<OperationAuthorizationRequirement>
-    {
-        protected override Task HandleRequirementAsync(AuthorizationHandlerContext context, OperationAuthorizationRequirement requirement)
-        {
+	[Service(Lifetime = ServiceLifetime.Singleton)]
+	public class SystemAdministrationAuthorizationHandler : AuthorizationHandler<OperationAuthorizationRequirement>
+	{
+		protected override Task HandleRequirementAsync(AuthorizationHandlerContext context, OperationAuthorizationRequirement requirement)
+		{
 #if DEBUG
-	        context.Succeed(requirement);
+			context.Succeed(requirement);
 #endif
-            //if ((requirement == Operations.SystemAdministration) && context.User.HasClaim(...))
-            //{
-            //    context.Succeed(requirement);
-            //}
+			//if ((requirement == Operations.SystemAdministration) && context.User.HasClaim(...))
+			//{
+			//    context.Succeed(requirement);
+			//}
 
-            return Task.CompletedTask;
-        }
-    }
+			return Task.CompletedTask;
+		}
+	}
 }

@@ -36,7 +36,7 @@ namespace Havit.GoranG3.Services.Mailing
 				{
 					smtpClient.Credentials = new NetworkCredential(options.SmtpUsername, options.SmtpPassword);
 				}
-				
+
 				if ((mailMessage.From == null)
 					|| String.IsNullOrWhiteSpace(mailMessage.From.Address))
 				{

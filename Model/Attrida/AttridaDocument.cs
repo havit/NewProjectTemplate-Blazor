@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace Havit.GoranG3.Model.Attrida
 {
-    /// <summary>
+	/// <summary>
 	/// G2: Document, DocumentRelation
 	/// </summary>
 	public class AttridaDocument
-    {
+	{
 		public int Id { get; set; }
 
 		public AttridaObject AttridaObject { get; set; }

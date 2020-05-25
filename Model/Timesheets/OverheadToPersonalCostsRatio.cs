@@ -13,7 +13,7 @@ namespace Havit.GoranG3.Model.Timesheets
 	/// </summary>
 	[Cache]
 	public class OverheadToPersonalCostsRatio
-    {
+	{
 		public int Id { get; set; }
 
 		public DateTime StartDate { get; set; }

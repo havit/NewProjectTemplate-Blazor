@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace Havit.GoranG3.Contracts.GrpcTests
 {
-    [ServiceContract]
+	[ServiceContract]
 	public interface ITestFacade
-    {
+	{
 		ValueTask<DoSomethingResult> DoSomething(DoSomethingRequest request);
 
 		Task AddRole();

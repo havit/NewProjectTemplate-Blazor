@@ -11,9 +11,9 @@ using System.Threading.Tasks;
 
 namespace Havit.GoranG3.ModelTests.Projects
 {
-    [TestClass]
+	[TestClass]
 	public class ProjectTests
-    {
+	{
 		[TestMethod]
 		public void Project_Hierarchy_NewProjects()
 		{

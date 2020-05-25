@@ -14,6 +14,6 @@ namespace Havit.GoranG3.DataLayer.Repositories.Projects
 {
 	public partial class ProjectPhaseDbRepository : IProjectPhaseRepository
 	{
-		
+
 	}
 }

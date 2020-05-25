@@ -11,8 +11,8 @@ using System.Threading.Tasks;
 
 namespace Havit.GoranG3.Model.Timesheets
 {
-    public class TimesheetItem
-    {
+	public class TimesheetItem
+	{
 		public int Id { get; set; }
 
 		/// <summary>

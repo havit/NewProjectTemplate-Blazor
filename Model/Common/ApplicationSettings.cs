@@ -7,14 +7,14 @@ using System.Threading.Tasks;
 
 namespace Havit.GoranG3.Model.Common
 {
-    public class ApplicationSettings
-    {
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int Id { get; set; }
+	public class ApplicationSettings
+	{
+		[DatabaseGenerated(DatabaseGeneratedOption.None)]
+		public int Id { get; set; }
 
-        public enum Entry
-        {
-            Current = -1
-        }
-    }
+		public enum Entry
+		{
+			Current = -1
+		}
+	}
 }

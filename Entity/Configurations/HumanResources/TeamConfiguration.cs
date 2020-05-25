@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Havit.GoranG3.Entity.Configurations.HumanResources
 {
-    public class TeamConfiguration : IEntityTypeConfiguration<Team>
+	public class TeamConfiguration : IEntityTypeConfiguration<Team>
 	{
 		public void Configure(EntityTypeBuilder<Team> builder)
 		{

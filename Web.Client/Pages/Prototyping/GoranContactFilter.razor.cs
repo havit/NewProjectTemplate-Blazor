@@ -8,16 +8,16 @@ using System.Threading.Tasks;
 
 namespace Havit.GoranG3.Web.Client.Pages.Prototyping
 {
-    public class GoranContactFilter : HxFilterBase<int>
-    {
-        //public override IEnumerable<FilterChip> GetChips()
-        //{
-        //    throw new NotImplementedException();
-        //}
+	public class GoranContactFilter : HxFilterBase<int>
+	{
+		//public override IEnumerable<FilterChip> GetChips()
+		//{
+		//    throw new NotImplementedException();
+		//}
 
-        //public override RenderFragment GetFilter()
-        //{
-        //    throw new NotImplementedException();
-        //}
-    }
+		//public override RenderFragment GetFilter()
+		//{
+		//    throw new NotImplementedException();
+		//}
+	}
 }

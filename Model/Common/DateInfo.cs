@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace Havit.GoranG3.Model.Common
 {
-    public class DateInfo
-    {
+	public class DateInfo
+	{
 		public int Id { get; set; }
 
 		public DateTime Date { get; set; }

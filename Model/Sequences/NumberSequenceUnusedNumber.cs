@@ -10,7 +10,7 @@ namespace Havit.GoranG3.Model.Sequences
 	/// G2: CiselnaRadaVolneCislo
 	/// </summary>
 	public class NumberSequenceUnusedNumber
-    {
+	{
 		public int Id { get; set; }
 
 		public NumberSequence NumberSequence { get; set; }

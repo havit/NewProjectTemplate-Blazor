@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace Havit.GoranG3.Web.Client.Pages.Prototyping
 {
-    public partial class InvoiceDetail : ComponentBase
-    {
+	public partial class InvoiceDetail : ComponentBase
+	{
 		[Parameter]
 		public InvoiceDto Invoice { get; set; }
 

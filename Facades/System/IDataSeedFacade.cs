@@ -2,10 +2,10 @@
 
 namespace Havit.GoranG3.Facades.System
 {
-    public interface IDataSeedFacade
-    {
+	public interface IDataSeedFacade
+	{
 		void SeedDataProfile(string profileName);
 
-        IList<string> GetDataSeedProfiles();
-    }
+		IList<string> GetDataSeedProfiles();
+	}
 }

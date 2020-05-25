@@ -12,7 +12,7 @@ namespace Havit.GoranG3.Model.Finance
 	/// </summary>
 	[Cache]
 	public class TransactionDocumentTemplate // TODO
-    {
+	{
 		public int Id { get; set; }
 	}
 }

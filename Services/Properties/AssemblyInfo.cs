@@ -6,8 +6,8 @@ using System.Runtime.InteropServices;
 
 namespace Havit.GoranG3.Services.Properties
 {
-    public class AssemblyInfo
-    {
+	public class AssemblyInfo
+	{
 
-    }
+	}
 }

@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 
 namespace Havit.GoranG3.ModelTests.Finance
 {
-    [TestClass]
+	[TestClass]
 	public class TransactionTests
-    {
-        [TestMethod]
+	{
+		[TestMethod]
 		public void Transaction_TotalAmounts_NewTransaction_ObjectInitializer()
 		{
 			// arrange, act
