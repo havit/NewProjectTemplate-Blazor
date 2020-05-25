@@ -42,10 +42,10 @@
 		AllowSorting="true"*@
 		<HxGrid Data="@Invoices" PageSize="50">
 			<Columns>
-				<HxGridColumn TItemType="InvoiceDto" HeaderText="Vystavení" ItemText="@(item => item.IssuedDate.ToShortDateString())" />
-				<HxGridColumn TItemType="InvoiceDto" HeaderText="Účinnost" ItemText="@(item => item.TaxDate.ToShortDateString())" />
-				<HxGridColumn TItemType="InvoiceDto" HeaderText="Popis" ItemText="@(item => item.Description)" />
-				<HxGridColumn TItemType="InvoiceDto" Context="item" HeaderText="Partner">
+				<HxGridColumn TItemType="InvoiceDto" HeaderText="Vystavení" ItemText="@(item => item.IssuedDate.ToShortDateString())" SortExpression="@(item => item.IssuedDate)" />
+				<HxGridColumn TItemType="InvoiceDto" HeaderText="Účinnost" ItemText="@(item => item.TaxDate.ToShortDateString())" SortExpression="@(item => item.TaxDate)" SortDirection="Collections.SortDirection.Descending" />
+				<HxGridColumn TItemType="InvoiceDto" HeaderText="Popis" ItemText="@(item => item.Description)" SortExpression="@(item => item.Description)" />
+				<HxGridColumn TItemType="InvoiceDto" Context="item" HeaderText="Partner" SortExpression="@(item => item.BusinessPartnerName)">
 					<ItemTemplate>
 						Partner: @item.BusinessPartnerName.Left(50)
 					</ItemTemplate>
