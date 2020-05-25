@@ -1,5 +1,6 @@
 @import "../../../../002.HFW-HavitBlazor/Havit.Blazor.Components.Web.Bootstrap/HxDrawer.scss";
 @import "../../../../002.HFW-HavitBlazor/Havit.Blazor.Components.Web.Bootstrap/HxTagInput.scss";
+@import "../../../../002.HFW-HavitBlazor/Havit.Blazor.Components.Web.Bootstrap/Grids/HxGrid.scss";
 
 :root {
 	--primary-color: #2e75f0;
@@ -73,15 +74,6 @@ app {
 	font-size: 1.1rem;
 }
 
-.sidebar .nav .nav {
-	overflow: hidden;
-	height: 0;
-}
-
-.sidebar .nav .expanded .nav {
-	height: auto;
-}
-
 .sidebar .nav-item {
 	font-size: 0.9rem;
 	padding-bottom: 0.5rem;
@@ -98,23 +90,26 @@ app {
 .sidebar .nav-item > div,
 .sidebar .nav-item a {
 	color: #6e84a3;
-	display: flex;
-	align-items: center;
 }
 
-.sidebar .nav-item a.active {
-	background-color: rgba(255, 255, 255, 0.25);
-	color: var(--primary-color);
-}
+.sidebar .nav-item a {
+	&:hover {
+		text-decoration: none;
+	}
 
-.sidebar .nav-item a:hover,
-.sidebar .nav-item > div:hover {
-	background-color: var(--sidebar-link-hover);
-	color: var(--primary-color);
+	&.active {
+		background-color: rgba(255, 255, 255, 0.25);
+		color: var(--primary-color);
+	}
+
+	> div:hover {
+		background-color: var(--sidebar-link-hover);
+		color: var(--primary-color);
+	}
 }
 
 /* TODO: Hack kvuli poskakovani v Safari pri transformaci */
-.sidebar .nav-item > div > span {
+.sidebar .nav-item > a > div > span {
 	line-height: 18px;
 	height: 18px;
 }
@@ -196,7 +191,7 @@ app {
 		display: none;
 	}
 
-	.sidebar .collapse {
+	.sidebar-inner > .collapse {
 		/* Never collapse the sidebar for wide screens */
 		display: block;
 	}

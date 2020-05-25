@@ -1,20 +1,24 @@
-<li class="nav-item @ItemCssClass" @onclick="ToggelExpand">
-    <div role="button" class="px-4 py-3">
-        @if (Icon != null) {
-            @Icon
-        }
-        <span>@Text</span>
-        @if (SubItems != null) {
-            <svg class="bi bi-chevron-down ml-auto" width=".75em" height=".75em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 01.708 0L8 10.293l5.646-5.647a.5.5 0 01.708.708l-6 6a.5.5 0 01-.708 0l-6-6a.5.5 0 010-.708z" clip-rule="evenodd"/>
-            </svg>
-        }
+<li class="nav-item">
+    <a data-toggle="collapse" href="#@CollapseHrefGuid" role="button" aria-expanded="false">
+        <div class="px-4 py-3 d-flex align-items-center">
+            @if (Icon != null) {
+                @Icon
+            }
+            <span>@Text</span>
+            @if (SubItems != null) {
+                <svg class="bi bi-chevron-down ml-auto" width=".75em" height=".75em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 01.708 0L8 10.293l5.646-5.647a.5.5 0 01.708.708l-6 6a.5.5 0 01-.708 0l-6-6a.5.5 0 010-.708z" clip-rule="evenodd"/>
+                </svg>
+            }
+        </div>
+    </a>
+    <div class="collapse" id="@CollapseHrefGuid">
+        <ul class="nav flex-column">    
+            @if (SubItems != null) {
+                @SubItems
+            }
+        </ul>
     </div>
-    <ul class="nav flex-column">    
-        @if (SubItems != null) {
-            @SubItems
-        }
-    </ul>
 </li>
 
 @code {
@@ -26,11 +30,17 @@
     [Parameter]
     public string Text { get; set; }
 
-    private bool IsExpanded { get; set; }
+    private Guid? _collapseHrefGuid;
 
-    private void ToggelExpand()
+    private Guid CollapseHrefGuid
     {
-        IsExpanded = !IsExpanded;
+        get
+        {
+            if (_collapseHrefGuid == null)
+            {
+                _collapseHrefGuid = Guid.NewGuid();
+            }
+            return _collapseHrefGuid.Value;
+        }
     }
-    private string ItemCssClass => IsExpanded ? "expanded" : null;
 }
