@@ -50,7 +50,8 @@ app {
   position: relative;
   display: flex;
   flex-direction: column;
-  overflow: hidden; }
+  overflow: hidden;
+  min-height: 100vh; }
 
 .top-row {
   color: var(--primary-color);

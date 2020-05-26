@@ -1,5 +1,5 @@
 <li class="nav-item">
-    <a data-toggle="collapse" href="#@CollapseHrefGuid" role="button" aria-expanded="false">
+    <a data-toggle="collapse" href="#@Id" role="button" aria-expanded="false">
         <div class="px-4 py-3 d-flex align-items-center">
             @if (Icon != null) {
                 @Icon
@@ -12,7 +12,7 @@
             }
         </div>
     </a>
-    <div class="collapse" id="@CollapseHrefGuid">
+    <div class="collapse" id="@Id">
         <ul class="nav flex-column">    
             @if (SubItems != null) {
                 @SubItems
@@ -23,24 +23,13 @@
 
 @code {
     [Parameter]
-    public RenderFragment Icon { get; set; }
-    [Parameter]
-    public RenderFragment SubItems { get; set; }
+		public RenderFragment Icon { get; set; }
+		[Parameter]
+		public RenderFragment SubItems { get; set; }
 
-    [Parameter]
-    public string Text { get; set; }
+		[Parameter]
+		public string Text { get; set; }
 
-    private Guid? _collapseHrefGuid;
-
-    private Guid CollapseHrefGuid
-    {
-        get
-        {
-            if (_collapseHrefGuid == null)
-            {
-                _collapseHrefGuid = Guid.NewGuid();
-            }
-            return _collapseHrefGuid.Value;
-        }
-    }
+		[Parameter]
+		public string Id { get; set; }
 }
