@@ -2,14 +2,14 @@
 
 <HxListLayout Title="Faktury vystavené">
 	<NamedViewsSection>
-		<HxNamedViewList Data="@NamedViews" OnNamedViewChanged="@NamedViewSelected" /> @* Možná přímo navázat na centrální BindData? *@
+		<HxNamedViewList TFilterType="InvoiceListFilterDto" @bind-Filter="@Filter" NamedViews="@NamedViews" SelectedNamedViewChanged="NamedViewSelected" />
 	</NamedViewsSection>
 	<SearchSection>
 		<HxSearchBox OnQueryTextChanged="@SearchRequested" /> @* Možná přímo navázat na centrální BindData? *@
 	</SearchSection>
 	<FilterSection>
 		<HxFilterView ApplyFilterRequested="ApplyFilterRequested">
-			@* Možná přímo navázat na centrální BindData? *@
+			@* TODO: Změna stavu filtru (výměna instance) se neprojení v renderování kritérií, toje potřeba dořešit *@
 			<Criteria>
 				<HxDateRangeFilter @bind-Value="Filter.IssuedDateRange" Label="Vystavení" />
 				<HxDateRangeFilter @bind-Value="Filter.TaxDateRange" Label="Účinnost" />

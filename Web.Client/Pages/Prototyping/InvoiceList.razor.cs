@@ -17,25 +17,16 @@ namespace Havit.GoranG3.Web.Client.Pages.Prototyping
 		protected InvoiceDto CurrentInvoice { get; set; }
 		protected InvoiceListFilterDto Filter { get; set; } = new InvoiceListFilterDto();
 
-		protected readonly IEnumerable<NamedView> NamedViews = new List<NamedView>()
+		protected readonly IEnumerable<NamedView<InvoiceListFilterDto>> NamedViews = new List<NamedView<InvoiceListFilterDto>>()
 		{
-			new NamedView("Letos vystavené"),
-			new NamedView("Neuhrazené po splatnosti"),
-			new NamedView("Po splatnosti > 30 dnů")
+			new NamedView<InvoiceListFilterDto>("Letos vystavené", () => new InvoiceListFilterDto { IssuedDateRange = new DateRange(new DateTime(2020, 1, 1), new DateTime(2020, 12, 31 )) } ),
+			new NamedView<InvoiceListFilterDto>("Neuhrazené po splatnosti", () => new InvoiceListFilterDto { Text = "Neuhrazené po splatnosti" }),
+			new NamedView<InvoiceListFilterDto>("Po splatnosti > 30 dnů", () => new InvoiceListFilterDto { Text = "Po splatnosti > 30 dnů" })
 		};
 
 		//public override string Title => "Faktury vystavené";
 
-		protected Task NamedViewSelected(NamedView namedView)
-		{
-			//Filter.Reset();
-			if (namedView == new NamedView() /* nějaká instance */)
-			{
-				//Filter.IssuedDateRange = null; /* atd. */
-			}
-			// Tady by bylo něco jako BindData()
-			return Task.CompletedTask;
-		}
+
 
 		protected override void OnInitialized()
 		{
@@ -71,6 +62,12 @@ namespace Havit.GoranG3.Web.Client.Pages.Prototyping
 			return Task.CompletedTask;
 		}
 
+		protected Task NamedViewSelected(/*NamedView<InvoiceListFilterDto> namedView*/)
+		{
+			LoadInvoices();
+			return Task.CompletedTask;
+		}
+
 		protected Task SearchRequested()
 		{
 			// Tady by bylo něco jako BindData()
@@ -86,6 +83,7 @@ namespace Havit.GoranG3.Web.Client.Pages.Prototyping
 
 		protected Task DeleteClicked(InvoiceDto invoiceDto)
 		{
+			Invoices.Remove(invoiceDto);
 			return Task.CompletedTask;
 		}
 
