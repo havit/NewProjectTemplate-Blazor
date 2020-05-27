@@ -8,14 +8,14 @@
 		<HxSearchBox OnQueryTextChanged="@SearchRequested" /> @* Možná přímo navázat na centrální BindData? *@
 	</SearchSection>
 	<FilterSection>
-		<HxFilterView Data="@Filter" OnChange="@FilterChanged">
+		<HxFilterView ApplyFilterRequested="ApplyFilterRequested">
 			@* Možná přímo navázat na centrální BindData? *@
 			<Criteria>
-				<HxDateRangeFilter @bind-Value="context.IssuedDateRange" Label="Vystavení" />
-				<HxDateRangeFilter @bind-Value="context.TaxDateRange" Label="Účinnost" />
-				<HxTextFilter @bind-Value="context.Text" Label="Nějaký text" />
-				<GoranProjectFilter @bind-Value="context.ProjectId" Label="Projekt" />
-				<GoranContactFilter @bind-Value="context.BusinessPartnerId" Label="Partner" />
+				<HxDateRangeFilter @bind-Value="Filter.IssuedDateRange" Label="Vystavení" />
+				<HxDateRangeFilter @bind-Value="Filter.TaxDateRange" Label="Účinnost" />
+				<HxTextFilter @bind-Value="Filter.Text" Label="Nějaký text" />
+				<GoranProjectFilter @bind-Value="Filter.ProjectId" Label="Projekt" />
+				<GoranContactFilter @bind-Value="Filter.BusinessPartnerId" Label="Partner" />
 				@*<HxFilter Label="Typ faktury">
 					<FilterTemplate>
 						HxDropDownList @@bind="context.InvoiceTypeId" Data="@@CodebooksStore.InvoiceTypes" NameField="Name" ValueField="Id" />
