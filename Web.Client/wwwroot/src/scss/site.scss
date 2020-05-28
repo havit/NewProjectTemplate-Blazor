@@ -1,45 +1,27 @@
+@import "bootstrap/functions";
+@import "_variables";
 @import "../../../../002.HFW-HavitBlazor/Havit.Blazor.Components.Web.Bootstrap/HxDrawer.scss";
 @import "../../../../002.HFW-HavitBlazor/Havit.Blazor.Components.Web.Bootstrap/HxTagInput.scss";
 @import "../../../../002.HFW-HavitBlazor/Havit.Blazor.Components.Web.Bootstrap/Grids/HxGrid.scss";
+@import "../../../../002.HFW-HavitBlazor/Havit.Blazor.Components.Web.Bootstrap/HxListLayout.scss";
 
 :root {
-	--primary-color: #2e75f0;
-	--border-gray: #eaeaea;
 	--sidebar-link-hover: #f2f9ff;
 	--drawer-width: 30vw;
 	--box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
-	/* --primary-color: #2097d0; HAVIT LIGHT BLUE */
-}
-
-html,
-body {
-	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-	position: relative;
-}
-
-a,
-.btn-link {
-	color: var(--primary-color);
-}
-
-.form-control {
-	border-color: var(--border-gray);
 }
 
 app {
 	position: relative;
 	display: flex;
 	flex-direction: column;
-	overflow: hidden;
 	min-height: 100vh;
 }
 
 .top-row {
-	color: var(--primary-color);
-	height: 3.5rem;
+	color: $primary;
 	display: flex;
 	align-items: center;
-	border-bottom: 1px solid var(--border-gray);
 }
 
 .main {
@@ -56,36 +38,22 @@ app {
 	margin-left: 1.5rem;
 }
 
-.main .top-row a:first-child {
-	overflow: hidden;
-	text-overflow: ellipsis;
-}
-
 .sidebar {
 	display: flex;
 	flex-direction: column;
+	border-right: 1px solid $gray-200;
 }
 
 .sidebar-inner {
-	border-right: 1px solid var(--border-gray);
 	flex-grow: 1;
 }
 
 .sidebar .navbar-brand {
-	font-size: 1.1rem;
+	font-size: 1.2rem;
 }
 
 .sidebar .nav-item {
 	font-size: 0.9rem;
-	padding-bottom: 0.5rem;
-}
-
-.sidebar .nav-item:first-of-type {
-	padding-top: 1rem;
-}
-
-.sidebar .nav-item:last-of-type {
-	padding-bottom: 1rem;
 }
 
 .sidebar .nav-item > div,
@@ -100,12 +68,12 @@ app {
 
 	&.active {
 		background-color: rgba(255, 255, 255, 0.25);
-		color: var(--primary-color);
+		color: $primary;
 	}
 
 	> div:hover {
 		background-color: var(--sidebar-link-hover);
-		color: var(--primary-color);
+		color: $primary;
 	}
 }
 
@@ -130,7 +98,7 @@ app {
 }
 
 .navbar-light .navbar-brand {
-	color: var(--primary-color);
+	color: $primary;
 }
 
 .navbar-toggler {
@@ -156,21 +124,6 @@ app {
 	top: 0.5rem;
 }
 
-@media (max-width: 767.98px) {
-	.main .top-row:not(.auth) {
-		display: none;
-	}
-
-	.main .top-row.auth {
-		justify-content: space-between;
-	}
-
-	.main .top-row a,
-	.main .top-row .btn-link {
-		margin-left: 0;
-	}
-}
-
 @media (min-width: 768px) {
 	app {
 		flex-direction: row;
@@ -181,11 +134,10 @@ app {
 		height: 100vh;
 		position: sticky;
 		top: 0;
-	}
 
-	.main .top-row {
-		position: sticky;
-		top: 0;
+		.top-row {
+			margin: 1rem 0;
+		}
 	}
 
 	.navbar-toggler {
@@ -196,41 +148,4 @@ app {
 		/* Never collapse the sidebar for wide screens */
 		display: block;
 	}
-}
-
-/* DC TODO: Move to SCSS */
-.title,
-.search,
-.commands {
-	flex: 1 1 33%;
-}
-
-.title {
-	font-size: 20px;
-	position: relative;
-	display: flex;
-	align-items: center;
-}
-
-.title .named-views {
-	display: none;
-	font-size: 14px;
-}
-
-.title.show .named-views {
-	position: absolute;
-	display: block;
-	top: 35px;
-	left: -15px;
-	background: white;
-	border: 5px;
-}
-
-.title.show .named-views {
-	position: absolute;
-	display: block;
-	top: 35px;
-	left: -15px;
-	background: white;
-	border: 5px;
 }
