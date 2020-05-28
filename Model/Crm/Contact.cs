@@ -133,14 +133,14 @@ namespace Havit.GoranG3.Model.Crm
 		public AttridaObject AttridaObject { get; set; }
 		public int? AttridaObjectId { get; set; }
 
-		public DateTime Created { get; set; }
-		public DateTime? Deleted { get; set; }
-
 		/// <summary>
 		/// Indicates business partner where we issue them invoice with no VAT.
 		/// G2: FakturyVystaveneBezDph
 		/// </summary>
 		public bool HasNoVatForInvoicesIssued { get; set; }
+
+		public DateTime Created { get; set; }
+		public DateTime? Deleted { get; set; }
 
 		/// <summary>
 		/// Relationships where this contact is detail (= list of parents).
@@ -150,6 +150,8 @@ namespace Havit.GoranG3.Model.Crm
 		/// Relationships where this contact is parent (= list of details).
 		/// </summary>
 		public List<ContactRelationship> DetailContactRelationships { get; } = new List<ContactRelationship>();
+
+		public int? MigrationId { get; set; }
 
 		public enum Entry
 		{

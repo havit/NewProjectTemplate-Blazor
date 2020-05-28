@@ -39,6 +39,8 @@ namespace Havit.GoranG3.Model.Crm
 		public Country Country { get; set; }
 		public int? CountryId { get; set; }
 
+		public int? MigrationId { get; set; }
+
 		public string InlineForm
 		{
 			get

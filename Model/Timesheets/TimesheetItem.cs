@@ -81,6 +81,8 @@ namespace Havit.GoranG3.Model.Timesheets
 		public DateTime Created { get; set; }
 		public DateTime? Deleted { get; set; }
 
+		public int? MigrationId { get; set; }
+
 		public bool IsApproved => (ApprovedAt != null);
 	}
 }

@@ -57,6 +57,26 @@ namespace Havit.GoranG3.DependencyInjection
 		}
 
 		[MethodImpl(MethodImplOptions.NoInlining)]
+		public static IServiceCollection ConfigureForG2Migrator(this IServiceCollection services, out IConfiguration configuration)
+		{
+			string environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? "Developement";
+
+			configuration = new ConfigurationBuilder()
+				.SetBasePath(Directory.GetCurrentDirectory())
+				.AddJsonFile("appsettings.json")
+				.AddJsonFile($"appsettings.{environment}.json", true)
+				.Build();
+
+			InstallConfiguration installConfiguration = new InstallConfiguration
+			{
+				DatabaseConnectionString = configuration.GetConnectionString("Database"),
+				ServiceProfiles = new[] { ServiceAttribute.DefaultProfile },
+			};
+
+			return services.ConfigureForAll(installConfiguration);
+		}
+
+		[MethodImpl(MethodImplOptions.NoInlining)]
 		private static IServiceCollection ConfigureForAll(this IServiceCollection services, InstallConfiguration installConfiguration)
 		{
 			InstallHavitEntityFramework(services, installConfiguration);

@@ -30,6 +30,9 @@ namespace Havit.GoranG3.Model.HumanResources
 		public DateTime Created { get; set; }
 		public DateTime? Deleted { get; set; }
 
+		public int? MigrationId { get; set; }
+
+
 		public IEnumerable<Employee> Members => TeamMemberships.Select(tm => tm.Employee);
 
 		public enum Entry

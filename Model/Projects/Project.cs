@@ -159,6 +159,8 @@ namespace Havit.GoranG3.Model.Projects
 		public AttridaObject AttridaObject { get; set; }
 		public int? AttridaObjectId { get; set; }
 
+		public int? MigrationId { get; set; }
+
 		public string FullName
 		{
 			get

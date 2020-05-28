@@ -244,6 +244,8 @@ namespace Havit.GoranG3.Model.Finance
 
 		public DateTime? Deleted { get; set; }
 
+		public int? MigrationId { get; set; }
+
 		public ObservableCollection<TransactionItem> Items { get; } = new ObservableCollection<TransactionItem>();
 
 		/// <summary>

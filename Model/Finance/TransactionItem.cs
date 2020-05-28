@@ -195,6 +195,8 @@ namespace Havit.GoranG3.Model.Finance
 		/// </summary>
 		public DateTime? ApprovedAt { get; set; }
 
+		public int? MigrationId { get; set; }
+
 		/// <summary>
 		/// Order (position) of the item within transaction.
 		/// </summary>

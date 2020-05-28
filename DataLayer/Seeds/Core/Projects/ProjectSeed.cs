@@ -20,6 +20,7 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Projects
 					IsActive = true,
 					Name = "ROOT_SYSTEM_PROJECT",
 					ProjectCode = "ROOT",
+					MigrationId = -1
 				}
 			};
 

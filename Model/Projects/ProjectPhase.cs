@@ -12,5 +12,7 @@ namespace Havit.GoranG3.Model.Projects
 	public class ProjectPhase // TODO
 	{
 		public int Id { get; set; }
+
+		public int? MigrationId { get; set; }
 	}
 }

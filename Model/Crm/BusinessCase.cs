@@ -80,5 +80,7 @@ namespace Havit.GoranG3.Model.Crm
 		/// </summary>
 		public User ModifiedBy { get; set; }
 		public int? ModifiedById { get; set; }
+
+		public int? MigrationId { get; set; }
 	}
 }

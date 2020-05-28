@@ -16,6 +16,8 @@ namespace Havit.GoranG3.Model.Timesheets
 		[MaxLength(50)]
 		public string Name { get; set; }
 
+		public int? MigrationId { get; set; }
+
 		public DateTime Created { get; set; }
 		public DateTime? Deleted { get; set; }
 	}

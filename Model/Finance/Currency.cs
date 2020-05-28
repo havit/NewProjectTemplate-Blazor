@@ -30,5 +30,7 @@ namespace Havit.GoranG3.Model.Finance
 		public DateTime? Deleted { get; set; }
 
 		public List<ExchangeRate> ExchangeRates { get; } = new List<ExchangeRate>();
+
+		public int? MigrationId { get; set; }
 	}
 }

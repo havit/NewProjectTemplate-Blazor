@@ -8,6 +8,11 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <Compile Remove="Migrations\20200528224833_ProjectMigrationId.cs" />
+	  <Compile Remove="Migrations\20200528224833_ProjectMigrationId.Designer.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<None Remove="appsettings.json" />
 	</ItemGroup>
 
@@ -31,10 +36,6 @@
 
 	<ItemGroup>
 		<ProjectReference Include="..\Model\Model.csproj" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Folder Include="Migrations\" />
 	</ItemGroup>
 
 </Project>

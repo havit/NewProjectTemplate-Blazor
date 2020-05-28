@@ -17,5 +17,7 @@ namespace Havit.GoranG3.Model.Finance
 		/// </summary>
 		[Column(TypeName = "Money")]
 		public decimal Rate { get; set; }
+
+		public int? MigrationId { get; set; }
 	}
 }

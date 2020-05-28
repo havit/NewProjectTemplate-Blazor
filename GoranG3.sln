@@ -51,6 +51,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Havit.Blazor.Components.Web
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Havit.Blazor.Components.Web.Bootstrap", "002.HFW-HavitBlazor\Havit.Blazor.Components.Web.Bootstrap\Havit.Blazor.Components.Web.Bootstrap.csproj", "{CD16769E-906C-4AF3-9F42-E4D860E5D8DE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "G2Migrator", "G2Migrator\G2Migrator.csproj", "{8F9787C3-E660-4DE6-9D05-C0D425A2239E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -133,6 +135,10 @@ Global
 		{CD16769E-906C-4AF3-9F42-E4D860E5D8DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CD16769E-906C-4AF3-9F42-E4D860E5D8DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CD16769E-906C-4AF3-9F42-E4D860E5D8DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8F9787C3-E660-4DE6-9D05-C0D425A2239E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F9787C3-E660-4DE6-9D05-C0D425A2239E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F9787C3-E660-4DE6-9D05-C0D425A2239E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F9787C3-E660-4DE6-9D05-C0D425A2239E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
