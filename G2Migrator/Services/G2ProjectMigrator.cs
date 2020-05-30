@@ -40,12 +40,14 @@ namespace Havit.GoranG3.G2Migrator.Services
 			while (reader.Read())
 			{
 				Console.WriteLine(reader["ProjektID"]);
-				var projektID = (int)reader["ProjektID"];
+				var projektID = reader.GetValue<int>("ProjektID");
 				var project = projects.Find(p => p.MigrationId == projektID);
 				if (project == null)
 				{
 					project = new Project();
+					project.Id = projektID;
 					project.MigrationId = projektID;
+					projects.Add(project);
 					unitOfWork.AddForInsert(project);
 				}
 				else
@@ -57,13 +59,13 @@ namespace Havit.GoranG3.G2Migrator.Services
 				{
 					project.Parent = projects.Find(p => p.MigrationId == (int)reader["ParentID"]);
 				}
-				project.ProjectCode = (string)reader["Kod"];
-				project.Name = (string)reader["Nazev"];
+				project.ProjectCode = reader.GetValue<string>("Kod");
+				project.Name = reader.GetValue<string>("Nazev");
 				// TODO reader["Poznamka"] => AttridaObject.AttridaObjectComments.Add()
 				// TODO project.ProjectManagerId
-				project.PaymentDueDaysDefault = (int)reader["SplatnostPrijem"];
-				project.OverheadToPersonalCostsRatio = (bool)reader["UplatnovatRezijniPrirazkuOsobnichNakladu"] ? (decimal?)null : 0m;
-				project.IsActive = (int?)reader["StavProjektuID"] switch
+				project.PaymentDueDaysDefault = reader.GetValue<int?>("SplatnostPrijem");
+				project.OverheadToPersonalCostsRatio = (reader.GetValue<bool?>("UplatnovatRezijniPrirazkuOsobnichNakladu") == true) ? (decimal?)null : 0m;
+				project.IsActive = reader.GetValue<int?>("StavProjektuID") switch
 				{
 					1 => true,
 					2 => true,
@@ -71,8 +73,10 @@ namespace Havit.GoranG3.G2Migrator.Services
 					_ => false
 				};
 				// TODO project.BusinessPartnerId
-				project.Created = (DateTime)reader["Created"];
-				project.Deleted = (DateTime)reader["Deleted"];
+				project.Created = reader.GetValue<DateTime>("Created");
+				project.Deleted = reader.GetValue<DateTime?>("Deleted");
+
+				unitOfWork.Commit(); // test
 			}
 
 			unitOfWork.Commit();

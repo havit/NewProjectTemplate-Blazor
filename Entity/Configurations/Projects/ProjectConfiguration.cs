@@ -13,7 +13,7 @@ namespace Havit.GoranG3.Entity.Configurations.Projects
 	{
 		public void Configure(EntityTypeBuilder<Project> builder)
 		{
-			builder.Property(project => project.Id).ValueGeneratedNever().HasDefaultValueSql("NEXT VALUE FOR ProjectSequence");
+			builder.Property(project => project.Id).HasDefaultValueSql("NEXT VALUE FOR ProjectSequence");
 			builder.Ignore(project => project.AllChildrenAndMe);
 			builder.Ignore(project => project.AllParentsAndMe);
 			builder.Ignore(project => project.PaymentDueDaysDefaultEffective);

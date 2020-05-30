@@ -1,4 +1,5 @@
-﻿using Havit.Data.EntityFrameworkCore.Attributes;
+﻿using Havit.Collections;
+using Havit.Data.EntityFrameworkCore.Attributes;
 using Havit.Diagnostics.Contracts;
 using Havit.GoranG3.Model.Attrida;
 using Havit.GoranG3.Model.Crm;
@@ -8,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -188,8 +190,9 @@ namespace Havit.GoranG3.Model.Projects
 		{
 			this.Children = new FilteringCollection<Project>(this.ChildrenIncludingDeleted, p => p.Deleted is null);
 
-			this.AllChildrenAndMeRelations.Add(new ProjectRelation() { HigherProject = this, LowerProject = this });
-			this.AllParentsAndMeRelations.Add(new ProjectRelation() { HigherProject = this, LowerProject = this });
+			ProjectRelation andMeRelation = new ProjectRelation() { HigherProject = this, LowerProject = this };
+			this.AllChildrenAndMeRelations.Add(andMeRelation);
+			this.AllParentsAndMeRelations.Add(andMeRelation);
 		}
 
 		private void UpdateProjectManagerEffective() // G2
@@ -337,11 +340,42 @@ namespace Havit.GoranG3.Model.Projects
 			{
 				yield return new ValidationResult($"Value 0 of {nameof(Depth)} property is allowed only for Root project.");
 			}
+
+			if (this.AllChildrenAndMeRelations.Count() != this.AllChildrenAndMeRelations.Distinct(new ProjektRelationEqualityComparer()).Count())
+			{
+				yield return new ValidationResult($"Duplicate items in {nameof(AllChildrenAndMeRelations)} not allowed.");
+			}
+
+			if (this.AllParentsAndMeRelations.Count() != this.AllParentsAndMeRelations.Distinct(new ProjektRelationEqualityComparer()).Count())
+			{
+				yield return new ValidationResult($"Duplicate items in {nameof(AllChildrenAndMeRelations)} not allowed.");
+			}
 		}
 
 		public enum Entry
 		{
 			Root = -1
+		}
+
+		private class ProjektRelationEqualityComparer : IEqualityComparer<ProjectRelation>
+		{
+			public bool Equals([AllowNull] ProjectRelation x, [AllowNull] ProjectRelation y)
+			{
+				if ((x is null) || (y is null))
+				{
+					return false;
+				}
+				if ((x.HigherProjectId == y.LowerProjectId)	|| (x.HigherProject == y.HigherProject))
+				{
+					return true;
+				}
+				return false;
+			}
+
+			public int GetHashCode([DisallowNull] ProjectRelation obj)
+			{
+				return obj.GetHashCode();
+			}
 		}
 	}
 }
