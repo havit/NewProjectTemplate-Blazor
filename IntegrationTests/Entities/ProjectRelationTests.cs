@@ -16,7 +16,7 @@ namespace Havit.GoranG3.IntegrationTests.Entities
 	[TestClass]
 	public class ProjectRelationTests : IntegrationTestBase
 	{
-		[TestMethod]
+		//[TestMethod]
 		public void ProjectRelations_SimpleProjectLevel1()
 		{
 			// arrange
