@@ -14,6 +14,9 @@ namespace Havit.GoranG3.DataLayer.Repositories.Timesheets
 {
 	public partial class TimesheetItemCategoryDbRepository : ITimesheetItemCategoryRepository
 	{
-
+		public List<TimesheetItemCategory> GetAllIncludingDeleted()
+		{
+			return DataWithDeleted.ToList();
+		}
 	}
 }
