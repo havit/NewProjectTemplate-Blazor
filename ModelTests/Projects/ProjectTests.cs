@@ -25,7 +25,31 @@ namespace Havit.GoranG3.ModelTests.Projects
 
 			// assert
 			Assert.IsTrue(project1.AllParentsAndMe.Contains(root));
+			Assert.IsNotNull(project1.AllParentsAndMeRelations.SingleOrDefault(pr => (pr.LowerProject == project1) && (pr.HigherProject == root)));
+
 			Assert.IsTrue(project1.AllParentsAndMe.Contains(project1));
+			Assert.IsNotNull(project1.AllParentsAndMeRelations.SingleOrDefault(pr => (pr.LowerProject == project1) && (pr.HigherProject == project1)));
+
+			Assert.IsTrue(root.AllChildrenAndMe.Contains(root));
+			Assert.IsNotNull(root.AllChildrenAndMeRelations.SingleOrDefault(pr => (pr.HigherProject == root) && (pr.LowerProject == root)));
+
+			Assert.IsTrue(root.AllChildrenAndMe.Contains(project1));
+			Assert.IsNotNull(root.AllChildrenAndMeRelations.SingleOrDefault(pr => (pr.HigherProject == root) && (pr.LowerProject == project1)));
+		}
+
+		[TestMethod]
+		public void Project_Hierarchy_ProjectRelationsIdentity()
+		{
+			// arrange
+			var root = new Project() { Id = (int)Project.Entry.Root };
+
+			// act
+			var project1 = new Project() { Parent = root };
+
+			// assert
+			var rootRelation = root.AllChildrenAndMeRelations.Single(pr => pr.LowerProject == project1);
+			var project1Relation = project1.AllParentsAndMeRelations.Single(pr => pr.HigherProject == root);
+			Assert.AreSame(rootRelation, project1Relation);
 		}
 
 		[TestMethod]

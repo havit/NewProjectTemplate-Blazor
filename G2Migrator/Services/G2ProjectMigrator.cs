@@ -35,23 +35,24 @@ namespace Havit.GoranG3.G2Migrator.Services
 			using SqlCommand cmd = new SqlCommand("SELECT * FROM Projekt WHERE ProjektID <> -1", conn);
 			using SqlDataReader reader = cmd.ExecuteReader();
 
-			var projects = projectRepository.GetAll();
-			
+			var projects = projectRepository.GetAllIncludingDeleted();
+
 			while (reader.Read())
 			{
-				Console.WriteLine(reader["ProjektID"]);
+				Console.Write(reader["ProjektID"]);
 				var projektID = reader.GetValue<int>("ProjektID");
 				var project = projects.Find(p => p.MigrationId == projektID);
 				if (project == null)
 				{
+					Console.WriteLine(" INSERT");
 					project = new Project();
-					project.Id = projektID;
 					project.MigrationId = projektID;
 					projects.Add(project);
 					unitOfWork.AddForInsert(project);
 				}
 				else
 				{
+					Console.WriteLine(" UPDATE");
 					unitOfWork.AddForUpdate(project);
 				}
 

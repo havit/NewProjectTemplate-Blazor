@@ -16,7 +16,7 @@ namespace Havit.GoranG3.DataLayer.Repositories.Timesheets
 	{
 		public List<TimesheetItemCategory> GetAllIncludingDeleted()
 		{
-			return DataWithDeleted.ToList();
+			return DataWithDeleted.Include(GetLoadReferences).ToList();
 		}
 	}
 }

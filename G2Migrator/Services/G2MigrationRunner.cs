@@ -38,7 +38,7 @@ namespace Havit.GoranG3.G2Migrator.Services
 			dataSeedRunner.SeedData<CoreProfile>();
 
 			g2TimesheetItemCategoryMigrator.MigrateCategories();
-			//g2ProjectMigrator.MigrateProjects();
+			g2ProjectMigrator.MigrateProjects();
 		}
 	}
 }

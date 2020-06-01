@@ -292,13 +292,7 @@ namespace Havit.GoranG3.Model.Projects
 			{
 				foreach (var item in this.AllChildrenAndMe) // ..do svých a projektů níže
 				{
-					item.AllParentsAndMeRelations.Add(new ProjectRelation()
-					{
-						LowerProject = this,
-						LowerProjectId = this.Id,
-						HigherProject = tempProject,
-						HigherProjectId = tempProject.Id
-					}); // ...do kolekce AllParentsAndMe
+					item.AllParentsAndMeRelations.Add(GetOrCreateProjectRelation(item, tempProject)); // ...do kolekce AllParentsAndMe
 				}
 				tempProject = tempProject.Parent; // ...nového parenta a jeho parenty
 			}
@@ -309,13 +303,7 @@ namespace Havit.GoranG3.Model.Projects
 			{
 				foreach (var item in this.AllChildrenAndMe) // ...sebe a nižší projekty
 				{
-					tempProject.AllChildrenAndMeRelations.Add(new ProjectRelation()
-					{
-						LowerProject = item,
-						LowerProjectId = item.Id,
-						HigherProject = this,
-						HigherProjectId = this.Id
-					}); // ...přidáme sebe a nižší projekty
+					tempProject.AllChildrenAndMeRelations.Add(GetOrCreateProjectRelation(item, tempProject)); // ...přidáme sebe a nižší projekty
 				}
 				tempProject = tempProject.Parent; // ...nového parenta a jeho parentů
 			}
@@ -327,6 +315,29 @@ namespace Havit.GoranG3.Model.Projects
 			{
 				item.Depth = item.Depth - oldDepth + newDepth;
 			}
+		}
+
+		private static ProjectRelation GetOrCreateProjectRelation(Project lowerProject, Project higherProject)
+		{
+			var relation1 = lowerProject.AllParentsAndMeRelations.FirstOrDefault(pr => (pr.LowerProject == lowerProject) && (pr.HigherProject == higherProject));
+			if (relation1 != null)
+			{
+				return relation1;
+			}
+
+			var relation2 = higherProject.AllChildrenAndMeRelations.FirstOrDefault(pr => (pr.HigherProject == higherProject) && (pr.LowerProject == lowerProject));
+			if (relation2 != null)
+			{
+				return relation2;
+			}
+
+			return new ProjectRelation()
+			{
+				LowerProject = lowerProject,
+				LowerProjectId = lowerProject.Id,
+				HigherProject = higherProject,
+				HigherProjectId = higherProject.Id
+			};
 		}
 
 		public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
@@ -349,6 +360,16 @@ namespace Havit.GoranG3.Model.Projects
 			if (this.AllParentsAndMeRelations.Count() != this.AllParentsAndMeRelations.Distinct(new ProjektRelationEqualityComparer()).Count())
 			{
 				yield return new ValidationResult($"Duplicate items in {nameof(AllChildrenAndMeRelations)} not allowed.");
+			}
+
+			if (this.AllChildrenAndMeRelations.Any(pr => pr.HigherProject != this))
+			{
+				yield return new ValidationResult($"Invalid item in {nameof(AllChildrenAndMeRelations)} - {nameof(ProjectRelation.HigherProject)} not equal to this.");
+			}
+
+			if (this.AllParentsAndMeRelations.Any(pr => pr.LowerProject != this))
+			{
+				yield return new ValidationResult($"Invalid item in {nameof(AllParentsAndMeRelations)} - {nameof(ProjectRelation.LowerProject)} not equal to this.");
 			}
 		}
 

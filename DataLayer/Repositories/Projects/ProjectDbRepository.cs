@@ -10,11 +10,17 @@ using Havit.Data.EntityFrameworkCore.Patterns.SoftDeletes;
 using Havit.Data.Patterns.DataEntries;
 using Havit.Data.Patterns.DataLoaders;
 using Havit.GoranG3.Model.Projects;
+using Microsoft.EntityFrameworkCore;
 
 namespace Havit.GoranG3.DataLayer.Repositories.Projects
 {
 	public partial class ProjectDbRepository : IProjectRepository
 	{
+		public List<Project> GetAllIncludingDeleted()
+		{
+			return DataWithDeleted.Include(GetLoadReferences).ToList();
+		}
+
 		protected override IEnumerable<Expression<Func<Project, object>>> GetLoadReferences()
 		{
 			yield return (Project p) => p.AllChildrenAndMeRelations;

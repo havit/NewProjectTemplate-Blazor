@@ -16,8 +16,8 @@ namespace Havit.GoranG3.IntegrationTests.Entities
 	[TestClass]
 	public class ProjectRelationTests : IntegrationTestBase
 	{
-		//[TestMethod]
-		public void ProjectRelations_SimpleProjectLevel1()
+		[TestMethod]
+		public void ProjectRelations_FirstLevelProject()
 		{
 			// arrange
 			var projectEntries = ServiceProvider.GetRequiredService<IProjectEntries>();
@@ -37,6 +37,5 @@ namespace Havit.GoranG3.IntegrationTests.Entities
 			// assert
 			Assert.AreNotEqual(default(int), project.Id);
 		}
-
 	}
 }
