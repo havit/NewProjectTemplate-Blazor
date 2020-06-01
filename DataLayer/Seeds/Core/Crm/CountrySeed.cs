@@ -21,8 +21,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 					UiOrder = 1,
 					Localizations =
 					{
-						new CountryLocalization {LanguageId = (int)Language.Entry.Czech, Name = "Česká republika" },
-						new CountryLocalization {LanguageId = (int)Language.Entry.English, Name = "Czech Republic" }
+						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Česká republika" },
+						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Czech Republic" }
 					}
 				},
 				new Country()
@@ -33,8 +33,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 					UiOrder = 2,
 					Localizations =
 					{
-						new CountryLocalization {LanguageId = (int)Language.Entry.Czech, Name = "Slovensko" },
-						new CountryLocalization {LanguageId = (int)Language.Entry.English, Name = "Slovakia" }
+						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Slovensko" },
+						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Slovakia" }
 					}
 				},
 				new Country()
@@ -45,8 +45,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 					UiOrder = 3,
 					Localizations =
 					{
-						new CountryLocalization {LanguageId = (int)Language.Entry.Czech, Name = "Afghánistán" },
-						new CountryLocalization {LanguageId = (int)Language.Entry.English, Name = "Afghanistan" }
+						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Afghánistán" },
+						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Afghanistan" }
 					}
 				},
 				new Country()
@@ -578,7 +578,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 					}
 				},
 				new Country()
-				{ IsoCode = "ET",
+				{
+					IsoCode = "ET",
 					IsoCode3 = "ETH",
 					PhoneCountryCode = "+251",
 					UiOrder = 48,
