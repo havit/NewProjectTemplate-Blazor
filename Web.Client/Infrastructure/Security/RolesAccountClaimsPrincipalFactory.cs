@@ -22,17 +22,20 @@ namespace Havit.GoranG3.Web.Client.Infrastructure.Security
 
 			if (account != null)
 			{
-				var roles = account.AdditionalProperties["role"] as JsonElement?;
-				if (roles?.ValueKind == JsonValueKind.Array)
+				if (account.AdditionalProperties.TryGetValue("role", out var rolesObj))
 				{
-					account.AdditionalProperties.Remove("role");
-					var claimsPrincipal = base.CreateUserAsync(account, options).Result;
-
-					foreach (JsonElement element in roles.Value.EnumerateArray())
+					var roles = rolesObj as JsonElement?;
+					if (roles?.ValueKind == JsonValueKind.Array)
 					{
-						((ClaimsIdentity)claimsPrincipal.Identity).AddClaim(new Claim("role", element.GetString()));
+						account.AdditionalProperties.Remove("role");
+						var claimsPrincipal = base.CreateUserAsync(account, options).Result;
+
+						foreach (JsonElement element in roles.Value.EnumerateArray())
+						{
+							((ClaimsIdentity)claimsPrincipal.Identity).AddClaim(new Claim("role", element.GetString()));
+						}
+						return new ValueTask<ClaimsPrincipal>(claimsPrincipal);
 					}
-					return new ValueTask<ClaimsPrincipal>(claimsPrincipal);
 				}
 			}
 
