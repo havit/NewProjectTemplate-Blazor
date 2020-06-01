@@ -71,10 +71,6 @@ namespace Havit.GoranG3.Web.Server
 			{
 				config.ResponseCompressionLevel = System.IO.Compression.CompressionLevel.Optimal;
 			});
-			//services.AddGrpcWeb(options =>
-			//{
-			//	options.GrpcWebEnabled = true;
-			//});
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -105,7 +101,7 @@ namespace Havit.GoranG3.Web.Server
 			app.UseIdentityServer();
 			app.UseAuthorization();
 
-			app.UseGrpcWeb();
+			app.UseGrpcWeb(new GrpcWebOptions() { DefaultEnabled = true });
 
 			app.UseEndpoints(endpoints =>
 			{
