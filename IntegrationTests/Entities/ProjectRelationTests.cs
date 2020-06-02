@@ -23,10 +23,7 @@ namespace Havit.GoranG3.IntegrationTests.Entities
 			var projectEntries = ServiceProvider.GetRequiredService<IProjectEntries>();
 			var unitOfWork = ServiceProvider.GetRequiredService<IUnitOfWork>();
 
-			var project = new Project()
-			{
-				Parent = projectEntries.Root
-			};
+			var project = new Project(projectEntries.Root);
 
 			Debug.Assert(object.ReferenceEquals(project.AllChildrenAndMeRelations.Single(), project.AllParentsAndMeRelations.Single(r => (r.HigherProject == project) && (r.LowerProject == project))));
 
@@ -35,7 +32,7 @@ namespace Havit.GoranG3.IntegrationTests.Entities
 			unitOfWork.Commit();
 
 			// assert
-			Assert.AreNotEqual(default(int), project.Id);
+			Assert.AreNotEqual(default, project.Id);
 		}
 	}
 }

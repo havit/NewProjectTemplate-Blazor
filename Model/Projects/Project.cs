@@ -186,13 +186,46 @@ namespace Havit.GoranG3.Model.Projects
 			}
 		}
 
-		public Project()
+		/// <summary>
+		/// Constructor which is called by EF Core when creating new instance loaded from DB.
+		/// </summary>
+		private Project() : this(isNew: false)
+		{
+		}
+
+		/// <summary>
+		/// Constructor, which is called from CreateRootProject() static method.
+		/// </summary>
+		private Project(int id) : this(isNew: true)
+		{
+			this.Id = id;
+		}
+
+		public Project(Project parent) : this(isNew: true, parent)
+		{
+		}
+
+		/// <summary>
+		/// Main implementation constructor.
+		/// </summary>
+		/// <param name="isNew">indicates new project (false = loaded by EF Core)</param>
+		/// <param name="parent">parent to set (optional)</param>
+		private Project(bool isNew, Project parent = null)
 		{
 			this.Children = new FilteringCollection<Project>(this.ChildrenIncludingDeleted, p => p.Deleted is null);
 
-			ProjectRelation andMeRelation = new ProjectRelation() { HigherProject = this, LowerProject = this };
-			this.AllChildrenAndMeRelations.Add(andMeRelation);
-			this.AllParentsAndMeRelations.Add(andMeRelation);
+			if (isNew)
+			{
+				ProjectRelation andMeRelation = new ProjectRelation() { HigherProject = this, LowerProject = this };
+				this.AllChildrenAndMeRelations.Add(andMeRelation);
+				this.AllParentsAndMeRelations.Add(andMeRelation);
+
+			}
+
+			if (parent != null)
+			{
+				this.Parent = parent;
+			}
 		}
 
 		private void UpdateProjectManagerEffective() // G2
@@ -373,6 +406,11 @@ namespace Havit.GoranG3.Model.Projects
 			}
 		}
 
+		public static Project CreateRootProject()
+		{
+			return new Project((int)Project.Entry.Root);
+		}
+
 		public enum Entry
 		{
 			Root = -1
@@ -386,7 +424,7 @@ namespace Havit.GoranG3.Model.Projects
 				{
 					return false;
 				}
-				if ((x.HigherProjectId == y.LowerProjectId)	|| (x.HigherProject == y.HigherProject))
+				if ((x.HigherProjectId == y.LowerProjectId) || (x.HigherProject == y.HigherProject))
 				{
 					return true;
 				}

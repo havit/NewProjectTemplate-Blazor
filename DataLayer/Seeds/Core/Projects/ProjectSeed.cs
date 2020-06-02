@@ -31,14 +31,11 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Projects
 			}
 			catch (ObjectNotFoundException)
 			{
-				var root = new Project()
-				{
-					Id = (int)Project.Entry.Root,
-					IsActive = true,
-					Name = "ROOT_SYSTEM_PROJECT",
-					ProjectCode = "ROOT",
-					MigrationId = -1
-				};
+				var root = Project.CreateRootProject();
+				root.IsActive = true;
+				root.Name = "ROOT_SYSTEM_PROJECT";
+				root.ProjectCode = "ROOT";
+				root.MigrationId = -1;
 
 				unitOfWork.AddForInsert(root);
 				unitOfWork.Commit();

@@ -18,10 +18,10 @@ namespace Havit.GoranG3.ModelTests.Projects
 		public void Project_Hierarchy_NewProjects()
 		{
 			// arrange
-			var root = new Project() { Id = (int)Project.Entry.Root };
+			var root = Project.CreateRootProject();
 
 			// act
-			var project1 = new Project() { Parent = root };
+			var project1 = new Project(root);
 
 			// assert
 			Assert.IsTrue(project1.AllParentsAndMe.Contains(root));
@@ -41,10 +41,10 @@ namespace Havit.GoranG3.ModelTests.Projects
 		public void Project_Hierarchy_ProjectRelationsIdentity()
 		{
 			// arrange
-			var root = new Project() { Id = (int)Project.Entry.Root };
+			var root = Project.CreateRootProject();
 
 			// act
-			var project1 = new Project() { Parent = root };
+			var project1 = new Project(root);
 
 			// assert
 			var rootRelation = root.AllChildrenAndMeRelations.Single(pr => pr.LowerProject == project1);
@@ -56,11 +56,11 @@ namespace Havit.GoranG3.ModelTests.Projects
 		public void Project_Hierarchy_ParentChange()
 		{
 			// arrange
-			var root = new Project() { Id = (int)Project.Entry.Root };
-			var project1 = new Project() { Parent = root };
-			var project11 = new Project() { Parent = project1 };
-			var project12 = new Project() { Parent = project1 };
-			var project2 = new Project() { Parent = root };
+			var root = Project.CreateRootProject();
+			var project1 = new Project(root);
+			var project11 = new Project(project1);
+			var project12 = new Project(project1);
+			var project2 = new Project(root);
 
 			// act
 			project1.Parent = project2;
@@ -77,8 +77,9 @@ namespace Havit.GoranG3.ModelTests.Projects
 		public void Project_IsActiveEffective_Self()
 		{
 			// arrange
-			var root = new Project() { Id = (int)Project.Entry.Root, IsActive = true };
-			var project1 = new Project() { Parent = root };
+			var root = Project.CreateRootProject();
+			root.IsActive = true;
+			var project1 = new Project(root);
 
 			// act
 			project1.IsActive = false;
@@ -92,9 +93,10 @@ namespace Havit.GoranG3.ModelTests.Projects
 		public void Project_IsActiveEffective_Inheritance()
 		{
 			// arrange
-			var root = new Project() { Id = (int)Project.Entry.Root, IsActive = true };
-			var project1 = new Project() { Parent = root };
-			var project11 = new Project() { Parent = project1 };
+			var root = Project.CreateRootProject();
+			root.IsActive = true;
+			var project1 = new Project(root);
+			var project11 = new Project(project1);
 
 			// act
 			project1.IsActive = false;
@@ -108,10 +110,11 @@ namespace Havit.GoranG3.ModelTests.Projects
 		public void Project_IsActiveEffective_HierarchyChange()
 		{
 			// arrange
-			var root = new Project() { Id = (int)Project.Entry.Root, IsActive = true };
-			var project1 = new Project() { Parent = root, IsActive = false };
-			var project11 = new Project() { Parent = project1 };
-			var project2 = new Project() { Parent = root };
+			var root = Project.CreateRootProject();
+			root.IsActive = true;
+			var project1 = new Project(root);
+			var project11 = new Project(project1);
+			var project2 = new Project(root);
 
 			// act
 			project11.Parent = project2;
@@ -125,8 +128,8 @@ namespace Havit.GoranG3.ModelTests.Projects
 		{
 			// arrange
 			var user1 = new User();
-			var root = new Project() { Id = (int)Project.Entry.Root };
-			var project1 = new Project() { Parent = root };
+			var root = Project.CreateRootProject();
+			var project1 = new Project(root);
 
 			// act
 			project1.ProjectManager = user1;
@@ -140,9 +143,9 @@ namespace Havit.GoranG3.ModelTests.Projects
 		{
 			// arrange
 			var user1 = new User();
-			var root = new Project() { Id = (int)Project.Entry.Root };
-			var project1 = new Project() { Parent = root };
-			var project11 = new Project() { Parent = project1 };
+			var root = Project.CreateRootProject();
+			var project1 = new Project(root);
+			var project11 = new Project(project1);
 
 			// act
 			project1.ProjectManager = user1;
@@ -157,10 +160,12 @@ namespace Havit.GoranG3.ModelTests.Projects
 			// arrange
 			var user1 = new User();
 			var user2 = new User();
-			var root = new Project() { Id = (int)Project.Entry.Root };
-			var project1 = new Project() { Parent = root, ProjectManager = user1 };
-			var project11 = new Project() { Parent = project1 };
-			var project2 = new Project() { Parent = root, ProjectManager = user2 };
+			var root = Project.CreateRootProject();
+			var project1 = new Project(root);
+			project1.ProjectManager = user1;
+			var project11 = new Project(project1);
+			var project2 = new Project(root);
+			project2.ProjectManager = user2;
 
 			// act
 			project11.Parent = project2;
@@ -174,8 +179,8 @@ namespace Havit.GoranG3.ModelTests.Projects
 		{
 			// arrange
 			var contact1 = new Contact();
-			var root = new Project() { Id = (int)Project.Entry.Root };
-			var project1 = new Project() { Parent = root };
+			var root = Project.CreateRootProject();
+			var project1 = new Project(root);
 
 			// act
 			project1.BusinessPartner = contact1;
@@ -189,9 +194,9 @@ namespace Havit.GoranG3.ModelTests.Projects
 		{
 			// arrange
 			var contact1 = new Contact();
-			var root = new Project() { Id = (int)Project.Entry.Root };
-			var project1 = new Project() { Parent = root };
-			var project11 = new Project() { Parent = project1 };
+			var root = Project.CreateRootProject();
+			var project1 = new Project(root);
+			var project11 = new Project(project1);
 
 			// act
 			project1.BusinessPartner = contact1;
@@ -206,10 +211,12 @@ namespace Havit.GoranG3.ModelTests.Projects
 			// arrange
 			var contact1 = new Contact();
 			var contact2 = new Contact();
-			var root = new Project() { Id = (int)Project.Entry.Root };
-			var project1 = new Project() { Parent = root, BusinessPartner = contact1 };
-			var project11 = new Project() { Parent = project1 };
-			var project2 = new Project() { Parent = root, BusinessPartner = contact2 };
+			var root = Project.CreateRootProject();
+			var project1 = new Project(root);
+			project1.BusinessPartner = contact1;
+			var project11 = new Project(project1);
+			var project2 = new Project(root);
+			project2.BusinessPartner = contact2;
 
 			// act
 			project11.Parent = project2;
@@ -222,8 +229,8 @@ namespace Havit.GoranG3.ModelTests.Projects
 		public void Project_OverheadToPersonalCostsRatioEffective_Self()
 		{
 			// arrange
-			var root = new Project() { Id = (int)Project.Entry.Root };
-			var project1 = new Project() { Parent = root };
+			var root = Project.CreateRootProject();
+			var project1 = new Project(root);
 
 			// act
 			project1.OverheadToPersonalCostsRatio = 0.99m;
@@ -236,9 +243,9 @@ namespace Havit.GoranG3.ModelTests.Projects
 		public void Project_OverheadToPersonalCostsRatioEffective_Inheritance()
 		{
 			// arrange
-			var root = new Project() { Id = (int)Project.Entry.Root };
-			var project1 = new Project() { Parent = root };
-			var project11 = new Project() { Parent = project1 };
+			var root = Project.CreateRootProject();
+			var project1 = new Project(root);
+			var project11 = new Project(project1);
 
 			// act
 			project1.OverheadToPersonalCostsRatio = 0.99m;
@@ -251,10 +258,12 @@ namespace Havit.GoranG3.ModelTests.Projects
 		public void Project_OverheadToPersonalCostsRatioEffective_HierarchyChange()
 		{
 			// arrange
-			var root = new Project() { Id = (int)Project.Entry.Root };
-			var project1 = new Project() { Parent = root, OverheadToPersonalCostsRatio = 0.1m };
-			var project11 = new Project() { Parent = project1 };
-			var project2 = new Project() { Parent = root, OverheadToPersonalCostsRatio = 0.2m };
+			var root = Project.CreateRootProject();
+			var project1 = new Project(root);
+			project1.OverheadToPersonalCostsRatio = 0.1m;
+			var project11 = new Project(project1);
+			var project2 = new Project(root);
+			project2.OverheadToPersonalCostsRatio = 0.2m;
 
 			// act
 			project11.Parent = project2;

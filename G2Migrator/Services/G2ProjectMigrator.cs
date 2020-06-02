@@ -42,10 +42,15 @@ namespace Havit.GoranG3.G2Migrator.Services
 				Console.Write(reader["ProjektID"]);
 				var projektID = reader.GetValue<int>("ProjektID");
 				var project = projects.Find(p => p.MigrationId == projektID);
+				Project parentProject = null;
+				if (reader["ParentID"] != DBNull.Value)
+				{
+					parentProject = projects.Find(p => p.MigrationId == (int)reader["ParentID"]);
+				}
 				if (project == null)
 				{
 					Console.WriteLine(" INSERT");
-					project = new Project();
+					project = new Project(parentProject);
 					project.MigrationId = projektID;
 					projects.Add(project);
 					unitOfWork.AddForInsert(project);
@@ -56,10 +61,7 @@ namespace Havit.GoranG3.G2Migrator.Services
 					unitOfWork.AddForUpdate(project);
 				}
 
-				if (reader["ParentID"] != DBNull.Value)
-				{
-					project.Parent = projects.Find(p => p.MigrationId == (int)reader["ParentID"]);
-				}
+				project.Parent = parentProject;
 				project.ProjectCode = reader.GetValue<string>("Kod");
 				project.Name = reader.GetValue<string>("Nazev");
 				// TODO reader["Poznamka"] => AttridaObject.AttridaObjectComments.Add()
@@ -76,8 +78,6 @@ namespace Havit.GoranG3.G2Migrator.Services
 				// TODO project.BusinessPartnerId
 				project.Created = reader.GetValue<DateTime>("Created");
 				project.Deleted = reader.GetValue<DateTime?>("Deleted");
-
-				unitOfWork.Commit(); // test
 			}
 
 			unitOfWork.Commit();
