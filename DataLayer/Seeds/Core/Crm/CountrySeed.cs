@@ -2797,7 +2797,7 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Zimbabwe" },
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Zimbabwe" }
 					}
-				},
+				}
 			};
 
 			Seed(For(countries).PairBy(country => country.IsoCode3).WithoutUpdate());
