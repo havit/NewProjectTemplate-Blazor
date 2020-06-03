@@ -10,13 +10,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Havit.Data.EntityFrameworkCore;
+using Havit.Data.EntityFrameworkCore.Patterns.DataSources;
+using Havit.Data.EntityFrameworkCore.Patterns.SoftDeletes;
 
-namespace Havit.GoranG3.Model.Metadata.Projects
+namespace Havit.GoranG3.DataLayer.DataSources.Finance
 {
 	[System.CodeDom.Compiler.GeneratedCode("Havit.Data.EntityFrameworkCore.CodeGenerator", "1.0")]
-	public static class ProjectPhaseMetadata
+	public partial class VatRateDbDataSource : DbDataSource<Havit.GoranG3.Model.Finance.VatRate>, IVatRateDataSource
 	{
-		public const int KodMaxLength = 20;
-		public const int NazevMaxLength = 100;
+		public VatRateDbDataSource(IDbContext dbContext, ISoftDeleteManager softDeleteManager)
+			: base(dbContext, softDeleteManager)
+		{
+		}
 	}
 }

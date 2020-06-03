@@ -11,12 +11,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Havit.GoranG3.Model.Metadata.Projects
+namespace Havit.GoranG3.Model.Metadata.Finance
 {
 	[System.CodeDom.Compiler.GeneratedCode("Havit.Data.EntityFrameworkCore.CodeGenerator", "1.0")]
-	public static class ProjectPhaseMetadata
+	public static class VatRateMetadata
 	{
-		public const int KodMaxLength = 20;
-		public const int NazevMaxLength = 100;
 	}
 }
