@@ -14,8 +14,10 @@ namespace Havit.GoranG3.Entity.Configurations.Security
 	{
 		public void Configure(EntityTypeBuilder<User> builder)
 		{
-			builder.Property(bc => bc.Username).HasColumnType($"nvarchar({UserMetadata.UsernameMaxLength}) COLLATE Latin1_General_CI_AI");
-			builder.Property(bc => bc.Email).HasColumnType($"nvarchar({UserMetadata.EmailMaxLength}) COLLATE Latin1_General_CI_AI");
+			builder.HasIndex(user => user.NormalizedUsername).HasFilter("Deleted IS NULL").IsUnique();
+			builder.HasIndex(user => user.NormalizedEmail).HasFilter("Deleted IS NULL").IsUnique();
+			builder.Property(user => user.Username).HasColumnType($"nvarchar({UserMetadata.UsernameMaxLength}) COLLATE Latin1_General_CI_AI");
+			builder.Property(user => user.Email).HasColumnType($"nvarchar({UserMetadata.EmailMaxLength}) COLLATE Latin1_General_CI_AI");
 		}
 	}
 }

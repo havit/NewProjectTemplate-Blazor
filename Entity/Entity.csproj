@@ -10,6 +10,8 @@
 	<ItemGroup>
 	  <Compile Remove="Migrations\20200528224833_ProjectMigrationId.cs" />
 	  <Compile Remove="Migrations\20200528224833_ProjectMigrationId.Designer.cs" />
+	  <Compile Remove="Migrations\20200603224848_UserMigration.cs" />
+	  <Compile Remove="Migrations\20200603224848_UserMigration.Designer.cs" />
 	</ItemGroup>
 
 	<ItemGroup>

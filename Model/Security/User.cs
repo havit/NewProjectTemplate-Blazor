@@ -12,7 +12,16 @@ namespace Havit.GoranG3.Model.Security
 		public int Id { get; set; }
 
 		[MaxLength(50)]
-		public string Username { get; set; }
+		public string Username
+		{
+			get => _username;
+			set
+			{
+				_username = value;
+				this.NormalizedUsername = value?.ToUpper();
+			}
+		}
+		private string _username;
 
 		/// <summary>
 		/// Normalized Username = UpperCase
@@ -20,8 +29,21 @@ namespace Havit.GoranG3.Model.Security
 		[MaxLength(50)]
 		public string NormalizedUsername { get; set; }
 
+		[MaxLength(100)]
+		public string DisplayName { get; set; }
+
+
 		[MaxLength(255)]
-		public string Email { get; set; }
+		public string Email
+		{
+			get => _email;
+			set
+			{
+				_email = value;
+				this.NormalizedEmail = value?.ToUpper();
+			}
+		}
+		private string _email;
 
 		/// <summary>
 		/// Normalized Email = UpperCase
@@ -60,8 +82,11 @@ namespace Havit.GoranG3.Model.Security
 
 		public List<UserRole> UserRoles { get; } = new List<UserRole>();
 
-		public DateTime Created { get; set; }
+		public bool Disabled { get; set; } = false;
 
+		public int? MigrationId { get; set; }
+
+		public DateTime Created { get; set; }
 		public DateTime? Deleted { get; set; }
 
 		public bool IsInRole(Role.Entry roleEntry)

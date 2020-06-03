@@ -10,7 +10,7 @@ using Havit.GoranG3.Model.Projects;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Options;
 
-namespace Havit.GoranG3.G2Migrator.Services
+namespace Havit.GoranG3.G2Migrator.Services.Projects
 {
 	[Service]
 	public class G2ProjectMigrator : IG2ProjectMigrator
@@ -39,8 +39,8 @@ namespace Havit.GoranG3.G2Migrator.Services
 
 			while (reader.Read())
 			{
-				Console.Write(reader["ProjektID"]);
 				var projektID = reader.GetValue<int>("ProjektID");
+				Console.Write($"PROJECT {projektID}: ");
 				var project = projects.Find(p => p.MigrationId == projektID);
 				Project parentProject = null;
 				if (reader["ParentID"] != DBNull.Value)
@@ -67,7 +67,7 @@ namespace Havit.GoranG3.G2Migrator.Services
 				// TODO reader["Poznamka"] => AttridaObject.AttridaObjectComments.Add()
 				// TODO project.ProjectManagerId
 				project.PaymentDueDaysDefault = reader.GetValue<int?>("SplatnostPrijem");
-				project.OverheadToPersonalCostsRatio = (reader.GetValue<bool?>("UplatnovatRezijniPrirazkuOsobnichNakladu") == true) ? (decimal?)null : 0m;
+				project.OverheadToPersonalCostsRatio = reader.GetValue<bool?>("UplatnovatRezijniPrirazkuOsobnichNakladu") == true ? (decimal?)null : 0m;
 				project.IsActive = reader.GetValue<int?>("StavProjektuID") switch
 				{
 					1 => true,
@@ -78,6 +78,7 @@ namespace Havit.GoranG3.G2Migrator.Services
 				// TODO project.BusinessPartnerId
 				project.Created = reader.GetValue<DateTime>("Created");
 				project.Deleted = reader.GetValue<DateTime?>("Deleted");
+				unitOfWork.Commit();
 			}
 
 			unitOfWork.Commit();
