@@ -78,7 +78,6 @@ namespace Havit.GoranG3.G2Migrator.Services.Projects
 				// TODO project.BusinessPartnerId
 				project.Created = reader.GetValue<DateTime>("Created");
 				project.Deleted = reader.GetValue<DateTime?>("Deleted");
-				unitOfWork.Commit();
 			}
 
 			unitOfWork.Commit();

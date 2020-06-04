@@ -28,9 +28,12 @@ namespace Havit.GoranG3.Model.Projects
 			get => _parent;
 			set
 			{
-				ProcessParentChange(_parent, value);
-				_parent = value;
-				UpdateEffectiveValues();
+				if (value != _parent)
+				{
+					ProcessParentChange(_parent, value);
+					_parent = value;
+					UpdateEffectiveValues();
+				}
 			}
 		}
 		private Project _parent;
@@ -216,10 +219,9 @@ namespace Havit.GoranG3.Model.Projects
 
 			if (isNew)
 			{
-				ProjectRelation andMeRelation = new ProjectRelation() { HigherProject = this, LowerProject = this };
+				ProjectRelation andMeRelation = GetOrCreateProjectRelation(this, this);
 				this.AllChildrenAndMeRelations.Add(andMeRelation);
 				this.AllParentsAndMeRelations.Add(andMeRelation);
-
 			}
 
 			if (parent != null)
@@ -285,6 +287,7 @@ namespace Havit.GoranG3.Model.Projects
 		private void ProcessParentChange(Project oldParent, Project newParent) // G2
 		{
 			Contract.Requires<ArgumentNullException>(newParent != null, nameof(newParent));
+			Contract.Requires<InvalidOperationException>(newParent != oldParent, "This method is not intended to be called when the parent is not being changed.");
 
 			Project tempProject;
 
