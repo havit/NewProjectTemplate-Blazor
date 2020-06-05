@@ -19,14 +19,14 @@
 .drawer.hide {
   right: calc(-1 * var(--drawer-width)); }
 
-.hx-tag-input input:focus {
-  outline: none; }
+.hx-tag-input {
+  position: relative; }
+  .hx-tag-input input:focus {
+    outline: none; }
 
-.grid {
-  overflow: hidden; }
-  .grid .selected {
-    background-color: #f2f9ff;
-    color: #2e75f0; }
+.grid .selected {
+  background-color: #f2f9ff;
+  color: #2e75f0; }
 
 .hx-list-layout .hx-list-header {
   position: sticky;
