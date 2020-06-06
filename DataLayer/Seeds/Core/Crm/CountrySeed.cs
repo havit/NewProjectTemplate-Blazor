@@ -471,7 +471,7 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 				},
 				new Country()
 				{
-					IsoCode = "SC",
+					IsoCode = "ME",
 					IsoCode3 = "MNE",
 					PhoneCountryCode = "+248",
 					UiOrder = 39,
@@ -841,8 +841,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Guyana" }
 					}
 				},
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "HT",
 					IsoCode3 = "HTI",
 					PhoneCountryCode = "+509",
@@ -853,8 +853,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Haiti" }
 					}
 				},
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "HM",
 					IsoCode3 = "HMD",
 					PhoneCountryCode = "",
@@ -865,8 +865,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Heard and McDonald Islands" }
 					}
 				},
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "HN",
 					IsoCode3 = "HND",
 					PhoneCountryCode = "+504",
@@ -877,8 +877,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Honduras" }
 					}
 				},
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "HK",
 					IsoCode3 = "HKG",
 					PhoneCountryCode = "+852",
@@ -889,8 +889,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Hong Kong" }
 					}
 				},
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "IN",
 					IsoCode3 = "IND",
 					PhoneCountryCode = "+91",
@@ -901,8 +901,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "India" }
 					}
 				},
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "ID",
 					IsoCode3 = "IDN",
 					PhoneCountryCode = "+62",
@@ -913,8 +913,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Indonesia" }
 					}
 				},
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "IQ",
 					IsoCode3 = "IRQ",
 					PhoneCountryCode = "+964",
@@ -924,9 +924,9 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Irák" },
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Irak" }
 					}
-				}, 
-				new Country() 
-				{ 
+				},
+				new Country()
+				{
 					IsoCode = "IR",
 					IsoCode3 = "IRN",
 					PhoneCountryCode = "+98",
@@ -937,8 +937,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Iran" }
 					}
 				},
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "IE",
 					IsoCode3 = "IRL",
 					PhoneCountryCode = "+353",
@@ -949,8 +949,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Ireland" }
 					}
 				},
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "IS",
 					IsoCode3 = "ISL",
 					PhoneCountryCode = "+354",
@@ -961,8 +961,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Iceland" }
 					}
 				},
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "IT",
 					IsoCode3 = "ITA",
 					PhoneCountryCode = "+39",
@@ -973,8 +973,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Italy" }
 					}
 				},
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "IL",
 					IsoCode3 = "ISR",
 					PhoneCountryCode = "+972",
@@ -984,9 +984,9 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Izrael" },
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Israel" }
 					}
-				}, 
-				new Country() 
-				{ 
+				},
+				new Country()
+				{
 					IsoCode = "JM",
 					IsoCode3 = "JAM",
 					PhoneCountryCode = "+1-876",
@@ -997,8 +997,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Jamaica" }
 					}
 				},
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "JP",
 					IsoCode3 = "JPN",
 					PhoneCountryCode = "+81",
@@ -1009,8 +1009,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Japan" }
 					}
 				},
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "YE",
 					IsoCode3 = "YEM",
 					PhoneCountryCode = "+967",
@@ -1020,9 +1020,9 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Jemen" },
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Yemen" }
 					}
-				}, 
-				new Country() 
-				{ 
+				},
+				new Country()
+				{
 					IsoCode = "ZA",
 					IsoCode3 = "ZAF",
 					PhoneCountryCode = "+27",
@@ -1033,8 +1033,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "South Africa" }
 					}
 				},
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "GS",
 					IsoCode3 = "SGS",
 					PhoneCountryCode = "",
@@ -1045,8 +1045,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "S. Georgia and S. Sandwitch Islands" }
 					}
 				},
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "JO",
 					IsoCode3 = "JOR",
 					PhoneCountryCode = "+962",
@@ -1057,8 +1057,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Jordan" }
 					}
 				},
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "KY",
 					IsoCode3 = "CYM",
 					PhoneCountryCode = "+1-345",
@@ -1069,8 +1069,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Cayman Islands" }
 					}
 				},
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "KH",
 					IsoCode3 = "KHM",
 					PhoneCountryCode = "+855",
@@ -1081,8 +1081,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Cambodia" }
 					}
 				},
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "CM",
 					IsoCode3 = "CMR",
 					PhoneCountryCode = "+237",
@@ -1093,8 +1093,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Cameroon" }
 					}
 				},
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "CA",
 					IsoCode3 = "CAN",
 					PhoneCountryCode = "+1",
@@ -1105,8 +1105,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Canada" }
 					}
 				},
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "CV",
 					IsoCode3 = "CPV",
 					PhoneCountryCode = "+238",
@@ -1117,8 +1117,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Cape Verde" }
 					}
 				},
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "QA",
 					IsoCode3 = "QAT",
 					PhoneCountryCode = "+974",
@@ -1129,8 +1129,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Qatar" }
 					}
 				},
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "KZ",
 					IsoCode3 = "KAZ",
 					PhoneCountryCode = "+7",
@@ -1140,9 +1140,9 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Kazachstán" },
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Kazakhstan" }
 					}
-				}, 
-				new Country() 
-				{ 
+				},
+				new Country()
+				{
 					IsoCode = "KE",
 					IsoCode3 = "KEN",
 					PhoneCountryCode = "+254",
@@ -1153,8 +1153,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Kenya" }
 					}
 				},
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "KI",
 					IsoCode3 = "KIR",
 					PhoneCountryCode = "+686",
@@ -1165,8 +1165,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Kiribati" }
 					}
 				},
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "CC",
 					IsoCode3 = "CCK",
 					PhoneCountryCode = "+61",
@@ -1177,8 +1177,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Cocos (Keeling) Islands" }
 					}
 				},
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "CO",
 					IsoCode3 = "COL",
 					PhoneCountryCode = "+57",
@@ -1189,8 +1189,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Colombia" }
 					}
 				},
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "KM",
 					IsoCode3 = "COM",
 					PhoneCountryCode = "+269",
@@ -1200,10 +1200,10 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Komory" },
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Comoros" }
 					}
-				}, 
-				new Country() 
-				{ 
-					IsoCode = "CG",
+				},
+				new Country()
+				{
+					IsoCode = "CD",
 					IsoCode3 = "COD",
 					PhoneCountryCode = "+242",
 					UiOrder = 100,
@@ -1213,8 +1213,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Congo, Democratic People's Rep" }
 					}
 				},
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "CG",
 					IsoCode3 = "COG",
 					PhoneCountryCode = "+242",
@@ -1225,8 +1225,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Congo, Republic of" }
 					}
 				},
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "KP",
 					IsoCode3 = "PRK",
 					PhoneCountryCode = "+850",
@@ -1237,8 +1237,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Korea (DPRK)" }
 					}
 				},
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "KR",
 					IsoCode3 = "KOR",
 					PhoneCountryCode = "+82",
@@ -1249,8 +1249,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Korea, Republic of" }
 					}
 				},
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "CR",
 					IsoCode3 = "CRI",
 					PhoneCountryCode = "+506",
@@ -1261,8 +1261,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Costa Rica" }
 					}
 				},
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "CU",
 					IsoCode3 = "CUB",
 					PhoneCountryCode = "+53",
@@ -1273,8 +1273,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Cuba" }
 					}
 				},
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "KW",
 					IsoCode3 = "KWT",
 					PhoneCountryCode = "+965",
@@ -1285,8 +1285,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Kuwait" }
 					}
 				},
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "CY",
 					IsoCode3 = "CYP",
 					PhoneCountryCode = "+357",
@@ -1297,8 +1297,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Cyprus" }
 					}
 				},
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "KG",
 					IsoCode3 = "KGZ",
 					PhoneCountryCode = "+996",
@@ -1309,8 +1309,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Kyrgyzstan" },
 					}
 				},
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "LA",
 					IsoCode3 = "LAO",
 					PhoneCountryCode = "+856",
@@ -1321,8 +1321,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Lao People's Democratic Rep" }
 					}
 				},
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "LS",
 					IsoCode3 = "LSO",
 					PhoneCountryCode = "+266",
@@ -1332,9 +1332,9 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Lesotho" },
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Lesotho" }
 					}
-				}, 
-				new Country() 
-				{ 
+				},
+				new Country()
+				{
 					IsoCode = "LB",
 					IsoCode3 = "LBN",
 					PhoneCountryCode = "+961",
@@ -1345,8 +1345,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Lebanon" }
 					}
 				},
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "LR",
 					IsoCode3 = "LBR",
 					PhoneCountryCode = "+231",
@@ -1357,8 +1357,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Liberia" }
 					}
 				},
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "LY",
 					IsoCode3 = "LBY",
 					PhoneCountryCode = "+218",
@@ -1369,8 +1369,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Libyan Arab Jamahiriya" }
 					}
 				},
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "LI",
 					IsoCode3 = "LIE",
 					PhoneCountryCode = "+423",
@@ -1380,9 +1380,9 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Lichtenštejnsko" },
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Liechtenstein" }
 					}
-				}, 
-				new Country() 
-				{ 
+				},
+				new Country()
+				{
 					IsoCode = "LT",
 					IsoCode3 = "LTU",
 					PhoneCountryCode = "+370",
@@ -1393,8 +1393,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Lithuania" }
 					}
 				},
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "LV",
 					IsoCode3 = "LVA",
 					PhoneCountryCode = "+371",
@@ -1405,8 +1405,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Latvia" }
 					}
 				},
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "LU",
 					IsoCode3 = "LUX",
 					PhoneCountryCode = "+352",
@@ -1417,8 +1417,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Luxembourg" }
 					}
 				},
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "MO",
 					IsoCode3 = "MAC",
 					PhoneCountryCode = "+853",
@@ -1429,8 +1429,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Macau" }
 					}
 				},
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "MG",
 					IsoCode3 = "MDG",
 					PhoneCountryCode = "+261",
@@ -1441,8 +1441,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Madagascar" }
 					}
 				},
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "HU",
 					IsoCode3 = "HUN",
 					PhoneCountryCode = "+36",
@@ -1453,9 +1453,9 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Hungary" }
 					}
 				},
-				new Country() 
-				{ 
-					IsoCode = "ME",
+				new Country()
+				{
+					IsoCode = "MK",
 					IsoCode3 = "MKD",
 					PhoneCountryCode = "+382",
 					UiOrder = 121,
@@ -1465,8 +1465,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Macedonia" }
 					}
 				},
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "MY",
 					IsoCode3 = "MYS",
 					PhoneCountryCode = "+60",
@@ -1477,8 +1477,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Malaysia" }
 					}
 				},
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "MW",
 					IsoCode3 = "MWI",
 					PhoneCountryCode = "+265",
@@ -1489,8 +1489,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Malawi" }
 					}
 				},
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "MV",
 					IsoCode3 = "MDV",
 					PhoneCountryCode = "+960",
@@ -1501,8 +1501,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Maldives" }
 					}
 				},
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "ML",
 					IsoCode3 = "MLI",
 					PhoneCountryCode = "+223",
@@ -1513,8 +1513,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Mali" }
 					}
 				},
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "MT",
 					IsoCode3 = "MLT",
 					PhoneCountryCode = "+356",
@@ -1525,8 +1525,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Malta" }
 					}
 				},
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "MA",
 					IsoCode3 = "MAR",
 					PhoneCountryCode = "+212",
@@ -1538,8 +1538,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 					}
 				},
 
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "MH",
 					IsoCode3 = "MHL",
 					PhoneCountryCode = "+692",
@@ -1550,8 +1550,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Marshall Islands" }
 					}
 				},
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "MQ",
 					IsoCode3 = "MTQ",
 					PhoneCountryCode = "+596",
@@ -1561,9 +1561,9 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Martinik" },
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Martinique" }
 					}
-				}, 
-				new Country() 
-				{ 
+				},
+				new Country()
+				{
 					IsoCode = "MU",
 					IsoCode3 = "MUS",
 					PhoneCountryCode = "+230",
@@ -1574,8 +1574,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Mauritius" }
 					}
 				},
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "MR",
 					IsoCode3 = "MRT",
 					PhoneCountryCode = "+222",
@@ -1586,8 +1586,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Mauritania" }
 					}
 				},
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "YT",
 					IsoCode3 = "MYT",
 					PhoneCountryCode = "+262",
@@ -1598,8 +1598,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Mayotte" }
 					}
 				},
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "MX",
 					IsoCode3 = "MEX",
 					PhoneCountryCode = "+52",
@@ -1610,8 +1610,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Mexico" }
 					}
 				},
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "FM",
 					IsoCode3 = "FSM",
 					PhoneCountryCode = "+691",
@@ -1622,8 +1622,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Micronesia, Federal State of" }
 					}
 				},
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "MD",
 					IsoCode3 = "MDA",
 					PhoneCountryCode = "+373",
@@ -1633,9 +1633,9 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Moldávie" },
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Moldova" }
 					}
-				}, 
-				new Country() 
-				{ 
+				},
+				new Country()
+				{
 					IsoCode = "MC",
 					IsoCode3 = "MCO",
 					PhoneCountryCode = "+377",
@@ -1646,8 +1646,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Monaco" }
 					}
 				},
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "MN",
 					IsoCode3 = "MNG",
 					PhoneCountryCode = "+976",
@@ -1658,8 +1658,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Mongolia" }
 					}
 				},
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "MS",
 					IsoCode3 = "MSR",
 					PhoneCountryCode = "+1-664",
@@ -1670,8 +1670,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Montserrat" }
 					}
 				},
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "MZ",
 					IsoCode3 = "MOZ",
 					PhoneCountryCode = "+258",
@@ -1682,8 +1682,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Mozambique" }
 					}
 				},
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "MM",
 					IsoCode3 = "MMR",
 					PhoneCountryCode = "+95",
@@ -1694,8 +1694,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Myanmar (Barma)" }
 					}
 				},
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "NA",
 					IsoCode3 = "NAM",
 					PhoneCountryCode = "+264",
@@ -1705,9 +1705,9 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Namibie" },
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Namibia" }
 					}
-				}, 
-				new Country() 
-				{ 
+				},
+				new Country()
+				{
 					IsoCode = "NR",
 					IsoCode3 = "NRU",
 					PhoneCountryCode = "+674",
@@ -1718,8 +1718,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Nauru" }
 					}
 				},
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "DE",
 					IsoCode3 = "DEU",
 					PhoneCountryCode = "+49",
@@ -1729,9 +1729,9 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Německo" },
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Germany" }
 					}
-				}, 
-				new Country() 
-				{ 
+				},
+				new Country()
+				{
 					IsoCode = "NP",
 					IsoCode3 = "NPL",
 					PhoneCountryCode = "+977",
@@ -1742,8 +1742,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Nepal" }
 					}
 				},
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "NE",
 					IsoCode3 = "NER",
 					PhoneCountryCode = "+227",
@@ -1754,8 +1754,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Niger" }
 					}
 				},
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "NG",
 					IsoCode3 = "NGA",
 					PhoneCountryCode = "+234",
@@ -1765,9 +1765,9 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Nigérie" },
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Nigeria" }
 					}
-				}, 
-				new Country() 
-				{ 
+				},
+				new Country()
+				{
 					IsoCode = "NI",
 					IsoCode3 = "NIC",
 					PhoneCountryCode = "+505",
@@ -1777,9 +1777,9 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Nikaragua" },
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Nicaragua" }
 					}
-				}, 
-				new Country() 
-				{ 
+				},
+				new Country()
+				{
 					IsoCode = "NU",
 					IsoCode3 = "NIU",
 					PhoneCountryCode = "+683",
@@ -1790,8 +1790,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Niue" }
 					}
 				},
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "NL",
 					IsoCode3 = "NLD",
 					PhoneCountryCode = "+31",
@@ -1802,8 +1802,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Netherlands" }
 					}
 				},
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "NO",
 					IsoCode3 = "NOR",
 					PhoneCountryCode = "+47",
@@ -1813,9 +1813,9 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Norsko" },
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Norway" }
 					}
-				}, 
-				new Country() 
-				{ 
+				},
+				new Country()
+				{
 					IsoCode = "NC",
 					IsoCode3 = "NCL",
 					PhoneCountryCode = "+687",
@@ -1825,9 +1825,9 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Nová Kaledonie" },
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "New Caledonia" }
 					}
-				}, 
-				new Country() 
-				{ 
+				},
+				new Country()
+				{
 					IsoCode = "NZ",
 					IsoCode3 = "NZL",
 					PhoneCountryCode = "+64",
@@ -1838,8 +1838,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "New Zealand" }
 					}
 				},
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "OM",
 					IsoCode3 = "OMN",
 					PhoneCountryCode = "+968",
@@ -1849,10 +1849,10 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Omán" },
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Oman" }
 					}
-				}, 
-				new Country() 
-				{ 
-					IsoCode = "MM",
+				},
+				new Country()
+				{
+					IsoCode = "IM",
 					IsoCode3 = "IMN",
 					PhoneCountryCode = "+95",
 					UiOrder = 154,
@@ -1862,8 +1862,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Isle of Man" }
 					}
 				},
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "NF",
 					IsoCode3 = "NFK",
 					PhoneCountryCode = "+672",
@@ -1874,8 +1874,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Norfolk Island" }
 					}
 				},
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "MP",
 					IsoCode3 = "MNP",
 					PhoneCountryCode = "+1-670",
@@ -1886,8 +1886,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Northern Mariana Islands" }
 					}
 				},
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "TC",
 					IsoCode3 = "TCA",
 					PhoneCountryCode = "+1-649",
@@ -1898,8 +1898,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Turks and Ciacos Islands" }
 					}
 				},
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "PK",
 					IsoCode3 = "PAK",
 					PhoneCountryCode = "+92",
@@ -1909,9 +1909,9 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Pakistán" },
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Pakistan" }
 					}
-				}, 
-				new Country() 
-				{ 
+				},
+				new Country()
+				{
 					IsoCode = "PW",
 					IsoCode3 = "PLW",
 					PhoneCountryCode = "+680",
@@ -1922,8 +1922,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Palau" }
 					}
 				},
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "PS",
 					IsoCode3 = "PSE",
 					PhoneCountryCode = "+970",
@@ -1934,8 +1934,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Palestina" }
 					}
 				},
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "PA",
 					IsoCode3 = "PAN",
 					PhoneCountryCode = "+507",
@@ -1945,9 +1945,9 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Panama" },
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Panama" }
 					}
-				}, 
-				new Country() 
-				{ 
+				},
+				new Country()
+				{
 					IsoCode = "PG",
 					IsoCode3 = "PNG",
 					PhoneCountryCode = "+675",
@@ -1957,9 +1957,9 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Papua Nová Guinea" },
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Papua New Guinea" }
 					}
-				}, 
-				new Country() 
-				{ 
+				},
+				new Country()
+				{
 					IsoCode = "PY",
 					IsoCode3 = "PRY",
 					PhoneCountryCode = "+595",
@@ -1970,8 +1970,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Paraguay" }
 					}
 				},
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "PE",
 					IsoCode3 = "PER",
 					PhoneCountryCode = "+51",
@@ -1982,8 +1982,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Peru" }
 					}
 				},
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "PN",
 					IsoCode3 = "PCN",
 					PhoneCountryCode = "",
@@ -1994,8 +1994,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Pitcairn Island" }
 					}
 				},
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "CI",
 					IsoCode3 = "CIV",
 					PhoneCountryCode = "+225",
@@ -2006,8 +2006,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Cote d'Ivoire" }
 					}
 				},
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "PL",
 					IsoCode3 = "POL",
 					PhoneCountryCode = "+48",
@@ -2017,9 +2017,9 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Polsko" },
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Poland" }
 					}
-				}, 
-				new Country() 
-				{ 
+				},
+				new Country()
+				{
 					IsoCode = "PR",
 					IsoCode3 = "PRI",
 					PhoneCountryCode = "+1-787",
@@ -2029,9 +2029,9 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Portoriko" },
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Puerto Rico" }
 					}
-				}, 
-				new Country() 
-				{ 
+				},
+				new Country()
+				{
 					IsoCode = "PT",
 					IsoCode3 = "PRT",
 					PhoneCountryCode = "+351",
@@ -2042,8 +2042,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Portugal" }
 					}
 				},
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "AT",
 					IsoCode3 = "AUT",
 					PhoneCountryCode = "+43",
@@ -2054,8 +2054,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Austria" }
 					}
 				},
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "RE",
 					IsoCode3 = "REU",
 					PhoneCountryCode = "+262",
@@ -2066,8 +2066,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Reunion Island" }
 					}
 				},
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "GQ",
 					IsoCode3 = "GNQ",
 					PhoneCountryCode = "+240",
@@ -2078,20 +2078,20 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Equatorial Guinea" }
 					}
 				},
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "RO",
 					IsoCode3 = "ROU",
-					PhoneCountryCode = "+40", 
+					PhoneCountryCode = "+40",
 					UiOrder = 173,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Rumunsko" },
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Romania" }
 					}
-				}, 
-				new Country() 
-				{ 
+				},
+				new Country()
+				{
 					IsoCode = "RU",
 					IsoCode3 = "RUS",
 					PhoneCountryCode = "+7",
@@ -2101,9 +2101,9 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Ruská federace" },
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Russian Federation" }
 					}
-				}, 
-				new Country() 
-				{ 
+				},
+				new Country()
+				{
 					IsoCode = "RW",
 					IsoCode3 = "RWA",
 					PhoneCountryCode = "+250",
@@ -2114,8 +2114,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Rwanda" }
 					}
 				},
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "GR",
 					IsoCode3 = "GRC",
 					PhoneCountryCode = "+30",
@@ -2126,8 +2126,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Greece" }
 					}
 				},
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "PM",
 					IsoCode3 = "SPM",
 					PhoneCountryCode = "+508",
@@ -2138,8 +2138,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "St. Pierre and Miquelon" }
 					}
 				},
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "SV",
 					IsoCode3 = "SLV",
 					PhoneCountryCode = "+503",
@@ -2150,8 +2150,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "El Salvador" }
 					}
 				},
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "WS",
 					IsoCode3 = "WSM",
 					PhoneCountryCode = "+685",
@@ -2162,8 +2162,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Western Samoa" }
 					}
 				},
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "SM",
 					IsoCode3 = "SMR",
 					PhoneCountryCode = "+378",
@@ -2174,8 +2174,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "San Marino" }
 					}
 				},
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "SA",
 					IsoCode3 = "SAU",
 					PhoneCountryCode = "+966",
@@ -2186,8 +2186,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Saudi Arabia" }
 					}
 				},
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "SN",
 					IsoCode3 = "SEN",
 					PhoneCountryCode = "+221",
@@ -2198,8 +2198,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Senegal" }
 					}
 				},
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "SC",
 					IsoCode3 = "SYC",
 					PhoneCountryCode = "+248",
@@ -2209,9 +2209,9 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Seychely" },
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Seychelles" }
 					}
-				}, 
-				new Country() 
-				{ 
+				},
+				new Country()
+				{
 					IsoCode = "SL",
 					IsoCode3 = "SLE",
 					PhoneCountryCode = "+232",
@@ -2221,9 +2221,9 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Sierra Leone" },
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Sierra Leone" }
 					}
-				}, 
-				new Country() 
-				{ 
+				},
+				new Country()
+				{
 					IsoCode = "SG",
 					IsoCode3 = "SGP",
 					PhoneCountryCode = "+65",
@@ -2234,8 +2234,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Singapore" }
 					}
 				},
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "SI",
 					IsoCode3 = "SVN",
 					PhoneCountryCode = "+386",
@@ -2246,8 +2246,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Slovenia" }
 					}
 				},
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "SO",
 					IsoCode3 = "SOM",
 					PhoneCountryCode = "+252",
@@ -2258,8 +2258,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Somalia" }
 					}
 				},
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "AE",
 					IsoCode3 = "ARE",
 					PhoneCountryCode = "+971",
@@ -2270,8 +2270,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "United Arab Emirates" }
 					}
 				},
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "US",
 					IsoCode3 = "USA",
 					PhoneCountryCode = "+1",
@@ -2282,9 +2282,9 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "United States of America" }
 					}
 				},
-				new Country() 
-				{ 
-					IsoCode = "SC",
+				new Country()
+				{
+					IsoCode = "RS",
 					IsoCode3 = "SRB",
 					PhoneCountryCode = "+248",
 					UiOrder = 190,
@@ -2294,8 +2294,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Serbia" }
 					}
 				},
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "LK",
 					IsoCode3 = "LKA",
 					PhoneCountryCode = "+94",
@@ -2306,8 +2306,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Sri Lanka" }
 					}
 				},
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "CF",
 					IsoCode3 = "CAF",
 					PhoneCountryCode = "+236",
@@ -2318,8 +2318,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Central African Republic" }
 					}
 				},
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "SD",
 					IsoCode3 = "SDN",
 					PhoneCountryCode = "+249",
@@ -2329,9 +2329,9 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Súdán" },
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Sudan" }
 					}
-				}, 
-				new Country() 
-				{ 
+				},
+				new Country()
+				{
 					IsoCode = "SR",
 					IsoCode3 = "SUR",
 					PhoneCountryCode = "+597",
@@ -2342,8 +2342,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Suriname" }
 					}
 				},
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "SJ",
 					IsoCode3 = "SJM",
 					PhoneCountryCode = "+47",
@@ -2354,8 +2354,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Svalbard and Jan Mayen Is." }
 					}
 				},
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "SH",
 					IsoCode3 = "SHN",
 					PhoneCountryCode = "+290",
@@ -2366,8 +2366,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Saint Helena, Ascension and Tristan da Cunha" }
 					}
 				},
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "LC",
 					IsoCode3 = "LCA",
 					PhoneCountryCode = "+1-758",
@@ -2378,8 +2378,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Saint Lucia" }
 					}
 				},
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "KN",
 					IsoCode3 = "KNA",
 					PhoneCountryCode = "+1-869",
@@ -2390,8 +2390,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Saint Kitts and Nevis" }
 					}
 				},
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "ST",
 					IsoCode3 = "STP",
 					PhoneCountryCode = "+239",
@@ -2402,8 +2402,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Sao Tome and Principe" }
 					}
 				},
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "VC",
 					IsoCode3 = "VCT",
 					PhoneCountryCode = "+1-784",
@@ -2414,8 +2414,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Saint Vincent and the Grenad." }
 					}
 				},
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "SZ",
 					IsoCode3 = "SWZ",
 					PhoneCountryCode = "+268",
@@ -2425,9 +2425,9 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Svazijsko" },
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Swaziland" }
 					}
-				}, 
-				new Country() 
-				{ 
+				},
+				new Country()
+				{
 					IsoCode = "SY",
 					IsoCode3 = "SYR",
 					PhoneCountryCode = "+963",
@@ -2438,8 +2438,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Syria" }
 					}
 				},
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "SB",
 					IsoCode3 = "SLB",
 					PhoneCountryCode = "+677",
@@ -2450,8 +2450,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Solomon Islands" }
 					}
 				},
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "ES",
 					IsoCode3 = "ESP",
 					PhoneCountryCode = "+34",
@@ -2462,8 +2462,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Spain" }
 					}
 				},
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "SE",
 					IsoCode3 = "SWE",
 					PhoneCountryCode = "+46",
@@ -2474,8 +2474,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Sweden" }
 					}
 				},
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "CH",
 					IsoCode3 = "CHE",
 					PhoneCountryCode = "+41",
@@ -2486,8 +2486,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Switzerland" }
 					}
 				},
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "TJ",
 					IsoCode3 = "TJK",
 					PhoneCountryCode = "+992",
@@ -2498,8 +2498,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Tajikistan" }
 					}
 				},
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "TZ",
 					IsoCode3 = "TZA",
 					PhoneCountryCode = "+255",
@@ -2510,8 +2510,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Tanzania" }
 					}
 				},
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "TW",
 					IsoCode3 = "TWN",
 					PhoneCountryCode = "+886",
@@ -2522,8 +2522,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Taiwan" }
 					}
 				},
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "TH",
 					IsoCode3 = "THA",
 					PhoneCountryCode = "+66",
@@ -2534,8 +2534,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Thailand" }
 					}
 				},
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "TG",
 					IsoCode3 = "TGO",
 					PhoneCountryCode = "+228",
@@ -2545,9 +2545,9 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Togo" },
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Togo" }
 					}
-				}, 
-				new Country() 
-				{ 
+				},
+				new Country()
+				{
 					IsoCode = "TK",
 					IsoCode3 = "TKL",
 					PhoneCountryCode = "+690",
@@ -2558,8 +2558,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Tokelau" }
 					}
 				},
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "TO",
 					IsoCode3 = "TON",
 					PhoneCountryCode = "+676",
@@ -2570,8 +2570,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Tonga" }
 					}
 				},
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "TT",
 					IsoCode3 = "TTO",
 					PhoneCountryCode = "+1-868",
@@ -2582,8 +2582,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Trinidad and Tobago" }
 					}
 				},
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "TN",
 					IsoCode3 = "TUN",
 					PhoneCountryCode = "+216",
@@ -2593,9 +2593,9 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Tunisko" },
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Tunisia" }
 					}
-				}, 
-				new Country() 
-				{ 
+				},
+				new Country()
+				{
 					IsoCode = "TR",
 					IsoCode3 = "TUR",
 					PhoneCountryCode = "+90",
@@ -2606,8 +2606,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Turkey" }
 					}
 				},
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "TM",
 					IsoCode3 = "TKM",
 					PhoneCountryCode = "+993",
@@ -2618,8 +2618,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Turkmenistan" }
 					}
 				},
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "TV",
 					IsoCode3 = "TUV",
 					PhoneCountryCode = "+688",
@@ -2629,9 +2629,9 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Tuvalu" },
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Tuvalu" }
 					}
-				}, 
-				new Country() 
-				{ 
+				},
+				new Country()
+				{
 					IsoCode = "UG",
 					IsoCode3 = "UGA",
 					PhoneCountryCode = "+256",
@@ -2642,8 +2642,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Uganda" }
 					}
 				},
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "UA",
 					IsoCode3 = "UKR",
 					PhoneCountryCode = "+380",
@@ -2654,8 +2654,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Ukraine" }
 					}
 				},
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "UY",
 					IsoCode3 = "URY",
 					PhoneCountryCode = "+598",
@@ -2677,9 +2677,9 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Uzbekistán" },
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Uzbekistan" }
 					}
-				}, 
-				new Country() 
-				{ 
+				},
+				new Country()
+				{
 					IsoCode = "CX",
 					IsoCode3 = "CXR",
 					PhoneCountryCode = "+61",
@@ -2690,8 +2690,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Christmas Island" }
 					}
 				},
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "VU",
 					IsoCode3 = "VUT",
 					PhoneCountryCode = "+678",
@@ -2702,8 +2702,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Vanuatu" }
 					}
 				},
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "VA",
 					IsoCode3 = "VAT",
 					PhoneCountryCode = "+379",
@@ -2714,8 +2714,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Vatican" }
 					}
 				},
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "GB",
 					IsoCode3 = "GBR",
 					PhoneCountryCode = "+44",
@@ -2726,8 +2726,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "United Kingdom" }
 					}
 				},
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "VE",
 					IsoCode3 = "VEN",
 					PhoneCountryCode = "+58",
@@ -2738,8 +2738,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Venezuela" }
 					}
 				},
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "VN",
 					IsoCode3 = "VNM",
 					PhoneCountryCode = "+84",
@@ -2750,8 +2750,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Vietnam" }
 					}
 				},
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "TL",
 					IsoCode3 = "TLS",
 					PhoneCountryCode = "+670",
@@ -2762,8 +2762,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Timor-Leste" }
 					}
 				},
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "WF",
 					IsoCode3 = "WLF",
 					PhoneCountryCode = "+681",
@@ -2774,8 +2774,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Wallis and Futuna Islands" }
 					}
 				},
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "ZM",
 					IsoCode3 = "ZMB",
 					PhoneCountryCode = "+260",
@@ -2786,8 +2786,8 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Zambia" }
 					}
 				},
-				new Country() 
-				{ 
+				new Country()
+				{
 					IsoCode = "ZW",
 					IsoCode3 = "ZWE",
 					PhoneCountryCode = "+263",
@@ -2800,7 +2800,7 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 				}
 			};
 
-			Seed(For(countries).PairBy(country => country.IsoCode3).WithoutUpdate());
+			Seed(For(countries).PairBy(country => country.IsoCode3));
 		}
 	}
 }
