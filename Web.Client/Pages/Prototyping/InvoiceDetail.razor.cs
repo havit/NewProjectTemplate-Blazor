@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using Havit.Blazor.Components.Web.Bootstrap;
+using Microsoft.AspNetCore.Components;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,5 +15,10 @@ namespace Havit.GoranG3.Web.Client.Pages.Prototyping
 
 		[Parameter]
 		public EventCallback<InvoiceDto> InvoiceChanged { get; set; }
+
+		private void HandleSuggestionsRequested(SuggestionRequest request)
+		{
+			request.Suggestions = Enumerable.Range(0, 10).Select(i => request.UserInput + " " + (i + 1).ToString()).ToList();
+		}
 	}
 }

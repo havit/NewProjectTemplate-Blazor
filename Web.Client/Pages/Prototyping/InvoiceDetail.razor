@@ -1,12 +1,12 @@
 ﻿@* <div class="d-flex flex-column flex-grow-1">
-	<div>
+		<div>
 
-	</div>
-	<div class="mt-auto d-flex justify-content-between">
-		<button type="submit" class="btn btn-light">Zrušit</button>
-  		<button type="submit" class="btn btn-primary">Pokračovat</button>
-	</div>
-</div> *@
+		</div>
+		<div class="mt-auto d-flex justify-content-between">
+			<button type="submit" class="btn btn-light">Zrušit</button>
+			<button type="submit" class="btn btn-primary">Pokračovat</button>
+		</div>
+	</div> *@
 
 @using Havit.Blazor.Components.Web.Bootstrap.Wizards;
 
@@ -18,7 +18,7 @@
 				<form>
 					<div class="form-group">
 						<label>Protistrana</label>
-						<HxAutosuggest></HxAutosuggest>
+						<HxAutosuggest SuggestionsRequested="HandleSuggestionsRequested" />
 					</div>
 					<div class="form-group">
 						<label>Popis</label>
@@ -37,7 +37,7 @@
 						<input type="date" class="form-control">
 					</div>
 					<div class="form-group">
-					<label>Tagy</label>
+						<label>Tagy</label>
 						<HxTagInput />
 					</div>
 					<div class="form-group form-check">
