@@ -14,6 +14,9 @@ namespace Havit.GoranG3.DataLayer.Repositories.Finance
 {
 	public partial class CurrencyDbRepository : ICurrencyRepository
 	{
-
+		public List<Currency> GetAllIncludingDeleted()
+		{
+			return DataWithDeleted.Include(GetLoadReferences).ToList();
+		}
 	}
 }
