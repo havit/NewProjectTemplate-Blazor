@@ -42,7 +42,7 @@ namespace Havit.GoranG3.G2Migrator.Services.Finance
 			while (reader.Read())
 			{
 				var exchangeRateID = reader.GetValue<int>("ExchangeRateID");
-				Console.Write(exchangeRateID);
+				Console.Write("ExchangeRate: " + exchangeRateID);
 				var exchangeRate = exchangeRates.Find(p => p.MigrationId == exchangeRateID);
 				if (exchangeRate == null)
 				{
@@ -57,7 +57,7 @@ namespace Havit.GoranG3.G2Migrator.Services.Finance
 					Console.WriteLine(" UPDATE");
 				}
 
-				Currency currency = currencies.Find(p => p.MigrationId == (int)reader["CurrencyID"]); ;
+				Currency currency = currencies.Find(p => p.MigrationId == (int)reader["CurrencyID"]);
 				exchangeRate.DateFrom = reader.GetValue<DateTime>("DateFrom");
 				exchangeRate.Rate = reader.GetValue<decimal>("Rate");
 			}

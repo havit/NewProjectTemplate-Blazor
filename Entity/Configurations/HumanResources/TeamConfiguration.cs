@@ -14,6 +14,7 @@ namespace Havit.GoranG3.Entity.Configurations.HumanResources
 		public void Configure(EntityTypeBuilder<Team> builder)
 		{
 			builder.Property(team => team.Id).HasDefaultValueSql("NEXT VALUE FOR TeamSequence");
+			builder.Ignore(team => team.Members);
 		}
 	}
 }

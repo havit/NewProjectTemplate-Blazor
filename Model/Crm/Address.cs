@@ -21,18 +21,15 @@ namespace Havit.GoranG3.Model.Crm
 		/// <summary>
 		/// G2: Ulice
 		/// </summary>
-		[Required]
 		[MaxLength(200)]
 		public string Line2 { get; set; }
 
-		[Required]
 		[MaxLength(200)]
 		public string City { get; set; }
 
 		/// <summary>
 		/// G2: Psc
 		/// </summary>
-		[Required]
 		[MaxLength(20)]
 		public string Zip { get; set; }
 

@@ -42,7 +42,7 @@ namespace Havit.GoranG3.G2Migrator.Services.Finance
 			while (reader.Read())
 			{
 				var currencyID = reader.GetValue<int>("CurrencyID");
-				Console.Write(currencyID);
+				Console.Write("Currency: " + currencyID);
 				var currency = currencies.Find(p => p.MigrationId == currencyID);
 				if (currency == null)
 				{

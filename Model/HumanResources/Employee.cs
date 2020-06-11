@@ -25,8 +25,8 @@ namespace Havit.GoranG3.Model.HumanResources
 		/// <summary>
 		/// Team, where the employee is the one and only member.
 		/// </summary>
-		public Team PrivateTeam { get; protected set; }
-		public int PrivateTeamId { get; protected set; }
+		public Team PrivateTeam { get; private set; }
+		public int PrivateTeamId { get; private set; }
 
 		/// <summary>
 		/// Title/degree in front of name
@@ -40,14 +40,32 @@ namespace Havit.GoranG3.Model.HumanResources
 		/// </summary>
 		[Required]
 		[MaxLength(50)]
-		public string FirstName { get; set; }
+		public string FirstName
+		{
+			get => _firstName;
+			set
+			{
+				_firstName = value;
+				UpdateNames();
+			}
+		}
+		private string _firstName;
 
 		/// <summary>
 		/// G2: Prijmeni
 		/// </summary>
 		[Required]
 		[MaxLength(50)]
-		public string LastName { get; set; }
+		public string LastName
+		{
+			get => _lastName;
+			set
+			{
+				_lastName = value;
+				UpdateNames();
+			}
+		}
+		private string _lastName;
 
 		/// <summary>
 		/// Title/degree after the name
@@ -120,9 +138,52 @@ namespace Havit.GoranG3.Model.HumanResources
 		public string Initials => ((!String.IsNullOrWhiteSpace(FirstName)) ? FirstName.Substring(0, 1) : String.Empty) + LastName.Substring(0, 1);
 		public string DisplayAs => (this.LastName + " " + this.FirstName).Trim();
 
-		public Employee()
+		public Employee(string firstName, string lastName) : this(isNew: true)
+		{
+			this.FirstName = firstName;
+			this.LastName = lastName;
+		}
+
+		/// <summary>
+		/// Ctor used by EF Core when loading existing entity.
+		/// </summary>
+		private Employee() : this(isNew: false)
+		{
+		}
+
+		private Employee(bool isNew)
 		{
 			this.Histories = new FilteringCollection<EmployeeHistory>(this.HistoriesIncludingDeleted, h => h.Deleted is null);
+
+			if (isNew)
+			{
+				var privateTeamMembership = new TeamMembership() { Employee = this };
+				this.PrivateTeam = new Team()
+				{
+					IsPrivateTeam = true,
+					IsSystemTeam = true,
+					IsActive = true,
+					TeamMemberships = { privateTeamMembership },
+				};
+				privateTeamMembership.Team = this.PrivateTeam;
+				this.TeamMemberships.Add(privateTeamMembership);
+
+				var everyoneTeamMembership = new TeamMembership() { Employee = this, TeamId = (int)Team.Entry.Everyone };
+				this.TeamMemberships.Add(everyoneTeamMembership);
+			}
+		}
+
+		private void UpdateNames()
+		{
+			this.PrivateTeam.Name = this.DisplayAs;
+			if (this.User != null)
+			{
+				this.User.DisplayName = this.DisplayAs;
+			}
+			if (this.Contact != null)
+			{
+				this.Contact.Name = this.DisplayAs;
+			}
 		}
 	}
 }

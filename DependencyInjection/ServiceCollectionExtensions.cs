@@ -18,6 +18,7 @@ using Havit.Data.EntityFrameworkCore.Patterns.DependencyInjection;
 using Havit.GoranG3.DataLayer.DataSources.Common;
 using Havit.Data.EntityFrameworkCore.Patterns.UnitOfWorks.EntityValidation;
 using Havit.GoranG3.Services.TimeServices;
+using Havit.GoranG3.DataLayer.Repositories.Crm;
 
 namespace Havit.GoranG3.DependencyInjection
 {
@@ -101,7 +102,8 @@ namespace Havit.GoranG3.DependencyInjection
 				.AddEntityPatterns()
 				//.AddLocalizationServices<Language>()
 				.AddDbContext<GoranG3DbContext>(options)
-				.AddDataLayer(typeof(IApplicationSettingsDataSource).Assembly);
+				.AddDataLayer(typeof(IApplicationSettingsDataSource).Assembly)
+				.AddLookupService<ICountryByIsoCodeLookupService, CountryByIsoCodeLookupService>();
 
 			services.AddSingleton<IEntityValidator<object>, ValidatableObjectEntityValidator>();
 		}

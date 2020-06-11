@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using Havit.Data.EntityFrameworkCore;
@@ -14,6 +15,16 @@ namespace Havit.GoranG3.DataLayer.Repositories.HumanResources
 {
 	public partial class EmployeeDbRepository : IEmployeeRepository
 	{
+		public List<Employee> GetAllIncludingDeleted()
+		{
+			return DataWithDeleted.Include(GetLoadReferences).ToList();
+		}
 
+		protected override IEnumerable<Expression<Func<Employee, object>>> GetLoadReferences()
+		{
+			yield return (Employee employee) => employee.PrivateTeam;
+			yield return (Employee employee) => employee.Contact;
+			yield return (Employee employee) => employee.User;
+		}
 	}
 }

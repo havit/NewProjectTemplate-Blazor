@@ -38,7 +38,7 @@ namespace Havit.GoranG3.G2Migrator.Services.Finance
 			while (reader.Read())
 			{
 				var bankAccountID = reader.GetValue<int>("BankovniUcetID");
-				Console.Write(bankAccountID);
+				Console.Write("BankovniUcet => BankAccount " + bankAccountID);
 				var bankAccount = bankAccounts.Find(p => p.MigrationId == bankAccountID);
 				if (bankAccount == null)
 				{
