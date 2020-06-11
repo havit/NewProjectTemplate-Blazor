@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using Havit.Data.Patterns.UnitOfWorks;
+using Havit.Extensions.DependencyInjection.Abstractions;
 using Havit.GoranG3.DataLayer.Repositories.Finance;
 using Havit.GoranG3.Model.Finance;
 using Microsoft.Data.SqlClient;
@@ -9,6 +10,7 @@ using Microsoft.Extensions.Options;
 
 namespace Havit.GoranG3.G2Migrator.Services.Finance
 {
+	[Service]
 	public class G2CurrencyMigrator : IG2CurrencyMigrator
 	{
 		private readonly MigrationOptions options;
