@@ -14,6 +14,9 @@ namespace Havit.GoranG3.DataLayer.Repositories.Finance
 {
 	public partial class BankAccountDbRepository : IBankAccountRepository
 	{
-
+		public List<BankAccount> GetAllIncludingDeleted()
+		{
+			return DataWithDeleted.Include(GetLoadReferences).ToList();
+		}
 	}
 }

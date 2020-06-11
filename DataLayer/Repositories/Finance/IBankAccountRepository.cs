@@ -10,6 +10,6 @@ namespace Havit.GoranG3.DataLayer.Repositories.Finance
 {
 	public partial interface IBankAccountRepository
 	{
-
+		List<BankAccount> GetAllIncludingDeleted();
 	}
 }
