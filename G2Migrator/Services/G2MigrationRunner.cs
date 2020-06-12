@@ -7,6 +7,8 @@ using Havit.Data.EntityFrameworkCore;
 using Havit.Data.Patterns.DataSeeds;
 using Havit.Extensions.DependencyInjection.Abstractions;
 using Havit.GoranG3.DataLayer.Seeds.Core;
+using Havit.GoranG3.G2Migrator.Services.Finance;
+using Havit.GoranG3.G2Migrator.Services.HumanResources;
 using Havit.GoranG3.G2Migrator.Services.Projects;
 using Havit.GoranG3.G2Migrator.Services.Timesheets;
 using Havit.GoranG3.G2Migrator.Services.Users;
@@ -18,20 +20,32 @@ namespace Havit.GoranG3.G2Migrator.Services
 	public class G2MigrationRunner : IG2MigrationRunner
 	{
 		private readonly IG2UserMigrator userMigrator;
+		private readonly IG2EmployeeMigrator employeeMigrator;
 		private readonly IG2ProjectMigrator projectMigrator;
+		private readonly IG2BankAccountMigrator bankAccountMigrator;
+		private readonly IG2CurrencyMigrator currencyMigrator;
+		private readonly IG2ExchangeRateMigrator exchangeRateMigrator;
 		private readonly IG2TimesheetItemCategoryMigrator timesheetItemCategoryMigrator;
 		private readonly IDbContext dbContext;
 		private readonly IDataSeedRunner dataSeedRunner;
 
 		public G2MigrationRunner(
 			IG2UserMigrator userMigrator,
+			IG2EmployeeMigrator employeeMigrator,
 			IG2ProjectMigrator projectMigrator,
+			IG2BankAccountMigrator bankAccountMigrator,
+			IG2CurrencyMigrator currencyMigrator,
+			IG2ExchangeRateMigrator exchangeRateMigrator,
 			IG2TimesheetItemCategoryMigrator timesheetItemCategoryMigrator,
 			IDbContext dbContext,
 			IDataSeedRunner dataSeedRunner)
 		{
 			this.userMigrator = userMigrator;
+			this.employeeMigrator = employeeMigrator;
 			this.projectMigrator = projectMigrator;
+			this.bankAccountMigrator = bankAccountMigrator;
+			this.currencyMigrator = currencyMigrator;
+			this.exchangeRateMigrator = exchangeRateMigrator;
 			this.timesheetItemCategoryMigrator = timesheetItemCategoryMigrator;
 			this.dbContext = dbContext;
 			this.dataSeedRunner = dataSeedRunner;
@@ -42,7 +56,11 @@ namespace Havit.GoranG3.G2Migrator.Services
 			dbContext.Database.Migrate();
 			dataSeedRunner.SeedData<CoreProfile>();
 
+			bankAccountMigrator.MigrateBankAccounts();
+			currencyMigrator.MigrateCurrencies();
+			//exchangeRateMigrator.MigrateExchangeRates();
 			userMigrator.MigrateUsers();
+			employeeMigrator.MigrateEmployees();
 			timesheetItemCategoryMigrator.MigrateCategories();
 			projectMigrator.MigrateProjects();
 		}

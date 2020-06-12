@@ -12,6 +12,8 @@
 	  <Compile Remove="Migrations\20200528224833_ProjectMigrationId.Designer.cs" />
 	  <Compile Remove="Migrations\20200603224848_UserMigration.cs" />
 	  <Compile Remove="Migrations\20200603224848_UserMigration.Designer.cs" />
+	  <Compile Remove="Migrations\20200606230456_AddressRequiredFields.cs" />
+	  <Compile Remove="Migrations\20200606230456_AddressRequiredFields.Designer.cs" />
 	</ItemGroup>
 
 	<ItemGroup>

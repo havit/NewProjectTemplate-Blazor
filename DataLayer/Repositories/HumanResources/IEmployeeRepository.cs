@@ -10,6 +10,6 @@ namespace Havit.GoranG3.DataLayer.Repositories.HumanResources
 {
 	public partial interface IEmployeeRepository
 	{
-
+		List<Employee> GetAllIncludingDeleted();
 	}
 }
