@@ -507,7 +507,7 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 				},
 				new Country()
 				{
-					IsoCode = "DM",
+					IsoCode = "DO",
 					IsoCode3 = "DOM",
 					PhoneCountryCode = "+1-767",
 					UiOrder = 42,
@@ -2796,6 +2796,126 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Zimbabwe" },
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Zimbabwe" }
+					}
+				},
+				new Country()
+				{
+					IsoCode = "AQ",
+					IsoCode3 = "ATA",
+					PhoneCountryCode = "+672",
+					UiOrder = 233,
+					Localizations =
+					{
+						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Antarktida" },
+						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Antarctica" }
+					}
+				},
+				new Country()
+				{
+					IsoCode = "AX",
+					IsoCode3 = "ALA",
+					PhoneCountryCode = "+358",
+					UiOrder = 234,
+					Localizations =
+					{
+						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Alandské ostrovy" },
+						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Aland Islands" }
+					}
+				},
+				new Country()
+				{
+					IsoCode = "BF",
+					IsoCode3 = "BFA",
+					PhoneCountryCode = "+226",
+					UiOrder = 235,
+					Localizations =
+					{
+						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Burkina Faso" },
+						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Burkina Faso" }
+					}
+				},
+				new Country()
+				{
+					IsoCode = "DM",
+					IsoCode3 = "DMA",
+					PhoneCountryCode = "+767",
+					UiOrder = 236,
+					Localizations =
+					{
+						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Dominica" },
+						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Dominica" }
+					}
+				},
+				new Country()
+				{
+					IsoCode = "EH",
+					IsoCode3 = "ESH",
+					PhoneCountryCode = "+212",
+					UiOrder = 237,
+					Localizations =
+					{
+						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Západní Sahara" },
+						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Western Sahara" }
+					}
+				},
+				new Country()
+				{
+					IsoCode = "GG",
+					IsoCode3 = "GGY",
+					PhoneCountryCode = "+44",
+					UiOrder = 238,
+					Localizations =
+					{
+						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Guernsey" },
+						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Guernsey" }
+					}
+				},
+				new Country()
+				{
+					IsoCode = "JE",
+					IsoCode3 = "JEY",
+					PhoneCountryCode = "+44",
+					UiOrder = 239,
+					Localizations =
+					{
+						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Jersey" },
+						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Jersey" }
+					}
+				},
+				new Country()
+				{
+					IsoCode = "TF",
+					IsoCode3 = "ATF",
+					PhoneCountryCode = "+262",
+					UiOrder = 240,
+					Localizations =
+					{
+						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Francouzská jižní území" },
+						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "French Southern Territories" }
+					}
+				},
+				new Country()
+				{
+					IsoCode = "VG",
+					IsoCode3 = "VGB",
+					PhoneCountryCode = "+1284",
+					UiOrder = 241,
+					Localizations =
+					{
+						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Britské Panenské ostrovy" },
+						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Virgin Islands (British)" }
+					}
+				},
+				new Country()
+				{
+					IsoCode = "VI",
+					IsoCode3 = "VIR",
+					PhoneCountryCode = "+1",
+					UiOrder = 242,
+					Localizations =
+					{
+						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Americké Panenské ostrovy" },
+						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Virgin Islands (USA)" }
 					}
 				}
 			};
