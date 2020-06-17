@@ -33,7 +33,7 @@ namespace Havit.GoranG3.G2Migrator.Services.Finance
 		{
 			using SqlConnection conn = new SqlConnection(options.G2ConnectionString);
 			conn.Open();
-			using SqlCommand cmd = new SqlCommand("SELECT ExchangeRateID, CurrencyID, DateFrom, Rate", conn);
+			using SqlCommand cmd = new SqlCommand("SELECT ExchangeRateID, CurrencyID, DateFrom, Rate FROM ExchangeRate", conn);
 			using SqlDataReader reader = cmd.ExecuteReader();
 
 			var exchangeRates = exchangeRateRepository.GetAll();
