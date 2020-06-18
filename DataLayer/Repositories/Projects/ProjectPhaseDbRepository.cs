@@ -14,6 +14,9 @@ namespace Havit.GoranG3.DataLayer.Repositories.Projects
 {
 	public partial class ProjectPhaseDbRepository : IProjectPhaseRepository
 	{
-
+		public List<ProjectPhase> GetAllIncludingDeleted()
+		{
+			return DataWithDeleted.Include(GetLoadReferences).ToList();
+		}
 	}
 }

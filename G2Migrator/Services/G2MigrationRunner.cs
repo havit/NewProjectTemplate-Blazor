@@ -22,6 +22,7 @@ namespace Havit.GoranG3.G2Migrator.Services
 		private readonly IG2UserMigrator userMigrator;
 		private readonly IG2EmployeeMigrator employeeMigrator;
 		private readonly IG2ProjectMigrator projectMigrator;
+		private readonly IG2ProjectPhaseMigrator projectPhaseMigrator;
 		private readonly IG2BankAccountMigrator bankAccountMigrator;
 		private readonly IG2CurrencyMigrator currencyMigrator;
 		private readonly IG2ExchangeRateMigrator exchangeRateMigrator;
@@ -33,6 +34,7 @@ namespace Havit.GoranG3.G2Migrator.Services
 			IG2UserMigrator userMigrator,
 			IG2EmployeeMigrator employeeMigrator,
 			IG2ProjectMigrator projectMigrator,
+			IG2ProjectPhaseMigrator projectPhaseMigrator,
 			IG2BankAccountMigrator bankAccountMigrator,
 			IG2CurrencyMigrator currencyMigrator,
 			IG2ExchangeRateMigrator exchangeRateMigrator,
@@ -43,6 +45,7 @@ namespace Havit.GoranG3.G2Migrator.Services
 			this.userMigrator = userMigrator;
 			this.employeeMigrator = employeeMigrator;
 			this.projectMigrator = projectMigrator;
+			this.projectPhaseMigrator = projectPhaseMigrator;
 			this.bankAccountMigrator = bankAccountMigrator;
 			this.currencyMigrator = currencyMigrator;
 			this.exchangeRateMigrator = exchangeRateMigrator;
@@ -63,6 +66,7 @@ namespace Havit.GoranG3.G2Migrator.Services
 			employeeMigrator.MigrateEmployees();
 			timesheetItemCategoryMigrator.MigrateCategories();
 			projectMigrator.MigrateProjects();
+			projectPhaseMigrator.MigrateProjectPhases();
 		}
 	}
 }

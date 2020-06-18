@@ -10,6 +10,6 @@ namespace Havit.GoranG3.DataLayer.Repositories.Projects
 {
 	public partial interface IProjectPhaseRepository
 	{
-
+		List<ProjectPhase> GetAllIncludingDeleted();
 	}
 }
