@@ -10,7 +10,7 @@
   <ItemGroup>
     <PackageReference Include="Grpc.AspNetCore.Web" Version="2.29.0" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="3.2.0" />
-    <PackageReference Include="protobuf-net.Grpc.AspNetCore" Version="1.0.37" />
+    <PackageReference Include="protobuf-net.Grpc.AspNetCore" Version="1.0.90" />
   </ItemGroup>
 
   <ItemGroup>
