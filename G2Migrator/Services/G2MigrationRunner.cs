@@ -27,6 +27,7 @@ namespace Havit.GoranG3.G2Migrator.Services
 		private readonly IG2CurrencyMigrator currencyMigrator;
 		private readonly IG2ExchangeRateMigrator exchangeRateMigrator;
 		private readonly IG2TimesheetItemCategoryMigrator timesheetItemCategoryMigrator;
+		private readonly IG2OverheadToPersonalCostsRatioMigrator overheadToPersonalCostsRatioMigrator;
 		private readonly IDbContext dbContext;
 		private readonly IDataSeedRunner dataSeedRunner;
 
@@ -39,6 +40,7 @@ namespace Havit.GoranG3.G2Migrator.Services
 			IG2CurrencyMigrator currencyMigrator,
 			IG2ExchangeRateMigrator exchangeRateMigrator,
 			IG2TimesheetItemCategoryMigrator timesheetItemCategoryMigrator,
+			IG2OverheadToPersonalCostsRatioMigrator overheadToPersonalCostsRatioMigrator,
 			IDbContext dbContext,
 			IDataSeedRunner dataSeedRunner)
 		{
@@ -50,6 +52,7 @@ namespace Havit.GoranG3.G2Migrator.Services
 			this.currencyMigrator = currencyMigrator;
 			this.exchangeRateMigrator = exchangeRateMigrator;
 			this.timesheetItemCategoryMigrator = timesheetItemCategoryMigrator;
+			this.overheadToPersonalCostsRatioMigrator = overheadToPersonalCostsRatioMigrator;
 			this.dbContext = dbContext;
 			this.dataSeedRunner = dataSeedRunner;
 		}
@@ -67,6 +70,7 @@ namespace Havit.GoranG3.G2Migrator.Services
 			timesheetItemCategoryMigrator.MigrateCategories();
 			projectMigrator.MigrateProjects();
 			projectPhaseMigrator.MigrateProjectPhases();
+			overheadToPersonalCostsRatioMigrator.MigrateOverheadToPersonalCostsRatios();
 		}
 	}
 }
