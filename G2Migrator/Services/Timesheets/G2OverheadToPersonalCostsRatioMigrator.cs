@@ -39,13 +39,13 @@ namespace Havit.GoranG3.G2Migrator.Services.Timesheets
 
 			while (reader.Read())
 			{
-				var ratioID = reader.GetValue<int>("RezijniPrirazkaOsobnichNakladuID");
-				Console.Write(ratioID);
-				var ratio = ratios.Find(p => p.Id == ratioID);
+				var startDate = reader.GetValue<DateTime>("DatumOd");
+				Console.Write(startDate);
+				var ratio = ratios.Find(p => p.StartDate == startDate);
 				if (ratio == null)
 				{
 					ratio = new OverheadToPersonalCostsRatio();
-					ratio.Id = ratioID;
+					ratio.StartDate = startDate;
 					unitOfWork.AddForInsert(ratio);
 					Console.WriteLine(" INSERT");
 				}
@@ -56,7 +56,6 @@ namespace Havit.GoranG3.G2Migrator.Services.Timesheets
 				}
 
 				ratio.Ratio = reader.GetValue<decimal>("KoeficientPrirazky");
-				ratio.StartDate = reader.GetValue<DateTime>("DatumOd");
 			}
 
 			unitOfWork.Commit();
