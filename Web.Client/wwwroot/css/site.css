@@ -61,7 +61,7 @@
 
 :root {
   --sidebar-link-hover: #f2f9ff;
-  --drawer-width: 30vw;
+  --drawer-width: 50vw;
   --box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15); }
 
 app {
