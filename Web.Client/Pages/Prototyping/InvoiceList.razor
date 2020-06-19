@@ -53,9 +53,7 @@
 			</Columns>
 			<ContextMenu Context="item">
 				<HxContextMenu>
-					<HxContextMenuItem OnItemClick="async () => await DeleteClicked(item)">
-						Smazat fakturu @(item.InvoiceNumber)
-					</HxContextMenuItem>
+					<HxContextMenuItem Title="Smazat" OnItemClick="async () => await DeleteClicked(item)" ConfirmationQuestion="@($"Opravdu si přejete smazat fakturu {item.InvoiceNumber}?")" />
 					<HxContextMenuItem Title="Duplikovat" OnItemClick="async () => await DuplicateClicked(item)"  />
 					<HxContextMenuItem Title="Vytisknout" OnItemClick="async () => await PrintClicked(item)"  />
 				</HxContextMenu>
