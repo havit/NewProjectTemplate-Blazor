@@ -7,6 +7,7 @@ using Havit.Data.Patterns.UnitOfWorks;
 using Havit.Extensions.DependencyInjection.Abstractions;
 using Havit.GoranG3.DataLayer.Repositories.Crm;
 using Havit.GoranG3.DataLayer.Repositories.HumanResources;
+using Havit.GoranG3.DataLayer.Repositories.Security;
 using Havit.GoranG3.Model.Crm;
 using Havit.GoranG3.Model.HumanResources;
 using Microsoft.Data.SqlClient;
@@ -19,17 +20,20 @@ namespace Havit.GoranG3.G2Migrator.Services.HumanResources
 	{
 		private readonly MigrationOptions options;
 		private readonly IEmployeeRepository employeeRepository;
+		private readonly IUserRepository userRepository;
 		private readonly ICountryByIsoCodeLookupService countryByIsoCodeLookupService;
 		private readonly IUnitOfWork unitOfWork;
 
 		public G2EmployeeMigrator(
 			IOptions<MigrationOptions> options,
 			IEmployeeRepository employeeRepository,
+			IUserRepository userRepository,
 			ICountryByIsoCodeLookupService countryByIsoCodeLookupService,
 			IUnitOfWork unitOfWork)
 		{
 			this.options = options.Value;
 			this.employeeRepository = employeeRepository;
+			this.userRepository = userRepository;
 			this.countryByIsoCodeLookupService = countryByIsoCodeLookupService;
 			this.unitOfWork = unitOfWork;
 		}
@@ -41,6 +45,7 @@ namespace Havit.GoranG3.G2Migrator.Services.HumanResources
 			using SqlDataReader reader = cmd.ExecuteReader();
 
 			var employees = employeeRepository.GetAllIncludingDeleted();
+			var users = userRepository.GetAllIncludingDeleted();
 
 			while (reader.Read())
 			{
@@ -65,6 +70,12 @@ namespace Havit.GoranG3.G2Migrator.Services.HumanResources
 
 					employee.FirstName = firstName;
 					employee.LastName = lastName;
+				}
+
+				var userMigrationId = reader.GetValue<int?>("UzivatelID");
+				if (userMigrationId != null)
+				{
+					employee.User = users.First(u => u.MigrationId == userMigrationId);
 				}
 
 				employee.TitlePrefix = reader.GetValue<string>("TitulyPredJmenem");
