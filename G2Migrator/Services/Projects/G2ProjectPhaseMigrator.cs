@@ -60,7 +60,7 @@ namespace Havit.GoranG3.G2Migrator.Services.Projects
 				projectPhase.Kod = reader.GetValue<string>("Kod");
 				projectPhase.UiOrder = reader.GetValue<int>("Poradi");
 				projectPhase.Created = reader.GetValue<DateTime>("Created");
-				projectPhase.Deleted = reader.GetValue<DateTime>("Deleted");
+				projectPhase.Deleted = reader.GetValue<DateTime?>("Deleted");
 			}
 
 			unitOfWork.Commit();
