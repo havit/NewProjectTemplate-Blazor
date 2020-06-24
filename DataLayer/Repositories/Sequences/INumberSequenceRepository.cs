@@ -10,6 +10,6 @@ namespace Havit.GoranG3.DataLayer.Repositories.Sequences
 {
 	public partial interface INumberSequenceRepository
 	{
-
+		public List<NumberSequence> GetAllIncludingDeleted();
 	}
 }

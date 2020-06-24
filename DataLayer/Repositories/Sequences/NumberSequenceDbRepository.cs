@@ -14,6 +14,9 @@ namespace Havit.GoranG3.DataLayer.Repositories.Sequences
 {
 	public partial class NumberSequenceDbRepository : INumberSequenceRepository
 	{
-
+		public List<NumberSequence> GetAllIncludingDeleted()
+		{
+			return DataWithDeleted.Include(GetLoadReferences).ToList();
+		}
 	}
 }
