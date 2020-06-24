@@ -10,6 +10,6 @@ namespace Havit.GoranG3.DataLayer.Repositories.Timesheets
 {
 	public partial interface ITimesheetItemRepository
 	{
-
+		List<TimesheetItem> GetAllIncludingDeleted();
 	}
 }

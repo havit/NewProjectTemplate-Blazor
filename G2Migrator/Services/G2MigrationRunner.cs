@@ -27,6 +27,7 @@ namespace Havit.GoranG3.G2Migrator.Services
 		private readonly IG2CurrencyMigrator currencyMigrator;
 		private readonly IG2ExchangeRateMigrator exchangeRateMigrator;
 		private readonly IG2TimesheetItemCategoryMigrator timesheetItemCategoryMigrator;
+		private readonly IG2TimesheetItemMigrator timesheetItemMigrator;
 		private readonly IG2OverheadToPersonalCostsRatioMigrator overheadToPersonalCostsRatioMigrator;
 		private readonly IDbContext dbContext;
 		private readonly IDataSeedRunner dataSeedRunner;
@@ -40,6 +41,7 @@ namespace Havit.GoranG3.G2Migrator.Services
 			IG2CurrencyMigrator currencyMigrator,
 			IG2ExchangeRateMigrator exchangeRateMigrator,
 			IG2TimesheetItemCategoryMigrator timesheetItemCategoryMigrator,
+			IG2TimesheetItemMigrator timesheetItemMigrator,
 			IG2OverheadToPersonalCostsRatioMigrator overheadToPersonalCostsRatioMigrator,
 			IDbContext dbContext,
 			IDataSeedRunner dataSeedRunner)
@@ -52,6 +54,7 @@ namespace Havit.GoranG3.G2Migrator.Services
 			this.currencyMigrator = currencyMigrator;
 			this.exchangeRateMigrator = exchangeRateMigrator;
 			this.timesheetItemCategoryMigrator = timesheetItemCategoryMigrator;
+			this.timesheetItemMigrator = timesheetItemMigrator;
 			this.overheadToPersonalCostsRatioMigrator = overheadToPersonalCostsRatioMigrator;
 			this.dbContext = dbContext;
 			this.dataSeedRunner = dataSeedRunner;
@@ -62,15 +65,16 @@ namespace Havit.GoranG3.G2Migrator.Services
 			dbContext.Database.Migrate();
 			dataSeedRunner.SeedData<CoreProfile>();
 
-			bankAccountMigrator.MigrateBankAccounts();
-			currencyMigrator.MigrateCurrencies();
-			//exchangeRateMigrator.MigrateExchangeRates();
-			userMigrator.MigrateUsers();
-			employeeMigrator.MigrateEmployees();
-			timesheetItemCategoryMigrator.MigrateCategories();
-			projectMigrator.MigrateProjects();
-			projectPhaseMigrator.MigrateProjectPhases();
-			overheadToPersonalCostsRatioMigrator.MigrateOverheadToPersonalCostsRatios();
+			//bankAccountMigrator.MigrateBankAccounts();
+			//currencyMigrator.MigrateCurrencies();
+			////exchangeRateMigrator.MigrateExchangeRates();
+			//userMigrator.MigrateUsers();
+			//employeeMigrator.MigrateEmployees();
+			//timesheetItemCategoryMigrator.MigrateCategories();
+			//projectMigrator.MigrateProjects();
+			//projectPhaseMigrator.MigrateProjectPhases();
+			//overheadToPersonalCostsRatioMigrator.MigrateOverheadToPersonalCostsRatios();
+			timesheetItemMigrator.MigrateTimesheetItems();
 		}
 	}
 }
