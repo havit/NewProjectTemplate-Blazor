@@ -75,7 +75,7 @@ namespace Havit.GoranG3.G2Migrator.Services.Timesheets
 					timesheetItem.MigrationId = timesheetItemID;
 					Console.WriteLine(" INSERT");
 
-					timesheetItem.Employee = employees.Find(e => e.MigrationId == (int)reader["Pracovnik"]);
+					timesheetItem.Employee = employees.Find(e => e.MigrationId == (int)reader["PracovnikID"]);
 					timesheetItem.Date = reader.GetValue<DateTime>("Datum");
 
 					Project project = null;
