@@ -62,7 +62,7 @@ namespace Havit.GoranG3.Model.Sequences
 		/// Targets map (flags).
 		/// G2: Targets 
 		/// </summary>
-		public NumberSequenceTarget Targets;
+		public NumberSequenceTarget Targets { get; set; }
 
 		/// <summary>
 		/// Returns value formatted according to NumberSequence settings.
