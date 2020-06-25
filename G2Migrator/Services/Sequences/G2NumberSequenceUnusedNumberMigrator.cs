@@ -43,27 +43,31 @@ namespace Havit.GoranG3.G2Migrator.Services.Sequences
 
 			while (reader.Read())
 			{
-				var unusedNumberID = reader.GetValue<int>("CiselnaRadaVolneCislo");
 				var unusedNumberSequence = numberSequences.Find(s => s.MigrationId == reader.GetValue<int>("CiselnaRadaID"));
-				var unusedNumberValue = reader.GetValue<int>("Hodnota");
 
-				Console.WriteLine("Unused number: " + unusedNumberID);
-				var unusedNumber = unusedNumbers.Find(n => n.NumberSequence == unusedNumberSequence && n.Value == unusedNumberValue);
-
-				if (unusedNumber == null)
+				if (unusedNumberSequence != null)
 				{
-					unusedNumber = new NumberSequenceUnusedNumber();
-					unitOfWork.AddForInsert(unusedNumber);
-					Console.WriteLine(" INSERT");
-				}
-				else
-				{
-					unitOfWork.AddForUpdate(unusedNumber);
-					Console.WriteLine(" UPDATE");
-				}
+					var unusedNumberID = reader.GetValue<int>("CiselnaRadaVolneCisloID");
+					var unusedNumberValue = reader.GetValue<int>("Hodnota");
 
-				unusedNumber.NumberSequence = unusedNumberSequence;
-				unusedNumber.Value = unusedNumberValue;
+					Console.WriteLine("Unused number: " + unusedNumberID);
+					var unusedNumber = unusedNumbers.Find(n => n.NumberSequence == unusedNumberSequence && n.Value == unusedNumberValue);
+
+					if (unusedNumber == null)
+					{
+						unusedNumber = new NumberSequenceUnusedNumber();
+						unitOfWork.AddForInsert(unusedNumber);
+						Console.WriteLine(" INSERT");
+					}
+					else
+					{
+						unitOfWork.AddForUpdate(unusedNumber);
+						Console.WriteLine(" UPDATE");
+					}
+
+					unusedNumber.NumberSequence = unusedNumberSequence;
+					unusedNumber.Value = unusedNumberValue;
+				}
 			}
 
 			unitOfWork.Commit();
