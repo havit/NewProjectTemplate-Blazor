@@ -13,6 +13,7 @@ namespace Havit.GoranG3.Model.Sequences
 	public enum NumberSequenceTarget
 	{
 		InvoiceIssued = 0b_0000_0001,
-		InvoiceReceived = 0b_0000_0010
+		InvoiceReceived = 0b_0000_0010,
+		All = InvoiceIssued & InvoiceReceived
 	}
 }

@@ -59,18 +59,23 @@ namespace Havit.GoranG3.G2Migrator.Services.Sequences
 						break;
 				}
 
-				var sequence = sequences.Find(s => s.MigrationId == sequenceID && s.Targets.HasFlag(numberSequenceTarget));
+				var sequence = sequences.Find(s => s.MigrationId == sequenceID);// && s.Targets.HasFlag(numberSequenceTarget));
 				if (sequence == null)
 				{
 					sequence = new NumberSequence();
 					sequence.MigrationId = sequenceID;
 					unitOfWork.AddForInsert(sequence);
 					Console.WriteLine(" INSERT");
+					sequence.Targets = numberSequenceTarget;
 				}
 				else
 				{
 					unitOfWork.AddForUpdate(sequence);
 					Console.WriteLine(" UPDATE");
+					if (!sequence.Targets.HasFlag(numberSequenceTarget))
+					{
+						sequence.Targets = NumberSequenceTarget.All;
+					}
 				}
 
 				sequence.Name = reader.GetValue<string>("Nazev");
@@ -84,7 +89,6 @@ namespace Havit.GoranG3.G2Migrator.Services.Sequences
 				sequence.EndDate = reader.GetValue<DateTime?>("PouzitelnaDo");
 				sequence.Created = reader.GetValue<DateTime>("Created");
 				sequence.Deleted = reader.GetValue<DateTime?>("Deleted");
-				sequence.Targets = numberSequenceTarget;
 			}
 
 			unitOfWork.Commit();

@@ -10,6 +10,7 @@ using Havit.GoranG3.DataLayer.Seeds.Core;
 using Havit.GoranG3.G2Migrator.Services.Finance;
 using Havit.GoranG3.G2Migrator.Services.HumanResources;
 using Havit.GoranG3.G2Migrator.Services.Projects;
+using Havit.GoranG3.G2Migrator.Services.Sequences;
 using Havit.GoranG3.G2Migrator.Services.Timesheets;
 using Havit.GoranG3.G2Migrator.Services.Users;
 using Microsoft.EntityFrameworkCore;
@@ -29,6 +30,8 @@ namespace Havit.GoranG3.G2Migrator.Services
 		private readonly IG2TimesheetItemCategoryMigrator timesheetItemCategoryMigrator;
 		private readonly IG2TimesheetItemMigrator timesheetItemMigrator;
 		private readonly IG2OverheadToPersonalCostsRatioMigrator overheadToPersonalCostsRatioMigrator;
+		private readonly IG2NumberSequenceMigrator numberSequenceMigrator;
+		private readonly IG2NumberSequenceUnusedNumberMigrator numberSequenceUnusedNumberMigrator;
 		private readonly IDbContext dbContext;
 		private readonly IDataSeedRunner dataSeedRunner;
 
@@ -43,6 +46,8 @@ namespace Havit.GoranG3.G2Migrator.Services
 			IG2TimesheetItemCategoryMigrator timesheetItemCategoryMigrator,
 			IG2TimesheetItemMigrator timesheetItemMigrator,
 			IG2OverheadToPersonalCostsRatioMigrator overheadToPersonalCostsRatioMigrator,
+			IG2NumberSequenceMigrator numberSequenceMigrator,
+			IG2NumberSequenceUnusedNumberMigrator numberSequenceUnusedNumberMigrator,
 			IDbContext dbContext,
 			IDataSeedRunner dataSeedRunner)
 		{
@@ -56,6 +61,8 @@ namespace Havit.GoranG3.G2Migrator.Services
 			this.timesheetItemCategoryMigrator = timesheetItemCategoryMigrator;
 			this.timesheetItemMigrator = timesheetItemMigrator;
 			this.overheadToPersonalCostsRatioMigrator = overheadToPersonalCostsRatioMigrator;
+			this.numberSequenceMigrator = numberSequenceMigrator;
+			this.numberSequenceUnusedNumberMigrator = numberSequenceUnusedNumberMigrator;
 			this.dbContext = dbContext;
 			this.dataSeedRunner = dataSeedRunner;
 		}
@@ -74,7 +81,9 @@ namespace Havit.GoranG3.G2Migrator.Services
 			//projectMigrator.MigrateProjects();
 			//projectPhaseMigrator.MigrateProjectPhases();
 			//overheadToPersonalCostsRatioMigrator.MigrateOverheadToPersonalCostsRatios();
-			timesheetItemMigrator.MigrateTimesheetItems();
+			//timesheetItemMigrator.MigrateTimesheetItems();
+			numberSequenceMigrator.MigrateSequences();
+			numberSequenceUnusedNumberMigrator.MigrateUnusedNumbers();
 		}
 	}
 }
