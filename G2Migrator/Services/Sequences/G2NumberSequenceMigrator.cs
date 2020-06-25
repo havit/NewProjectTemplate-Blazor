@@ -16,17 +16,17 @@ namespace Havit.GoranG3.G2Migrator.Services.Sequences
 	public class G2NumberSequenceMigrator : IG2NumberSequenceMigrator
 	{
 		private readonly MigrationOptions options;
-		private readonly INumberSequenceRepository NumberSequenceRepository;
+		private readonly INumberSequenceRepository numberSequenceRepository;
 		private readonly IUnitOfWork unitOfWork;
 		private NumberSequenceTarget numberSequenceTarget;
 
 		public G2NumberSequenceMigrator(
 			IOptions<MigrationOptions> options,
-			INumberSequenceRepository NumberSequenceRepository,
+			INumberSequenceRepository numberSequenceRepository,
 			IUnitOfWork unitOfWork)
 		{
 			this.options = options.Value;
-			this.NumberSequenceRepository = NumberSequenceRepository;
+			this.numberSequenceRepository = numberSequenceRepository;
 			this.unitOfWork = unitOfWork;
 		}
 		public void MigrateSequences()
@@ -36,7 +36,7 @@ namespace Havit.GoranG3.G2Migrator.Services.Sequences
 			using SqlCommand cmd = new SqlCommand("SELECT cis.*, tar.PropertyName FROM CiselnaRada cis FULL OUTER JOIN CiselnaRada_CiselnaRadaTarget rel ON cis.CiselnaRadaID = rel.CiselnaRadaID FULL OUTER JOIN CiselnaRadaTarget tar ON rel.CiselnaRadaTargetID = tar.CiselnaRadaTargetID WHERE tar.PropertyName = 'FakturaPrijata' OR tar.PropertyName = 'FakturaVystavena'", conn);
 			using SqlDataReader reader = cmd.ExecuteReader();
 
-			var sequences = NumberSequenceRepository.GetAllIncludingDeleted();
+			var sequences = numberSequenceRepository.GetAllIncludingDeleted();
 
 			while (reader.Read())
 			{
