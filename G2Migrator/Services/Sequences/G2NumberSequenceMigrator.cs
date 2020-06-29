@@ -18,7 +18,6 @@ namespace Havit.GoranG3.G2Migrator.Services.Sequences
 		private readonly MigrationOptions options;
 		private readonly INumberSequenceRepository numberSequenceRepository;
 		private readonly IUnitOfWork unitOfWork;
-		private NumberSequenceTarget numberSequenceTarget;
 
 		public G2NumberSequenceMigrator(
 			IOptions<MigrationOptions> options,
@@ -43,6 +42,7 @@ namespace Havit.GoranG3.G2Migrator.Services.Sequences
 				var sequenceID = reader.GetValue<int>("CiselnaRadaID");
 				Console.Write("Number sequence: " + sequenceID);
 				string target = reader.GetValue<string>("PropertyName");
+				NumberSequenceTarget numberSequenceTarget = default(NumberSequenceTarget);
 
 				switch (target)
 				{
@@ -74,7 +74,7 @@ namespace Havit.GoranG3.G2Migrator.Services.Sequences
 					Console.WriteLine(" UPDATE");
 					if (!sequence.Targets.HasFlag(numberSequenceTarget))
 					{
-						sequence.Targets = NumberSequenceTarget.All;
+						sequence.Targets = NumberSequenceTarget.InvoiceIssued | NumberSequenceTarget.InvoiceReceived;
 					}
 				}
 
