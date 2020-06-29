@@ -32,7 +32,7 @@ namespace Havit.GoranG3.G2Migrator.Services.Sequences
 		{
 			using SqlConnection conn = new SqlConnection(options.G2ConnectionString);
 			conn.Open();
-			using SqlCommand cmd = new SqlCommand("SELECT cis.*, tar.PropertyName FROM CiselnaRada cis FULL OUTER JOIN CiselnaRada_CiselnaRadaTarget rel ON cis.CiselnaRadaID = rel.CiselnaRadaID FULL OUTER JOIN CiselnaRadaTarget tar ON rel.CiselnaRadaTargetID = tar.CiselnaRadaTargetID WHERE tar.PropertyName = 'FakturaPrijata' OR tar.PropertyName = 'FakturaVystavena'", conn);
+			using SqlCommand cmd = new SqlCommand("WITH data AS (SELECT c.*, CASE WHEN EXISTS(SELECT * FROM dbo.CiselnaRada_CiselnaRadaTarget t WHERE t.CiselnaRadaID = c.CiselnaRadaID AND t.CiselnaRadaTargetID = -1 /* InvoiceIssued */) THEN 1 ELSE 0 END AS HasInvoiceIssuedTarget, CASE WHEN EXISTS(SELECT * FROM dbo.CiselnaRada_CiselnaRadaTarget t WHERE t.CiselnaRadaID = c.CiselnaRadaID AND t.CiselnaRadaTargetID = -2 /* InvoiceRecieved */) THEN 1 ELSE 0 END AS HasInvoiceReceivedTarget FROM dbo.CiselnaRada c) SELECT * FROM data WHERE HasInvoiceIssuedTarget = 1 OR HasInvoiceReceivedTarget = 1", conn);
 			using SqlDataReader reader = cmd.ExecuteReader();
 
 			var sequences = numberSequenceRepository.GetAllIncludingDeleted();
@@ -41,40 +41,37 @@ namespace Havit.GoranG3.G2Migrator.Services.Sequences
 			{
 				var sequenceID = reader.GetValue<int>("CiselnaRadaID");
 				Console.Write("Number sequence: " + sequenceID);
-				string target = reader.GetValue<string>("PropertyName");
-				NumberSequenceTarget numberSequenceTarget = default(NumberSequenceTarget);
+				var sequence = sequences.Find(s => s.MigrationId == sequenceID);
 
-				switch (target)
-				{
-					case "FakturaPrijata":
-						numberSequenceTarget = NumberSequenceTarget.InvoiceReceived;
-						break;
-
-					case "FakturaVystavena":
-						numberSequenceTarget = NumberSequenceTarget.InvoiceIssued;
-						break;
-
-					default:
-						Console.WriteLine("Incorrect NumberSequenceTarget");
-						break;
-				}
-
-				var sequence = sequences.Find(s => s.MigrationId == sequenceID);// && s.Targets.HasFlag(numberSequenceTarget));
 				if (sequence == null)
 				{
 					sequence = new NumberSequence();
 					sequence.MigrationId = sequenceID;
 					unitOfWork.AddForInsert(sequence);
 					Console.WriteLine(" INSERT");
-					sequence.Targets = numberSequenceTarget;
 				}
 				else
 				{
 					unitOfWork.AddForUpdate(sequence);
 					Console.WriteLine(" UPDATE");
-					if (!sequence.Targets.HasFlag(numberSequenceTarget))
+				}
+
+				var hasInvoiceReceivedTarget = (reader.GetValue<int>("HasInvoiceReceivedTarget") == 1) ? true : false;
+				var hasInvoiceIssuedTarget = (reader.GetValue<int>("HasInvoiceIssuedTarget") == 1) ? true : false;
+
+				if (hasInvoiceIssuedTarget && hasInvoiceReceivedTarget)
+				{
+					sequence.Targets = NumberSequenceTarget.InvoiceReceived | NumberSequenceTarget.InvoiceIssued;
+				}
+				else
+				{
+					if (hasInvoiceIssuedTarget)
 					{
-						sequence.Targets = NumberSequenceTarget.InvoiceIssued | NumberSequenceTarget.InvoiceReceived;
+						sequence.Targets = NumberSequenceTarget.InvoiceIssued;
+					}
+					if (hasInvoiceReceivedTarget)
+					{
+						sequence.Targets = NumberSequenceTarget.InvoiceReceived;
 					}
 				}
 
