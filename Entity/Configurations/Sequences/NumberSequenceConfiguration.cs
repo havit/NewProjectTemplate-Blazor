@@ -14,7 +14,7 @@ namespace Havit.GoranG3.Entity.Configurations.Sequences
 	{
 		public void Configure(EntityTypeBuilder<NumberSequence> builder)
 		{
-			builder.HasIndex(NumberSequence => NumberSequence.MigrationId).IsUnique();
+			builder.HasIndex(numberSequence => numberSequence.MigrationId).IsUnique();
 		}
 	}
 }
