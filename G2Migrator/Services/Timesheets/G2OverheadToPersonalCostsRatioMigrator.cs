@@ -40,7 +40,7 @@ namespace Havit.GoranG3.G2Migrator.Services.Timesheets
 			while (reader.Read())
 			{
 				var startDate = reader.GetValue<DateTime>("DatumOd");
-				Console.Write(startDate);
+				Console.Write("RezijniPrirazkaOsobnichNakladu => OverheadToPersonalCostsRatio: " + startDate);
 				var ratio = ratios.Find(p => p.StartDate == startDate);
 				if (ratio == null)
 				{

@@ -40,7 +40,7 @@ namespace Havit.GoranG3.G2Migrator.Services.Timesheets
 			while (reader.Read())
 			{
 				var categoryID = reader.GetValue<int>("TimesheetItemCategoryID");
-				Console.Write(categoryID);
+				Console.Write("TimesheetItemCategory :" + categoryID);
 				var category = categories.Find(p => p.MigrationId == categoryID);
 				if (category == null)
 				{

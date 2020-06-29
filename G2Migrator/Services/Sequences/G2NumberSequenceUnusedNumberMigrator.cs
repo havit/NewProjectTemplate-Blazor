@@ -50,7 +50,7 @@ namespace Havit.GoranG3.G2Migrator.Services.Sequences
 					var unusedNumberID = reader.GetValue<int>("CiselnaRadaVolneCisloID");
 					var unusedNumberValue = reader.GetValue<int>("Hodnota");
 
-					Console.WriteLine("Unused number: " + unusedNumberID);
+					Console.Write("Unused number: " + unusedNumberID);
 					var unusedNumber = unusedNumbers.Find(n => n.NumberSequence == unusedNumberSequence && n.Value == unusedNumberValue);
 
 					if (unusedNumber == null)

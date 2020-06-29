@@ -40,7 +40,7 @@ namespace Havit.GoranG3.G2Migrator.Services.Projects
 			while (reader.Read())
 			{
 				var projectPhaseID = reader.GetValue<int>("FazeID");
-				Console.Write(projectPhaseID);
+				Console.Write("Faze => ProjectPhase: " + projectPhaseID);
 				var projectPhase = projectPhases.Find(p => p.MigrationId == projectPhaseID);
 
 				if (projectPhase == null)

@@ -72,16 +72,16 @@ namespace Havit.GoranG3.G2Migrator.Services
 			dbContext.Database.Migrate();
 			dataSeedRunner.SeedData<CoreProfile>();
 
-			//bankAccountMigrator.MigrateBankAccounts();
-			//currencyMigrator.MigrateCurrencies();
-			////exchangeRateMigrator.MigrateExchangeRates();
-			//userMigrator.MigrateUsers();
-			//employeeMigrator.MigrateEmployees();
-			//timesheetItemCategoryMigrator.MigrateCategories();
-			//projectMigrator.MigrateProjects();
-			//projectPhaseMigrator.MigrateProjectPhases();
-			//overheadToPersonalCostsRatioMigrator.MigrateOverheadToPersonalCostsRatios();
-			//timesheetItemMigrator.MigrateTimesheetItems();
+			bankAccountMigrator.MigrateBankAccounts();
+			currencyMigrator.MigrateCurrencies();
+			//exchangeRateMigrator.MigrateExchangeRates();
+			userMigrator.MigrateUsers();
+			employeeMigrator.MigrateEmployees();
+			projectMigrator.MigrateProjects();
+			projectPhaseMigrator.MigrateProjectPhases();
+			overheadToPersonalCostsRatioMigrator.MigrateOverheadToPersonalCostsRatios();
+			timesheetItemCategoryMigrator.MigrateCategories();
+			timesheetItemMigrator.MigrateTimesheetItems();
 			numberSequenceMigrator.MigrateSequences();
 			numberSequenceUnusedNumberMigrator.MigrateUnusedNumbers();
 		}
