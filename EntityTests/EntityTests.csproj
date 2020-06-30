@@ -3,8 +3,8 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
 	<IsPackable>false</IsPackable>
-    <AssemblyName>Havit.GoranG3.Tests</AssemblyName>
-    <RootNamespace>Havit.GoranG3.Tests</RootNamespace>
+    <AssemblyName>Havit.GoranG3.EntityTests</AssemblyName>
+    <RootNamespace>Havit.GoranG3.EntityTests</RootNamespace>
     <!-- Nasměrujeme publish složku mimo bin aby nedocházelo ke dvojímu spoštění unit testů (ze bin\Release\netcoreapp a bin\Release\netcoreapp\publish) -->
     <PublishDir>obj\$(Configuration)\publish</PublishDir>
   </PropertyGroup>
