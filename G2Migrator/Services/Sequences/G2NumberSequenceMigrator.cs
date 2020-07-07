@@ -56,8 +56,8 @@ namespace Havit.GoranG3.G2Migrator.Services.Sequences
 					Console.WriteLine(" UPDATE");
 				}
 
-				var hasInvoiceReceivedTarget = (reader.GetValue<int>("HasInvoiceReceivedTarget") == 1) ? true : false;
-				var hasInvoiceIssuedTarget = (reader.GetValue<int>("HasInvoiceIssuedTarget") == 1) ? true : false;
+				var hasInvoiceReceivedTarget = (reader.GetValue<int>("HasInvoiceReceivedTarget") == 1);
+				var hasInvoiceIssuedTarget = (reader.GetValue<int>("HasInvoiceIssuedTarget") == 1);
 
 				if (hasInvoiceIssuedTarget && hasInvoiceReceivedTarget)
 				{
