@@ -12,6 +12,7 @@ namespace Havit.GoranG3.Model.Sequences
 	[Flags]
 	public enum NumberSequenceTarget
 	{
+		None = 0b_0000_0000,
 		InvoiceIssued = 0b_0000_0001,
 		InvoiceReceived = 0b_0000_0010
 	}

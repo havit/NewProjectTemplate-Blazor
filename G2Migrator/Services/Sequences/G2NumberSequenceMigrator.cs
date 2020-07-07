@@ -59,20 +59,15 @@ namespace Havit.GoranG3.G2Migrator.Services.Sequences
 				var hasInvoiceReceivedTarget = (reader.GetValue<int>("HasInvoiceReceivedTarget") == 1);
 				var hasInvoiceIssuedTarget = (reader.GetValue<int>("HasInvoiceIssuedTarget") == 1);
 
-				if (hasInvoiceIssuedTarget && hasInvoiceReceivedTarget)
+				sequence.Targets = NumberSequenceTarget.None;
+
+				if (hasInvoiceIssuedTarget)
 				{
-					sequence.Targets = NumberSequenceTarget.InvoiceReceived | NumberSequenceTarget.InvoiceIssued;
+					sequence.Targets |= NumberSequenceTarget.InvoiceIssued;
 				}
-				else
+				if (hasInvoiceReceivedTarget)
 				{
-					if (hasInvoiceIssuedTarget)
-					{
-						sequence.Targets = NumberSequenceTarget.InvoiceIssued;
-					}
-					if (hasInvoiceReceivedTarget)
-					{
-						sequence.Targets = NumberSequenceTarget.InvoiceReceived;
-					}
+					sequence.Targets |= NumberSequenceTarget.InvoiceReceived;
 				}
 
 				sequence.Name = reader.GetValue<string>("Nazev");
