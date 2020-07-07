@@ -41,36 +41,39 @@ namespace Havit.GoranG3.G2Migrator.Services.Sequences
 			var unusedNumbers = numberSequenceUnusedNumberRepository.GetAll();
 			var numberSequences = numberSequenceRepository.GetAllIncludingDeleted();
 
-			while (reader.Read())
+			if (!numberSequences.Any())
 			{
-				var unusedNumberSequence = numberSequences.Find(s => s.MigrationId == reader.GetValue<int>("CiselnaRadaID"));
-
-				if (unusedNumberSequence != null)
+				while (reader.Read())
 				{
-					var unusedNumberID = reader.GetValue<int>("CiselnaRadaVolneCisloID");
-					var unusedNumberValue = reader.GetValue<int>("Hodnota");
+					var unusedNumberSequence = numberSequences.Find(s => s.MigrationId == reader.GetValue<int>("CiselnaRadaID"));
 
-					Console.Write("Unused number: " + unusedNumberID);
-					var unusedNumber = unusedNumbers.Find(n => n.NumberSequence == unusedNumberSequence && n.Value == unusedNumberValue);
-
-					if (unusedNumber == null)
+					if (unusedNumberSequence != null)
 					{
-						unusedNumber = new NumberSequenceUnusedNumber();
-						unitOfWork.AddForInsert(unusedNumber);
-						Console.WriteLine(" INSERT");
-					}
-					else
-					{
-						unitOfWork.AddForUpdate(unusedNumber);
-						Console.WriteLine(" UPDATE");
-					}
+						var unusedNumberID = reader.GetValue<int>("CiselnaRadaVolneCisloID");
+						var unusedNumberValue = reader.GetValue<int>("Hodnota");
 
-					unusedNumber.NumberSequence = unusedNumberSequence;
-					unusedNumber.Value = unusedNumberValue;
+						Console.Write("Unused number: " + unusedNumberID);
+						var unusedNumber = unusedNumbers.Find(n => n.NumberSequence == unusedNumberSequence && n.Value == unusedNumberValue);
+
+						if (unusedNumber == null)
+						{
+							unusedNumber = new NumberSequenceUnusedNumber();
+							unitOfWork.AddForInsert(unusedNumber);
+							Console.WriteLine(" INSERT");
+						}
+						else
+						{
+							unitOfWork.AddForUpdate(unusedNumber);
+							Console.WriteLine(" UPDATE");
+						}
+
+						unusedNumber.NumberSequence = unusedNumberSequence;
+						unusedNumber.Value = unusedNumberValue;
+					}
 				}
-			}
 
-			unitOfWork.Commit();
+				unitOfWork.Commit();
+			}
 		}
 	}
 }
