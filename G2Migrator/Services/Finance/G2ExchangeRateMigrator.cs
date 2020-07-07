@@ -58,6 +58,7 @@ namespace Havit.GoranG3.G2Migrator.Services.Finance
 				}
 
 				Currency currency = currencies.Find(p => p.MigrationId == (int)reader["CurrencyID"]);
+				exchangeRate.Currency = currency;
 				exchangeRate.DateFrom = reader.GetValue<DateTime>("DateFrom");
 				exchangeRate.Rate = reader.GetValue<decimal>("Rate");
 			}
