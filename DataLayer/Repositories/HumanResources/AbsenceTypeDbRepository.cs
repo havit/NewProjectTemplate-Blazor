@@ -14,6 +14,9 @@ namespace Havit.GoranG3.DataLayer.Repositories.HumanResources
 {
 	public partial class AbsenceTypeDbRepository : IAbsenceTypeRepository
 	{
-
+		public List<AbsenceType> GetAllIncludingDeleted()
+		{
+			return DataWithDeleted.Include(GetLoadReferences).ToList();
+		}
 	}
 }

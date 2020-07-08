@@ -32,6 +32,8 @@ namespace Havit.GoranG3.G2Migrator.Services
 		private readonly IG2OverheadToPersonalCostsRatioMigrator overheadToPersonalCostsRatioMigrator;
 		private readonly IG2NumberSequenceMigrator numberSequenceMigrator;
 		private readonly IG2NumberSequenceUnusedNumberMigrator numberSequenceUnusedNumberMigrator;
+		private readonly IG2AbsenceTypeMigrator absenceTypeMigrator;
+		private readonly IG2AbsenceMigrator absenceMigrator;
 		private readonly IDbContext dbContext;
 		private readonly IDataSeedRunner dataSeedRunner;
 
@@ -48,6 +50,8 @@ namespace Havit.GoranG3.G2Migrator.Services
 			IG2OverheadToPersonalCostsRatioMigrator overheadToPersonalCostsRatioMigrator,
 			IG2NumberSequenceMigrator numberSequenceMigrator,
 			IG2NumberSequenceUnusedNumberMigrator numberSequenceUnusedNumberMigrator,
+			IG2AbsenceTypeMigrator absenceTypeMigrator,
+			IG2AbsenceMigrator absenceMigrator,
 			IDbContext dbContext,
 			IDataSeedRunner dataSeedRunner)
 		{
@@ -63,6 +67,8 @@ namespace Havit.GoranG3.G2Migrator.Services
 			this.overheadToPersonalCostsRatioMigrator = overheadToPersonalCostsRatioMigrator;
 			this.numberSequenceMigrator = numberSequenceMigrator;
 			this.numberSequenceUnusedNumberMigrator = numberSequenceUnusedNumberMigrator;
+			this.absenceTypeMigrator = absenceTypeMigrator;
+			this.absenceMigrator = absenceMigrator;
 			this.dbContext = dbContext;
 			this.dataSeedRunner = dataSeedRunner;
 		}
@@ -84,6 +90,8 @@ namespace Havit.GoranG3.G2Migrator.Services
 			timesheetItemMigrator.MigrateTimesheetItems();
 			numberSequenceMigrator.MigrateSequences();
 			numberSequenceUnusedNumberMigrator.MigrateUnusedNumbers();
+			absenceTypeMigrator.MigrateAbsenceTypes();
+			absenceMigrator.MigrateAbsences();
 		}
 	}
 }
