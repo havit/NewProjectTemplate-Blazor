@@ -39,12 +39,12 @@ namespace Havit.GoranG3.G2Migrator.Services.HumanResources
 
 			while (reader.Read())
 			{
-				var absenceTypeID = reader.GetValue<int>("FazeID");
+				var absenceTypeID = reader.GetValue<int>("TypPracovnihoVolnaID");
 				Console.Write("TypPracovnihoVolna => AbsenceType: " + absenceTypeID);
 				var absenceType = absenceTypes.Find(p => p.MigrationId == absenceTypeID);
 				var name = reader.GetValue<string>("Nazev");
 
-				if (absenceTypeID < 0 || name != "Nemoc")
+				if (absenceTypeID > 0 && name != "Nemoc")
 				{
 					if (absenceType == null)
 					{
@@ -62,6 +62,10 @@ namespace Havit.GoranG3.G2Migrator.Services.HumanResources
 					absenceType.Name = name;
 					absenceType.HasBalance = reader.GetValue<bool>("SnizujeFondPracovniDoby");
 					//absenceType.UiOrder = (int)reader.GetValue<decimal>("Poradi");
+				}
+				else
+				{
+					Console.WriteLine(" NOT Updated");
 				}
 			}
 
