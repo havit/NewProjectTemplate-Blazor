@@ -29,25 +29,21 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.HumanResources
 			{
 				new EmploymentType()
 				{
-					Id = 1,
 					Name = "Hlavní pracovní poměr",
 					EmployerContributionsRate = 0.350m
 				},
 				new EmploymentType()
 				{
-					Id = 2,
 					Name = "Dohoda o provedení práce",
 					EmployerContributionsRate = 0.000m
 				},
 				new EmploymentType()
 				{
-					Id = 3,
 					Name = "Ičař - živnostník",
 					EmployerContributionsRate = 0.000m
 				},
 				new EmploymentType()
 				{
-					Id = 4,
 					Name = "Dohoda o pracovní činnosti",
 					EmployerContributionsRate = 0.350m
 				}
