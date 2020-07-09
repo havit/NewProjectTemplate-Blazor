@@ -33,16 +33,17 @@ namespace Havit.GoranG3.G2Migrator.Services.Sequences
 		}
 		public void MigrateUnusedNumbers()
 		{
-			using SqlConnection conn = new SqlConnection(options.G2ConnectionString);
-			conn.Open();
-			using SqlCommand cmd = new SqlCommand("SELECT * FROM CiselnaRadaVolneCislo", conn);
-			using SqlDataReader reader = cmd.ExecuteReader();
-
 			var unusedNumbers = numberSequenceUnusedNumberRepository.GetAll();
-			var numberSequences = numberSequenceRepository.GetAllIncludingDeleted();
 
-			if (!numberSequences.Any())
+			if (!unusedNumbers.Any())
 			{
+				using SqlConnection conn = new SqlConnection(options.G2ConnectionString);
+				conn.Open();
+				using SqlCommand cmd = new SqlCommand("SELECT * FROM CiselnaRadaVolneCislo", conn);
+				using SqlDataReader reader = cmd.ExecuteReader();
+
+				var numberSequences = numberSequenceRepository.GetAllIncludingDeleted();
+
 				while (reader.Read())
 				{
 					var unusedNumberSequence = numberSequences.Find(s => s.MigrationId == reader.GetValue<int>("CiselnaRadaID"));
@@ -61,7 +62,7 @@ namespace Havit.GoranG3.G2Migrator.Services.Sequences
 							unitOfWork.AddForInsert(unusedNumber);
 							Console.WriteLine(" INSERT");
 						}
-						else
+						else // Maybe useful in future
 						{
 							unitOfWork.AddForUpdate(unusedNumber);
 							Console.WriteLine(" UPDATE");
