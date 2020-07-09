@@ -34,6 +34,7 @@ namespace Havit.GoranG3.G2Migrator.Services
 		private readonly IG2NumberSequenceUnusedNumberMigrator numberSequenceUnusedNumberMigrator;
 		private readonly IG2AbsenceTypeMigrator absenceTypeMigrator;
 		private readonly IG2AbsenceMigrator absenceMigrator;
+		private readonly IG2EmploymentTermsMigrator employmentTermsMigrator; 
 		private readonly IDbContext dbContext;
 		private readonly IDataSeedRunner dataSeedRunner;
 
@@ -52,6 +53,7 @@ namespace Havit.GoranG3.G2Migrator.Services
 			IG2NumberSequenceUnusedNumberMigrator numberSequenceUnusedNumberMigrator,
 			IG2AbsenceTypeMigrator absenceTypeMigrator,
 			IG2AbsenceMigrator absenceMigrator,
+			IG2EmploymentTermsMigrator employmentTermsMigrator,
 			IDbContext dbContext,
 			IDataSeedRunner dataSeedRunner)
 		{
@@ -69,6 +71,7 @@ namespace Havit.GoranG3.G2Migrator.Services
 			this.numberSequenceUnusedNumberMigrator = numberSequenceUnusedNumberMigrator;
 			this.absenceTypeMigrator = absenceTypeMigrator;
 			this.absenceMigrator = absenceMigrator;
+			this.employmentTermsMigrator = employmentTermsMigrator;
 			this.dbContext = dbContext;
 			this.dataSeedRunner = dataSeedRunner;
 		}
@@ -92,6 +95,7 @@ namespace Havit.GoranG3.G2Migrator.Services
 			numberSequenceMigrator.MigrateSequences();
 			absenceTypeMigrator.MigrateAbsenceTypes();
 			absenceMigrator.MigrateAbsences();
+			employmentTermsMigrator.MigrateEmploymentTerms();
 		}
 	}
 }

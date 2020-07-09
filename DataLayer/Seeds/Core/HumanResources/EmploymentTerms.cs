@@ -29,12 +29,14 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.HumanResources
 			{
 				new EmploymentTerms()
 				{
+					MigrationId = -1,
 					Name = "hodinové odměňování",
 					RateType = EmployeeRateType.HourRate,
 					HoursPerDay = 8
 				},
 				new EmploymentTerms()
 				{
+					MigrationId = -2,
 					Name = "plný úvazek",
 					RateType = EmployeeRateType.MonthRate,
 					HoursPerDay = 8

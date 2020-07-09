@@ -5,14 +5,16 @@ using Havit.GoranG3.Entity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Havit.GoranG3.Entity.Migrations
 {
     [DbContext(typeof(GoranG3DbContext))]
-    partial class GoranG3DbContextModelSnapshot : ModelSnapshot
+    [Migration("20200709154107_EmploymentTerms_AddMigrationId")]
+    partial class EmploymentTerms_AddMigrationId
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -1099,6 +1101,9 @@ namespace Havit.GoranG3.Entity.Migrations
                     b.Property<string>("JobPosition")
                         .HasColumnType("nvarchar(50)")
                         .HasMaxLength(50);
+
+                    b.Property<int?>("MigrationId")
+                        .HasColumnType("int");
 
                     b.Property<decimal?>("OverheadToPersonalCostsRatio")
                         .HasColumnType("decimal(9, 4)");

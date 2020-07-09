@@ -60,7 +60,5 @@ namespace Havit.GoranG3.Model.HumanResources
 
 		public DateTime Created { get; set; }
 		public DateTime? Deleted { get; set; }
-
-		public int? MigrationId { get; set; }
 	}
 }
