@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Havit.GoranG3.Model.HumanResources
@@ -6,6 +7,10 @@ namespace Havit.GoranG3.Model.HumanResources
 	public class EmploymentTerms
 	{
 		public int Id { get; set; }
+
+		[Required]
+		[MaxLength(50)]
+		public string Name { get; set; }
 
 		/// <summary>
 		/// G2: TypOdmenovani
@@ -16,7 +21,7 @@ namespace Havit.GoranG3.Model.HumanResources
 		/// G2: DenniFondPracovniDoby
 		/// </summary>
 		[Column(TypeName = "decimal(9, 2)")]
-		public decimal HourPerDay { get; set; } = 8;
+		public decimal HoursPerDay { get; set; } = 8;
 
 		public DateTime Created { get; set; }
 		public DateTime? Deleted { get; set; }
