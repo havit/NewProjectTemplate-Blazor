@@ -49,7 +49,7 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.HumanResources
 				}
 			};
 
-			Seed(For(employmentTypes).PairBy(at => at.Id).WithoutUpdate());
+			Seed(For(employmentTypes).PairBy(at => at.Name).WithoutUpdate());
 		}
 	}
 }
