@@ -54,7 +54,7 @@ namespace Havit.GoranG3.G2Migrator.Services.Sequences
 						var unusedNumberValue = reader.GetValue<int>("Hodnota");
 
 						Console.Write("Unused number: " + unusedNumberID);
-						var unusedNumber = unusedNumbers.Find(n => n.NumberSequence == unusedNumberSequence && n.Value == unusedNumberValue);
+						var unusedNumber = unusedNumbers.Find(n => (n.NumberSequence == unusedNumberSequence) && (n.Value == unusedNumberValue));
 
 						if (unusedNumber == null)
 						{

@@ -44,7 +44,7 @@ namespace Havit.GoranG3.G2Migrator.Services.HumanResources
 				var hoursPerDay = reader.GetValue<decimal>("DenniFondPracovniDoby");
 
 				Console.Write("TypUvazku => EmploymentTerms: " + employmentTermID);
-				var employmentTerm = employmentTerms.Find(p => p.RateType == rateType && p.HoursPerDay == hoursPerDay);
+				var employmentTerm = employmentTerms.Find(p => (p.RateType == rateType) && (p.HoursPerDay == hoursPerDay));
 
 				if (employmentTerm == null)
 				{
