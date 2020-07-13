@@ -44,7 +44,7 @@ namespace Havit.GoranG3.G2Migrator.Services.HumanResources
 		{
 			using SqlConnection conn = new SqlConnection(options.G2ConnectionString);
 			conn.Open();
-			using SqlCommand cmd = new SqlCommand("SELECT hist.*, pos.Nazev jobPosition, et.Nazev employmentType FROM PracovnikHistorie hist LEFT JOIN PracovniPoziceLocalization pos ON hist.PracovniPoziceID = pos.PracovniPoziceID JOIN PracovniVztahLocalization et ON hist.PracovniVztahID = et.PracovniVztahID WHERE pos.LanguageID = 1 AND et.LanguageID = 1", conn);
+			using SqlCommand cmd = new SqlCommand("SELECT hist.*, pos.Nazev JobPosition, et.Nazev EmploymentType FROM PracovnikHistorie hist LEFT JOIN PracovniPoziceLocalization pos ON hist.PracovniPoziceID = pos.PracovniPoziceID JOIN PracovniVztahLocalization et ON hist.PracovniVztahID = et.PracovniVztahID WHERE pos.LanguageID = 1 AND et.LanguageID = 1", conn);
 			using SqlDataReader reader = cmd.ExecuteReader();
 
 			var employeehistories = employeeHistoryRepository.GetAll();
