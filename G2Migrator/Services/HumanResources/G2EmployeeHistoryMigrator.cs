@@ -59,7 +59,7 @@ namespace Havit.GoranG3.G2Migrator.Services.HumanResources
 				var employeeHistoryID = reader.GetValue<int>("PracovnikHistorieID");
 
 				Console.Write("PracovnikHistorie => EmployeeHistory: " + employeeHistoryID);
-				var employeeHistory = employeehistories.Find(h => (h.Employee == employee) && (h.StartDate == startDate));
+				var employeeHistory = employeehistories.Find(h => (h.EmployeeId == employee.Id) && (h.StartDate == startDate));
 
 				if (employeeHistory == null)
 				{
