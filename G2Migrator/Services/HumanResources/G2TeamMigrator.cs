@@ -71,7 +71,7 @@ namespace Havit.GoranG3.G2Migrator.Services.HumanResources
 				team.IsPrivateTeam = (reader.GetValue<int>("IsPrivateTeam") == 1);
 				team.IsActive = (reader.GetValue<int>("IsActive") == 1);
 
-				var teamMembers = reader.GetValue<string?>("TeamMembers");
+				var teamMembers = reader.GetValue<string>("TeamMembers");
 
 				if (!String.IsNullOrWhiteSpace(teamMembers))
 				{
