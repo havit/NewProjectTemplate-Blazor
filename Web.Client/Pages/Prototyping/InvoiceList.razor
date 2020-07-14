@@ -32,7 +32,7 @@
 	</FilterSection>
 	<CommandsSection>
 		@* nebo pojmenovat ButtonsSection? *@
-		<HxButton Text="Přidat fakturu" Skin="NewItem" OnClick="@NewInvoiceClicked" />
+		<HxButton Text="Přidat fakturu" Skin="ButtonSkins.New" OnClick="@NewInvoiceClicked" />
 		@* ...případná další tlačítka, např. export, generátor opakovaných plateb, hromadné změny? ... *@
 		@* ...tlačítko může být i "rozbalovací? *@
 	</CommandsSection>
@@ -40,11 +40,11 @@
 		@*@bind-SelectedDataItem="@CurrentInvoice"
 		AllowSelection="true"
 		AllowSorting="true"*@
-		<HxGrid Data="@Invoices" PageSize="50">
+		<HxGrid Items="@Invoices" PageSize="50">
 			<Columns>
-				<HxGridColumn TItemType="InvoiceDto" HeaderText="Vystavení" ItemText="@(item => item.IssuedDate.ToShortDateString())" SortExpression="@(item => item.IssuedDate)" />
-				<HxGridColumn TItemType="InvoiceDto" HeaderText="Účinnost" ItemText="@(item => item.TaxDate.ToShortDateString())" SortExpression="@(item => item.TaxDate)" SortDirection="Collections.SortDirection.Descending" />
-				<HxGridColumn TItemType="InvoiceDto" HeaderText="Popis" ItemText="@(item => item.Description)" SortExpression="@(item => item.Description)" />
+				<HxGridColumn TItemType="InvoiceDto" HeaderText="Vystavení" ItemTextFunc="@(item => item.IssuedDate.ToShortDateString())" SortExpression="@(item => item.IssuedDate)" IsDefaultSort="true" />
+				<HxGridColumn TItemType="InvoiceDto" HeaderText="Účinnost" ItemTextFunc="@(item => item.TaxDate.ToShortDateString())" SortExpression="@(item => item.TaxDate)" SortDirection="Collections.SortDirection.Descending" />
+				<HxGridColumn TItemType="InvoiceDto" HeaderText="Popis" ItemTextFunc="@(item => item.Description)" SortExpression="@(item => item.Description)" />
 				<HxGridColumn TItemType="InvoiceDto" Context="item" HeaderText="Partner" SortExpression="@(item => item.BusinessPartnerName)">
 					<ItemTemplate>
 						Partner: @item.BusinessPartnerName.Left(50)

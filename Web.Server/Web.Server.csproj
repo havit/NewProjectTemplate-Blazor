@@ -14,6 +14,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\002.HFW-HavitBlazor\Havit.Blazor.Components.Web.Bootstrap\Havit.Blazor.Components.Web.Bootstrap.csproj" />
+    <ProjectReference Include="..\002.HFW-HavitBlazor\Havit.Blazor.Components.Web\Havit.Blazor.Components.Web.csproj" />
     <ProjectReference Include="..\Contracts\Contracts.csproj" />
     <ProjectReference Include="..\DataLayer\DataLayer.csproj" />
     <ProjectReference Include="..\DependencyInjection\DependencyInjection.csproj" />

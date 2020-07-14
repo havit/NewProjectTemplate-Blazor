@@ -20,6 +20,7 @@ namespace Havit.GoranG3.Web.Client
 			builder.Services.AddSingleton(new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 			builder.Services.AddScoped(typeof(AccountClaimsPrincipalFactory<RemoteUserAccount>), typeof(RolesAccountClaimsPrincipalFactory)); // multiple roles workaround
 			builder.Services.AddApiAuthorization();
+			builder.Services.AddLocalization();
 
 			await builder.Build().RunAsync();
 		}
