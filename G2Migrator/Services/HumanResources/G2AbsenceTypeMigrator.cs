@@ -41,10 +41,17 @@ namespace Havit.GoranG3.G2Migrator.Services.HumanResources
 			{
 				var absenceTypeID = reader.GetValue<int>("TypPracovnihoVolnaID");
 				Console.Write("TypPracovnihoVolna => AbsenceType: " + absenceTypeID);
-				var absenceType = absenceTypes.Find(p => p.MigrationId == absenceTypeID);
+				var absenceType = absenceTypes.Find(a => a.MigrationId == absenceTypeID);
 				var name = reader.GetValue<string>("Nazev");
 
-				if (absenceTypeID > 0 && name != "Nemoc")
+				if (name.Equals("nemoc", StringComparison.InvariantCultureIgnoreCase))
+				{
+					var nemocType = absenceTypes.Find(n => n.Name == "Nemoc");
+					nemocType.MigrationId = absenceTypeID;
+					unitOfWork.AddForUpdate(nemocType);
+					Console.WriteLine(" UPDATE");
+				}
+				else if (absenceTypeID > 0)
 				{
 					if (absenceType == null)
 					{
@@ -61,11 +68,9 @@ namespace Havit.GoranG3.G2Migrator.Services.HumanResources
 
 					absenceType.Name = name;
 					absenceType.HasBalance = reader.GetValue<bool>("SnizujeFondPracovniDoby");
-					//absenceType.UiOrder = (int)reader.GetValue<decimal>("Poradi");
-				}
-				else
-				{
-					Console.WriteLine(" NOT Updated");
+
+					var uiOrder = (int)reader.GetValue<decimal>("Poradi");
+					absenceType.UiOrder = uiOrder + 4; //The first 4 values are seeded.
 				}
 			}
 
