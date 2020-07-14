@@ -14,6 +14,9 @@ namespace Havit.GoranG3.DataLayer.Repositories.HumanResources
 {
 	public partial class TeamDbRepository : ITeamRepository
 	{
-
+		public List<Team> GetAllIncludingDeleted()
+		{
+			return DataWithDeleted.Include(GetLoadReferences).ToList();
+		}
 	}
 }
