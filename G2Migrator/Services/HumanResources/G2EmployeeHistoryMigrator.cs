@@ -44,7 +44,7 @@ namespace Havit.GoranG3.G2Migrator.Services.HumanResources
 		{
 			using SqlConnection conn = new SqlConnection(options.G2ConnectionString);
 			conn.Open();
-			using SqlCommand cmd = new SqlCommand("SELECT hist.*, pos.Nazev JobPosition, et.Nazev EmploymentType FROM PracovnikHistorie hist LEFT JOIN PracovniPoziceLocalization pos ON hist.PracovniPoziceID = pos.PracovniPoziceID JOIN PracovniVztahLocalization et ON hist.PracovniVztahID = et.PracovniVztahID WHERE pos.LanguageID = 1 AND et.LanguageID = 1", conn);
+			using SqlCommand cmd = new SqlCommand("SELECT hist.*, pos.Nazev JobPosition, et.Nazev EmploymentType, terms.TypOdmenovani RateType, terms.DenniFondPracovniDoby HoursPerDay FROM PracovnikHistorie hist LEFT JOIN PracovniPoziceLocalization pos ON hist.PracovniPoziceID = pos.PracovniPoziceID JOIN PracovniVztahLocalization et ON hist.PracovniVztahID = et.PracovniVztahID JOIN TypUvazku terms ON hist.TypUvazkuID = terms.TypUvazkuID WHERE pos.LanguageID = 1 AND et.LanguageID = 1", conn);
 			using SqlDataReader reader = cmd.ExecuteReader();
 
 			var employeehistories = employeeHistoryRepository.GetAll();
@@ -75,10 +75,14 @@ namespace Havit.GoranG3.G2Migrator.Services.HumanResources
 					unitOfWork.AddForUpdate(employee);
 				}
 
-				employeeHistory.JobPosition = reader.GetValue<string>("jobPosition");
-				employeeHistory.EmploymentType = employmentTypes.Find(t => t.Name == reader.GetValue<string>("employmentType"));
+				employeeHistory.JobPosition = reader.GetValue<string>("JobPosition");
+				employeeHistory.EmploymentType = employmentTypes.Find(t => t.Name.Equals(reader.GetValue<string>("EmploymentType"), StringComparison.InvariantCultureIgnoreCase));
 				employeeHistory.BasicRate = reader.GetValue<decimal>("SjednanaZakladniSazba");
-				employeeHistory.EmploymentTerms = employmentTerms.Find(t => t.MigrationId == reader.GetValue<int>("TypUvazkuID"));
+
+				var rateType = (EmployeeRateType)reader.GetValue<int>("RateType");
+				var hoursPerDay = reader.GetValue<decimal>("HoursPerDay");
+				employeeHistory.EmploymentTerms = employmentTerms.Find(t => (t.RateType == rateType) && (t.HoursPerDay == hoursPerDay));
+
 				employeeHistory.HourlyCost = reader.GetValue<decimal>("HodinovaSazbaOsobnichNakladu");
 				employeeHistory.OverheadToPersonalCostsRatio = reader.GetValue<decimal?>("KoeficientPrirazkyRezie");
 			}
