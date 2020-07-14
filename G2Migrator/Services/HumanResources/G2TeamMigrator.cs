@@ -81,12 +81,13 @@ namespace Havit.GoranG3.G2Migrator.Services.HumanResources
 					{
 						var employee = employees.Find(e => e.MigrationId == teamMemberId);
 						var teamMembership = teamMemberships.Find(m => (m.Employee == employee) && (m.Team == team));
-						if ((employee != null) && (teamMembership != null))
+						if ((employee != null) && (teamMembership == null))
 						{
 							TeamMembership newMembership = new TeamMembership();
 							newMembership.Team = team;
 							newMembership.Employee = employee;
-							unitOfWork.AddForInsert(newMembership); // Is it neccessary?
+							unitOfWork.AddForInsert(newMembership);
+							Console.WriteLine("New TeamMembership created.");
 						}
 					}
 				}

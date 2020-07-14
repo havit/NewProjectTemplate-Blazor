@@ -103,7 +103,7 @@ namespace Havit.GoranG3.G2Migrator.Services
 			absenceMigrator.MigrateAbsences();
 			employmentTermsMigrator.MigrateEmploymentTerms();
 			//employeeHistoryMigrator.MigrateEmployeeHistories();
-			//teamMigrator.MigrateTeams();
+			teamMigrator.MigrateTeams();
 		}
 	}
 }
