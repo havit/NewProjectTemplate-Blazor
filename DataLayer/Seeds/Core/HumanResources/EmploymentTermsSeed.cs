@@ -1,4 +1,5 @@
 ﻿using Havit.Data.Patterns.DataSeeds;
+using Havit.GoranG3.DataLayer.DataSources.HumanResources;
 using Havit.GoranG3.DataLayer.Repositories.HumanResources;
 using Havit.GoranG3.Model.HumanResources;
 using System;
@@ -11,16 +12,16 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.HumanResources
 {
 	public class EmploymentTermsSeed : DataSeed<CoreProfile>
 	{
-		private readonly IEmploymentTermsRepository employmentTermsRepository;
+		private readonly IEmploymentTermsDataSource employmentTermsDataSource;
 
-		public EmploymentTermsSeed(IEmploymentTermsRepository employmentTermsRepository)
+		public EmploymentTermsSeed(IEmploymentTermsDataSource employmentTermsDataSource)
 		{
-			this.employmentTermsRepository = employmentTermsRepository;
+			this.employmentTermsDataSource = employmentTermsDataSource;
 		}
 
 		public override void SeedData()
 		{
-			if (employmentTermsRepository.GetAll().Any())
+			if (employmentTermsDataSource.DataWithDeleted.Any())
 			{
 				return; // one-off seed of defaults
 			}

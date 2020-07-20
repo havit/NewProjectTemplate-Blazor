@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Havit.Data.Patterns.DataSeeds;
+using Havit.GoranG3.DataLayer.DataSources.HumanResources;
 using Havit.GoranG3.DataLayer.Repositories.HumanResources;
 using Havit.GoranG3.Model.HumanResources;
 
@@ -11,16 +12,16 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.HumanResources
 {
 	public class AbsenceTypeSeed : DataSeed<CoreProfile>
 	{
-		private readonly IAbsenceTypeRepository absenceTypeRepository;
+		private readonly IAbsenceTypeDataSource absenceTypeDataSource;
 
-		public AbsenceTypeSeed(IAbsenceTypeRepository absenceTypeRepository)
+		public AbsenceTypeSeed(IAbsenceTypeDataSource absenceTypeDataSource)
 		{
-			this.absenceTypeRepository = absenceTypeRepository;
+			this.absenceTypeDataSource = absenceTypeDataSource;
 		}
 
 		public override void SeedData()
 		{
-			if (absenceTypeRepository.GetAll().Any())
+			if (absenceTypeDataSource.DataWithDeleted.Any())
 			{
 				return; // one-off seed of defaults
 			}
