@@ -97,8 +97,8 @@ namespace Havit.GoranG3.G2Migrator.Services
 			overheadToPersonalCostsRatioMigrator.MigrateOverheadToPersonalCostsRatios();
 			timesheetItemCategoryMigrator.MigrateCategories();
 			timesheetItemMigrator.MigrateTimesheetItems();
-			numberSequenceUnusedNumberMigrator.MigrateUnusedNumbers();
 			numberSequenceMigrator.MigrateSequences();
+			numberSequenceUnusedNumberMigrator.MigrateUnusedNumbers();
 			absenceTypeMigrator.MigrateAbsenceTypes();
 			absenceMigrator.MigrateAbsences();
 			employmentTermsMigrator.MigrateEmploymentTerms();
