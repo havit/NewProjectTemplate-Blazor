@@ -1,70 +1,74 @@
 ﻿@page "/"
 
-<HxListLayout Title="Faktury vystavené">
-	<NamedViewsSection>
-		<HxNamedViewList TFilterType="InvoiceListFilterDto" @bind-Filter="@Filter" NamedViews="@NamedViews" SelectedNamedViewChanged="NamedViewSelected" />
-	</NamedViewsSection>
-	<SearchSection>
-		<HxSearchBox OnQueryTextChanged="@SearchRequested" /> @* Možná přímo navázat na centrální BindData? *@
-	</SearchSection>
-	<FilterSection>
-		<HxFilterView ApplyFilterRequested="ApplyFilterRequested">
-			@* TODO: Změna stavu filtru (výměna instance) se neprojení v renderování kritérií, toje potřeba dořešit *@
-			<Criteria>
-				<HxDateRangeFilter @bind-Value="Filter.IssuedDateRange" Label="Vystavení" />
-				<HxDateRangeFilter @bind-Value="Filter.TaxDateRange" Label="Účinnost" />
-				<HxTextFilter @bind-Value="Filter.Text" Label="Nějaký text" />
-				<GoranProjectFilter @bind-Value="Filter.ProjectId" Label="Projekt" />
-				<GoranContactFilter @bind-Value="Filter.BusinessPartnerId" Label="Partner" />
-				@*<HxFilter Label="Typ faktury">
-					<FilterTemplate>
-						HxDropDownList @@bind="context.InvoiceTypeId" Data="@@CodebooksStore.InvoiceTypes" NameField="Name" ValueField="Id" />
-					</FilterTemplate>
-					<ChipTemplate>
-						<chip>
-							<label>Typ:</label>
-							<value>@CodebooksStore.InvoiceTypes.GetNameById(context.InvoiceTypeId)</value>
-						</chip>
-					</ChipTemplate>
-				</HxFilter>*@
-			</Criteria>
-		</HxFilterView>
-	</FilterSection>
-	<CommandsSection>
-		@* nebo pojmenovat ButtonsSection? *@
-		<HxButton Text="Přidat fakturu" Skin="ButtonSkins.New" OnClick="@NewInvoiceClicked" />
-		@* ...případná další tlačítka, např. export, generátor opakovaných plateb, hromadné změny? ... *@
-		@* ...tlačítko může být i "rozbalovací? *@
-	</CommandsSection>
-	<DataSection>
-		@*@bind-SelectedDataItem="@CurrentInvoice"
-		AllowSelection="true"
-		AllowSorting="true"*@
-		<HxGrid Items="@Invoices" PageSize="50">
-			<Columns>
-				<HxGridColumn TItemType="InvoiceDto" HeaderText="Vystavení" ItemTextFunc="@(item => item.IssuedDate.ToShortDateString())" SortExpression="@(item => item.IssuedDate)" IsDefaultSort="true" />
-				<HxGridColumn TItemType="InvoiceDto" HeaderText="Účinnost" ItemTextFunc="@(item => item.TaxDate.ToShortDateString())" SortExpression="@(item => item.TaxDate)" SortDirection="Collections.SortDirection.Descending" />
-				<HxGridColumn TItemType="InvoiceDto" HeaderText="Popis" ItemTextFunc="@(item => item.Description)" SortExpression="@(item => item.Description)" />
-				<HxGridColumn TItemType="InvoiceDto" Context="item" HeaderText="Partner" SortExpression="@(item => item.BusinessPartnerName)">
-					<ItemTemplate>
-						Partner: @item.BusinessPartnerName.Left(50)
-					</ItemTemplate>
-				</HxGridColumn>
-			</Columns>
-			<ContextMenu Context="item">
-				<HxContextMenu>
-					<HxContextMenuItem Title="Smazat" OnItemClick="async () => await DeleteClicked(item)" ConfirmationQuestion="@($"Opravdu si přejete smazat fakturu {item.InvoiceNumber}?")" />
-					<HxContextMenuItem Title="Duplikovat" OnItemClick="async () => await DuplicateClicked(item)"  />
-					<HxContextMenuItem Title="Vytisknout" OnItemClick="async () => await PrintClicked(item)"  />
-				</HxContextMenu>
-			</ContextMenu>
-		</HxGrid>
-	</DataSection>
-	<DetailSection> @* TODO Určování velikosti draweru *@
-		<InvoiceDetail @bind-Invoice="CurrentInvoice" />
-	</DetailSection>
-</HxListLayout>
+	<EditForm Model="@Filter">
+		<DataAnnotationsValidator />
 
+		<HxListLayout Title="Faktury vystavené">
+			<NamedViewsSection>
+				<HxNamedViewList TFilterType="InvoiceListFilterDto" @bind-Filter="@Filter" NamedViews="@NamedViews" SelectedNamedViewChanged="NamedViewSelected" />
+			</NamedViewsSection>
+			<SearchSection>
+				<HxSearchBox OnQueryTextChanged="@SearchRequested" /> @* Možná přímo navázat na centrální BindData? *@
+			</SearchSection>
+			<FilterSection>
+				<HxFilterView ApplyFilterRequested="ApplyFilterRequested">
+					@* TODO: Změna stavu filtru (výměna instance) se neprojení v renderování kritérií, toje potřeba dořešit *@
+					<Criteria>
+						<HxDateRangeFilter @bind-ValueFrom="@Filter.IssuedDateFrom" @bind-ValueTo="@Filter.IssuedDateTo" Label="Vystavení" />
+						<HxDateRangeFilter @bind-ValueFrom="@Filter.TaxDateFrom" @bind-ValueTo="@Filter.TaxDateTo" Label="Účinnost" />
+						<HxTextFilter @bind-Value="Filter.Text" Label="Nějaký text" />
+						@*<GoranProjectFilter Label="Projekt" />
+		<GoranContactFilter Label="Partner" />
+		<HxFilter Label="Typ faktury">
+			<FilterTemplate>
+				HxDropDownList @@bind="context.InvoiceTypeId" Data="@@CodebooksStore.InvoiceTypes" NameField="Name" ValueField="Id" />
+			</FilterTemplate>
+			<ChipTemplate>
+				<chip>
+					<label>Typ:</label>
+					<value>@CodebooksStore.InvoiceTypes.GetNameById(context.InvoiceTypeId)</value>
+				</chip>
+			</ChipTemplate>
+		</HxFilter>*@
+					</Criteria>
+				</HxFilterView>
+			</FilterSection>
+			<CommandsSection>
+				@* nebo pojmenovat ButtonsSection? *@
+				<HxButton Text="Přidat fakturu" Skin="ButtonSkins.New" OnClick="@NewInvoiceClicked" />
+				@* ...případná další tlačítka, např. export, generátor opakovaných plateb, hromadné změny? ... *@
+				@* ...tlačítko může být i "rozbalovací? *@
+			</CommandsSection>
+			<DataSection>
+				@*@bind-SelectedDataItem="@CurrentInvoice"
+				AllowSelection="true"
+				AllowSorting="true"*@
+				<HxGrid Items="@Invoices" PageSize="50">
+					<Columns>
+						<HxGridColumn TItemType="InvoiceDto" HeaderText="Vystavení" ItemTextFunc="@(item => item.IssuedDate.ToShortDateString())" SortExpression="@(item => item.IssuedDate)" IsDefaultSort="true" />
+						<HxGridColumn TItemType="InvoiceDto" HeaderText="Účinnost" ItemTextFunc="@(item => item.TaxDate.ToShortDateString())" SortExpression="@(item => item.TaxDate)" SortDirection="Collections.SortDirection.Descending" />
+						<HxGridColumn TItemType="InvoiceDto" HeaderText="Popis" ItemTextFunc="@(item => item.Description)" SortExpression="@(item => item.Description)" />
+						<HxGridColumn TItemType="InvoiceDto" Context="item" HeaderText="Partner" SortExpression="@(item => item.BusinessPartnerName)">
+							<ItemTemplate>
+								Partner: @item.BusinessPartnerName.Left(50)
+							</ItemTemplate>
+						</HxGridColumn>
+					</Columns>
+					<ContextMenu Context="item">
+						<HxContextMenu>
+							<HxContextMenuItem Title="Smazat" OnItemClick="async () => await DeleteClicked(item)" ConfirmationQuestion="@($"Opravdu si přejete smazat fakturu {item.InvoiceNumber}?")" />
+							<HxContextMenuItem Title="Duplikovat" OnItemClick="async () => await DuplicateClicked(item)" />
+							<HxContextMenuItem Title="Vytisknout" OnItemClick="async () => await PrintClicked(item)" />
+						</HxContextMenu>
+					</ContextMenu>
+				</HxGrid>
+			</DataSection>
+			<DetailSection>
+				@* TODO Určování velikosti draweru *@
+				<InvoiceDetail @bind-Invoice="CurrentInvoice" />
+			</DetailSection>
+		</HxListLayout>
+	</EditForm>
 @*
 	Inpirace viz:
 		DevExpress https://demos.devexpress.com/blazor/GridColumnTypes

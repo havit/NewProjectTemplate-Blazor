@@ -19,7 +19,7 @@ namespace Havit.GoranG3.Web.Client.Pages.Prototyping
 
 		protected readonly IEnumerable<NamedView<InvoiceListFilterDto>> NamedViews = new List<NamedView<InvoiceListFilterDto>>()
 		{
-			new NamedView<InvoiceListFilterDto>("Letos vystavené", () => new InvoiceListFilterDto { IssuedDateRange = new DateRange(new DateTime(2020, 1, 1), new DateTime(2020, 12, 31 )) } ),
+			new NamedView<InvoiceListFilterDto>("Letos vystavené", () => new InvoiceListFilterDto { IssuedDateFrom = new DateTime(2020, 1, 1), IssuedDateTo = new DateTime(2020, 12, 31 ) } ),
 			new NamedView<InvoiceListFilterDto>("Neuhrazené po splatnosti", () => new InvoiceListFilterDto { Text = "Neuhrazené po splatnosti" }),
 			new NamedView<InvoiceListFilterDto>("Po splatnosti > 30 dnů", () => new InvoiceListFilterDto { Text = "Po splatnosti > 30 dnů" })
 		};
@@ -46,10 +46,10 @@ namespace Havit.GoranG3.Web.Client.Pages.Prototyping
 					BusinessPartnerName = $"Zákazník {i}",
 					Description = "Provoz aplikací v Azure " + (new DateTime(2020, 1, 1).AddDays(3 * i)).ToString("MM/yyyy")
 				})
-				.WhereIf(Filter.IssuedDateRange?.StartDate != null, invoice => invoice.IssuedDate >= Filter.IssuedDateRange.StartDate)
-				.WhereIf(Filter.IssuedDateRange?.EndDate != null, invoice => invoice.IssuedDate <= Filter.IssuedDateRange.EndDate)
-				.WhereIf(Filter.TaxDateRange?.StartDate != null, invoice => invoice.TaxDate >= Filter.TaxDateRange.StartDate)
-				.WhereIf(Filter.TaxDateRange?.EndDate != null, invoice => invoice.TaxDate <= Filter.TaxDateRange.EndDate)
+				.WhereIf(Filter.IssuedDateFrom != null, invoice => invoice.IssuedDate >= Filter.IssuedDateFrom)
+				.WhereIf(Filter.IssuedDateTo != null, invoice => invoice.IssuedDate <= Filter.IssuedDateTo)
+				.WhereIf(Filter.TaxDateFrom != null, invoice => invoice.TaxDate >= Filter.TaxDateFrom)
+				.WhereIf(Filter.TaxDateTo != null, invoice => invoice.TaxDate <= Filter.TaxDateTo)
 				.WhereIf(!String.IsNullOrEmpty(Filter.Text), invoice => invoice.Description.Contains(Filter.Text, StringComparison.CurrentCultureIgnoreCase))
 				.ToList();
 			StateHasChanged();

@@ -9,11 +9,10 @@ namespace Havit.GoranG3.Web.Client.Pages.Prototyping
 {
 	public class InvoiceListFilterDto
 	{
-		public DateRange IssuedDateRange { get; set; }
-		public DateRange TaxDateRange { get; set; }
-		public int ProjectId { get; set; }
-		public int BusinessPartnerId { get; set; }
-		public int InvoiceTypeId { get; set; }
+		public DateTime? IssuedDateFrom { get; set; }
+		public DateTime? IssuedDateTo { get; set; }
+		public DateTime? TaxDateFrom { get; set; }
+		public DateTime? TaxDateTo { get; set; }
 		public string Text { get; set; }
 	}
 }
