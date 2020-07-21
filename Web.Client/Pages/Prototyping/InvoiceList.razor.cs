@@ -1,5 +1,7 @@
 ﻿using Havit.Blazor.Components.Web.Bootstrap.Filters;
+using Havit.Blazor.Components.Web.Bootstrap.Grids;
 using Havit.Blazor.Components.Web.Bootstrap.NamedViews;
+using Havit.GoranG3.Contracts.Finance.Invoices;
 using Havit.Linq;
 using Microsoft.AspNetCore.Components;
 using System;
@@ -12,60 +14,52 @@ namespace Havit.GoranG3.Web.Client.Pages.Prototyping
 {
     public partial class InvoiceList
     {
-		protected List<InvoiceDto> Invoices { get; set; }
+		protected int CurrentPageIndex { get; set; }
+		protected SortingItem<InvoiceListDto>[] CurrentSorting { get; set; }
 
-		protected InvoiceDto CurrentInvoice { get; set; }
-		protected InvoiceListFilterDto Filter { get; set; } = new InvoiceListFilterDto();
+		protected List<InvoiceListDto> Invoices { get; set; } 
+		protected int TotalInvoices { get; set; }
 
-		protected readonly IEnumerable<NamedView<InvoiceListFilterDto>> NamedViews = new List<NamedView<InvoiceListFilterDto>>()
+		protected InvoiceListDto CurrentInvoice { get; set; }
+		protected GetInvoicesFilterDto Filter { get; set; } = new GetInvoicesFilterDto();
+
+		[Inject]
+		protected IInvoiceFacade InvoiceFacade { get; set; }
+
+		protected readonly IEnumerable<NamedView<GetInvoicesFilterDto>> NamedViews = new List<NamedView<GetInvoicesFilterDto>>()
 		{
-			new NamedView<InvoiceListFilterDto>("Letos vystavené", () => new InvoiceListFilterDto { IssuedDateFrom = new DateTime(2020, 1, 1), IssuedDateTo = new DateTime(2020, 12, 31 ) } ),
-			new NamedView<InvoiceListFilterDto>("Neuhrazené po splatnosti", () => new InvoiceListFilterDto { Text = "Neuhrazené po splatnosti" }),
-			new NamedView<InvoiceListFilterDto>("Po splatnosti > 30 dnů", () => new InvoiceListFilterDto { Text = "Po splatnosti > 30 dnů" })
+			new NamedView<GetInvoicesFilterDto>("Letos vystavené", () => new GetInvoicesFilterDto { IssuedDateFrom = new DateTime(2020, 1, 1), IssuedDateTo = new DateTime(2020, 12, 31 ) } ),
+			new NamedView<GetInvoicesFilterDto>("Neuhrazené po splatnosti", () => new GetInvoicesFilterDto { Text = "Neuhrazené po splatnosti" }),
+			new NamedView<GetInvoicesFilterDto>("Po splatnosti > 30 dnů", () => new GetInvoicesFilterDto { Text = "Po splatnosti > 30 dnů" })
 		};
 
-		//public override string Title => "Faktury vystavené";
-
-
-
-		protected override void OnInitialized()
+		private async Task LoadInvoices()
 		{
-			base.OnInitialized();
-			LoadInvoices();
+			// TODO: bázová třída, konstruktor?
+			var request = new GetInvoicesRequest()
+			{
+				PageIndex = CurrentPageIndex, // TODO nechceme sledovat dvě proměnné, raději jednu a tu předat konstruktoru (což nám ještě generikum zavaří, ale to půjde...)
+				//SortItems = currentSorting.Select(item => new Contracts.Common.SortItemDto { SortString = item.SortString, SortDirection = item.SortDirection }).ToList(), // TODO
+				Filter = this.Filter
+			};
+			var result = await InvoiceFacade.GetInvoices(request);
+			Invoices = result.Invoices; // TODO: Potřebujeme hodnoty rozebírat? Nestačil by nám result?
+			TotalInvoices = result.TotalCount;
 		}
 
-		private void LoadInvoices()
+		protected async Task HandleDataReloadRequired(/*GridUserState<InvoiceListDto> gridUserState*/) // Zahazujeme stav gridu, protože máme i jiné scénáře, odkud je tento stav k ničemu
 		{
-			Invoices = Enumerable.Range(0, 250)
-				.Select(i => new InvoiceDto
-				{
-					InvoiceId = i,
-					InvoiceNumber = $"{i}/2000",
-					IssuedDate = new DateTime(2020, 1, 1).AddDays(3 * i),
-					TaxDate = new DateTime(2020, 1, 1).AddDays(3 * i),
-					BusinessPartnerName = $"Zákazník {i}",
-					Description = "Provoz aplikací v Azure " + (new DateTime(2020, 1, 1).AddDays(3 * i)).ToString("MM/yyyy")
-				})
-				.WhereIf(Filter.IssuedDateFrom != null, invoice => invoice.IssuedDate >= Filter.IssuedDateFrom)
-				.WhereIf(Filter.IssuedDateTo != null, invoice => invoice.IssuedDate <= Filter.IssuedDateTo)
-				.WhereIf(Filter.TaxDateFrom != null, invoice => invoice.TaxDate >= Filter.TaxDateFrom)
-				.WhereIf(Filter.TaxDateTo != null, invoice => invoice.TaxDate <= Filter.TaxDateTo)
-				.WhereIf(!String.IsNullOrEmpty(Filter.Text), invoice => invoice.Description.Contains(Filter.Text, StringComparison.CurrentCultureIgnoreCase))
-				.ToList();
-			StateHasChanged();
+			await LoadInvoices();
 		}
 
-		protected Task ApplyFilterRequested()
+		protected async Task ApplyFilterRequested()
 		{
-			LoadInvoices();
-			// Tady by bylo něco jako BindData()
-			return Task.CompletedTask;
+			await LoadInvoices();
 		}
 
-		protected Task NamedViewSelected(/*NamedView<InvoiceListFilterDto> namedView*/)
+		protected async Task NamedViewSelected(/*NamedView<GetInvoicesFilterDto> namedView*/)
 		{
-			LoadInvoices();
-			return Task.CompletedTask;
+			await LoadInvoices();
 		}
 
 		protected Task SearchRequested()
@@ -76,25 +70,25 @@ namespace Havit.GoranG3.Web.Client.Pages.Prototyping
 
 		protected Task NewInvoiceClicked()
 		{
-			this.CurrentInvoice = new InvoiceDto();
+			this.CurrentInvoice = new InvoiceListDto();
 			// OpenDetail() ?
 			return Task.CompletedTask;
 		}
 
-		protected Task DeleteClicked(InvoiceDto invoiceDto)
-		{
-			Invoices.Remove(invoiceDto);
-			return Task.CompletedTask;
-		}
-
-		protected Task DuplicateClicked(InvoiceDto invoiceDto)
+		protected Task EditClicked(InvoiceListDto invoiceDto)
 		{
 			return Task.CompletedTask;
 		}
 
-		protected Task PrintClicked(InvoiceDto invoiceDto)
+		protected Task DeleteClicked(InvoiceListDto invoiceDto)
 		{
 			return Task.CompletedTask;
 		}
+
+		protected Task DuplicateClicked(InvoiceListDto invoiceDto)
+		{
+			return Task.CompletedTask;
+		}
+
 	}
 }

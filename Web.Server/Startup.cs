@@ -17,6 +17,9 @@ using Havit.GoranG3.Facades.GrpcTests;
 using Microsoft.AspNetCore.Identity;
 using Web.Server.Infrastructure.Security;
 using System.IdentityModel.Tokens.Jwt;
+using Havit.GoranG3.Facades.Finance.Invoices;
+using ProtoBuf.Grpc.Configuration;
+using Havit.GoranG3.Contracts;
 
 namespace Havit.GoranG3.Web.Server
 {
@@ -67,6 +70,7 @@ namespace Havit.GoranG3.Web.Server
 
 			services.AddScoped<IApplicationAuthenticationService, ApplicationAuthenticationService>();
 
+			services.AddSingleton(BinderConfiguration.Create(null, new GrpcServiceBinder()));
 			services.AddCodeFirstGrpc(config =>
 			{
 				config.ResponseCompressionLevel = System.IO.Compression.CompressionLevel.Optimal;
@@ -111,6 +115,7 @@ namespace Havit.GoranG3.Web.Server
 
 				// GRPC TESTs
 				endpoints.MapGrpcService<TestFacade>();
+				endpoints.MapGrpcService<InvoiceFacade>();
 			});
 
 			app.UpgradeDatabaseSchemaAndData();

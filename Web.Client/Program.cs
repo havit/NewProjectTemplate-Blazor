@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
 using Havit.GoranG3.Web.Client.Infrastructure.Security;
+using Havit.GoranG3.Contracts.Finance.Invoices;
+using Havit.GoranG3.Web.Client.Infrastructure;
 
 namespace Havit.GoranG3.Web.Client
 {
@@ -21,6 +23,7 @@ namespace Havit.GoranG3.Web.Client
 			builder.Services.AddScoped(typeof(AccountClaimsPrincipalFactory<RemoteUserAccount>), typeof(RolesAccountClaimsPrincipalFactory)); // multiple roles workaround
 			builder.Services.AddApiAuthorization();
 			builder.Services.AddLocalization();
+			builder.Services.AddGrpcWebProxy<IInvoiceFacade>();
 
 			await builder.Build().RunAsync();
 		}
