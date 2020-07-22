@@ -7,6 +7,7 @@ using Havit.Data.EntityFrameworkCore;
 using Havit.Data.Patterns.DataSeeds;
 using Havit.Extensions.DependencyInjection.Abstractions;
 using Havit.GoranG3.DataLayer.Seeds.Core;
+using Havit.GoranG3.G2Migrator.Services.Crm;
 using Havit.GoranG3.G2Migrator.Services.Finance;
 using Havit.GoranG3.G2Migrator.Services.HumanResources;
 using Havit.GoranG3.G2Migrator.Services.Projects;
@@ -37,6 +38,9 @@ namespace Havit.GoranG3.G2Migrator.Services
 		private readonly IG2EmploymentTermsMigrator employmentTermsMigrator;
 		private readonly IG2EmployeeHistoryMigrator employeeHistoryMigrator;
 		private readonly IG2TeamMigrator teamMigrator;
+		private readonly IG2AddressMigrator addressMigrator;
+		private readonly IG2ContactMigrator contactMigrator;
+		private readonly IG2ContactRelationshipMigrator contactRelationshipMigrator;
 		private readonly IDbContext dbContext;
 		private readonly IDataSeedRunner dataSeedRunner;
 
@@ -58,6 +62,9 @@ namespace Havit.GoranG3.G2Migrator.Services
 			IG2EmploymentTermsMigrator employmentTermsMigrator,
 			IG2EmployeeHistoryMigrator employeeHistoryMigrator,
 			IG2TeamMigrator teamMigrator,
+			IG2AddressMigrator addressMigrator,
+			IG2ContactMigrator contactMigrator,
+			IG2ContactRelationshipMigrator contactRelationshipMigrator,
 			IDbContext dbContext,
 			IDataSeedRunner dataSeedRunner)
 		{
@@ -78,6 +85,9 @@ namespace Havit.GoranG3.G2Migrator.Services
 			this.employmentTermsMigrator = employmentTermsMigrator;
 			this.employeeHistoryMigrator = employeeHistoryMigrator;
 			this.teamMigrator = teamMigrator;
+			this.addressMigrator = addressMigrator;
+			this.contactMigrator = contactMigrator;
+			this.contactRelationshipMigrator = contactRelationshipMigrator;
 			this.dbContext = dbContext;
 			this.dataSeedRunner = dataSeedRunner;
 		}
@@ -104,6 +114,9 @@ namespace Havit.GoranG3.G2Migrator.Services
 			employmentTermsMigrator.MigrateEmploymentTerms();
 			employeeHistoryMigrator.MigrateEmployeeHistories();
 			teamMigrator.MigrateTeams();
+			addressMigrator.MigrateAddresses();
+			contactMigrator.MigrateContacts();
+			contactRelationshipMigrator.MigrateContactRelationships();
 		}
 	}
 }

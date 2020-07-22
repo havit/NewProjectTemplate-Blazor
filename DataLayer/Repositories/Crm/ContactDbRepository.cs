@@ -14,6 +14,9 @@ namespace Havit.GoranG3.DataLayer.Repositories.Crm
 {
 	public partial class ContactDbRepository : IContactRepository
 	{
-
+		public List<Contact> GetAllIncludingDeleted()
+		{
+			return DataWithDeleted.Include(GetLoadReferences).ToList();
+		}
 	}
 }

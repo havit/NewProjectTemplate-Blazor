@@ -28,7 +28,7 @@ namespace Havit.GoranG3.G2Migrator.Services.HumanResources
 			IOptions<MigrationOptions> options,
 			ITeamRepository teamRepository,
 			ITeamMembershipRepository teamMembershipRepository,
-		IEmployeeRepository employeeRepository,
+			IEmployeeRepository employeeRepository,
 			IUnitOfWork unitOfWork)
 		{
 			this.options = options.Value;

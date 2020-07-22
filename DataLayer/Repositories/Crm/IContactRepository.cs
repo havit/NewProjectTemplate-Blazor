@@ -10,6 +10,6 @@ namespace Havit.GoranG3.DataLayer.Repositories.Crm
 {
 	public partial interface IContactRepository
 	{
-
+		public List<Contact> GetAllIncludingDeleted();
 	}
 }
