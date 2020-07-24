@@ -13,7 +13,7 @@ namespace Havit.GoranG3.Entity.Configurations.Crm
 	{
 		public void Configure(EntityTypeBuilder<ContactRelationship> builder)
 		{
-			builder.HasIndex(ContactRelationship => new { ContactRelationship.ParentContactId, ContactRelationship.DetailContactId }).IsUnique();
+			builder.HasIndex(contactRelationship => new { contactRelationship.ParentContactId, contactRelationship.DetailContactId }).IsUnique();
 		}
 	}
 }
