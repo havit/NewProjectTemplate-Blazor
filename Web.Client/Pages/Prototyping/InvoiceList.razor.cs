@@ -1,4 +1,5 @@
-﻿using Havit.Blazor.Components.Web.Bootstrap.Filters;
+﻿using Grpc.Core;
+using Havit.Blazor.Components.Web.Bootstrap.Filters;
 using Havit.Blazor.Components.Web.Bootstrap.Grids;
 using Havit.Blazor.Components.Web.Bootstrap.NamedViews;
 using Havit.GoranG3.Contracts.Common;
@@ -8,9 +9,11 @@ using Microsoft.AspNetCore.Components;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Text.Json;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Havit.GoranG3.Web.Client.Pages.Prototyping
@@ -34,17 +37,29 @@ namespace Havit.GoranG3.Web.Client.Pages.Prototyping
 			new NamedView<GetInvoicesFilterDto>("Po splatnosti > 30 dnů", () => new GetInvoicesFilterDto { Text = "Po splatnosti > 30 dnů" })
 		};
 
+		private CancellationTokenSource cancellationTokenSource;
 		private async Task LoadInvoices()
 		{
-			GetInvoicesRequest request = new GetInvoicesRequest()//.SetFilter(Filter).SetGridState(CurrentGridState);
+			cancellationTokenSource?.Cancel();
+			cancellationTokenSource = new CancellationTokenSource();
+
+			GetInvoicesRequest request = new GetInvoicesRequest()
 			{
 				Filter = this.Filter,
 				PageIndex = this.CurrentGridState.PageIndex,
 				SortItems = this.CurrentGridState.Sorting?.Select(item => new Contracts.Common.SortItemDto { SortString = item.SortString, SortDirection = item.SortDirection }).ToList()
 			};
-			var result = await InvoiceFacade.GetInvoices(request);
-			Invoices = result.Invoices; // TODO: Potřebujeme hodnoty rozebírat? Nestačil by nám result?
-			TotalInvoices = result.TotalCount;
+
+			try
+			{
+				var result = await InvoiceFacade.GetInvoices(request, cancellationTokenSource.Token);
+				Invoices = result.Invoices; // TODO: Potřebujeme hodnoty rozebírat? Nestačil by nám result?
+				TotalInvoices = result.TotalCount;
+			}
+			catch (RpcException e) when (e.StatusCode == StatusCode.Cancelled)
+			{
+				// NOOP
+			}
 		}
 
 		protected async Task HandleDataReloadRequired()

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using Havit.Collections;
 using Havit.GoranG3.Contracts.Finance.Invoices;
@@ -10,10 +11,10 @@ using Havit.Linq;
 namespace Havit.GoranG3.Facades.Finance.Invoices
 {
 	public class InvoiceFacade : IInvoiceFacade
-	{
-		public async Task<GetInvoicesResult> GetInvoices(GetInvoicesRequest request) // TODO: CancellationToken
+	{		
+		public async Task<GetInvoicesResult> GetInvoices(GetInvoicesRequest request, CancellationToken cancellationToken)
 		{
-			await Task.Delay(500); // TODO: CancellationToken
+			await Task.Delay(500, cancellationToken);
 
 			// use IQueryable, not List
 			List<InvoiceListDto> invoices = Enumerable.Range(0, 250)
