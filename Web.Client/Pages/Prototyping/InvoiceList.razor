@@ -46,7 +46,7 @@
 			AllowSorting="true"*@
 
 			@*@bind-CurrentSorting="@CurrentSorting"*@
-			<HxGrid Items="@Invoices" TotalItemsCount="@TotalInvoices" PageSize="@Havit.GoranG3.Contracts.Finance.Invoices.GetInvoicesRequest.PageSize" @bind-CurrentPageIndex="@CurrentPageIndex" AutoSort="false" >
+			<HxGrid TItemType="InvoiceListDto" Items="@Invoices" TotalItemsCount="@TotalInvoices" PageSize="@Havit.GoranG3.Contracts.Finance.Invoices.GetInvoicesRequest.PageSize" @bind-CurrentUserState="@CurrentGridState" DataReloadRequired="HandleDataReloadRequired">
 				<Columns>
 					<HxGridColumn TItemType="InvoiceListDto" HeaderText="Datum" ItemTextFunc="@(item => item.IssuedDate.ToShortDateString())" SortString="@nameof(InvoiceListDto.IssuedDate)" IsDefaultSort="true" />
 					<HxGridColumn TItemType="InvoiceListDto" HeaderText="Účinnost" ItemTextFunc="@(item => item.TaxDate.ToShortDateString())" SortString="@nameof(InvoiceListDto.TaxDate)" />

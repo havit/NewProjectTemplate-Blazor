@@ -6,6 +6,7 @@ using Havit.Collections;
 
 namespace Havit.GoranG3.Contracts.Common
 {
+	// TODO: Přesun do Havit.Model.Grpc?
 	[DataContract]
 	public class SortItemDto
 	{

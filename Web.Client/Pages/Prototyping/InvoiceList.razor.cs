@@ -1,22 +1,23 @@
 ﻿using Havit.Blazor.Components.Web.Bootstrap.Filters;
 using Havit.Blazor.Components.Web.Bootstrap.Grids;
 using Havit.Blazor.Components.Web.Bootstrap.NamedViews;
+using Havit.GoranG3.Contracts.Common;
 using Havit.GoranG3.Contracts.Finance.Invoices;
 using Havit.Linq;
 using Microsoft.AspNetCore.Components;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace Havit.GoranG3.Web.Client.Pages.Prototyping
 {
     public partial class InvoiceList
     {
-		protected int CurrentPageIndex { get; set; }
-		protected SortingItem<InvoiceListDto>[] CurrentSorting { get; set; }
-
+		protected GridUserState<InvoiceListDto> CurrentGridState { get; set; } = new GridUserState<InvoiceListDto>(0, null); // TODO: Default nastavit v HxGridu
 		protected List<InvoiceListDto> Invoices { get; set; } 
 		protected int TotalInvoices { get; set; }
 
@@ -35,23 +36,23 @@ namespace Havit.GoranG3.Web.Client.Pages.Prototyping
 
 		private async Task LoadInvoices()
 		{
-			// TODO: bázová třída, konstruktor?
-			var request = new GetInvoicesRequest()
+			GetInvoicesRequest request = new GetInvoicesRequest()//.SetFilter(Filter).SetGridState(CurrentGridState);
 			{
-				PageIndex = CurrentPageIndex, // TODO nechceme sledovat dvě proměnné, raději jednu a tu předat konstruktoru (což nám ještě generikum zavaří, ale to půjde...)
-				//SortItems = currentSorting.Select(item => new Contracts.Common.SortItemDto { SortString = item.SortString, SortDirection = item.SortDirection }).ToList(), // TODO
-				Filter = this.Filter
+				Filter = this.Filter,
+				PageIndex = this.CurrentGridState.PageIndex,
+				SortItems = this.CurrentGridState.Sorting?.Select(item => new Contracts.Common.SortItemDto { SortString = item.SortString, SortDirection = item.SortDirection }).ToList()
 			};
 			var result = await InvoiceFacade.GetInvoices(request);
 			Invoices = result.Invoices; // TODO: Potřebujeme hodnoty rozebírat? Nestačil by nám result?
 			TotalInvoices = result.TotalCount;
 		}
 
-		protected async Task HandleDataReloadRequired(/*GridUserState<InvoiceListDto> gridUserState*/) // Zahazujeme stav gridu, protože máme i jiné scénáře, odkud je tento stav k ničemu
+		protected async Task HandleDataReloadRequired()
 		{
 			await LoadInvoices();
 		}
 
+		// TODO: Nekolik volání metody LoadInvoices. Jak to napojit? Ideálně bez nutnosti řádky kódu.
 		protected async Task ApplyFilterRequested()
 		{
 			await LoadInvoices();
