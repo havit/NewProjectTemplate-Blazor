@@ -3,6 +3,7 @@ using Havit.Data.Patterns.Exceptions;
 using Havit.Data.Patterns.UnitOfWorks;
 using Havit.GoranG3.DataLayer.Repositories.Projects;
 using Havit.GoranG3.Model.Projects;
+using Havit.Services.TimeServices;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,13 +16,17 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Projects
 	{
 		private readonly IProjectRepository projectRepository;
 		private readonly IUnitOfWork unitOfWork;
+		private readonly ITimeService timeService;
 
-		public ProjectSeed(IProjectRepository projectRepository, IUnitOfWork unitOfWork)
+		public ProjectSeed(
+			IProjectRepository projectRepository,
+			IUnitOfWork unitOfWork,
+			ITimeService timeService)
 		{
 			this.projectRepository = projectRepository;
 			this.unitOfWork = unitOfWork;
+			this.timeService = timeService;
 		}
-
 
 		public override void SeedData()
 		{
@@ -36,6 +41,7 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.Projects
 				root.Name = "ROOT_SYSTEM_PROJECT";
 				root.ProjectCode = "ROOT";
 				root.MigrationId = -1;
+				root.Created = timeService.GetCurrentTime();
 
 				unitOfWork.AddForInsert(root);
 				unitOfWork.Commit();

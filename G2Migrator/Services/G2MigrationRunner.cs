@@ -99,7 +99,7 @@ namespace Havit.GoranG3.G2Migrator.Services
 
 			bankAccountMigrator.MigrateBankAccounts();
 			currencyMigrator.MigrateCurrencies();
-			//exchangeRateMigrator.MigrateExchangeRates();
+			exchangeRateMigrator.MigrateExchangeRates();
 			userMigrator.MigrateUsers();
 			employeeMigrator.MigrateEmployees();
 			projectMigrator.MigrateProjects();
