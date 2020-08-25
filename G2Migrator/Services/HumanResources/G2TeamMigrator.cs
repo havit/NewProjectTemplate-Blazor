@@ -41,7 +41,7 @@ namespace Havit.GoranG3.G2Migrator.Services.HumanResources
 		{
 			using SqlConnection conn = new SqlConnection(options.G2ConnectionString);
 			conn.Open();
-			using SqlCommand cmd = new SqlCommand("SELECT te.TeamID, MAX(te.Nazev) AS Name, te.PrivatniTeam AS IsPrivateTeam, te.Aktivni AS IsActive, STRING_AGG (pr.PracovnikID, ',') AS TeamMembers FROM Team te LEFT JOIN Team_Pracovnik pr ON te.TeamID = pr.TeamID WHERE SystemovyTeam = 0 GROUP BY te.TeamID, te.PrivatniTeam, te.Aktivni", conn);
+			using SqlCommand cmd = new SqlCommand("SELECT te.TeamID, MAX(te.Nazev) AS Name, te.Aktivni AS IsActive, STRING_AGG (pr.PracovnikID, ',') AS TeamMembers, MAX(te.Deleted) AS Deleted FROM Team te LEFT JOIN Team_Pracovnik pr ON te.TeamID = pr.TeamID WHERE SystemovyTeam = 0 GROUP BY te.TeamID, te.PrivatniTeam, te.Aktivni", conn);
 			using SqlDataReader reader = cmd.ExecuteReader();
 
 			var teams = teamRepository.GetAllIncludingDeleted();
@@ -52,6 +52,7 @@ namespace Havit.GoranG3.G2Migrator.Services.HumanResources
 			{
 				var teamID = reader.GetValue<int>("TeamID");
 				var team = teams.Find(e => e.MigrationId == teamID);
+				bool isUpdate;
 				Console.Write("Team: " + teamID);
 
 				if (team == null)
@@ -60,16 +61,17 @@ namespace Havit.GoranG3.G2Migrator.Services.HumanResources
 					team.MigrationId = teamID;
 					unitOfWork.AddForInsert(team);
 					Console.WriteLine(" INSERT");
+					isUpdate = false;
 				}
 				else
 				{
 					Console.WriteLine(" UPDATE");
 					unitOfWork.AddForUpdate(team);
+					isUpdate = true;
 				}
 
 				team.Name = reader.GetValue<string>("Name");
-				team.IsPrivateTeam = (reader.GetValue<int>("IsPrivateTeam") == 1);
-				team.IsActive = (reader.GetValue<int>("IsActive") == 1);
+				team.IsActive = reader.GetValue<bool>("IsActive");
 				team.Deleted = reader.GetValue<DateTime?>("Deleted");
 
 				var teamMembers = reader.GetValue<string>("TeamMembers");
@@ -77,6 +79,7 @@ namespace Havit.GoranG3.G2Migrator.Services.HumanResources
 				if (!String.IsNullOrWhiteSpace(teamMembers))
 				{
 					var ids = teamMembers.Split(',').Select(Int32.Parse);
+					List<TeamMembership> actualMembers = new List<TeamMembership>();
 
 					foreach (var teamMemberId in ids)
 					{
@@ -89,6 +92,23 @@ namespace Havit.GoranG3.G2Migrator.Services.HumanResources
 							newMembership.Employee = employee;
 							unitOfWork.AddForInsert(newMembership);
 							Console.WriteLine("New TeamMembership created.");
+							actualMembers.Add(newMembership);
+						}
+						else if ((employee != null) && (teamMembership != null))
+						{
+							actualMembers.Add(teamMembership);
+						}
+					}
+
+					if (isUpdate)
+					{
+						foreach (var member in team.TeamMemberships)
+						{
+							if (!actualMembers.Contains(member))
+							{
+								unitOfWork.AddForDelete(member);
+								Console.WriteLine("TeamMembership deleted.");
+							}
 						}
 					}
 				}

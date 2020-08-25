@@ -98,7 +98,6 @@ namespace Havit.GoranG3.G2Migrator.Services.HumanResources
 					employee.Contact.RegisteredAddress.Country = countryByIsoCodeLookupService.GetCountryByIsoCode(countryDomain);
 				}
 
-
 				employee.Created = reader.GetValue<DateTime>("Created");
 				employee.Deleted = reader.GetValue<DateTime?>("Deleted");
 			}
