@@ -41,7 +41,7 @@ namespace Havit.GoranG3.G2Migrator.Services.HumanResources
 		{
 			using SqlConnection conn = new SqlConnection(options.G2ConnectionString);
 			conn.Open();
-			using SqlCommand cmd = new SqlCommand("SELECT te.TeamID, MAX(te.Nazev) AS Name, CASE WHEN EXISTS (SELECT * FROM Team t WHERE t.TeamID = te.TeamID AND t.PrivatniTeam = 1) THEN 1 ELSE 0 END AS IsPrivateTeam,CASE WHEN EXISTS (SELECT * FROM Team t WHERE t.TeamID = te.TeamID AND t.Aktivni = 1) THEN 1 ELSE 0 END AS IsActive, STRING_AGG (pr.PracovnikID, ',') AS TeamMembers FROM Team te LEFT JOIN Team_Pracovnik pr ON te.TeamID = pr.TeamID WHERE SystemovyTeam = 0 GROUP BY te.TeamID", conn);
+			using SqlCommand cmd = new SqlCommand("SELECT te.TeamID, MAX(te.Nazev) AS Name, te.PrivatniTeam AS IsPrivateTeam, te.Aktivni AS IsActive, STRING_AGG (pr.PracovnikID, ',') AS TeamMembers FROM Team te LEFT JOIN Team_Pracovnik pr ON te.TeamID = pr.TeamID WHERE SystemovyTeam = 0 GROUP BY te.TeamID, te.PrivatniTeam, te.Aktivni", conn);
 			using SqlDataReader reader = cmd.ExecuteReader();
 
 			var teams = teamRepository.GetAllIncludingDeleted();
@@ -70,6 +70,7 @@ namespace Havit.GoranG3.G2Migrator.Services.HumanResources
 				team.Name = reader.GetValue<string>("Name");
 				team.IsPrivateTeam = (reader.GetValue<int>("IsPrivateTeam") == 1);
 				team.IsActive = (reader.GetValue<int>("IsActive") == 1);
+				team.Deleted = reader.GetValue<DateTime?>("Deleted");
 
 				var teamMembers = reader.GetValue<string>("TeamMembers");
 
