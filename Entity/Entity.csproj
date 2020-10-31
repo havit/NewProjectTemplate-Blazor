@@ -1,20 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>netcoreapp3.1</TargetFramework>
+		<TargetFramework>net5.0</TargetFramework>
 		<AssemblyName>Havit.GoranG3.Entity</AssemblyName>
 		<RootNamespace>Havit.GoranG3.Entity</RootNamespace>
 		<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
 	</PropertyGroup>
-
-	<ItemGroup>
-	  <Compile Remove="Migrations\20200528224833_ProjectMigrationId.cs" />
-	  <Compile Remove="Migrations\20200528224833_ProjectMigrationId.Designer.cs" />
-	  <Compile Remove="Migrations\20200603224848_UserMigration.cs" />
-	  <Compile Remove="Migrations\20200603224848_UserMigration.Designer.cs" />
-	  <Compile Remove="Migrations\20200606230456_AddressRequiredFields.cs" />
-	  <Compile Remove="Migrations\20200606230456_AddressRequiredFields.Designer.cs" />
-	</ItemGroup>
 
 	<ItemGroup>
 		<None Remove="appsettings.json" />

@@ -1,15 +1,15 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>netstandard2.1</TargetFramework>
-    <AssemblyName>Havit.GoranG3.Contracts</AssemblyName>
-    <RootNamespace>Havit.GoranG3.Contracts</RootNamespace>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net5.0</TargetFramework>
+		<AssemblyName>Havit.GoranG3.Contracts</AssemblyName>
+		<RootNamespace>Havit.GoranG3.Contracts</RootNamespace>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Havit.Core" Version="2.0.10" />
-    <PackageReference Include="protobuf-net.Grpc" Version="1.0.123" />
-    <PackageReference Include="System.ServiceModel.Primitives" Version="4.7.0" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Havit.Core" Version="2.0.10" />
+		<PackageReference Include="protobuf-net.Grpc" Version="1.0.123" />
+		<PackageReference Include="System.ServiceModel.Primitives" Version="4.7.0" />
+	</ItemGroup>
 
 </Project>
