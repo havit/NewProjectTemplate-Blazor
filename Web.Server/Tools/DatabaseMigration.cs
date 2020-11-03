@@ -19,8 +19,6 @@ namespace Havit.GoranG3.Web.Server.Tools
 		{
 			using (IServiceScope serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
 			{
-				Debug.Assert(serviceScope.ServiceProvider.GetService<ManyToManyEntityKeyDiscoveryConvention>() != null);
-
 				var context = serviceScope.ServiceProvider.GetService<IDbContext>();
 				context.Database.Migrate();
 

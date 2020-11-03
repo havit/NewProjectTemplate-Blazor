@@ -20,7 +20,7 @@ namespace Havit.GoranG3.DataLayer.Repositories.Security
 	{
 		public List<User> GetAllIncludingDeleted()
 		{
-			return DataWithDeleted.Include(GetLoadReferences).ToList();
+			return DataIncludingDeleted.Include(GetLoadReferences).ToList();
 		}
 
 		public async Task<User> GetByUsernameAsync(string username, CancellationToken cancellationToken = default)

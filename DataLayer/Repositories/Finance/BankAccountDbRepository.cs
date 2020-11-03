@@ -16,7 +16,7 @@ namespace Havit.GoranG3.DataLayer.Repositories.Finance
 	{
 		public List<BankAccount> GetAllIncludingDeleted()
 		{
-			return DataWithDeleted.Include(GetLoadReferences).ToList();
+			return DataIncludingDeleted.Include(GetLoadReferences).ToList();
 		}
 	}
 }

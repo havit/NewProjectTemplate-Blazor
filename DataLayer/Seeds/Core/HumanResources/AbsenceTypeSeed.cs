@@ -21,7 +21,7 @@ namespace Havit.GoranG3.DataLayer.Seeds.Core.HumanResources
 
 		public override void SeedData()
 		{
-			if (absenceTypeDataSource.DataWithDeleted.Any())
+			if (absenceTypeDataSource.DataIncludingDeleted.Any())
 			{
 				return; // one-off seed of defaults
 			}

@@ -17,7 +17,7 @@ namespace Havit.GoranG3.DataLayer.Repositories.HumanResources
 	{
 		public List<Employee> GetAllIncludingDeleted()
 		{
-			return DataWithDeleted.Include(GetLoadReferences).ToList();
+			return DataIncludingDeleted.Include(GetLoadReferences).ToList();
 		}
 
 		protected override IEnumerable<Expression<Func<Employee, object>>> GetLoadReferences()
