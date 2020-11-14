@@ -9,7 +9,7 @@
 	<ItemGroup>
 		<PackageReference Include="Havit.Core" Version="2.0.10" />
 		<PackageReference Include="protobuf-net.Grpc" Version="1.0.123" />
-		<PackageReference Include="System.ServiceModel.Primitives" Version="4.7.0" />
+		<PackageReference Include="System.ServiceModel.Primitives" Version="4.8.0" />
 	</ItemGroup>
 
 </Project>

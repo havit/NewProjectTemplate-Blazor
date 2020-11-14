@@ -9,7 +9,7 @@
 	<ItemGroup>
 		<PackageReference Include="Havit.Extensions.DependencyInjection" Version="2.0.7" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="3.1.4" />
-		<PackageReference Include="Scrutor" Version="3.2.0" />
+		<PackageReference Include="Scrutor" Version="3.3.0" />
 	</ItemGroup>
 
 	<ItemGroup>
