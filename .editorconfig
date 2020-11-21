@@ -1,6 +1,4 @@
-﻿root = true
-
-# C# files
+﻿# C# files
 [*.cs]
 
 ####################################
@@ -196,4 +194,4 @@ dotnet_diagnostic.CA1500.severity=warning
 dotnet_diagnostic.CA1504.severity=warning
 
 # CA1822: Member '{0}' does not access instance data and can be marked as static
-dotnet_diagnostic.CA1822.severity=warning
+dotnet_diagnostic.CA1822.severity=silent
