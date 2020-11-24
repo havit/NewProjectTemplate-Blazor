@@ -1,7 +1,5 @@
 ﻿using Grpc.Core;
-using Havit.Blazor.Components.Web.Bootstrap.Filters;
-using Havit.Blazor.Components.Web.Bootstrap.Grids;
-using Havit.Blazor.Components.Web.Bootstrap.NamedViews;
+using Havit.Blazor.Components.Web.Bootstrap;
 using Havit.GoranG3.Contracts.Common;
 using Havit.GoranG3.Contracts.Finance.Invoices;
 using Havit.Linq;

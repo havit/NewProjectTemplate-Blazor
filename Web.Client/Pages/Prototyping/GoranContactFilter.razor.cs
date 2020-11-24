@@ -1,4 +1,4 @@
-﻿using Havit.Blazor.Components.Web.Bootstrap.Filters;
+﻿using Havit.Blazor.Components.Web.Bootstrap;
 using Microsoft.AspNetCore.Components;
 using System;
 using System.Collections.Generic;
