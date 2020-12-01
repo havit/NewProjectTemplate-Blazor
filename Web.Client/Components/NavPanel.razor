@@ -1,0 +1,11 @@
+﻿<div class="card" style="width: 18rem">
+	<div class="card-header"><HxIcon Icon="Icon" /> @Title</div>
+	<div class="card-body">@ChildContent</div>
+</div>
+
+@code
+{
+	[Parameter] public string Title { get; set; }
+	[Parameter] public IconBase Icon { get; set; }
+	[Parameter] public RenderFragment ChildContent { get; set; }
+}

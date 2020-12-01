@@ -4,6 +4,7 @@ using Havit.GoranG3.Contracts.Common;
 using Havit.GoranG3.Contracts.Finance.Invoices;
 using Havit.Linq;
 using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -53,6 +54,10 @@ namespace Havit.GoranG3.Web.Client.Pages.Prototyping
 				var result = await InvoiceFacade.GetInvoices(request, cancellationTokenSource.Token);
 				Invoices = result.Invoices; // TODO: Potřebujeme hodnoty rozebírat? Nestačil by nám result?
 				TotalInvoices = result.TotalCount;
+			}
+			catch (AccessTokenNotAvailableException ex)  // TODO RH nezachytí se?!
+			{
+				ex.Redirect();
 			}
 			catch (RpcException e) when (e.StatusCode == StatusCode.Cancelled)
 			{

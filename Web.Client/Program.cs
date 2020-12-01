@@ -1,14 +1,15 @@
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
-using System.Threading.Tasks;
 using System.Text;
+using System.Threading.Tasks;
+using Havit.GoranG3.Contracts.Finance.Invoices;
+using Havit.GoranG3.Contracts.GrpcTests;
+using Havit.GoranG3.Web.Client.Infrastructure;
+using Havit.GoranG3.Web.Client.Infrastructure.Security;
+using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
-using Havit.GoranG3.Web.Client.Infrastructure.Security;
-using Havit.GoranG3.Contracts.Finance.Invoices;
-using Havit.GoranG3.Web.Client.Infrastructure;
 
 namespace Havit.GoranG3.Web.Client
 {
@@ -23,7 +24,10 @@ namespace Havit.GoranG3.Web.Client
 			builder.Services.AddScoped(typeof(AccountClaimsPrincipalFactory<RemoteUserAccount>), typeof(RolesAccountClaimsPrincipalFactory)); // multiple roles workaround
 			builder.Services.AddApiAuthorization();
 			builder.Services.AddLocalization();
+
+			builder.Services.AddGrpcChannel();
 			builder.Services.AddGrpcWebProxy<IInvoiceFacade>();
+			builder.Services.AddGrpcWebProxy<ITestFacade>();
 
 			await builder.Build().RunAsync();
 		}
