@@ -28,6 +28,9 @@ namespace Havit.GoranG3.Web.Client.Pages.Prototyping
 
 		[Inject]
 		protected IInvoiceFacade InvoiceFacade { get; set; }
+		
+		[Inject]
+		protected NavigationManager NavigationManager { get; set; }
 
 		protected readonly IEnumerable<NamedView<GetInvoicesFilterDto>> NamedViews = new List<NamedView<GetInvoicesFilterDto>>()
 		{
@@ -55,9 +58,11 @@ namespace Havit.GoranG3.Web.Client.Pages.Prototyping
 				Invoices = result.Invoices; // TODO: Potřebujeme hodnoty rozebírat? Nestačil by nám result?
 				TotalInvoices = result.TotalCount;
 			}
-			catch (AccessTokenNotAvailableException ex)  // TODO RH nezachytí se?!
+			catch (RpcException e) when (e.Message?.Contains("AccessTokenNotAvailableException") ?? false)
 			{
-				ex.Redirect();
+				// TODO GrpcClientInterceptor?
+				// ex.Redirect();
+				NavigationManager.NavigateTo("/authentication/login");
 			}
 			catch (RpcException e) when (e.StatusCode == StatusCode.Cancelled)
 			{

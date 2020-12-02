@@ -25,9 +25,9 @@ namespace Havit.GoranG3.Web.Client
 			builder.Services.AddApiAuthorization();
 			builder.Services.AddLocalization();
 
-			builder.Services.AddGrpcChannel();
-			builder.Services.AddGrpcWebProxy<IInvoiceFacade>();
-			builder.Services.AddGrpcWebProxy<ITestFacade>();
+			builder.Services.AddGrpcClientsInfrastructure();
+			builder.Services.AddGrpcClientProxy<IInvoiceFacade>();
+			builder.Services.AddGrpcClientProxy<ITestFacade>();
 
 			await builder.Build().RunAsync();
 		}

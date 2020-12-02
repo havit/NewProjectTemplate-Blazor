@@ -48,9 +48,16 @@
 		{
 			result = await TestFacade.DoSomething(request);
 		}
-		catch (AccessTokenNotAvailableException ex) // TODO RH: Centrální handling?
+		catch (Grpc.Core.RpcException e) when (e.Message?.Contains("AccessTokenNotAvailableException") ?? false)
 		{
-			ex.Redirect();
+			// TODO GrpcClientInterceptor?
+			// ex.Redirect();
+			NavigationManager.NavigateTo("/authentication/login");
+		}
+		catch (Grpc.Core.RpcException ex)
+		{
+			Console.WriteLine("Inner exception:", ex.InnerException);
+			Console.WriteLine("Trailers:", ex.Trailers.Count);
 		}
 	}
 
@@ -60,9 +67,11 @@
 		{
 			await TestFacade.AddRole();
 		}
-		catch (AccessTokenNotAvailableException ex) // TODO RH: Centrální handling?
+		catch (Grpc.Core.RpcException e) when (e.Message?.Contains("AccessTokenNotAvailableException") ?? false)
 		{
-			ex.Redirect();
+			// TODO GrpcClientInterceptor?
+			// ex.Redirect();
+			NavigationManager.NavigateTo("/authentication/login");
 		}
 	}
 }

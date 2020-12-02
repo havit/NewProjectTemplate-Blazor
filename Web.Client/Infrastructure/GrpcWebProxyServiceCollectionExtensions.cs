@@ -18,8 +18,9 @@ namespace Havit.GoranG3.Web.Client.Infrastructure
 	// TODO: Kam s tím?
 	public static class GrpcWebProxyServiceCollectionExtensions
 	{
-		public static void AddGrpcChannel(this IServiceCollection services)
+		public static void AddGrpcClientsInfrastructure(this IServiceCollection services)
 		{
+			// GrpcChannel
 			// Credits: https://github.com/grpc/grpc-dotnet/blob/master/examples/Blazor/Client/Program.cs
 			services.AddScoped(services =>
 			{
@@ -60,15 +61,20 @@ namespace Havit.GoranG3.Web.Client.Infrastructure
 						// ThrowOperationCanceledOnCancellation = ...,
 					});
 			});
+
+			// ClientFactory - "note that client-factories should be considered expensive, and stored/re-used suitably"
+			services.AddSingleton(ClientFactory.Create(BinderConfiguration.Create(null, new GrpcServiceBinder())));
 		}
 
-		public static void AddGrpcWebProxy<TService>(this IServiceCollection services)
+		public static void AddGrpcClientProxy<TService>(this IServiceCollection services)
 			where TService : class
 		{
 			services.AddTransient<TService>(services =>
 			{
 				var grpcChannel = services.GetRequiredService<GrpcChannel>();
-				return grpcChannel.CreateGrpcService<TService>(ClientFactory.Create(BinderConfiguration.Create(null, new GrpcServiceBinder())));
+				var clientFactory = services.GetRequiredService<ClientFactory>();
+
+				return grpcChannel.CreateGrpcService<TService>(clientFactory);
 			});
 		}
 	}
