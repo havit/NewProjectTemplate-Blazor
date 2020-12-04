@@ -48,7 +48,7 @@
 			@*@bind-CurrentSorting="@CurrentSorting"*@
 			<HxGrid TItemType="InvoiceListDto" Items="@Invoices" TotalItemsCount="@TotalInvoices" PageSize="@Havit.GoranG3.Contracts.Finance.Invoices.GetInvoicesRequest.PageSize" @bind-CurrentUserState="@CurrentGridState" DataReloadRequired="HandleDataReloadRequired">
 				<Columns>
-					<HxGridColumn TItemType="InvoiceListDto" HeaderText="Datum" ItemTextSelector="@(item => item.IssuedDate.ToShortDateString())" SortString="@nameof(InvoiceListDto.IssuedDate)" IsDefaultSort="true" />
+					<HxGridColumn TItemType="InvoiceListDto" HeaderText="Datum" ItemTextSelector="@(item => item.IssuedDate.ToShortDateString())" SortString="@nameof(InvoiceListDto.IssuedDate)" IsDefaultSortColumn="true" />
 					<HxGridColumn TItemType="InvoiceListDto" HeaderText="Účinnost" ItemTextSelector="@(item => item.TaxDate.ToShortDateString())" SortString="@nameof(InvoiceListDto.TaxDate)" />
 					<HxGridColumn TItemType="InvoiceListDto" HeaderText="Naše číslo" ItemTextSelector="@(item => item.InvoiceNumber)" SortString="@nameof(InvoiceListDto.InvoiceNumber)" />
 					<HxGridColumn TItemType="InvoiceListDto" HeaderText="Číslo protistrany" ItemTextSelector="@(item => item.BusinessPartnerInvoiceNumber)" SortString="@nameof(InvoiceListDto.BusinessPartnerInvoiceNumber)" />
