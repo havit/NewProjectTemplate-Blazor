@@ -8,12 +8,12 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Grpc.Net.Client" Version="2.33.1" />
-		<PackageReference Include="Grpc.Net.Client.Web" Version="2.33.1" />
-		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="5.0.0" />
-		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="5.0.0" PrivateAssets="all" />
-		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Authentication" Version="5.0.0" />
-		<PackageReference Include="protobuf-net.Grpc" Version="1.0.123" />
+		<PackageReference Include="Grpc.Net.Client" Version="2.34.0" />
+		<PackageReference Include="Grpc.Net.Client.Web" Version="2.34.0" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="5.0.1" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="5.0.1" PrivateAssets="all" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Authentication" Version="5.0.1" />
+		<PackageReference Include="protobuf-net.Grpc" Version="1.0.140" />
 	</ItemGroup>
 
 	<ItemGroup>

@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Havit.Data.Patterns.DataSeeds;
 using Havit.Data.Patterns.DataSeeds.Profiles;
 using Havit.Extensions.DependencyInjection.Abstractions;
+using Havit.GoranG3.Contracts;
+using Havit.GoranG3.Contracts.System;
 using Havit.GoranG3.DataLayer.Seeds.Core;
 using Havit.GoranG3.Facades.Infrastructure.Security;
 using Havit.GoranG3.Facades.Infrastructure.Security.Authorization;
@@ -30,7 +33,7 @@ namespace Havit.GoranG3.Facades.System
 		/// Provede seedování dat daného profilu.
 		/// Pokud jde produkční prostředí a profil není pro produkční prostředí povolen, vrací BadRequest.
 		/// </summary>
-		public void SeedDataProfile(string profileName)
+		public Task SeedDataProfile(string profileName)
 		{
 			applicationAuthorizationService.VerifyCurrentUserAuthorization(Operations.SystemAdministration);
 
@@ -41,17 +44,20 @@ namespace Havit.GoranG3.Facades.System
 				throw new OperationFailedException($"Profil {profileName} nebyl nalezen.");
 			}
 
-			dataSeedRunner.SeedData(type);
+			dataSeedRunner.SeedData(type, forceRun: true);
+
+			return Task.CompletedTask;
 		}
 
 		/// <summary>
 		/// Returns list of available data seed profiles (names are ready for use as parameter to <see cref="SeedDataProfile"/> method).
 		/// </summary>
-		public IList<string> GetDataSeedProfiles()
+		public Task<Dto<string[]>> GetDataSeedProfiles()
 		{
-			return GetProfileTypes()
-				.Select(t => t.Name)
-				.ToList();
+			return Task.FromResult(Dto.FromValue(GetProfileTypes()
+							.Select(t => t.Name)
+							.ToArray()
+			));
 		}
 
 		private static IEnumerable<Type> GetProfileTypes()

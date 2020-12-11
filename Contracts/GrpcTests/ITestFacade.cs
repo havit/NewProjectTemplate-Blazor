@@ -13,5 +13,7 @@ namespace Havit.GoranG3.Contracts.GrpcTests
 		ValueTask<DoSomethingResult> DoSomething(DoSomethingRequest request);
 
 		Task AddRole();
+
+		Task<Dto<string>> TryGetResult();
 	}
 }

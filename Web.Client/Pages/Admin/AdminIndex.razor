@@ -1,6 +1,17 @@
 ﻿@page "/admin"
 <h1>Administration</h1>
 
+<NavPanel Title="Finance" Icon="BootstrapIcon.FileCode">
+	<NavCard Href="/admin/user/bank-accounts" Title="Bankovní účty" Icon="BootstrapIcon.Cash" />
+</NavPanel>
+
 <NavPanel Title="Development" Icon="BootstrapIcon.FileCode">
+	<NavCard OnClick="() => dataSeedsDrawerOpen = true" Title="Data Seeds" Icon="BootstrapIcon.BatteryCharging" />
 	<NavCard Href="/admin/auth-test" Title="Authorization test" Icon="BootstrapIcon.Lock" />
 </NavPanel>
+
+<HxDrawer Title="Data Seed" IsOpen="dataSeedsDrawerOpen">
+	<BodySection>
+		<Havit.GoranG3.Web.Client.Pages.Admin.Components.DataSeeds />
+	</BodySection>
+</HxDrawer>

@@ -1,4 +1,5 @@
-﻿using Havit.GoranG3.Contracts.GrpcTests;
+﻿using Havit.GoranG3.Contracts;
+using Havit.GoranG3.Contracts.GrpcTests;
 using Havit.GoranG3.Model.Security;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
@@ -44,6 +45,11 @@ namespace Havit.GoranG3.Facades.GrpcTests
 				Message = sb.ToString(),
 				Value = request.Value + 1
 			});
+		}
+
+		public Task<Dto<string>> TryGetResult()
+		{
+			return Task.FromResult(new Dto<string>() { Value = "tak co? tak co? tak co? tak co? tak co?" });
 		}
 	}
 }

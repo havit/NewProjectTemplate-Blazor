@@ -20,6 +20,8 @@ using System.IdentityModel.Tokens.Jwt;
 using Havit.GoranG3.Facades.Finance.Invoices;
 using ProtoBuf.Grpc.Configuration;
 using Havit.GoranG3.Contracts;
+using Havit.GoranG3.Facades.Finance;
+using Havit.GoranG3.Facades.System;
 
 namespace Havit.GoranG3.Web.Server
 {
@@ -116,6 +118,8 @@ namespace Havit.GoranG3.Web.Server
 				// GRPC TESTs
 				endpoints.MapGrpcService<TestFacade>();
 				endpoints.MapGrpcService<InvoiceFacade>();
+				endpoints.MapGrpcService<BankAccountFacade>();
+				endpoints.MapGrpcService<DataSeedFacade>();
 			});
 
 			app.UpgradeDatabaseSchemaAndData();

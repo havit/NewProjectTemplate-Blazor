@@ -1,0 +1,27 @@
+﻿@page "/admin/user/bank-accounts"
+@using Havit.GoranG3.Contracts.Finance
+
+<HxListLayout Title="Bank accounts" @bind-DetailDrawerIsOpen="detailDrawerIsOpen" >
+	<CommandsSection>
+		<HxButton Text="New account" Skin="ButtonSkins.New" OnClick="@NewItemClicked" />
+	</CommandsSection>
+	<DataSection>
+		<HxGrid TItemType="BankAccountDto" Data="bankAccounts" SelectionMode="GridViewSelectionMode.Select" SelectedDataItemChanged="DataItemSelected" Context="item">
+			<Columns>
+				<HxGridColumn TItemType="BankAccountDto" HeaderText="Name" ItemTextSelector="@(item => item.Name)" />
+				<HxGridColumn TItemType="BankAccountDto" HeaderText="Bank" ItemTextSelector="@(item => item.BankName)" />
+				<HxGridColumn TItemType="BankAccountDto" HeaderText="Account Number" ItemTextSelector="@(item => item.AccountNumber)" />
+				<HxGridColumn TItemType="BankAccountDto" HeaderText="IBAN" ItemTextSelector="@(item => item.Iban)" />
+				<HxGridColumn TItemType="BankAccountDto" HeaderText="SWIFT" ItemTextSelector="@(item => item.SwiftBic)" />
+			</Columns>
+			<ContextMenu Context="item">
+				<HxContextMenu>
+					<HxContextMenuItem Title="Delete account..." Icon="BootstrapIcon.Trash" OnItemClick="async () => await DeleteItemClicked(item)" ConfirmationQuestion="@($"Do you realy want to delete {item.Name} account?")" />
+				</HxContextMenu>
+			</ContextMenu>
+		</HxGrid>
+	</DataSection>
+	<DetailSection>
+		<BankAccountEdit @bind-Value="bankAccountEdited" />
+	</DetailSection>
+</HxListLayout>

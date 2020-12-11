@@ -1,0 +1,10 @@
+﻿<h1>@Value.Name</h1>
+
+<EditForm Model="Value">
+	<DataAnnotationsValidator />
+	<div class="mb-3">
+		<label class="form-label">Name</label>
+		<HxInputText @bind-Value="Value.Name" />
+	</div>
+	<HxSubmit Skin="ButtonSkins.Save" />
+</EditForm>
