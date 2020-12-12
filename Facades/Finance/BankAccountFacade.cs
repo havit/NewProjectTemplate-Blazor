@@ -7,10 +7,12 @@ using Havit.Data.Patterns.UnitOfWorks;
 using Havit.GoranG3.Contracts;
 using Havit.GoranG3.Contracts.Finance;
 using Havit.GoranG3.DataLayer.Repositories.Finance;
+using Havit.GoranG3.Model.Finance;
 using Havit.GoranG3.Services.Finance;
 
 namespace Havit.GoranG3.Facades.Finance
 {
+	// TODO: Authorization
 	public class BankAccountFacade : IBankAccountFacade
 	{
 		private readonly IBankAccountRepository bankAccountRepository;
@@ -37,6 +39,27 @@ namespace Havit.GoranG3.Facades.Finance
 		{
 			var bankAccount = await bankAccountRepository.GetObjectAsync(bankAccountId.Value);
 			unitOfWork.AddForDelete(bankAccount);
+			await unitOfWork.CommitAsync();
+		}
+
+		public async Task<Dto<int>> CreateBankAccountAsync(BankAccountDto bankAccountDto)
+		{
+			var bankAccount = new BankAccount();
+			bankAccountMapper.MapFromBankAccountDto(bankAccountDto, bankAccount);
+
+			unitOfWork.AddForInsert(bankAccount);
+			await unitOfWork.CommitAsync();
+
+			return Dto.FromValue(bankAccount.Id);
+		}
+
+		public async Task UpdateBankAccountAsync(BankAccountDto bankAccountDto)
+		{
+			var bankAccount = await bankAccountRepository.GetObjectAsync(bankAccountDto.Id);
+
+			bankAccountMapper.MapFromBankAccountDto(bankAccountDto, bankAccount);
+
+			unitOfWork.AddForUpdate(bankAccount);
 			await unitOfWork.CommitAsync();
 		}
 	}

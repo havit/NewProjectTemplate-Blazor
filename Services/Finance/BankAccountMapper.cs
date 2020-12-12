@@ -13,6 +13,15 @@ namespace Havit.GoranG3.Services.Finance
 	[Service(Lifetime = ServiceLifetime.Singleton)]
 	public class BankAccountMapper : IBankAccountMapper
 	{
+		public void MapFromBankAccountDto(BankAccountDto bankAccountDto, BankAccount bankAccount)
+		{
+			bankAccount.Name = bankAccountDto.Name;
+			bankAccount.BankName = bankAccountDto.BankName;
+			bankAccount.AccountNumber = bankAccountDto.AccountNumber;
+			bankAccount.Iban = bankAccountDto.Iban;
+			bankAccount.SwiftBic = bankAccountDto.SwiftBic;
+		}
+
 		public BankAccountDto MapToBankAccountDto(BankAccount bankAccount)
 		{
 			return new BankAccountDto

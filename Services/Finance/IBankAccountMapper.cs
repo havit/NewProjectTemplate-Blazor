@@ -6,5 +6,6 @@ namespace Havit.GoranG3.Services.Finance
 	public interface IBankAccountMapper
 	{
 		BankAccountDto MapToBankAccountDto(BankAccount bankAccount);
+		void MapFromBankAccountDto(BankAccountDto bankAccountDto, BankAccount bankAccount);
 	}
 }
