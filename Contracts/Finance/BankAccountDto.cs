@@ -36,5 +36,15 @@ namespace Havit.GoranG3.Contracts.Finance
 		[MaxLength(50)]
 		[DataMember(Order = 6)]
 		public string SwiftBic { get; set; }
+
+		public void UpdateFrom(BankAccountDto other)
+		{
+			Id = other.Id;
+			Name = other.Name;
+			BankName = other.BankName;
+			AccountNumber = other.AccountNumber;
+			Iban = other.Iban;
+			SwiftBic = other.SwiftBic;
+		}
 	}
 }

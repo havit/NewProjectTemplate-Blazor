@@ -1,28 +1,28 @@
-﻿<h1>@Value.Name</h1>
+﻿<h1>@model.Name</h1>
 
-<EditForm Model="Value" OnValidSubmit="HandleValidSubmit">
+<EditForm Model="model" OnValidSubmit="HandleValidSubmit">
 	<DataAnnotationsValidator />
 
 	<div class="mb-3">
 		<label class="form-label">Name</label>
-		<HxInputText @bind-Value="Value.Name" />
+		<HxInputText @bind-Value="model.Name" />
 	</div>
 	<div class="mb-3">
 		<label class="form-label">Account Number</label>
-		<HxInputText @bind-Value="Value.AccountNumber" />
+		<HxInputText @bind-Value="model.AccountNumber" />
 	</div>
 	<div class="mb-3">
 		<label class="form-label">Bank Name</label>
-		<HxInputText @bind-Value="Value.BankName" />
+		<HxInputText @bind-Value="model.BankName" />
 	</div>
 	<div class="mb-3">
 		<label class="form-label">IBAN</label>
-		<HxInputText @bind-Value="Value.Iban" />
+		<HxInputText @bind-Value="model.Iban" />
 	</div>
 	<div class="mb-3">
 		<label class="form-label">SWIFT BIC</label>
-		<HxInputText @bind-Value="Value.SwiftBic" />
+		<HxInputText @bind-Value="model.SwiftBic" />
 	</div>
 
-	<HxSubmit Skin="(Value.Id == default) ? ButtonSkins.Insert : ButtonSkins.Save" />
+	<HxSubmit Skin="(model.Id == default) ? ButtonSkins.Insert : ButtonSkins.Save" />
 </EditForm>

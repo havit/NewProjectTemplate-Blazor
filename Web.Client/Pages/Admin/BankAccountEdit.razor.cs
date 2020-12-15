@@ -9,7 +9,6 @@ using Microsoft.AspNetCore.Components;
 
 namespace Havit.GoranG3.Web.Client.Pages.Admin
 {
-	// TODO: Lokální Value instance se změní, i když změny nejsou uloženy na server.
 	// TODO: Detekce změn + onBeforeUnload? nebo alespoň před přepnutím na jinou instanci?
 	public partial class BankAccountEdit : ComponentBase
 	{
@@ -19,18 +18,29 @@ namespace Havit.GoranG3.Web.Client.Pages.Admin
 
 		[Inject] public IBankAccountFacade BankAccountFacade { get; set; }
 
+		private BankAccountDto model;
+
+		protected override void OnParametersSet()
+		{
+			base.OnParametersSet();
+
+			model = this.Value with { }; // Clone!
+		}
+
 		public async Task HandleValidSubmit()
 		{
-			if (Value.Id == default)
+			if (model.Id == default)
 			{
-				Value.Id = (await BankAccountFacade.CreateBankAccountAsync(Value)).Value;
-				Messenger.AddInformation($"{Value.Name} created.");
+				model.Id = (await BankAccountFacade.CreateBankAccountAsync(model)).Value;
+				Messenger.AddInformation($"{model.Name} created.");
 			}
 			else
 			{
-				await BankAccountFacade.UpdateBankAccountAsync(Value);
-				Messenger.AddInformation($"{Value.Name} updated.");
+				await BankAccountFacade.UpdateBankAccountAsync(model);
+				Messenger.AddInformation($"{model.Name} updated.");
 			}
+
+			Value.UpdateFrom(model);
 			await ValueChanged.InvokeAsync(this.Value);
 		}
 	}
