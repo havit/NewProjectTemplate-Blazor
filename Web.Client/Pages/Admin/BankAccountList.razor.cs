@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 using Havit.Blazor.Components.Web.Bootstrap;
 using Havit.GoranG3.Contracts;
 using Havit.GoranG3.Contracts.Finance;
+using Havit.GoranG3.Web.Client.Resources;
+using Havit.GoranG3.Web.Client.Resources.Model.Finance;
 using Microsoft.AspNetCore.Components;
+using Microsoft.Extensions.Localization;
 
 namespace Havit.GoranG3.Web.Client.Pages.Admin
 {
@@ -16,9 +19,9 @@ namespace Havit.GoranG3.Web.Client.Pages.Admin
 		private BankAccountDto bankAccountEdited;
 		private bool detailDrawerIsOpen;
 
-		[CascadingParameter] public IMessenger Messenger { get; set; }
-
+		[Inject] public IMessenger Messenger { get; set; }
 		[Inject] public IBankAccountFacade BankAccountFacade { get; set; }
+		[Inject] public IStringLocalizer<BankAccountResources> BankAccountLoc { get; set; }
 
 		protected override async Task OnInitializedAsync()
 		{
@@ -46,7 +49,7 @@ namespace Havit.GoranG3.Web.Client.Pages.Admin
 		private async Task DeleteItemClicked(BankAccountDto bankAccount)
 		{
 			await BankAccountFacade.DeleteBankAccountAsync(Dto.FromValue(bankAccount.Id));
-			Messenger.AddInformation(bankAccount.Name + " account deleted.");
+			Messenger.AddInformation(String.Format(BankAccountLoc["DeleteSuccess"], bankAccount.Name));
 			await LoadDataAsync();
 		}
 	}

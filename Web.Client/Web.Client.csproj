@@ -5,9 +5,11 @@
 		<ServiceWorkerAssetsManifest>service-worker-assets.js</ServiceWorkerAssetsManifest>
 		<AssemblyName>Havit.GoranG3.Web.Client</AssemblyName>
 		<RootNamespace>Havit.GoranG3.Web.Client</RootNamespace>
+		<BlazorWebAssemblyLoadAllGlobalizationData>true</BlazorWebAssemblyLoadAllGlobalizationData>
 	</PropertyGroup>
 
 	<ItemGroup>
+		<PackageReference Include="Blazored.LocalStorage" Version="3.0.0" />
 		<PackageReference Include="Grpc.Net.Client" Version="2.34.0" />
 		<PackageReference Include="Grpc.Net.Client.Web" Version="2.34.0" />
 		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="5.0.1" />

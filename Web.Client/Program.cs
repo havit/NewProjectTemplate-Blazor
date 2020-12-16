@@ -1,8 +1,11 @@
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using Blazored.LocalStorage;
+using Havit.Blazor.Components.Web.Bootstrap;
 using Havit.GoranG3.Contracts.Finance;
 using Havit.GoranG3.Contracts.Finance.Invoices;
 using Havit.GoranG3.Contracts.GrpcTests;
@@ -25,16 +28,42 @@ namespace Havit.GoranG3.Web.Client
 			builder.Services.AddSingleton(new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 			builder.Services.AddScoped(typeof(AccountClaimsPrincipalFactory<RemoteUserAccount>), typeof(RolesAccountClaimsPrincipalFactory)); // multiple roles workaround
 			builder.Services.AddApiAuthorization();
+
+			builder.Services.AddBlazoredLocalStorage();
 			builder.Services.AddLocalization();
 
+			builder.Services.AddHxMessenger();
+
+			AddGrpcClient(builder);
+
+			WebAssemblyHost webAssemblyHost = builder.Build();
+
+			await SetLanguage(webAssemblyHost);
+
+			await webAssemblyHost.RunAsync();
+		}
+
+		private static void AddGrpcClient(WebAssemblyHostBuilder builder)
+		{
 			builder.Services.AddGrpcClientsInfrastructure();
 			// TODO Mass registration of facades
 			builder.Services.AddGrpcClientProxy<IInvoiceFacade>();
 			builder.Services.AddGrpcClientProxy<ITestFacade>();
 			builder.Services.AddGrpcClientProxy<IBankAccountFacade>();
 			builder.Services.AddGrpcClientProxy<IDataSeedFacade>();
+		}
 
-			await builder.Build().RunAsync();
+		private static async ValueTask SetLanguage(WebAssemblyHost webAssemblyHost)
+		{
+			var localStorageService = webAssemblyHost.Services.GetService<ILocalStorageService>();
+
+			var culture = await localStorageService.GetItemAsStringAsync("culture");
+			if (!String.IsNullOrWhiteSpace(culture))
+			{
+				var cultureInfo = new CultureInfo(culture);
+				CultureInfo.DefaultThreadCurrentCulture = cultureInfo;
+				CultureInfo.DefaultThreadCurrentUICulture = cultureInfo;
+			}
 		}
 	}
 }

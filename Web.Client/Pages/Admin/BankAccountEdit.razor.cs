@@ -5,7 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Havit.Blazor.Components.Web.Bootstrap;
 using Havit.GoranG3.Contracts.Finance;
+using Havit.GoranG3.Web.Client.Resources.Model.Finance;
 using Microsoft.AspNetCore.Components;
+using Microsoft.Extensions.Localization;
 
 namespace Havit.GoranG3.Web.Client.Pages.Admin
 {
@@ -14,9 +16,10 @@ namespace Havit.GoranG3.Web.Client.Pages.Admin
 	{
 		[Parameter] public BankAccountDto Value { get; set; }
 		[Parameter] public EventCallback<BankAccountDto> ValueChanged { get; set; }
-		[CascadingParameter] public IMessenger Messenger { get; set; }
 
+		[Inject] public IMessenger Messenger { get; set; }
 		[Inject] public IBankAccountFacade BankAccountFacade { get; set; }
+		[Inject] public IStringLocalizer<BankAccountResources> BankAccountLoc { get; set; }
 
 		private BankAccountDto model;
 
@@ -32,12 +35,12 @@ namespace Havit.GoranG3.Web.Client.Pages.Admin
 			if (model.Id == default)
 			{
 				model.Id = (await BankAccountFacade.CreateBankAccountAsync(model)).Value;
-				Messenger.AddInformation($"{model.Name} created.");
+				Messenger.AddInformation(String.Format(BankAccountLoc["NewSuccess"], model.Name));
 			}
 			else
 			{
 				await BankAccountFacade.UpdateBankAccountAsync(model);
-				Messenger.AddInformation($"{model.Name} updated.");
+				Messenger.AddInformation(String.Format(BankAccountLoc["UpdateSuccess"], model.Name));
 			}
 
 			Value.UpdateFrom(model);
