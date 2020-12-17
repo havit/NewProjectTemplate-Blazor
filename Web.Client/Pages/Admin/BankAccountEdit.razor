@@ -1,26 +1,26 @@
-﻿<h1>@model.Name</h1>
+﻿<h1>@(model.Name ?? BankAccountLoc.New)</h1>
 
 <EditForm Model="model" OnValidSubmit="HandleValidSubmit">
 	<DataAnnotationsValidator />
 
 	<div class="mb-3">
-		<label class="form-label">@BankAccountLoc["Name"]</label>
+		<label class="form-label">@BankAccountLoc.Name</label>
 		<HxInputText @bind-Value="model.Name" />
 	</div>
 	<div class="mb-3">
-		<label class="form-label">@BankAccountLoc["AccountNumber"]</label>
+		<label class="form-label">@BankAccountLoc.AccountNumber</label>
 		<HxInputText @bind-Value="model.AccountNumber" />
 	</div>
 	<div class="mb-3">
-		<label class="form-label">@BankAccountLoc["BankName"]</label>
+		<label class="form-label">@BankAccountLoc.BankName</label>
 		<HxInputText @bind-Value="model.BankName" />
 	</div>
 	<div class="mb-3">
-		<label class="form-label">@BankAccountLoc["Iban"]</label>
+		<label class="form-label">@BankAccountLoc.Iban</label>
 		<HxInputText @bind-Value="model.Iban" />
 	</div>
 	<div class="mb-3">
-		<label class="form-label">@BankAccountLoc["SwiftBic"]</label>
+		<label class="form-label">@BankAccountLoc.SwiftBic</label>
 		<HxInputText @bind-Value="model.SwiftBic" />
 	</div>
 

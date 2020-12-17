@@ -120,7 +120,4 @@
   <data name="CultureRemoved" xml:space="preserve">
     <value>Removed 'culture' from localStorage.</value>
   </data>
-  <data name="Test" xml:space="preserve">
-    <value>Teeest!</value>
-  </data>
 </root>

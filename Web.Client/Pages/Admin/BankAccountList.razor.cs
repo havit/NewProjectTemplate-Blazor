@@ -21,7 +21,7 @@ namespace Havit.GoranG3.Web.Client.Pages.Admin
 
 		[Inject] public IMessenger Messenger { get; set; }
 		[Inject] public IBankAccountFacade BankAccountFacade { get; set; }
-		[Inject] public IStringLocalizer<BankAccountResources> BankAccountLoc { get; set; }
+		[Inject] public IBankAccountLocalizer BankAccountLoc { get; set; }
 
 		protected override async Task OnInitializedAsync()
 		{
@@ -49,7 +49,7 @@ namespace Havit.GoranG3.Web.Client.Pages.Admin
 		private async Task DeleteItemClicked(BankAccountDto bankAccount)
 		{
 			await BankAccountFacade.DeleteBankAccountAsync(Dto.FromValue(bankAccount.Id));
-			Messenger.AddInformation(String.Format(BankAccountLoc["DeleteSuccess"], bankAccount.Name));
+			Messenger.AddInformation(String.Format(BankAccountLoc.DeleteSuccess, bankAccount.Name));
 			await LoadDataAsync();
 		}
 	}

@@ -12,6 +12,7 @@ using Havit.GoranG3.Contracts.GrpcTests;
 using Havit.GoranG3.Contracts.System;
 using Havit.GoranG3.Web.Client.Infrastructure;
 using Havit.GoranG3.Web.Client.Infrastructure.Security;
+using Havit.GoranG3.Web.Client.Resources;
 using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.DependencyInjection;
@@ -29,8 +30,10 @@ namespace Havit.GoranG3.Web.Client
 			builder.Services.AddScoped(typeof(AccountClaimsPrincipalFactory<RemoteUserAccount>), typeof(RolesAccountClaimsPrincipalFactory)); // multiple roles workaround
 			builder.Services.AddApiAuthorization();
 
-			builder.Services.AddBlazoredLocalStorage();
 			builder.Services.AddLocalization();
+			builder.Services.AddGeneratedResourceWrappers();
+
+			builder.Services.AddBlazoredLocalStorage();
 
 			builder.Services.AddHxMessenger();
 
