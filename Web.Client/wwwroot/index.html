@@ -1,39 +1,38 @@
 ﻿<!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8" />
-		<meta
-			name="viewport"
-			content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
-		/>
-		<title>Web</title>
-		<base href="/" />
-		<link href="css/bootstrap.css" rel="stylesheet" />
-		<link href="css/site.css" rel="stylesheet" />
-		<link href="manifest.json" rel="manifest" />
-		<link rel="apple-touch-icon" sizes="512x512" href="icon-512.png" />
-	</head>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport"
+		  content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<title>Goran G3</title>
+	<base href="/" />
+	<!--<link href="css/bootstrap.css" rel="stylesheet" />-->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+	<link href="css/site.css" rel="stylesheet" />
+	<link href="manifest.json" rel="manifest" />
+	<link rel="apple-touch-icon" sizes="512x512" href="icon-512.png" />
+</head>
 
-	<body>
-		<app>
-			<div class="d-flex align-items-center justify-content-center flex-grow-1">
-				<div class="spinner-border text-primary" role="status">
-					<span class="sr-only">Loading...</span>
-				</div>
+<body>
+	<app>
+		<div class="d-flex align-items-center justify-content-center flex-grow-1">
+			<div class="spinner-border text-primary" role="status">
+				<span class="sr-only">Loading...</span>
 			</div>
-		</app>
-
-		<div id="blazor-error-ui">
-			An unhandled error has occurred.
-			<a href="" class="reload">Reload</a>
-			<a class="dismiss">&times;</a>
 		</div>
-		<script src="_content/Microsoft.AspNetCore.Components.WebAssembly.Authentication/AuthenticationService.js"></script>
-		<script src="_framework/blazor.webassembly.js"></script>
-		<script>
-			navigator.serviceWorker.register("service-worker.js");
-		</script>
-		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-popRpmFF9JQgExhfw5tZT4I9/CI5e2QcuUZPOVXb1m7qUmeR2b50u+YFEYe1wgzy" crossorigin="anonymous"></script>
-		<script src="_content/Havit.Blazor.Components.Web.Bootstrap/hxbootstrap.js"></script>
-	</body>
+	</app>
+
+	<div id="blazor-error-ui">
+		An unhandled error has occurred.
+		<a href="" class="reload">Reload</a>
+		<a class="dismiss">&times;</a>
+	</div>
+	<script src="_content/Microsoft.AspNetCore.Components.WebAssembly.Authentication/AuthenticationService.js"></script>
+	<script src="_framework/blazor.webassembly.js"></script>
+	<script>
+		navigator.serviceWorker.register("service-worker.js");
+	</script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+	<script src="_content/Havit.Blazor.Components.Web.Bootstrap/hxbootstrap.js"></script>
+</body>
 </html>
