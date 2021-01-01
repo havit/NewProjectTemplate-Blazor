@@ -52,5 +52,10 @@ namespace Havit.GoranG3.Web.Client.Pages.Admin
 			Messenger.AddInformation(String.Format(BankAccountLoc.DeleteSuccess, bankAccount.Name));
 			await LoadDataAsync();
 		}
+
+		private async Task HandleValueChanged()
+		{
+			await LoadDataAsync();
+		}
 	}
 }
