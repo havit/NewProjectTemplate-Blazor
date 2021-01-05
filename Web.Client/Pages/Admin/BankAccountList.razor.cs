@@ -19,9 +19,9 @@ namespace Havit.GoranG3.Web.Client.Pages.Admin
 		private BankAccountDto bankAccountEdited;
 		private bool detailDrawerIsOpen;
 
-		[Inject] public IMessenger Messenger { get; set; }
-		[Inject] public IBankAccountFacade BankAccountFacade { get; set; }
-		[Inject] public IBankAccountLocalizer BankAccountLoc { get; set; }
+		[Inject] protected IMessenger Messenger { get; set; }
+		[Inject] protected IBankAccountFacade BankAccountFacade { get; set; }
+		[Inject] protected IBankAccountLocalizer BankAccountLoc { get; set; }
 
 		protected override async Task OnInitializedAsync()
 		{

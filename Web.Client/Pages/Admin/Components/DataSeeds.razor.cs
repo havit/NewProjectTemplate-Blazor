@@ -12,8 +12,8 @@ namespace Havit.GoranG3.Web.Client.Pages.Admin.Components
 {
 	public partial class DataSeeds : ComponentBase
 	{
-		[Inject] public IDataSeedFacade DataSeedFacade { get; set; }
-		[Inject] public IMessenger Messenger { get; set; }
+		[Inject] protected IDataSeedFacade DataSeedFacade { get; set; }
+		[Inject] protected IMessenger Messenger { get; set; }
 
 		private IEnumerable<string> seedProfiles;
 		private FormModel model = new FormModel();

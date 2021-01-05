@@ -10,8 +10,8 @@ namespace Havit.GoranG3.Web.Client.Shared
 {
 	public partial class CultureSelector : ComponentBase
 	{
-		[Inject] public ILocalStorageService LocalStorageService { get; set; }
-		[Inject] public NavigationManager NavigationManager { get; set; }
+		[Inject] protected ILocalStorageService LocalStorageService { get; set; }
+		[Inject] protected NavigationManager NavigationManager { get; set; }
 
 		private async Task SetCulture(string culture)
 		{

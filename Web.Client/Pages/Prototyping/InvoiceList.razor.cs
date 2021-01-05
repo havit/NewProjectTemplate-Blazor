@@ -1,11 +1,4 @@
-﻿using Grpc.Core;
-using Havit.Blazor.Components.Web.Bootstrap;
-using Havit.GoranG3.Contracts.Common;
-using Havit.GoranG3.Contracts.Finance.Invoices;
-using Havit.Linq;
-using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http.Headers;
@@ -14,23 +7,28 @@ using System.Text;
 using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
+using Grpc.Core;
+using Havit.Blazor.Components.Web.Bootstrap;
+using Havit.GoranG3.Contracts.Common;
+using Havit.GoranG3.Contracts.Finance.Invoices;
+using Havit.Linq;
+using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
 
 namespace Havit.GoranG3.Web.Client.Pages.Prototyping
 {
-    public partial class InvoiceList
-    {
+	public partial class InvoiceList
+	{
 		protected GridUserState<InvoiceListDto> CurrentGridState { get; set; } = new GridUserState<InvoiceListDto>(0, null); // TODO: Default nastavit v HxGridu
-		protected List<InvoiceListDto> Invoices { get; set; } 
+		protected List<InvoiceListDto> Invoices { get; set; }
 		protected int TotalInvoices { get; set; }
 
 		protected InvoiceListDto CurrentInvoice { get; set; }
 		protected GetInvoicesFilterDto Filter { get; set; } = new GetInvoicesFilterDto();
 
-		[Inject]
-		protected IInvoiceFacade InvoiceFacade { get; set; }
-		
-		[Inject]
-		protected NavigationManager NavigationManager { get; set; }
+		[Inject] protected IInvoiceFacade InvoiceFacade { get; set; }
+
+		[Inject] protected NavigationManager NavigationManager { get; set; }
 
 		protected readonly IEnumerable<NamedView<GetInvoicesFilterDto>> NamedViews = new List<NamedView<GetInvoicesFilterDto>>()
 		{

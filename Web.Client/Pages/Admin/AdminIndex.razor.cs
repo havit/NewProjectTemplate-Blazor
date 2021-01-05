@@ -12,9 +12,9 @@ namespace Havit.GoranG3.Web.Client.Pages.Admin
 {
 	public partial class AdminIndex : ComponentBase
 	{
-		[Inject] public IMessenger Messenger { get; set; }
-		[Inject] public ILocalStorageService LocalStorageService { get; set; }
-		[Inject] public IStringLocalizer<AdminIndex> Loc { get; set; }
+		[Inject] protected IMessenger Messenger { get; set; }
+		[Inject] protected ILocalStorageService LocalStorageService { get; set; }
+		[Inject] protected IStringLocalizer<AdminIndex> Loc { get; set; }
 
 		private bool dataSeedsDrawerOpen = false;
 

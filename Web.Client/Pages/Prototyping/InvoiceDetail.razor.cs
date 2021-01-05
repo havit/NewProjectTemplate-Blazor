@@ -11,11 +11,9 @@ namespace Havit.GoranG3.Web.Client.Pages.Prototyping
 {
 	public partial class InvoiceDetail : ComponentBase
 	{
-		[Parameter]
-		public InvoiceListDto Invoice { get; set; }
+		[Parameter] public InvoiceListDto Invoice { get; set; }
 
-		[Parameter]
-		public EventCallback<InvoiceListDto> InvoiceChanged { get; set; }
+		[Parameter] public EventCallback<InvoiceListDto> InvoiceChanged { get; set; }
 
 		private void HandleSuggestionsRequested(SuggestionRequest request)
 		{

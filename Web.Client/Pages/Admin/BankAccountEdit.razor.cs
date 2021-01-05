@@ -17,9 +17,9 @@ namespace Havit.GoranG3.Web.Client.Pages.Admin
 		[Parameter] public BankAccountDto Value { get; set; }
 		[Parameter] public EventCallback<BankAccountDto> ValueChanged { get; set; }
 
-		[Inject] public IMessenger Messenger { get; set; }
-		[Inject] public IBankAccountFacade BankAccountFacade { get; set; }
-		[Inject] public IBankAccountLocalizer BankAccountLoc { get; set; }
+		[Inject] protected IMessenger Messenger { get; set; }
+		[Inject] protected IBankAccountFacade BankAccountFacade { get; set; }
+		[Inject] protected IBankAccountLocalizer BankAccountLoc { get; set; }
 
 		private BankAccountDto model;
 
