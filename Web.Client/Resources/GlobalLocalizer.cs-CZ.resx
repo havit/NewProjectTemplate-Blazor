@@ -117,37 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AccountNumber" xml:space="preserve">
-    <value>Číslo účtu</value>
-  </data>
-  <data name="BankName" xml:space="preserve">
-    <value>Banka</value>
-  </data>
-  <data name="Delete" xml:space="preserve">
-    <value>Smazat účet</value>
-  </data>
-  <data name="DeleteConfirmation" xml:space="preserve">
-    <value>Opravu chcete účet "$1" smazat?</value>
-  </data>
   <data name="DeleteSuccess" xml:space="preserve">
-    <value>Účet "$1" byl smazán.</value>
-  </data>
-  <data name="Name" xml:space="preserve">
-    <value>Název</value>
-  </data>
-  <data name="New" xml:space="preserve">
-    <value>Nový účet</value>
+    <value>Záznam smazán.</value>
   </data>
   <data name="NewSuccess" xml:space="preserve">
-    <value>Účet "$1" byl vytvořen.</value>
-  </data>
-  <data name="Plural" xml:space="preserve">
-    <value>Bankovní účty</value>
-  </data>
-  <data name="Singular" xml:space="preserve">
-    <value>Bankovní účet</value>
+    <value>Záznam založen.</value>
   </data>
   <data name="UpdateSuccess" xml:space="preserve">
-    <value>Učet "$1" byl uložen.</value>
+    <value>Záznam uložen.</value>
   </data>
 </root>

@@ -5,31 +5,21 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Localization;
 
-namespace Havit.GoranG3.Web.Client.Resources.Model.Finance
+namespace Havit.GoranG3.Web.Client.Resources
 {
-	/// <summary>
-	/// Marker file for IStringLocalizer<>
-	/// </summary>
-	public class BankAccountLocalizer : IBankAccountLocalizer, IStringLocalizer<BankAccountLocalizer>
+	public class GlobalLocalizer : IStringLocalizer<GlobalLocalizer>, IGlobalLocalizer
 	{
-		private readonly IStringLocalizer<BankAccountLocalizer> stringLocalizer;
+		private readonly IStringLocalizer<GlobalLocalizer> stringLocalizer;
 
-		public BankAccountLocalizer(IStringLocalizer<BankAccountLocalizer> stringLocalizer)
+		public GlobalLocalizer(IStringLocalizer<GlobalLocalizer> stringLocalizer)
 		{
 			this.stringLocalizer = stringLocalizer;
 		}
 
 		// string-API properties
-		public LocalizedString AccountNumber => this["AccountNumber"];
-		public LocalizedString BankName => this["BankName"];
-		public LocalizedString Iban => this["Iban"];
-		public LocalizedString Name => this["Name"];
-		public LocalizedString SwiftBic => this["SwiftBic"];
-		public LocalizedString New => this["New"];
-		public LocalizedString Plural => this["Plural"];
-		public LocalizedString Singular => this["Singular"];
-		public LocalizedString Delete => this["Delete"];
-		public LocalizedString DeleteConfirmation => this["DeleteConfirmation"];
+		public LocalizedString DeleteSuccess => this["DeleteSuccess"];
+		public LocalizedString NewSuccess => this["NewSuccess"];
+		public LocalizedString UpdateSuccess => this["UpdateSuccess"];
 
 		// StringLocalizer re-publishing
 		// TODO create StrongApiLocalizerBase base-class?!

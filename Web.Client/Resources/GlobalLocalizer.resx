@@ -117,34 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AccountNumber" xml:space="preserve">
-    <value>Account number</value>
+  <data name="DeleteSuccess" xml:space="preserve">
+    <value>Item deleted.</value>
   </data>
-  <data name="BankName" xml:space="preserve">
-    <value>Bank</value>
+  <data name="NewSuccess" xml:space="preserve">
+    <value>Item created.</value>
   </data>
-  <data name="Delete" xml:space="preserve">
-    <value>Delete account</value>
-  </data>
-  <data name="DeleteConfirmation" xml:space="preserve">
-    <value>Do you realy want to delete "{0}" account?</value>
-  </data>
-  <data name="Iban" xml:space="preserve">
-    <value>IBAN</value>
-  </data>
-  <data name="Name" xml:space="preserve">
-    <value>Name</value>
-  </data>
-  <data name="New" xml:space="preserve">
-    <value>New account</value>
-  </data>
-  <data name="Plural" xml:space="preserve">
-    <value>Bank accounts</value>
-  </data>
-  <data name="Singular" xml:space="preserve">
-    <value>Bank account</value>
-  </data>
-  <data name="SwiftBic" xml:space="preserve">
-    <value>SWIFT BIC</value>
+  <data name="UpdateSuccess" xml:space="preserve">
+    <value>Item updated.</value>
   </data>
 </root>

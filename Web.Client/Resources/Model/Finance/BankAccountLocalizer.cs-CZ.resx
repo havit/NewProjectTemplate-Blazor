@@ -118,33 +118,27 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AccountNumber" xml:space="preserve">
-    <value>Account number</value>
+    <value>Číslo účtu</value>
   </data>
   <data name="BankName" xml:space="preserve">
-    <value>Bank</value>
+    <value>Banka</value>
   </data>
   <data name="Delete" xml:space="preserve">
-    <value>Delete account</value>
+    <value>Smazat účet</value>
   </data>
   <data name="DeleteConfirmation" xml:space="preserve">
-    <value>Do you realy want to delete "{0}" account?</value>
-  </data>
-  <data name="Iban" xml:space="preserve">
-    <value>IBAN</value>
+    <value>Opravu chcete účet "{0}" smazat?</value>
   </data>
   <data name="Name" xml:space="preserve">
-    <value>Name</value>
+    <value>Název</value>
   </data>
   <data name="New" xml:space="preserve">
-    <value>New account</value>
+    <value>Nový účet</value>
   </data>
   <data name="Plural" xml:space="preserve">
-    <value>Bank accounts</value>
+    <value>Bankovní účty</value>
   </data>
   <data name="Singular" xml:space="preserve">
-    <value>Bank account</value>
-  </data>
-  <data name="SwiftBic" xml:space="preserve">
-    <value>SWIFT BIC</value>
+    <value>Bankovní účet</value>
   </data>
 </root>

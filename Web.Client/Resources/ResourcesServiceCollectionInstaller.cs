@@ -15,6 +15,7 @@ namespace Havit.GoranG3.Web.Client.Resources
 		/// </summary>
 		public static void AddGeneratedResourceWrappers(this IServiceCollection services)
 		{
+			services.AddScoped<IGlobalLocalizer, GlobalLocalizer>();
 			services.AddScoped<IBankAccountLocalizer, BankAccountLocalizer>();
 			// ...
 		}

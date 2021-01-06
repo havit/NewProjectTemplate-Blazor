@@ -26,7 +26,7 @@ namespace Havit.GoranG3.Web.Client.Pages.Admin.Components
 		private async Task HandleValidSubmit()
 		{
 			await DataSeedFacade.SeedDataProfile(model.SelectedSeedProfile);
-			Messenger.AddInformation($"Naseedováno: {model.SelectedSeedProfile}");
+			Messenger.AddInformation($"Seed successful: {model.SelectedSeedProfile}");
 		}
 
 		public class FormModel

@@ -9,14 +9,11 @@ namespace Havit.GoranG3.Web.Client.Resources.Model.Finance
 		LocalizedString BankName { get; }
 		LocalizedString Delete { get; }
 		LocalizedString DeleteConfirmation { get; }
-		LocalizedString DeleteSuccess { get; }
 		LocalizedString Iban { get; }
 		LocalizedString Name { get; }
 		LocalizedString New { get; }
-		LocalizedString NewSuccess { get; }
 		LocalizedString Plural { get; }
 		LocalizedString Singular { get; }
 		LocalizedString SwiftBic { get; }
-		LocalizedString UpdateSuccess { get; }
 	}
 }
