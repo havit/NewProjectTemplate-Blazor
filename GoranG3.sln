@@ -15,7 +15,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{2A8A9D
 		.nuget\NuGet.Config = .nuget\NuGet.Config
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EntityTests", "EntityTests\EntityTests.csproj", "{E6DBF2DA-2E36-4C9D-86B4-C6D134689802}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Entity.Tests", "Entity.Tests\Entity.Tests.csproj", "{E6DBF2DA-2E36-4C9D-86B4-C6D134689802}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DependencyInjection", "DependencyInjection\DependencyInjection.csproj", "{0E201C98-C6A0-489E-ADD7-C66AD493FD25}"
 EndProject
@@ -29,13 +29,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Facades", "Facades\Facades.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestsForLocalDebugging", "TestsForLocalDebugging\TestsForLocalDebugging.csproj", "{1F614167-1325-4CBF-AB62-454783E4BAFF}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ModelTests", "ModelTests\ModelTests.csproj", "{8BF44060-CF46-4C34-861B-8E47A4CB7B05}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Model.Tests", "Model.Tests\Model.Tests.csproj", "{8BF44060-CF46-4C34-861B-8E47A4CB7B05}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServicesTests", "ServicesTests\ServicesTests.csproj", "{2F16BD2B-4764-47E6-A9E6-21027E634B42}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Services.Tests", "Services.Tests\Services.Tests.csproj", "{2F16BD2B-4764-47E6-A9E6-21027E634B42}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FacadesTests", "FacadesTests\FacadesTests.csproj", "{2B7D3FCB-2538-4737-918F-F8A5F35B17E9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Facades.Tests", "Facades.Tests\Facades.Tests.csproj", "{2B7D3FCB-2538-4737-918F-F8A5F35B17E9}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataLayerTests", "DataLayerTests\DataLayerTests.csproj", "{E713978A-C098-4C13-8B37-66263990DBED}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataLayer.Tests", "DataLayer.Tests\DataLayer.Tests.csproj", "{E713978A-C098-4C13-8B37-66263990DBED}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IntegrationTests", "IntegrationTests\IntegrationTests.csproj", "{F6818461-E2B7-46EA-93F6-30F8E3F70286}"
 EndProject

@@ -1,0 +1,38 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net5.0</TargetFramework>
+		<IsPackable>false</IsPackable>
+		<AssemblyName>Havit.GoranG3.Entity.Tests</AssemblyName>
+		<RootNamespace>Havit.GoranG3.Entity.Tests</RootNamespace>
+		<!-- Nasměrujeme publish složku mimo bin aby nedocházelo ke dvojímu spoštění unit testů (ze bin\Release\netcoreapp a bin\Release\netcoreapp\publish) -->
+		<PublishDir>obj\$(Configuration)\publish</PublishDir>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<None Remove="appsettings.json" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Content Include="appsettings.json">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.4">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="3.1.4" />
+		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.8.3" />
+		<PackageReference Include="MSTest.TestAdapter" Version="2.1.2" />
+		<PackageReference Include="MSTest.TestFramework" Version="2.1.2" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\Entity\Entity.csproj" />
+		<ProjectReference Include="..\Model\Model.csproj" />
+	</ItemGroup>
+
+</Project>

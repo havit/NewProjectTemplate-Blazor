@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Havit.GoranG3.ModelTests.Finance
+namespace Havit.GoranG3.Model.Tests.Finance
 {
 	[TestClass]
 	public class TransactionTests

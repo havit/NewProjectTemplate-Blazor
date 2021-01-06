@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Havit.GoranG3.ModelTests.Projects
+namespace Havit.GoranG3.Model.Tests.Projects
 {
 	[TestClass]
 	public class ProjectTests

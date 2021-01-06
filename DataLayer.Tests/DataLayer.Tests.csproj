@@ -3,8 +3,8 @@
 	<PropertyGroup>
 		<TargetFramework>net5.0</TargetFramework>
 		<IsPackable>false</IsPackable>
-		<AssemblyName>Havit.GoranG3.ServicesTests</AssemblyName>
-		<RootNamespace>Havit.GoranG3.ServicesTests</RootNamespace>
+		<AssemblyName>Havit.GoranG3.DataLayer.Tests</AssemblyName>
+		<RootNamespace>Havit.GoranG3.DataLayer.Tests</RootNamespace>
 		<PublishDir>obj\$(Configuration)\publish</PublishDir>
 	</PropertyGroup>
 
@@ -15,7 +15,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\Services\Services.csproj" />
+		<ProjectReference Include="..\DataLayer\DataLayer.csproj" />
 	</ItemGroup>
 
 </Project>

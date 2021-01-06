@@ -3,8 +3,8 @@
 	<PropertyGroup>
 		<TargetFramework>net5.0</TargetFramework>
 		<IsPackable>false</IsPackable>
-		<AssemblyName>Havit.GoranG3.ModelTests</AssemblyName>
-		<RootNamespace>Havit.GoranG3.ModelTests</RootNamespace>
+		<AssemblyName>Havit.GoranG3.Facades.Tests</AssemblyName>
+		<RootNamespace>Havit.GoranG3.Facades.Tests</RootNamespace>
 		<PublishDir>obj\$(Configuration)\publish</PublishDir>
 	</PropertyGroup>
 
@@ -15,7 +15,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\Model\Model.csproj" />
+		<ProjectReference Include="..\Facades\Facades.csproj" />
 	</ItemGroup>
 
 </Project>
