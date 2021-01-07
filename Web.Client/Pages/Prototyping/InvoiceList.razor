@@ -1,23 +1,23 @@
 ﻿@page "/"
 @using Havit.GoranG3.Contracts.Finance.Invoices
 
-<EditForm Model="@Filter">
+<EditForm Model="@filter">
 	<DataAnnotationsValidator />
 
 	<HxListLayout Title="Faktury vystavené">
 		<NamedViewsSection>
-			<HxNamedViewList TFilterType="GetInvoicesFilterDto" @bind-Filter="@Filter" NamedViews="@NamedViews" SelectedNamedViewChanged="NamedViewSelected" />
+			<HxNamedViewList TFilterType="GetInvoicesFilterDto" @bind-Filter="filter" NamedViews="namedViews" SelectedNamedViewChanged="NamedViewSelected" />
 		</NamedViewsSection>
 		<SearchSection>
-			<HxSearchBox OnQueryTextChanged="@SearchRequested" /> @* Možná přímo navázat na centrální BindData? *@
+			<HxSearchBox OnQueryTextChanged="SearchRequested" /> @* Možná přímo navázat na centrální BindData? *@
 		</SearchSection>
 		<FilterSection>
 			<HxFilterView ApplyFilterRequested="ApplyFilterRequested">
 				@* TODO: Změna stavu filtru (výměna instance) se neprojení v renderování kritérií, toje potřeba dořešit *@
 				<Criteria>
-					<HxDateRangeFilter @bind-ValueFrom="@Filter.IssuedDateFrom" @bind-ValueTo="@Filter.IssuedDateTo" Label="Vystavení" />
-					<HxDateRangeFilter @bind-ValueFrom="@Filter.TaxDateFrom" @bind-ValueTo="@Filter.TaxDateTo" Label="Účinnost" />
-					<HxTextFilter @bind-Value="Filter.Text" Label="Nějaký text" />
+					<HxDateRangeFilter @bind-ValueFrom="filter.IssuedDateFrom" @bind-ValueTo="filter.IssuedDateTo" Label="Vystavení" />
+					<HxDateRangeFilter @bind-ValueFrom="filter.TaxDateFrom" @bind-ValueTo="filter.TaxDateTo" Label="Účinnost" />
+					<HxTextFilter @bind-Value="filter.Text" Label="Nějaký text" />
 					@*<GoranProjectFilter Label="Projekt" />
 	<GoranContactFilter Label="Partner" />
 	<HxFilter Label="Typ faktury">
@@ -46,7 +46,7 @@
 			AllowSorting="true"*@
 
 			@*@bind-CurrentSorting="@CurrentSorting"*@
-			<HxGrid TItemType="InvoiceListDto" Data="@Invoices" TotalItemsCount="@TotalInvoices" PageSize="@Havit.GoranG3.Contracts.Finance.Invoices.GetInvoicesRequest.PageSize" @bind-CurrentUserState="@CurrentGridState" DataReloadRequired="HandleDataReloadRequired">
+			<HxGrid @ref="grid" TItemType="InvoiceListDto" PageSize="20" DataProvider="InvoicesDataProvider">
 				<Columns>
 					<HxGridColumn TItemType="InvoiceListDto" HeaderText="Datum" ItemTextSelector="@(item => item.IssuedDate.ToShortDateString())" SortString="@nameof(InvoiceListDto.IssuedDate)" IsDefaultSortColumn="true" />
 					<HxGridColumn TItemType="InvoiceListDto" HeaderText="Účinnost" ItemTextSelector="@(item => item.TaxDate.ToShortDateString())" SortString="@nameof(InvoiceListDto.TaxDate)" />
@@ -89,7 +89,7 @@
 		</DataSection>
 		<DetailSection>
 			@* TODO Určování velikosti draweru *@
-			<InvoiceDetail @bind-Invoice="CurrentInvoice" />
+			<InvoiceDetail @bind-Invoice="currentInvoice" />
 		</DetailSection>
 	</HxListLayout>
 </EditForm>

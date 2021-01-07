@@ -42,7 +42,7 @@ namespace Havit.GoranG3.Facades.Finance.Invoices
 
 			return new GetInvoicesResult
 			{
-				Invoices = invoices.Skip(request.PageIndex * GetInvoicesRequest.PageSize).Take(GetInvoicesRequest.PageSize).ToList(),
+				Invoices = invoices.Skip(request.PageIndex * request.PageSize).Take(request.PageSize).ToList(),
 				TotalCount = invoices.Count
 			};
 		}

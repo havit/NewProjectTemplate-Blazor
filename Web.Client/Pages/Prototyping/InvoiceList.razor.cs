@@ -19,18 +19,15 @@ namespace Havit.GoranG3.Web.Client.Pages.Prototyping
 {
 	public partial class InvoiceList
 	{
-		protected GridUserState<InvoiceListDto> CurrentGridState { get; set; } = new GridUserState<InvoiceListDto>(0, null); // TODO: Default nastavit v HxGridu
-		protected List<InvoiceListDto> Invoices { get; set; }
-		protected int TotalInvoices { get; set; }
-
-		protected InvoiceListDto CurrentInvoice { get; set; }
-		protected GetInvoicesFilterDto Filter { get; set; } = new GetInvoicesFilterDto();
-
 		[Inject] protected IInvoiceFacade InvoiceFacade { get; set; }
 
 		[Inject] protected NavigationManager NavigationManager { get; set; }
 
-		protected readonly IEnumerable<NamedView<GetInvoicesFilterDto>> NamedViews = new List<NamedView<GetInvoicesFilterDto>>()
+		private InvoiceListDto currentInvoice;
+		private GetInvoicesFilterDto filter = new GetInvoicesFilterDto();
+		private HxGrid<InvoiceListDto> grid;
+
+		private readonly IEnumerable<NamedView<GetInvoicesFilterDto>> namedViews = new List<NamedView<GetInvoicesFilterDto>>()
 		{
 			new NamedView<GetInvoicesFilterDto>("Letos vystavené", () => new GetInvoicesFilterDto { IssuedDateFrom = new DateTime(2020, 1, 1), IssuedDateTo = new DateTime(2020, 12, 31 ) } ),
 			new NamedView<GetInvoicesFilterDto>("Neuhrazené po splatnosti", () => new GetInvoicesFilterDto { Text = "Neuhrazené po splatnosti" }),
@@ -38,23 +35,27 @@ namespace Havit.GoranG3.Web.Client.Pages.Prototyping
 		};
 
 		private CancellationTokenSource cancellationTokenSource;
-		private async Task LoadInvoices()
+		private async ValueTask<GridDataProviderResult<InvoiceListDto>> InvoicesDataProvider(GridDataProviderRequest<InvoiceListDto> request)
 		{
 			cancellationTokenSource?.Cancel();
 			cancellationTokenSource = new CancellationTokenSource();
 
-			GetInvoicesRequest request = new GetInvoicesRequest()
+			var getInvoicesRequest = new GetInvoicesRequest()
 			{
-				Filter = this.Filter,
-				PageIndex = this.CurrentGridState.PageIndex,
-				SortItems = this.CurrentGridState.Sorting?.Select(item => new Contracts.Common.SortItemDto { SortString = item.SortString, SortDirection = item.SortDirection }).ToList()
+				Filter = this.filter,
+				PageIndex = request.PageIndex,
+				PageSize = request.PageSize,
+				SortItems = request.Sorting?.Select(item => new Contracts.Common.SortItemDto { SortString = item.SortString, SortDirection = item.SortDirection }).ToList()
 			};
 
 			try
 			{
-				var result = await InvoiceFacade.GetInvoices(request, cancellationTokenSource.Token);
-				Invoices = result.Invoices; // TODO: Potřebujeme hodnoty rozebírat? Nestačil by nám result?
-				TotalInvoices = result.TotalCount;
+				var result = await InvoiceFacade.GetInvoices(getInvoicesRequest, cancellationTokenSource.Token);
+				return new()
+				{
+					Data = result.Invoices,
+					DataItemsTotalCount = result.TotalCount
+				};
 			}
 			catch (RpcException e) when (e.Message?.Contains("AccessTokenNotAvailableException") ?? false)
 			{
@@ -66,33 +67,28 @@ namespace Havit.GoranG3.Web.Client.Pages.Prototyping
 			{
 				// NOOP
 			}
-		}
-
-		protected async Task HandleDataReloadRequired()
-		{
-			await LoadInvoices();
+			return null;
 		}
 
 		// TODO: Nekolik volání metody LoadInvoices. Jak to napojit? Ideálně bez nutnosti řádky kódu.
 		protected async Task ApplyFilterRequested()
 		{
-			await LoadInvoices();
+			await grid.RefreshDataAsync();
 		}
 
 		protected async Task NamedViewSelected(/*NamedView<GetInvoicesFilterDto> namedView*/)
 		{
-			await LoadInvoices();
+			await grid.RefreshDataAsync();
 		}
 
-		protected Task SearchRequested()
+		protected async Task SearchRequested()
 		{
-			// Tady by bylo něco jako BindData()
-			return Task.CompletedTask;
+			await grid.RefreshDataAsync();
 		}
 
 		protected Task NewInvoiceClicked()
 		{
-			this.CurrentInvoice = new InvoiceListDto();
+			this.currentInvoice = new InvoiceListDto();
 			// OpenDetail() ?
 			return Task.CompletedTask;
 		}
