@@ -6,7 +6,7 @@
 
 	<HxListLayout Title="Faktury vystavené">
 		<NamedViewsSection>
-			<HxNamedViewList TFilterType="GetInvoicesFilterDto" @bind-Filter="filter" NamedViews="namedViews" SelectedNamedViewChanged="NamedViewSelected" />
+			<HxNamedViewList TFilterType="GetInvoicesFilterDto" @bind-Filter="filter" NamedViews="namedViews" OnNamedViewSelected="NamedViewSelected" />
 		</NamedViewsSection>
 		<SearchSection>
 			<HxSearchBox OnQueryTextChanged="SearchRequested" /> @* Možná přímo navázat na centrální BindData? *@
