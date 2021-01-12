@@ -4,8 +4,8 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Havit.Blazor.Components.Web;
 using Havit.Blazor.Components.Web.Bootstrap;
-using Havit.Blazor.Components.Web.Messenger;
 using Havit.GoranG3.Contracts.System;
 using Microsoft.AspNetCore.Components;
 

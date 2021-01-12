@@ -5,8 +5,8 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using Blazored.LocalStorage;
+using Havit.Blazor.Components.Web;
 using Havit.Blazor.Components.Web.Bootstrap;
-using Havit.Blazor.Components.Web.Messenger;
 using Havit.GoranG3.Contracts.Finance;
 using Havit.GoranG3.Contracts.Finance.Invoices;
 using Havit.GoranG3.Contracts.GrpcTests;
@@ -37,6 +37,7 @@ namespace Havit.GoranG3.Web.Client
 			builder.Services.AddBlazoredLocalStorage();
 
 			builder.Services.AddHxMessenger();
+			builder.Services.AddHxMessageBoxHost();
 
 			AddGrpcClient(builder);
 

@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Blazored.LocalStorage;
+using Havit.Blazor.Components.Web;
 using Havit.Blazor.Components.Web.Bootstrap;
-using Havit.Blazor.Components.Web.Messenger;
 using Microsoft.AspNetCore.Components;
 using Microsoft.Extensions.Localization;
 
