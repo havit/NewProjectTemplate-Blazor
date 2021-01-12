@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Havit.Blazor.Components.Web.Bootstrap;
+using Havit.Blazor.Components.Web.Messenger;
 using Havit.GoranG3.Contracts.Finance;
 using Havit.GoranG3.Web.Client.Resources;
 using Havit.GoranG3.Web.Client.Resources.Model.Finance;
@@ -18,7 +19,7 @@ namespace Havit.GoranG3.Web.Client.Pages.Admin
 		[Parameter] public BankAccountDto Value { get; set; }
 		[Parameter] public EventCallback<BankAccountDto> ValueChanged { get; set; }
 
-		[Inject] protected IMessenger Messenger { get; set; }
+		[Inject] protected IHxMessengerService Messenger { get; set; }
 		[Inject] protected IBankAccountFacade BankAccountFacade { get; set; }
 		[Inject] protected IBankAccountLocalizer BankAccountLoc { get; set; }
 		[Inject] protected IGlobalLocalizer GlobalLoc { get; set; }

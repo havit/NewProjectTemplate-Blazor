@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Havit.Blazor.Components.Web.Bootstrap;
+using Havit.Blazor.Components.Web.Messenger;
 using Havit.GoranG3.Contracts.System;
 using Microsoft.AspNetCore.Components;
 
@@ -13,7 +14,7 @@ namespace Havit.GoranG3.Web.Client.Pages.Admin.Components
 	public partial class DataSeeds : ComponentBase
 	{
 		[Inject] protected IDataSeedFacade DataSeedFacade { get; set; }
-		[Inject] protected IMessenger Messenger { get; set; }
+		[Inject] protected IHxMessengerService Messenger { get; set; }
 
 		private IEnumerable<string> seedProfiles;
 		private FormModel model = new FormModel();

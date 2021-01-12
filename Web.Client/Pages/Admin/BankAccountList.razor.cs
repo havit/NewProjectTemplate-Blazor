@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Havit.Blazor.Components.Web.Bootstrap;
+using Havit.Blazor.Components.Web.Messenger;
 using Havit.GoranG3.Contracts;
 using Havit.GoranG3.Contracts.Finance;
 using Havit.GoranG3.Web.Client.Resources;
@@ -19,7 +20,7 @@ namespace Havit.GoranG3.Web.Client.Pages.Admin
 		private BankAccountDto bankAccountEdited;
 		private bool detailDrawerIsOpen;
 
-		[Inject] protected IMessenger Messenger { get; set; }
+		[Inject] protected IHxMessengerService Messenger { get; set; }
 		[Inject] protected IBankAccountFacade BankAccountFacade { get; set; }
 		[Inject] protected IBankAccountLocalizer BankAccountLoc { get; set; }
 		[Inject] protected IGlobalLocalizer GlobalLoc { get; set; }

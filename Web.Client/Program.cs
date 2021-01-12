@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Blazored.LocalStorage;
 using Havit.Blazor.Components.Web.Bootstrap;
+using Havit.Blazor.Components.Web.Messenger;
 using Havit.GoranG3.Contracts.Finance;
 using Havit.GoranG3.Contracts.Finance.Invoices;
 using Havit.GoranG3.Contracts.GrpcTests;
