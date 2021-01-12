@@ -36,7 +36,7 @@ namespace Havit.GoranG3.Web.Client.Pages.Admin
 			bankAccounts = (await BankAccountFacade.GetBankAccountsAsync()).Value;
 		}
 
-		private void DataItemSelected(BankAccountDto bankAccountSelected)
+		private void HandleSelectedDataItemChanged(BankAccountDto bankAccountSelected)
 		{
 			bankAccountEdited = bankAccountSelected;
 			detailDrawerIsOpen = true;

@@ -6,7 +6,7 @@
 		<HxButton Text="@BankAccountLoc.New" Skin="ButtonSkins.New" OnClick="@NewItemClicked" />
 	</CommandsSection>
 	<DataSection>
-		<HxGrid TItemType="BankAccountDto" Data="bankAccounts" SelectionMode="GridSelectionMode.Select" SelectedDataItemChanged="DataItemSelected" Context="item">
+		<HxGrid TItemType="BankAccountDto" Data="bankAccounts" SelectionMode="GridSelectionMode.Select" SelectedDataItemChanged="HandleSelectedDataItemChanged" Context="item">
 			<Columns>
 				<HxGridColumn TItemType="BankAccountDto" HeaderText="@BankAccountLoc.Name" ItemTextSelector="@(item => item.Name)" />
 				<HxGridColumn TItemType="BankAccountDto" HeaderText="@BankAccountLoc.BankName" ItemTextSelector="@(item => item.BankName)" />
@@ -16,7 +16,7 @@
 			</Columns>
 			<ContextMenu Context="item">
 				<HxContextMenu>
-					<HxContextMenuItem Title="@BankAccountLoc.Delete" Icon="BootstrapIcon.Trash" OnItemClick="async () => await DeleteItemClicked(item)" ConfirmationQuestion="@String.Format(BankAccountLoc.DeleteConfirmation, item.Name)" />
+					<HxContextMenuItem Text="@BankAccountLoc.Delete" Icon="BootstrapIcon.Trash" OnClick="async () => await DeleteItemClicked(item)" ConfirmationQuestion="@String.Format(BankAccountLoc.DeleteConfirmation, item.Name)" />
 				</HxContextMenu>
 			</ContextMenu>
 		</HxGrid>

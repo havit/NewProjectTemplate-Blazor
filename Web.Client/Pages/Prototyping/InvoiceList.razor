@@ -80,9 +80,9 @@
 				</Columns>
 				<ContextMenu Context="item">
 					<HxContextMenu>
-						<HxContextMenuItem Title="Upravit" OnItemClick="async () => await EditClicked(item)" />
-						<HxContextMenuItem Title="Duplikovat" OnItemClick="async () => await DuplicateClicked(item)" />
-						<HxContextMenuItem Title="Smazat" OnItemClick="async () => await DeleteClicked(item)" ConfirmationQuestion="@($"Opravdu si přejete smazat fakturu {item.InvoiceNumber}?")" />
+						<HxContextMenuItem Text="Upravit" OnClick="async () => await EditClicked(item)" />
+						<HxContextMenuItem Text="Duplikovat" OnClick="async () => await DuplicateClicked(item)" />
+						<HxContextMenuItem Text="Smazat" OnClick="async () => await DeleteClicked(item)" ConfirmationQuestion="@($"Opravdu si přejete smazat fakturu {item.InvoiceNumber}?")" />
 					</HxContextMenu>
 				</ContextMenu>
 			</HxGrid>
