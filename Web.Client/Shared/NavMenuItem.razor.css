@@ -1,0 +1,30 @@
+.nav-item {
+	font-size: 0.9rem;
+}
+
+a {
+	text-decoration: none;
+}
+
+.nav-item a span {
+	/* color: #6e84a3; */
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+a.active {
+	background-color: rgba(255, 255, 255, 0.25);
+	color: var(--primary);
+}
+
+a > div:hover {
+	background-color: var(--sidebar-link-hover);
+	color: var(--primary);
+}
+
+a > div > span {
+	line-height: 18px;
+	height: 18px;
+}

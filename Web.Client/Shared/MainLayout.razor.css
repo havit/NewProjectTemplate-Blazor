@@ -1,3 +1,7 @@
 .main {
 	background-color: var(--main-bg);
 }
+
+.sidebar {
+	border-right: var(--sidebar-border);
+}
