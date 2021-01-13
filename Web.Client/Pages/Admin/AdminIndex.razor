@@ -1,19 +1,24 @@
 ﻿@page "/admin"
-<h1>Administration</h1>
+<h4>Administration</h4>
 
-<NavPanel Title="Finance" Icon="BootstrapIcon.CashStack">
-	<NavCard Href="/admin/user/bank-accounts" Title="Bankovní účty" Icon="BootstrapIcon.Cash" />
-</NavPanel>
-
-<NavPanel Title="System" Icon="BootstrapIcon.Hammer">
-	<NavCard OnClick="() => dataSeedsDrawerOpen = true" Title="Data Seeds" Icon="BootstrapIcon.BatteryCharging" />
-	<NavCard OnClick="RemoveCultureFromLocalStorage" Title="Remove culture setting from localStorage" Icon="BootstrapIcon.FileEarmarkMinus" />
-</NavPanel>
-
-<NavPanel Title="Development" Icon="BootstrapIcon.FileCode">
-	<NavCard Href="/admin/auth-test" Title="Authorization test" Icon="BootstrapIcon.Lock" />
-</NavPanel>
-
+<div class="row row-cols-2 row-cols-lg-5 g-3 mt-4">
+	<div class="col">
+		<NavPanel Title="Finance" Icon="BootstrapIcon.CashStack">
+			<NavCard Href="/admin/user/bank-accounts" Title="Bankovní účty" />
+		</NavPanel>
+	</div>
+	<div class="col">
+		<NavPanel Title="System" Icon="BootstrapIcon.Hammer">
+			<NavCard OnClick="() => dataSeedsDrawerOpen = true" Title="Data Seeds" />
+			<NavCard OnClick="RemoveCultureFromLocalStorage" Title="Remove culture setting from localStorage" />
+		</NavPanel>
+	</div>
+	<div class="col">
+		<NavPanel Title="Development" Icon="BootstrapIcon.FileCode">
+			<NavCard Href="/admin/auth-test" Title="Authorization test" />
+		</NavPanel>
+	</div>
+</div>
 
 <HxDrawer Title="Data Seed" IsOpen="dataSeedsDrawerOpen">
 	<BodySection>

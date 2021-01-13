@@ -1,25 +1,34 @@
 ﻿@page "/admin/user/bank-accounts"
 @using Havit.GoranG3.Contracts.Finance
 
-<HxListLayout Title="@BankAccountLoc.Plural" @bind-DetailDrawerIsOpen="detailDrawerIsOpen" >
+<HxListLayout Title="@BankAccountLoc.Plural" @bind-DetailDrawerIsOpen="detailDrawerIsOpen">
 	<CommandsSection>
 		<HxButton Text="@BankAccountLoc.New" Skin="ButtonSkins.New" OnClick="@NewItemClicked" />
 	</CommandsSection>
 	<DataSection>
-		<HxGrid TItemType="BankAccountDto" Data="bankAccounts" SelectionMode="GridSelectionMode.Select" SelectedDataItemChanged="HandleSelectedDataItemChanged" Context="item">
+		<HxGrid TItemType="BankAccountDto" Data="bankAccounts" SelectionMode="GridSelectionMode.Select"
+			SelectedDataItemChanged="HandleSelectedDataItemChanged" Context="item">
 			<Columns>
-				<HxGridColumn TItemType="BankAccountDto" HeaderText="@BankAccountLoc.Name" ItemTextSelector="@(item => item.Name)" />
-				<HxGridColumn TItemType="BankAccountDto" HeaderText="@BankAccountLoc.BankName" ItemTextSelector="@(item => item.BankName)" />
-				<HxGridColumn TItemType="BankAccountDto" HeaderText="@BankAccountLoc.AccountNumber" ItemTextSelector="@(item => item.AccountNumber)" />
-				<HxGridColumn TItemType="BankAccountDto" HeaderText="@BankAccountLoc.Iban" ItemTextSelector="@(item => item.Iban)" />
-				<HxGridColumn TItemType="BankAccountDto" HeaderText="@BankAccountLoc.SwiftBic" ItemTextSelector="@(item => item.SwiftBic)" />
+				<HxGridColumn TItemType="BankAccountDto" HeaderText="@BankAccountLoc.Name"
+					ItemTextSelector="@(item => item.Name)" />
+				<HxGridColumn TItemType="BankAccountDto" HeaderText="@BankAccountLoc.BankName"
+					ItemTextSelector="@(item => item.BankName)" />
+				<HxGridColumn TItemType="BankAccountDto" HeaderText="@BankAccountLoc.AccountNumber"
+					ItemTextSelector="@(item => item.AccountNumber)" />
+				<HxGridColumn TItemType="BankAccountDto" HeaderText="@BankAccountLoc.Iban"
+					ItemTextSelector="@(item => item.Iban)" />
+				<HxGridColumn TItemType="BankAccountDto" HeaderText="@BankAccountLoc.SwiftBic"
+					ItemTextSelector="@(item => item.SwiftBic)" />
 			</Columns>
 			<ContextMenu Context="item">
 				<HxContextMenu>
-					<HxContextMenuItem Text="@BankAccountLoc.Delete" Icon="BootstrapIcon.Trash" OnClick="async () => await DeleteItemClicked(item)" ConfirmationQuestion="@String.Format(BankAccountLoc.DeleteConfirmation, item.Name)" />
+					<HxContextMenuItem Text="@BankAccountLoc.Delete" Icon="BootstrapIcon.Trash"
+						OnClick="async () => await DeleteItemClicked(item)"
+						ConfirmationQuestion="@String.Format(BankAccountLoc.DeleteConfirmation, item.Name)" />
 				</HxContextMenu>
 			</ContextMenu>
 		</HxGrid>
+
 	</DataSection>
 	<DetailSection>
 		<BankAccountEdit Value="bankAccountEdited" ValueChanged="HandleValueChanged" />

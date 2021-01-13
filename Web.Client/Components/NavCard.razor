@@ -1,15 +1,12 @@
-﻿<a href="@Href" @onclick="OnClick">
-	<div class="card mb-3">
-		<div class="card-title">
-			<HxIcon Icon="Icon" /> @Title
-		</div>
-	</div>
-</a>
+﻿<div>
+	<a href="@Href" @onclick="OnClick">
+		@Title
+	</a>
+</div>
 
 @code
 {
 	[Parameter] public string Title { get; set; }
 	[Parameter] public string Href { get; set; }
-	[Parameter] public IconBase Icon { get; set; }
 	[Parameter] public EventCallback<MouseEventArgs> OnClick { get; set; }
 }
