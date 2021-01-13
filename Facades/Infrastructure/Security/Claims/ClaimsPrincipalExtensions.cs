@@ -11,7 +11,8 @@ namespace Havit.GoranG3.Facades.Infrastructure.Security.Claims
 	{
 		public static int GetUserId(this ClaimsPrincipal principal)
 		{
-			Claim userIdClaim = principal.Claims.Single(claim => (claim.Type == ClaimConstants.UserIdClaim) && (claim.Issuer == ClaimConstants.ApplicationIssuer));
+			Claim userIdClaim = principal.Claims.Single(claim => (claim.Type == "sub")); // TODO Authentication konsolidace
+			// Claim userIdClaim = principal.Claims.Single(claim => (claim.Type == ClaimConstants.UserIdClaim) && (claim.Issuer == ClaimConstants.ApplicationIssuer));
 			return Int32.Parse(userIdClaim.Value);
 		}
 	}
