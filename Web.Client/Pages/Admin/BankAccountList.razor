@@ -1,36 +1,50 @@
 ﻿@page "/admin/user/bank-accounts"
 @using Havit.GoranG3.Contracts.Finance
 
-<HxListLayout Title="@BankAccountLoc.Plural" @bind-DetailDrawerIsOpen="detailDrawerIsOpen">
-    <CommandsSection>
-        <HxButton Text="@BankAccountLoc.New" Skin="ButtonSkins.New" OnClick="@NewItemClicked" />
-    </CommandsSection>
-    <DataSection>
-        <HxGrid TItemType="BankAccountDto" Data="bankAccounts" SelectionMode="GridSelectionMode.Select"
-            SelectedDataItemChanged="HandleSelectedDataItemChanged" Context="item">
-            <Columns>
-                <HxGridColumn TItemType="BankAccountDto" HeaderText="@BankAccountLoc.Name"
-                    ItemTextSelector="@(item => item.Name)" />
-                <HxGridColumn TItemType="BankAccountDto" HeaderText="@BankAccountLoc.BankName"
-                    ItemTextSelector="@(item => item.BankName)" />
-                <HxGridColumn TItemType="BankAccountDto" HeaderText="@BankAccountLoc.AccountNumber"
-                    ItemTextSelector="@(item => item.AccountNumber)" />
-                <HxGridColumn TItemType="BankAccountDto" HeaderText="@BankAccountLoc.Iban"
-                    ItemTextSelector="@(item => item.Iban)" />
-                <HxGridColumn TItemType="BankAccountDto" HeaderText="@BankAccountLoc.SwiftBic"
-                    ItemTextSelector="@(item => item.SwiftBic)" />
-            </Columns>
-            <ContextMenu Context="item">
-                <HxContextMenu>
-                    <HxContextMenuItem Text="@BankAccountLoc.Delete" Icon="BootstrapIcon.Trash"
-                        OnClick="async () => await DeleteItemClicked(item)"
-                        ConfirmationQuestion="@String.Format(BankAccountLoc.DeleteConfirmation, item.Name)" />
-                </HxContextMenu>
-            </ContextMenu>
-        </HxGrid>
+<HxListLayout Title="@BankAccountLoc.Plural">
+	<CommandsSection>
+		<HxButton Text="@BankAccountLoc.New" Skin="ButtonSkins.New" OnClick="NewItemClicked" />
+	</CommandsSection>
+	<DataSection>
+		<HxGrid TItemType="BankAccountDto" Data="bankAccounts" SelectionMode="GridSelectionMode.Select"
+				SelectedDataItemChanged="HandleSelectedDataItemChanged" Context="item">
+			<Columns>
+				<HxGridColumn TItemType="BankAccountDto" HeaderText="@BankAccountLoc.Name" ItemTextSelector="@(item => item.Name)" />
+				<HxGridColumn TItemType="BankAccountDto" HeaderText="@BankAccountLoc.BankName" ItemTextSelector="@(item => item.BankName)" />
+				<HxGridColumn TItemType="BankAccountDto" HeaderText="@BankAccountLoc.AccountNumber" ItemTextSelector="@(item => item.AccountNumber)" />
+				<HxGridColumn TItemType="BankAccountDto" HeaderText="@BankAccountLoc.Iban" ItemTextSelector="@(item => item.Iban)" />
+				<HxGridColumn TItemType="BankAccountDto" HeaderText="@BankAccountLoc.SwiftBic" ItemTextSelector="@(item => item.SwiftBic)" />
+			</Columns>
+			<ContextMenu Context="item">
+				<HxContextMenu>
+					<HxContextMenuItem Text="@BankAccountLoc.Delete"
+									   Icon="BootstrapIcon.Trash"
+									   OnClick="async () => await DeleteItemClicked(item)"
+									   ConfirmationQuestion="@String.Format(BankAccountLoc.DeleteConfirmation, item.Name)" />
+				</HxContextMenu>
+			</ContextMenu>
+		</HxGrid>
 
-    </DataSection>
-    <DetailSection>
-        <BankAccountEdit Value="bankAccountEdited" ValueChanged="HandleValueChanged" />
-    </DetailSection>
+	</DataSection>
+	<DetailSection>
+
+		@* DEMO of DisplayModes, in production, this should be fixed to Drawer *@
+		<div class="mt-3 mb-3">
+			<EditForm Model="myModel">
+				<HxSelect Label="BankAccountEdit DisplayMode" Items="Enum.GetValues<LayoutDisplayMode>()" TItemType="LayoutDisplayMode" TValueType="LayoutDisplayMode" @bind-Value="myModel.DisplayMode" TextSelector="@(i => i.ToString("g"))" Nullable="false" />
+			</EditForm>
+		</div>
+
+		<BankAccountEdit @ref="bankAccountEdit" Value="bankAccountEdited" ValueChanged="HandleValueChanged" DisplayMode="myModel.DisplayMode" />
+
+	</DetailSection>
 </HxListLayout>
+
+@code{
+	private MyModel myModel = new MyModel();
+	private class MyModel
+	{
+		public LayoutDisplayMode DisplayMode = LayoutDisplayMode.Plain;
+	}
+}
+

@@ -1,16 +1,25 @@
-﻿@if (this.LayoutDetailContext is null)
-{
-    <h1>@(model.Name ?? BankAccountLoc.New)</h1>
-}
+﻿<HxDisplayLayout @ref="hxDisplayLayout" DisplayMode="@DisplayMode">
+	<HeaderTemplate>
 
-<EditForm Model="model" OnValidSubmit="HandleValidSubmit">
-    <DataAnnotationsValidator />
+		@(model.Name ?? BankAccountLoc.New)
 
-    <HxInputText CssClass="mb-3" Label="@BankAccountLoc.Name" @bind-Value="model.Name" />
-    <HxInputText CssClass="mb-3" Label="@BankAccountLoc.AccountNumber" @bind-Value="model.AccountNumber" />
-    <HxInputText CssClass="mb-3" Label="@BankAccountLoc.BankName" @bind-Value="model.BankName" />
-    <HxInputText CssClass="mb-3" Label="@BankAccountLoc.Iban" @bind-Value="model.Iban" />
-    <HxInputText CssClass="mb-3" Label="@BankAccountLoc.SwiftBic" @bind-Value="model.SwiftBic" />
+	</HeaderTemplate>
+	<BodyTemplate>
 
-    <HxSubmit Skin="(model.Id == default) ? ButtonSkins.Insert : ButtonSkins.Save" />
-</EditForm>
+		<EditForm id="bank-account-edit" Model="model" OnValidSubmit="HandleValidSubmit">
+			<DataAnnotationsValidator />
+
+			<HxInputText Label="@BankAccountLoc.Name" @bind-Value="model.Name" />
+			<HxInputText Label="@BankAccountLoc.AccountNumber" @bind-Value="model.AccountNumber" />
+			<HxInputText Label="@BankAccountLoc.BankName" @bind-Value="model.BankName" />
+			<HxInputText Label="@BankAccountLoc.Iban" @bind-Value="model.Iban" />
+			<HxInputText Label="@BankAccountLoc.SwiftBic" @bind-Value="model.SwiftBic" />
+		</EditForm>
+
+	</BodyTemplate>
+	<FooterTemplate>
+
+		<HxSubmit form="bank-account-edit" Skin="(model.Id == default) ? ButtonSkins.Insert : ButtonSkins.Save" />
+
+	</FooterTemplate>
+</HxDisplayLayout>
