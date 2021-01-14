@@ -28,3 +28,7 @@ a > div > span {
 	line-height: 18px;
 	height: 18px;
 }
+
+svg {
+	overflow: visible;
+}
