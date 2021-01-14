@@ -16,14 +16,14 @@ namespace Havit.GoranG3.Web.Client.Pages.Admin
 {
 	public partial class BankAccountList : ComponentBase
 	{
-		private List<BankAccountDto> bankAccounts;
-		private BankAccountDto bankAccountEdited;
-		private bool detailDrawerIsOpen;
-
 		[Inject] protected IHxMessengerService Messenger { get; set; }
 		[Inject] protected IBankAccountFacade BankAccountFacade { get; set; }
 		[Inject] protected IBankAccountLocalizer BankAccountLoc { get; set; }
 		[Inject] protected IGlobalLocalizer GlobalLoc { get; set; }
+
+		private List<BankAccountDto> bankAccounts;
+		private BankAccountDto bankAccountEdited = new BankAccountDto();
+		private BankAccountEdit bankAccountEdit;
 
 		protected override async Task OnInitializedAsync()
 		{
@@ -36,16 +36,16 @@ namespace Havit.GoranG3.Web.Client.Pages.Admin
 			bankAccounts = (await BankAccountFacade.GetBankAccountsAsync()).Value;
 		}
 
-		private void HandleSelectedDataItemChanged(BankAccountDto bankAccountSelected)
+		private async Task HandleSelectedDataItemChanged(BankAccountDto bankAccountSelected)
 		{
 			bankAccountEdited = bankAccountSelected;
-			detailDrawerIsOpen = true;
+			await bankAccountEdit.ShowAsync();
 		}
 
-		private void NewItemClicked()
+		private async Task NewItemClicked()
 		{
 			bankAccountEdited = new BankAccountDto();
-			detailDrawerIsOpen = true;
+			await bankAccountEdit.ShowAsync();
 		}
 
 		private async Task DeleteItemClicked(BankAccountDto bankAccount)
