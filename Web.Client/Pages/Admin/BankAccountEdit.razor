@@ -1,4 +1,7 @@
-﻿<h1>@(model.Name ?? BankAccountLoc.New)</h1>
+﻿@if (this.LayoutDetailContext is null)
+{
+	<h1>@(model.Name ?? BankAccountLoc.New)</h1>
+}
 
 <EditForm Model="model" OnValidSubmit="HandleValidSubmit">
 	<DataAnnotationsValidator />

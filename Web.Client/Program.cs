@@ -17,6 +17,7 @@ using Havit.GoranG3.Web.Client.Resources;
 using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 
 namespace Havit.GoranG3.Web.Client
 {
@@ -25,6 +26,10 @@ namespace Havit.GoranG3.Web.Client
 		public static async Task Main(string[] args)
 		{
 			var builder = WebAssemblyHostBuilder.CreateDefault(args);
+#if DEBUG
+			builder.Logging.SetMinimumLevel(LogLevel.Trace);
+#endif
+
 			builder.RootComponents.Add<App>("app");
 
 			builder.Services.AddSingleton(new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
