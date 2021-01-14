@@ -6,10 +6,6 @@ a {
 	text-decoration: none;
 }
 
-.nav-item a span {
-	/* color: #6e84a3; */
-}
-
 a:hover {
 	text-decoration: none;
 }
@@ -27,8 +23,4 @@ a > div:hover {
 a > div > span {
 	line-height: 18px;
 	height: 18px;
-}
-
-svg {
-	overflow: visible;
 }
