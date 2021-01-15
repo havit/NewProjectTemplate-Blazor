@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using Havit.Data.Patterns.UnitOfWorks;
 using Havit.GoranG3.Contracts;
@@ -14,7 +15,6 @@ using Havit.GoranG3.Services.Finance;
 
 namespace Havit.GoranG3.Facades.Finance
 {
-	// TODO: Authorization
 	public class BankAccountFacade : IBankAccountFacade
 	{
 		private readonly IBankAccountRepository bankAccountRepository;
@@ -34,15 +34,13 @@ namespace Havit.GoranG3.Facades.Finance
 			this.unitOfWork = unitOfWork;
 		}
 
-		public async Task<Dto<List<BankAccountDto>>> GetBankAccountsAsync()
+		public async Task<Dto<List<BankAccountDto>>> GetBankAccountsAsync(CancellationToken cancellationToken = default)
 		{
-			CheckAuthorization();
-
 			var data = await bankAccountRepository.GetAllAsync();
 			return Dto.FromValue(data.Select(ba => bankAccountMapper.MapToBankAccountDto(ba)).ToList());
 		}
 
-		public async Task DeleteBankAccountAsync(Dto<int> bankAccountId)
+		public async Task DeleteBankAccountAsync(Dto<int> bankAccountId, CancellationToken cancellationToken = default)
 		{
 			CheckAuthorization();
 
@@ -51,7 +49,7 @@ namespace Havit.GoranG3.Facades.Finance
 			await unitOfWork.CommitAsync();
 		}
 
-		public async Task<Dto<int>> CreateBankAccountAsync(BankAccountDto bankAccountDto)
+		public async Task<Dto<int>> CreateBankAccountAsync(BankAccountDto bankAccountDto, CancellationToken cancellationToken = default)
 		{
 			CheckAuthorization();
 
@@ -64,7 +62,7 @@ namespace Havit.GoranG3.Facades.Finance
 			return Dto.FromValue(bankAccount.Id);
 		}
 
-		public async Task UpdateBankAccountAsync(BankAccountDto bankAccountDto)
+		public async Task UpdateBankAccountAsync(BankAccountDto bankAccountDto, CancellationToken cancellationToken = default)
 		{
 			CheckAuthorization();
 

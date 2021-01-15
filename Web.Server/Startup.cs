@@ -118,7 +118,10 @@ namespace Havit.GoranG3.Web.Server
 				// GRPC TESTs
 				endpoints.MapGrpcService<TestFacade>();
 				endpoints.MapGrpcService<InvoiceFacade>();
+
 				endpoints.MapGrpcService<BankAccountFacade>();
+				endpoints.MapGrpcService<CurrencyFacade>();
+
 				endpoints.MapGrpcService<DataSeedFacade>();
 			});
 

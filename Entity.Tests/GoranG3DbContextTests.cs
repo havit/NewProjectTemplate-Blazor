@@ -3,7 +3,7 @@ using Havit.GoranG3.Entity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Havit.GoranG3.Entity.Tests.Entity
+namespace Havit.GoranG3.Entity.Tests
 {
 	[TestClass]
 	public class GoranG3DbContextTests

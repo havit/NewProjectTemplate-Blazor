@@ -1,0 +1,24 @@
+﻿@page "/rh-test"
+
+<HxDisplayLayout @ref="hxDisplayLayout" DisplayMode="@DisplayMode">
+	<HeaderTemplate>
+
+		@title
+
+	</HeaderTemplate>
+	<BodyTemplate>
+
+		<EditForm id="@nameof(ExchangeRateEdit)" Model="model" >
+			<DataAnnotationsValidator />
+
+			<CurrencyPicker Label="Currency" @bind-Value="model.CurrencyId" />
+
+		</EditForm>
+
+	</BodyTemplate>
+	<FooterTemplate>
+
+		<HxSubmit form="@nameof(ExchangeRateEdit)" Skin="(model.Id == default) ? ButtonSkins.Insert : ButtonSkins.Save" />
+
+	</FooterTemplate>
+</HxDisplayLayout>

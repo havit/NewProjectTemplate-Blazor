@@ -7,10 +7,10 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Havit.Data.Patterns" Version="2.1.10" />
+		<PackageReference Include="Havit.Data.Patterns" Version="2.1.12" />
 		<PackageReference Include="Microsoft.AspNetCore.Authentication" Version="2.2.0" />
-		<PackageReference Include="Microsoft.AspNetCore.Authorization" Version="5.0.1" />
-		<PackageReference Include="Microsoft.Extensions.Identity.Core" Version="5.0.1" />
+		<PackageReference Include="Microsoft.AspNetCore.Authorization" Version="5.0.2" />
+		<PackageReference Include="Microsoft.Extensions.Identity.Core" Version="5.0.2" />
 	</ItemGroup>
 
 	<ItemGroup>
