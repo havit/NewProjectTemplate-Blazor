@@ -17,12 +17,14 @@ namespace Havit.GoranG3.Web.Client.Components.Pickers
 	{
 		[Inject] protected ICurrencyDataStore CurrencyDataStore { get; set; }
 
-		protected async override Task OnInitializedAsync()
+		protected override Task OnInitializedAsync()
 		{
 			this.Nullable = true;
 			this.Items = new List<CurrencyDto>() { new() { Id = 1, Code = "Kč" }, new() { Id = 2, Code = "EUR" } }; // await CurrencyDataStore.GetAllAsync();
 			this.ValueSelector = (c => c.Id);
 			this.TextSelector = (c => c.Code);
+
+			return Task.CompletedTask;
 		}
 	}
 }
