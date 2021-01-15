@@ -9,12 +9,12 @@ using Havit.Services.TimeServices;
 namespace Havit.GoranG3.Services.TimeServices
 {
 	/// <summary>
-	/// Poskytuje aktuální čas v časové zóně "Central Europe Standard Time".
+	/// Provides current time in local time-zone ("Central Europe Standard Time", "Europe/Prague" for non-Windows platforms).
 	/// </summary>
 	public class ApplicationTimeService : TimeZoneTimeServiceBase, ITimeService
 	{
 		/// <summary>
-		/// Vrací časovou zónu, pro kterou je poskytován aktuální čas. Vždy "Central Europe Standard Time".
+		/// Returns time-zone you want to treat as local ("Central Europe Standard Time", "Europe/Prague" for non-Windows platforms).
 		/// </summary>
 		protected override TimeZoneInfo CurrentTimeZone
 		{
