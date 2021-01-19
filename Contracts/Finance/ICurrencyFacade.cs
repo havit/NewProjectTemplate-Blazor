@@ -10,5 +10,8 @@ namespace Havit.GoranG3.Contracts.Finance
 	public interface ICurrencyFacade
 	{
 		Task<Dto<List<CurrencyDto>>> GetAllAsync(CancellationToken cancellationToken = default);
+		Task DeleteCurrencyAsync(Dto<int> currencyId, CancellationToken cancellationToken = default);
+		Task<Dto<int>> CreateCurrencyAsync(CurrencyDto currencyDto, CancellationToken cancellationToken = default);
+		Task UpdateCurrencyAsync(CurrencyDto currencyDto, CancellationToken cancellationToken = default);
 	}
 }
