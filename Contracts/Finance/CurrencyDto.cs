@@ -21,5 +21,12 @@ namespace Havit.GoranG3.Contracts.Finance
 		[MaxLength(50)]
 		[DataMember(Order = 3)]
 		public string Code { get; set; }
+
+		public void UpdateFrom(CurrencyDto other)
+		{
+			Id = other.Id;
+			Code = other.Code;
+			DefaultBankAccountId = other.DefaultBankAccountId;
+		}
 	}
 }

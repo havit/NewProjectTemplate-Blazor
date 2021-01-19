@@ -17,6 +17,7 @@ namespace Havit.GoranG3.Web.Client.Resources
 		{
 			services.AddScoped<IGlobalLocalizer, GlobalLocalizer>();
 			services.AddScoped<IBankAccountLocalizer, BankAccountLocalizer>();
+			services.AddScoped<ICurrencyLocalizer, CurrencyLocalizer>();
 			// ...
 		}
 	}
