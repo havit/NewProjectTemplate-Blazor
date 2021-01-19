@@ -1,7 +1,4 @@
-.main {
-	background-color: var(--main-bg);
-}
-
 .sidebar {
-	border-right: var(--sidebar-border);
+  box-shadow: var(--sidebar-box-shadow);
+  background: var(--sidebar-background-color);
 }
