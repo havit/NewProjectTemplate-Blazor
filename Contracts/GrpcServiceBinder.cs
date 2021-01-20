@@ -17,12 +17,12 @@ namespace Havit.GoranG3.Contracts
 				? contractType.Name.Substring(1)
 				: contractType.Name;
 
-			if (resultName.EndsWith("Facade"))
+			/*if (resultName.EndsWith("Facade"))
 			{
 				resultName = resultName.Substring(0, resultName.Length - "Facade".Length);
-			}
+			}*/
 
-			name = resultName;
+			name = $"{contractType.Namespace}.{resultName}";
 			return true;
 		}
 	}

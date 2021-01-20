@@ -58,16 +58,16 @@ namespace Havit.GoranG3.Web.Client
 
 		private static void AddGrpcClient(WebAssemblyHostBuilder builder)
 		{
-			builder.Services.AddGrpcClientsInfrastructure();
+			//builder.Services.AddGrpcClientsInfrastructure();
 
 			// TODO Mass registration of facades
 			builder.Services.AddGrpcClientProxy<IInvoiceFacade>();
-			builder.Services.AddGrpcClientProxy<ITestFacade>();
+			builder.Services.AddAuthorizedGrpcClientProxy<ITestFacade>();
 
-			builder.Services.AddGrpcClientProxy<IBankAccountFacade>();
-			builder.Services.AddGrpcClientProxy<ICurrencyFacade>();
+			builder.Services.AddAuthorizedGrpcClientProxy<IBankAccountFacade>();
+			builder.Services.AddAuthorizedGrpcClientProxy<ICurrencyFacade>();
 
-			builder.Services.AddGrpcClientProxy<IDataSeedFacade>();
+			builder.Services.AddAuthorizedGrpcClientProxy<IDataSeedFacade>();
 		}
 
 		private static async ValueTask SetLanguage(WebAssemblyHost webAssemblyHost)
