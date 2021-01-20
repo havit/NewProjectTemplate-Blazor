@@ -15,7 +15,8 @@ namespace Havit.GoranG3.Web.Client.Pages.Admin
 	{
 		[Parameter] public CurrencyDto Value { get; set; }
 		[Parameter] public EventCallback<CurrencyDto> ValueChanged { get; set; }
-		[Parameter] public LayoutDisplayMode DisplayMode { get; set; }
+		[Parameter] public LayoutDisplayMode DisplayMode { get; set; } = LayoutDisplayMode.Drawer;
+		[Parameter] public EventCallback OnClosed { get; set; }
 
 		[Inject] protected IHxMessengerService Messenger { get; set; }
 		[Inject] protected ICurrencyFacade CurrencyFacade { get; set; }
@@ -45,10 +46,10 @@ namespace Havit.GoranG3.Web.Client.Pages.Admin
 				Messenger.AddInformation(model.Code, GlobalLocalizer.UpdateSuccess);
 			}
 
+			await hxDisplayLayout.HideAsync();
+
 			Value.UpdateFrom(model);
 			await ValueChanged.InvokeAsync(this.Value);
-
-			await hxDisplayLayout.HideAsync();
 		}
 
 

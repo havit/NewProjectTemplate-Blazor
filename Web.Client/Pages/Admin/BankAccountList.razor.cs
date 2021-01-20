@@ -22,8 +22,9 @@ namespace Havit.GoranG3.Web.Client.Pages.Admin
 		[Inject] protected IGlobalLocalizer GlobalLoc { get; set; }
 
 		private List<BankAccountDto> bankAccounts;
+		private BankAccountDto bankAccountSelected;
 		private BankAccountDto bankAccountEdited = new BankAccountDto();
-		private BankAccountEdit bankAccountEdit;
+		private BankAccountEdit bankAccountEditComponent;
 
 		protected override async Task OnInitializedAsync()
 		{
@@ -36,16 +37,17 @@ namespace Havit.GoranG3.Web.Client.Pages.Admin
 			bankAccounts = (await BankAccountFacade.GetBankAccountsAsync()).Value;
 		}
 
-		private async Task HandleSelectedDataItemChanged(BankAccountDto bankAccountSelected)
+		private async Task HandleSelectedDataItemChanged(BankAccountDto selection)
 		{
-			bankAccountEdited = bankAccountSelected;
-			await bankAccountEdit.ShowAsync();
+			bankAccountSelected = selection;
+			bankAccountEdited = selection;
+			await bankAccountEditComponent.ShowAsync();
 		}
 
 		private async Task NewItemClicked()
 		{
 			bankAccountEdited = new BankAccountDto();
-			await bankAccountEdit.ShowAsync();
+			await bankAccountEditComponent.ShowAsync();
 		}
 
 		private async Task DeleteItemClicked(BankAccountDto bankAccount)
@@ -55,9 +57,15 @@ namespace Havit.GoranG3.Web.Client.Pages.Admin
 			await LoadDataAsync();
 		}
 
-		private async Task HandleValueChanged()
+		private async Task HandleEditValueChanged()
 		{
 			await LoadDataAsync();
+		}
+
+		private void HandleEditClosed()
+		{
+			bankAccountSelected = null;
+			bankAccountEdited = new BankAccountDto();
 		}
 	}
 }

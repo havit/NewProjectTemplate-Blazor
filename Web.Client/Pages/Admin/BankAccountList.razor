@@ -6,8 +6,12 @@
 		<HxButton Text="@BankAccountLoc.New" Skin="ButtonSkins.New" OnClick="NewItemClicked" />
 	</CommandsSection>
 	<DataSection>
-		<HxGrid TItemType="BankAccountDto" Data="bankAccounts" SelectionMode="GridSelectionMode.Select"
-				SelectedDataItemChanged="HandleSelectedDataItemChanged" Context="item">
+		<HxGrid TItemType="BankAccountDto"
+				Data="bankAccounts"
+				SelectionMode="GridSelectionMode.Select"
+				SelectedDataItem="bankAccountSelected"
+				SelectedDataItemChanged="HandleSelectedDataItemChanged"
+				Context="item">
 			<Columns>
 				<HxGridColumn TItemType="BankAccountDto" HeaderText="@BankAccountLoc.Name" ItemTextSelector="@(item => item.Name)" />
 				<HxGridColumn TItemType="BankAccountDto" HeaderText="@BankAccountLoc.BankName" ItemTextSelector="@(item => item.BankName)" />
@@ -35,7 +39,7 @@
 			</EditForm>
 		</div>
 
-		<BankAccountEdit @ref="bankAccountEdit" Value="bankAccountEdited" ValueChanged="HandleValueChanged" DisplayMode="myModel.DisplayMode" />
+		<BankAccountEdit @ref="bankAccountEditComponent" Value="bankAccountEdited" ValueChanged="HandleEditValueChanged" DisplayMode="myModel.DisplayMode" OnClosed="HandleEditClosed" />
 
 	</DetailSection>
 </HxListLayout>

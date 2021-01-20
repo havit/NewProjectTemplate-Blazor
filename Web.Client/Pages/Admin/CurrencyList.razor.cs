@@ -21,6 +21,7 @@ namespace Havit.GoranG3.Web.Client.Pages.Admin
 
 		private List<CurrencyDto> currencies;
 		private CurrencyDto editedCurrency = new CurrencyDto();
+		private CurrencyDto selectedCurrency;
 		private CurrencyEdit currencyEditComponent;
 
 		protected override async Task OnInitializedAsync()
@@ -41,9 +42,9 @@ namespace Havit.GoranG3.Web.Client.Pages.Admin
 			await LoadDataAsync();
 		}
 
-		private async Task HandleSelectedDataItemChanged(CurrencyDto selectedCurrency)
+		private async Task HandleSelectedDataItemChanged(CurrencyDto selection)
 		{
-			editedCurrency = selectedCurrency;
+			editedCurrency = selection;
 			await currencyEditComponent.ShowAsync();
 		}
 
@@ -53,9 +54,15 @@ namespace Havit.GoranG3.Web.Client.Pages.Admin
 			await currencyEditComponent.ShowAsync();
 		}
 
-		private async Task HandleValueChanged()
+		private async Task HandleEditValueChanged()
 		{
 			await LoadDataAsync();
+		}
+
+		private void HandleEditClosed()
+		{
+			selectedCurrency = null;
+			editedCurrency = new CurrencyDto();
 		}
 	}
 }

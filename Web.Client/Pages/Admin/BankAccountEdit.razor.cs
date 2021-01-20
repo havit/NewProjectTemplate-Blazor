@@ -21,7 +21,8 @@ namespace Havit.GoranG3.Web.Client.Pages.Admin
 	{
 		[Parameter] public BankAccountDto Value { get; set; }
 		[Parameter] public EventCallback<BankAccountDto> ValueChanged { get; set; }
-		[Parameter] public LayoutDisplayMode DisplayMode { get; set; }
+		[Parameter] public LayoutDisplayMode DisplayMode { get; set; } = LayoutDisplayMode.Drawer;
+		[Parameter] public EventCallback OnClosed { get; set; }
 
 		[Inject] protected IHxMessengerService Messenger { get; set; }
 		[Inject] protected IBankAccountFacade BankAccountFacade { get; set; }
@@ -54,10 +55,10 @@ namespace Havit.GoranG3.Web.Client.Pages.Admin
 				Messenger.AddInformation(model.Name, GlobalLoc.UpdateSuccess);
 			}
 
+			await hxDisplayLayout.HideAsync();
+
 			Value.UpdateFrom(model);
 			await ValueChanged.InvokeAsync(this.Value);
-
-			await hxDisplayLayout.HideAsync();
 		}
 
 		public Task ShowAsync() => hxDisplayLayout.ShowAsync();
