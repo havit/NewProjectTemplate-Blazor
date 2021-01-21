@@ -71,6 +71,7 @@ namespace Havit.GoranG3.Web.Client
 			builder.Services.AddGrpcClientProxyWithAuth<ICurrencyFacade>();
 
 			builder.Services.AddGrpcClientProxyWithAuth<IDataSeedFacade>();
+			builder.Services.AddGrpcClientProxyWithAuth<IMaintenanceFacade>();
 		}
 
 		private static async ValueTask SetLanguage(WebAssemblyHost webAssemblyHost)

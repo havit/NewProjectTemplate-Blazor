@@ -127,6 +127,7 @@ namespace Havit.GoranG3.Web.Server
 				endpoints.MapGrpcService<CurrencyFacade>();
 
 				endpoints.MapGrpcService<DataSeedFacade>();
+				endpoints.MapGrpcService<MaintenanceFacade>();
 			});
 
 			app.UpgradeDatabaseSchemaAndData();
