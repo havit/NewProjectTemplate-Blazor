@@ -12,6 +12,7 @@ using Havit.GoranG3.Contracts.Finance.Invoices;
 using Havit.GoranG3.Contracts.GrpcTests;
 using Havit.GoranG3.Contracts.System;
 using Havit.GoranG3.Web.Client.Infrastructure;
+using Havit.GoranG3.Web.Client.Infrastructure.Interceptors;
 using Havit.GoranG3.Web.Client.Infrastructure.Security;
 using Havit.GoranG3.Web.Client.Resources;
 using Havit.GoranG3.Web.Client.Services.DataStores;
@@ -58,16 +59,18 @@ namespace Havit.GoranG3.Web.Client
 
 		private static void AddGrpcClient(WebAssemblyHostBuilder builder)
 		{
-			builder.Services.AddGrpcClientsInfrastructure();
+			//builder.Services.AddGrpcClientsInfrastructure();
+
+			builder.Services.AddTransient<ServerValidationErrorInterceptor>();
 
 			// TODO Mass registration of facades
-			builder.Services.AddGrpcClientProxy<IInvoiceFacade>();
-			builder.Services.AddGrpcClientProxy<ITestFacade>();
+			builder.Services.AddGrpcClientProxyWithAuth<IInvoiceFacade>();
+			builder.Services.AddGrpcClientProxyWithAuth<ITestFacade>();
 
-			builder.Services.AddGrpcClientProxy<IBankAccountFacade>();
-			builder.Services.AddGrpcClientProxy<ICurrencyFacade>();
+			builder.Services.AddGrpcClientProxyWithAuth<IBankAccountFacade>();
+			builder.Services.AddGrpcClientProxyWithAuth<ICurrencyFacade>();
 
-			builder.Services.AddGrpcClientProxy<IDataSeedFacade>();
+			builder.Services.AddGrpcClientProxyWithAuth<IDataSeedFacade>();
 		}
 
 		private static async ValueTask SetLanguage(WebAssemblyHost webAssemblyHost)

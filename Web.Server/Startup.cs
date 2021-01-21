@@ -22,6 +22,7 @@ using ProtoBuf.Grpc.Configuration;
 using Havit.GoranG3.Contracts;
 using Havit.GoranG3.Facades.Finance;
 using Havit.GoranG3.Facades.System;
+using Web.Server.Infrastructure.Interceptors;
 
 namespace Havit.GoranG3.Web.Server
 {
@@ -72,9 +73,12 @@ namespace Havit.GoranG3.Web.Server
 
 			services.AddScoped<IApplicationAuthenticationService, ApplicationAuthenticationService>();
 
-			services.AddSingleton(BinderConfiguration.Create(null, new GrpcServiceBinder()));
+			services.AddTransient<ServerValidationErrorInterceptor>();
+
+			services.AddSingleton(BinderConfiguration.Create());
 			services.AddCodeFirstGrpc(config =>
 			{
+				config.Interceptors.Add<ServerValidationErrorInterceptor>();
 				config.ResponseCompressionLevel = System.IO.Compression.CompressionLevel.Optimal;
 			});
 		}

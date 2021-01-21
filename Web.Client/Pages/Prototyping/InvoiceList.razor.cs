@@ -48,26 +48,12 @@ namespace Havit.GoranG3.Web.Client.Pages.Prototyping
 				SortItems = request.Sorting?.Select(item => new Contracts.Common.SortItemDto { SortString = item.SortString, SortDirection = item.SortDirection }).ToList()
 			};
 
-			try
+			var result = await InvoiceFacade.GetInvoices(getInvoicesRequest, cancellationTokenSource.Token);
+			return new()
 			{
-				var result = await InvoiceFacade.GetInvoices(getInvoicesRequest, cancellationTokenSource.Token);
-				return new()
-				{
-					Data = result.Invoices,
-					DataItemsTotalCount = result.TotalCount
-				};
-			}
-			catch (RpcException e) when (e.Message?.Contains("AccessTokenNotAvailableException") ?? false)
-			{
-				// TODO GrpcClientInterceptor?
-				// ex.Redirect();
-				NavigationManager.NavigateTo("/authentication/login");
-			}
-			catch (RpcException e) when (e.StatusCode == StatusCode.Cancelled)
-			{
-				// NOOP
-			}
-			return null;
+				Data = result.Invoices,
+				DataItemsTotalCount = result.TotalCount
+			};
 		}
 
 		// TODO: Nekolik volání metody LoadInvoices. Jak to napojit? Ideálně bez nutnosti řádky kódu.

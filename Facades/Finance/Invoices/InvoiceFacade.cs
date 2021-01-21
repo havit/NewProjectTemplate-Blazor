@@ -14,6 +14,8 @@ namespace Havit.GoranG3.Facades.Finance.Invoices
 	{		
 		public async Task<GetInvoicesResult> GetInvoices(GetInvoicesRequest request, CancellationToken cancellationToken)
 		{
+			throw new InvalidOperationException("Exception from method GetInvoices.");
+
 			await Task.Delay(500, cancellationToken);
 
 			// use IQueryable, not List
