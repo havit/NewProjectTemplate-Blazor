@@ -15,25 +15,23 @@ namespace Havit.GoranG3.Web.Client.Pages.Admin.Components
 	{
 		[Inject] protected IDataSeedFacade DataSeedFacade { get; set; }
 		[Inject] protected IHxMessengerService Messenger { get; set; }
+		[Inject] protected IHxMessageBoxService MessageBox { get; set; }
 
 		private IEnumerable<string> seedProfiles;
-		private FormModel model = new FormModel();
+		private string selectedSeedProfile;
 
 		protected override async Task OnInitializedAsync()
 		{
 			this.seedProfiles = (await DataSeedFacade.GetDataSeedProfiles()).Value;
 		}
 
-		private async Task HandleValidSubmit()
+		private async Task HandleSeedClick()
 		{
-			await DataSeedFacade.SeedDataProfile(model.SelectedSeedProfile);
-			Messenger.AddInformation($"Seed successful: {model.SelectedSeedProfile}");
-		}
-
-		public class FormModel
-		{
-			[Required]
-			public string SelectedSeedProfile { get; set; }
+			if (selectedSeedProfile is not null && await MessageBox.ConfirmAsync($"Do you really want to seed {selectedSeedProfile}?"))
+			{
+				await DataSeedFacade.SeedDataProfile(selectedSeedProfile);
+				Messenger.AddInformation($"Seed successful: {selectedSeedProfile}");
+			}
 		}
 	}
 }

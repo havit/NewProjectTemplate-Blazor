@@ -24,8 +24,11 @@ namespace Havit.GoranG3.Web.Client.Pages.Admin
 
 		private async Task RemoveCultureFromLocalStorage()
 		{
-			await LocalStorageService.RemoveItemAsync("culture");
-			Messenger.AddInformation(Loc["CultureRemoved"]);
+			if (await MessageBox.ConfirmAsync("Do you really want to remove culture cache?"))
+			{
+				await LocalStorageService.RemoveItemAsync("culture");
+				Messenger.AddInformation(Loc["CultureRemoved"]);
+			}
 		}
 
 		private async Task HandleClearCache()

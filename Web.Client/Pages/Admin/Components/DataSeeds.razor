@@ -1,8 +1,5 @@
-﻿<EditForm Model="model" OnValidSubmit="HandleValidSubmit">
-	<DataAnnotationsValidator />
-	<div class="mb-3">
-		<label class="form-label">Seed profile</label>
-		<HxSelect @bind-Value="model.SelectedSeedProfile" Items="seedProfiles" TValueType="string" TItemType="string" Nullable="false" NullText="-select profile-" />
-	</div>
-	<HxSubmit Skin="ButtonSkins.OK" Text="Run seed" Color="ThemeColor.Primary" />
-</EditForm>
+﻿<div class="mb-3">
+	<label class="form-label">Seed profile</label>
+	<HxSelect @bind-Value="selectedSeedProfile" Items="seedProfiles" TValueType="string" TItemType="string" Nullable="true" NullText="-select profile-" />
+</div>
+<HxSubmit Skin="ButtonSkins.OK" Text="Run seed" Color="ThemeColor.Primary" Enabled="@(selectedSeedProfile is not null)" OnClick="HandleSeedClick" />

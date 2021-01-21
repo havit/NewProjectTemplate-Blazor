@@ -33,21 +33,16 @@
 
 		@* DEMO of DisplayModes, in production, this should be fixed to Drawer *@
 		<div class="my-3">
-			<EditForm Model="myModel">
-				<HxSelect Label="BankAccountEdit DisplayMode" Items="Enum.GetValues<LayoutDisplayMode>()" TItemType="LayoutDisplayMode" TValueType="LayoutDisplayMode" @bind-Value="myModel.DisplayMode" TextSelector="@(i => i.ToString("g"))" Nullable="false" />
-			</EditForm>
+			<HxSelect Label="BankAccountEdit DisplayMode" Items="Enum.GetValues<LayoutDisplayMode>()" TItemType="LayoutDisplayMode" TValueType="LayoutDisplayMode" @bind-Value="displayMode" TextSelector="@(i => i.ToString("g"))" Nullable="false" />
 		</div>
 
-		<BankAccountEdit @ref="bankAccountEditComponent" Value="bankAccountEdited" ValueChanged="HandleEditValueChanged" DisplayMode="myModel.DisplayMode" OnClosed="HandleEditClosed" />
+		<BankAccountEdit @ref="bankAccountEditComponent" Value="bankAccountEdited" ValueChanged="HandleEditValueChanged" DisplayMode="displayMode" OnClosed="HandleEditClosed" />
 
 	</DetailSection>
 </HxListLayout>
 
-@code{
-	private MyModel myModel = new MyModel();
-	private class MyModel
-	{
-		public LayoutDisplayMode DisplayMode = LayoutDisplayMode.Drawer;
-	}
+@code
+{
+	private LayoutDisplayMode displayMode = LayoutDisplayMode.Drawer;
 }
 
