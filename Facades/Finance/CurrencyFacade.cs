@@ -42,7 +42,7 @@ namespace Havit.GoranG3.Facades.Finance
 			currencyMapper.MapFromCurrencyDto(currencyDto, currency);
 
 			unitOfWork.AddForInsert(currency);
-			await unitOfWork.CommitAsync();
+			await unitOfWork.CommitAsync(cancellationToken);
 
 			return Dto.FromValue(currency.Id);
 		}
@@ -54,12 +54,12 @@ namespace Havit.GoranG3.Facades.Finance
 			var currency = await currencyRepository.GetObjectAsync(currencyId.Value);
 			unitOfWork.AddForDelete(currency);
 
-			await unitOfWork.CommitAsync();
+			await unitOfWork.CommitAsync(cancellationToken);
 		}
 
 		public async Task<Dto<List<CurrencyDto>>> GetAllAsync(CancellationToken cancellationToken = default)
 		{
-			var data = await currencyRepository.GetAllAsync();
+			var data = await currencyRepository.GetAllAsync(cancellationToken);
 			return Dto.FromValue(data.Select(currencyMapper.MapToCurrencyDto).ToList());
 		}
 
@@ -67,11 +67,11 @@ namespace Havit.GoranG3.Facades.Finance
 		{
 			CheckAuthorization();
 
-			var currency = await currencyRepository.GetObjectAsync(currencyDto.Id);
+			var currency = await currencyRepository.GetObjectAsync(currencyDto.Id, cancellationToken);
 			currencyMapper.MapFromCurrencyDto(currencyDto, currency);
 
 			unitOfWork.AddForUpdate(currency);
-			await unitOfWork.CommitAsync();
+			await unitOfWork.CommitAsync(cancellationToken);
 		}
 
 		private void CheckAuthorization()

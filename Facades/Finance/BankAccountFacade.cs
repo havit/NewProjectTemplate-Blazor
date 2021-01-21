@@ -36,7 +36,7 @@ namespace Havit.GoranG3.Facades.Finance
 
 		public async Task<Dto<List<BankAccountDto>>> GetBankAccountsAsync(CancellationToken cancellationToken = default)
 		{
-			var data = await bankAccountRepository.GetAllAsync();
+			var data = await bankAccountRepository.GetAllAsync(cancellationToken);
 			return Dto.FromValue(data.Select(ba => bankAccountMapper.MapToBankAccountDto(ba)).ToList());
 		}
 
@@ -44,9 +44,9 @@ namespace Havit.GoranG3.Facades.Finance
 		{
 			CheckAuthorization();
 
-			var bankAccount = await bankAccountRepository.GetObjectAsync(bankAccountId.Value);
+			var bankAccount = await bankAccountRepository.GetObjectAsync(bankAccountId.Value, cancellationToken);
 			unitOfWork.AddForDelete(bankAccount);
-			await unitOfWork.CommitAsync();
+			await unitOfWork.CommitAsync(cancellationToken);
 		}
 
 		public async Task<Dto<int>> CreateBankAccountAsync(BankAccountDto bankAccountDto, CancellationToken cancellationToken = default)
@@ -57,7 +57,7 @@ namespace Havit.GoranG3.Facades.Finance
 			bankAccountMapper.MapFromBankAccountDto(bankAccountDto, bankAccount);
 
 			unitOfWork.AddForInsert(bankAccount);
-			await unitOfWork.CommitAsync();
+			await unitOfWork.CommitAsync(cancellationToken);
 
 			return Dto.FromValue(bankAccount.Id);
 		}
@@ -66,12 +66,12 @@ namespace Havit.GoranG3.Facades.Finance
 		{
 			CheckAuthorization();
 
-			var bankAccount = await bankAccountRepository.GetObjectAsync(bankAccountDto.Id);
+			var bankAccount = await bankAccountRepository.GetObjectAsync(bankAccountDto.Id, cancellationToken);
 
 			bankAccountMapper.MapFromBankAccountDto(bankAccountDto, bankAccount);
 
 			unitOfWork.AddForUpdate(bankAccount);
-			await unitOfWork.CommitAsync();
+			await unitOfWork.CommitAsync(cancellationToken);
 		}
 
 		private void CheckAuthorization()
