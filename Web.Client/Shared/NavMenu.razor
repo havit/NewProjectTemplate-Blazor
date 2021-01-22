@@ -8,7 +8,7 @@
 <div class="sidebar-inner d-flex flex-column flex-grow-1">
 	<div class="@NavMenuCssClass">
 		<ul class="nav flex-column">
-			<NavMenuItem Text="Dashboard" Href="/">
+			<NavMenuItem Text="Dashboard" Href="@Routes.Home">
 				<Icon>
 					<HxIcon CssClass="me-2 overflow-visible" Icon="@BootstrapIcon.Columns" />
 				</Icon>
@@ -65,9 +65,14 @@
 					<HxIcon CssClass="me-2 overflow-visible" Icon="@BootstrapIcon.People" />
 				</Icon>
 			</NavMenuItem>
-			<NavMenuItem Text="Administrace" Href="admin">
+			<NavMenuItem Text="Administration" Href="@Routes.Administration.Index">
 				<Icon>
 					<HxIcon CssClass="me-2 overflow-visible" Icon="@BootstrapIcon.Gear" />
+				</Icon>
+			</NavMenuItem>
+			<NavMenuItem Text="Development" Href="/development">
+				<Icon>
+					<HxIcon CssClass="me-2 overflow-visible" Icon="@BootstrapIcon.FileCode" />
 				</Icon>
 			</NavMenuItem>
 		</ul>

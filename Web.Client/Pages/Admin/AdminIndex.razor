@@ -1,11 +1,12 @@
-﻿@page "/admin"
+﻿@attribute [Route(Routes.Administration.Index)]
 
 <div class="row row-cols-2 row-cols-lg-5 g-3 mt-4">
 	<div class="col">
-        <NavPanel Title="Finance" Icon="BootstrapIcon.CashStack">
-            <NavCard Href="/admin/user/bank-accounts" Title="Bankovní účty" />
-            <NavCard Href="/admin/user/currencies" Title="Měny" />
-        </NavPanel>
+		<NavPanel Title="Finance" Icon="BootstrapIcon.CashStack">
+			<NavCard Href="@Routes.UserAdministration.BankAccounts" Title="Bank accounts" />
+			<NavCard Href="/admin/user/currencies" Title="Currencies" />
+			<NavCard Href="/admin/user/exchange-rates" Title="Exchange rates" />
+		</NavPanel>
 	</div>
 	<div class="col">
 		<NavPanel Title="System" Icon="BootstrapIcon.Hammer">
