@@ -3,23 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Havit.Blazor.Components.Web.Infrastructure;
 using Microsoft.Extensions.Localization;
 
 namespace Havit.GoranG3.Web.Client.Resources.Model.Finance
 {
-	/// <summary>
-	/// Marker file for IStringLocalizer<>
-	/// </summary>
-	public class BankAccountLocalizer : IBankAccountLocalizer, IStringLocalizer<BankAccountLocalizer>
+	public class BankAccountLocalizer : DelegatingStringLocalizer<BankAccountLocalizer>, IBankAccountLocalizer
 	{
-		private readonly IStringLocalizer<BankAccountLocalizer> stringLocalizer;
-
-		public BankAccountLocalizer(IStringLocalizer<BankAccountLocalizer> stringLocalizer)
+		public BankAccountLocalizer(IStringLocalizer<BankAccountLocalizer> innerLocalizer) : base(innerLocalizer)
 		{
-			this.stringLocalizer = stringLocalizer;
 		}
 
-		// string-API properties
 		public LocalizedString AccountNumber => this["AccountNumber"];
 		public LocalizedString BankName => this["BankName"];
 		public LocalizedString Iban => this["Iban"];
@@ -30,14 +24,5 @@ namespace Havit.GoranG3.Web.Client.Resources.Model.Finance
 		public LocalizedString Singular => this["Singular"];
 		public LocalizedString Delete => this["Delete"];
 		public LocalizedString DeleteConfirmation => this["DeleteConfirmation"];
-
-		// StringLocalizer re-publishing
-		// TODO create StrongApiLocalizerBase base-class?!
-		public LocalizedString this[string name] => stringLocalizer[name];
-		public LocalizedString this[string name, params object[] arguments] => stringLocalizer[name, arguments];
-		public string GetString(string name) => stringLocalizer.GetString(name);
-		public string GetString(string name, params object[] arguments) => stringLocalizer.GetString(name, arguments);
-		public IEnumerable<LocalizedString> GetAllStrings() => stringLocalizer.GetAllStrings();
-		public IEnumerable<LocalizedString> GetAllStrings(bool includeParentCultures = false) => stringLocalizer.GetAllStrings(includeParentCultures);
 	}
 }
