@@ -8,7 +8,7 @@ namespace Havit.GoranG3.Web.Client
 {
 	public static class Routes
 	{
-		public static string Home = "/";
+		public const string Home = "/";
 
 		public static class Administration
 		{

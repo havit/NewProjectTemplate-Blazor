@@ -15,7 +15,7 @@ using Havit.Linq;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
 
-namespace Havit.GoranG3.Web.Client.Pages.Prototyping
+namespace Havit.GoranG3.Web.Client.Pages.Development.Prototyping
 {
 	public partial class InvoiceList
 	{

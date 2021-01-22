@@ -4,8 +4,8 @@
 	<div class="col">
 		<NavPanel Title="Finance" Icon="BootstrapIcon.CashStack">
 			<NavCard Href="@Routes.UserAdministration.BankAccounts" Title="Bank accounts" />
-			<NavCard Href="/admin/user/currencies" Title="Currencies" />
-			<NavCard Href="/admin/user/exchange-rates" Title="Exchange rates" />
+			<NavCard Href="@Routes.UserAdministration.Currencies" Title="Currencies" />
+			<NavCard Href="@Routes.UserAdministration.ExchangeRates" Title="Exchange rates" />
 		</NavPanel>
 	</div>
 	<div class="col">
@@ -13,11 +13,6 @@
 			<NavCard OnClick="() => dataSeedsDrawerOpen = true" Title="Data Seeds" />
 			<NavCard OnClick="HandleClearCache" Title="Clear Server Cache" />
 			<NavCard OnClick="RemoveCultureFromLocalStorage" Title="Remove culture setting from localStorage" />
-		</NavPanel>
-	</div>
-	<div class="col">
-		<NavPanel Title="Development" Icon="BootstrapIcon.FileCode">
-			<NavCard Href="/admin/auth-test" Title="Authorization test" />
 		</NavPanel>
 	</div>
 </div>
