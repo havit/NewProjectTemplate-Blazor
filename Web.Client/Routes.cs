@@ -21,5 +21,10 @@ namespace Havit.GoranG3.Web.Client
 			public const string ExchangeRates = "/admin/user/exchange-rates";
 			public const string BankAccounts = "/admin/user/bank-accounts";
 		}
+
+		public static class Diagnostics
+		{
+			public const string Info = "/diag/info";
+		}
 	}
 }

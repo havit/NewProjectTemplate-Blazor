@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Havit.GoranG3.Web.Client.Resources.Model.Finance;
+using Havit.GoranG3.Web.Client.Resources.Pages.Admin;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Havit.GoranG3.Web.Client.Resources
@@ -16,9 +17,13 @@ namespace Havit.GoranG3.Web.Client.Resources
 		public static void AddGeneratedResourceWrappers(this IServiceCollection services)
 		{
 			services.AddScoped<IGlobalLocalizer, GlobalLocalizer>();
+			services.AddScoped<INavigationLocalizer, NavigationLocalizer>();
+
+
 			services.AddScoped<IBankAccountLocalizer, BankAccountLocalizer>();
 			services.AddScoped<ICurrencyLocalizer, CurrencyLocalizer>();
-			// ...
+
+			services.AddScoped<IAdminIndexLocalizer, AdminIndexLocalizer>();
 		}
 	}
 }

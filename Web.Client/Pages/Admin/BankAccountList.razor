@@ -1,9 +1,9 @@
 ﻿@attribute [Route(Routes.UserAdministration.BankAccounts)]
 @using Havit.GoranG3.Contracts.Finance
 
-<HxListLayout Title="@BankAccountLoc.Plural">
+<HxListLayout Title="@BankAccountLocalizer.Plural">
 	<CommandsSection>
-		<HxButton Text="@BankAccountLoc.New" Skin="ButtonSkins.New" OnClick="NewItemClicked" />
+		<HxButton Text="@BankAccountLocalizer.New" Skin="ButtonSkins.New" OnClick="NewItemClicked" />
 	</CommandsSection>
 	<DataSection>
 		<HxGrid TItemType="BankAccountDto"
@@ -12,18 +12,18 @@
 				SelectedDataItemChanged="HandleSelectedDataItemChanged"
 				Context="item">
 			<Columns>
-				<HxGridColumn TItemType="BankAccountDto" HeaderText="@BankAccountLoc.Name" ItemTextSelector="@(item => item.Name)" />
-				<HxGridColumn TItemType="BankAccountDto" HeaderText="@BankAccountLoc.BankName" ItemTextSelector="@(item => item.BankName)" />
-				<HxGridColumn TItemType="BankAccountDto" HeaderText="@BankAccountLoc.AccountNumber" ItemTextSelector="@(item => item.AccountNumber)" />
-				<HxGridColumn TItemType="BankAccountDto" HeaderText="@BankAccountLoc.Iban" ItemTextSelector="@(item => item.Iban)" />
-				<HxGridColumn TItemType="BankAccountDto" HeaderText="@BankAccountLoc.SwiftBic" ItemTextSelector="@(item => item.SwiftBic)" />
+				<HxGridColumn TItemType="BankAccountDto" HeaderText="@BankAccountLocalizer.Name" ItemTextSelector="@(item => item.Name)" />
+				<HxGridColumn TItemType="BankAccountDto" HeaderText="@BankAccountLocalizer.BankName" ItemTextSelector="@(item => item.BankName)" />
+				<HxGridColumn TItemType="BankAccountDto" HeaderText="@BankAccountLocalizer.AccountNumber" ItemTextSelector="@(item => item.AccountNumber)" />
+				<HxGridColumn TItemType="BankAccountDto" HeaderText="@BankAccountLocalizer.Iban" ItemTextSelector="@(item => item.Iban)" />
+				<HxGridColumn TItemType="BankAccountDto" HeaderText="@BankAccountLocalizer.SwiftBic" ItemTextSelector="@(item => item.SwiftBic)" />
 			</Columns>
 			<ContextMenu Context="item">
 				<HxContextMenu>
-					<HxContextMenuItem Text="@BankAccountLoc.Delete"
+					<HxContextMenuItem Text="@BankAccountLocalizer.Delete"
 									   Icon="BootstrapIcon.Trash"
 									   OnClick="async () => await DeleteItemClicked(item)"
-									   ConfirmationQuestion="@String.Format(BankAccountLoc.DeleteConfirmation, item.Name)" />
+									   ConfirmationQuestion="@String.Format(BankAccountLocalizer.DeleteConfirmation, item.Name)" />
 				</HxContextMenu>
 			</ContextMenu>
 		</HxGrid>

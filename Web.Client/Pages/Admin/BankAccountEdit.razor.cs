@@ -26,8 +26,8 @@ namespace Havit.GoranG3.Web.Client.Pages.Admin
 
 		[Inject] protected IHxMessengerService Messenger { get; set; }
 		[Inject] protected IBankAccountFacade BankAccountFacade { get; set; }
-		[Inject] protected IBankAccountLocalizer BankAccountLoc { get; set; }
-		[Inject] protected IGlobalLocalizer GlobalLoc { get; set; }
+		[Inject] protected IBankAccountLocalizer BankAccountLocalizer { get; set; }
+		[Inject] protected IGlobalLocalizer GlobalLocalizer { get; set; }
 		[Inject] protected ILogger<BankAccountEdit> Logger { get; set; }
 
 		private BankAccountDto model;
@@ -47,12 +47,12 @@ namespace Havit.GoranG3.Web.Client.Pages.Admin
 			if (model.Id == default)
 			{
 				model.Id = (await BankAccountFacade.CreateBankAccountAsync(model)).Value;
-				Messenger.AddInformation(model.Name, GlobalLoc.NewSuccess);
+				Messenger.AddInformation(model.Name, GlobalLocalizer.NewSuccess);
 			}
 			else
 			{
 				await BankAccountFacade.UpdateBankAccountAsync(model);
-				Messenger.AddInformation(model.Name, GlobalLoc.UpdateSuccess);
+				Messenger.AddInformation(model.Name, GlobalLocalizer.UpdateSuccess);
 			}
 
 			await hxDisplayLayout.HideAsync();

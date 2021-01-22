@@ -2,7 +2,7 @@
 
 namespace Havit.GoranG3.Web.Client.Resources.Model.Finance
 {
-	public interface ICurrencyLocalizer
+	public interface ICurrencyLocalizer : IStringLocalizer<CurrencyLocalizer>
 	{
 		public LocalizedString Code { get; }
 		public LocalizedString DefaultBankAccount { get; }

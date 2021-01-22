@@ -1,7 +1,7 @@
 ﻿<HxDisplayLayout @ref="hxDisplayLayout" DisplayMode="DisplayMode" OnClosed="OnClosed">
 	<HeaderTemplate>
 
-		@(model.Name ?? BankAccountLoc.New)
+		@(model.Name ?? BankAccountLocalizer.New)
 
 	</HeaderTemplate>
 	<BodyTemplate>
@@ -9,11 +9,11 @@
 		<EditForm id="bank-account-edit" Model="model" OnValidSubmit="HandleValidSubmit">
 			<DataAnnotationsValidator />
 
-			<HxInputText Label="@BankAccountLoc.Name" @bind-Value="model.Name" />
-			<HxInputText Label="@BankAccountLoc.AccountNumber" @bind-Value="model.AccountNumber" />
-			<HxInputText Label="@BankAccountLoc.BankName" @bind-Value="model.BankName" />
-			<HxInputText Label="@BankAccountLoc.Iban" @bind-Value="model.Iban" />
-			<HxInputText Label="@BankAccountLoc.SwiftBic" @bind-Value="model.SwiftBic" />
+			<HxInputText Label="@BankAccountLocalizer.Name" @bind-Value="model.Name" />
+			<HxInputText Label="@BankAccountLocalizer.AccountNumber" @bind-Value="model.AccountNumber" />
+			<HxInputText Label="@BankAccountLocalizer.BankName" @bind-Value="model.BankName" />
+			<HxInputText Label="@BankAccountLocalizer.Iban" @bind-Value="model.Iban" />
+			<HxInputText Label="@BankAccountLocalizer.SwiftBic" @bind-Value="model.SwiftBic" />
 		</EditForm>
 
 	</BodyTemplate>

@@ -7,6 +7,8 @@ using Blazored.LocalStorage;
 using Havit.Blazor.Components.Web;
 using Havit.Blazor.Components.Web.Bootstrap;
 using Havit.GoranG3.Contracts.System;
+using Havit.GoranG3.Web.Client.Resources;
+using Havit.GoranG3.Web.Client.Resources.Pages.Admin;
 using Microsoft.AspNetCore.Components;
 using Microsoft.Extensions.Localization;
 
@@ -18,7 +20,8 @@ namespace Havit.GoranG3.Web.Client.Pages.Admin
 		[Inject] protected IHxMessengerService Messenger { get; set; }
 		[Inject] protected IHxMessageBoxService MessageBox { get; set; }
 		[Inject] protected ILocalStorageService LocalStorageService { get; set; }
-		[Inject] protected IStringLocalizer<AdminIndex> Loc { get; set; }
+		[Inject] protected INavigationLocalizer NavigationLocalizer { get; set; }
+		[Inject] protected IAdminIndexLocalizer AdmninIndexLocalizer { get; set; }
 
 		private bool dataSeedsDrawerOpen = false;
 
@@ -27,7 +30,7 @@ namespace Havit.GoranG3.Web.Client.Pages.Admin
 			if (await MessageBox.ConfirmAsync("Do you really want to remove culture cache?"))
 			{
 				await LocalStorageService.RemoveItemAsync("culture");
-				Messenger.AddInformation(Loc["CultureRemoved"]);
+				Messenger.AddInformation(AdmninIndexLocalizer["CultureRemoved"]); // TODO Just a demo
 			}
 		}
 

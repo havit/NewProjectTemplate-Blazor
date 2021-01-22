@@ -2,26 +2,26 @@
 @using Havit.GoranG3.Contracts.Finance
 
 <HxListLayout Title="@CurrencyLocalizer.Plural">
-    <CommandsSection>
-        <HxButton Text="@CurrencyLocalizer.New" Skin="ButtonSkins.New" OnClick="NewItemClicked" />
-    </CommandsSection>
-    <DataSection>
-        <HxGrid TItemType="CurrencyDto" Data="@currencies" SelectedDataItem="selectedCurrency" SelectedDataItemChanged="HandleSelectedDataItemChanged" Context="item">
-            <Columns>
-                <HxGridColumn TItemType="CurrencyDto" HeaderText="@CurrencyLocalizer.Code" ItemTextSelector="@(item => item.Code)" />
-                <HxGridColumn TItemType="CurrencyDto" HeaderText="@CurrencyLocalizer.DefaultBankAccount" ItemTextSelector="@(item => item.DefaultBankAccountId?.ToString())" />
-            </Columns>
-            <ContextMenu Context="item">
-                <HxContextMenu>
-                    <HxContextMenuItem Text="@CurrencyLocalizer.Delete"
-                                       Icon="BootstrapIcon.Trash"
-                                       OnClick="async () => await DeleteItemClicked(item)"
-                                       ConfirmationQuestion="@String.Format(CurrencyLocalizer.DeleteConfirmation, item.Code)" />
-                </HxContextMenu>
-            </ContextMenu>
-        </HxGrid>
-    </DataSection>
-    <DetailSection>
-        <CurrencyEdit @ref="currencyEditComponent" Value="editedCurrency" ValueChanged="HandleEditValueChanged" />
-    </DetailSection>
+	<CommandsSection>
+		<HxButton Text="@CurrencyLocalizer.New" Skin="ButtonSkins.New" OnClick="NewItemClicked" />
+	</CommandsSection>
+	<DataSection>
+		<HxGrid TItemType="CurrencyDto" Data="@currencies" SelectedDataItem="selectedCurrency" SelectedDataItemChanged="HandleSelectedDataItemChanged" Context="item">
+			<Columns>
+				<HxGridColumn TItemType="CurrencyDto" HeaderText="@CurrencyLocalizer.Code" ItemTextSelector="@(item => item.Code)" />
+				<HxGridColumn TItemType="CurrencyDto" HeaderText="@CurrencyLocalizer.DefaultBankAccount" ItemTextSelector="@(item => item.DefaultBankAccountId?.ToString())" />
+			</Columns>
+			<ContextMenu Context="item">
+				<HxContextMenu>
+					<HxContextMenuItem Text="@CurrencyLocalizer.Delete"
+									   Icon="BootstrapIcon.Trash"
+									   OnClick="async () => await DeleteItemClicked(item)"
+									   ConfirmationQuestion="@String.Format(CurrencyLocalizer.DeleteConfirmation, item.Code)" />
+				</HxContextMenu>
+			</ContextMenu>
+		</HxGrid>
+	</DataSection>
+	<DetailSection>
+		<CurrencyEdit @ref="currencyEditComponent" Value="editedCurrency" ValueChanged="HandleEditValueChanged" />
+	</DetailSection>
 </HxListLayout>

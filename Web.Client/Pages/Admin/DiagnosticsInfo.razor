@@ -1,0 +1,68 @@
+﻿@attribute [Route(Routes.Diagnostics.Info)]
+<h4>Diagnostic Information Page</h4>
+<HxCard>
+	<HeaderTemplate>
+		<h5>AuthorizationView</h5>
+	</HeaderTemplate>
+	<BodyTemplate>
+
+		<AuthorizeView>
+			<Authorized>
+				<h6>Authorized</h6>
+				<div class="container">
+					<div class="row">
+						<div class="col"><label>User</label></div>
+						<div class="col">@(context.User?.ToString() ?? "null")</div>
+					</div>
+					<div class="row">
+						<div class="col"><label>User?.Identity</label></div>
+						<div class="col">@(@context.User?.Identity.ToString() ?? "null")</div>
+					</div>
+					<div class="row">
+						<div class="col"><label>User?.Identity?.Name</label></div>
+						<div class="col">@(@context.User?.Identity?.Name)</div>
+					</div>
+					<div class="row">
+						<div class="col"><label>User?.Identity?.IsAuthenticated</label></div>
+						<div class="col">@(@context.User?.Identity?.IsAuthenticated)</div>
+					</div>
+					<div class="row">
+						<div class="col"><label>User?.Identity?.AuthenticationType</label></div>
+						<div class="col">@(@context.User?.Identity?.AuthenticationType)</div>
+					</div>
+					<div class="row">
+						<div class="col"><label>User?.Identities?.Count()</label></div>
+						<div class="col">@(@context.User?.Identities?.Count().ToString() ?? "null")</div>
+					</div>
+					<div class="row">
+						<div class="col"><label>User?.Claims?.Count()</label></div>
+						<div class="col">@(@context.User?.Claims?.Count().ToString() ?? "null")</div>
+					</div>
+					<div class="row">
+						<div class="col"><label>User?.Claims</label></div>
+						<div class="col">
+							<div class="row">
+								<div class="col">Type</div>
+								<div class="col">Value</div>
+							</div>
+							@foreach (var claim in context.User?.Claims)
+							{
+								<div class="row">
+									<div class="col">@claim.Type</div>
+									<div class="col">@claim.Value</div>
+								</div>
+							}
+						</div>
+					</div>
+				</div>
+			</Authorized>
+			<NotAuthorized>
+				<h6>NotAuthorized</h6>
+				<p><label>User?.ToString()</label> @context.User?.ToString()</p>
+			</NotAuthorized>
+			<Authorizing>
+				<h6>Authorizing</h6>
+			</Authorizing>
+		</AuthorizeView>
+	</BodyTemplate>
+</HxCard>

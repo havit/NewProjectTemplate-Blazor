@@ -1,18 +1,32 @@
 ﻿@attribute [Route(Routes.Administration.Index)]
 
+<h4>User Settings</h4>
 <div class="row row-cols-2 row-cols-lg-5 g-3 mt-4">
 	<div class="col">
 		<NavPanel Title="Finance" Icon="BootstrapIcon.CashStack">
-			<NavCard Href="@Routes.UserAdministration.BankAccounts" Title="Bank accounts" />
-			<NavCard Href="@Routes.UserAdministration.Currencies" Title="Currencies" />
-			<NavCard Href="@Routes.UserAdministration.ExchangeRates" Title="Exchange rates" />
+			<NavCard Href="@Routes.UserAdministration.BankAccounts" Title="@NavigationLocalizer.BankAccounts" />
+			<NavCard Href="@Routes.UserAdministration.Currencies" Title="@NavigationLocalizer.Currencies" />
+			<NavCard Href="@Routes.UserAdministration.ExchangeRates" Title="@NavigationLocalizer.ExchangeRates" />
+		</NavPanel>
+	</div>
+</div>
+
+<h4>System Administration</h4>
+<div class="row row-cols-2 row-cols-lg-5 g-3 mt-4">
+	<div class="col">
+		<NavPanel Title="Local" Icon="BootstrapIcon.Laptop">
+			<NavCard OnClick="RemoveCultureFromLocalStorage" Title="Remove culture setting" />
 		</NavPanel>
 	</div>
 	<div class="col">
-		<NavPanel Title="System" Icon="BootstrapIcon.Hammer">
+		<NavPanel Title="Server" Icon="BootstrapIcon.HddNetwork">
 			<NavCard OnClick="() => dataSeedsDrawerOpen = true" Title="Data Seeds" />
 			<NavCard OnClick="HandleClearCache" Title="Clear Server Cache" />
-			<NavCard OnClick="RemoveCultureFromLocalStorage" Title="Remove culture setting from localStorage" />
+		</NavPanel>
+	</div>
+	<div class="col">
+		<NavPanel Title="Diagnostics" Icon="BootstrapIcon.Hammer">
+			<NavCard Href="@Routes.Diagnostics.Info" Title="Info page" />
 		</NavPanel>
 	</div>
 </div>

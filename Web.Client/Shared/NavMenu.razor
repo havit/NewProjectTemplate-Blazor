@@ -6,7 +6,7 @@
 </div>
 
 <div class="sidebar-inner d-flex flex-column flex-grow-1">
-	<div class="@NavMenuCssClass">
+	<div class="@GetCssClass()">
 		<ul class="nav flex-column">
 			<NavMenuItem Text="Dashboard" Href="@Routes.Home">
 				<Icon>
@@ -65,7 +65,7 @@
 					<HxIcon CssClass="me-2 overflow-visible" Icon="@BootstrapIcon.People" />
 				</Icon>
 			</NavMenuItem>
-			<NavMenuItem Text="Administration" Href="@Routes.Administration.Index">
+			<NavMenuItem Text="@NavigationLocalizer.Administration" Href="@Routes.Administration.Index">
 				<Icon>
 					<HxIcon CssClass="me-2 overflow-visible" Icon="@BootstrapIcon.Gear" />
 				</Icon>
@@ -81,14 +81,3 @@
 		<CultureSelector />
 	</div>
 </div>
-
-@code {
-	private bool collapseNavMenu = true;
-
-	private string NavMenuCssClass => collapseNavMenu ? "collapse" : null;
-
-	private void ToggleNavMenu()
-	{
-		collapseNavMenu = !collapseNavMenu;
-	}
-}
