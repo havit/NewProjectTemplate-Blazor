@@ -6,7 +6,7 @@
         <HxButton Text="@CurrencyLocalizer.New" Skin="ButtonSkins.New" OnClick="NewItemClicked" />
     </CommandsSection>
     <DataSection>
-        <HxGrid TItemType="CurrencyDto" Data="@currencies" SelectionMode="GridSelectionMode.Select" SelectedDataItem="selectedCurrency" SelectedDataItemChanged="HandleSelectedDataItemChanged" Context="item">
+        <HxGrid TItemType="CurrencyDto" Data="@currencies" SelectedDataItem="selectedCurrency" SelectedDataItemChanged="HandleSelectedDataItemChanged" Context="item">
             <Columns>
                 <HxGridColumn TItemType="CurrencyDto" HeaderText="@CurrencyLocalizer.Code" ItemTextSelector="@(item => item.Code)" />
                 <HxGridColumn TItemType="CurrencyDto" HeaderText="@CurrencyLocalizer.DefaultBankAccount" ItemTextSelector="@(item => item.DefaultBankAccountId?.ToString())" />
