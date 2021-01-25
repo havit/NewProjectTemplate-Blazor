@@ -7,6 +7,7 @@ using Havit.Blazor.Components.Web;
 using Havit.Blazor.Components.Web.Bootstrap;
 using Havit.GoranG3.Contracts.Finance;
 using Havit.GoranG3.Web.Client.Resources;
+using Havit.GoranG3.Web.Client.Resources.Model.Finance;
 using Havit.GoranG3.Web.Client.Services.DataStores;
 using Microsoft.AspNetCore.Components;
 
@@ -14,57 +15,57 @@ namespace Havit.GoranG3.Web.Client.Pages.Admin
 {
 	public partial class ExchangeRateEdit
 	{
-		[Parameter] public ExchangeRateDto Value { get; set; } = new ExchangeRateDto(); // TODO remove, testovací
+		[Parameter] public ExchangeRateDto Value { get; set; }
 		[Parameter] public EventCallback<ExchangeRateDto> ValueChanged { get; set; }
-		[Parameter] public LayoutDisplayMode DisplayMode { get; set; } = LayoutDisplayMode.Plain;
+		[Parameter] public LayoutDisplayMode DisplayMode { get; set; } = LayoutDisplayMode.Drawer;
+		[Parameter] public EventCallback OnClosed { get; set; }
 
 		[Inject] protected IHxMessengerService Messenger { get; set; }
-		//[Inject] protected IBankAccountFacade BankAccountFacade { get; set; }
-		//[Inject] protected IExchangeRateLocalizer BankAccountLoc { get; set; }
-		//[Inject] protected ICurrencyDataStore CurrencyDataStore { get; set; }
-		[Inject] protected IGlobalLocalizer GlobalLoc { get; set; }
+		[Inject] protected IExchangeRateFacade ExchangeRateFacade { get; set; }
+		[Inject] protected ICurrencyDataStore CurrencyDataStore { get; set; }
+		[Inject] protected IExchangeRateLocalizer ExchangeRateLocalizer { get; set; }
+		[Inject] protected IGlobalLocalizer GlobalLocalizer { get; set; }
 
-		private ExchangeRateDto model = new ExchangeRateDto();
-		private string title = String.Empty;
+		private ExchangeRateDto model;
 		private HxDisplayLayout hxDisplayLayout;
+		private Dictionary<int, CurrencyDto> currencies;
 
-		protected async override Task OnParametersSetAsync()
+		protected override void OnParametersSet()
 		{
-			await base.OnParametersSetAsync();
+			base.OnParametersSet();
 
 			model = this.Value with { }; // Clone!
-			//title = await GetTitleAsync();
+		}
+		protected override async Task OnInitializedAsync()
+		{
+			await base.OnInitializedAsync();
+			currencies = (await CurrencyDataStore.GetAllAsync()).ToDictionary(c => c.Id);
 		}
 
-		//private async Task<string> GetTitleAsync()
-		//{
-		//	if (model.Id == default)
-		//	{
-		//		return "ExchnageRateLoc.New"; // TODO
-		//	}
-		//	var currencyCode = await CurrencyDataStore.GetByKeyAsync(model.CurrencyId);
-		//	return $"{currencyCode} - {model.DateFrom}";
-		//}
+		public async Task HandleValidSubmit()
+		{
+			if (model.Id == default)
+			{
+				model.Id = (await ExchangeRateFacade.CreateExchangeRateAsync(model)).Value;
+				Messenger.AddInformation(GetExchangeRateLabel(model), GlobalLocalizer.NewSuccess);
+			}
+			else
+			{
+				await ExchangeRateFacade.UpdateExchangeRateAsync(model);
+				Messenger.AddInformation(GetExchangeRateLabel(model), GlobalLocalizer.UpdateSuccess);
+			}
 
-		//public async Task HandleValidSubmit()
-		//{
-		//	if (model.Id == default)
-		//	{
-		//		// TODO model.Id = (await BankAccountFacade.CreateBankAccountAsync(model)).Value;
-		//		Messenger.AddInformation($"{await CurrencyDataStore.GetByKeyAsync(model.CurrencyId)} - {model.DateFrom}", GlobalLoc.NewSuccess);
-		//	}
-		//	else
-		//	{
-		//		// TODO await BankAccountFacade.UpdateBankAccountAsync(model);
-		//		Messenger.AddInformation($"{await CurrencyDataStore.GetByKeyAsync(model.CurrencyId)} - {model.DateFrom}", GlobalLoc.UpdateSuccess);
-		//	}
+			await hxDisplayLayout.HideAsync();
 
-		//	Value.UpdateFrom(model);
-		//	await ValueChanged.InvokeAsync(this.Value);
+			Value.UpdateFrom(model);
+			await ValueChanged.InvokeAsync(this.Value);
+		}
 
-		//	await hxDisplayLayout.HideAsync();
-		//}
-
-		//public Task ShowAsync() => hxDisplayLayout.ShowAsync();
+		public Task ShowAsync() => hxDisplayLayout.ShowAsync();
+		private string GetExchangeRateLabel(ExchangeRateDto exchangeRate)
+		{
+			var currency = currencies[exchangeRate.CurrencyId.Value];
+			return $"{currency.Code} - {exchangeRate.DateFrom:g}";
+		}
 	}
 }

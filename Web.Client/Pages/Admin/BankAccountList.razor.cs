@@ -14,7 +14,7 @@ using Microsoft.Extensions.Localization;
 
 namespace Havit.GoranG3.Web.Client.Pages.Admin
 {
-	public partial class BankAccountList : ComponentBase
+	public partial class BankAccountList
 	{
 		[Inject] protected IHxMessengerService Messenger { get; set; }
 		[Inject] protected IBankAccountFacade BankAccountFacade { get; set; }

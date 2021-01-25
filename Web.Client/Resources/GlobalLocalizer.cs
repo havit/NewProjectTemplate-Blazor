@@ -14,8 +14,13 @@ namespace Havit.GoranG3.Web.Client.Resources
 		{
 		}
 
+		public LocalizedString DeleteRecord => this["DeleteRecord"];
+		public LocalizedString DeleteConfirmation => this["DeleteConfirmation"];
 		public LocalizedString DeleteSuccess => this["DeleteSuccess"];
 		public LocalizedString NewSuccess => this["NewSuccess"];
+		public LocalizedString NewRecord => this["NewRecord"];
 		public LocalizedString UpdateSuccess => this["UpdateSuccess"];
+		public LocalizedString SelectNull => this["SelectNull"];
+		public LocalizedString SelectNullItems => this["SelectNullItems"];
 	}
 }

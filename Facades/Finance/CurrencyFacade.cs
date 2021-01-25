@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Havit.Data.Patterns.UnitOfWorks;
+using Havit.Diagnostics.Contracts;
 using Havit.GoranG3.Contracts;
 using Havit.GoranG3.Contracts.Finance;
 using Havit.GoranG3.DataLayer.Repositories.Finance;
@@ -36,6 +37,8 @@ namespace Havit.GoranG3.Facades.Finance
 
 		public async Task<Dto<int>> CreateCurrencyAsync(CurrencyDto currencyDto, CancellationToken cancellationToken = default)
 		{
+			Contract.Requires<ArgumentNullException>(currencyDto is not null);
+
 			CheckAuthorization();
 
 			var currency = new Currency();
@@ -65,6 +68,8 @@ namespace Havit.GoranG3.Facades.Finance
 
 		public async Task UpdateCurrencyAsync(CurrencyDto currencyDto, CancellationToken cancellationToken = default)
 		{
+			Contract.Requires<ArgumentNullException>(currencyDto is not null);
+
 			CheckAuthorization();
 
 			var currency = await currencyRepository.GetObjectAsync(currencyDto.Id, cancellationToken);

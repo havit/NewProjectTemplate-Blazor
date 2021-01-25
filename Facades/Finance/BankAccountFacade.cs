@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Havit.Data.Patterns.UnitOfWorks;
+using Havit.Diagnostics.Contracts;
 using Havit.GoranG3.Contracts;
 using Havit.GoranG3.Contracts.Finance;
 using Havit.GoranG3.DataLayer.Repositories.Finance;
@@ -51,6 +52,8 @@ namespace Havit.GoranG3.Facades.Finance
 
 		public async Task<Dto<int>> CreateBankAccountAsync(BankAccountDto bankAccountDto, CancellationToken cancellationToken = default)
 		{
+			Contract.Requires<ArgumentNullException>(bankAccountDto is not null);
+
 			CheckAuthorization();
 
 			var bankAccount = new BankAccount();
@@ -64,6 +67,8 @@ namespace Havit.GoranG3.Facades.Finance
 
 		public async Task UpdateBankAccountAsync(BankAccountDto bankAccountDto, CancellationToken cancellationToken = default)
 		{
+			Contract.Requires<ArgumentNullException>(bankAccountDto is not null);
+
 			CheckAuthorization();
 
 			var bankAccount = await bankAccountRepository.GetObjectAsync(bankAccountDto.Id, cancellationToken);

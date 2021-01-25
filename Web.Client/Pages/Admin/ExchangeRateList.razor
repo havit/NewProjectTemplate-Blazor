@@ -1,0 +1,35 @@
+﻿@attribute [Route(Routes.UserAdministration.ExchangeRates)]
+@using Havit.GoranG3.Contracts.Finance
+
+<HxListLayout Title="@ExchangeRateLocalizer.Plural">
+	<CommandsSection>
+		<HxButton Text="@GlobalLocalizer.NewRecord" Skin="ButtonSkins.New" OnClick="HandleNewItemClicked" />
+	</CommandsSection>
+	<DataSection>
+		<HxGrid TItemType="ExchangeRateDto"
+				Data="exchangeRates"
+				SelectedDataItem="exchangeRateSelected"
+				SelectedDataItemChanged="HandleSelectedDataItemChanged"
+				Context="item">
+			<Columns>
+				<HxGridColumn TItemType="ExchangeRateDto" HeaderText="@ExchangeRateLocalizer.Currency" ItemTextSelector="@(item => currencies[item.CurrencyId.Value].Code)" />
+				<HxGridColumn TItemType="ExchangeRateDto" HeaderText="@ExchangeRateLocalizer.DateFrom" ItemTextSelector="@(item => item.DateFrom.Value.ToShortDateString())" />
+				<HxGridColumn TItemType="ExchangeRateDto" HeaderText="@ExchangeRateLocalizer.Rate" ItemTextSelector="@(item => item.Rate.Value.ToString("n2"))" />
+			</Columns>
+			<ContextMenu Context="item">
+				<HxContextMenu>
+					<HxContextMenuItem Text="@GlobalLocalizer.DeleteRecord"
+									   Icon="BootstrapIcon.Trash"
+									   OnClick="async () => await HandleDeleteItemClicked(item)"
+									   ConfirmationQuestion="@String.Format(GlobalLocalizer.DeleteConfirmation, GetExchangeRateLabel(item))" />
+				</HxContextMenu>
+			</ContextMenu>
+		</HxGrid>
+
+	</DataSection>
+	<DetailSection>
+
+		<ExchangeRateEdit @ref="exchangeRateEditComponent" Value="exchangeRateEdited" ValueChanged="HandleEditValueChanged" OnClosed="HandleEditClosed" />
+
+	</DetailSection>
+</HxListLayout>

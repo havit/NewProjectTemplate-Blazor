@@ -8,5 +8,10 @@ namespace Havit.GoranG3.Web.Client.Resources
 		LocalizedString DeleteSuccess { get; }
 		LocalizedString NewSuccess { get; }
 		LocalizedString UpdateSuccess { get; }
+		LocalizedString DeleteConfirmation { get; }
+		LocalizedString DeleteRecord { get; }
+		LocalizedString NewRecord { get; }
+		LocalizedString SelectNull { get; }
+		LocalizedString SelectNullItems { get; }
 	}
 }

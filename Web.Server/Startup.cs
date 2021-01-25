@@ -119,12 +119,13 @@ namespace Havit.GoranG3.Web.Server
 				endpoints.MapControllers();
 				endpoints.MapFallbackToFile("index.html");
 
-				// GRPC TESTs
+				// TODO Mass-registration
 				endpoints.MapGrpcService<TestFacade>();
 				endpoints.MapGrpcService<InvoiceFacade>();
 
 				endpoints.MapGrpcService<BankAccountFacade>();
 				endpoints.MapGrpcService<CurrencyFacade>();
+				endpoints.MapGrpcService<ExchangeRateFacade>();
 
 				endpoints.MapGrpcService<DataSeedFacade>();
 				endpoints.MapGrpcService<MaintenanceFacade>();

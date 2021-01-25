@@ -69,6 +69,7 @@ namespace Havit.GoranG3.Web.Client
 
 			builder.Services.AddGrpcClientProxyWithAuth<IBankAccountFacade>();
 			builder.Services.AddGrpcClientProxyWithAuth<ICurrencyFacade>();
+			builder.Services.AddGrpcClientProxyWithAuth<IExchangeRateFacade>();
 
 			builder.Services.AddGrpcClientProxyWithAuth<IDataSeedFacade>();
 			builder.Services.AddGrpcClientProxyWithAuth<IMaintenanceFacade>();

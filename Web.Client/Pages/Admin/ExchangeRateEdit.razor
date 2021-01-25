@@ -1,17 +1,17 @@
-﻿@page "/rh-test"
-
-<HxDisplayLayout @ref="hxDisplayLayout" DisplayMode="@DisplayMode">
+﻿<HxDisplayLayout @ref="hxDisplayLayout" DisplayMode="@DisplayMode">
 	<HeaderTemplate>
 
-		@title
+		@(model.Id == default ? GlobalLocalizer.NewRecord : GetExchangeRateLabel(model))
 
 	</HeaderTemplate>
 	<BodyTemplate>
 
-		<EditForm id="@nameof(ExchangeRateEdit)" Model="model" >
+		<EditForm id="@nameof(ExchangeRateEdit)" Model="model">
 			<DataAnnotationsValidator />
 
-			<CurrencyPicker Label="Currency" @bind-Value="model.CurrencyId" />
+			<CurrencyPicker Label="@ExchangeRateLocalizer.Currency" @bind-Value="model.CurrencyId" />
+			<HxInputDate Label="@ExchangeRateLocalizer.DateFrom" @bind-Value="model.DateFrom" ParsingErrorMessage="PEM" /> @* TODO Default ParsingErrorMessage *@
+			<HxInputNumber Label="@ExchangeRateLocalizer.Rate" @bind-Value="model.Rate" ParsingErrorMessage="PEM" /> @* TODO Default ParsingErrorMessage *@
 
 		</EditForm>
 

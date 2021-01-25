@@ -117,28 +117,19 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="DeleteConfirmation" xml:space="preserve">
-    <value>Opravu si přejete smazat tento záznam - {0}?</value>
+  <data name="Currency" xml:space="preserve">
+    <value>Currency</value>
   </data>
-  <data name="DeleteRecord" xml:space="preserve">
-    <value>Smazat záznam</value>
+  <data name="DateFrom" xml:space="preserve">
+    <value>From date</value>
   </data>
-  <data name="DeleteSuccess" xml:space="preserve">
-    <value>Záznam smazán.</value>
+  <data name="Plural" xml:space="preserve">
+    <value>Exchange rates</value>
   </data>
-  <data name="NewRecord" xml:space="preserve">
-    <value>Nový záznam</value>
+  <data name="Rate" xml:space="preserve">
+    <value>Rate</value>
   </data>
-  <data name="NewSuccess" xml:space="preserve">
-    <value>Záznam založen.</value>
-  </data>
-  <data name="SelectNull" xml:space="preserve">
-    <value>-vyberte-</value>
-  </data>
-  <data name="SelectNullItems" xml:space="preserve">
-    <value>Loading...</value>
-  </data>
-  <data name="UpdateSuccess" xml:space="preserve">
-    <value>Záznam uložen.</value>
+  <data name="Singular" xml:space="preserve">
+    <value>Exchange rate</value>
   </data>
 </root>
