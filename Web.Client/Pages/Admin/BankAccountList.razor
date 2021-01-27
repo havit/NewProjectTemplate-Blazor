@@ -6,8 +6,9 @@
 		<HxButton Text="@BankAccountLocalizer.New" Skin="ButtonSkins.New" OnClick="NewItemClicked" />
 	</CommandsSection>
 	<DataSection>
-		<HxGrid TItemType="BankAccountDto"
-				Data="bankAccounts"
+		<HxGrid @ref="bankAccountsGrid"
+				TItemType="BankAccountDto"
+				DataProvider="LoadBankAccounts"
 				SelectedDataItem="bankAccountSelected"
 				SelectedDataItemChanged="HandleSelectedDataItemChanged"
 				Context="item">

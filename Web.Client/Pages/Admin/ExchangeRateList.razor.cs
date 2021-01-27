@@ -22,9 +22,9 @@ namespace Havit.GoranG3.Web.Client.Pages.Admin
 		[Inject] protected IGlobalLocalizer GlobalLocalizer { get; set; }
 		[Inject] protected IHxMessengerService Messenger { get; set; }
 
-		private List<ExchangeRateDto> exchangeRates;
 		private ExchangeRateDto exchangeRateSelected;
 		private ExchangeRateDto exchangeRateEdited = new ExchangeRateDto();
+		private HxGrid<ExchangeRateDto> exchangeRatesGrid;
 		private ExchangeRateEdit exchangeRateEditComponent;
 		private Dictionary<int, CurrencyDto> currencies;
 
@@ -32,12 +32,11 @@ namespace Havit.GoranG3.Web.Client.Pages.Admin
 		{
 			await base.OnInitializedAsync();
 			currencies = (await CurrencyDataStore.GetAllAsync()).ToDictionary(c => c.Id);
-			await LoadDataAsync();
 		}
 
-		private async Task LoadDataAsync()
+		private async Task<GridDataProviderResult<ExchangeRateDto>> LoadExchangeRates(GridDataProviderRequest<ExchangeRateDto> request)
 		{
-			exchangeRates = (await ExchangeRateFacade.GetExchangeRatesAsync()).Value;
+			return request.ApplyTo((await ExchangeRateFacade.GetExchangeRatesAsync()).Value);
 		}
 
 		private async Task HandleSelectedDataItemChanged(ExchangeRateDto selection)
@@ -57,12 +56,12 @@ namespace Havit.GoranG3.Web.Client.Pages.Admin
 		{
 			await ExchangeRateFacade.DeleteExchangeRateAsync(Dto.FromValue(exchangeRate.Id));
 			Messenger.AddInformation(GetExchangeRateLabel(exchangeRate), GlobalLocalizer.DeleteSuccess);
-			await LoadDataAsync();
+			await exchangeRatesGrid.RefreshDataAsync();
 		}
 
 		private async Task HandleEditValueChanged()
 		{
-			await LoadDataAsync();
+			await exchangeRatesGrid.RefreshDataAsync();
 		}
 
 		private void HandleEditClosed()

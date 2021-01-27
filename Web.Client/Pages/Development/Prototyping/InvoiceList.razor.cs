@@ -35,7 +35,7 @@ namespace Havit.GoranG3.Web.Client.Pages.Development.Prototyping
 		};
 
 		private CancellationTokenSource cancellationTokenSource;
-		private async ValueTask<GridDataProviderResult<InvoiceListDto>> InvoicesDataProvider(GridDataProviderRequest<InvoiceListDto> request)
+		private async Task<GridDataProviderResult<InvoiceListDto>> InvoicesDataProvider(GridDataProviderRequest<InvoiceListDto> request)
 		{
 			cancellationTokenSource?.Cancel();
 			cancellationTokenSource = new CancellationTokenSource();
@@ -52,7 +52,7 @@ namespace Havit.GoranG3.Web.Client.Pages.Development.Prototyping
 			return new()
 			{
 				Data = result.Invoices,
-				DataItemsTotalCount = result.TotalCount
+				TotalCount = result.TotalCount
 			};
 		}
 

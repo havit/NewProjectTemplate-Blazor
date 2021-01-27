@@ -6,8 +6,9 @@
 		<HxButton Text="@GlobalLocalizer.NewRecord" Skin="ButtonSkins.New" OnClick="HandleNewItemClicked" />
 	</CommandsSection>
 	<DataSection>
-		<HxGrid TItemType="ExchangeRateDto"
-				Data="exchangeRates"
+		<HxGrid @ref="exchangeRatesGrid"
+				TItemType="ExchangeRateDto"
+				DataProvider="LoadExchangeRates"
 				SelectedDataItem="exchangeRateSelected"
 				SelectedDataItemChanged="HandleSelectedDataItemChanged"
 				Context="item">

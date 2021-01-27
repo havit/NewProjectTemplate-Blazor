@@ -21,20 +21,14 @@ namespace Havit.GoranG3.Web.Client.Pages.Admin
 		[Inject] protected IBankAccountLocalizer BankAccountLocalizer { get; set; }
 		[Inject] protected IGlobalLocalizer GlobalLocalizer { get; set; }
 
-		private List<BankAccountDto> bankAccounts;
 		private BankAccountDto bankAccountSelected;
 		private BankAccountDto bankAccountEdited = new BankAccountDto();
+		private HxGrid<BankAccountDto> bankAccountsGrid;
 		private BankAccountEdit bankAccountEditComponent;
 
-		protected override async Task OnInitializedAsync()
+		private async Task<GridDataProviderResult<BankAccountDto>> LoadBankAccounts(GridDataProviderRequest<BankAccountDto> request)
 		{
-			await base.OnInitializedAsync();
-			await LoadDataAsync();
-		}
-
-		private async Task LoadDataAsync()
-		{
-			bankAccounts = (await BankAccountFacade.GetBankAccountsAsync()).Value;
+			return request.ApplyTo((await BankAccountFacade.GetBankAccountsAsync()).Value);
 		}
 
 		private async Task HandleSelectedDataItemChanged(BankAccountDto selection)
@@ -54,12 +48,12 @@ namespace Havit.GoranG3.Web.Client.Pages.Admin
 		{
 			await BankAccountFacade.DeleteBankAccountAsync(Dto.FromValue(bankAccount.Id));
 			Messenger.AddInformation(bankAccount.Name, GlobalLocalizer.DeleteSuccess);
-			await LoadDataAsync();
+			await bankAccountsGrid.RefreshDataAsync();
 		}
 
 		private async Task HandleEditValueChanged()
 		{
-			await LoadDataAsync();
+			await bankAccountsGrid.RefreshDataAsync();
 		}
 
 		private void HandleEditClosed()

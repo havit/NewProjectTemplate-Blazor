@@ -19,27 +19,21 @@ namespace Havit.GoranG3.Web.Client.Pages.Admin
 		[Inject] protected ICurrencyLocalizer CurrencyLocalizer { get; set; }
 		[Inject] protected IGlobalLocalizer GlobalLocalizer { get; set; }
 
-		private List<CurrencyDto> currencies;
 		private CurrencyDto editedCurrency = new CurrencyDto();
 		private CurrencyDto selectedCurrency;
+		private HxGrid<CurrencyDto> currenciesGrid;
 		private CurrencyEdit currencyEditComponent;
 
-		protected override async Task OnInitializedAsync()
+		private async Task<GridDataProviderResult<CurrencyDto>> LoadCurrencies(GridDataProviderRequest<CurrencyDto> request)
 		{
-			await base.OnInitializedAsync();
-			await LoadDataAsync();
-		}
-
-		private async Task LoadDataAsync()
-		{
-			currencies = (await CurrencyFacade.GetAllAsync()).Value;
+			return request.ApplyTo((await CurrencyFacade.GetAllAsync()).Value);
 		}
 
 		private async Task DeleteItemClicked(CurrencyDto currencyDto)
 		{
 			await CurrencyFacade.DeleteCurrencyAsync(Dto.FromValue(currencyDto.Id));
 			Messenger.AddInformation(currencyDto.Code, GlobalLocalizer.DeleteSuccess);
-			await LoadDataAsync();
+			await currenciesGrid.RefreshDataAsync();
 		}
 
 		private async Task HandleSelectedDataItemChanged(CurrencyDto selection)
@@ -56,7 +50,7 @@ namespace Havit.GoranG3.Web.Client.Pages.Admin
 
 		private async Task HandleEditValueChanged()
 		{
-			await LoadDataAsync();
+			await currenciesGrid.RefreshDataAsync();
 		}
 
 		private void HandleEditClosed()
