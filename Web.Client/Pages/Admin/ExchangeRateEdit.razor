@@ -1,4 +1,4 @@
-﻿<HxDisplayLayout @ref="hxDisplayLayout" DisplayMode="@DisplayMode">
+﻿<HxDisplayLayout @ref="hxDisplayLayout" DisplayMode="@DisplayMode" OnClosed="OnClosed">
 	<HeaderTemplate>
 
 		@(model.Id == default ? GlobalLocalizer.NewRecord : GetExchangeRateLabel(model))
