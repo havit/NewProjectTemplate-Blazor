@@ -6,12 +6,12 @@
 	</HeaderTemplate>
 	<BodyTemplate>
 
-		<EditForm id="@nameof(ExchangeRateEdit)" Model="model">
+		<EditForm id="@nameof(ExchangeRateEdit)" Model="model" OnValidSubmit="HandleValidSubmit">
 			<DataAnnotationsValidator />
 
 			<CurrencyPicker Label="@ExchangeRateLocalizer.Currency" @bind-Value="model.CurrencyId" />
-			<HxInputDate Label="@ExchangeRateLocalizer.DateFrom" @bind-Value="model.DateFrom" ParsingErrorMessage="PEM" /> @* TODO Default ParsingErrorMessage *@
-			<HxInputNumber Label="@ExchangeRateLocalizer.Rate" @bind-Value="model.Rate" ParsingErrorMessage="PEM" /> @* TODO Default ParsingErrorMessage *@
+			<HxInputDate Label="@ExchangeRateLocalizer.DateFrom" @bind-Value="model.DateFrom" />
+			<HxInputNumber Label="@ExchangeRateLocalizer.Rate" @bind-Value="model.Rate" />
 
 		</EditForm>
 

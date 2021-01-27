@@ -9,22 +9,10 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace Havit.GoranG3.Web.Client.Resources
 {
-	public static class ResourcesServiceCollectionInstaller
+	/// <summary>
+	/// Marker file for RESX source generator.
+	/// </summary>
+	public static partial class ResourcesServiceCollectionInstaller
 	{
-		/// <summary>
-		/// Adds generated strong-API wrappers for localization resources.
-		/// </summary>
-		public static void AddGeneratedResourceWrappers(this IServiceCollection services)
-		{
-			services.AddScoped<IGlobalLocalizer, GlobalLocalizer>();
-			services.AddScoped<INavigationLocalizer, NavigationLocalizer>();
-
-
-			services.AddScoped<IBankAccountLocalizer, BankAccountLocalizer>();
-			services.AddScoped<ICurrencyLocalizer, CurrencyLocalizer>();
-			services.AddScoped<IExchangeRateLocalizer, ExchangeRateLocalizer>();
-
-			services.AddScoped<IAdminIndexLocalizer, AdminIndexLocalizer>();
-		}
 	}
 }

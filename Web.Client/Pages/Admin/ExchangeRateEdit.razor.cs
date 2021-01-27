@@ -62,6 +62,7 @@ namespace Havit.GoranG3.Web.Client.Pages.Admin
 		}
 
 		public Task ShowAsync() => hxDisplayLayout.ShowAsync();
+
 		private string GetExchangeRateLabel(ExchangeRateDto exchangeRate)
 		{
 			var currency = currencies[exchangeRate.CurrencyId.Value];
