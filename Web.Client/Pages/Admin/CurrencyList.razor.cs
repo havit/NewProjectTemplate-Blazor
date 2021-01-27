@@ -38,6 +38,7 @@ namespace Havit.GoranG3.Web.Client.Pages.Admin
 
 		private async Task HandleSelectedDataItemChanged(CurrencyDto selection)
 		{
+			selectedCurrency = selection;
 			editedCurrency = selection;
 			await currencyEditComponent.ShowAsync();
 		}
