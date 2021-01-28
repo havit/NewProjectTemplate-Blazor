@@ -52,9 +52,15 @@ namespace Havit.GoranG3.Web.Client
 
 			WebAssemblyHost webAssemblyHost = builder.Build();
 
+			SetHxComponents();
 			await SetLanguage(webAssemblyHost);
 
 			await webAssemblyHost.RunAsync();
+		}
+
+		private static void SetHxComponents()
+		{
+			HxProgressOverlay.DefaultDelay = 300; // just trying :-D
 		}
 
 		private static void AddGrpcClient(WebAssemblyHostBuilder builder)
