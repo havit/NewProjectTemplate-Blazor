@@ -53,6 +53,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Havit.Blazor.Components.Web
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "G2Migrator", "G2Migrator\G2Migrator.csproj", "{8F9787C3-E660-4DE6-9D05-C0D425A2239E}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Havit.SourceGenerators.StrongApiStringLocalizers", "002.HFW-HavitBlazor\Havit.SourceGenerators.StrongApiStringLocalizers\Havit.SourceGenerators.StrongApiStringLocalizers.csproj", "{D1484BFC-BA50-4C21-A56D-F289D926617A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -139,6 +141,10 @@ Global
 		{8F9787C3-E660-4DE6-9D05-C0D425A2239E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8F9787C3-E660-4DE6-9D05-C0D425A2239E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8F9787C3-E660-4DE6-9D05-C0D425A2239E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D1484BFC-BA50-4C21-A56D-F289D926617A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1484BFC-BA50-4C21-A56D-F289D926617A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1484BFC-BA50-4C21-A56D-F289D926617A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1484BFC-BA50-4C21-A56D-F289D926617A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
