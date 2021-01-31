@@ -1,5 +1,5 @@
 .nav-item {
-	font-size: 0.9rem;
+	font-size: 0.875rem;
 }
 
 a {
@@ -23,4 +23,9 @@ a > div:hover {
 a > div > span {
 	line-height: 18px;
 	height: 18px;
+}
+
+::deep i {
+    line-height: 1;
+    font-size: 1rem;
 }

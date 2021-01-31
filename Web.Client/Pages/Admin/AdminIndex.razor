@@ -1,7 +1,7 @@
 ﻿@attribute [Route(Routes.Administration.Index)]
 
-<h4>User Settings</h4>
-<div class="row row-cols-2 row-cols-lg-5 g-3 mt-4">
+<h5>User Settings</h5>
+<div class="row row-cols-2 row-cols-lg-3 row-cols-xl-4 row-cols-xxl-6 g-3 mb-4">
 	<div class="col">
 		<NavPanel Title="Finance" Icon="BootstrapIcon.CashStack">
 			<NavCard Href="@Routes.UserAdministration.BankAccounts" Title="@NavigationLocalizer.BankAccounts" />
@@ -11,8 +11,8 @@
 	</div>
 </div>
 
-<h4>System Administration</h4>
-<div class="row row-cols-2 row-cols-lg-5 g-3 mt-4">
+<h5>System Administration</h5>
+<div class="row row-cols-2 row-cols-lg-3 row-cols-xl-4 row-cols-xxl-6 g-3 mb-4">
 	<div class="col">
 		<NavPanel Title="Local" Icon="BootstrapIcon.Laptop">
 			<NavCard OnClick="RemoveCultureFromLocalStorage" Title="Remove culture setting" />
