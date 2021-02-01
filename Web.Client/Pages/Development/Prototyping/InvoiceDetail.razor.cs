@@ -15,9 +15,12 @@ namespace Havit.GoranG3.Web.Client.Pages.Development.Prototyping
 
 		[Parameter] public EventCallback<InvoiceListDto> InvoiceChanged { get; set; }
 
-		private void HandleSuggestionsRequested(SuggestionRequest request)
+		private Task<AutosuggestDataProviderResult<string>> GetSuggestions(AutosuggestDataProviderRequest request)
 		{
-			request.Suggestions = Enumerable.Range(0, 10).Select(i => request.UserInput + " " + (i + 1).ToString()).ToList();
+			return Task.FromResult(new AutosuggestDataProviderResult<string>()
+			{
+				Items = Enumerable.Range(0, 10).Select(i => request.UserInput + " " + (i + 1).ToString()).ToList()
+			});
 		}
 	}
 }
