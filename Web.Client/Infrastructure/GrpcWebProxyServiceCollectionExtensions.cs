@@ -31,7 +31,7 @@ namespace Havit.GoranG3.Web.Client.Infrastructure
 					options.Address = new Uri(backendUrl);
 				})
 				.ConfigurePrimaryHttpMessageHandler(provider => new GrpcWebHandler(GrpcWebMode.GrpcWeb, new HttpClientHandler()))
-				.AddInterceptor<ServerValidationErrorInterceptor>();
+				.AddInterceptor<ServerErrorGrpcInterceptor>();
 		}
 
 		public static IHttpClientBuilder AddGrpcClientProxyWithAuth<TService>(this IServiceCollection services)
@@ -44,7 +44,9 @@ namespace Havit.GoranG3.Web.Client.Infrastructure
 
 					return provider.GetRequiredService<AuthorizationMessageHandler>()
 						.ConfigureHandler(authorizedUrls: new[] { backendUrl }); // scopes: new[] { "example.read", "example.write" }
-				}).AddInterceptor(() => new AuthorizationInterceptor());
+				})
+				//.AddInterceptor<ServerErrorGrpcInterceptor>();
+				.AddInterceptor(() => new AuthorizationInterceptor());
 		}
 
 		private static string GetBackendUrl(IServiceProvider provider)

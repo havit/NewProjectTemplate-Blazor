@@ -15,5 +15,7 @@ namespace Havit.GoranG3.Contracts.GrpcTests
 		Task AddRole();
 
 		Task<Dto<string>> TryGetResult();
+
+		Task RaiseOperationFailedException();
 	}
 }

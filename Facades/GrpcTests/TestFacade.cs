@@ -47,6 +47,11 @@ namespace Havit.GoranG3.Facades.GrpcTests
 			});
 		}
 
+		public Task RaiseOperationFailedException()
+		{
+			throw new OperationFailedException("Blah blah OperationFailedException from server");
+		}
+
 		public Task<Dto<string>> TryGetResult()
 		{
 			return Task.FromResult(new Dto<string>() { Value = "tak co? tak co? tak co? tak co? tak co?" });

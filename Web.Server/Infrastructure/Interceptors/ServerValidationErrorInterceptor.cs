@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Grpc.Core;
 using Grpc.Core.Interceptors;
+using Havit;
 
 namespace Web.Server.Infrastructure.Interceptors
 {
@@ -15,9 +16,9 @@ namespace Web.Server.Infrastructure.Interceptors
 			{
 				return await continuation(request, context);
 			}
-			catch (InvalidOperationException e)
+			catch (OperationFailedException e)
 			{
-				context.ResponseTrailers.Add("entityvalidationerror", e.Message);
+				context.ResponseTrailers.Add(nameof(OperationFailedException).ToLower(), e.Message);
 				throw;
 			}
 		}

@@ -67,7 +67,7 @@ namespace Havit.GoranG3.Web.Client
 		{
 			//builder.Services.AddGrpcClientsInfrastructure();
 
-			builder.Services.AddTransient<ServerValidationErrorInterceptor>();
+			builder.Services.AddTransient<ServerErrorGrpcInterceptor>();
 
 			// TODO Mass registration of facades
 			builder.Services.AddGrpcClientProxyWithAuth<IInvoiceFacade>();
