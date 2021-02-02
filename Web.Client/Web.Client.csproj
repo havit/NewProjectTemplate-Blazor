@@ -12,6 +12,8 @@
 		<PackageReference Include="Blazored.LocalStorage" Version="3.0.0" />
 		<PackageReference Include="Grpc.Net.Client" Version="2.34.0" />
 		<PackageReference Include="Grpc.Net.Client.Web" Version="2.34.0" />
+		<PackageReference Include="Havit.Blazor.Components.Web.Bootstrap" Version="1.0.0" />
+		<PackageReference Include="Havit.SourceGenerators.StrongApiStringLocalizers" Version="1.0.1" />
 		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="5.0.2" />
 		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="5.0.2" PrivateAssets="all" />
 		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Authentication" Version="5.0.2" />
@@ -24,9 +26,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\002.HFW-HavitBlazor\Havit.Blazor.Components.Web.Bootstrap\Havit.Blazor.Components.Web.Bootstrap.csproj" />
-		<ProjectReference Include="..\002.HFW-HavitBlazor\Havit.Blazor.Components.Web\Havit.Blazor.Components.Web.csproj" />
-		<ProjectReference Include="..\002.HFW-HavitBlazor\Havit.SourceGenerators.StrongApiStringLocalizers\Havit.SourceGenerators.StrongApiStringLocalizers.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
 		<ProjectReference Include="..\Contracts\Contracts.csproj" />
 	</ItemGroup>
 
