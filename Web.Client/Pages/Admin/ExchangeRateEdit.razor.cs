@@ -62,7 +62,7 @@ namespace Havit.GoranG3.Web.Client.Pages.Admin
 				Value.UpdateFrom(model);
 				await ValueChanged.InvokeAsync(this.Value);
 			}
-			catch (OperationFailedException ex)
+			catch (OperationFailedException)
 			{
 				// NOOP
 			}
