@@ -44,21 +44,28 @@ namespace Havit.GoranG3.Web.Client.Pages.Admin
 
 		public async Task HandleValidSubmit()
 		{
-			if (model.Id == default)
+			try
 			{
-				model.Id = (await ExchangeRateFacade.CreateExchangeRateAsync(model)).Value;
-				Messenger.AddInformation(GetExchangeRateLabel(model), GlobalLocalizer.NewSuccess);
+				if (model.Id == default)
+				{
+					model.Id = (await ExchangeRateFacade.CreateExchangeRateAsync(model)).Value;
+					Messenger.AddInformation(GetExchangeRateLabel(model), GlobalLocalizer.NewSuccess);
+				}
+				else
+				{
+					await ExchangeRateFacade.UpdateExchangeRateAsync(model);
+					Messenger.AddInformation(GetExchangeRateLabel(model), GlobalLocalizer.UpdateSuccess);
+				}
+
+				await hxDisplayLayout.HideAsync();
+
+				Value.UpdateFrom(model);
+				await ValueChanged.InvokeAsync(this.Value);
 			}
-			else
+			catch (OperationFailedException ex)
 			{
-				await ExchangeRateFacade.UpdateExchangeRateAsync(model);
-				Messenger.AddInformation(GetExchangeRateLabel(model), GlobalLocalizer.UpdateSuccess);
+				// NOOP
 			}
-
-			await hxDisplayLayout.HideAsync();
-
-			Value.UpdateFrom(model);
-			await ValueChanged.InvokeAsync(this.Value);
 		}
 
 		public Task ShowAsync() => hxDisplayLayout.ShowAsync();

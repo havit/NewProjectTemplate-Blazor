@@ -14,14 +14,11 @@ namespace Havit.GoranG3.Web.Client.Infrastructure.Interceptors
 {
 	public class ServerErrorGrpcInterceptor : Interceptor
 	{
-		private readonly IHxMessengerService messenger;
 		private readonly ILogger<ServerErrorGrpcInterceptor> logger;
 
 		public ServerErrorGrpcInterceptor(
-			IHxMessengerService messenger,
 			ILogger<ServerErrorGrpcInterceptor> logger)
 		{
-			this.messenger = messenger;
 			this.logger = logger;
 		}
 
@@ -41,20 +38,12 @@ namespace Havit.GoranG3.Web.Client.Infrastructure.Interceptors
 			{
 				return await responseTask;
 			}
-			//catch (RpcException e) when (e.Status.DebugException is AccessTokenNotAvailableException innerException)
-			//{
-			//	innerException.Redirect();
-
-			//	return default;
-			//}
 			catch (RpcException e)
 			{
 				Metadata.Entry validationTrailer = e.Trailers.Get(nameof(OperationFailedException).ToLower());
 				if (validationTrailer != null)
 				{
 					logger.LogWarning($"{nameof(OperationFailedException)}: {validationTrailer.Value}");
-
-					messenger.AddError(validationTrailer.Value);
 
 					throw new OperationFailedException(validationTrailer.Value);
 				}

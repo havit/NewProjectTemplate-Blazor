@@ -12,6 +12,7 @@ using Havit.GoranG3.Contracts.Finance.Invoices;
 using Havit.GoranG3.Contracts.GrpcTests;
 using Havit.GoranG3.Contracts.System;
 using Havit.GoranG3.Web.Client.Infrastructure;
+using Havit.GoranG3.Web.Client.Infrastructure.FacadeDecorators;
 using Havit.GoranG3.Web.Client.Infrastructure.Interceptors;
 using Havit.GoranG3.Web.Client.Infrastructure.Security;
 using Havit.GoranG3.Web.Client.Resources;
@@ -20,6 +21,7 @@ using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Scrutor;
 
 namespace Havit.GoranG3.Web.Client
 {
@@ -71,7 +73,9 @@ namespace Havit.GoranG3.Web.Client
 
 			// TODO Mass registration of facades
 			builder.Services.AddGrpcClientProxyWithAuth<IInvoiceFacade>();
+			
 			builder.Services.AddGrpcClientProxyWithAuth<ITestFacade>();
+			builder.Services.Decorate<ITestFacade, TestFacadeClientDecorator>();
 
 			builder.Services.AddGrpcClientProxyWithAuth<IBankAccountFacade>();
 			builder.Services.AddGrpcClientProxyWithAuth<ICurrencyFacade>();
