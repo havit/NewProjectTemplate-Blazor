@@ -30,7 +30,6 @@ namespace Havit.GoranG3.Web.Client.Infrastructure.Grpc
 			services.AddTransient<AuthorizationGrpcClientInterceptor>();
 			services.AddTransient<ServerExceptionsGrpcClientInterceptor>();
 			services.AddTransient<GrpcWebHandler>(provider => new GrpcWebHandler(GrpcWebMode.GrpcWeb, new HttpClientHandler()));
-			services.AddTransient<ApplicationGrpcWebHandler>();
 		}
 
 		public static IHttpClientBuilder AddGrpcClientProxy<TService>(this IServiceCollection services)
@@ -41,7 +40,7 @@ namespace Havit.GoranG3.Web.Client.Infrastructure.Grpc
 				{
 					options.Address = new Uri(GetBackendUrl(provider));
 				})
-				.ConfigurePrimaryHttpMessageHandler<ApplicationGrpcWebHandler>()
+				.ConfigurePrimaryHttpMessageHandler<GrpcWebHandler>()
 				.AddInterceptor<ServerExceptionsGrpcClientInterceptor>();
 		}
 
