@@ -12,15 +12,9 @@ using Microsoft.Extensions.Logging;
 
 namespace Havit.GoranG3.Web.Client.Infrastructure.Interceptors
 {
-	public class ServerErrorGrpcInterceptor : Interceptor
+	public class ServerExceptionsGrpcClientInterceptor : Interceptor
 	{
-		private readonly ILogger<ServerErrorGrpcInterceptor> logger;
-
-		public ServerErrorGrpcInterceptor(
-			ILogger<ServerErrorGrpcInterceptor> logger)
-		{
-			this.logger = logger;
-		}
+		// do not inject scoped services here, the scope is not available
 
 		public override AsyncUnaryCall<TResponse> AsyncUnaryCall<TRequest, TResponse>(
 					TRequest request,
@@ -40,11 +34,10 @@ namespace Havit.GoranG3.Web.Client.Infrastructure.Interceptors
 			}
 			catch (RpcException e)
 			{
+				// This is where we throw the OperationFailedException received from server. The HxMessenger stuff is in ApplicationGrpcWebHandler.
 				Metadata.Entry validationTrailer = e.Trailers.Get(nameof(OperationFailedException).ToLower());
 				if (validationTrailer != null)
 				{
-					logger.LogWarning($"{nameof(OperationFailedException)}: {validationTrailer.Value}");
-
 					throw new OperationFailedException(validationTrailer.Value);
 				}
 

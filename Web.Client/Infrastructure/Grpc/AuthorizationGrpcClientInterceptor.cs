@@ -7,9 +7,9 @@ using Grpc.Core.Interceptors;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
 
-namespace Havit.GoranG3.Web.Client.Infrastructure.Interceptors
+namespace Havit.GoranG3.Web.Client.Infrastructure.Grpc
 {
-	public class AuthorizationInterceptor : Interceptor
+	public class AuthorizationGrpcClientInterceptor : Interceptor
 	{
 		public override AsyncUnaryCall<TResponse> AsyncUnaryCall<TRequest, TResponse>(
 					TRequest request,

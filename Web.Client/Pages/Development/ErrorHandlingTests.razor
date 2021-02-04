@@ -1,3 +1,5 @@
 ﻿@page "/development/error-handling"
 
 <HxButton Text="Server call with OperationFailedException" Color="ThemeColor.Primary" OnClick="TestFacade.RaiseOperationFailedException" />
+
+<HxButton Text="Server call with OperationFailedException + try-catch on client" Color="ThemeColor.Secondary" OnClick="HandleWithTryCatch" />

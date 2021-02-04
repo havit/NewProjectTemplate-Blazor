@@ -12,7 +12,7 @@ using Havit.GoranG3.Contracts.Finance.Invoices;
 using Havit.GoranG3.Contracts.GrpcTests;
 using Havit.GoranG3.Contracts.System;
 using Havit.GoranG3.Web.Client.Infrastructure;
-using Havit.GoranG3.Web.Client.Infrastructure.FacadeDecorators;
+using Havit.GoranG3.Web.Client.Infrastructure.Grpc;
 using Havit.GoranG3.Web.Client.Infrastructure.Interceptors;
 using Havit.GoranG3.Web.Client.Infrastructure.Security;
 using Havit.GoranG3.Web.Client.Resources;
@@ -21,7 +21,6 @@ using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Scrutor;
 
 namespace Havit.GoranG3.Web.Client
 {
@@ -31,7 +30,7 @@ namespace Havit.GoranG3.Web.Client
 		{
 			var builder = WebAssemblyHostBuilder.CreateDefault(args);
 #if DEBUG
-			builder.Logging.SetMinimumLevel(LogLevel.Trace);
+			builder.Logging.SetMinimumLevel(LogLevel.Debug);
 #endif
 
 			builder.RootComponents.Add<App>("app");
@@ -47,6 +46,7 @@ namespace Havit.GoranG3.Web.Client
 
 			builder.Services.AddHxMessenger();
 			builder.Services.AddHxMessageBoxHost();
+			SetHxComponents();
 
 			builder.Services.AddScoped<ICurrencyDataStore, CurrencyDataStore>();
 
@@ -54,7 +54,6 @@ namespace Havit.GoranG3.Web.Client
 
 			WebAssemblyHost webAssemblyHost = builder.Build();
 
-			SetHxComponents();
 			await SetLanguage(webAssemblyHost);
 
 			await webAssemblyHost.RunAsync();
@@ -62,20 +61,17 @@ namespace Havit.GoranG3.Web.Client
 
 		private static void SetHxComponents()
 		{
-			HxProgressOverlay.DefaultDelay = 300; // just trying :-D
+			HxProgressOverlay.DefaultDelay = 0; // just trying :-D
 		}
 
 		private static void AddGrpcClient(WebAssemblyHostBuilder builder)
 		{
-			//builder.Services.AddGrpcClientsInfrastructure();
-
-			builder.Services.AddTransient<ServerErrorGrpcInterceptor>();
+			builder.Services.AddGrpcClientInfrastructure();
 
 			// TODO Mass registration of facades
 			builder.Services.AddGrpcClientProxyWithAuth<IInvoiceFacade>();
-			
+
 			builder.Services.AddGrpcClientProxyWithAuth<ITestFacade>();
-			builder.Services.Decorate<ITestFacade, TestFacadeClientDecorator>();
 
 			builder.Services.AddGrpcClientProxyWithAuth<IBankAccountFacade>();
 			builder.Services.AddGrpcClientProxyWithAuth<ICurrencyFacade>();

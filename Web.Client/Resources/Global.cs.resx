@@ -132,6 +132,9 @@
   <data name="NewSuccess" xml:space="preserve">
     <value>Záznam založen.</value>
   </data>
+  <data name="OperationFailedExceptionMessengerTitle" xml:space="preserve">
+    <value>Něco se nepovedlo</value>
+  </data>
   <data name="SelectNull" xml:space="preserve">
     <value>-vyberte-</value>
   </data>

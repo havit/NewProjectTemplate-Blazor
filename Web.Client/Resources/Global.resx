@@ -132,11 +132,14 @@
   <data name="NewSuccess" xml:space="preserve">
     <value>Item created.</value>
   </data>
+  <data name="OperationFailedExceptionMessengerTitle" xml:space="preserve">
+    <value>Something went wrong</value>
+  </data>
   <data name="SelectNull" xml:space="preserve">
     <value>-select-</value>
   </data>
   <data name="SelectNullItems" xml:space="preserve">
-    <value>Načítám...</value>
+    <value>Loading...</value>
   </data>
   <data name="UpdateSuccess" xml:space="preserve">
     <value>Item updated.</value>
