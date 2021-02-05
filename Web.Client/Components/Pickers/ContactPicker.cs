@@ -17,7 +17,7 @@ namespace Havit.GoranG3.Web.Client.Components.Pickers
 		public ContactPicker()
 		{
 			this.DataProvider = GetSuggestions;
-			this.TextFromValueAsyncSelector = ResolveItemFromId;
+			this.ItemFromValueResolver = ResolveItemFromId;
 			this.TextSelector = (c => c.Name);
 			this.ValueSelector = (v => v.Id);
 		}
@@ -29,7 +29,7 @@ namespace Havit.GoranG3.Web.Client.Components.Pickers
 			// TODO StartsWith first, Contains then, see G2
 			return new AutosuggestDataProviderResult<ContactReferenceVM>()
 			{
-				Items = all
+				Data = all
 							.Where(c => c.Name.StartsWith(request.UserInput, StringComparison.OrdinalIgnoreCase))
 							.OrderBy(c => c.Name)
 							.Take(10)
@@ -37,13 +37,13 @@ namespace Havit.GoranG3.Web.Client.Components.Pickers
 			};
 		}
 
-		private async Task<string> ResolveItemFromId(int? id)
+		private async Task<ContactReferenceVM> ResolveItemFromId(int? id)
 		{
 			if (id is null)
 			{
 				return null;
 			}
-			return (await ContactReferenceDataStore.GetByKeyAsync(id.Value)).Name; // TODO return Item
+			return (await ContactReferenceDataStore.GetByKeyAsync(id.Value));
 		}
 	}
 }

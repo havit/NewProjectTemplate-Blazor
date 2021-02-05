@@ -19,7 +19,7 @@ namespace Havit.GoranG3.Web.Client.Pages.Development.Prototyping
 		{
 			return Task.FromResult(new AutosuggestDataProviderResult<string>()
 			{
-				Items = Enumerable.Range(0, 10).Select(i => request.UserInput + " " + (i + 1).ToString()).ToList()
+				Data = Enumerable.Range(0, 10).Select(i => request.UserInput + " " + (i + 1).ToString()).ToList()
 			});
 		}
 	}

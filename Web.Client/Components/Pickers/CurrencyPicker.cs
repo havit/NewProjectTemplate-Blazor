@@ -28,9 +28,9 @@ namespace Havit.GoranG3.Web.Client.Components.Pickers
 		protected override async Task OnInitializedAsync()
 		{
 			this.NullText ??= GlobalLocalizer.SelectNull;
-			this.NullItemsText ??= GlobalLocalizer.SelectNullItems;
+			this.NullDataText ??= GlobalLocalizer.SelectNullItems;
 
-			this.Items = await CurrencyDataStore.GetAllAsync();
+			this.Data = await CurrencyDataStore.GetAllAsync();
 		}
 	}
 }

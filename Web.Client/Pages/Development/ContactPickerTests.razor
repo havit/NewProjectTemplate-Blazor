@@ -5,6 +5,6 @@
 <HxButton Text="Set ContactId = -1" OnClick="() => model.ContactId = -1" Color="ThemeColor.Primary" />
 
 <br/>
-<HxRepeater TItem="Havit.GoranG3.Contracts.Crm.ContactReferenceVM" Items="contactReferences">
+<HxRepeater TItem="Havit.GoranG3.Contracts.Crm.ContactReferenceVM" Data="contactReferences">
 	<ItemTemplate>@context.Id : @context.Name (IsDeleted: @context.IsDeleted)</ItemTemplate>
 </HxRepeater>
