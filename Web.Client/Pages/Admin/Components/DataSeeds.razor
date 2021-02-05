@@ -1,5 +1,5 @@
 ﻿<div class="mb-3">
 	<label class="form-label">Seed profile</label>
-	<HxSelect @bind-Value="selectedSeedProfile" Items="seedProfiles" TValueType="string" TItemType="string" Nullable="true" NullText="-select profile-" />
+	<HxSelect @bind-Value="selectedSeedProfile" Data="seedProfiles" TValueType="string" TItemType="string" Nullable="true" NullText="-select profile-" />
 </div>
 <HxSubmit Skin="ButtonSkins.OK" Text="Run seed" Color="ThemeColor.Primary" Enabled="@(selectedSeedProfile is not null)" OnClick="HandleSeedClick" />

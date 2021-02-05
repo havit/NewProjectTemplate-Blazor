@@ -34,7 +34,7 @@
 
 		@* DEMO of DisplayModes, in production, this should be fixed to Drawer *@
 		<div class="my-3">
-			<HxSelect Label="BankAccountEdit DisplayMode" Items="Enum.GetValues<LayoutDisplayMode>()" TItemType="LayoutDisplayMode" TValueType="LayoutDisplayMode" @bind-Value="displayMode" TextSelector="@(i => i.ToString("g"))" Nullable="false" />
+			<HxSelect Label="BankAccountEdit DisplayMode" Data="Enum.GetValues<LayoutDisplayMode>()" TItemType="LayoutDisplayMode" TValueType="LayoutDisplayMode" @bind-Value="displayMode" TextSelector="@(i => i.ToString("g"))" Nullable="false" />
 		</div>
 
 		<BankAccountEdit @ref="bankAccountEditComponent" Value="bankAccountEdited" ValueChanged="HandleEditValueChanged" DisplayMode="displayMode" OnClosed="HandleEditClosed" />
