@@ -31,11 +31,20 @@ namespace Havit.GoranG3.Web.Client.Pages.Admin
 		protected override async Task OnInitializedAsync()
 		{
 			await base.OnInitializedAsync();
-			currencies = (await CurrencyDataStore.GetAllAsync()).ToDictionary(c => c.Id);
+			await EnsureCurrencies();
+		}
+
+		private async Task EnsureCurrencies()
+		{
+			if (currencies == null)
+			{
+				currencies = (await CurrencyDataStore.GetAllAsync()).ToDictionary(c => c.Id);
+			}
 		}
 
 		private async Task<GridDataProviderResult<ExchangeRateDto>> LoadExchangeRates(GridDataProviderRequest<ExchangeRateDto> request)
 		{
+			await EnsureCurrencies();
 			return request.ApplyTo((await ExchangeRateFacade.GetExchangeRatesAsync()).Value);
 		}
 
