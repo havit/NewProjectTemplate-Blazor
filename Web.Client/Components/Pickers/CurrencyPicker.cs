@@ -18,14 +18,19 @@ namespace Havit.GoranG3.Web.Client.Components.Pickers
 		[Inject] protected ICurrencyDataStore CurrencyDataStore { get; set; }
 		[Inject] protected IGlobalLocalizer GlobalLocalizer { get; set; }
 
-		protected override async Task OnInitializedAsync()
+		public CurrencyPicker()
 		{
 			this.Nullable = true;
-			this.NullText = GlobalLocalizer.SelectNull;
-			this.NullItemsText = GlobalLocalizer.SelectNullItems;
-			this.Items = await CurrencyDataStore.GetAllAsync();
 			this.ValueSelector = (c => c.Id);
 			this.TextSelector = (c => c.Code);
+		}
+
+		protected override async Task OnInitializedAsync()
+		{
+			this.NullText ??= GlobalLocalizer.SelectNull;
+			this.NullItemsText ??= GlobalLocalizer.SelectNullItems;
+
+			this.Items = await CurrencyDataStore.GetAllAsync();
 		}
 	}
 }

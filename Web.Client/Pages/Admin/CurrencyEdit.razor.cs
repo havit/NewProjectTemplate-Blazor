@@ -35,23 +35,29 @@ namespace Havit.GoranG3.Web.Client.Pages.Admin
 
 		public async Task HandleValidSubmit()
 		{
-			if (model.Id == default)
+			try
 			{
-				model.Id = (await CurrencyFacade.CreateCurrencyAsync(model)).Value;
-				Messenger.AddInformation(model.Code, GlobalLocalizer.NewSuccess);
+				if (model.Id == default)
+				{
+					model.Id = (await CurrencyFacade.CreateCurrencyAsync(model)).Value;
+					Messenger.AddInformation(model.Code, GlobalLocalizer.NewSuccess);
+				}
+				else
+				{
+					await CurrencyFacade.UpdateCurrencyAsync(model);
+					Messenger.AddInformation(model.Code, GlobalLocalizer.UpdateSuccess);
+				}
+
+				await hxDisplayLayout.HideAsync();
+
+				Value.UpdateFrom(model);
+				await ValueChanged.InvokeAsync(this.Value);
 			}
-			else
+			catch (OperationFailedException)
 			{
-				await CurrencyFacade.UpdateCurrencyAsync(model);
-				Messenger.AddInformation(model.Code, GlobalLocalizer.UpdateSuccess);
+				// NOOP - The user should be able to fix the issues and repeat the action
 			}
-
-			await hxDisplayLayout.HideAsync();
-
-			Value.UpdateFrom(model);
-			await ValueChanged.InvokeAsync(this.Value);
 		}
-
 
 		public Task ShowAsync() => hxDisplayLayout.ShowAsync();
 	}

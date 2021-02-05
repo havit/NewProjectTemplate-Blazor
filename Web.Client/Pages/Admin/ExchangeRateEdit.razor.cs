@@ -64,7 +64,7 @@ namespace Havit.GoranG3.Web.Client.Pages.Admin
 			}
 			catch (OperationFailedException)
 			{
-				// NOOP
+				// NOOP - The user should be able to fix the issues and repeat the action
 			}
 		}
 

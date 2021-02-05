@@ -23,6 +23,7 @@ using Havit.GoranG3.Contracts;
 using Havit.GoranG3.Facades.Finance;
 using Havit.GoranG3.Facades.System;
 using Web.Server.Infrastructure.Interceptors;
+using Havit.GoranG3.Facades.Crm;
 
 namespace Havit.GoranG3.Web.Server
 {
@@ -124,6 +125,7 @@ namespace Havit.GoranG3.Web.Server
 				endpoints.MapGrpcService<InvoiceFacade>();
 
 				endpoints.MapGrpcService<BankAccountFacade>();
+				endpoints.MapGrpcService<ContactFacade>();
 				endpoints.MapGrpcService<CurrencyFacade>();
 				endpoints.MapGrpcService<ExchangeRateFacade>();
 

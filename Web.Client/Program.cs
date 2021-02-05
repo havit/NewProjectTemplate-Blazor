@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Blazored.LocalStorage;
 using Havit.Blazor.Components.Web;
 using Havit.Blazor.Components.Web.Bootstrap;
+using Havit.GoranG3.Contracts.Crm;
 using Havit.GoranG3.Contracts.Finance;
 using Havit.GoranG3.Contracts.Finance.Invoices;
 using Havit.GoranG3.Contracts.GrpcTests;
@@ -49,6 +50,7 @@ namespace Havit.GoranG3.Web.Client
 			SetHxComponents();
 
 			builder.Services.AddScoped<ICurrencyDataStore, CurrencyDataStore>();
+			builder.Services.AddScoped<IContactReferenceDataStore, ContactReferenceDataStore>();
 
 			AddGrpcClient(builder);
 
@@ -74,6 +76,7 @@ namespace Havit.GoranG3.Web.Client
 			builder.Services.AddGrpcClientProxyWithAuth<ITestFacade>();
 
 			builder.Services.AddGrpcClientProxyWithAuth<IBankAccountFacade>();
+			builder.Services.AddGrpcClientProxyWithAuth<IContactFacade>();
 			builder.Services.AddGrpcClientProxyWithAuth<ICurrencyFacade>();
 			builder.Services.AddGrpcClientProxyWithAuth<IExchangeRateFacade>();
 

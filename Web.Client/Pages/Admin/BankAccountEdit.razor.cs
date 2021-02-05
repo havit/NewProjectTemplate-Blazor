@@ -44,21 +44,28 @@ namespace Havit.GoranG3.Web.Client.Pages.Admin
 
 		public async Task HandleValidSubmit()
 		{
-			if (model.Id == default)
+			try
 			{
-				model.Id = (await BankAccountFacade.CreateBankAccountAsync(model)).Value;
-				Messenger.AddInformation(model.Name, GlobalLocalizer.NewSuccess);
+				if (model.Id == default)
+				{
+					model.Id = (await BankAccountFacade.CreateBankAccountAsync(model)).Value;
+					Messenger.AddInformation(model.Name, GlobalLocalizer.NewSuccess);
+				}
+				else
+				{
+					await BankAccountFacade.UpdateBankAccountAsync(model);
+					Messenger.AddInformation(model.Name, GlobalLocalizer.UpdateSuccess);
+				}
+
+				await hxDisplayLayout.HideAsync();
+
+				Value.UpdateFrom(model);
+				await ValueChanged.InvokeAsync(this.Value);
 			}
-			else
+			catch (OperationFailedException)
 			{
-				await BankAccountFacade.UpdateBankAccountAsync(model);
-				Messenger.AddInformation(model.Name, GlobalLocalizer.UpdateSuccess);
+				// NOOP - The user should be able to fix the issues and repeat the action
 			}
-
-			await hxDisplayLayout.HideAsync();
-
-			Value.UpdateFrom(model);
-			await ValueChanged.InvokeAsync(this.Value);
 		}
 
 		public Task ShowAsync() => hxDisplayLayout.ShowAsync();
