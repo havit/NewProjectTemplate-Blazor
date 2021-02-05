@@ -6,7 +6,7 @@
         <EditForm id="currency-edit" Model="model" OnValidSubmit="HandleValidSubmit">
             <DataAnnotationsValidator />
             <HxInputText Label="@CurrencyLocalizer.Code" @bind-Value="model.Code" />
-            <text>TBD: Default bank account picker</text>
+            <BankAccountPicker Label="@CurrencyLocalizer.DefaultBankAccount" @bind-Value="model.DefaultBankAccountId" />
         </EditForm>
     </BodyTemplate>
     <FooterTemplate>

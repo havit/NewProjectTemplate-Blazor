@@ -51,6 +51,7 @@ namespace Havit.GoranG3.Web.Client
 
 			builder.Services.AddScoped<ICurrencyDataStore, CurrencyDataStore>();
 			builder.Services.AddScoped<IContactReferenceDataStore, ContactReferenceDataStore>();
+			builder.Services.AddScoped<IBankAccountDataStore, BankAccountDataStore>();
 
 			AddGrpcClient(builder);
 
