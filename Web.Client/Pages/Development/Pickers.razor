@@ -1,10 +1,19 @@
-﻿@page "/development/contact-picker" 
+﻿@page "/development/pickers"
 
-<ContactPicker @bind-Value="model.ContactId" />
+<BankAccountPicker Label="BankAccountPicker" @bind-Value="id" />
+
+<CurrencyPicker Label="CurrencyPicker" @bind-Value="id" />
+
+<ContactPicker Label="ContactPicker" @bind-Value="model.ContactId" />
 
 <HxButton Text="Set ContactId = -1" OnClick="() => model.ContactId = -1" Color="ThemeColor.Primary" />
 
-<br/>
+<br />
 <HxRepeater TItem="Havit.GoranG3.Contracts.Crm.ContactReferenceVM" Data="contactReferences">
 	<ItemTemplate>@context.Id : @context.Name (IsDeleted: @context.IsDeleted)</ItemTemplate>
 </HxRepeater>
+
+@code
+{
+	private int? id;
+}

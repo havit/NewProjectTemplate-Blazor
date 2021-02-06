@@ -13,24 +13,26 @@ using Microsoft.AspNetCore.Components;
 
 namespace Havit.GoranG3.Web.Client.Components.Pickers
 {
-	public partial class CurrencyPicker : HxSelect<int?, CurrencyDto>
+	public class CurrencyPicker : HxSelectBase<int?, CurrencyDto>
 	{
 		[Inject] protected ICurrencyDataStore CurrencyDataStore { get; set; }
 		[Inject] protected IGlobalLocalizer GlobalLocalizer { get; set; }
 
 		public CurrencyPicker()
 		{
-			this.Nullable = true;
-			this.ValueSelector = (c => c.Id);
-			this.TextSelector = (c => c.Code);
+			this.NullableImpl = true;
+			this.ValueSelectorImpl = (c => c.Id);
+			this.TextSelectorImpl = (c => c.Code);
 		}
 
 		protected override async Task OnInitializedAsync()
 		{
-			this.NullText ??= GlobalLocalizer.SelectNull;
-			this.NullDataText ??= GlobalLocalizer.SelectNullItems;
+			await base.OnInitializedAsync();
 
-			this.Data = await CurrencyDataStore.GetAllAsync();
+			this.NullTextImpl ??= GlobalLocalizer.SelectNull;
+			this.NullDataTextImpl ??= GlobalLocalizer.SelectNullItems;
+
+			this.DataImpl = await CurrencyDataStore.GetAllAsync();
 		}
 	}
 }

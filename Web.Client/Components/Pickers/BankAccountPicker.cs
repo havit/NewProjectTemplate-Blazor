@@ -10,19 +10,26 @@ using Havit.GoranG3.Web.Client.Resources;
 
 namespace Havit.GoranG3.Web.Client.Components.Pickers
 {
-	public class BankAccountPicker : HxSelect<int?, BankAccountDto>
+	public class BankAccountPicker : HxSelectBase<int?, BankAccountDto>
 	{
 		[Inject] protected IBankAccountDataStore BankAccountDataStore { get; set; }
 		[Inject] protected IGlobalLocalizer GlobalLocalizer { get; set; }
 
+		public BankAccountPicker()
+		{
+			this.NullableImpl = true;
+			this.ValueSelectorImpl = (c => c.Id);
+			this.TextSelectorImpl = (c => c.Name);
+		}
+
 		protected override async Task OnInitializedAsync()
 		{
-			this.Nullable = true;
-			this.NullText = GlobalLocalizer.SelectNull;
-			this.NullDataText = GlobalLocalizer.SelectNullItems;
-			this.Data = await BankAccountDataStore.GetAllAsync();
-			this.ValueSelector = (c => c.Id);
-			this.TextSelector = (c => c.Name);
+			await base.OnInitializedAsync();
+
+			this.NullTextImpl ??= GlobalLocalizer.SelectNull;
+			this.NullDataTextImpl ??= GlobalLocalizer.SelectNullItems;
+
+			this.DataImpl = await BankAccountDataStore.GetAllAsync();
 		}
 	}
 }

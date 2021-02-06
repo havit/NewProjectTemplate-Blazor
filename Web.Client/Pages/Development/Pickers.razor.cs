@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Components;
 
 namespace Havit.GoranG3.Web.Client.Pages.Development
 {
-	public partial class ContactPickerTests
+	public partial class Pickers
 	{
 		[Inject] protected IContactReferenceDataStore ContactReferenceDataStore { get; set; }
 
