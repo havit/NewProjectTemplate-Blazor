@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using BlazorApplicationInsights;
 using Blazored.LocalStorage;
 using Havit.Blazor.Components.Web;
 using Havit.Blazor.Components.Web.Bootstrap;
@@ -30,6 +31,9 @@ namespace Havit.GoranG3.Web.Client
 		public static async Task Main(string[] args)
 		{
 			var builder = WebAssemblyHostBuilder.CreateDefault(args);
+
+			builder.Services.AddBlazorApplicationInsights(addILoggerProvider: true);
+			builder.Logging.AddFilter<ApplicationInsightsLoggerProvider>(level => (level == LogLevel.Error) || (level == LogLevel.Critical));
 #if DEBUG
 			builder.Logging.SetMinimumLevel(LogLevel.Debug);
 #endif
