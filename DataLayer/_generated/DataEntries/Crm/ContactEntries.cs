@@ -32,7 +32,7 @@ namespace Havit.GoranG3.DataLayer.DataEntries.Crm
         }
 		private Havit.GoranG3.Model.Crm.Contact self;
 
-		public ContactEntries(IRepository<Havit.GoranG3.Model.Crm.Contact> repository)
+		public ContactEntries(Havit.GoranG3.DataLayer.Repositories.Crm.IContactRepository repository)
 			: base(repository)
 		{
 		}

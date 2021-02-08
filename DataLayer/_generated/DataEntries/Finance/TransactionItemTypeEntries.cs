@@ -45,7 +45,7 @@ namespace Havit.GoranG3.DataLayer.DataEntries.Finance
         }
 		private Havit.GoranG3.Model.Finance.TransactionItemType revenue;
 
-		public TransactionItemTypeEntries(IRepository<Havit.GoranG3.Model.Finance.TransactionItemType> repository)
+		public TransactionItemTypeEntries(Havit.GoranG3.DataLayer.Repositories.Finance.ITransactionItemTypeRepository repository)
 			: base(repository)
 		{
 		}

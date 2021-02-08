@@ -16,6 +16,7 @@ namespace Havit.GoranG3.Model.Metadata.Security
 	[System.CodeDom.Compiler.GeneratedCode("Havit.Data.EntityFrameworkCore.CodeGenerator", "1.0")]
 	public static class UserMetadata
 	{
+		public const int DisplayNameMaxLength = 100;
 		public const int EmailMaxLength = 255;
 		public const int NormalizedEmailMaxLength = 255;
 		public const int NormalizedUsernameMaxLength = 50;

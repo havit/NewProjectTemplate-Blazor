@@ -11,10 +11,10 @@ if (-Not $version)
 else
 {
 	Write-Host "Found version $version."
-	$codeGenerator = "$env:UserProfile\.nuget\packages\Havit.Data.EntityFrameworkCore.CodeGenerator\$version\tools\CodeGenerator\Havit.Data.EntityFrameworkCore.CodeGenerator.dll"
+	$codeGenerator = "$env:UserProfile\.nuget\packages\Havit.Data.EntityFrameworkCore.CodeGenerator\$version\tools\CodeGenerator-net5.0\Havit.Data.EntityFrameworkCore.CodeGenerator.dll"
 	if ($codeGenerator)
 	{
-get-location
+		get-location
 		Write-Host "Running code generator ($codeGenerator)"
 		#Push-Location $scriptPath
 		&dotnet $codeGenerator

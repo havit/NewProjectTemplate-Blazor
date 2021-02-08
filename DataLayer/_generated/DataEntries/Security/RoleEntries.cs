@@ -45,7 +45,7 @@ namespace Havit.GoranG3.DataLayer.DataEntries.Security
         }
 		private Havit.GoranG3.Model.Security.Role userSettingsAdministrator;
 
-		public RoleEntries(IRepository<Havit.GoranG3.Model.Security.Role> repository)
+		public RoleEntries(Havit.GoranG3.DataLayer.Repositories.Security.IRoleRepository repository)
 			: base(repository)
 		{
 		}

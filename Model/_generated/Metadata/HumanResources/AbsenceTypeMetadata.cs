@@ -16,5 +16,6 @@ namespace Havit.GoranG3.Model.Metadata.HumanResources
 	[System.CodeDom.Compiler.GeneratedCode("Havit.Data.EntityFrameworkCore.CodeGenerator", "1.0")]
 	public static class AbsenceTypeMetadata
 	{
+		public const int NameMaxLength = 50;
 	}
 }

@@ -32,7 +32,7 @@ namespace Havit.GoranG3.DataLayer.DataEntries.Projects
         }
 		private Havit.GoranG3.Model.Projects.Project root;
 
-		public ProjectEntries(IRepository<Havit.GoranG3.Model.Projects.Project> repository)
+		public ProjectEntries(Havit.GoranG3.DataLayer.Repositories.Projects.IProjectRepository repository)
 			: base(repository)
 		{
 		}

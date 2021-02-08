@@ -32,7 +32,7 @@ namespace Havit.GoranG3.DataLayer.DataEntries.Common
         }
 		private Havit.GoranG3.Model.Common.ApplicationSettings current;
 
-		public ApplicationSettingsEntries(IRepository<Havit.GoranG3.Model.Common.ApplicationSettings> repository)
+		public ApplicationSettingsEntries(Havit.GoranG3.DataLayer.Repositories.Common.IApplicationSettingsRepository repository)
 			: base(repository)
 		{
 		}

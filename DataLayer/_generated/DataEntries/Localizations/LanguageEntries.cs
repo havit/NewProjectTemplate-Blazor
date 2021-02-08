@@ -45,7 +45,7 @@ namespace Havit.GoranG3.DataLayer.DataEntries.Localizations
         }
 		private Havit.GoranG3.Model.Localizations.Language english;
 
-		public LanguageEntries(IRepository<Havit.GoranG3.Model.Localizations.Language> repository)
+		public LanguageEntries(Havit.GoranG3.DataLayer.Repositories.Localizations.ILanguageRepository repository)
 			: base(repository)
 		{
 		}

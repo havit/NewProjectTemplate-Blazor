@@ -32,7 +32,7 @@ namespace Havit.GoranG3.DataLayer.DataEntries.HumanResources
         }
 		private Havit.GoranG3.Model.HumanResources.Team everyone;
 
-		public TeamEntries(IRepository<Havit.GoranG3.Model.HumanResources.Team> repository)
+		public TeamEntries(Havit.GoranG3.DataLayer.Repositories.HumanResources.ITeamRepository repository)
 			: base(repository)
 		{
 		}
