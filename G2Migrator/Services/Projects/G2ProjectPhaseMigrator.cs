@@ -56,8 +56,8 @@ namespace Havit.GoranG3.G2Migrator.Services.Projects
 					Console.WriteLine(" UPDATE");
 				}
 
-				projectPhase.Nazev = reader.GetValue<string>("Nazev");
-				projectPhase.Kod = reader.GetValue<string>("Kod");
+				projectPhase.Name = reader.GetValue<string>("Nazev");
+				projectPhase.Code = reader.GetValue<string>("Kod");
 				projectPhase.UiOrder = reader.GetValue<int>("Poradi");
 				projectPhase.Created = reader.GetValue<DateTime>("Created");
 				projectPhase.Deleted = reader.GetValue<DateTime?>("Deleted");

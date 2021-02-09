@@ -19,14 +19,14 @@ namespace Havit.GoranG3.Model.Projects
 		/// </summary>
 		[Required]
 		[MaxLength(100)]
-		public string Nazev { get; set; }
+		public string Name { get; set; }
 
 		/// <summary>
 		/// G2: Kod
 		/// </summary>
 		[Required]
 		[MaxLength(20)]
-		public string Kod { get; set; }
+		public string Code { get; set; }
 
 		/// <summary>
 		/// G2: Poradi
