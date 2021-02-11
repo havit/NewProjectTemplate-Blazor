@@ -5,10 +5,13 @@
     <DisableImplicitComponentsAnalyzers>true</DisableImplicitComponentsAnalyzers>
     <UserSecretsId>BlazorWasm-CSharp.Server-07F7A679-6CA8-442B-83BF-C889FBC5F990</UserSecretsId>
     <AssemblyName>Havit.GoranG3.Web.Server</AssemblyName>
+    <RootNamespace>Havit.GoranG3.Web.Server</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Grpc.AspNetCore.Web" Version="2.35.0" />
+    <PackageReference Include="Havit.AspNetCore" Version="2.0.5" />
+    <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.16.0" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="5.0.2" />
     <PackageReference Include="protobuf-net.Grpc.AspNetCore" Version="1.0.147" />
   </ItemGroup>

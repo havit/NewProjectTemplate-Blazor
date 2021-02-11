@@ -17,5 +17,7 @@ namespace Havit.GoranG3.Contracts.GrpcTests
 		Task<Dto<string>> TryGetResult();
 
 		Task RaiseOperationFailedException();
+
+		Task RaiseInvalidOperationException();
 	}
 }

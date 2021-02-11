@@ -1,29 +1,31 @@
+using System.IdentityModel.Tokens.Jwt;
+using Havit.GoranG3.Contracts;
+using Havit.GoranG3.DependencyInjection;
+using Havit.GoranG3.Facades.Crm;
+using Havit.GoranG3.Facades.Finance;
+using Havit.GoranG3.Facades.Finance.Invoices;
+using Havit.GoranG3.Facades.GrpcTests;
+using Havit.GoranG3.Facades.Infrastructure.Security.Authentication;
+using Havit.GoranG3.Facades.Infrastructure.Security.Identity;
+using Havit.GoranG3.Facades.System;
+using Havit.GoranG3.Model.Security;
+using Havit.GoranG3.Web.Server.Infrastructure.ApplicationInsights;
+using Havit.GoranG3.Web.Server.Infrastructure.Interceptors;
+using Havit.GoranG3.Web.Server.Infrastructure.Security;
+using Havit.GoranG3.Web.Server.Tools;
+using IdentityServer4.Models;
+using Microsoft.ApplicationInsights.DependencyCollector;
+using Microsoft.ApplicationInsights.Extensibility;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Havit.GoranG3.Facades.Infrastructure.Security.Identity;
-using Havit.GoranG3.Model.Security;
-using Havit.GoranG3.DependencyInjection;
-using Microsoft.AspNetCore.Http;
-using Havit.GoranG3.Web.Server.Tools;
-using Havit.GoranG3.Facades.Infrastructure.Security.Authentication;
-using Havit.GoranG3.Web.Server.Infrastructure.Security;
-using IdentityServer4.Models;
-using ProtoBuf.Grpc.Server;
-using Havit.GoranG3.Facades.GrpcTests;
-using Microsoft.AspNetCore.Identity;
-using Web.Server.Infrastructure.Security;
-using System.IdentityModel.Tokens.Jwt;
-using Havit.GoranG3.Facades.Finance.Invoices;
 using ProtoBuf.Grpc.Configuration;
-using Havit.GoranG3.Contracts;
-using Havit.GoranG3.Facades.Finance;
-using Havit.GoranG3.Facades.System;
-using Web.Server.Infrastructure.Interceptors;
-using Havit.GoranG3.Facades.Crm;
+using ProtoBuf.Grpc.Server;
 
 namespace Havit.GoranG3.Web.Server
 {
@@ -42,13 +44,15 @@ namespace Havit.GoranG3.Web.Server
 
 			services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
-			services.AddOptions(); // Adds services required for using options.
+			services.AddOptions();
 
 			// TODO services.AddCustomizedMailing(configuration);
 
-			// TODO services.AddExceptionMonitoring(configuration);
+			services.AddExceptionMonitoring(configuration);
 
-			// TODO services.AddApplicationInsightsTelemetry(configuration);
+			services.AddApplicationInsightsTelemetry(configuration);
+			services.AddSingleton<ITelemetryInitializer, GrpcRequestStatusTelemetryInitializer>();
+			services.ConfigureTelemetryModule<DependencyTrackingTelemetryModule>((module, o) => { module.EnableSqlCommandTextInstrumentation = true; });
 
 			services.AddDefaultIdentity<User>(options => options.SignIn.RequireConfirmedAccount = true)
 				.AddRoles<Role>()
@@ -104,7 +108,7 @@ namespace Havit.GoranG3.Web.Server
 			app.UseBlazorFrameworkFiles();
 			app.UseStaticFiles();
 
-			// TODO app.UseExceptionMonitoring();
+			app.UseExceptionMonitoring();
 
 			app.UseRouting();
 

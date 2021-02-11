@@ -7,7 +7,7 @@ using Havit.GoranG3.Model.Security;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Web.Server.Controllers
+namespace Havit.GoranG3.Web.Server.Controllers
 {
 	[ApiController]
 	public class DependencyInjectionTestController : ControllerBase

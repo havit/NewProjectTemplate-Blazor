@@ -10,7 +10,7 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Web.Server.Infrastructure.Security
+namespace Havit.GoranG3.Web.Server.Infrastructure.Security
 {
 	/// <summary>
 	/// Adding roles to claims returned by IdentityServer.

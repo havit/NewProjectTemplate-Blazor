@@ -49,7 +49,12 @@ namespace Havit.GoranG3.Facades.GrpcTests
 
 		public Task RaiseOperationFailedException()
 		{
-			throw new OperationFailedException("Blah blah OperationFailedException from server");
+			throw new OperationFailedException("This is OperationFailedException message from server");
+		}
+
+		public Task RaiseInvalidOperationException()
+		{
+			throw new InvalidOperationException("This is InvalidOperationException message from server");
 		}
 
 		public Task<Dto<string>> TryGetResult()
