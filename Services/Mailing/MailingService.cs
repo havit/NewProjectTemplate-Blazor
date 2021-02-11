@@ -7,6 +7,7 @@ using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 using Havit.Extensions.DependencyInjection.Abstractions;
+using Havit.GoranG3.Contracts.Infrastructure;
 using Microsoft.Extensions.Options;
 
 namespace Havit.GoranG3.Services.Mailing

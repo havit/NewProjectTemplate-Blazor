@@ -10,6 +10,7 @@ using Havit.GoranG3.Facades.Infrastructure.Security.Identity;
 using Havit.GoranG3.Facades.System;
 using Havit.GoranG3.Model.Security;
 using Havit.GoranG3.Web.Server.Infrastructure.ApplicationInsights;
+using Havit.GoranG3.Web.Server.Infrastructure.ConfigurationExtensions;
 using Havit.GoranG3.Web.Server.Infrastructure.Interceptors;
 using Havit.GoranG3.Web.Server.Infrastructure.Security;
 using Havit.GoranG3.Web.Server.Tools;
@@ -46,8 +47,9 @@ namespace Havit.GoranG3.Web.Server
 
 			services.AddOptions();
 
-			// TODO services.AddCustomizedMailing(configuration);
+			services.AddCustomizedMailing(configuration);
 
+			// SmtpExceptionMonitoring to errors@havit.cz
 			services.AddExceptionMonitoring(configuration);
 
 			// Application Insights
