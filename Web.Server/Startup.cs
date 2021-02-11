@@ -50,15 +50,16 @@ namespace Havit.GoranG3.Web.Server
 
 			services.AddExceptionMonitoring(configuration);
 
+			// Application Insights
 			services.AddApplicationInsightsTelemetry(configuration);
 			services.AddSingleton<ITelemetryInitializer, GrpcRequestStatusTelemetryInitializer>();
 			services.ConfigureTelemetryModule<DependencyTrackingTelemetryModule>((module, o) => { module.EnableSqlCommandTextInstrumentation = true; });
 
+			// Authentication, Authorization, Identity
 			services.AddDefaultIdentity<User>(options => options.SignIn.RequireConfirmedAccount = true)
 				.AddRoles<Role>()
 				.AddUserStore<UserStore>()
 				.AddRoleStore<RoleStore>();
-
 			services.AddIdentityServer()
 				.AddAspNetIdentity<User>()
 				.AddClients()
@@ -66,20 +67,17 @@ namespace Havit.GoranG3.Web.Server
 				.AddIdentityResources()
 				.AddApiResources()
 				.AddProfileService<IdentityServerProfileService>();
-
 			services.AddAuthentication()
 				.AddIdentityServerJwt();
+			JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear(); // server-side support for User.IsInRole(), see https://leastprivilege.com/2016/08/21/why-does-my-authorize-attribute-not-work/
+			services.AddScoped<IApplicationAuthenticationService, ApplicationAuthenticationService>();
 
-			// server-side support for User.IsInRole(), see https://leastprivilege.com/2016/08/21/why-does-my-authorize-attribute-not-work/
-			JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
-
+			// server-side UI
 			services.AddControllersWithViews();
 			services.AddRazorPages();
 
-			services.AddScoped<IApplicationAuthenticationService, ApplicationAuthenticationService>();
-
+			// gRPC
 			services.AddSingleton<ServerExceptionsGrpcServerInterceptor>();
-
 			services.AddSingleton(BinderConfiguration.Create());
 			services.AddCodeFirstGrpc(config =>
 			{

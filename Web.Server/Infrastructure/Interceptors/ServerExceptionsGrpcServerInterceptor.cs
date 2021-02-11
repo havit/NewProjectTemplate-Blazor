@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Grpc.Core;
 using Grpc.Core.Interceptors;
 using Havit;
+using Havit.AspNetCore.ExceptionMonitoring.Services;
 using Havit.Data.Patterns.Exceptions;
 using Microsoft.AspNetCore.Mvc.ModelBinding.Binders;
 using Microsoft.Extensions.Logging;
@@ -17,10 +18,12 @@ namespace Havit.GoranG3.Web.Server.Infrastructure.Interceptors
 	public class ServerExceptionsGrpcServerInterceptor : ServerExceptionsInterceptorBase
 	{
 		private readonly ILogger<ServerExceptionsGrpcServerInterceptor> logger;
+		private readonly IExceptionMonitoringService exceptionMonitoringService;
 
-		public ServerExceptionsGrpcServerInterceptor(ILogger<ServerExceptionsGrpcServerInterceptor> logger)
+		public ServerExceptionsGrpcServerInterceptor(ILogger<ServerExceptionsGrpcServerInterceptor> logger, IExceptionMonitoringService exceptionMonitoringService)
 		{
 			this.logger = logger;
+			this.exceptionMonitoringService = exceptionMonitoringService;
 		}
 
 		protected override bool OnException(Exception exception, out Status status)
@@ -51,7 +54,6 @@ namespace Havit.GoranG3.Web.Server.Infrastructure.Interceptors
 					TimeoutException => StatusCode.DeadlineExceeded,
 
 					_ => StatusCode.Unknown,
-
 				},
 #if DEBUG
 				exception.ToString());
@@ -59,7 +61,8 @@ namespace Havit.GoranG3.Web.Server.Infrastructure.Interceptors
 				$"{exception.GetType().FullName}: {exception.Message}");
 #endif
 
-				logger.LogError(exception, exception.Message); // DO NOT REMOVE - passes exception to ApplicationInsights tracking (Warning and higher levels get tracked by default)
+				logger.LogError(exception, exception.Message); // passes exception to ApplicationInsights tracking (by default, only Warning and higher levels get tracked)
+				exceptionMonitoringService.HandleException(exception); // passes exception to SmtpExceptionMonitoring (errors@havit.cz)
 			}
 			return true;
 		}
