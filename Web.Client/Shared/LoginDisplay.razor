@@ -18,7 +18,7 @@
             <div class="ms-auto">
                 <HxContextMenu>
                     @* TODO WTF *@
-                    @* <HxContextMenuItem Text="Log out" OnClick="BeginSignOut" /> *@
+                     <HxContextMenuItem Text="Log out" OnClick="BeginSignOut" /> 
                     <CultureSelector />
                 </HxContextMenu>
             </div>
@@ -31,7 +31,7 @@
 </AuthorizeView>
 
 @code{
-    private async Task BeginSignOut(MouseEventArgs args)
+    private async Task BeginSignOut()
     {
         await SignOutManager.SetSignOutState();
         Navigation.NavigateTo("authentication/logout");
