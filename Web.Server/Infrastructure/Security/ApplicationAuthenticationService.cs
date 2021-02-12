@@ -10,7 +10,6 @@ using Havit.GoranG3.Facades.Infrastructure.Security.Authentication;
 using Havit.GoranG3.Model.Security;
 using Microsoft.AspNetCore.Authorization.Infrastructure;
 using Havit.GoranG3.DataLayer.Repositories.Security;
-using Havit.GoranG3.Facades.Infrastructure.Security.Claims;
 
 namespace Havit.GoranG3.Web.Server.Infrastructure.Security
 {
@@ -27,7 +26,7 @@ namespace Havit.GoranG3.Web.Server.Infrastructure.Security
 		{
 			this.httpContextAccessor = httpContextAccessor;
 
-			userLazy = new Lazy<User>(() => userRepository.GetObject(GetCurrentClaimsPrincipal().GetUserId()));
+			userLazy = new Lazy<User>(() => userRepository.GetObject(GetCurrentUserId()));
 		}
 
 		public ClaimsPrincipal GetCurrentClaimsPrincipal()
@@ -36,5 +35,12 @@ namespace Havit.GoranG3.Web.Server.Infrastructure.Security
 		}
 
 		public User GetCurrentUser() => userLazy.Value;
+
+		public int GetCurrentUserId()
+		{
+			var principal = GetCurrentClaimsPrincipal();
+			Claim userIdClaim = principal.Claims.Single(claim => (claim.Type == "sub"));
+			return Int32.Parse(userIdClaim.Value);
+		}
 	}
 }
