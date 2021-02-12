@@ -1,2 +1,8 @@
-﻿<HxContextMenuItem Text="English" OnClick="@(async () => await SetCulture("en-us"))" />
-<HxContextMenuItem Text="Česky" OnClick="@(async () => await SetCulture("cs-cz"))" />
+﻿@if (System.Threading.Thread.CurrentThread.CurrentUICulture.TwoLetterISOLanguageName != "cs")
+{
+	<HxContextMenuItem Text="Česky" OnClick="@(async () => await SetCulture("cs-cz"))" />
+}
+@if (System.Threading.Thread.CurrentThread.CurrentUICulture.TwoLetterISOLanguageName != "en")
+{
+	<HxContextMenuItem Text="English" OnClick="@(async () => await SetCulture("en-us"))" />
+}
