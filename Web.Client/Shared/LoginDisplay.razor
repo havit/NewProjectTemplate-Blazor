@@ -6,8 +6,23 @@
 
 <AuthorizeView>
     <Authorized>
-        <a href="authentication/profile">Hello, @context.User.Identity.Name!</a>
-        <button class="nav-link btn btn-link" @onclick="BeginSignOut">Log out</button>
+
+        <div class="d-flex align-items-center ">
+            <div class="me-3">
+                <div class="p-2 rounded-circle bg-secondary">DC</div>
+            </div>
+            <div>
+                <a href="authentication/profile">@context.User.Claims.FirstOrDefault(c => c.Type ==
+                    "nickname").Value</a>
+            </div>
+            <div class="ms-auto">
+                <HxContextMenu>
+                    @* TODO WTF *@
+                    @* <HxContextMenuItem Text="Log out" OnClick="BeginSignOut" /> *@
+                    <CultureSelector />
+                </HxContextMenu>
+            </div>
+        </div>
     </Authorized>
     <NotAuthorized>
         <a href="authentication/register">Register</a>
