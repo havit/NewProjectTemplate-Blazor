@@ -14,9 +14,11 @@ using Havit.GoranG3.Web.Server.Infrastructure.ConfigurationExtensions;
 using Havit.GoranG3.Web.Server.Infrastructure.Interceptors;
 using Havit.GoranG3.Web.Server.Infrastructure.Security;
 using Havit.GoranG3.Web.Server.Tools;
+using IdentityModel;
 using IdentityServer4.Models;
 using Microsoft.ApplicationInsights.DependencyCollector;
 using Microsoft.ApplicationInsights.Extensibility;
+using Microsoft.AspNetCore.ApiAuthorization.IdentityServer;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -69,6 +71,10 @@ namespace Havit.GoranG3.Web.Server
 				.AddIdentityResources()
 				.AddApiResources()
 				.AddProfileService<IdentityServerProfileService>();
+			services.PostConfigure<ApiAuthorizationOptions>(o =>
+			{
+				o.Clients["Havit.GoranG3.Web.Client"].AlwaysIncludeUserClaimsInIdToken = true;
+			});
 			services.AddAuthentication()
 				.AddIdentityServerJwt();
 			JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear(); // server-side support for User.IsInRole(), see https://leastprivilege.com/2016/08/21/why-does-my-authorize-attribute-not-work/
