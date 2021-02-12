@@ -1,4 +1,5 @@
 ﻿@using System.Net.Http
+@using Microsoft.AspNetCore.Authorization
 @using Microsoft.AspNetCore.Components.Authorization
 @using Microsoft.AspNetCore.Components.Forms
 @using Microsoft.AspNetCore.Components.Routing
@@ -12,3 +13,6 @@
 
 @using Havit.Blazor.Components.Web
 @using Havit.Blazor.Components.Web.Bootstrap
+
+@* Allow only authenticated users *@
+@attribute [Authorize]
