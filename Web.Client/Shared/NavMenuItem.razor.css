@@ -1,5 +1,6 @@
 .nav-item {
 	font-size: 0.875rem;
+    margin: 0 .875rem;
 }
 
 a {
@@ -15,14 +16,24 @@ a.active {
 	color: var(--primary);
 }
 
-a > div:hover {
+a > div {
+    padding: .875rem;
+}
+
+a:hover > div {
 	background-color: var(--sidebar-link-hover);
 	color: var(--primary);
+    border-radius: 0.5rem;
+}
+
+a:hover span {
+    color: var(--primary);
 }
 
 a > div > span {
 	line-height: 18px;
 	height: 18px;
+    color: #212529;
 }
 
 ::deep i {
