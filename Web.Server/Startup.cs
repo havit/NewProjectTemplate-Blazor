@@ -57,6 +57,7 @@ namespace Havit.GoranG3.Web.Server
 			// Application Insights
 			services.AddApplicationInsightsTelemetry(configuration);
 			services.AddSingleton<ITelemetryInitializer, GrpcRequestStatusTelemetryInitializer>();
+			services.AddSingleton<ITelemetryInitializer, EnrichmentTelemetryInitializer>();
 			services.ConfigureTelemetryModule<DependencyTrackingTelemetryModule>((module, o) => { module.EnableSqlCommandTextInstrumentation = true; });
 
 			// Authentication, Authorization, Identity

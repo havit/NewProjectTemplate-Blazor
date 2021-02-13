@@ -32,11 +32,7 @@ namespace Havit.GoranG3.Web.Client
 		{
 			var builder = WebAssemblyHostBuilder.CreateDefault(args);
 
-			builder.Services.AddBlazorApplicationInsights(addILoggerProvider: true);
-			builder.Logging.AddFilter<ApplicationInsightsLoggerProvider>(level => (level == LogLevel.Error) || (level == LogLevel.Critical));
-#if DEBUG
-			builder.Logging.SetMinimumLevel(LogLevel.Debug);
-#endif
+			AddLoggingAndApplicationInsights(builder);
 
 			builder.RootComponents.Add<App>("app");
 
@@ -65,7 +61,6 @@ namespace Havit.GoranG3.Web.Client
 
 			await webAssemblyHost.RunAsync();
 		}
-
 		private static void SetHxComponents()
 		{
 			HxProgressOverlay.DefaultDelay = 0; // just trying :-D
@@ -100,6 +95,27 @@ namespace Havit.GoranG3.Web.Client
 				CultureInfo.DefaultThreadCurrentCulture = cultureInfo;
 				CultureInfo.DefaultThreadCurrentUICulture = cultureInfo;
 			}
+		}
+
+		private static void AddLoggingAndApplicationInsights(WebAssemblyHostBuilder builder)
+		{
+			builder.Services.AddBlazorApplicationInsights(async applicationInsights =>
+			{
+				var telemetryItem = new TelemetryItem()
+				{
+					Tags = new Dictionary<string, object>()
+					{
+						{ "ai.cloud.role", "Web.Client" },
+						// { "ai.cloud.roleInstance", "..." },
+					}
+				};
+
+				await applicationInsights.AddTelemetryInitializer(telemetryItem);
+			}, addILoggerProvider: true);
+			builder.Logging.AddFilter<ApplicationInsightsLoggerProvider>(level => (level == LogLevel.Error) || (level == LogLevel.Critical));
+#if DEBUG
+			builder.Logging.SetMinimumLevel(LogLevel.Debug);
+#endif
 		}
 	}
 }

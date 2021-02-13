@@ -29,6 +29,12 @@ namespace Havit.GoranG3.Web.Server.Infrastructure.ApplicationInsights
 
 		public void Initialize(ITelemetry telemetry)
 		{
+			if (string.IsNullOrEmpty(telemetry.Context.Cloud.RoleName))
+			{
+				telemetry.Context.Cloud.RoleName = "Web.Server";
+				// telemetry.Context.Cloud.RoleInstance = "...";
+			}
+
 			var requestTelemetry = telemetry as RequestTelemetry;
 			if (requestTelemetry == null)
 			{
