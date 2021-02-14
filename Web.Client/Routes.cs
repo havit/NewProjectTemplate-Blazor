@@ -17,9 +17,7 @@ namespace Havit.NewProjectTemplate.Web.Client
 
 		public static class UserAdministration
 		{
-			public const string Currencies = "/admin/user/currencies";
-			public const string ExchangeRates = "/admin/user/exchange-rates";
-			public const string BankAccounts = "/admin/user/bank-accounts";
+			public const string PageName = "/admin/user/page-name";
 		}
 
 		public static class Diagnostics
