@@ -7,9 +7,11 @@
    1. Delete SetupSolution.ps1
 1. Adjust the Model - remove unnecessary entities (Contact, ...)
 1. Run DataLayer CodeGenerator
-1. Create an initial EF migration (`Add-Migration Initial -StartupProject Entity.Tests`)
-1. Set Web.Server as startup project.
-1. Run the project...
+1. Create an initial EF migration
+   1. Drop the current migrations - delete Entity/Migrations folder
+   1. Add new initial migration `Add-Migration Initial -StartupProject Entity.Tests`
+1. Set Web.Server as the startup project.
+1. Run the app...
 
 ## Further Steps
 1. Application Insights - set InstrumentationKey
