@@ -1,5 +1,5 @@
 ﻿<div class="top-row ps-4 navbar navbar-light">
-    <a class="navbar-brand py-0 text-primary" href="">GORAN G3</a>
+    <a class="navbar-brand py-0 text-primary" href="">NewProjectTemplate</a>
     <button class="navbar-toggler" @onclick="ToggleNavMenu">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -13,61 +13,41 @@
                     <HxIcon CssClass="me-3" Icon="@BootstrapIcon.Columns" />
                 </Icon>
             </NavMenuItem>
-            <NavMenuItem Text="Osobní">
+            <NavMenuItem Text="Section 1">
                 <Icon>
                     <HxIcon CssClass="me-3" Icon="@BootstrapIcon.Person" />
                 </Icon>
                 <SubItems>
                     <li class="sub-item w-100">
                         <NavLink class="nav-link px-4 ps-5" href="/one" Match="NavLinkMatch.All">
-                            Timesheety
+                            Section Item 11
                         </NavLink>
                     </li>
-                    <li class="sub-item w-100">
-                        <NavLink class="nav-link px-4 ps-5" href="/two" Match="NavLinkMatch.All">
-                            Dovolené
-                        </NavLink>
+                    <li class="sub-tem w-100">
+						<NavLink class="nav-link px-4 ps-5" href="/two" Match="NavLinkMatch.All">
+							Section Item 12
+						</NavLink>
                     </li>
                     <li class="sub-item w-100">
-                        <NavLink class="nav-link px-4 ps-5" href="/three" Match="NavLinkMatch.All">
-                            Fond pracovní doby
-                        </NavLink>
+						<NavLink class="nav-link px-4 ps-5" href="/three" Match="NavLinkMatch.All">
+							Section Item 13
+						</NavLink>
                     </li>
                     <li class="sub-item w-100">
-                        <NavLink class="nav-link px-4 ps-5" href="/four" Match="NavLinkMatch.All">
-                            Tray Utilita
-                        </NavLink>
+						<NavLink class="nav-link px-4 ps-5" href="/four" Match="NavLinkMatch.All">
+							Section Item 14
+						</NavLink>
                     </li>
                 </SubItems>
             </NavMenuItem>
-            <NavMenuItem Text="Timesheety">
+            <NavMenuItem Text="Section 2">
                 <Icon>
                     <HxIcon CssClass="me-3" Icon="@BootstrapIcon.Clock" />
                 </Icon>
             </NavMenuItem>
-            <NavMenuItem Text="Projekty">
+            <NavMenuItem Text="Section 3">
                 <Icon>
                     <HxIcon CssClass="me-3" Icon="@BootstrapIcon.Kanban" />
-                </Icon>
-            </NavMenuItem>
-            <NavMenuItem Text="Finance">
-                <Icon>
-                    <HxIcon CssClass="me-3" Icon="@BootstrapIcon.Wallet2" />
-                </Icon>
-            </NavMenuItem>
-            <NavMenuItem Text="Reporting">
-                <Icon>
-                    <HxIcon CssClass="me-3" Icon="@BootstrapIcon.ClipboardData" />
-                </Icon>
-            </NavMenuItem>
-            <NavMenuItem Text="CRM">
-                <Icon>
-                    <HxIcon CssClass="me-3" Icon="@BootstrapIcon.Globe" />
-                </Icon>
-            </NavMenuItem>
-            <NavMenuItem Text="Personalistika">
-                <Icon>
-                    <HxIcon CssClass="me-3" Icon="@BootstrapIcon.People" />
                 </Icon>
             </NavMenuItem>
             <NavMenuItem Text="@NavigationLocalizer.Administration" Href="@Routes.Administration.Index">

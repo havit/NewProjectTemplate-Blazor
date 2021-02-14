@@ -18,12 +18,12 @@ using Havit.Data.Patterns.DataEntries;
 using Havit.Data.Patterns.DataLoaders;
 using Havit.Data.Patterns.Infrastructure;
 
-namespace Havit.GoranG3.DataLayer.Repositories.Localizations
+namespace Havit.NewProjectTemplate.DataLayer.Repositories.Localizations
 {
 	[System.CodeDom.Compiler.GeneratedCode("Havit.Data.EntityFrameworkCore.CodeGenerator", "1.0")]
 	public partial class LanguageDbRepository : LanguageDbRepositoryBase, ILanguageRepository
 	{
-		public LanguageDbRepository(IDbContext dbContext, Havit.GoranG3.DataLayer.DataSources.Localizations.ILanguageDataSource dataSource, IEntityKeyAccessor<Havit.GoranG3.Model.Localizations.Language, int> entityKeyAccessor, IDataLoader dataLoader, ISoftDeleteManager softDeleteManager, IEntityCacheManager entityCacheManager)
+		public LanguageDbRepository(IDbContext dbContext, Havit.NewProjectTemplate.DataLayer.DataSources.Localizations.ILanguageDataSource dataSource, IEntityKeyAccessor<Havit.NewProjectTemplate.Model.Localizations.Language, int> entityKeyAccessor, IDataLoader dataLoader, ISoftDeleteManager softDeleteManager, IEntityCacheManager entityCacheManager)
 			: base(dbContext, dataSource, entityKeyAccessor, dataLoader, softDeleteManager, entityCacheManager)
 		{
 		}

@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 using Havit.Data.Patterns.DataSeeds;
-using Havit.GoranG3.Model.Common;
+using Havit.NewProjectTemplate.Model.Common;
 
-namespace Havit.GoranG3.DataLayer.Seeds.Core.Common
+namespace Havit.NewProjectTemplate.DataLayer.Seeds.Core.Common
 {
 	public class DateInfoSeed : DataSeed<CoreProfile>
 	{

@@ -4,13 +4,13 @@ using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
-using Havit.GoranG3.Model.Security;
+using Havit.NewProjectTemplate.Model.Security;
 using IdentityModel;
 using IdentityServer4.Models;
 using IdentityServer4.Services;
 using Microsoft.AspNetCore.Identity;
 
-namespace Havit.GoranG3.Web.Server.Infrastructure.Security
+namespace Havit.NewProjectTemplate.Web.Server.Infrastructure.Security
 {
 	/// <summary>
 	/// Adding roles to claims returned by IdentityServer.

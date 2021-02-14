@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 using Blazored.LocalStorage;
 using Havit.Blazor.Components.Web;
 using Havit.Blazor.Components.Web.Bootstrap;
-using Havit.GoranG3.Contracts.System;
-using Havit.GoranG3.Web.Client.Resources;
-using Havit.GoranG3.Web.Client.Resources.Pages.Admin;
+using Havit.NewProjectTemplate.Contracts.System;
+using Havit.NewProjectTemplate.Web.Client.Resources;
+using Havit.NewProjectTemplate.Web.Client.Resources.Pages.Admin;
 using Microsoft.AspNetCore.Components;
 using Microsoft.Extensions.Localization;
 
-namespace Havit.GoranG3.Web.Client.Pages.Admin
+namespace Havit.NewProjectTemplate.Web.Client.Pages.Admin
 {
 	public partial class AdminIndex : ComponentBase
 	{

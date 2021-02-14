@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Havit.GoranG3.Model.Crm;
+using Havit.NewProjectTemplate.Model.Crm;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Havit.GoranG3.Entity.Configurations.Crm
+namespace Havit.NewProjectTemplate.Entity.Configurations.Crm
 {
 	public class CountryConfiguration : IEntityTypeConfiguration<Country>
 	{

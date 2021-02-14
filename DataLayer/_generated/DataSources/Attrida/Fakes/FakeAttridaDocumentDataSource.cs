@@ -14,18 +14,18 @@ using Havit.Data.EntityFrameworkCore.Patterns.DataSources.Fakes;
 using Havit.Data.EntityFrameworkCore.Patterns.SoftDeletes;
 using Havit.Data.Patterns.Attributes;
 
-namespace Havit.GoranG3.DataLayer.DataSources.Attrida.Fakes
+namespace Havit.NewProjectTemplate.DataLayer.DataSources.Attrida.Fakes
 {
 	[Fake]
 	[System.CodeDom.Compiler.GeneratedCode("Havit.Data.EntityFrameworkCore.CodeGenerator", "1.0")]
-	public class FakeAttridaDocumentDataSource : FakeDataSource<Havit.GoranG3.Model.Attrida.AttridaDocument>, Havit.GoranG3.DataLayer.DataSources.Attrida.IAttridaDocumentDataSource
+	public class FakeAttridaDocumentDataSource : FakeDataSource<Havit.NewProjectTemplate.Model.Attrida.AttridaDocument>, Havit.NewProjectTemplate.DataLayer.DataSources.Attrida.IAttridaDocumentDataSource
 	{
-		public FakeAttridaDocumentDataSource(params Havit.GoranG3.Model.Attrida.AttridaDocument[] data)
-			: this((IEnumerable<Havit.GoranG3.Model.Attrida.AttridaDocument>)data)
+		public FakeAttridaDocumentDataSource(params Havit.NewProjectTemplate.Model.Attrida.AttridaDocument[] data)
+			: this((IEnumerable<Havit.NewProjectTemplate.Model.Attrida.AttridaDocument>)data)
 		{			
 		}
 
-		public FakeAttridaDocumentDataSource(IEnumerable<Havit.GoranG3.Model.Attrida.AttridaDocument> data, ISoftDeleteManager softDeleteManager = null)
+		public FakeAttridaDocumentDataSource(IEnumerable<Havit.NewProjectTemplate.Model.Attrida.AttridaDocument> data, ISoftDeleteManager softDeleteManager = null)
 			: base(data, softDeleteManager)
 		{
 		}

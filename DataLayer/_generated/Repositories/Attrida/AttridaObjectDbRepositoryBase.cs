@@ -18,12 +18,12 @@ using Havit.Data.Patterns.DataEntries;
 using Havit.Data.Patterns.DataLoaders;
 using Havit.Data.Patterns.Infrastructure;
 
-namespace Havit.GoranG3.DataLayer.Repositories.Attrida
+namespace Havit.NewProjectTemplate.DataLayer.Repositories.Attrida
 {
 	[System.CodeDom.Compiler.GeneratedCode("Havit.Data.EntityFrameworkCore.CodeGenerator", "1.0")]
-	public abstract class AttridaObjectDbRepositoryBase : DbRepository<Havit.GoranG3.Model.Attrida.AttridaObject>
+	public abstract class AttridaObjectDbRepositoryBase : DbRepository<Havit.NewProjectTemplate.Model.Attrida.AttridaObject>
 	{
-		protected AttridaObjectDbRepositoryBase(IDbContext dbContext, Havit.GoranG3.DataLayer.DataSources.Attrida.IAttridaObjectDataSource dataSource, IEntityKeyAccessor<Havit.GoranG3.Model.Attrida.AttridaObject, int> entityKeyAccessor, IDataLoader dataLoader, ISoftDeleteManager softDeleteManager, IEntityCacheManager entityCacheManager)
+		protected AttridaObjectDbRepositoryBase(IDbContext dbContext, Havit.NewProjectTemplate.DataLayer.DataSources.Attrida.IAttridaObjectDataSource dataSource, IEntityKeyAccessor<Havit.NewProjectTemplate.Model.Attrida.AttridaObject, int> entityKeyAccessor, IDataLoader dataLoader, ISoftDeleteManager softDeleteManager, IEntityCacheManager entityCacheManager)
 			: base(dbContext, dataSource, entityKeyAccessor, dataLoader, softDeleteManager, entityCacheManager)
 		{
 		}

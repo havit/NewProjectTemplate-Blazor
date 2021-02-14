@@ -8,12 +8,12 @@ using Havit.Data.EntityFrameworkCore.Patterns.Repositories;
 using Havit.Data.EntityFrameworkCore.Patterns.SoftDeletes;
 using Havit.Data.Patterns.DataEntries;
 using Havit.Data.Patterns.DataLoaders;
-using Havit.GoranG3.Model.Common;
+using Havit.NewProjectTemplate.Model.Common;
 
-namespace Havit.GoranG3.DataLayer.Repositories.Common
+namespace Havit.NewProjectTemplate.DataLayer.Repositories.Common
 {
-	public partial class ApplicationSettingsDbRepository
+	public partial class ApplicationSettingsDbRepository : IApplicationSettingsRepository
 	{
-
+		
 	}
 }

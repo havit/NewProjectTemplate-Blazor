@@ -5,14 +5,14 @@ using System.Threading.Tasks;
 using Havit.Data.Patterns.DataSeeds;
 using Havit.Data.Patterns.DataSeeds.Profiles;
 using Havit.Extensions.DependencyInjection.Abstractions;
-using Havit.GoranG3.Contracts;
-using Havit.GoranG3.Contracts.System;
-using Havit.GoranG3.DataLayer.Seeds.Core;
-using Havit.GoranG3.Facades.Infrastructure.Security;
-using Havit.GoranG3.Facades.Infrastructure.Security.Authorization;
-using Havit.GoranG3.Services.Infrastructure;
+using Havit.NewProjectTemplate.Contracts;
+using Havit.NewProjectTemplate.Contracts.System;
+using Havit.NewProjectTemplate.DataLayer.Seeds.Core;
+using Havit.NewProjectTemplate.Facades.Infrastructure.Security;
+using Havit.NewProjectTemplate.Facades.Infrastructure.Security.Authorization;
+using Havit.NewProjectTemplate.Services.Infrastructure;
 
-namespace Havit.GoranG3.Facades.System
+namespace Havit.NewProjectTemplate.Facades.System
 {
 	/// <summary>
 	/// Fasáda k seedování dat.

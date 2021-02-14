@@ -5,7 +5,7 @@ using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Havit.GoranG3.Services.Mailing
+namespace Havit.NewProjectTemplate.Services.Mailing
 {
 	public interface IMailingService
 	{

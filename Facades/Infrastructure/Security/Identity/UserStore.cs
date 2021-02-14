@@ -6,12 +6,12 @@ using System.Threading;
 using System.Threading.Tasks;
 using Havit.Data.Patterns.UnitOfWorks;
 using Havit.Diagnostics.Contracts;
-using Havit.GoranG3.DataLayer.DataEntries.Security;
-using Havit.GoranG3.DataLayer.Repositories.Security;
-using Havit.GoranG3.Model.Security;
+using Havit.NewProjectTemplate.DataLayer.DataEntries.Security;
+using Havit.NewProjectTemplate.DataLayer.Repositories.Security;
+using Havit.NewProjectTemplate.Model.Security;
 using Microsoft.AspNetCore.Identity;
 
-namespace Havit.GoranG3.Facades.Infrastructure.Security.Identity
+namespace Havit.NewProjectTemplate.Facades.Infrastructure.Security.Identity
 {
 	public class UserStore :
 		IUserStore<User>,

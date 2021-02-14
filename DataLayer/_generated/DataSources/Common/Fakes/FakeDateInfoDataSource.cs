@@ -14,18 +14,18 @@ using Havit.Data.EntityFrameworkCore.Patterns.DataSources.Fakes;
 using Havit.Data.EntityFrameworkCore.Patterns.SoftDeletes;
 using Havit.Data.Patterns.Attributes;
 
-namespace Havit.GoranG3.DataLayer.DataSources.Common.Fakes
+namespace Havit.NewProjectTemplate.DataLayer.DataSources.Common.Fakes
 {
 	[Fake]
 	[System.CodeDom.Compiler.GeneratedCode("Havit.Data.EntityFrameworkCore.CodeGenerator", "1.0")]
-	public class FakeDateInfoDataSource : FakeDataSource<Havit.GoranG3.Model.Common.DateInfo>, Havit.GoranG3.DataLayer.DataSources.Common.IDateInfoDataSource
+	public class FakeDateInfoDataSource : FakeDataSource<Havit.NewProjectTemplate.Model.Common.DateInfo>, Havit.NewProjectTemplate.DataLayer.DataSources.Common.IDateInfoDataSource
 	{
-		public FakeDateInfoDataSource(params Havit.GoranG3.Model.Common.DateInfo[] data)
-			: this((IEnumerable<Havit.GoranG3.Model.Common.DateInfo>)data)
+		public FakeDateInfoDataSource(params Havit.NewProjectTemplate.Model.Common.DateInfo[] data)
+			: this((IEnumerable<Havit.NewProjectTemplate.Model.Common.DateInfo>)data)
 		{			
 		}
 
-		public FakeDateInfoDataSource(IEnumerable<Havit.GoranG3.Model.Common.DateInfo> data, ISoftDeleteManager softDeleteManager = null)
+		public FakeDateInfoDataSource(IEnumerable<Havit.NewProjectTemplate.Model.Common.DateInfo> data, ISoftDeleteManager softDeleteManager = null)
 			: base(data, softDeleteManager)
 		{
 		}

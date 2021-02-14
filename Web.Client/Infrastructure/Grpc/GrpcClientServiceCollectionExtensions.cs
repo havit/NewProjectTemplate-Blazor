@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 using Grpc.Net.Client;
 using Grpc.Net.Client.Web;
 using Havit.Blazor.Components.Web;
-using Havit.GoranG3.Contracts;
-using Havit.GoranG3.Web.Client.Infrastructure.Grpc;
-using Havit.GoranG3.Web.Client.Infrastructure.Interceptors;
-using Havit.GoranG3.Web.Client.Resources;
+using Havit.NewProjectTemplate.Contracts;
+using Havit.NewProjectTemplate.Web.Client.Infrastructure.Grpc;
+using Havit.NewProjectTemplate.Web.Client.Infrastructure.Interceptors;
+using Havit.NewProjectTemplate.Web.Client.Resources;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
 using Microsoft.Extensions.Configuration;
@@ -19,7 +19,7 @@ using ProtoBuf.Grpc.Client;
 using ProtoBuf.Grpc.ClientFactory;
 using ProtoBuf.Grpc.Configuration;
 
-namespace Havit.GoranG3.Web.Client.Infrastructure.Grpc
+namespace Havit.NewProjectTemplate.Web.Client.Infrastructure.Grpc
 {
 	public static class GrpcClientServiceCollectionExtensions
 	{

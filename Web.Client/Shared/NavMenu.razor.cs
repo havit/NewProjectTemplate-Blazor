@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Havit.GoranG3.Web.Client.Resources;
+using Havit.NewProjectTemplate.Web.Client.Resources;
 using Microsoft.AspNetCore.Components;
 
-namespace Havit.GoranG3.Web.Client.Shared
+namespace Havit.NewProjectTemplate.Web.Client.Shared
 {
 	public partial class NavMenu
 	{

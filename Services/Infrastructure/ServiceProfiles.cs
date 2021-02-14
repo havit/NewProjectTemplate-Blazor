@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Havit.GoranG3.Services.Infrastructure
+namespace Havit.NewProjectTemplate.Services.Infrastructure
 {
 	public static class ServiceProfiles
 	{

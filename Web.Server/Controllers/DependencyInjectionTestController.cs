@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Havit.Data.Patterns.UnitOfWorks;
-using Havit.GoranG3.Model.Security;
+using Havit.NewProjectTemplate.Model.Security;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Havit.GoranG3.Web.Server.Controllers
+namespace Havit.NewProjectTemplate.Web.Server.Controllers
 {
 	[ApiController]
 	public class DependencyInjectionTestController : ControllerBase

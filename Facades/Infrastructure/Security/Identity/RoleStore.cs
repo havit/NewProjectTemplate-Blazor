@@ -1,6 +1,6 @@
 ﻿using Havit.Diagnostics.Contracts;
-using Havit.GoranG3.DataLayer.Repositories.Security;
-using Havit.GoranG3.Model.Security;
+using Havit.NewProjectTemplate.DataLayer.Repositories.Security;
+using Havit.NewProjectTemplate.Model.Security;
 using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Havit.GoranG3.Facades.Infrastructure.Security.Identity
+namespace Havit.NewProjectTemplate.Facades.Infrastructure.Security.Identity
 {
 	public class RoleStore : IRoleStore<Role>
 	{

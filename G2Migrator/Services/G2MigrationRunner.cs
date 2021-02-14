@@ -6,17 +6,17 @@ using System.Threading.Tasks;
 using Havit.Data.EntityFrameworkCore;
 using Havit.Data.Patterns.DataSeeds;
 using Havit.Extensions.DependencyInjection.Abstractions;
-using Havit.GoranG3.DataLayer.Seeds.Core;
-using Havit.GoranG3.G2Migrator.Services.Crm;
-using Havit.GoranG3.G2Migrator.Services.Finance;
-using Havit.GoranG3.G2Migrator.Services.HumanResources;
-using Havit.GoranG3.G2Migrator.Services.Projects;
-using Havit.GoranG3.G2Migrator.Services.Sequences;
-using Havit.GoranG3.G2Migrator.Services.Timesheets;
-using Havit.GoranG3.G2Migrator.Services.Users;
+using Havit.NewProjectTemplate.DataLayer.Seeds.Core;
+using Havit.NewProjectTemplate.G2Migrator.Services.Crm;
+using Havit.NewProjectTemplate.G2Migrator.Services.Finance;
+using Havit.NewProjectTemplate.G2Migrator.Services.HumanResources;
+using Havit.NewProjectTemplate.G2Migrator.Services.Projects;
+using Havit.NewProjectTemplate.G2Migrator.Services.Sequences;
+using Havit.NewProjectTemplate.G2Migrator.Services.Timesheets;
+using Havit.NewProjectTemplate.G2Migrator.Services.Users;
 using Microsoft.EntityFrameworkCore;
 
-namespace Havit.GoranG3.G2Migrator.Services
+namespace Havit.NewProjectTemplate.G2Migrator.Services
 {
 	[Service]
 	public class G2MigrationRunner : IG2MigrationRunner

@@ -7,13 +7,13 @@ using Grpc.Core;
 using Grpc.Core.Interceptors;
 using Havit.Blazor.Components.Web;
 using Havit.Blazor.Components.Web.Bootstrap;
-using Havit.GoranG3.Web.Client.Resources;
+using Havit.NewProjectTemplate.Web.Client.Resources;
 using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
 
-namespace Havit.GoranG3.Web.Client.Infrastructure.Interceptors
+namespace Havit.NewProjectTemplate.Web.Client.Infrastructure.Interceptors
 {
 	public class ServerExceptionsGrpcClientInterceptor : Interceptor
 	{

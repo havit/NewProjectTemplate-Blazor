@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Havit.Data.Patterns.Repositories;
-using Havit.GoranG3.Model.Security;
+using Havit.NewProjectTemplate.Model.Security;
 
-namespace Havit.GoranG3.DataLayer.Repositories.Security
+namespace Havit.NewProjectTemplate.DataLayer.Repositories.Security
 {
 	public partial interface IUserRepository
 	{

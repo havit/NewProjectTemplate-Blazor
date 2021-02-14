@@ -11,10 +11,10 @@ using Havit.Data.EntityFrameworkCore.Patterns.SoftDeletes;
 using Havit.Data.Patterns.DataEntries;
 using Havit.Data.Patterns.DataLoaders;
 using Havit.Diagnostics.Contracts;
-using Havit.GoranG3.Model.Security;
+using Havit.NewProjectTemplate.Model.Security;
 using Microsoft.EntityFrameworkCore;
 
-namespace Havit.GoranG3.DataLayer.Repositories.Security
+namespace Havit.NewProjectTemplate.DataLayer.Repositories.Security
 {
 	public partial class UserDbRepository : IUserRepository
 	{

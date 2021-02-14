@@ -2,8 +2,8 @@
 
 	<PropertyGroup>
 		<TargetFramework>net5.0</TargetFramework>
-		<AssemblyName>Havit.GoranG3.Services</AssemblyName>
-		<RootNamespace>Havit.GoranG3.Services</RootNamespace>
+		<AssemblyName>Havit.NewProjectTemplate.Services</AssemblyName>
+		<RootNamespace>Havit.NewProjectTemplate.Services</RootNamespace>
 	</PropertyGroup>
 
 	<ItemGroup>

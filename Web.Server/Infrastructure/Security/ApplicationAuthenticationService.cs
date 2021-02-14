@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Http;
 using Havit.Diagnostics.Contracts;
-using Havit.GoranG3.Facades.Infrastructure.Security.Authentication;
-using Havit.GoranG3.Model.Security;
+using Havit.NewProjectTemplate.Facades.Infrastructure.Security.Authentication;
+using Havit.NewProjectTemplate.Model.Security;
 using Microsoft.AspNetCore.Authorization.Infrastructure;
-using Havit.GoranG3.DataLayer.Repositories.Security;
+using Havit.NewProjectTemplate.DataLayer.Repositories.Security;
 
-namespace Havit.GoranG3.Web.Server.Infrastructure.Security
+namespace Havit.NewProjectTemplate.Web.Server.Infrastructure.Security
 {
 	/// <summary>
 	/// Poskytuje uživatele z HttpContextu.

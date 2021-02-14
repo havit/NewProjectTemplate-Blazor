@@ -8,12 +8,12 @@ using Havit.Data.EntityFrameworkCore.Patterns.Repositories;
 using Havit.Data.EntityFrameworkCore.Patterns.SoftDeletes;
 using Havit.Data.Patterns.DataEntries;
 using Havit.Data.Patterns.DataLoaders;
-using Havit.GoranG3.Model.Localizations;
+using Havit.NewProjectTemplate.Model.Localizations;
 
-namespace Havit.GoranG3.DataLayer.Repositories.Localizations
+namespace Havit.NewProjectTemplate.DataLayer.Repositories.Localizations
 {
-	public partial class LanguageDbRepository
+	public partial class LanguageDbRepository : ILanguageRepository
 	{
-
+		
 	}
 }

@@ -12,12 +12,12 @@ using System.Text;
 using System.Threading.Tasks;
 using Havit.Data.Patterns.DataEntries;
 
-namespace Havit.GoranG3.DataLayer.DataEntries.Crm
+namespace Havit.NewProjectTemplate.DataLayer.DataEntries.Crm
 {
 	[System.CodeDom.Compiler.GeneratedCode("Havit.Data.EntityFrameworkCore.CodeGenerator", "1.0")]
 	public interface IContactEntries : IDataEntries
 	{
-		Havit.GoranG3.Model.Crm.Contact Self { get; }
+		Havit.NewProjectTemplate.Model.Crm.Contact Self { get; }
 			
 	}
 }

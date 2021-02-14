@@ -1,4 +1,4 @@
-﻿using Havit.GoranG3.Model.Security;
+﻿using Havit.NewProjectTemplate.Model.Security;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Havit.GoranG3.Model.Attrida
+namespace Havit.NewProjectTemplate.Model.Attrida
 {
 	/// <summary>
 	/// G2: Zapisek

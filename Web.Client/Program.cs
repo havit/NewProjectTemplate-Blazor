@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Net.Http;
@@ -8,23 +8,20 @@ using BlazorApplicationInsights;
 using Blazored.LocalStorage;
 using Havit.Blazor.Components.Web;
 using Havit.Blazor.Components.Web.Bootstrap;
-using Havit.GoranG3.Contracts.Crm;
-using Havit.GoranG3.Contracts.Finance;
-using Havit.GoranG3.Contracts.Finance.Invoices;
-using Havit.GoranG3.Contracts.GrpcTests;
-using Havit.GoranG3.Contracts.System;
-using Havit.GoranG3.Web.Client.Infrastructure;
-using Havit.GoranG3.Web.Client.Infrastructure.Grpc;
-using Havit.GoranG3.Web.Client.Infrastructure.Interceptors;
-using Havit.GoranG3.Web.Client.Infrastructure.Security;
-using Havit.GoranG3.Web.Client.Resources;
-using Havit.GoranG3.Web.Client.Services.DataStores;
+using Havit.NewProjectTemplate.Contracts.Crm;
+using Havit.NewProjectTemplate.Contracts.System;
+using Havit.NewProjectTemplate.Web.Client.Infrastructure;
+using Havit.NewProjectTemplate.Web.Client.Infrastructure.Grpc;
+using Havit.NewProjectTemplate.Web.Client.Infrastructure.Interceptors;
+using Havit.NewProjectTemplate.Web.Client.Infrastructure.Security;
+using Havit.NewProjectTemplate.Web.Client.Resources;
+using Havit.NewProjectTemplate.Web.Client.Services.DataStores;
 using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
-namespace Havit.GoranG3.Web.Client
+namespace Havit.NewProjectTemplate.Web.Client
 {
 	public class Program
 	{
@@ -49,9 +46,7 @@ namespace Havit.GoranG3.Web.Client
 			builder.Services.AddHxMessageBoxHost();
 			SetHxComponents();
 
-			builder.Services.AddScoped<ICurrencyDataStore, CurrencyDataStore>();
 			builder.Services.AddScoped<IContactReferenceDataStore, ContactReferenceDataStore>();
-			builder.Services.AddScoped<IBankAccountDataStore, BankAccountDataStore>();
 
 			AddGrpcClient(builder);
 
@@ -63,7 +58,7 @@ namespace Havit.GoranG3.Web.Client
 		}
 		private static void SetHxComponents()
 		{
-			HxProgressOverlay.DefaultDelay = 0; // just trying :-D
+			// HxProgressOverlay.DefaultDelay = 0;
 		}
 
 		private static void AddGrpcClient(WebAssemblyHostBuilder builder)
@@ -71,14 +66,7 @@ namespace Havit.GoranG3.Web.Client
 			builder.Services.AddGrpcClientInfrastructure();
 
 			// TODO Mass registration of facades
-			builder.Services.AddGrpcClientProxyWithAuth<IInvoiceFacade>();
-
-			builder.Services.AddGrpcClientProxyWithAuth<ITestFacade>();
-
-			builder.Services.AddGrpcClientProxyWithAuth<IBankAccountFacade>();
 			builder.Services.AddGrpcClientProxyWithAuth<IContactFacade>();
-			builder.Services.AddGrpcClientProxyWithAuth<ICurrencyFacade>();
-			builder.Services.AddGrpcClientProxyWithAuth<IExchangeRateFacade>();
 
 			builder.Services.AddGrpcClientProxyWithAuth<IDataSeedFacade>();
 			builder.Services.AddGrpcClientProxyWithAuth<IMaintenanceFacade>();

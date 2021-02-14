@@ -18,12 +18,12 @@ using Havit.Data.Patterns.DataEntries;
 using Havit.Data.Patterns.DataLoaders;
 using Havit.Data.Patterns.Infrastructure;
 
-namespace Havit.GoranG3.DataLayer.Repositories.Common
+namespace Havit.NewProjectTemplate.DataLayer.Repositories.Common
 {
 	[System.CodeDom.Compiler.GeneratedCode("Havit.Data.EntityFrameworkCore.CodeGenerator", "1.0")]
 	public partial class DateInfoDbRepository : DateInfoDbRepositoryBase, IDateInfoRepository
 	{
-		public DateInfoDbRepository(IDbContext dbContext, Havit.GoranG3.DataLayer.DataSources.Common.IDateInfoDataSource dataSource, IEntityKeyAccessor<Havit.GoranG3.Model.Common.DateInfo, int> entityKeyAccessor, IDataLoader dataLoader, ISoftDeleteManager softDeleteManager, IEntityCacheManager entityCacheManager)
+		public DateInfoDbRepository(IDbContext dbContext, Havit.NewProjectTemplate.DataLayer.DataSources.Common.IDateInfoDataSource dataSource, IEntityKeyAccessor<Havit.NewProjectTemplate.Model.Common.DateInfo, int> entityKeyAccessor, IDataLoader dataLoader, ISoftDeleteManager softDeleteManager, IEntityCacheManager entityCacheManager)
 			: base(dbContext, dataSource, entityKeyAccessor, dataLoader, softDeleteManager, entityCacheManager)
 		{
 		}

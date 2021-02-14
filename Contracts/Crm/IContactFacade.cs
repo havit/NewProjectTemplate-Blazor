@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Havit.GoranG3.Contracts.Crm
+namespace Havit.NewProjectTemplate.Contracts.Crm
 {
 	[ServiceContract]
 	public interface IContactFacade

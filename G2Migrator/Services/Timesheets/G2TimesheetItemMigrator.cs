@@ -6,17 +6,17 @@ using System.Threading.Tasks;
 using Havit.Data.Patterns.DataLoaders;
 using Havit.Data.Patterns.UnitOfWorks;
 using Havit.Extensions.DependencyInjection.Abstractions;
-using Havit.GoranG3.DataLayer.Repositories.HumanResources;
-using Havit.GoranG3.DataLayer.Repositories.Projects;
-using Havit.GoranG3.DataLayer.Repositories.Timesheets;
-using Havit.GoranG3.Model.HumanResources;
-using Havit.GoranG3.Model.Projects;
-using Havit.GoranG3.Model.Security;
-using Havit.GoranG3.Model.Timesheets;
+using Havit.NewProjectTemplate.DataLayer.Repositories.HumanResources;
+using Havit.NewProjectTemplate.DataLayer.Repositories.Projects;
+using Havit.NewProjectTemplate.DataLayer.Repositories.Timesheets;
+using Havit.NewProjectTemplate.Model.HumanResources;
+using Havit.NewProjectTemplate.Model.Projects;
+using Havit.NewProjectTemplate.Model.Security;
+using Havit.NewProjectTemplate.Model.Timesheets;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Options;
 
-namespace Havit.GoranG3.G2Migrator.Services.Timesheets
+namespace Havit.NewProjectTemplate.G2Migrator.Services.Timesheets
 {
 	[Service]
 	public class G2TimesheetItemMigrator : IG2TimesheetItemMigrator

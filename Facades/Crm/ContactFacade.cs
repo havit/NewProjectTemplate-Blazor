@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using Havit.GoranG3.Contracts;
-using Havit.GoranG3.Contracts.Crm;
-using Havit.GoranG3.DataLayer.Repositories.Crm;
+using Havit.NewProjectTemplate.Contracts;
+using Havit.NewProjectTemplate.Contracts.Crm;
+using Havit.NewProjectTemplate.DataLayer.Repositories.Crm;
 
-namespace Havit.GoranG3.Facades.Crm
+namespace Havit.NewProjectTemplate.Facades.Crm
 {
 	public class ContactFacade : IContactFacade
 	{

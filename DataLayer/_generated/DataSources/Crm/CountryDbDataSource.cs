@@ -14,10 +14,10 @@ using Havit.Data.EntityFrameworkCore;
 using Havit.Data.EntityFrameworkCore.Patterns.DataSources;
 using Havit.Data.EntityFrameworkCore.Patterns.SoftDeletes;
 
-namespace Havit.GoranG3.DataLayer.DataSources.Crm
+namespace Havit.NewProjectTemplate.DataLayer.DataSources.Crm
 {
 	[System.CodeDom.Compiler.GeneratedCode("Havit.Data.EntityFrameworkCore.CodeGenerator", "1.0")]
-	public partial class CountryDbDataSource : DbDataSource<Havit.GoranG3.Model.Crm.Country>, ICountryDataSource
+	public partial class CountryDbDataSource : DbDataSource<Havit.NewProjectTemplate.Model.Crm.Country>, ICountryDataSource
 	{
 		public CountryDbDataSource(IDbContext dbContext, ISoftDeleteManager softDeleteManager)
 			: base(dbContext, softDeleteManager)

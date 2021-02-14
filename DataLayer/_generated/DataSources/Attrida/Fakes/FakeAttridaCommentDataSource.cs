@@ -14,18 +14,18 @@ using Havit.Data.EntityFrameworkCore.Patterns.DataSources.Fakes;
 using Havit.Data.EntityFrameworkCore.Patterns.SoftDeletes;
 using Havit.Data.Patterns.Attributes;
 
-namespace Havit.GoranG3.DataLayer.DataSources.Attrida.Fakes
+namespace Havit.NewProjectTemplate.DataLayer.DataSources.Attrida.Fakes
 {
 	[Fake]
 	[System.CodeDom.Compiler.GeneratedCode("Havit.Data.EntityFrameworkCore.CodeGenerator", "1.0")]
-	public class FakeAttridaCommentDataSource : FakeDataSource<Havit.GoranG3.Model.Attrida.AttridaComment>, Havit.GoranG3.DataLayer.DataSources.Attrida.IAttridaCommentDataSource
+	public class FakeAttridaCommentDataSource : FakeDataSource<Havit.NewProjectTemplate.Model.Attrida.AttridaComment>, Havit.NewProjectTemplate.DataLayer.DataSources.Attrida.IAttridaCommentDataSource
 	{
-		public FakeAttridaCommentDataSource(params Havit.GoranG3.Model.Attrida.AttridaComment[] data)
-			: this((IEnumerable<Havit.GoranG3.Model.Attrida.AttridaComment>)data)
+		public FakeAttridaCommentDataSource(params Havit.NewProjectTemplate.Model.Attrida.AttridaComment[] data)
+			: this((IEnumerable<Havit.NewProjectTemplate.Model.Attrida.AttridaComment>)data)
 		{			
 		}
 
-		public FakeAttridaCommentDataSource(IEnumerable<Havit.GoranG3.Model.Attrida.AttridaComment> data, ISoftDeleteManager softDeleteManager = null)
+		public FakeAttridaCommentDataSource(IEnumerable<Havit.NewProjectTemplate.Model.Attrida.AttridaComment> data, ISoftDeleteManager softDeleteManager = null)
 			: base(data, softDeleteManager)
 		{
 		}

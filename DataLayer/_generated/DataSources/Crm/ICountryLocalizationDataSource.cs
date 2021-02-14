@@ -12,10 +12,10 @@ using System.Text;
 using System.Threading.Tasks;
 using Havit.Data.Patterns.DataSources;
 
-namespace Havit.GoranG3.DataLayer.DataSources.Crm
+namespace Havit.NewProjectTemplate.DataLayer.DataSources.Crm
 {
 	[System.CodeDom.Compiler.GeneratedCode("Havit.Data.EntityFrameworkCore.CodeGenerator", "1.0")]
-	public interface ICountryLocalizationDataSource : IDataSource<Havit.GoranG3.Model.Crm.CountryLocalization>
+	public interface ICountryLocalizationDataSource : IDataSource<Havit.NewProjectTemplate.Model.Crm.CountryLocalization>
 	{
 	}
 }

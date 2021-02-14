@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Havit.GoranG3.Web.Client
+namespace Havit.NewProjectTemplate.Web.Client
 {
 	public static class Routes
 	{

@@ -1,8 +1,8 @@
-﻿using Havit.GoranG3.Model.Localizations;
+﻿using Havit.NewProjectTemplate.Model.Localizations;
 using Havit.Model.Localizations;
 using System.ComponentModel.DataAnnotations;
 
-namespace Havit.GoranG3.Model.Crm
+namespace Havit.NewProjectTemplate.Model.Crm
 {
 	public class CountryLocalization : ILocalization<Country>
 	{

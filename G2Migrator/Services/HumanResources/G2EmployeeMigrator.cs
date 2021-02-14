@@ -5,15 +5,15 @@ using System.Text;
 using System.Threading.Tasks;
 using Havit.Data.Patterns.UnitOfWorks;
 using Havit.Extensions.DependencyInjection.Abstractions;
-using Havit.GoranG3.DataLayer.Repositories.Crm;
-using Havit.GoranG3.DataLayer.Repositories.HumanResources;
-using Havit.GoranG3.DataLayer.Repositories.Security;
-using Havit.GoranG3.Model.Crm;
-using Havit.GoranG3.Model.HumanResources;
+using Havit.NewProjectTemplate.DataLayer.Repositories.Crm;
+using Havit.NewProjectTemplate.DataLayer.Repositories.HumanResources;
+using Havit.NewProjectTemplate.DataLayer.Repositories.Security;
+using Havit.NewProjectTemplate.Model.Crm;
+using Havit.NewProjectTemplate.Model.HumanResources;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Options;
 
-namespace Havit.GoranG3.G2Migrator.Services.HumanResources
+namespace Havit.NewProjectTemplate.G2Migrator.Services.HumanResources
 {
 	[Service]
 	public class G2EmployeeMigrator : IG2EmployeeMigrator

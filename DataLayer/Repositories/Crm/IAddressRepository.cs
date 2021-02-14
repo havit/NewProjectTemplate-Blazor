@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Havit.Data.Patterns.Repositories;
-using Havit.GoranG3.Model.Crm;
+using Havit.NewProjectTemplate.Model.Crm;
 
-namespace Havit.GoranG3.DataLayer.Repositories.Crm
+namespace Havit.NewProjectTemplate.DataLayer.Repositories.Crm
 {
 	public partial interface IAddressRepository
 	{

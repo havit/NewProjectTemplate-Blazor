@@ -1,4 +1,4 @@
-﻿namespace Havit.GoranG3.Model.Localizations
+﻿namespace Havit.NewProjectTemplate.Model.Localizations
 {
 	/// <summary>
 	/// Lokalizace.

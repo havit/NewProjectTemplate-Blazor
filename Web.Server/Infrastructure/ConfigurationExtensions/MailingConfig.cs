@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Havit.GoranG3.Contracts.Infrastructure;
+using Havit.NewProjectTemplate.Contracts.Infrastructure;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Havit.GoranG3.Web.Server.Infrastructure.ConfigurationExtensions
+namespace Havit.NewProjectTemplate.Web.Server.Infrastructure.ConfigurationExtensions
 {
 	public static class MailingConfig
 	{

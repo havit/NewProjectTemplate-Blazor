@@ -1,12 +1,12 @@
 ﻿using Havit.Data.Patterns.DataSeeds;
-using Havit.GoranG3.Model.Security;
+using Havit.NewProjectTemplate.Model.Security;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Havit.GoranG3.DataLayer.Seeds.Core.Security
+namespace Havit.NewProjectTemplate.DataLayer.Seeds.Core.Security
 {
 	public class RoleSeed : DataSeed<CoreProfile>
 	{

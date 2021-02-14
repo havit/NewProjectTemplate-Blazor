@@ -6,7 +6,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Havit.GoranG3.Contracts.Crm
+namespace Havit.NewProjectTemplate.Contracts.Crm
 {
 	[DataContract]
 	public record ContactReferenceVM

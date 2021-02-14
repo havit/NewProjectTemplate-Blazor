@@ -1,6 +1,6 @@
-﻿using Havit.GoranG3.Model.Crm;
+﻿using Havit.NewProjectTemplate.Model.Crm;
 
-namespace Havit.GoranG3.DataLayer.Repositories.Crm
+namespace Havit.NewProjectTemplate.DataLayer.Repositories.Crm
 {
 	public interface ICountryByIsoCodeLookupService
 	{

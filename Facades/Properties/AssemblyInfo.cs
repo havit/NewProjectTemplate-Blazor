@@ -1,9 +1,9 @@
 ﻿using System.Reflection;
 using System.Runtime.CompilerServices;
 
-[assembly: InternalsVisibleTo("Havit.GoranG3.Facades.Tests")]
+[assembly: InternalsVisibleTo("Havit.NewProjectTemplate.Facades.Tests")]
 
-namespace Havit.GoranG3.Facades.Properties
+namespace Havit.NewProjectTemplate.Facades.Properties
 {
 	public class AssemblyInfo
 	{

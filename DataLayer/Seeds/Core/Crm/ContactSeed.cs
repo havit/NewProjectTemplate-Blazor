@@ -1,5 +1,5 @@
 ﻿using Havit.Data.Patterns.DataSeeds;
-using Havit.GoranG3.Model.Crm;
+using Havit.NewProjectTemplate.Model.Crm;
 using Havit.Services.TimeServices;
 using System;
 using System.Collections.Generic;
@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
+namespace Havit.NewProjectTemplate.DataLayer.Seeds.Core.Crm
 {
 	public class ContactSeed : DataSeed<CoreProfile>
 	{

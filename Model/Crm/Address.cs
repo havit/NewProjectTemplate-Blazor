@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace Havit.GoranG3.Model.Crm
+namespace Havit.NewProjectTemplate.Model.Crm
 {
 	/// <summary>
 	/// G2: AdresaSubjektu

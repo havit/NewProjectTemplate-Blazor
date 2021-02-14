@@ -2,8 +2,8 @@
 
 	<PropertyGroup>
 		<TargetFramework>net5.0</TargetFramework>
-		<AssemblyName>Havit.GoranG3.Entity</AssemblyName>
-		<RootNamespace>Havit.GoranG3.Entity</RootNamespace>
+		<AssemblyName>Havit.NewProjectTemplate.Entity</AssemblyName>
+		<RootNamespace>Havit.NewProjectTemplate.Entity</RootNamespace>
 		<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
 	</PropertyGroup>
 

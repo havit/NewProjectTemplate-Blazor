@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Authorization.Infrastructure;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Havit.GoranG3.Facades.Infrastructure.Security.AuthorizationHandlers
+namespace Havit.NewProjectTemplate.Facades.Infrastructure.Security.AuthorizationHandlers
 {
 	// TODO: Ukázka autorization handleru (negenerického, což není obvyklé). Implementovat nebo odstranit třídu.
 	[Service(Lifetime = ServiceLifetime.Singleton)]

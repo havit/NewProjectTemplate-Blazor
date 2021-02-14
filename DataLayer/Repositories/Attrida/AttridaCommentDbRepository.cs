@@ -8,12 +8,12 @@ using Havit.Data.EntityFrameworkCore.Patterns.Repositories;
 using Havit.Data.EntityFrameworkCore.Patterns.SoftDeletes;
 using Havit.Data.Patterns.DataEntries;
 using Havit.Data.Patterns.DataLoaders;
-using Havit.GoranG3.Model.Attrida;
+using Havit.NewProjectTemplate.Model.Attrida;
 
-namespace Havit.GoranG3.DataLayer.Repositories.Attrida
+namespace Havit.NewProjectTemplate.DataLayer.Repositories.Attrida
 {
 	public partial class AttridaCommentDbRepository : IAttridaCommentRepository
 	{
-
+		
 	}
 }

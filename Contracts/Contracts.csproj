@@ -1,9 +1,9 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<TargetFramework>net5.0</TargetFramework>
-		<AssemblyName>Havit.GoranG3.Contracts</AssemblyName>
-		<RootNamespace>Havit.GoranG3.Contracts</RootNamespace>
+		<AssemblyName>Havit.NewProjectTemplate.Contracts</AssemblyName>
+		<RootNamespace>Havit.NewProjectTemplate.Contracts</RootNamespace>
 	</PropertyGroup>
 
 	<ItemGroup>

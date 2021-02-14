@@ -1,8 +1,8 @@
 ﻿using System;
 using Havit.Extensions.DependencyInjection;
-using Havit.GoranG3.DependencyInjection;
-using Havit.GoranG3.G2Migrator;
-using Havit.GoranG3.G2Migrator.Services;
+using Havit.NewProjectTemplate.DependencyInjection;
+using Havit.NewProjectTemplate.G2Migrator;
+using Havit.NewProjectTemplate.G2Migrator.Services;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace G2Migrator

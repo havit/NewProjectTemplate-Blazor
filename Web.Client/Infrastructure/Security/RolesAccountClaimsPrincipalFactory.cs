@@ -8,7 +8,7 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace Havit.GoranG3.Web.Client.Infrastructure.Security
+namespace Havit.NewProjectTemplate.Web.Client.Infrastructure.Security
 {
 	public class RolesAccountClaimsPrincipalFactory : AccountClaimsPrincipalFactory<RemoteUserAccount>
 	{

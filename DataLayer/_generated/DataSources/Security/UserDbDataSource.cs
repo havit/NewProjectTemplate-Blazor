@@ -14,10 +14,10 @@ using Havit.Data.EntityFrameworkCore;
 using Havit.Data.EntityFrameworkCore.Patterns.DataSources;
 using Havit.Data.EntityFrameworkCore.Patterns.SoftDeletes;
 
-namespace Havit.GoranG3.DataLayer.DataSources.Security
+namespace Havit.NewProjectTemplate.DataLayer.DataSources.Security
 {
 	[System.CodeDom.Compiler.GeneratedCode("Havit.Data.EntityFrameworkCore.CodeGenerator", "1.0")]
-	public partial class UserDbDataSource : DbDataSource<Havit.GoranG3.Model.Security.User>, IUserDataSource
+	public partial class UserDbDataSource : DbDataSource<Havit.NewProjectTemplate.Model.Security.User>, IUserDataSource
 	{
 		public UserDbDataSource(IDbContext dbContext, ISoftDeleteManager softDeleteManager)
 			: base(dbContext, softDeleteManager)

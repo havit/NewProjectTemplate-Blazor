@@ -5,12 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 using Havit.Data.Patterns.UnitOfWorks;
 using Havit.Extensions.DependencyInjection.Abstractions;
-using Havit.GoranG3.DataLayer.Repositories.Crm;
-using Havit.GoranG3.Model.Crm;
+using Havit.NewProjectTemplate.DataLayer.Repositories.Crm;
+using Havit.NewProjectTemplate.Model.Crm;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Options;
 
-namespace Havit.GoranG3.G2Migrator.Services.Crm
+namespace Havit.NewProjectTemplate.G2Migrator.Services.Crm
 {
 	[Service]
 	public class G2ContactRelationshipMigrator : IG2ContactRelationshipMigrator

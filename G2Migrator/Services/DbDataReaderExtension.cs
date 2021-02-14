@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Havit.GoranG3.G2Migrator.Services
+namespace Havit.NewProjectTemplate.G2Migrator.Services
 {
 	public static class DbDataReaderExtension
 	{

@@ -2,10 +2,10 @@
 
 	<PropertyGroup>
 		<Company>HAVIT, s.r.o.</Company>
-		<Copyright>Copyright HAVIT, s.r.o., 2020</Copyright>
+		<Copyright>Copyright HAVIT, s.r.o., 2021</Copyright>
 		<FileVersion>1.0.0.0</FileVersion>
 		<AssemblyVersion>1.0.0.0</AssemblyVersion>
-		<Product>Goran G3</Product>
+		<Product>NewProjectTemplate</Product>
 		<LangVersion>latest</LangVersion>
 		<DisableTransitiveProjectReferences>true</DisableTransitiveProjectReferences>
 	</PropertyGroup>

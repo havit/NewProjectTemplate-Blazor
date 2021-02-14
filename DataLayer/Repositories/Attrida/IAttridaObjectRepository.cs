@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Havit.Data.Patterns.Repositories;
-using Havit.GoranG3.Model.Attrida;
+using Havit.NewProjectTemplate.Model.Attrida;
 
-namespace Havit.GoranG3.DataLayer.Repositories.Attrida
+namespace Havit.NewProjectTemplate.DataLayer.Repositories.Attrida
 {
 	public partial interface IAttridaObjectRepository
 	{

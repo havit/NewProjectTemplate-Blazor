@@ -4,7 +4,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using Havit.Collections;
 
-namespace Havit.GoranG3.Contracts.Common
+namespace Havit.NewProjectTemplate.Contracts.Common
 {
 	// TODO: Přesun do Havit.Model.Grpc?
 	[DataContract]

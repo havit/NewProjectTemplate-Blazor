@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Havit.Data.Patterns.Repositories;
-using Havit.GoranG3.Model.Common;
+using Havit.NewProjectTemplate.Model.Common;
 
-namespace Havit.GoranG3.DataLayer.Repositories.Common
+namespace Havit.NewProjectTemplate.DataLayer.Repositories.Common
 {
 	public partial interface IDateInfoRepository
 	{

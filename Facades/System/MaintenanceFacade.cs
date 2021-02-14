@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using Havit.GoranG3.Contracts.System;
+using Havit.NewProjectTemplate.Contracts.System;
 using Havit.Services.Caching;
 
-namespace Havit.GoranG3.Facades.System
+namespace Havit.NewProjectTemplate.Facades.System
 {
 	public class MaintenanceFacade : IMaintenanceFacade
 	{

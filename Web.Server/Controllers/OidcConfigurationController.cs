@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
-namespace Havit.GoranG3.Web.Server.Controllers
+namespace Havit.NewProjectTemplate.Web.Server.Controllers
 {
 	public class OidcConfigurationController : Controller
 	{

@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using Havit.Model.Localizations;
 
-namespace Havit.GoranG3.Model.Localizations
+namespace Havit.NewProjectTemplate.Model.Localizations
 {
 	public class Language : ILanguage
 	{

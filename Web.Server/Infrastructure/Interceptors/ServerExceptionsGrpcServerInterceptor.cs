@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Mvc.ModelBinding.Binders;
 using Microsoft.Extensions.Logging;
 using ProtoBuf.Grpc.Configuration;
 
-namespace Havit.GoranG3.Web.Server.Infrastructure.Interceptors
+namespace Havit.NewProjectTemplate.Web.Server.Infrastructure.Interceptors
 {
 	// DI SINGLETON !!
 	public class ServerExceptionsGrpcServerInterceptor : ServerExceptionsInterceptorBase

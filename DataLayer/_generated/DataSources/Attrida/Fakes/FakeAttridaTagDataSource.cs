@@ -14,18 +14,18 @@ using Havit.Data.EntityFrameworkCore.Patterns.DataSources.Fakes;
 using Havit.Data.EntityFrameworkCore.Patterns.SoftDeletes;
 using Havit.Data.Patterns.Attributes;
 
-namespace Havit.GoranG3.DataLayer.DataSources.Attrida.Fakes
+namespace Havit.NewProjectTemplate.DataLayer.DataSources.Attrida.Fakes
 {
 	[Fake]
 	[System.CodeDom.Compiler.GeneratedCode("Havit.Data.EntityFrameworkCore.CodeGenerator", "1.0")]
-	public class FakeAttridaTagDataSource : FakeDataSource<Havit.GoranG3.Model.Attrida.AttridaTag>, Havit.GoranG3.DataLayer.DataSources.Attrida.IAttridaTagDataSource
+	public class FakeAttridaTagDataSource : FakeDataSource<Havit.NewProjectTemplate.Model.Attrida.AttridaTag>, Havit.NewProjectTemplate.DataLayer.DataSources.Attrida.IAttridaTagDataSource
 	{
-		public FakeAttridaTagDataSource(params Havit.GoranG3.Model.Attrida.AttridaTag[] data)
-			: this((IEnumerable<Havit.GoranG3.Model.Attrida.AttridaTag>)data)
+		public FakeAttridaTagDataSource(params Havit.NewProjectTemplate.Model.Attrida.AttridaTag[] data)
+			: this((IEnumerable<Havit.NewProjectTemplate.Model.Attrida.AttridaTag>)data)
 		{			
 		}
 
-		public FakeAttridaTagDataSource(IEnumerable<Havit.GoranG3.Model.Attrida.AttridaTag> data, ISoftDeleteManager softDeleteManager = null)
+		public FakeAttridaTagDataSource(IEnumerable<Havit.NewProjectTemplate.Model.Attrida.AttridaTag> data, ISoftDeleteManager softDeleteManager = null)
 			: base(data, softDeleteManager)
 		{
 		}

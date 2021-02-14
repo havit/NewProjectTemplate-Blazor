@@ -2,8 +2,8 @@
 
 	<PropertyGroup>
 		<TargetFramework>net5.0</TargetFramework>
-		<AssemblyName>Havit.GoranG3.DataLayer</AssemblyName>
-		<RootNamespace>Havit.GoranG3.DataLayer</RootNamespace>
+		<AssemblyName>Havit.NewProjectTemplate.DataLayer</AssemblyName>
+		<RootNamespace>Havit.NewProjectTemplate.DataLayer</RootNamespace>
 	</PropertyGroup>
 
 	<ItemGroup>

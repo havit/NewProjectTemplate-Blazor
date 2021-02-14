@@ -3,8 +3,8 @@
 	<PropertyGroup>
 		<TargetFramework>net5.0</TargetFramework>
 		<IsPackable>false</IsPackable>
-		<AssemblyName>Havit.GoranG3.DataLayer.Tests</AssemblyName>
-		<RootNamespace>Havit.GoranG3.DataLayer.Tests</RootNamespace>
+		<AssemblyName>Havit.NewProjectTemplate.DataLayer.Tests</AssemblyName>
+		<RootNamespace>Havit.NewProjectTemplate.DataLayer.Tests</RootNamespace>
 		<PublishDir>obj\$(Configuration)\publish</PublishDir>
 	</PropertyGroup>
 

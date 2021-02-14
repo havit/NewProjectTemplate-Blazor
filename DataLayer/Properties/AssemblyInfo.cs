@@ -1,6 +1,6 @@
 ﻿using System.Reflection;
 
-namespace Havit.GoranG3.DataLayer.Properties
+namespace Havit.NewProjectTemplate.DataLayer.Properties
 {
 	public class AssemblyInfo
 	{

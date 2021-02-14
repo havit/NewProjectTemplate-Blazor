@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Havit.GoranG3.Model.Attrida
+namespace Havit.NewProjectTemplate.Model.Attrida
 {
 	public class AttridaTag
 	{

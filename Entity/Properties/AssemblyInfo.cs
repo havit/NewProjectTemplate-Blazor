@@ -1,4 +1,4 @@
 ﻿using System.Reflection;
 using System.Runtime.CompilerServices;
 
-[assembly: InternalsVisibleTo("Havit.GoranG3.Entity.Tests")]
+[assembly: InternalsVisibleTo("Havit.NewProjectTemplate.Entity.Tests")]

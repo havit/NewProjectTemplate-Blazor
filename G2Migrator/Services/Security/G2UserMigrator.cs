@@ -5,12 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 using Havit.Data.Patterns.UnitOfWorks;
 using Havit.Extensions.DependencyInjection.Abstractions;
-using Havit.GoranG3.DataLayer.Repositories.Security;
-using Havit.GoranG3.Model.Security;
+using Havit.NewProjectTemplate.DataLayer.Repositories.Security;
+using Havit.NewProjectTemplate.Model.Security;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Options;
 
-namespace Havit.GoranG3.G2Migrator.Services.Users
+namespace Havit.NewProjectTemplate.G2Migrator.Services.Users
 {
 	[Service]
 	public class G2UserMigrator : IG2UserMigrator

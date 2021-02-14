@@ -1,5 +1,5 @@
 ﻿using Havit.Extensions.DependencyInjection.Abstractions;
-using Havit.GoranG3.DataLayer.Repositories.Common;
+using Havit.NewProjectTemplate.DataLayer.Repositories.Common;
 using Havit.Services.Caching;
 using Havit.Services.TimeServices;
 using System;
@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Havit.GoranG3.Services.TimeServices
+namespace Havit.NewProjectTemplate.Services.TimeServices
 {
 	[Service]
 	public class DateInfoProvider : IDateInfoProvider

@@ -1,19 +1,16 @@
-using System.IdentityModel.Tokens.Jwt;
-using Havit.GoranG3.Contracts;
-using Havit.GoranG3.DependencyInjection;
-using Havit.GoranG3.Facades.Crm;
-using Havit.GoranG3.Facades.Finance;
-using Havit.GoranG3.Facades.Finance.Invoices;
-using Havit.GoranG3.Facades.GrpcTests;
-using Havit.GoranG3.Facades.Infrastructure.Security.Authentication;
-using Havit.GoranG3.Facades.Infrastructure.Security.Identity;
-using Havit.GoranG3.Facades.System;
-using Havit.GoranG3.Model.Security;
-using Havit.GoranG3.Web.Server.Infrastructure.ApplicationInsights;
-using Havit.GoranG3.Web.Server.Infrastructure.ConfigurationExtensions;
-using Havit.GoranG3.Web.Server.Infrastructure.Interceptors;
-using Havit.GoranG3.Web.Server.Infrastructure.Security;
-using Havit.GoranG3.Web.Server.Tools;
+﻿using System.IdentityModel.Tokens.Jwt;
+using Havit.NewProjectTemplate.Contracts;
+using Havit.NewProjectTemplate.DependencyInjection;
+using Havit.NewProjectTemplate.Facades.Crm;
+using Havit.NewProjectTemplate.Facades.Infrastructure.Security.Authentication;
+using Havit.NewProjectTemplate.Facades.Infrastructure.Security.Identity;
+using Havit.NewProjectTemplate.Facades.System;
+using Havit.NewProjectTemplate.Model.Security;
+using Havit.NewProjectTemplate.Web.Server.Infrastructure.ApplicationInsights;
+using Havit.NewProjectTemplate.Web.Server.Infrastructure.ConfigurationExtensions;
+using Havit.NewProjectTemplate.Web.Server.Infrastructure.Interceptors;
+using Havit.NewProjectTemplate.Web.Server.Infrastructure.Security;
+using Havit.NewProjectTemplate.Web.Server.Tools;
 using IdentityModel;
 using IdentityServer4.Models;
 using Microsoft.ApplicationInsights.DependencyCollector;
@@ -30,7 +27,7 @@ using Microsoft.Extensions.Hosting;
 using ProtoBuf.Grpc.Configuration;
 using ProtoBuf.Grpc.Server;
 
-namespace Havit.GoranG3.Web.Server
+namespace Havit.NewProjectTemplate.Web.Server
 {
 	public class Startup
 	{
@@ -74,7 +71,7 @@ namespace Havit.GoranG3.Web.Server
 				.AddProfileService<IdentityServerProfileService>();
 			services.PostConfigure<ApiAuthorizationOptions>(o =>
 			{
-				o.Clients["Havit.GoranG3.Web.Client"].AlwaysIncludeUserClaimsInIdToken = true;
+				o.Clients["Havit.NewProjectTemplate.Web.Client"].AlwaysIncludeUserClaimsInIdToken = true;
 			});
 			services.AddAuthentication()
 				.AddIdentityServerJwt();
@@ -132,13 +129,7 @@ namespace Havit.GoranG3.Web.Server
 				endpoints.MapFallbackToFile("index.html");
 
 				// TODO Mass-registration
-				endpoints.MapGrpcService<TestFacade>();
-				endpoints.MapGrpcService<InvoiceFacade>();
-
-				endpoints.MapGrpcService<BankAccountFacade>();
 				endpoints.MapGrpcService<ContactFacade>();
-				endpoints.MapGrpcService<CurrencyFacade>();
-				endpoints.MapGrpcService<ExchangeRateFacade>();
 
 				endpoints.MapGrpcService<DataSeedFacade>();
 				endpoints.MapGrpcService<MaintenanceFacade>();

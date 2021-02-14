@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Havit.Data.Patterns.DataSeeds.Profiles;
 
-namespace Havit.GoranG3.DataLayer.Seeds.Demo
+namespace Havit.NewProjectTemplate.DataLayer.Seeds.Demo
 {
 	public class DemoProfile : DataSeedProfile
 	{

@@ -5,12 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 using Havit.Data.Patterns.UnitOfWorks;
 using Havit.Extensions.DependencyInjection.Abstractions;
-using Havit.GoranG3.DataLayer.Repositories.Timesheets;
-using Havit.GoranG3.Model.Timesheets;
+using Havit.NewProjectTemplate.DataLayer.Repositories.Timesheets;
+using Havit.NewProjectTemplate.Model.Timesheets;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Options;
 
-namespace Havit.GoranG3.G2Migrator.Services.Timesheets
+namespace Havit.NewProjectTemplate.G2Migrator.Services.Timesheets
 {
 	[Service]
 	public class G2OverheadToPersonalCostsRatioMigrator : IG2OverheadToPersonalCostsRatioMigrator

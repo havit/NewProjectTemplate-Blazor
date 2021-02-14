@@ -1,11 +1,11 @@
 ﻿using Havit.Data.Patterns.DataSeeds;
-using Havit.GoranG3.Model.Crm;
-using Havit.GoranG3.Model.Localizations;
+using Havit.NewProjectTemplate.Model.Crm;
+using Havit.NewProjectTemplate.Model.Localizations;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Havit.GoranG3.DataLayer.Seeds.Core.Crm
+namespace Havit.NewProjectTemplate.DataLayer.Seeds.Core.Crm
 {
 	public class CountrySeed : DataSeed<CoreProfile>
 	{

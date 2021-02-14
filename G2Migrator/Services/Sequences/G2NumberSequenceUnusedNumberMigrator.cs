@@ -5,12 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 using Havit.Data.Patterns.UnitOfWorks;
 using Havit.Extensions.DependencyInjection.Abstractions;
-using Havit.GoranG3.DataLayer.Repositories.Sequences;
-using Havit.GoranG3.Model.Sequences;
+using Havit.NewProjectTemplate.DataLayer.Repositories.Sequences;
+using Havit.NewProjectTemplate.Model.Sequences;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Options;
 
-namespace Havit.GoranG3.G2Migrator.Services.Sequences
+namespace Havit.NewProjectTemplate.G2Migrator.Services.Sequences
 {
 	[Service]
 	public class G2NumberSequenceUnusedNumberMigrator : IG2NumberSequenceUnusedNumberMigrator

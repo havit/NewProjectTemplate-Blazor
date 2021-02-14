@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Havit.GoranG3.Contracts.Infrastructure
+namespace Havit.NewProjectTemplate.Contracts.Infrastructure
 {
 	public class MailingOptions
 	{

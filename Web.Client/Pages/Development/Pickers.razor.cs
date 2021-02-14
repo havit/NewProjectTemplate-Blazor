@@ -5,11 +5,11 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
-using Havit.GoranG3.Contracts.Crm;
-using Havit.GoranG3.Web.Client.Services.DataStores;
+using Havit.NewProjectTemplate.Contracts.Crm;
+using Havit.NewProjectTemplate.Web.Client.Services.DataStores;
 using Microsoft.AspNetCore.Components;
 
-namespace Havit.GoranG3.Web.Client.Pages.Development
+namespace Havit.NewProjectTemplate.Web.Client.Pages.Development
 {
 	public partial class Pickers
 	{

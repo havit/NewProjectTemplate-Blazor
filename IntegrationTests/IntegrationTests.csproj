@@ -3,8 +3,8 @@
 	<PropertyGroup>
 		<TargetFramework>net5.0</TargetFramework>
 		<IsPackable>false</IsPackable>
-		<AssemblyName>Havit.GoranG3.IntegrationTests</AssemblyName>
-		<RootNamespace>Havit.GoranG3.IntegrationTests</RootNamespace>
+		<AssemblyName>Havit.NewProjectTemplate.IntegrationTests</AssemblyName>
+		<RootNamespace>Havit.NewProjectTemplate.IntegrationTests</RootNamespace>
 	</PropertyGroup>
 
 	<ItemGroup>

@@ -5,12 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 using Havit.Data.Patterns.UnitOfWorks;
 using Havit.Extensions.DependencyInjection.Abstractions;
-using Havit.GoranG3.DataLayer.Repositories.Projects;
-using Havit.GoranG3.Model.Projects;
+using Havit.NewProjectTemplate.DataLayer.Repositories.Projects;
+using Havit.NewProjectTemplate.Model.Projects;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Options;
 
-namespace Havit.GoranG3.G2Migrator.Services.Projects
+namespace Havit.NewProjectTemplate.G2Migrator.Services.Projects
 {
 	[Service]
 	public class G2ProjectPhaseMigrator : IG2ProjectPhaseMigrator

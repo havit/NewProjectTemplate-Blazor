@@ -1,9 +1,9 @@
 ﻿using Havit.Data.EntityFrameworkCore.Attributes;
-using Havit.GoranG3.Model.Localizations;
+using Havit.NewProjectTemplate.Model.Localizations;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace Havit.GoranG3.Model.Crm
+namespace Havit.NewProjectTemplate.Model.Crm
 {
 	[Cache]
 	public class Country : ILocalized<CountryLocalization>

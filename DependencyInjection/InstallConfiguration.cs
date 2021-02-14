@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Havit.GoranG3.DependencyInjection
+namespace Havit.NewProjectTemplate.DependencyInjection
 {
 	internal class InstallConfiguration
 	{

@@ -2,8 +2,8 @@
 
 	<PropertyGroup>
 		<TargetFramework>net5.0</TargetFramework>
-		<AssemblyName>Havit.GoranG3.Facades</AssemblyName>
-		<RootNamespace>Havit.GoranG3.Facades</RootNamespace>
+		<AssemblyName>Havit.NewProjectTemplate.Facades</AssemblyName>
+		<RootNamespace>Havit.NewProjectTemplate.Facades</RootNamespace>
 	</PropertyGroup>
 
 	<ItemGroup>

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Havit.Data.Patterns.Repositories;
-using Havit.GoranG3.Model.Localizations;
+using Havit.NewProjectTemplate.Model.Localizations;
 
-namespace Havit.GoranG3.DataLayer.Repositories.Localizations
+namespace Havit.NewProjectTemplate.DataLayer.Repositories.Localizations
 {
 	public partial interface ILanguageRepository
 	{

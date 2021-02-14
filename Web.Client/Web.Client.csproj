@@ -3,8 +3,8 @@
 	<PropertyGroup>
 		<TargetFramework>net5.0</TargetFramework>
 		<ServiceWorkerAssetsManifest>service-worker-assets.js</ServiceWorkerAssetsManifest>
-		<AssemblyName>Havit.GoranG3.Web.Client</AssemblyName>
-		<RootNamespace>Havit.GoranG3.Web.Client</RootNamespace>
+		<AssemblyName>Havit.NewProjectTemplate.Web.Client</AssemblyName>
+		<RootNamespace>Havit.NewProjectTemplate.Web.Client</RootNamespace>
 		<BlazorWebAssemblyLoadAllGlobalizationData>true</BlazorWebAssemblyLoadAllGlobalizationData>
 	</PropertyGroup>
 

@@ -14,38 +14,38 @@ using Havit.Data.EntityFrameworkCore.Patterns;
 using Havit.Data.Patterns.DataEntries;
 using Havit.Data.Patterns.Repositories;
 
-namespace Havit.GoranG3.DataLayer.DataEntries.Localizations
+namespace Havit.NewProjectTemplate.DataLayer.DataEntries.Localizations
 {
 	[System.CodeDom.Compiler.GeneratedCode("Havit.Data.EntityFrameworkCore.CodeGenerator", "1.0")]
-	public class LanguageEntries : DataEntries<Havit.GoranG3.Model.Localizations.Language>, ILanguageEntries 
+	public class LanguageEntries : DataEntries<Havit.NewProjectTemplate.Model.Localizations.Language>, ILanguageEntries 
 	{
-		public Havit.GoranG3.Model.Localizations.Language Czech
+		public Havit.NewProjectTemplate.Model.Localizations.Language Czech
         {
             get
             {
 				if (czech == null)
 				{
-					czech = GetEntry(Havit.GoranG3.Model.Localizations.Language.Entry.Czech);
+					czech = GetEntry(Havit.NewProjectTemplate.Model.Localizations.Language.Entry.Czech);
 				}
 				return czech;
             }
         }
-		private Havit.GoranG3.Model.Localizations.Language czech;
+		private Havit.NewProjectTemplate.Model.Localizations.Language czech;
 
-		public Havit.GoranG3.Model.Localizations.Language English
+		public Havit.NewProjectTemplate.Model.Localizations.Language English
         {
             get
             {
 				if (english == null)
 				{
-					english = GetEntry(Havit.GoranG3.Model.Localizations.Language.Entry.English);
+					english = GetEntry(Havit.NewProjectTemplate.Model.Localizations.Language.Entry.English);
 				}
 				return english;
             }
         }
-		private Havit.GoranG3.Model.Localizations.Language english;
+		private Havit.NewProjectTemplate.Model.Localizations.Language english;
 
-		public LanguageEntries(Havit.GoranG3.DataLayer.Repositories.Localizations.ILanguageRepository repository)
+		public LanguageEntries(Havit.NewProjectTemplate.DataLayer.Repositories.Localizations.ILanguageRepository repository)
 			: base(repository)
 		{
 		}

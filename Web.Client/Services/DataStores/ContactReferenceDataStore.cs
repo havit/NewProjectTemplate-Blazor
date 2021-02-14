@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Havit.Blazor.Components.Web.Services.DataStores;
-using Havit.GoranG3.Contracts.Crm;
+using Havit.NewProjectTemplate.Contracts.Crm;
 
-namespace Havit.GoranG3.Web.Client.Services.DataStores
+namespace Havit.NewProjectTemplate.Web.Client.Services.DataStores
 {
 	public class ContactReferenceDataStore : DictionaryStaticDataStore<int, ContactReferenceVM>, IContactReferenceDataStore
 	{

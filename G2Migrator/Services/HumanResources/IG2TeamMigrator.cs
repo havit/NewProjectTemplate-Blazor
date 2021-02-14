@@ -1,4 +1,4 @@
-﻿namespace Havit.GoranG3.G2Migrator.Services.HumanResources
+﻿namespace Havit.NewProjectTemplate.G2Migrator.Services.HumanResources
 {
 	public interface IG2TeamMigrator
 	{

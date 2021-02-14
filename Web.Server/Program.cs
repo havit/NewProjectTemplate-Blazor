@@ -7,7 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
-namespace Havit.GoranG3.Web.Server
+namespace Havit.NewProjectTemplate.Web.Server
 {
 	public class Program
 	{

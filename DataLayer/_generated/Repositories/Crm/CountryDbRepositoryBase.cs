@@ -18,12 +18,12 @@ using Havit.Data.Patterns.DataEntries;
 using Havit.Data.Patterns.DataLoaders;
 using Havit.Data.Patterns.Infrastructure;
 
-namespace Havit.GoranG3.DataLayer.Repositories.Crm
+namespace Havit.NewProjectTemplate.DataLayer.Repositories.Crm
 {
 	[System.CodeDom.Compiler.GeneratedCode("Havit.Data.EntityFrameworkCore.CodeGenerator", "1.0")]
-	public abstract class CountryDbRepositoryBase : DbRepository<Havit.GoranG3.Model.Crm.Country>
+	public abstract class CountryDbRepositoryBase : DbRepository<Havit.NewProjectTemplate.Model.Crm.Country>
 	{
-		protected CountryDbRepositoryBase(IDbContext dbContext, Havit.GoranG3.DataLayer.DataSources.Crm.ICountryDataSource dataSource, IEntityKeyAccessor<Havit.GoranG3.Model.Crm.Country, int> entityKeyAccessor, IDataLoader dataLoader, ISoftDeleteManager softDeleteManager, IEntityCacheManager entityCacheManager)
+		protected CountryDbRepositoryBase(IDbContext dbContext, Havit.NewProjectTemplate.DataLayer.DataSources.Crm.ICountryDataSource dataSource, IEntityKeyAccessor<Havit.NewProjectTemplate.Model.Crm.Country, int> entityKeyAccessor, IDataLoader dataLoader, ISoftDeleteManager softDeleteManager, IEntityCacheManager entityCacheManager)
 			: base(dbContext, dataSource, entityKeyAccessor, dataLoader, softDeleteManager, entityCacheManager)
 		{
 		}

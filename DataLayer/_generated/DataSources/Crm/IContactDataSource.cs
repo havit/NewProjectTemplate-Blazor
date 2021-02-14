@@ -12,10 +12,10 @@ using System.Text;
 using System.Threading.Tasks;
 using Havit.Data.Patterns.DataSources;
 
-namespace Havit.GoranG3.DataLayer.DataSources.Crm
+namespace Havit.NewProjectTemplate.DataLayer.DataSources.Crm
 {
 	[System.CodeDom.Compiler.GeneratedCode("Havit.Data.EntityFrameworkCore.CodeGenerator", "1.0")]
-	public interface IContactDataSource : IDataSource<Havit.GoranG3.Model.Crm.Contact>
+	public interface IContactDataSource : IDataSource<Havit.NewProjectTemplate.Model.Crm.Contact>
 	{
 	}
 }

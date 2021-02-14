@@ -12,10 +12,10 @@ using System.Text;
 using System.Threading.Tasks;
 using Havit.Data.Patterns.Repositories;
 
-namespace Havit.GoranG3.DataLayer.Repositories.Security
+namespace Havit.NewProjectTemplate.DataLayer.Repositories.Security
 {
 	[System.CodeDom.Compiler.GeneratedCode("Havit.Data.EntityFrameworkCore.CodeGenerator", "1.0")]
-	public partial interface IUserRepository : IRepository<Havit.GoranG3.Model.Security.User>
+	public partial interface IUserRepository : IRepository<Havit.NewProjectTemplate.Model.Security.User>
 	{
 	}
 }

@@ -8,7 +8,7 @@ using Microsoft.ApplicationInsights.DataContracts;
 using Microsoft.ApplicationInsights.Extensibility;
 using Microsoft.AspNetCore.Http;
 
-namespace Havit.GoranG3.Web.Server.Infrastructure.ApplicationInsights
+namespace Havit.NewProjectTemplate.Web.Server.Infrastructure.ApplicationInsights
 {
 	public class EnrichmentTelemetryInitializer : ITelemetryInitializer
 	{

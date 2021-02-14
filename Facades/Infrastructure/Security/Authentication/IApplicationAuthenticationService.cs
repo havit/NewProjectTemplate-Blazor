@@ -1,7 +1,7 @@
 ﻿using System.Security.Claims;
-using Havit.GoranG3.Model.Security;
+using Havit.NewProjectTemplate.Model.Security;
 
-namespace Havit.GoranG3.Facades.Infrastructure.Security.Authentication
+namespace Havit.NewProjectTemplate.Facades.Infrastructure.Security.Authentication
 {
 	/// <summary>
 	/// Vrací aktuálně přihlášeného uživatele jako ClaimsPrincipal nebo LoginAccount.

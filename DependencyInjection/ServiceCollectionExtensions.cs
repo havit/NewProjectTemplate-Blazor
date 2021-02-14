@@ -1,9 +1,9 @@
 ﻿using System;
 using System.IO;
 using System.Runtime.CompilerServices;
-using Havit.GoranG3.DataLayer.Seeds.Core.Common;
-using Havit.GoranG3.Entity;
-using Havit.GoranG3.Services.Infrastructure;
+using Havit.NewProjectTemplate.DataLayer.Seeds.Core.Common;
+using Havit.NewProjectTemplate.Entity;
+using Havit.NewProjectTemplate.Services.Infrastructure;
 using Havit.Extensions.DependencyInjection.Abstractions;
 using Havit.Extensions.DependencyInjection;
 using Havit.Services;
@@ -15,12 +15,12 @@ using Havit.Services.Caching;
 using System.Runtime.Caching;
 using Microsoft.Extensions.DependencyInjection;
 using Havit.Data.EntityFrameworkCore.Patterns.DependencyInjection;
-using Havit.GoranG3.DataLayer.DataSources.Common;
+using Havit.NewProjectTemplate.DataLayer.DataSources.Common;
 using Havit.Data.EntityFrameworkCore.Patterns.UnitOfWorks.EntityValidation;
-using Havit.GoranG3.Services.TimeServices;
-using Havit.GoranG3.DataLayer.Repositories.Crm;
+using Havit.NewProjectTemplate.Services.TimeServices;
+using Havit.NewProjectTemplate.DataLayer.Repositories.Crm;
 
-namespace Havit.GoranG3.DependencyInjection
+namespace Havit.NewProjectTemplate.DependencyInjection
 {
 	public static class ServiceCollectionExtensions
 	{
@@ -95,13 +95,13 @@ namespace Havit.GoranG3.DependencyInjection
 		private static void InstallHavitEntityFramework(IServiceCollection services, InstallConfiguration configuration)
 		{
 			DbContextOptions options = configuration.UseInMemoryDb
-				? new DbContextOptionsBuilder<GoranG3DbContext>().UseInMemoryDatabase(nameof(GoranG3DbContext)).Options
-				: new DbContextOptionsBuilder<GoranG3DbContext>().UseSqlServer(configuration.DatabaseConnectionString, c => c.MaxBatchSize(30)).Options;
+				? new DbContextOptionsBuilder<NewProjectTemplateDbContext>().UseInMemoryDatabase(nameof(NewProjectTemplateDbContext)).Options
+				: new DbContextOptionsBuilder<NewProjectTemplateDbContext>().UseSqlServer(configuration.DatabaseConnectionString, c => c.MaxBatchSize(30)).Options;
 
 			services.WithEntityPatternsInstaller()
 				.AddEntityPatterns()
 				//.AddLocalizationServices<Language>()
-				.AddDbContext<GoranG3DbContext>(options)
+				.AddDbContext<NewProjectTemplateDbContext>(options)
 				.AddDataLayer(typeof(IApplicationSettingsDataSource).Assembly)
 				.AddLookupService<ICountryByIsoCodeLookupService, CountryByIsoCodeLookupService>();
 
@@ -119,14 +119,14 @@ namespace Havit.GoranG3.DependencyInjection
 		private static void InstallByServiceAttribute(IServiceCollection services, InstallConfiguration configuration)
 		{
 
-			services.AddByServiceAttribute(typeof(Havit.GoranG3.DataLayer.Properties.AssemblyInfo).Assembly, configuration.ServiceProfiles);
-			services.AddByServiceAttribute(typeof(Havit.GoranG3.Services.Properties.AssemblyInfo).Assembly, configuration.ServiceProfiles);
-			services.AddByServiceAttribute(typeof(Havit.GoranG3.Facades.Properties.AssemblyInfo).Assembly, configuration.ServiceProfiles);
+			services.AddByServiceAttribute(typeof(Havit.NewProjectTemplate.DataLayer.Properties.AssemblyInfo).Assembly, configuration.ServiceProfiles);
+			services.AddByServiceAttribute(typeof(Havit.NewProjectTemplate.Services.Properties.AssemblyInfo).Assembly, configuration.ServiceProfiles);
+			services.AddByServiceAttribute(typeof(Havit.NewProjectTemplate.Facades.Properties.AssemblyInfo).Assembly, configuration.ServiceProfiles);
 		}
 
 		private static void InstallAuthorizationHandlers(IServiceCollection services)
 		{
-			services.Scan(scan => scan.FromAssemblyOf<Havit.GoranG3.Services.Properties.AssemblyInfo>()
+			services.Scan(scan => scan.FromAssemblyOf<Havit.NewProjectTemplate.Services.Properties.AssemblyInfo>()
 				.AddClasses(classes => classes.AssignableTo<IAuthorizationHandler>())
 				.As<IAuthorizationHandler>()
 				.WithScopedLifetime()

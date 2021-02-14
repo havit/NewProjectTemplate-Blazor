@@ -12,14 +12,14 @@ using System.Text;
 using System.Threading.Tasks;
 using Havit.Data.Patterns.DataEntries;
 
-namespace Havit.GoranG3.DataLayer.DataEntries.Localizations
+namespace Havit.NewProjectTemplate.DataLayer.DataEntries.Localizations
 {
 	[System.CodeDom.Compiler.GeneratedCode("Havit.Data.EntityFrameworkCore.CodeGenerator", "1.0")]
 	public interface ILanguageEntries : IDataEntries
 	{
-		Havit.GoranG3.Model.Localizations.Language Czech { get; }
+		Havit.NewProjectTemplate.Model.Localizations.Language Czech { get; }
 			
-		Havit.GoranG3.Model.Localizations.Language English { get; }
+		Havit.NewProjectTemplate.Model.Localizations.Language English { get; }
 			
 	}
 }

@@ -7,7 +7,7 @@ using Grpc.Core.Interceptors;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
 
-namespace Havit.GoranG3.Web.Client.Infrastructure.Grpc
+namespace Havit.NewProjectTemplate.Web.Client.Infrastructure.Grpc
 {
 	public class AuthorizationGrpcClientInterceptor : Interceptor
 	{

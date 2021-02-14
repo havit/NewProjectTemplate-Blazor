@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Havit.GoranG3.Model.Attrida
+namespace Havit.NewProjectTemplate.Model.Attrida
 {
 	/// <summary>
 	/// G2: Document, DocumentRelation
