@@ -120,13 +120,4 @@
   <data name="Administration" xml:space="preserve">
     <value>Administrace</value>
   </data>
-  <data name="BankAccounts" xml:space="preserve">
-    <value>Bankovní účty</value>
-  </data>
-  <data name="Currencies" xml:space="preserve">
-    <value>Měny</value>
-  </data>
-  <data name="ExchangeRates" xml:space="preserve">
-    <value>Kurzy měn</value>
-  </data>
 </root>

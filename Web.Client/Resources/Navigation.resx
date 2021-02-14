@@ -120,13 +120,4 @@
   <data name="Administration" xml:space="preserve">
     <value>Administration</value>
   </data>
-  <data name="BankAccounts" xml:space="preserve">
-    <value>Bank accounts</value>
-  </data>
-  <data name="Currencies" xml:space="preserve">
-    <value>Currencies</value>
-  </data>
-  <data name="ExchangeRates" xml:space="preserve">
-    <value>Exchange rates</value>
-  </data>
 </root>

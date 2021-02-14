@@ -31,4 +31,8 @@
 		<ProjectReference Include="..\Contracts\Contracts.csproj" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Folder Include="Resources\Model\" />
+	</ItemGroup>
+
 </Project>
