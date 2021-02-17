@@ -39,7 +39,9 @@ namespace Havit.NewProjectTemplate.Web.Server.Infrastructure.Security
 		public async Task IsActiveAsync(IsActiveContext context)
 		{
 			var user = await userManager.GetUserAsync(context.Subject);
-			context.IsActive = (user != null) && user.LockoutEnabled;
+			context.IsActive = (user != null)
+								&& !user.Disabled
+								&& (user.Deleted is null);
 		}
 	}
 }
