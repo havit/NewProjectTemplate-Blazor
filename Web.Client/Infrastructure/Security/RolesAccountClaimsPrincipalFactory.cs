@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 
 namespace Havit.NewProjectTemplate.Web.Client.Infrastructure.Security
 {
+	// https://docs.microsoft.com/en-us/aspnet/core/blazor/security/webassembly/hosted-with-identity-server?view=aspnetcore-5.0&tabs=visual-studio#custom-user-factory
 	public class RolesAccountClaimsPrincipalFactory : AccountClaimsPrincipalFactory<RemoteUserAccount>
 	{
 		public RolesAccountClaimsPrincipalFactory(IAccessTokenProviderAccessor accessor) : base(accessor)
@@ -17,29 +18,42 @@ namespace Havit.NewProjectTemplate.Web.Client.Infrastructure.Security
 			// NOOP
 		}
 
-		public override ValueTask<ClaimsPrincipal> CreateUserAsync(RemoteUserAccount account, RemoteAuthenticationUserOptions options)
+		public override async ValueTask<ClaimsPrincipal> CreateUserAsync(RemoteUserAccount account, RemoteAuthenticationUserOptions options)
 		{
+			var user = await base.CreateUserAsync(account, options);
 
-			if (account != null)
+			if (user.Identity.IsAuthenticated)
 			{
-				if (account.AdditionalProperties.TryGetValue("role", out var rolesObj))
-				{
-					var roles = rolesObj as JsonElement?;
-					if (roles?.ValueKind == JsonValueKind.Array)
-					{
-						account.AdditionalProperties.Remove("role");
-						var claimsPrincipal = base.CreateUserAsync(account, options).Result;
+				var identity = (ClaimsIdentity)user.Identity;
+				var roleClaims = identity.FindAll(identity.RoleClaimType).ToArray();
 
-						foreach (JsonElement element in roles.Value.EnumerateArray())
+				if (roleClaims != null && roleClaims.Any())
+				{
+					foreach (var existingClaim in roleClaims)
+					{
+						identity.RemoveClaim(existingClaim);
+					}
+
+					var rolesElem = account.AdditionalProperties[identity.RoleClaimType];
+
+					if (rolesElem is JsonElement roles)
+					{
+						if (roles.ValueKind == JsonValueKind.Array)
 						{
-							((ClaimsIdentity)claimsPrincipal.Identity).AddClaim(new Claim("role", element.GetString()));
+							foreach (var role in roles.EnumerateArray())
+							{
+								identity.AddClaim(new Claim(options.RoleClaim, role.GetString()));
+							}
 						}
-						return new ValueTask<ClaimsPrincipal>(claimsPrincipal);
+						else
+						{
+							identity.AddClaim(new Claim(options.RoleClaim, roles.GetString()));
+						}
 					}
 				}
 			}
 
-			return base.CreateUserAsync(account, options);
+			return user;
 		}
 	}
 }

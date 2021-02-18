@@ -13,7 +13,8 @@ using Microsoft.AspNetCore.Identity;
 namespace Havit.NewProjectTemplate.Web.Server.Infrastructure.Security
 {
 	/// <summary>
-	/// Adding roles to claims returned by IdentityServer.
+	/// Adding roles and other claims to claims returned by IdentityServer.
+	/// https://docs.microsoft.com/en-us/aspnet/core/blazor/security/webassembly/hosted-with-identity-server?view=aspnetcore-5.0&tabs=visual-studio#profile-service
 	/// </summary>
 	public class IdentityServerProfileService : IProfileService
 	{
@@ -28,8 +29,6 @@ namespace Havit.NewProjectTemplate.Web.Server.Infrastructure.Security
 		{
 			context.AddRequestedClaims(context.Subject.Claims);
 
-			// copy "role" claims
-			// TODO might be determined by the IdentityServer configuration?
 			context.IssuedClaims.AddRange(context.Subject.Claims.Where(c => c.Type == JwtClaimTypes.Role));
 
 			var user = await userManager.GetUserAsync(context.Subject);

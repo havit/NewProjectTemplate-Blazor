@@ -1,4 +1,5 @@
 ﻿using System.IdentityModel.Tokens.Jwt;
+using System.Linq;
 using Havit.NewProjectTemplate.Contracts;
 using Havit.NewProjectTemplate.DependencyInjection;
 using Havit.NewProjectTemplate.Facades.Crm;
@@ -57,26 +58,7 @@ namespace Havit.NewProjectTemplate.Web.Server
 			services.AddSingleton<ITelemetryInitializer, EnrichmentTelemetryInitializer>();
 			services.ConfigureTelemetryModule<DependencyTrackingTelemetryModule>((module, o) => { module.EnableSqlCommandTextInstrumentation = true; });
 
-			// Authentication, Authorization, Identity
-			services.AddDefaultIdentity<User>(options => options.SignIn.RequireConfirmedAccount = true)
-				.AddRoles<Role>()
-				.AddUserStore<UserStore>()
-				.AddRoleStore<RoleStore>();
-			services.AddIdentityServer()
-				.AddAspNetIdentity<User>()
-				.AddClients()
-				.AddSigningCredentials()
-				.AddIdentityResources()
-				.AddApiResources()
-				.AddProfileService<IdentityServerProfileService>();
-			services.PostConfigure<ApiAuthorizationOptions>(o =>
-			{
-				o.Clients["Havit.NewProjectTemplate.Web.Client"].AlwaysIncludeUserClaimsInIdToken = true;
-			});
-			services.AddAuthentication()
-				.AddIdentityServerJwt();
-			JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear(); // server-side support for User.IsInRole(), see https://leastprivilege.com/2016/08/21/why-does-my-authorize-attribute-not-work/
-			services.AddScoped<IApplicationAuthenticationService, ApplicationAuthenticationService>();
+			AddAuth(services);
 
 			// server-side UI
 			services.AddControllersWithViews();
@@ -90,6 +72,36 @@ namespace Havit.NewProjectTemplate.Web.Server
 				config.Interceptors.Add<ServerExceptionsGrpcServerInterceptor>();
 				config.ResponseCompressionLevel = System.IO.Compression.CompressionLevel.Optimal;
 			});
+		}
+
+		private static void AddAuth(IServiceCollection services)
+		{
+			// Authentication, Authorization, Identity
+			services.AddDefaultIdentity<User>(options => options.SignIn.RequireConfirmedAccount = true)
+				.AddRoles<Role>()
+				.AddUserStore<UserStore>()
+				.AddRoleStore<RoleStore>();
+			services.AddIdentityServer()
+				.AddAspNetIdentity<User>()
+				.AddClients()
+				.AddSigningCredentials()
+				.AddIdentityResources()
+				.AddApiResources()
+				.AddProfileService<IdentityServerProfileService>();
+			services.PostConfigure<ApiAuthorizationOptions>(options =>
+			{
+				options.Clients["Havit.NewProjectTemplate.Web.Client"].AlwaysIncludeUserClaimsInIdToken = true;
+				options.IdentityResources["openid"].UserClaims.Add("name");
+				options.ApiResources.Single().UserClaims.Add("name");
+				options.IdentityResources["openid"].UserClaims.Add("role");
+				options.ApiResources.Single().UserClaims.Add("role");
+			});
+			services.AddAuthentication()
+				.AddIdentityServerJwt();
+
+			// server-side support for User.IsInRole(), see https://leastprivilege.com/2016/08/21/why-does-my-authorize-attribute-not-work/
+			// https://docs.microsoft.com/en-us/aspnet/core/blazor/security/webassembly/hosted-with-identity-server?view=aspnetcore-5.0&tabs=visual-studio#api-authorization-options
+			JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Remove("role");
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
