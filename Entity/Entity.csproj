@@ -4,7 +4,6 @@
 		<TargetFramework>net5.0</TargetFramework>
 		<AssemblyName>Havit.NewProjectTemplate.Entity</AssemblyName>
 		<RootNamespace>Havit.NewProjectTemplate.Entity</RootNamespace>
-		<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
 	</PropertyGroup>
 
 	<ItemGroup>
