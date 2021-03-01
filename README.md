@@ -15,7 +15,7 @@
 
 ## Further Steps
 1. Application Insights - set InstrumentationKey
-	1. Web.Server / appSettings.json
+	1. Web.Server / appSettings.json (or PubslishScripts)
     2. Web.Client / wwwroot / index.html
-2. Identity Server - set Keys for deployment
+2. Identity Server - set Keys for deployment (Web.Server / appSettings.json or PublishScripts)
 
