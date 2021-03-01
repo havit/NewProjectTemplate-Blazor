@@ -65,7 +65,7 @@ namespace Havit.NewProjectTemplate.DependencyInjection
 			InstallByServiceAttribute(services, installConfiguration);
 			InstallAuthorizationHandlers(services);
 
-			services.AddMemoryCache(); // ie. IClaimsCacheStorage
+			services.AddMemoryCache();
 
 			return services;
 		}
