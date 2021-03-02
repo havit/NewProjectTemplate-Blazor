@@ -14,6 +14,6 @@ namespace Havit.NewProjectTemplate.DataLayer.Repositories.Attrida
 {
 	public partial class AttridaTagDbRepository : IAttridaTagRepository
 	{
-		
+
 	}
 }

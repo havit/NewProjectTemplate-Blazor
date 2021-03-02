@@ -14,6 +14,6 @@ namespace Havit.NewProjectTemplate.DataLayer.Repositories.Crm
 {
 	public partial class CountryDbRepository : ICountryRepository
 	{
-		
+
 	}
 }

@@ -1,4 +1,8 @@
-﻿# C# files
+﻿##################################################################################################################
+# .NET5 <EnforceCodeStyleInBuild> does not reflect TreatWarningsAsErrors => we use Error severity until fixed	 #
+##################################################################################################################
+
+# C# files
 [*.cs]
 
 ####################################
@@ -19,6 +23,9 @@ dotnet_sort_system_directives_first = true
 # Modifier preferences
 dotnet_style_readonly_field = true:silent
 
+dotnet_style_parentheses_in_relational_binary_operators = always_for_clarity
+
+
 ####################################
 # C# Coding Conventions            #
 ####################################
@@ -35,7 +42,7 @@ csharp_style_prefer_switch_expression = true:suggestion
 csharp_prefer_braces = true:suggestion
 
 # 'using' directive preferences
-csharp_using_directive_placement = outside_namespace:suggestion
+csharp_using_directive_placement = outside_namespace:Error
 
 ####################################
 # C# Formatting Rules              #
@@ -51,148 +58,62 @@ csharp_using_directive_placement = outside_namespace:suggestion
 # Naming Conventions               #
 ####################################
 
-# Warning: implemented via IDExxxx analyzers (thus they're not evaluated outside of VS yet)
-
 # Use camelCase for private fields
-dotnet_naming_style.camel_case_style.capitalization             = camel_case
-dotnet_naming_rule.private_fields_should_be_camel_case_prefixed.symbols  = private_fields
-dotnet_naming_rule.private_fields_should_be_camel_case_prefixed.style    = camel_case_style
-dotnet_naming_rule.private_fields_should_be_camel_case_prefixed.severity = suggestion
-dotnet_naming_symbols.private_fields.applicable_kinds            = field
-dotnet_naming_symbols.private_fields.applicable_accessibilities  = private
+dotnet_naming_style.pascal_case_style.capitalization = pascal_case
+dotnet_naming_style.camel_case_style.capitalization = camel_case
 
+dotnet_naming_symbols.private_fields.applicable_kinds = field
+dotnet_naming_symbols.private_fields.applicable_accessibilities = private
+dotnet_naming_rule.private_fields_should_be_camel_case_prefixed.symbols = private_fields
+dotnet_naming_rule.private_fields_should_be_camel_case_prefixed.style = camel_case_style
+dotnet_naming_rule.private_fields_should_be_camel_case_prefixed.severity = suggestion
+
+dotnet_naming_symbols.private_consts.applicable_kinds = field
+dotnet_naming_symbols.private_consts.applicable_accessibilities = private
+dotnet_naming_symbols.private_consts.required_modifiers = const
+dotnet_naming_rule.private_consts_should_be_pascal_case_prefixed.symbols = private_consts
+dotnet_naming_rule.private_consts_should_be_pascal_case_prefixed.style = pascal_case_style
+dotnet_naming_rule.private_consts_should_be_pascal_case_prefixed.severity = suggestion
 
 ###############################
 #### IDE analyzers options ####
 ###############################
-# Warning: they're not evaluated outside of VS yet
 
-# IDE0055: Fix formatting
-dotnet_diagnostic.IDE0055.severity = suggestion
+dotnet_diagnostic.IDE0009.severity = Error # Member access should be qualified
+dotnet_diagnostic.IDE0011.severity = Error # Add braces
+dotnet_diagnostic.IDE0035.severity = Error # Unreachable code detected
+dotnet_diagnostic.IDE0040.severity = Error # Use accessibility modifiers
+dotnet_diagnostic.IDE0048.severity = Error # Add parenthesis for clarity
+dotnet_diagnostic.IDE0055.severity = Error # Fix formating
+dotnet_diagnostic.IDE0065.severity = Error # Misplaced using directive
+dotnet_diagnostic.IDE1006.severity = Error # Naming Styles
 
-
-####################################
-#### StyleCop analyzers options ####
-####################################
-# Adopted from:
-# \\topol.havit.local\Library\VS2019\CodeAnalysis\HavitMain.ruleset
-
-dotnet_diagnostic.SA0001.severity=None
-dotnet_diagnostic.SA1002.severity=None
-dotnet_diagnostic.SA1005.severity=None
-dotnet_diagnostic.SA1009.severity=None
-dotnet_diagnostic.SA1025.severity=None
-dotnet_diagnostic.SA1027.severity=None
-dotnet_diagnostic.SA1028.severity=None
-dotnet_diagnostic.SA1101.severity=None
-dotnet_diagnostic.SA1108.severity=None
-dotnet_diagnostic.SA1111.severity=None
-dotnet_diagnostic.SA1114.severity=None
-dotnet_diagnostic.SA1115.severity=None
-dotnet_diagnostic.SA1116.severity=None
-dotnet_diagnostic.SA1117.severity=None
-dotnet_diagnostic.SA1118.severity=None
-dotnet_diagnostic.SA1119.severity=None
-dotnet_diagnostic.SA1121.severity=None
-dotnet_diagnostic.SA1122.severity=None
-dotnet_diagnostic.SA1123.severity=None
-dotnet_diagnostic.SA1124.severity=None
-dotnet_diagnostic.SA1128.severity=None
-dotnet_diagnostic.SA1129.severity=None
-dotnet_diagnostic.SA1130.severity=None
-dotnet_diagnostic.SA1134.severity=None
-dotnet_diagnostic.SA1200.severity=None
-dotnet_diagnostic.SA1201.severity=None
-dotnet_diagnostic.SA1202.severity=None
-dotnet_diagnostic.SA1203.severity=None
-dotnet_diagnostic.SA1204.severity=None
-dotnet_diagnostic.SA1205.severity=None
-dotnet_diagnostic.SA1206.severity=None
-dotnet_diagnostic.SA1207.severity=None
-dotnet_diagnostic.SA1208.severity=None
-dotnet_diagnostic.SA1209.severity=None
-dotnet_diagnostic.SA1210.severity=None
-dotnet_diagnostic.SA1211.severity=None
-dotnet_diagnostic.SA1212.severity=None
-dotnet_diagnostic.SA1213.severity=None
-dotnet_diagnostic.SA1214.severity=None
-dotnet_diagnostic.SA1215.severity=None
-dotnet_diagnostic.SA1216.severity=None
-dotnet_diagnostic.SA1217.severity=None
-dotnet_diagnostic.SA1303.severity=None
-dotnet_diagnostic.SA1306.severity=None
-dotnet_diagnostic.SA1309.severity=None
-dotnet_diagnostic.SA1310.severity=None
-dotnet_diagnostic.SA1311.severity=None
-dotnet_diagnostic.SA1401.severity=None
-dotnet_diagnostic.SA1405.severity=None
-dotnet_diagnostic.SA1406.severity=None
-dotnet_diagnostic.SA1407.severity=None
-dotnet_diagnostic.SA1410.severity=None
-dotnet_diagnostic.SA1413.severity=None
-dotnet_diagnostic.SA1502.severity=None
-dotnet_diagnostic.SA1505.severity=None
-dotnet_diagnostic.SA1508.severity=None
-dotnet_diagnostic.SA1512.severity=None
-dotnet_diagnostic.SA1513.severity=None
-dotnet_diagnostic.SA1514.severity=None
-dotnet_diagnostic.SA1515.severity=None
-dotnet_diagnostic.SA1516.severity=None
-dotnet_diagnostic.SA1518.severity=None
-dotnet_diagnostic.SA1600.severity=None
-dotnet_diagnostic.SA1601.severity=None
-dotnet_diagnostic.SA1602.severity=None
-dotnet_diagnostic.SA1603.severity=None
-dotnet_diagnostic.SA1610.severity=None
-dotnet_diagnostic.SA1611.severity=None
-dotnet_diagnostic.SA1613.severity=Error
-dotnet_diagnostic.SA1615.severity=None
-dotnet_diagnostic.SA1618.severity=None
-dotnet_diagnostic.SA1619.severity=None
-dotnet_diagnostic.SA1625.severity=Warning
-dotnet_diagnostic.SA1627.severity=Warning
-dotnet_diagnostic.SA1633.severity=None
-dotnet_diagnostic.SA1634.severity=None
-dotnet_diagnostic.SA1635.severity=None
-dotnet_diagnostic.SA1637.severity=None
-dotnet_diagnostic.SA1638.severity=None
-dotnet_diagnostic.SA1640.severity=None
-dotnet_diagnostic.SA1642.severity=None
-dotnet_diagnostic.SA1643.severity=None
-dotnet_diagnostic.SA1645.severity=Warning
-dotnet_diagnostic.SA1646.severity=Warning
-dotnet_diagnostic.SA1647.severity=Warning
-dotnet_diagnostic.SA1652.severity=None
-dotnet_diagnostic.SA1623.severity=None
-dotnet_diagnostic.SA1004.severity=None
-dotnet_diagnostic.SA1008.severity=None
-dotnet_diagnostic.SA1102.severity=None
-dotnet_diagnostic.SA1131.severity=None
-dotnet_diagnostic.SA1649.severity=None
-dotnet_diagnostic.SA1507.severity=None
 
 #### FxCop analyzers options ####
 # Adopted from:
 # \\topol.havit.local\Library\VS2019\CodeAnalysis\HavitMain.ruleset
 
-dotnet_diagnostic.CA1010.severity=warning
-dotnet_diagnostic.CA1012.severity=warning
-dotnet_diagnostic.CA1013.severity=warning
-dotnet_diagnostic.CA1016.severity=warning
-dotnet_diagnostic.CA1041.severity=warning
-dotnet_diagnostic.CA1044.severity=warning
-dotnet_diagnostic.CA1047.severity=warning
-dotnet_diagnostic.CA1048.severity=warning
-dotnet_diagnostic.CA1049.severity=warning
-dotnet_diagnostic.CA1050.severity=warning
-dotnet_diagnostic.CA1064.severity=warning
-dotnet_diagnostic.CA1065.severity=warning
+dotnet_diagnostic.CA1010.severity=Error
+dotnet_diagnostic.CA1012.severity=Error
+dotnet_diagnostic.CA1013.severity=Error
+dotnet_diagnostic.CA1016.severity=Error
+dotnet_diagnostic.CA1041.severity=Error
+dotnet_diagnostic.CA1044.severity=Error
+dotnet_diagnostic.CA1047.severity=Error
+dotnet_diagnostic.CA1048.severity=Error
+dotnet_diagnostic.CA1049.severity=Error
+dotnet_diagnostic.CA1050.severity=Error
+dotnet_diagnostic.CA1064.severity=Error
+dotnet_diagnostic.CA1065.severity=Error
 
 # CA1303: Method '{1}' passes a literal string as parameter '{1}' of a call to '{2}'. Retrieve the following string(s) from a resource table instead: "{3}"
 #dotnet_diagnostic.CA1303.severity=silent
 
-dotnet_diagnostic.CA1500.severity=warning
-dotnet_diagnostic.CA1504.severity=warning
+dotnet_diagnostic.CA1500.severity=Error
+dotnet_diagnostic.CA1504.severity=Error
 
 # CA1822: Member '{0}' does not access instance data and can be marked as static
 dotnet_diagnostic.CA1822.severity=silent
+
+[*/Migrations/*.cs]
+generated_code=true

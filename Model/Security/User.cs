@@ -14,14 +14,14 @@ namespace Havit.NewProjectTemplate.Model.Security
 		[MaxLength(50)]
 		public string Username
 		{
-			get => _username;
+			get => username;
 			set
 			{
-				_username = value;
+				username = value;
 				this.NormalizedUsername = value?.ToUpper();
 			}
 		}
-		private string _username;
+		private string username;
 
 		/// <summary>
 		/// Normalized Username = UpperCase
@@ -36,14 +36,14 @@ namespace Havit.NewProjectTemplate.Model.Security
 		[MaxLength(255)]
 		public string Email
 		{
-			get => _email;
+			get => email;
 			set
 			{
-				_email = value;
+				email = value;
 				this.NormalizedEmail = value?.ToUpper();
 			}
 		}
-		private string _email;
+		private string email;
 
 		/// <summary>
 		/// Normalized Email = UpperCase

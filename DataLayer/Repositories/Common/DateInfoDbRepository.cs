@@ -14,6 +14,6 @@ namespace Havit.NewProjectTemplate.DataLayer.Repositories.Common
 {
 	public partial class DateInfoDbRepository : IDateInfoRepository
 	{
-		
+
 	}
 }

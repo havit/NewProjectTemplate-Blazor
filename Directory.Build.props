@@ -7,6 +7,7 @@
 		<AssemblyVersion>1.0.0.0</AssemblyVersion>
 		<Product>NewProjectTemplate</Product>
 		<LangVersion>latest</LangVersion>
+		<EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
 		<DisableTransitiveProjectReferences>true</DisableTransitiveProjectReferences>
 	</PropertyGroup>
 

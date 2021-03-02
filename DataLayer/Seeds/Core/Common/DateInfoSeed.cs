@@ -10,7 +10,7 @@ namespace Havit.NewProjectTemplate.DataLayer.Seeds.Core.Common
 	{
 		public override void SeedData()
 		{
-			var dateInfos = new[] 
+			var dateInfos = new[]
 			{
 				new DateInfo()
 				{
