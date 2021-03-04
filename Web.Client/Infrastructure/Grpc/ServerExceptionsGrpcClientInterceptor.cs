@@ -48,6 +48,10 @@ namespace Havit.NewProjectTemplate.Web.Client.Infrastructure.Interceptors
 			{
 				return await responseTask;
 			}
+			catch (RpcException e) when (e.Status.StatusCode == StatusCode.Cancelled)
+			{
+				throw e.Status.DebugException ?? new OperationCanceledException();
+			}
 			catch (RpcException e) when (e.Status.StatusCode == StatusCode.FailedPrecondition)
 			{
 				string errorMessage = e.Status.Detail;
