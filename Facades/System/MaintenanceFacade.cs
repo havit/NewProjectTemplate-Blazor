@@ -5,10 +5,13 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Havit.NewProjectTemplate.Contracts.System;
+using Havit.NewProjectTemplate.Model.Security;
 using Havit.Services.Caching;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Havit.NewProjectTemplate.Facades.System
 {
+	[Authorize(Roles = nameof(Role.Entry.SystemAdministrator))]
 	public class MaintenanceFacade : IMaintenanceFacade
 	{
 		private readonly ICacheService cacheService;

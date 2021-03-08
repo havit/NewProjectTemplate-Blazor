@@ -7,9 +7,11 @@ using System.Threading.Tasks;
 using Havit.NewProjectTemplate.Contracts;
 using Havit.NewProjectTemplate.Contracts.Crm;
 using Havit.NewProjectTemplate.DataLayer.Repositories.Crm;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Havit.NewProjectTemplate.Facades.Crm
 {
+	[Authorize] // TODO Fine-tune authorization
 	public class ContactFacade : IContactFacade
 	{
 		private readonly IContactRepository contactRepository;

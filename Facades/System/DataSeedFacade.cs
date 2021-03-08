@@ -10,7 +10,9 @@ using Havit.NewProjectTemplate.Contracts.System;
 using Havit.NewProjectTemplate.DataLayer.Seeds.Core;
 using Havit.NewProjectTemplate.Facades.Infrastructure.Security;
 using Havit.NewProjectTemplate.Facades.Infrastructure.Security.Authorization;
+using Havit.NewProjectTemplate.Model.Security;
 using Havit.NewProjectTemplate.Services.Infrastructure;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Havit.NewProjectTemplate.Facades.System
 {
@@ -18,6 +20,8 @@ namespace Havit.NewProjectTemplate.Facades.System
 	/// Fasáda k seedování dat.
 	/// </summary>
 	[Service]
+	[Authorize(Roles = nameof(Role.Entry.SystemAdministrator))]
+
 	public class DataSeedFacade : IDataSeedFacade
 	{
 		private readonly IDataSeedRunner dataSeedRunner;
@@ -35,7 +39,7 @@ namespace Havit.NewProjectTemplate.Facades.System
 		/// </summary>
 		public Task SeedDataProfile(string profileName)
 		{
-			applicationAuthorizationService.VerifyCurrentUserAuthorization(Operations.SystemAdministration);
+			// applicationAuthorizationService.VerifyCurrentUserAuthorization(Operations.SystemAdministration); // TODO alternative authorization approach
 
 			Type type = GetProfileTypes().FirstOrDefault(item => String.Equals(item.Name, profileName, StringComparison.InvariantCultureIgnoreCase));
 
