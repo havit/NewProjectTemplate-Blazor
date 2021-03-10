@@ -45,6 +45,8 @@ namespace Havit.NewProjectTemplate.Web.Server
 
 			services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
+			services.AddDatabaseDeveloperPageExceptionFilter();
+
 			services.AddOptions();
 
 			services.AddCustomizedMailing(configuration);
@@ -111,7 +113,7 @@ namespace Havit.NewProjectTemplate.Web.Server
 			if (env.IsDevelopment())
 			{
 				app.UseDeveloperExceptionPage();
-				app.UseDatabaseErrorPage();
+				app.UseMigrationsEndPoint();
 				app.UseWebAssemblyDebugging();
 			}
 			else

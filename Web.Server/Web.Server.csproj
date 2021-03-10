@@ -11,8 +11,8 @@
 	<ItemGroup>
 		<PackageReference Include="Grpc.AspNetCore.Web" Version="2.35.0" />
 		<PackageReference Include="Havit.AspNetCore" Version="2.0.5" />
-		<PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.16.0" />
-		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="5.0.2" />
+		<PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.17.0" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="5.0.4" />
 		<PackageReference Include="protobuf-net.Grpc.AspNetCore" Version="1.0.147" />
 	</ItemGroup>
 
@@ -26,13 +26,13 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Havit.Blazor.Components.Web.Bootstrap" Version="1.0.5" />
-		<PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.1.11" />
-		<PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.11" />
-		<PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="5.0.2" />
-		<PackageReference Include="Microsoft.AspNetCore.ApiAuthorization.IdentityServer" Version="3.1.4" />
-		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.11" />
-		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.11">
+		<PackageReference Include="Havit.Blazor.Components.Web.Bootstrap" Version="1.0.12" />
+		<PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="5.0.4" />
+		<PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="5.0.4" />
+		<PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="5.0.4" />
+		<PackageReference Include="Microsoft.AspNetCore.ApiAuthorization.IdentityServer" Version="5.0.4" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.4" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.4">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
