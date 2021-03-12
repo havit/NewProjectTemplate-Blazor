@@ -12,8 +12,7 @@
                 <div class="p-2 rounded-circle bg-secondary">DC</div>
             </div>
             <div>
-                <a href="authentication/profile">@context.User.Claims.FirstOrDefault(c => c.Type ==
-                    "nickname").Value</a>
+                <a href="authentication/profile">@context.User.Claims.FirstOrDefault(c => c.Type == "nickname")?.Value</a>
             </div>
             <div class="ms-auto">
                 <HxContextMenu>
