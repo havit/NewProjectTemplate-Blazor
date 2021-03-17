@@ -8,16 +8,12 @@ using System.Threading.Tasks;
 
 namespace Havit.NewProjectTemplate.Contracts.Crm
 {
-	[DataContract]
 	public record ContactReferenceVM
 	{
-		[DataMember(Order = 1)]
 		public int Id { get; init; }
 
-		[DataMember(Order = 2)]
 		public string Name { get; init; }
 
-		[DataMember(Order = 3)]
 		public bool IsDeleted { get; init; }
 	}
 }

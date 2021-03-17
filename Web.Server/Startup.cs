@@ -27,6 +27,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using ProtoBuf.Grpc.Configuration;
 using ProtoBuf.Grpc.Server;
+using ProtoBuf.Meta;
 
 namespace Havit.NewProjectTemplate.Web.Server
 {
@@ -68,7 +69,7 @@ namespace Havit.NewProjectTemplate.Web.Server
 
 			// gRPC
 			services.AddSingleton<ServerExceptionsGrpcServerInterceptor>();
-			services.AddSingleton(BinderConfiguration.Create());
+			services.AddSingleton(BinderConfiguration.Create(marshallerFactories: new[] { ProtoBufMarshallerFactory.Create(RuntimeTypeModel.Default.RegisterApplicationContracts()) }, binder: new ProtoBufServiceBinder()));
 			services.AddCodeFirstGrpc(config =>
 			{
 				config.Interceptors.Add<ServerExceptionsGrpcServerInterceptor>();

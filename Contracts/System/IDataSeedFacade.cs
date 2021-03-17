@@ -4,7 +4,6 @@ using System.Threading.Tasks;
 
 namespace Havit.NewProjectTemplate.Contracts.System
 {
-	[ServiceContract]
 	public interface IDataSeedFacade
 	{
 		Task SeedDataProfile(string profileName);
