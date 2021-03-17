@@ -7,6 +7,7 @@ using Blazored.LocalStorage;
 using Havit.Blazor.Components.Web;
 using Havit.Blazor.Components.Web.Bootstrap;
 using Havit.NewProjectTemplate.Contracts.System;
+using Havit.NewProjectTemplate.Web.Client.Pages.Admin.Components;
 using Havit.NewProjectTemplate.Web.Client.Resources;
 using Havit.NewProjectTemplate.Web.Client.Resources.Pages.Admin;
 using Microsoft.AspNetCore.Components;
@@ -23,7 +24,7 @@ namespace Havit.NewProjectTemplate.Web.Client.Pages.Admin
 		[Inject] protected INavigationLocalizer NavigationLocalizer { get; set; }
 		[Inject] protected IAdminIndexLocalizer AdmninIndexLocalizer { get; set; }
 
-		private bool dataSeedsDrawerOpen = false;
+		private DataSeeds dataSeedsComponent;
 
 		private async Task RemoveCultureFromLocalStorage()
 		{

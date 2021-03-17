@@ -18,7 +18,7 @@
 	</div>
 	<div class="col">
 		<NavPanel Title="Server" Icon="BootstrapIcon.HddNetwork">
-			<NavCard OnClick="() => dataSeedsDrawerOpen = true" Title="Data Seeds" />
+			<NavCard OnClick="dataSeedsComponent.ShowAsync" Title="Data Seeds" />
 			<NavCard OnClick="HandleClearCache" Title="Clear Server Cache" />
 		</NavPanel>
 	</div>
@@ -29,8 +29,4 @@
 	</div>
 </div>
 
-<HxDrawer HeaderText="Data Seed" IsOpen="dataSeedsDrawerOpen">
-	<BodyTemplate>
-		<Havit.NewProjectTemplate.Web.Client.Pages.Admin.Components.DataSeeds />
-	</BodyTemplate>
-</HxDrawer>
+<Havit.NewProjectTemplate.Web.Client.Pages.Admin.Components.DataSeeds @ref="dataSeedsComponent" />
