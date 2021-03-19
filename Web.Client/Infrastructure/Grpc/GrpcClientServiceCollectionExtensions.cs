@@ -31,7 +31,7 @@ namespace Havit.NewProjectTemplate.Web.Client.Infrastructure.Grpc
 			services.AddTransient<AuthorizationGrpcClientInterceptor>();
 			services.AddTransient<ServerExceptionsGrpcClientInterceptor>();
 			services.AddTransient<GrpcWebHandler>(provider => new GrpcWebHandler(GrpcWebMode.GrpcWeb, new HttpClientHandler()));
-			services.AddSingleton<ClientFactory>(ClientFactory.Create(BinderConfiguration.Create(marshallerFactories: new[] { ProtoBufMarshallerFactory.Create(RuntimeTypeModel.Default.RegisterApplicationContracts()) }, binder: new ProtoBufServiceBinder())));
+			services.AddSingleton<ClientFactory>(ClientFactory.Create(BinderConfiguration.Create(marshallerFactories: new[] { ProtoBufMarshallerFactory.Create(RuntimeTypeModel.Create().RegisterApplicationContracts()) }, binder: new ProtoBufServiceBinder())));
 		}
 
 		public static IHttpClientBuilder AddGrpcClientProxy<TService>(this IServiceCollection services)

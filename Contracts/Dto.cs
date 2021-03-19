@@ -2,17 +2,16 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.InteropServices;
-using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
+using ProtoBuf;
 
 namespace Havit.NewProjectTemplate.Contracts
 {
-	[DataContract]
+	[ProtoContract]
 	public class Dto<TValue>
 	{
-		[DataMember(Order = 1)]
+		[ProtoMember(1)]
 		public TValue Value { get; set; }
 
 		public Dto()
