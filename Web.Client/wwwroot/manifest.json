@@ -1,15 +1,15 @@
 ﻿{
-  "name": "Web",
-  "short_name": "Web",
-  "start_url": "./",
-  "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#03173d",
-  "icons": [
-    {
-      "src": "icon-512.png",
-      "type": "image/png",
-      "sizes": "512x512"
-    }
-  ]
+	"name": "NewProjectTemplate",
+	"short_name": "NewProjectTemplate",
+	"start_url": "./",
+	"display": "standalone",
+	"background_color": "#ffffff",
+	"theme_color": "#03173d",
+	"icons": [
+		{
+			"src": "icon-512.png",
+			"type": "image/png",
+			"sizes": "512x512"
+		}
+	]
 }
