@@ -18,15 +18,15 @@ namespace Havit.NewProjectTemplate.DataLayer.Seeds.Core.Localizations
 				{
 					Id = (int)Language.Entry.Czech,
 					Name = "Čeština",
-					Culture = String.Empty,
-					UiCulture = "cs-CZ"
+					Culture = "cs-CZ",
+					UiCulture = String.Empty
 				},
 				new Language()
 				{
 					Id = (int)Language.Entry.English,
 					Name = "English",
-					Culture = "en",
-					UiCulture = "en-US"
+					Culture = "en-US",
+					UiCulture = "en"
 				}
 			};
 
