@@ -23,7 +23,7 @@ namespace Havit.NewProjectTemplate.Web.Client.Services.DataStores
 		protected async override Task<IEnumerable<ContactReferenceVM>> LoadDataAsync()
 		{
 			var dto = await contactFacade.GetAllContactReferencesAsync();
-			return dto.Value;
+			return dto.Value ?? new();
 		}
 	}
 }

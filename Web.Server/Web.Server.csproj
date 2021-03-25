@@ -13,8 +13,8 @@
 		<PackageReference Include="Havit.AspNetCore" Version="2.0.5" />
 		<PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.17.0" />
 		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="5.0.4" />
-		<PackageReference Include="protobuf-net" Version="3.0.73" />
-		<PackageReference Include="protobuf-net.Grpc.AspNetCore" Version="1.0.147" />
+		<PackageReference Include="protobuf-net" Version="3.0.101" />
+		<PackageReference Include="protobuf-net.Grpc.AspNetCore" Version="1.0.152" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -27,7 +27,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Havit.Blazor.Components.Web.Bootstrap" Version="1.0.14" />
+		<PackageReference Include="Havit.Blazor.Components.Web.Bootstrap" Version="1.0.16" />
 		<PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="5.0.4" />
 		<PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="5.0.4" />
 		<PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="5.0.4" />
