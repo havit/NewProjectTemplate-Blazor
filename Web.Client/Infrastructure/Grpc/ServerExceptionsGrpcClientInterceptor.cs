@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Resources;
 using System.Threading.Tasks;
 using Grpc.Core;
@@ -50,7 +51,11 @@ namespace Havit.NewProjectTemplate.Web.Client.Infrastructure.Interceptors
 			}
 			catch (RpcException e) when (e.Status.StatusCode == StatusCode.Cancelled)
 			{
-				throw e.Status.DebugException ?? new OperationCanceledException();
+				throw (e.Status.DebugException as OperationCanceledException) ?? new OperationCanceledException(e.Message);
+			}
+			catch (RpcException e) when ((e.Status.StatusCode == StatusCode.Internal) && (e.Status.DebugException is HttpRequestException hre) && hre.Message.StartsWith("AbortError"))
+			{
+				throw new OperationCanceledException(hre.Message);
 			}
 			catch (RpcException e) when (e.Status.StatusCode == StatusCode.FailedPrecondition)
 			{
