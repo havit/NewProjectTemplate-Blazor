@@ -14,11 +14,7 @@ namespace Havit.NewProjectTemplate.Web.Server.Infrastructure.ApplicationInsights
 	{
 		public void Initialize(ITelemetry telemetry)
 		{
-			if (string.IsNullOrEmpty(telemetry.Context.Cloud.RoleName))
-			{
-				telemetry.Context.Cloud.RoleName = "Web.Server";
-				// telemetry.Context.Cloud.RoleInstance = "...";
-			}
+			telemetry.Context.Cloud.RoleName = "Web.Server";
 		}
 	}
 }
