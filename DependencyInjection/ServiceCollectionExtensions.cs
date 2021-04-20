@@ -19,6 +19,9 @@ using Havit.NewProjectTemplate.DataLayer.DataSources.Common;
 using Havit.Data.EntityFrameworkCore.Patterns.UnitOfWorks.EntityValidation;
 using Havit.NewProjectTemplate.Services.TimeServices;
 using Havit.NewProjectTemplate.DataLayer.Repositories.Crm;
+using Havit.NewProjectTemplate.DependencyInjection.ConfigrationOptions;
+using Havit.Services.FileStorage;
+using Microsoft.AspNetCore.StaticFiles;
 
 namespace Havit.NewProjectTemplate.DependencyInjection
 {
@@ -27,9 +30,14 @@ namespace Havit.NewProjectTemplate.DependencyInjection
 		[MethodImpl(MethodImplOptions.NoInlining)]
 		public static IServiceCollection ConfigureForWebServer(this IServiceCollection services, IConfiguration configuration)
 		{
+			FileStorageOptions fileStorageOptions = new FileStorageOptions();
+			configuration.GetSection(FileStorageOptions.FileStorageOptionsKey).Bind(fileStorageOptions);
+
 			InstallConfiguration installConfiguration = new InstallConfiguration
 			{
 				DatabaseConnectionString = configuration.GetConnectionString("Database"),
+				AzureStorageConnectionString = configuration.GetConnectionString("AzureStorageConnectionString"),
+				FileStoragePathOrContainerName = fileStorageOptions.PathOrContainerName,
 				ServiceProfiles = new[] { ServiceAttribute.DefaultProfile, ServiceProfiles.WebServer },
 			};
 
@@ -64,6 +72,7 @@ namespace Havit.NewProjectTemplate.DependencyInjection
 			InstallHavitServices(services);
 			InstallByServiceAttribute(services, installConfiguration);
 			InstallAuthorizationHandlers(services);
+			InstallFileServices(services, installConfiguration);
 
 			services.AddMemoryCache();
 
@@ -109,6 +118,21 @@ namespace Havit.NewProjectTemplate.DependencyInjection
 				.As<IAuthorizationHandler>()
 				.WithScopedLifetime()
 			);
+		}
+
+		private static void InstallFileServices(IServiceCollection services, InstallConfiguration configuration)
+		{
+			if (!String.IsNullOrWhiteSpace(configuration.AzureStorageConnectionString))
+			{
+				throw new NotImplementedException("TODO - register AzureBlobStorageService");
+				// services.AddSingleton<IFileStorageService, AzureBlobStorageService>(_ => new AzureBlobStorageService(configuration.AzureStorageConnectionString, configuration.FileStoragePathOrContainerName));
+			}
+			else
+			{
+				services.AddSingleton<IFileStorageService, FileSystemStorageService>(_ => new FileSystemStorageService(configuration.FileStoragePathOrContainerName?.Replace("%TEMP%", Path.GetTempPath())));
+			}
+
+			services.AddSingleton<FileExtensionContentTypeProvider>();
 		}
 	}
 }
