@@ -54,6 +54,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Client", "Client", "{0E8ABF
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{EF26518D-89CF-4B91-9346-5FEFE62DE99C}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PublishScripts", "PublishScripts", "{549F316D-9817-4B02-B28F-B536392E8F21}"
+	ProjectSection(SolutionItems) = preProject
+		PublishScripts\Web\appsettings.WebServer.Stage.json = PublishScripts\Web\appsettings.WebServer.Stage.json
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -150,6 +155,7 @@ Global
 		{4E82FAD3-DD8C-42DD-9920-817C2B9C98E0} = {299B9B52-EFCA-4B17-B119-C4681DF12656}
 		{51D43FAA-0739-49C8-840D-412F0354CB2F} = {0E8ABFD9-D8BD-40A6-A2BE-2974A1418C03}
 		{CF770CA3-11AC-42A1-9EBF-F62B274FB194} = {EF26518D-89CF-4B91-9346-5FEFE62DE99C}
+		{549F316D-9817-4B02-B28F-B536392E8F21} = {C07F0EF8-F566-4F3F-BABA-7B5796491863}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2BDD971F-EDF2-4421-8BE7-CAA15520977D}
