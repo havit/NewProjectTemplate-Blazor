@@ -90,27 +90,24 @@ namespace Havit.NewProjectTemplate.Web.Client
 		{
 			var instrumentationKey = builder.Configuration.GetValue<string>("ApplicationInsights:InstrumentationKey");
 
-			if (!String.IsNullOrWhiteSpace(instrumentationKey))
+			builder.Services.AddBlazorApplicationInsights(async applicationInsights =>
 			{
-				builder.Services.AddBlazorApplicationInsights(async applicationInsights =>
+				await applicationInsights.SetInstrumentationKey(instrumentationKey);
+				await applicationInsights.LoadAppInsights();
+
+				var telemetryItem = new TelemetryItem()
 				{
-					await applicationInsights.SetInstrumentationKey(instrumentationKey);
-					await applicationInsights.LoadAppInsights();
-
-					var telemetryItem = new TelemetryItem()
+					Tags = new Dictionary<string, object>()
 					{
-						Tags = new Dictionary<string, object>()
-						{
 						{ "ai.cloud.role", "Web.Client" },
-							// { "ai.cloud.roleInstance", "..." },
-						}
-					};
+						// { "ai.cloud.roleInstance", "..." },
+					}
+				};
 
-					await applicationInsights.AddTelemetryInitializer(telemetryItem);
-				}, addILoggerProvider: true);
+				await applicationInsights.AddTelemetryInitializer(telemetryItem);
+			}, addILoggerProvider: true);
 
-				builder.Logging.AddFilter<ApplicationInsightsLoggerProvider>(level => (level == LogLevel.Error) || (level == LogLevel.Critical));
-			}
+			builder.Logging.AddFilter<ApplicationInsightsLoggerProvider>(level => (level == LogLevel.Error) || (level == LogLevel.Critical));
 
 #if DEBUG
 			builder.Logging.SetMinimumLevel(LogLevel.Debug);
