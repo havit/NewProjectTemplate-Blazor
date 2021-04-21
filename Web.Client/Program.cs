@@ -18,6 +18,7 @@ using Havit.NewProjectTemplate.Web.Client.Resources;
 using Havit.NewProjectTemplate.Web.Client.Services.DataStores;
 using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
@@ -87,20 +88,30 @@ namespace Havit.NewProjectTemplate.Web.Client
 
 		private static void AddLoggingAndApplicationInsights(WebAssemblyHostBuilder builder)
 		{
-			builder.Services.AddBlazorApplicationInsights(async applicationInsights =>
-			{
-				var telemetryItem = new TelemetryItem()
-				{
-					Tags = new Dictionary<string, object>()
-					{
-						{ "ai.cloud.role", "Web.Client" },
-						// { "ai.cloud.roleInstance", "..." },
-					}
-				};
+			var instrumentationKey = builder.Configuration.GetValue<string>("ApplicationInsights:InstrumentationKey");
 
-				await applicationInsights.AddTelemetryInitializer(telemetryItem);
-			}, addILoggerProvider: true);
-			builder.Logging.AddFilter<ApplicationInsightsLoggerProvider>(level => (level == LogLevel.Error) || (level == LogLevel.Critical));
+			if (!String.IsNullOrWhiteSpace(instrumentationKey))
+			{
+				builder.Services.AddBlazorApplicationInsights(async applicationInsights =>
+				{
+					await applicationInsights.SetInstrumentationKey(instrumentationKey);
+					await applicationInsights.LoadAppInsights();
+
+					var telemetryItem = new TelemetryItem()
+					{
+						Tags = new Dictionary<string, object>()
+						{
+						{ "ai.cloud.role", "Web.Client" },
+							// { "ai.cloud.roleInstance", "..." },
+						}
+					};
+
+					await applicationInsights.AddTelemetryInitializer(telemetryItem);
+				}, addILoggerProvider: true);
+
+				builder.Logging.AddFilter<ApplicationInsightsLoggerProvider>(level => (level == LogLevel.Error) || (level == LogLevel.Critical));
+			}
+
 #if DEBUG
 			builder.Logging.SetMinimumLevel(LogLevel.Debug);
 #endif
