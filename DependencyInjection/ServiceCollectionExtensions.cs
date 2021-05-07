@@ -124,7 +124,7 @@ namespace Havit.NewProjectTemplate.DependencyInjection
 		private static void InstallFileServices(IServiceCollection services, InstallConfiguration configuration)
 		{
 			services.AddFileStorageWrappingService<IApplicationFileStorageService, ApplicationFileStorageService, ApplicationFileStorage>();
-			
+
 			if (!String.IsNullOrWhiteSpace(configuration.AzureStorageConnectionString))
 			{
 				throw new NotImplementedException("TODO - register AzureBlobStorageService");
