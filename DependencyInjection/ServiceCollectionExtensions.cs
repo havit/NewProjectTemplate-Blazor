@@ -22,6 +22,7 @@ using Havit.NewProjectTemplate.DataLayer.Repositories.Crm;
 using Havit.NewProjectTemplate.DependencyInjection.ConfigrationOptions;
 using Havit.Services.FileStorage;
 using Microsoft.AspNetCore.StaticFiles;
+using Havit.NewProjectTemplate.Services.Infrastructure.FileStorages;
 
 namespace Havit.NewProjectTemplate.DependencyInjection
 {
@@ -122,14 +123,21 @@ namespace Havit.NewProjectTemplate.DependencyInjection
 
 		private static void InstallFileServices(IServiceCollection services, InstallConfiguration configuration)
 		{
+			services.AddFileStorageWrappingService<IApplicationFileStorageService, ApplicationFileStorageService, ApplicationFileStorage>();
+			
 			if (!String.IsNullOrWhiteSpace(configuration.AzureStorageConnectionString))
 			{
 				throw new NotImplementedException("TODO - register AzureBlobStorageService");
-				// services.AddSingleton<IFileStorageService, AzureBlobStorageService>(_ => new AzureBlobStorageService(configuration.AzureStorageConnectionString, configuration.FileStoragePathOrContainerName));
+				//services.AddAzureBlobStorageService<ApplicationFileStorage>(new AzureBlobStorageServiceOptions<ApplicationFileStorage>
+				//{
+				//	BlobStorage = configuration.AzureStorageConnectionString,
+				//	ContainerName = configuration.FileStoragePathOrContainerName,
+				//	TokenCredential = new DefaultAzureCredential()
+				//});
 			}
 			else
 			{
-				services.AddSingleton<IFileStorageService, FileSystemStorageService>(_ => new FileSystemStorageService(configuration.FileStoragePathOrContainerName?.Replace("%TEMP%", Path.GetTempPath())));
+				services.AddFileSystemStorageService<ApplicationFileStorage>(configuration.FileStoragePathOrContainerName?.Replace("%TEMP%", Path.GetTempPath()));
 			}
 
 			services.AddSingleton<FileExtensionContentTypeProvider>();
