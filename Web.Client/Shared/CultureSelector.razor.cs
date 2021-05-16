@@ -15,7 +15,7 @@ namespace Havit.NewProjectTemplate.Web.Client.Shared
 
 		private async Task SetCulture(string culture)
 		{
-			await LocalStorageService.SetItemAsync("culture", culture);
+			await LocalStorageService.SetItemAsStringAsync("culture", culture);
 			NavigationManager.NavigateTo(NavigationManager.Uri, forceLoad: true);
 		}
 	}

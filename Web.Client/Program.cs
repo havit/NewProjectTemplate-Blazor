@@ -59,7 +59,7 @@ namespace Havit.NewProjectTemplate.Web.Client
 		}
 		private static void SetHxComponents()
 		{
-			// HxProgressOverlay.DefaultDelay = 0;
+			// HxProgressIndicator.DefaultDelay = 0;
 		}
 
 		private static void AddGrpcClient(WebAssemblyHostBuilder builder)
