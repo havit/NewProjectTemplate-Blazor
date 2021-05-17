@@ -39,7 +39,7 @@ namespace Havit.NewProjectTemplate.Web.Server.Infrastructure.Security
 		public int GetCurrentUserId()
 		{
 			var principal = GetCurrentClaimsPrincipal();
-			Claim userIdClaim = principal.Claims.Single(claim => (claim.Type == ClaimTypes.NameIdentifier));
+			Claim userIdClaim = principal.Claims.Single(claim => (claim.Type == "sub"));
 			return Int32.Parse(userIdClaim.Value);
 		}
 	}

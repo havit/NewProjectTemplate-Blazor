@@ -72,7 +72,7 @@ namespace Havit.NewProjectTemplate.Web.Server.Infrastructure.ConfigurationExtens
 
 			// server-side support for User.IsInRole(), see https://leastprivilege.com/2016/08/21/why-does-my-authorize-attribute-not-work/
 			// https://docs.microsoft.com/en-us/aspnet/core/blazor/security/webassembly/hosted-with-identity-server?view=aspnetcore-5.0&tabs=visual-studio#api-authorization-options
-			JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Remove("role");
+			JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
 			services.AddScoped<IApplicationAuthenticationService, ApplicationAuthenticationService>();
 		}
 
