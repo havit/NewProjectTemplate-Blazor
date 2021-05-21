@@ -12,6 +12,7 @@ using Havit.NewProjectTemplate.Facades.Infrastructure.Security;
 using Havit.NewProjectTemplate.Facades.Infrastructure.Security.Authorization;
 using Havit.NewProjectTemplate.Model.Security;
 using Havit.NewProjectTemplate.Services.Infrastructure;
+using Havit.Services.Caching;
 using Microsoft.AspNetCore.Authorization;
 
 namespace Havit.NewProjectTemplate.Facades.System
@@ -25,12 +26,14 @@ namespace Havit.NewProjectTemplate.Facades.System
 	public class DataSeedFacade : IDataSeedFacade
 	{
 		private readonly IDataSeedRunner dataSeedRunner;
-		private readonly IApplicationAuthorizationService applicationAuthorizationService;
+		private readonly ICacheService cacheService;
 
-		public DataSeedFacade(IDataSeedRunner dataSeedRunner, IApplicationAuthorizationService applicationAuthorizationService)
+		public DataSeedFacade(
+			IDataSeedRunner dataSeedRunner,
+			ICacheService cacheService)
 		{
 			this.dataSeedRunner = dataSeedRunner;
-			this.applicationAuthorizationService = applicationAuthorizationService;
+			this.cacheService = cacheService;
 		}
 
 		/// <summary>
@@ -49,6 +52,8 @@ namespace Havit.NewProjectTemplate.Facades.System
 			}
 
 			dataSeedRunner.SeedData(type, forceRun: true);
+
+			cacheService.Clear();
 
 			return Task.CompletedTask;
 		}
