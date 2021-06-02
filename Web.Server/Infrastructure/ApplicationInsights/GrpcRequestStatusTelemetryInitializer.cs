@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Grpc.Core;
 using Microsoft.ApplicationInsights.Channel;
 using Microsoft.ApplicationInsights.DataContracts;
 using Microsoft.ApplicationInsights.Extensibility;
@@ -43,10 +44,10 @@ namespace Havit.NewProjectTemplate.Web.Server.Infrastructure.ApplicationInsights
 
 			if (httpContextAccessor.HttpContext.Response.Headers.TryGetValue("grpc-status", out var grpcStatusHeader))
 			{
-				if (Enum.TryParse<Grpc.Core.StatusCode>(grpcStatusHeader[0], out var grpcStatusCode))
+				if (Enum.TryParse<StatusCode>(grpcStatusHeader[0], out var grpcStatusCode))
 				{
-					if ((grpcStatusCode != Grpc.Core.StatusCode.OK)
-						&& (grpcStatusCode != Grpc.Core.StatusCode.FailedPrecondition))  // OperationFailedException
+					if ((grpcStatusCode != StatusCode.OK)
+						&& (grpcStatusCode != StatusCode.FailedPrecondition))  // OperationFailedException
 					{
 						requestTelemetry.Success = false;
 					}

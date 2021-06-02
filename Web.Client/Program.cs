@@ -65,12 +65,7 @@ namespace Havit.NewProjectTemplate.Web.Client
 		private static void AddGrpcClient(WebAssemblyHostBuilder builder)
 		{
 			builder.Services.AddGrpcClientInfrastructure();
-
-			// TODO Mass registration of facades
-			builder.Services.AddGrpcClientProxyWithAuth<IContactFacade>();
-
-			builder.Services.AddGrpcClientProxyWithAuth<IDataSeedFacade>();
-			builder.Services.AddGrpcClientProxyWithAuth<IMaintenanceFacade>();
+			builder.Services.AddGrpcClientsByApiContractAttributes(typeof(IDataSeedFacade).Assembly);
 		}
 
 		private static async ValueTask SetLanguage(WebAssemblyHost webAssemblyHost)

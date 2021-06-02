@@ -1,6 +1,7 @@
 ﻿using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using Havit.NewProjectTemplate.Contracts;
+using Havit.NewProjectTemplate.Contracts.System;
 using Havit.NewProjectTemplate.DependencyInjection;
 using Havit.NewProjectTemplate.Facades.Crm;
 using Havit.NewProjectTemplate.Facades.Infrastructure.Security.Authentication;
@@ -9,7 +10,7 @@ using Havit.NewProjectTemplate.Facades.System;
 using Havit.NewProjectTemplate.Model.Security;
 using Havit.NewProjectTemplate.Web.Server.Infrastructure.ApplicationInsights;
 using Havit.NewProjectTemplate.Web.Server.Infrastructure.ConfigurationExtensions;
-using Havit.NewProjectTemplate.Web.Server.Infrastructure.Interceptors;
+using Havit.NewProjectTemplate.Web.Server.Infrastructure.Grpc;
 using Havit.NewProjectTemplate.Web.Server.Infrastructure.Security;
 using Havit.NewProjectTemplate.Web.Server.Tools;
 using IdentityModel;
@@ -113,11 +114,7 @@ namespace Havit.NewProjectTemplate.Web.Server
 				endpoints.MapControllers();
 				endpoints.MapFallbackToFile("index.html");
 
-				// TODO Mass-registration
-				endpoints.MapGrpcService<ContactFacade>();
-
-				endpoints.MapGrpcService<DataSeedFacade>();
-				endpoints.MapGrpcService<MaintenanceFacade>();
+				endpoints.MapGrpcServicesByApiContractAttributes(typeof(IDataSeedFacade).Assembly);
 			});
 
 			app.UpgradeDatabaseSchemaAndData();

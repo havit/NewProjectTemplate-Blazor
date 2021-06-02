@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using Havit.Extensions.DependencyInjection.Abstractions;
 using Havit.NewProjectTemplate.Contracts;
 using Havit.NewProjectTemplate.Contracts.Crm;
 using Havit.NewProjectTemplate.DataLayer.Repositories.Crm;
@@ -11,6 +12,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace Havit.NewProjectTemplate.Facades.Crm
 {
+	[Service]
 	[Authorize] // TODO Fine-tune authorization
 	public class ContactFacade : IContactFacade
 	{

@@ -5,14 +5,13 @@ using System.Security;
 using System.Threading.Tasks;
 using Grpc.Core;
 using Grpc.Core.Interceptors;
-using Havit;
 using Havit.AspNetCore.ExceptionMonitoring.Services;
 using Havit.Data.Patterns.Exceptions;
 using Microsoft.AspNetCore.Mvc.ModelBinding.Binders;
 using Microsoft.Extensions.Logging;
 using ProtoBuf.Grpc.Configuration;
 
-namespace Havit.NewProjectTemplate.Web.Server.Infrastructure.Interceptors
+namespace Havit.NewProjectTemplate.Web.Server.Infrastructure.Grpc
 {
 	// DI SINGLETON !!
 	public class ServerExceptionsGrpcServerInterceptor : ServerExceptionsInterceptorBase
