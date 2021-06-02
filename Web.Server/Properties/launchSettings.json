@@ -1,22 +1,22 @@
 ﻿{
-    "useWebAssemblyDebugging": true,
-    "iisSettings": {
-      "windowsAuthentication": false,
-      "anonymousAuthentication": true,
+	"useWebAssemblyDebugging": true,
+	"iisSettings": {
+		"windowsAuthentication": false,
+		"anonymousAuthentication": true,
 		"iisExpress": {
 			"applicationUrl": "http://localhost:9900",
 			"sslPort": 44301
 		}
-    },
-    "profiles": {
-      "IIS Express": {
-        "commandName": "IISExpress",
-        "launchBrowser": true,
-        "inspectUri": "{wsProtocol}://{url.hostname}:{url.port}/_framework/debug/ws-proxy?browser={browserInspectUri}",
-        "environmentVariables": {
-          "ASPNETCORE_ENVIRONMENT": "Development"
-        }
-      },
+	},
+	"profiles": {
+		"IIS Express": {
+			"commandName": "IISExpress",
+			"launchBrowser": true,
+			"inspectUri": "{wsProtocol}://{url.hostname}:{url.port}/_framework/debug/ws-proxy?browser={browserInspectUri}",
+			"environmentVariables": {
+				"ASPNETCORE_ENVIRONMENT": "Development"
+			}
+		},
 		"Web.Server": {
 			"commandName": "Project",
 			"launchBrowser": true,
@@ -26,5 +26,5 @@
 				"ASPNETCORE_ENVIRONMENT": "Development"
 			}
 		}
-    }
-  }
+	}
+}
