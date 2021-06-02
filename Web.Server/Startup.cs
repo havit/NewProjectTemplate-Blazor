@@ -70,7 +70,7 @@ namespace Havit.NewProjectTemplate.Web.Server
 
 			// gRPC
 			services.AddSingleton<ServerExceptionsGrpcServerInterceptor>();
-			services.AddSingleton(BinderConfiguration.Create(marshallerFactories: new[] { ProtoBufMarshallerFactory.Create(RuntimeTypeModel.Default.RegisterApplicationContracts()) }, binder: new ProtoBufServiceBinder()));
+			services.AddSingleton(BinderConfiguration.Create(marshallerFactories: new[] { ProtoBufMarshallerFactory.Create(RuntimeTypeModel.Default.RegisterApplicationContracts()) }, binder: new ServiceBinderWithServiceResolutionFromServiceCollection(services)));
 			services.AddCodeFirstGrpc(config =>
 			{
 				config.Interceptors.Add<ServerExceptionsGrpcServerInterceptor>();
