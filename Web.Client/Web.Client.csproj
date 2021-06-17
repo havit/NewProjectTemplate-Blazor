@@ -9,15 +9,15 @@
 
 	<ItemGroup>
 		<PackageReference Include="BlazorApplicationInsights" Version="1.1.2" />
-		<PackageReference Include="Blazored.LocalStorage" Version="4.1.1" />
-		<PackageReference Include="Grpc.Net.Client" Version="2.37.0" />
-		<PackageReference Include="Grpc.Net.Client.Web" Version="2.37.0" />
-		<PackageReference Include="Havit.Blazor.Components.Web" Version="1.0.13" />
-		<PackageReference Include="Havit.Blazor.Components.Web.Bootstrap" Version="1.1.5" />
+		<PackageReference Include="Blazored.LocalStorage" Version="4.1.2" />
+		<PackageReference Include="Grpc.Net.Client" Version="2.38.0" />
+		<PackageReference Include="Grpc.Net.Client.Web" Version="2.38.0" />
+		<PackageReference Include="Havit.Blazor.Components.Web" Version="1.0.14" />
+		<PackageReference Include="Havit.Blazor.Components.Web.Bootstrap" Version="1.1.10" />
 		<PackageReference Include="Havit.SourceGenerators.StrongApiStringLocalizers" Version="1.0.1" />
-		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="5.0.6" />
-		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="5.0.6" PrivateAssets="all" />
-		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Authentication" Version="5.0.6" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="5.0.7" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="5.0.7" PrivateAssets="all" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Authentication" Version="5.0.7" />
 		<PackageReference Include="protobuf-net" Version="3.0.101" />
 		<PackageReference Include="protobuf-net.Grpc.ClientFactory" Version="1.0.152" />
 	</ItemGroup>
