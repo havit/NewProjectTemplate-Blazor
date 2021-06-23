@@ -23,6 +23,8 @@ using Havit.NewProjectTemplate.DependencyInjection.ConfigrationOptions;
 using Havit.Services.FileStorage;
 using Microsoft.AspNetCore.StaticFiles;
 using Havit.NewProjectTemplate.Services.Infrastructure.FileStorages;
+using Azure.Identity;
+using Havit.Services.Azure.FileStorage;
 
 namespace Havit.NewProjectTemplate.DependencyInjection
 {
@@ -127,13 +129,12 @@ namespace Havit.NewProjectTemplate.DependencyInjection
 
 			if (!String.IsNullOrWhiteSpace(configuration.AzureStorageConnectionString))
 			{
-				throw new NotImplementedException("TODO - register AzureBlobStorageService");
-				//services.AddAzureBlobStorageService<ApplicationFileStorage>(new AzureBlobStorageServiceOptions<ApplicationFileStorage>
-				//{
-				//	BlobStorage = configuration.AzureStorageConnectionString,
-				//	ContainerName = configuration.FileStoragePathOrContainerName,
-				//	TokenCredential = new DefaultAzureCredential()
-				//});
+				services.AddAzureBlobStorageService<ApplicationFileStorage>(new AzureBlobStorageServiceOptions<ApplicationFileStorage>
+				{
+					BlobStorage = configuration.AzureStorageConnectionString,
+					ContainerName = configuration.FileStoragePathOrContainerName,
+					TokenCredential = new DefaultAzureCredential()
+				});
 			}
 			else
 			{
