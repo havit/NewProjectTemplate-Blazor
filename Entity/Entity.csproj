@@ -26,4 +26,10 @@
 		<ProjectReference Include="..\Model\Model.csproj" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <None Update="appSettings.Entity.json">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	</ItemGroup>
+
 </Project>

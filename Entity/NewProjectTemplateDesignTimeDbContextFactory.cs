@@ -21,8 +21,8 @@ namespace Havit.NewProjectTemplate.Entity
 			// potřebujeme načíst konfiguraci od Entity, resp. Entity\bin\Debug(Release)\nestandard2.0.
 			IConfigurationRoot configuration = new ConfigurationBuilder()
 				.SetBasePath(System.IO.Path.GetDirectoryName(this.GetType().Assembly.Location))
-				.AddJsonFile("appsettings.json")
-				.AddJsonFile($"appsettings.{environment}.json", true)
+				.AddJsonFile("appSettings.Entity.json")
+				.AddJsonFile($"appSettings.Entity.{environment}.json", true)
 				.Build();
 
 			string connectionString = configuration.GetConnectionString("Database");
