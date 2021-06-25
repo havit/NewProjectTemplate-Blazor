@@ -7,6 +7,10 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+		<InternalsVisibleTo Include="Havit.NewProjectTemplate.Services.Tests" />
+	</ItemGroup>
+	
+	<ItemGroup>
 		<PackageReference Include="Havit.Extensions.DependencyInjection.Abstractions" Version="2.0.4" />
 		<PackageReference Include="Havit.Services" Version="2.0.17" />
 	</ItemGroup>
