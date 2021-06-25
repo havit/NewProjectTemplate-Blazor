@@ -138,7 +138,7 @@ namespace Havit.NewProjectTemplate.DependencyInjection
 			}
 			else
 			{
-				services.AddFileSystemStorageService<ApplicationFileStorage>(configuration.FileStoragePathOrContainerName?.Replace("%TEMP%", Path.GetTempPath()));
+				services.AddFileSystemStorageService<ApplicationFileStorage>(configuration.FileStoragePathOrContainerName);
 			}
 		}
 	}
