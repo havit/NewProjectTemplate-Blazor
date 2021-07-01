@@ -1,28 +1,20 @@
-﻿using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
+﻿using System.Collections.Generic;
+using Hangfire;
+using Hangfire.Dashboard;
 using Havit.NewProjectTemplate.Contracts;
 using Havit.NewProjectTemplate.Contracts.System;
 using Havit.NewProjectTemplate.DependencyInjection;
-using Havit.NewProjectTemplate.Facades.Crm;
-using Havit.NewProjectTemplate.Facades.Infrastructure.Security.Authentication;
-using Havit.NewProjectTemplate.Facades.Infrastructure.Security.Identity;
-using Havit.NewProjectTemplate.Facades.System;
+using Havit.NewProjectTemplate.Facades.Infrastructure.Security;
 using Havit.NewProjectTemplate.Model.Security;
 using Havit.NewProjectTemplate.Web.Server.Infrastructure.ApplicationInsights;
 using Havit.NewProjectTemplate.Web.Server.Infrastructure.ConfigurationExtensions;
 using Havit.NewProjectTemplate.Web.Server.Infrastructure.Grpc;
-using Havit.NewProjectTemplate.Web.Server.Infrastructure.Security;
 using Havit.NewProjectTemplate.Web.Server.Tools;
-using IdentityModel;
-using IdentityServer4.Models;
 using Microsoft.ApplicationInsights.DependencyCollector;
 using Microsoft.ApplicationInsights.Extensibility;
-using Microsoft.AspNetCore.ApiAuthorization.IdentityServer;
-using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -62,6 +54,12 @@ namespace Havit.NewProjectTemplate.Web.Server
 			services.AddSingleton<ITelemetryInitializer, EnrichmentTelemetryInitializer>();
 			services.ConfigureTelemetryModule<DependencyTrackingTelemetryModule>((module, o) => { module.EnableSqlCommandTextInstrumentation = true; });
 
+			services.AddAuthorization(options =>
+			{
+				options.AddPolicy(PolicyNames.HangfireDashboardAcccessPolicy, policy => policy
+					.RequireAuthenticatedUser()
+					.RequireRole(nameof(Role.Entry.SystemAdministrator)));
+			});
 			services.AddCustomizedAuth(configuration);
 
 			// server-side UI
@@ -76,6 +74,9 @@ namespace Havit.NewProjectTemplate.Web.Server
 				config.Interceptors.Add<ServerExceptionsGrpcServerInterceptor>();
 				config.ResponseCompressionLevel = System.IO.Compression.CompressionLevel.Optimal;
 			});
+
+			// Hangfire
+			services.AddCustomizedHangfire(configuration);
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -115,6 +116,15 @@ namespace Havit.NewProjectTemplate.Web.Server
 				endpoints.MapFallbackToFile("index.html");
 
 				endpoints.MapGrpcServicesByApiContractAttributes(typeof(IDataSeedFacade).Assembly);
+
+				endpoints.MapHangfireDashboard("/hangfire", new DashboardOptions
+				{
+					Authorization = new List<IDashboardAuthorizationFilter>() { }, // see https://sahansera.dev/securing-hangfire-dashboard-with-endpoint-routing-auth-policy-aspnetcore/
+					DisplayStorageConnectionString = false,
+					DashboardTitle = "NewProjectTemplate - Jobs",
+					StatsPollingInterval = 60_000 // once a minute
+				})
+				.RequireAuthorization(PolicyNames.HangfireDashboardAcccessPolicy);
 			});
 
 			app.UpgradeDatabaseSchemaAndData();

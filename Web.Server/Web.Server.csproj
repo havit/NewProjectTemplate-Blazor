@@ -10,9 +10,13 @@
 
 	<ItemGroup>
 		<PackageReference Include="Grpc.AspNetCore.Web" Version="2.38.0" />
+		<PackageReference Include="Hangfire" Version="1.7.24" />
+		<PackageReference Include="Hangfire.Console" Version="1.4.2" />
 		<PackageReference Include="Havit.AspNetCore" Version="2.0.7" />
+		<PackageReference Include="Havit.Hangfire.Extensions" Version="2.0.3" />
 		<PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.17.0" />
 		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="5.0.7" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="5.0.1" />
 		<PackageReference Include="protobuf-net" Version="3.0.101" />
 		<PackageReference Include="protobuf-net.Grpc.AspNetCore" Version="1.0.152" />
 	</ItemGroup>
