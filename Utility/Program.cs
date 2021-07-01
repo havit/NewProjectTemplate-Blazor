@@ -173,9 +173,6 @@ namespace Havit.UverovaPlatforma.Utility
 			services.AddHangfireConsoleExtensions(); // adds support for Hangfire jobs logging  to a dashboard using ILogger<T> (.UseConsole() in hangfire configuration is required!)
 			services.AddExceptionMonitoring(configuration);
 
-			// TODO: Should this be in the template?
-			//services.AddOptions<ApiCommunicationLogStorageOptions>().Bind(configuration.GetSection("AppSettings:ApiCommunicationLogStorage"));
-
 			services.ConfigureForUtility(configuration);
 
 			string sourceDbConnectionString = configuration.GetConnectionString("Database");
