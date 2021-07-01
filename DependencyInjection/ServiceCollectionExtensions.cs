@@ -1,30 +1,27 @@
 ﻿using System;
 using System.IO;
 using System.Runtime.CompilerServices;
-using Havit.NewProjectTemplate.DataLayer.Seeds.Core.Common;
+using Azure.Identity;
+using Havit.Data.EntityFrameworkCore.Patterns.DependencyInjection;
+using Havit.Data.EntityFrameworkCore.Patterns.UnitOfWorks.EntityValidation;
+using Havit.Extensions.DependencyInjection;
+using Havit.Extensions.DependencyInjection.Abstractions;
+using Havit.NewProjectTemplate.DataLayer.DataSources.Common;
+using Havit.NewProjectTemplate.DataLayer.Repositories.Crm;
+using Havit.NewProjectTemplate.DependencyInjection.ConfigrationOptions;
 using Havit.NewProjectTemplate.Entity;
 using Havit.NewProjectTemplate.Services.Infrastructure;
-using Havit.Extensions.DependencyInjection.Abstractions;
-using Havit.Extensions.DependencyInjection;
-using Havit.Services;
+using Havit.NewProjectTemplate.Services.Infrastructure.FileStorages;
+using Havit.NewProjectTemplate.Services.Jobs;
+using Havit.NewProjectTemplate.Services.TimeServices;
+using Havit.Services.Azure.FileStorage;
+using Havit.Services.Caching;
+using Havit.Services.FileStorage;
 using Havit.Services.TimeServices;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using Havit.Services.Caching;
-using System.Runtime.Caching;
 using Microsoft.Extensions.DependencyInjection;
-using Havit.Data.EntityFrameworkCore.Patterns.DependencyInjection;
-using Havit.NewProjectTemplate.DataLayer.DataSources.Common;
-using Havit.Data.EntityFrameworkCore.Patterns.UnitOfWorks.EntityValidation;
-using Havit.NewProjectTemplate.Services.TimeServices;
-using Havit.NewProjectTemplate.DataLayer.Repositories.Crm;
-using Havit.NewProjectTemplate.DependencyInjection.ConfigrationOptions;
-using Havit.Services.FileStorage;
-using Microsoft.AspNetCore.StaticFiles;
-using Havit.NewProjectTemplate.Services.Infrastructure.FileStorages;
-using Azure.Identity;
-using Havit.Services.Azure.FileStorage;
 
 namespace Havit.NewProjectTemplate.DependencyInjection
 {
@@ -42,6 +39,20 @@ namespace Havit.NewProjectTemplate.DependencyInjection
 				AzureStorageConnectionString = configuration.GetConnectionString("AzureStorageConnectionString"),
 				FileStoragePathOrContainerName = fileStorageOptions.PathOrContainerName,
 				ServiceProfiles = new[] { ServiceAttribute.DefaultProfile, ServiceProfiles.WebServer },
+			};
+
+			return services.ConfigureForAll(installConfiguration);
+		}
+
+		[MethodImpl(MethodImplOptions.NoInlining)]
+		public static IServiceCollection ConfigureForUtility(this IServiceCollection services, IConfiguration configuration)
+		{
+			InstallConfiguration installConfiguration = new InstallConfiguration
+			{
+				DatabaseConnectionString = configuration.GetConnectionString("Database"),
+				AzureStorageConnectionString = configuration.GetConnectionString("AzureStorageConnectionString"),
+				ServiceProfiles = new[] { ServiceAttribute.DefaultProfile, Jobs.ProfileName },
+				ApiCommunicationLogStorage = configuration.GetValue<string>("AppSettings:ApiCommunicationLogStorage:Path")
 			};
 
 			return services.ConfigureForAll(installConfiguration);

@@ -1,0 +1,48 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net5.0</TargetFramework>
+    <AssemblyName>Havit.NewProjectTemplate.Utility</AssemblyName>
+    <RootNamespace>Havit.NewProjectTemplate.Utility</RootNamespace>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+	  <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+	  <SelfContained>false</SelfContained>
+	  <_IsPortable>true</_IsPortable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="appsettings.Utility.Development.json" />
+    <None Remove="appsettings.Utility.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="appsettings.Utility.Development.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="appsettings.Utility.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Hangfire.AspNetCore" Version="1.7.22" />
+		<PackageReference Include="Hangfire.SqlServer" Version="1.7.22" />
+		<PackageReference Include="Hangfire.Console.Extensions" Version="1.0.4" />
+		<PackageReference Include="Havit.AspNetCore" Version="2.0.7" />
+		<PackageReference Include="Havit.Hangfire.Extensions" Version="2.0.3" />
+		<PackageReference Include="Microsoft.Azure.WebJobs" Version="3.0.27" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="3.1.14" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Console" Version="3.1.14" />
+		<PackageReference Include="System.Data.SqlClient" Version="4.8.2" />
+	</ItemGroup>
+
+	<ItemGroup>
+    <ProjectReference Include="..\DataLayer\DataLayer.csproj" />
+    <ProjectReference Include="..\DependencyInjection\DependencyInjection.csproj" />
+    <ProjectReference Include="..\Model\Model.csproj" />
+    <ProjectReference Include="..\Services\Services.csproj" />
+  </ItemGroup>
+
+</Project>
