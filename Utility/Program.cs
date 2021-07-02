@@ -10,21 +10,19 @@ using Hangfire.Console.Extensions;
 using Hangfire.SqlServer;
 using Havit.AspNetCore.ExceptionMonitoring.Services;
 using Havit.Diagnostics.Contracts;
-using Havit.Hangfire.Extensions.BackgroundJobs;
 using Havit.Hangfire.Extensions.Filters;
 using Havit.Hangfire.Extensions.RecurringJobs;
 using Havit.NewProjectTemplate.DependencyInjection;
 using Havit.NewProjectTemplate.Services.Jobs;
-using Havit.UverovaPlatforma.Utility.Hangfire;
+using Havit.NewProjectTemplate.Utility.Hangfire;
 using Microsoft.ApplicationInsights;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Logging.Console;
 
-namespace Havit.UverovaPlatforma.Utility
+namespace Havit.NewProjectTemplate.Utility
 {
 	public static class Program
 	{
