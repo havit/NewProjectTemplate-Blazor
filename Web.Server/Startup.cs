@@ -68,10 +68,12 @@ namespace Havit.NewProjectTemplate.Web.Server
 
 			// gRPC
 			services.AddSingleton<ServerExceptionsGrpcServerInterceptor>();
+			services.AddSingleton<GlobalizationLocalizationGrpcServerInterceptor>();
 			services.AddSingleton(BinderConfiguration.Create(marshallerFactories: new[] { ProtoBufMarshallerFactory.Create(RuntimeTypeModel.Default.RegisterApplicationContracts()) }, binder: new ServiceBinderWithServiceResolutionFromServiceCollection(services)));
 			services.AddCodeFirstGrpc(config =>
 			{
 				config.Interceptors.Add<ServerExceptionsGrpcServerInterceptor>();
+				config.Interceptors.Add<GlobalizationLocalizationGrpcServerInterceptor>();
 				config.ResponseCompressionLevel = System.IO.Compression.CompressionLevel.Optimal;
 			});
 
