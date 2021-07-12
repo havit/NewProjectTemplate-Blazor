@@ -27,14 +27,14 @@
     </Content>
   </ItemGroup>
 	<ItemGroup>
-		<PackageReference Include="Hangfire.AspNetCore" Version="1.7.22" />
-		<PackageReference Include="Hangfire.SqlServer" Version="1.7.22" />
+		<PackageReference Include="Hangfire.AspNetCore" Version="1.7.24" />
+		<PackageReference Include="Hangfire.SqlServer" Version="1.7.24" />
 		<PackageReference Include="Hangfire.Console.Extensions" Version="1.0.4" />
-		<PackageReference Include="Havit.AspNetCore" Version="2.0.7" />
+		<PackageReference Include="Havit.AspNetCore" Version="2.0.8" />
 		<PackageReference Include="Havit.Hangfire.Extensions" Version="2.0.3" />
 		<PackageReference Include="Microsoft.Azure.WebJobs" Version="3.0.27" />
-		<PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="3.1.14" />
-		<PackageReference Include="Microsoft.Extensions.Logging.Console" Version="3.1.14" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="5.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Console" Version="5.0.0" />
 		<PackageReference Include="System.Data.SqlClient" Version="4.8.2" />
 	</ItemGroup>
 

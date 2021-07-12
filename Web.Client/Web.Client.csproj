@@ -8,12 +8,12 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="BlazorApplicationInsights" Version="1.1.2" />
+		<PackageReference Include="BlazorApplicationInsights" Version="1.2.0" />
 		<PackageReference Include="Blazored.LocalStorage" Version="4.1.2" />
 		<PackageReference Include="Grpc.Net.Client" Version="2.38.0" />
 		<PackageReference Include="Grpc.Net.Client.Web" Version="2.38.0" />
-		<PackageReference Include="Havit.Blazor.Components.Web" Version="1.0.14" />
-		<PackageReference Include="Havit.Blazor.Components.Web.Bootstrap" Version="1.1.13" />
+		<PackageReference Include="Havit.Blazor.Components.Web" Version="1.0.16" />
+		<PackageReference Include="Havit.Blazor.Components.Web.Bootstrap" Version="1.1.20" />
 		<PackageReference Include="Havit.SourceGenerators.StrongApiStringLocalizers" Version="1.0.1" />
 		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="5.0.7" />
 		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="5.0.7" PrivateAssets="all" />
