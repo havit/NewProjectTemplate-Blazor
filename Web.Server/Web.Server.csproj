@@ -3,7 +3,7 @@
 	<PropertyGroup>
 		<TargetFramework>net5.0</TargetFramework>
 		<DisableImplicitComponentsAnalyzers>true</DisableImplicitComponentsAnalyzers>
-		<UserSecretsId>BlazorWasm-CSharp.Server-07F7A679-6CA8-442B-83BF-C889FBC5F990</UserSecretsId>
+		<>BlazorWasm-CSharp.Server-07F7A679-6CA8-442B-83BF-C889FBC5F990</UserSecretsId>
 		<AssemblyName>Havit.NewProjectTemplate.Web.Server</AssemblyName>
 		<RootNamespace>Havit.NewProjectTemplate.Web.Server</RootNamespace>
 	</PropertyGroup>
@@ -70,10 +70,10 @@
 	</Target>
 
     <Target Name="EnsureWebJobInPackage" AfterTargets="CreateReadyToRunImages" BeforeTargets="_PrepareForReadyToRunCompilation">
-        <Error Text="WebJob file Havit.NewProjectTemplate.Utility.exe not found when preparing web deploy package." Condition="!Exists('..\Utility\bin\Release\net5.0\win-x64\Havit.NewProjectTemplate.Utility.exe')" />
+        <Error Text="WebJob file Havit.NewProjectTemplate.Utility.exe not found when preparing web deploy package." Condition="!Exists('..\Utility\bin\Release\net5.0\Havit.NewProjectTemplate.Utility.exe')" />
         <ItemGroup>
             <!-- Vybereme soubory k publikaci. Předpokládá, že Utility je závislostí WebAPI nastavené v SLN. -->
-            <WebJobFiles Include="..\Utility\bin\Release\net5.0\win-x64\**" />
+            <WebJobFiles Include="..\Utility\bin\Release\net5.0\**" />
             <!-- Přidej soubory do ResolvedFileToPublish s nastavením cesty, kam mají být umístěny (složka pro webjoby). -->
             <ResolvedFileToPublish Include="@(WebJobFiles)">
                 <RelativePath>app_data\jobs\continuous\Utility\%(RecursiveDir)%(Filename)%(Extension)</RelativePath>
