@@ -10,6 +10,7 @@ using Hangfire.Console.Extensions;
 using Hangfire.SqlServer;
 using Havit.AspNetCore.ExceptionMonitoring.Services;
 using Havit.Diagnostics.Contracts;
+using Havit.Hangfire.Extensions.BackgroundJobs;
 using Havit.Hangfire.Extensions.Filters;
 using Havit.Hangfire.Extensions.RecurringJobs;
 using Havit.NewProjectTemplate.DependencyInjection;
@@ -94,7 +95,7 @@ namespace Havit.NewProjectTemplate.Utility
 		{
 			TimeZoneInfo timeZone = TimeZoneInfo.FindSystemTimeZoneById("Central European Standard Time");
 
-			yield return new RecurringJob<EmptyJob>(job => job.ExecuteAsync(CancellationToken.None), Cron.Daily(hour: 1, minute: 0), timeZone);
+			yield return new RecurringJob<IEmptyJob>(job => job.ExecuteAsync(CancellationToken.None), Cron.Minutely(), timeZone);
 		}
 
 		private static async Task RunHangfireServer()
@@ -172,8 +173,6 @@ namespace Havit.NewProjectTemplate.Utility
 			services.AddExceptionMonitoring(configuration);
 
 			services.ConfigureForUtility(configuration);
-
-			string sourceDbConnectionString = configuration.GetConnectionString("Database");
 
 			services.AddSingleton<TelemetryClient>();
 

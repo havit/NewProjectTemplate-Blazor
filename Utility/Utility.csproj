@@ -7,12 +7,6 @@
     <RootNamespace>Havit.NewProjectTemplate.Utility</RootNamespace>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
-	  <RuntimeIdentifier>win-x64</RuntimeIdentifier>
-	  <SelfContained>false</SelfContained>
-	  <_IsPortable>true</_IsPortable>
-  </PropertyGroup>
-
   <ItemGroup>
     <None Remove="appsettings.Utility.Development.json" />
     <None Remove="appsettings.Utility.json" />
