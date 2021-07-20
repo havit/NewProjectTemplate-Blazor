@@ -167,7 +167,6 @@ namespace Havit.NewProjectTemplate.Utility
 			services.AddOptions();
 			services.AddMemoryCache();
 
-			services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 			services.AddLogging(builder => builder.AddSimpleConsole(options => options.TimestampFormat = "[HH:mm:ss] "));
 			services.AddHangfireConsoleExtensions(); // adds support for Hangfire jobs logging  to a dashboard using ILogger<T> (.UseConsole() in hangfire configuration is required!)
 			services.AddExceptionMonitoring(configuration);
