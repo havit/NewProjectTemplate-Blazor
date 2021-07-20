@@ -3,7 +3,6 @@
 	<PropertyGroup>
 		<TargetFramework>net5.0</TargetFramework>
 		<DisableImplicitComponentsAnalyzers>true</DisableImplicitComponentsAnalyzers>
-		<>BlazorWasm-CSharp.Server-07F7A679-6CA8-442B-83BF-C889FBC5F990</UserSecretsId>
 		<AssemblyName>Havit.NewProjectTemplate.Web.Server</AssemblyName>
 		<RootNamespace>Havit.NewProjectTemplate.Web.Server</RootNamespace>
 	</PropertyGroup>
