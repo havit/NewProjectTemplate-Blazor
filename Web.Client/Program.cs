@@ -6,15 +6,15 @@ using System.Text;
 using System.Threading.Tasks;
 using BlazorApplicationInsights;
 using Blazored.LocalStorage;
+using FluentValidation;
 using Havit.Blazor.Components.Web;
 using Havit.Blazor.Components.Web.Bootstrap;
-using Havit.NewProjectTemplate.Contracts.Crm;
+using Havit.NewProjectTemplate.Contracts;
 using Havit.NewProjectTemplate.Contracts.System;
 using Havit.NewProjectTemplate.Web.Client.Infrastructure;
 using Havit.NewProjectTemplate.Web.Client.Infrastructure.Grpc;
 using Havit.NewProjectTemplate.Web.Client.Infrastructure.Interceptors;
 using Havit.NewProjectTemplate.Web.Client.Infrastructure.Security;
-using Havit.NewProjectTemplate.Web.Client.Resources;
 using Havit.NewProjectTemplate.Web.Client.Services.DataStores;
 using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
@@ -39,9 +39,11 @@ namespace Havit.NewProjectTemplate.Web.Client
 			builder.Services.AddApiAuthorization();
 
 			builder.Services.AddLocalization();
-			builder.Services.AddGeneratedResourceWrappers();
+			Havit.NewProjectTemplate.Web.Client.Resources.ResourcesServiceCollectionInstaller.AddGeneratedResourceWrappers(builder.Services);
+			Havit.NewProjectTemplate.Resources.ResourcesServiceCollectionInstaller.AddGeneratedResourceWrappers(builder.Services);
 
 			builder.Services.AddBlazoredLocalStorage();
+			builder.Services.AddValidatorsFromAssemblyContaining<Dto<object>>();
 
 			builder.Services.AddHxMessenger();
 			builder.Services.AddHxMessageBoxHost();

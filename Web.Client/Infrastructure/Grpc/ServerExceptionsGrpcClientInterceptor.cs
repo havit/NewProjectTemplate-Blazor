@@ -8,7 +8,7 @@ using Grpc.Core;
 using Grpc.Core.Interceptors;
 using Havit.Blazor.Components.Web;
 using Havit.Blazor.Components.Web.Bootstrap;
-using Havit.NewProjectTemplate.Web.Client.Resources;
+using Havit.NewProjectTemplate.Resources;
 using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Localization;
