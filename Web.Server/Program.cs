@@ -40,6 +40,7 @@ namespace Havit.NewProjectTemplate.Web.Server
 					logging.AddConfiguration(hostingContext.Configuration.GetSection("Logging"));
 					logging.AddConsole();
 					logging.AddDebug();
+					logging.AddAzureWebAppDiagnostics();
 #if !DEBUG
 					logging.AddEventLog();
 #endif
