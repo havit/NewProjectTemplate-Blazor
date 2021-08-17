@@ -9,13 +9,15 @@ using Blazored.LocalStorage;
 using FluentValidation;
 using Havit.Blazor.Components.Web;
 using Havit.Blazor.Components.Web.Bootstrap;
+using Havit.Blazor.Grpc.Client;
+using Havit.Blazor.Grpc.Client.ServerExceptions;
+using Havit.Blazor.Grpc.Client.WebAssembly;
 using Havit.NewProjectTemplate.Contracts;
 using Havit.NewProjectTemplate.Contracts.System;
-using Havit.NewProjectTemplate.Web.Client.Infrastructure;
 using Havit.NewProjectTemplate.Web.Client.Infrastructure.Grpc;
-using Havit.NewProjectTemplate.Web.Client.Infrastructure.Interceptors;
 using Havit.NewProjectTemplate.Web.Client.Infrastructure.Security;
 using Havit.NewProjectTemplate.Web.Client.Services.DataStores;
+using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -66,8 +68,23 @@ namespace Havit.NewProjectTemplate.Web.Client
 
 		private static void AddGrpcClient(WebAssemblyHostBuilder builder)
 		{
-			builder.Services.AddGrpcClientInfrastructure();
-			builder.Services.AddGrpcClientsByApiContractAttributes(typeof(IDataSeedFacade).Assembly);
+			builder.Services.AddTransient<IOperationFailedExceptionPublisher, HxMessengerOperationFailedExceptionPublisher>();
+			builder.Services.AddTransient<AuthorizationGrpcClientInterceptor>();
+			builder.Services.AddGrpcClientInfrastructure(assemblyToScanForDataContracts: typeof(Dto).Assembly);
+			builder.Services.AddGrpcClientsByApiContractAttributes(
+				typeof(IDataSeedFacade).Assembly,
+				configureGrpcClientWithAuthorization: grpcClient =>
+				{
+					grpcClient.AddHttpMessageHandler(provider =>
+					{
+						var navigationManager = provider.GetRequiredService<NavigationManager>();
+						var backendUrl = navigationManager.BaseUri;
+
+						return provider.GetRequiredService<AuthorizationMessageHandler>()
+							.ConfigureHandler(authorizedUrls: new[] { backendUrl }); // TODO? as neede: , scopes: new[] { "havit-NewProjectTemplate-api" });
+					})
+					.AddInterceptor<AuthorizationGrpcClientInterceptor>();
+				});
 		}
 
 		private static async ValueTask SetLanguage(WebAssemblyHost webAssemblyHost)

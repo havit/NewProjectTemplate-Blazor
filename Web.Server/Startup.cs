@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Hangfire;
 using Hangfire.Dashboard;
+using Havit.Blazor.Grpc.Server;
 using Havit.NewProjectTemplate.Contracts;
 using Havit.NewProjectTemplate.Contracts.System;
 using Havit.NewProjectTemplate.DependencyInjection;
@@ -8,7 +9,6 @@ using Havit.NewProjectTemplate.Facades.Infrastructure.Security;
 using Havit.NewProjectTemplate.Model.Security;
 using Havit.NewProjectTemplate.Web.Server.Infrastructure.ApplicationInsights;
 using Havit.NewProjectTemplate.Web.Server.Infrastructure.ConfigurationExtensions;
-using Havit.NewProjectTemplate.Web.Server.Infrastructure.Grpc;
 using Havit.NewProjectTemplate.Web.Server.Tools;
 using Microsoft.ApplicationInsights.DependencyCollector;
 using Microsoft.ApplicationInsights.Extensibility;
@@ -67,15 +67,7 @@ namespace Havit.NewProjectTemplate.Web.Server
 			services.AddRazorPages();
 
 			// gRPC
-			services.AddSingleton<ServerExceptionsGrpcServerInterceptor>();
-			services.AddSingleton<GlobalizationLocalizationGrpcServerInterceptor>();
-			services.AddSingleton(BinderConfiguration.Create(marshallerFactories: new[] { ProtoBufMarshallerFactory.Create(RuntimeTypeModel.Default.RegisterApplicationContracts()) }, binder: new ServiceBinderWithServiceResolutionFromServiceCollection(services)));
-			services.AddCodeFirstGrpc(config =>
-			{
-				config.Interceptors.Add<ServerExceptionsGrpcServerInterceptor>();
-				config.Interceptors.Add<GlobalizationLocalizationGrpcServerInterceptor>();
-				config.ResponseCompressionLevel = System.IO.Compression.CompressionLevel.Optimal;
-			});
+			services.AddGrpcServerInfrastructure(assemblyToScanForDataContracts: typeof(Dto).Assembly);
 
 			// Hangfire
 			services.AddCustomizedHangfire(configuration);
@@ -117,7 +109,12 @@ namespace Havit.NewProjectTemplate.Web.Server
 				endpoints.MapControllers();
 				endpoints.MapFallbackToFile("index.html");
 
-				endpoints.MapGrpcServicesByApiContractAttributes(typeof(IDataSeedFacade).Assembly);
+				endpoints.MapGrpcServicesByApiContractAttributes(
+					typeof(IDataSeedFacade).Assembly,
+					configureEndpointWithAuthorization: endpoint =>
+					{
+						endpoint.RequireAuthorization(); // TODO? AuthorizationPolicyNames.ApiScopePolicy when needed
+					});
 
 				endpoints.MapHangfireDashboard("/hangfire", new DashboardOptions
 				{
