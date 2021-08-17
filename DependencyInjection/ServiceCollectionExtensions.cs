@@ -119,7 +119,6 @@ namespace Havit.NewProjectTemplate.DependencyInjection
 
 		private static void InstallByServiceAttribute(IServiceCollection services, InstallConfiguration configuration)
 		{
-
 			services.AddByServiceAttribute(typeof(Havit.NewProjectTemplate.DataLayer.Properties.AssemblyInfo).Assembly, configuration.ServiceProfiles);
 			services.AddByServiceAttribute(typeof(Havit.NewProjectTemplate.Services.Properties.AssemblyInfo).Assembly, configuration.ServiceProfiles);
 			services.AddByServiceAttribute(typeof(Havit.NewProjectTemplate.Facades.Properties.AssemblyInfo).Assembly, configuration.ServiceProfiles);
@@ -134,22 +133,30 @@ namespace Havit.NewProjectTemplate.DependencyInjection
 			);
 		}
 
-		private static void InstallFileServices(IServiceCollection services, InstallConfiguration configuration)
+		private static void InstallFileServices(IServiceCollection services, InstallConfiguration installConfiguration)
 		{
-			services.AddFileStorageWrappingService<IApplicationFileStorageService, ApplicationFileStorageService, ApplicationFileStorage>();
+			InstallFileStorageService<IApplicationFileStorageService, ApplicationFileStorageService, ApplicationFileStorage>(services, installConfiguration.AzureStorageConnectionString, installConfiguration.FileStoragePathOrContainerName);
+		}
 
-			if (!String.IsNullOrWhiteSpace(configuration.AzureStorageConnectionString))
+		internal static void InstallFileStorageService<TFileStorageService, TFileStorageImplementation, TFileStorageContext>(IServiceCollection services, string azureStorageConnectionString, string storagePath)
+			where TFileStorageService : class, IFileStorageService<TFileStorageContext> // class zde znamená i interface! // např. IDocumentStorageService
+			where TFileStorageImplementation : FileStorageWrappingService<TFileStorageContext>, TFileStorageService // např. DocumentStorageService
+			where TFileStorageContext : FileStorageContext // např. DocumentStorage
+		{
+			services.AddFileStorageWrappingService<TFileStorageService, TFileStorageImplementation, TFileStorageContext>();
+
+			if (!String.IsNullOrEmpty(azureStorageConnectionString))
 			{
-				services.AddAzureBlobStorageService<ApplicationFileStorage>(new AzureBlobStorageServiceOptions<ApplicationFileStorage>
+				services.AddAzureBlobStorageService<TFileStorageContext>(new AzureBlobStorageServiceOptions<TFileStorageContext>
 				{
-					BlobStorage = configuration.AzureStorageConnectionString,
-					ContainerName = configuration.FileStoragePathOrContainerName,
+					BlobStorage = azureStorageConnectionString,
+					ContainerName = storagePath,
 					TokenCredential = new DefaultAzureCredential()
 				});
 			}
 			else
 			{
-				services.AddFileSystemStorageService<ApplicationFileStorage>(configuration.FileStoragePathOrContainerName);
+				services.AddFileSystemStorageService<TFileStorageContext>(storagePath);
 			}
 		}
 	}
