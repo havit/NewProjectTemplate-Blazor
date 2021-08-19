@@ -8,6 +8,10 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+		<TrimmerRootDescriptor Include="TrimmerRootDescriptor.xml" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <Compile Remove="Resources\Model\**" />
 	  <Content Remove="Resources\Model\**" />
 	  <EmbeddedResource Remove="Resources\Model\**" />
