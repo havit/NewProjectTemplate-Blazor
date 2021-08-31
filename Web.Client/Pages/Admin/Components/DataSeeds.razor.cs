@@ -19,7 +19,7 @@ namespace Havit.NewProjectTemplate.Web.Client.Pages.Admin.Components
 
 		private IEnumerable<string> seedProfiles;
 		private string selectedSeedProfile;
-		private HxDisplayLayout layoutComponent;
+		private HxOffcanvas offcanvasComponent;
 
 		private async Task HandleSeedClick()
 		{
@@ -28,7 +28,7 @@ namespace Havit.NewProjectTemplate.Web.Client.Pages.Admin.Components
 				await DataSeedFacade.SeedDataProfile(selectedSeedProfile);
 				Messenger.AddInformation($"Seed successful: {selectedSeedProfile}");
 
-				await layoutComponent.HideAsync();
+				await offcanvasComponent.HideAsync();
 			}
 		}
 
@@ -36,7 +36,7 @@ namespace Havit.NewProjectTemplate.Web.Client.Pages.Admin.Components
 		{
 			seedProfiles ??= (await DataSeedFacade.GetDataSeedProfiles()).Value;
 
-			await layoutComponent.ShowAsync();
+			await offcanvasComponent.ShowAsync();
 		}
 	}
 }

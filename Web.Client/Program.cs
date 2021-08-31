@@ -68,7 +68,7 @@ namespace Havit.NewProjectTemplate.Web.Client
 
 		private static void AddGrpcClient(WebAssemblyHostBuilder builder)
 		{
-			builder.Services.AddTransient<IOperationFailedExceptionPublisher, HxMessengerOperationFailedExceptionPublisher>();
+			builder.Services.AddTransient<IOperationFailedExceptionGrpcClientListener, HxMessengerOperationFailedExceptionGrpcClientListener>();
 			builder.Services.AddTransient<AuthorizationGrpcClientInterceptor>();
 			builder.Services.AddGrpcClientInfrastructure(assemblyToScanForDataContracts: typeof(Dto).Assembly);
 			builder.Services.AddGrpcClientsByApiContractAttributes(

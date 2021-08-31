@@ -11,17 +11,18 @@ using Microsoft.Extensions.Localization;
 
 namespace Havit.NewProjectTemplate.Web.Client.Infrastructure.Grpc
 {
-	public class HxMessengerOperationFailedExceptionPublisher : IOperationFailedExceptionPublisher
+	public class HxMessengerOperationFailedExceptionGrpcClientListener : IOperationFailedExceptionGrpcClientListener
 	{
 		private readonly IHxMessengerService messenger;
 		private readonly IStringLocalizer<Global> localizer;
 
-		public HxMessengerOperationFailedExceptionPublisher(IHxMessengerService messenger, IStringLocalizer<Global> localizer)
+		public HxMessengerOperationFailedExceptionGrpcClientListener(IHxMessengerService messenger, IStringLocalizer<Global> localizer)
 		{
 			this.messenger = messenger;
 			this.localizer = localizer;
 		}
-		public Task PublishAsync(string errorMessage)
+
+		public Task ProcessAsync(string errorMessage)
 		{
 			messenger.AddError(localizer["OperationFailedExceptionMessengerTitle"], errorMessage);
 
