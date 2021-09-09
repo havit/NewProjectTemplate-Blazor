@@ -40,15 +40,14 @@ namespace Havit.NewProjectTemplate.Web.Client
 			builder.Services.AddScoped(typeof(AccountClaimsPrincipalFactory<RemoteUserAccount>), typeof(RolesAccountClaimsPrincipalFactory)); // multiple roles workaround
 			builder.Services.AddApiAuthorization();
 
-			builder.Services.AddLocalization();
-			Havit.NewProjectTemplate.Web.Client.Resources.ResourcesServiceCollectionInstaller.AddGeneratedResourceWrappers(builder.Services);
-			Havit.NewProjectTemplate.Resources.ResourcesServiceCollectionInstaller.AddGeneratedResourceWrappers(builder.Services);
-
 			builder.Services.AddBlazoredLocalStorage();
 			builder.Services.AddValidatorsFromAssemblyContaining<Dto<object>>();
 
+			builder.Services.AddHxServices();
 			builder.Services.AddHxMessenger();
 			builder.Services.AddHxMessageBoxHost();
+			Havit.NewProjectTemplate.Web.Client.Resources.ResourcesServiceCollectionInstaller.AddGeneratedResourceWrappers(builder.Services);
+			Havit.NewProjectTemplate.Resources.ResourcesServiceCollectionInstaller.AddGeneratedResourceWrappers(builder.Services);
 			SetHxComponents();
 
 			builder.Services.AddScoped<IContactReferenceDataStore, ContactReferenceDataStore>();
