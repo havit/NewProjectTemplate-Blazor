@@ -23,8 +23,6 @@
 		<PackageReference Include="Blazored.FluentValidation" Version="2.0.1" />
 		<PackageReference Include="Blazored.LocalStorage" Version="4.1.5" />
 		<PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="10.3.3" />
-		<PackageReference Include="Grpc.Net.Client" Version="2.39.0" />
-		<PackageReference Include="Grpc.Net.Client.Web" Version="2.39.0" />
 		<PackageReference Include="Havit.Blazor.Components.Web.Bootstrap" Version="1.1.66" />
 		<PackageReference Include="Havit.Blazor.Grpc.Client.WebAssembly" Version="1.0.7" />
 		<PackageReference Include="Havit.Extensions.Localization" Version="1.0.2" />
@@ -32,8 +30,6 @@
 		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="5.0.9" />
 		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="5.0.9" PrivateAssets="all" />
 		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Authentication" Version="5.0.9" />
-		<PackageReference Include="protobuf-net" Version="3.0.101" />
-		<PackageReference Include="protobuf-net.Grpc.ClientFactory" Version="1.0.152" />
 	</ItemGroup>
 
 	<ItemGroup>

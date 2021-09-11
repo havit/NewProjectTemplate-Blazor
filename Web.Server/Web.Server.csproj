@@ -18,8 +18,6 @@
 		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="5.0.9" />
 		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="5.0.2" />
 		<PackageReference Include="Microsoft.Extensions.Logging.AzureAppServices" Version="5.0.9" />
-		<PackageReference Include="protobuf-net" Version="3.0.101" />
-		<PackageReference Include="protobuf-net.Grpc.AspNetCore" Version="1.0.152" />
 	</ItemGroup>
 
 	<ItemGroup>
