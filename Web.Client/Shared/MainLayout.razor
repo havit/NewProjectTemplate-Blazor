@@ -3,8 +3,9 @@
 <HxMessenger Position="HxToastContainerPosition.BottomStart" />
 <HxMessageBoxHost />
 
-<Sidebar />
-
-<div class="main p-4">
-	@Body
+<div class="container-xxl d-flex flex-wrap flex-md-nowrap">
+	<Sidebar />
+	<div class="doc-content main p-4 flex-grow-1 overflow-hidden">
+		@Body
+	</div>
 </div>

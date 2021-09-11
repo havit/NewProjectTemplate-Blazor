@@ -1,30 +1,3 @@
-app {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
-
-.top-row {
-  color: #2e75f0;
-  display: flex;
-  align-items: center;
-}
-
-.main {
-  flex: 1;
-}
-
-.main .top-row {
-  justify-content: flex-end;
-}
-
-.main .top-row > a,
-.main .top-row .btn-link {
-  white-space: nowrap;
-  margin-left: 1.5rem;
-}
-
 #blazor-error-ui {
   background: lightyellow;
   bottom: 0;
@@ -42,26 +15,4 @@ app {
   position: absolute;
   right: 0.75rem;
   top: 0.5rem;
-}
-
-@media (min-width: 768px) {
-  app {
-    flex-direction: row;
-  }
-  .sidebar {
-    width: 250px;
-    height: 100vh;
-    position: sticky;
-    top: 0;
-  }
-  .sidebar .top-row {
-    margin: 1rem 0;
-  }
-  .navbar-toggler {
-    display: none;
-  }
-  .sidebar-inner > .collapse {
-    /* Never collapse the sidebar for wide screens */
-    display: block;
-  }
 }
