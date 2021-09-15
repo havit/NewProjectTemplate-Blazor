@@ -23,7 +23,7 @@ namespace Havit.NewProjectTemplate.Web.Server.Infrastructure.ConfigurationExtens
 					// hangfire recommended configuration for hangfire 1.7
 					CommandBatchMaxTimeout = TimeSpan.FromMinutes(5),
 					SlidingInvisibilityTimeout = TimeSpan.FromMinutes(5),
-					QueuePollInterval = TimeSpan.Zero,
+					QueuePollInterval = TimeSpan.FromSeconds(5),
 					UseRecommendedIsolationLevel = true,
 					DisableGlobalLocks = true // Migration to Schema 7 is required
 				});
