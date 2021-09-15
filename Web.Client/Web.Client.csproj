@@ -23,7 +23,7 @@
 		<PackageReference Include="Blazored.FluentValidation" Version="2.0.1" />
 		<PackageReference Include="Blazored.LocalStorage" Version="4.1.5" />
 		<PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="10.3.3" />
-		<PackageReference Include="Havit.Blazor.Components.Web.Bootstrap" Version="1.1.66" />
+		<PackageReference Include="Havit.Blazor.Components.Web.Bootstrap" Version="1.1.68" />
 		<PackageReference Include="Havit.Blazor.Grpc.Client.WebAssembly" Version="1.0.7" />
 		<PackageReference Include="Havit.Extensions.Localization" Version="1.0.2" />
 		<PackageReference Include="Havit.SourceGenerators.StrongApiStringLocalizers" Version="1.0.5" />

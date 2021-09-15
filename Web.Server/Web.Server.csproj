@@ -30,7 +30,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Havit.Blazor.Components.Web.Bootstrap" Version="1.1.66" />
+		<PackageReference Include="Havit.Blazor.Components.Web.Bootstrap" Version="1.1.68" />
 		<PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="5.0.9" />
 		<PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="5.0.9" />
 		<PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="5.0.9" />
