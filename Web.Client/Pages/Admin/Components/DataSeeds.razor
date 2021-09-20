@@ -3,6 +3,6 @@
 		<HxSelect Label="Seed profile" @bind-Value="selectedSeedProfile" Data="seedProfiles" TValue="string" TItem="string" Nullable="true" NullText="-select profile-" />
 	</BodyTemplate>
 	<FooterTemplate>
-		<HxSubmit Skin="ButtonSkins.OK" Text="Run seed" Color="ThemeColor.Primary" Enabled="@(selectedSeedProfile is not null)" OnClick="HandleSeedClick" />
+		<HxSubmit Text="Run seed" Color="ThemeColor.Primary" Enabled="@(selectedSeedProfile is not null)" OnClick="HandleSeedClick" />
 	</FooterTemplate>
 </HxOffcanvas>
