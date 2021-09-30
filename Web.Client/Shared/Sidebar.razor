@@ -2,27 +2,25 @@
 @inject INavigationLocalizer NavigationLocalizer
 
 <HxSidebar CssClass="sticky-top">
-    <HeaderTemplate>
-        <HxSidebarBrand BrandName="NewProjectTemplate" BrandNameShort="NP" />
-    </HeaderTemplate>
+	<HeaderTemplate>
+		<HxSidebarBrand BrandName="NewProjectTemplate" BrandNameShort="NP" />
+	</HeaderTemplate>
 
-    <ItemsTemplate>
-        <HxSidebarItem Text="Dashboard" Href="@Routes.Home" Icon="@BootstrapIcon.Columns" />
-        <HxSidebarItem Text="Section 1" Icon="@BootstrapIcon.Person">
-            <HxSidebarItem Text="Section Item 1" Href="/one" Match="NavLinkMatch.All" />
-            <HxSidebarItem Text="Section Item 2" Href="/two" Match="NavLinkMatch.All" />
-            <HxSidebarItem Text="Section Item 3" Href="/three" Match="NavLinkMatch.All" />
-            <HxSidebarItem Text="Section Item 4" Href="/four" Match="NavLinkMatch.All" />
-        </HxSidebarItem>
-        <HxSidebarItem Text="Section 2" Icon="@BootstrapIcon.Clock" />
-        <HxSidebarItem Text="Section 3" Icon="@BootstrapIcon.Kanban" />
-        <HxSidebarItem Text="@NavigationLocalizer.Administration" Href="@Routes.Administration.Index" Icon="@BootstrapIcon.Gear" />
-        <HxSidebarItem Text="Development" Href="/development" Icon="@BootstrapIcon.FileCode" />
-    </ItemsTemplate>
+	<ItemsTemplate>
+		<HxSidebarItem Text="Dashboard" Href="@Routes.Home" Icon="@BootstrapIcon.Columns" />
+		<HxSidebarItem Text="Section 1" Icon="@BootstrapIcon.Person">
+			<HxSidebarItem Text="Section Item 1" Href="/one" Match="NavLinkMatch.All" />
+			<HxSidebarItem Text="Section Item 2" Href="/two" Match="NavLinkMatch.All" />
+			<HxSidebarItem Text="Section Item 3" Href="/three" Match="NavLinkMatch.All" />
+			<HxSidebarItem Text="Section Item 4" Href="/four" Match="NavLinkMatch.All" />
+		</HxSidebarItem>
+		<HxSidebarItem Text="Section 2" Icon="@BootstrapIcon.Clock" />
+		<HxSidebarItem Text="Section 3" Icon="@BootstrapIcon.Kanban" />
+		<HxSidebarItem Text="@NavigationLocalizer.Administration" Href="@Routes.Administration.Index" Icon="@BootstrapIcon.Gear" />
+		<HxSidebarItem Text="Development" Href="/development" Icon="@BootstrapIcon.FileCode" />
+	</ItemsTemplate>
 
-    <FooterTemplate>
-        <div class="p-4 mt-auto">
-            <LoginDisplay />
-        </div>
-    </FooterTemplate>
+	<FooterTemplate>
+		<LoginDisplay />
+	</FooterTemplate>
 </HxSidebar>
