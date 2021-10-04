@@ -4,34 +4,22 @@
 @inject NavigationManager Navigation
 @inject SignOutSessionStateManager SignOutManager
 
-<AuthorizeView>
-    <Authorized>
+<div class="login-display d-flex align-items-center w-100 p-3">
+	<AuthorizeView>
+		<Authorized>
 
-        <div class="d-flex align-items-center ">
-            <div class="me-3">
-                <div class="p-2 rounded-circle bg-secondary">DC</div>
-            </div>
-            <div>
-                <a href="authentication/profile">@context.User.Claims.FirstOrDefault(c => c.Type == "nickname")?.Value</a>
-            </div>
-            <div class="ms-auto">
-                <HxContextMenu>
-                     <HxContextMenuItem Text="Log out" OnClick="BeginSignOut" /> 
-                    <CultureSelector />
-                </HxContextMenu>
-            </div>
-        </div>
-    </Authorized>
-    <NotAuthorized>
-        <a href="authentication/register">Register</a>
-        <a href="authentication/login">Log in</a>
-    </NotAuthorized>
-</AuthorizeView>
+			<div class="initials rounded-circle text-primary p-1">@NameToInitials(@context.User?.Identity?.Name)</div>
+			<a class="login-display-nickname mx-3">@context?.User?.Identity?.Name</a>
+			<div class="ms-auto">
+				<HxContextMenu>
+					<CultureSelector />
+					<HxContextMenuItem Text="Log out" OnClick="BeginSignOut" />
+				</HxContextMenu>
+			</div>
 
-@code{
-    private async Task BeginSignOut()
-    {
-        await SignOutManager.SetSignOutState();
-        Navigation.NavigateTo("authentication/logout");
-    }
-}
+		</Authorized>
+		<NotAuthorized>
+			<span><a href="authentication/register">Register</a> or <a href="authentication/login">Log in</a></span>
+		</NotAuthorized>
+	</AuthorizeView>
+</div>
