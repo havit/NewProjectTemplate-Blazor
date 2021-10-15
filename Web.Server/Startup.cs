@@ -7,8 +7,10 @@ using Havit.NewProjectTemplate.Contracts.System;
 using Havit.NewProjectTemplate.DependencyInjection;
 using Havit.NewProjectTemplate.Facades.Infrastructure.Security;
 using Havit.NewProjectTemplate.Model.Security;
+using Havit.NewProjectTemplate.Services.HealthChecks;
 using Havit.NewProjectTemplate.Web.Server.Infrastructure.ApplicationInsights;
 using Havit.NewProjectTemplate.Web.Server.Infrastructure.ConfigurationExtensions;
+using Havit.NewProjectTemplate.Web.Server.Infrastructure.HealthChecks;
 using Havit.NewProjectTemplate.Web.Server.Tools;
 using Microsoft.ApplicationInsights.DependencyCollector;
 using Microsoft.ApplicationInsights.Extensibility;
@@ -69,6 +71,10 @@ namespace Havit.NewProjectTemplate.Web.Server
 			// gRPC
 			services.AddGrpcServerInfrastructure(assemblyToScanForDataContracts: typeof(Dto).Assembly);
 
+			// Health checks
+			services.AddHealthChecks()
+				.AddCheck<NewProjectTemplateDbContextHealthCheck>("Database");
+
 			// Hangfire
 			services.AddCustomizedHangfire(configuration);
 		}
@@ -115,6 +121,12 @@ namespace Havit.NewProjectTemplate.Web.Server
 					{
 						endpoint.RequireAuthorization(); // TODO? AuthorizationPolicyNames.ApiScopePolicy when needed
 					});
+
+				endpoints.MapHealthChecks("/health", new Microsoft.AspNetCore.Diagnostics.HealthChecks.HealthCheckOptions
+				{
+					AllowCachingResponses = false,
+					ResponseWriter = HealthCheckWriter.WriteResponse
+				});
 
 				endpoints.MapHangfireDashboard("/hangfire", new DashboardOptions
 				{
