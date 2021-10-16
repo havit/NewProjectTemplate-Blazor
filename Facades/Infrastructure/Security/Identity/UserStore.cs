@@ -39,7 +39,6 @@ namespace Havit.NewProjectTemplate.Facades.Infrastructure.Security.Identity
 		{
 			Contract.Requires<ArgumentNullException>(user != null, nameof(user));
 			Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(normalizedRoleName), nameof(normalizedRoleName));
-			cancellationToken.ThrowIfCancellationRequested();
 
 			var roleEntry = Enum.Parse<Role.Entry>(normalizedRoleName, ignoreCase: true);
 			user.UserRoles.Add(new UserRole()
@@ -55,7 +54,6 @@ namespace Havit.NewProjectTemplate.Facades.Infrastructure.Security.Identity
 		public async Task<IdentityResult> CreateAsync(User user, CancellationToken cancellationToken)
 		{
 			Contract.Requires<ArgumentNullException>(user != null, nameof(user));
-			cancellationToken.ThrowIfCancellationRequested();
 
 			unitOfWork.AddForInsert(user);
 			await unitOfWork.CommitAsync();
@@ -65,7 +63,6 @@ namespace Havit.NewProjectTemplate.Facades.Infrastructure.Security.Identity
 		public async Task<IdentityResult> DeleteAsync(User user, CancellationToken cancellationToken)
 		{
 			Contract.Requires<ArgumentNullException>(user != null, nameof(user));
-			cancellationToken.ThrowIfCancellationRequested();
 
 			unitOfWork.AddForDelete(user);
 			await unitOfWork.CommitAsync();
@@ -80,7 +77,6 @@ namespace Havit.NewProjectTemplate.Facades.Infrastructure.Security.Identity
 		public async Task<User> FindByEmailAsync(string normalizedEmail, CancellationToken cancellationToken)
 		{
 			Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(normalizedEmail), nameof(normalizedEmail));
-			cancellationToken.ThrowIfCancellationRequested();
 
 			return await userRepository.GetByEmailAsync(normalizedEmail, cancellationToken);
 		}
@@ -88,7 +84,6 @@ namespace Havit.NewProjectTemplate.Facades.Infrastructure.Security.Identity
 		public async Task<User> FindByIdAsync(string userId, CancellationToken cancellationToken)
 		{
 			Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(userId), nameof(userId));
-			cancellationToken.ThrowIfCancellationRequested();
 
 			int id = int.Parse(userId);
 			return await userRepository.GetObjectAsync(id);
@@ -97,7 +92,6 @@ namespace Havit.NewProjectTemplate.Facades.Infrastructure.Security.Identity
 		public async Task<User> FindByNameAsync(string normalizedUserName, CancellationToken cancellationToken)
 		{
 			Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(normalizedUserName), nameof(normalizedUserName));
-			cancellationToken.ThrowIfCancellationRequested();
 
 			return await userRepository.GetByUsernameAsync(normalizedUserName);
 		}
@@ -105,7 +99,6 @@ namespace Havit.NewProjectTemplate.Facades.Infrastructure.Security.Identity
 		public Task<int> GetAccessFailedCountAsync(User user, CancellationToken cancellationToken)
 		{
 			Contract.Requires<ArgumentNullException>(user != null, nameof(user));
-			cancellationToken.ThrowIfCancellationRequested();
 
 			return Task.FromResult(user.AccessFailedCount);
 		}
@@ -113,7 +106,6 @@ namespace Havit.NewProjectTemplate.Facades.Infrastructure.Security.Identity
 		public Task<string> GetEmailAsync(User user, CancellationToken cancellationToken)
 		{
 			Contract.Requires<ArgumentNullException>(user != null, nameof(user));
-			cancellationToken.ThrowIfCancellationRequested();
 
 			return Task.FromResult(user.Email);
 		}
@@ -121,7 +113,6 @@ namespace Havit.NewProjectTemplate.Facades.Infrastructure.Security.Identity
 		public Task<bool> GetEmailConfirmedAsync(User user, CancellationToken cancellationToken)
 		{
 			Contract.Requires<ArgumentNullException>(user != null, nameof(user));
-			cancellationToken.ThrowIfCancellationRequested();
 
 			return Task.FromResult(user.EmailConfirmed);
 		}
@@ -129,7 +120,6 @@ namespace Havit.NewProjectTemplate.Facades.Infrastructure.Security.Identity
 		public Task<bool> GetLockoutEnabledAsync(User user, CancellationToken cancellationToken)
 		{
 			Contract.Requires<ArgumentNullException>(user != null, nameof(user));
-			cancellationToken.ThrowIfCancellationRequested();
 
 			return Task.FromResult(user.LockoutEnabled);
 		}
@@ -137,7 +127,6 @@ namespace Havit.NewProjectTemplate.Facades.Infrastructure.Security.Identity
 		public Task<DateTimeOffset?> GetLockoutEndDateAsync(User user, CancellationToken cancellationToken)
 		{
 			Contract.Requires<ArgumentNullException>(user != null, nameof(user));
-			cancellationToken.ThrowIfCancellationRequested();
 
 			return Task.FromResult(user.LockoutEnd);
 		}
@@ -145,7 +134,6 @@ namespace Havit.NewProjectTemplate.Facades.Infrastructure.Security.Identity
 		public Task<string> GetNormalizedEmailAsync(User user, CancellationToken cancellationToken)
 		{
 			Contract.Requires<ArgumentNullException>(user != null, nameof(user));
-			cancellationToken.ThrowIfCancellationRequested();
 
 			return Task.FromResult(user.NormalizedEmail);
 		}
@@ -153,7 +141,6 @@ namespace Havit.NewProjectTemplate.Facades.Infrastructure.Security.Identity
 		public Task<string> GetNormalizedUserNameAsync(User user, CancellationToken cancellationToken)
 		{
 			Contract.Requires<ArgumentNullException>(user != null, nameof(user));
-			cancellationToken.ThrowIfCancellationRequested();
 
 			return Task.FromResult(user.NormalizedUsername);
 		}
@@ -161,7 +148,6 @@ namespace Havit.NewProjectTemplate.Facades.Infrastructure.Security.Identity
 		public Task<string> GetPasswordHashAsync(User user, CancellationToken cancellationToken)
 		{
 			Contract.Requires<ArgumentNullException>(user != null, nameof(user));
-			cancellationToken.ThrowIfCancellationRequested();
 
 			return Task.FromResult(user.PasswordHash);
 		}
@@ -169,7 +155,6 @@ namespace Havit.NewProjectTemplate.Facades.Infrastructure.Security.Identity
 		public Task<IList<string>> GetRolesAsync(User user, CancellationToken cancellationToken)
 		{
 			Contract.Requires<ArgumentNullException>(user != null, nameof(user));
-			cancellationToken.ThrowIfCancellationRequested();
 
 			// Role entity [Cache]d, no need for async
 			return Task.FromResult<IList<string>>(user.UserRoles.Select(ur => roleRepository.GetObject(ur.RoleId).Name).ToList());
@@ -178,7 +163,6 @@ namespace Havit.NewProjectTemplate.Facades.Infrastructure.Security.Identity
 		public Task<string> GetSecurityStampAsync(User user, CancellationToken cancellationToken)
 		{
 			Contract.Requires<ArgumentNullException>(user != null, nameof(user));
-			cancellationToken.ThrowIfCancellationRequested();
 
 			return Task.FromResult(user.SecurityStamp);
 		}
@@ -186,7 +170,6 @@ namespace Havit.NewProjectTemplate.Facades.Infrastructure.Security.Identity
 		public Task<string> GetUserIdAsync(User user, CancellationToken cancellationToken)
 		{
 			Contract.Requires<ArgumentNullException>(user != null, nameof(user));
-			cancellationToken.ThrowIfCancellationRequested();
 
 			return Task.FromResult(user.Id.ToString());
 		}
@@ -194,7 +177,6 @@ namespace Havit.NewProjectTemplate.Facades.Infrastructure.Security.Identity
 		public Task<string> GetUserNameAsync(User user, CancellationToken cancellationToken)
 		{
 			Contract.Requires<ArgumentNullException>(user != null, nameof(user));
-			cancellationToken.ThrowIfCancellationRequested();
 
 			return Task.FromResult(user.Username);
 		}
@@ -210,7 +192,6 @@ namespace Havit.NewProjectTemplate.Facades.Infrastructure.Security.Identity
 		public Task<bool> HasPasswordAsync(User user, CancellationToken cancellationToken)
 		{
 			Contract.Requires<ArgumentNullException>(user != null, nameof(user));
-			cancellationToken.ThrowIfCancellationRequested();
 
 			return Task.FromResult(user.PasswordHash != null);
 		}
@@ -218,7 +199,6 @@ namespace Havit.NewProjectTemplate.Facades.Infrastructure.Security.Identity
 		public Task<int> IncrementAccessFailedCountAsync(User user, CancellationToken cancellationToken)
 		{
 			Contract.Requires<ArgumentNullException>(user != null, nameof(user));
-			cancellationToken.ThrowIfCancellationRequested();
 
 			user.AccessFailedCount++;
 			return Task.FromResult(user.AccessFailedCount);
@@ -245,7 +225,6 @@ namespace Havit.NewProjectTemplate.Facades.Infrastructure.Security.Identity
 		public Task ResetAccessFailedCountAsync(User user, CancellationToken cancellationToken)
 		{
 			Contract.Requires<ArgumentNullException>(user != null, nameof(user));
-			cancellationToken.ThrowIfCancellationRequested();
 
 			user.AccessFailedCount = 0;
 			return Task.CompletedTask;
@@ -255,7 +234,6 @@ namespace Havit.NewProjectTemplate.Facades.Infrastructure.Security.Identity
 		{
 			Contract.Requires<ArgumentNullException>(user != null, nameof(user));
 			Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(email), nameof(email));
-			cancellationToken.ThrowIfCancellationRequested();
 
 			user.Email = email;
 			return Task.CompletedTask;
@@ -264,7 +242,6 @@ namespace Havit.NewProjectTemplate.Facades.Infrastructure.Security.Identity
 		public Task SetEmailConfirmedAsync(User user, bool confirmed, CancellationToken cancellationToken)
 		{
 			Contract.Requires<ArgumentNullException>(user != null, nameof(user));
-			cancellationToken.ThrowIfCancellationRequested();
 
 			user.EmailConfirmed = confirmed;
 			return Task.CompletedTask;
@@ -273,7 +250,6 @@ namespace Havit.NewProjectTemplate.Facades.Infrastructure.Security.Identity
 		public Task SetLockoutEnabledAsync(User user, bool enabled, CancellationToken cancellationToken)
 		{
 			Contract.Requires<ArgumentNullException>(user != null, nameof(user));
-			cancellationToken.ThrowIfCancellationRequested();
 
 			user.LockoutEnabled = enabled;
 			return Task.CompletedTask;
@@ -282,7 +258,6 @@ namespace Havit.NewProjectTemplate.Facades.Infrastructure.Security.Identity
 		public Task SetLockoutEndDateAsync(User user, DateTimeOffset? lockoutEnd, CancellationToken cancellationToken)
 		{
 			Contract.Requires<ArgumentNullException>(user != null, nameof(user));
-			cancellationToken.ThrowIfCancellationRequested();
 
 			user.LockoutEnd = lockoutEnd;
 			return Task.CompletedTask;
@@ -292,7 +267,6 @@ namespace Havit.NewProjectTemplate.Facades.Infrastructure.Security.Identity
 		{
 			Contract.Requires<ArgumentNullException>(user != null, nameof(user));
 			Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(normalizedEmail), nameof(normalizedEmail));
-			cancellationToken.ThrowIfCancellationRequested();
 
 			user.NormalizedEmail = normalizedEmail;
 			return Task.CompletedTask;
@@ -302,7 +276,6 @@ namespace Havit.NewProjectTemplate.Facades.Infrastructure.Security.Identity
 		{
 			Contract.Requires<ArgumentNullException>(user != null, nameof(user));
 			Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(normalizedName), nameof(normalizedName));
-			cancellationToken.ThrowIfCancellationRequested();
 
 			user.NormalizedUsername = normalizedName;
 			return Task.CompletedTask;
@@ -311,7 +284,6 @@ namespace Havit.NewProjectTemplate.Facades.Infrastructure.Security.Identity
 		public Task SetPasswordHashAsync(User user, string passwordHash, CancellationToken cancellationToken)
 		{
 			Contract.Requires<ArgumentNullException>(user != null, nameof(user));
-			cancellationToken.ThrowIfCancellationRequested();
 
 			user.PasswordHash = passwordHash;
 			return Task.CompletedTask;
@@ -321,7 +293,6 @@ namespace Havit.NewProjectTemplate.Facades.Infrastructure.Security.Identity
 		{
 			Contract.Requires<ArgumentNullException>(user != null, nameof(user));
 			Contract.Requires<ArgumentNullException>(stamp != null, nameof(stamp));
-			cancellationToken.ThrowIfCancellationRequested();
 
 			user.SecurityStamp = stamp;
 			return Task.CompletedTask;
@@ -331,7 +302,6 @@ namespace Havit.NewProjectTemplate.Facades.Infrastructure.Security.Identity
 		{
 			Contract.Requires<ArgumentNullException>(user != null, nameof(user));
 			Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(userName), nameof(userName));
-			cancellationToken.ThrowIfCancellationRequested();
 
 			user.Username = userName;
 			return Task.CompletedTask;
@@ -340,7 +310,6 @@ namespace Havit.NewProjectTemplate.Facades.Infrastructure.Security.Identity
 		public async Task<IdentityResult> UpdateAsync(User user, CancellationToken cancellationToken)
 		{
 			Contract.Requires<ArgumentNullException>(user != null, nameof(user));
-			cancellationToken.ThrowIfCancellationRequested();
 
 			unitOfWork.AddForUpdate(user);
 			await unitOfWork.CommitAsync();

@@ -38,7 +38,6 @@ namespace Havit.NewProjectTemplate.Facades.Infrastructure.Security.Identity
 		public Task<Role> FindByIdAsync(string roleId, CancellationToken cancellationToken)
 		{
 			Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(roleId), nameof(roleId));
-			cancellationToken.ThrowIfCancellationRequested();
 
 			var id = int.Parse(roleId);
 			return Task.FromResult(roleRepository.GetObject(id)); // role is [Cache]d, no need for async
@@ -47,7 +46,6 @@ namespace Havit.NewProjectTemplate.Facades.Infrastructure.Security.Identity
 		public Task<Role> FindByNameAsync(string normalizedRoleName, CancellationToken cancellationToken)
 		{
 			Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(normalizedRoleName), nameof(normalizedRoleName));
-			cancellationToken.ThrowIfCancellationRequested();
 
 			var roleEntry = Enum.Parse<Role.Entry>(normalizedRoleName, ignoreCase: true);
 			return Task.FromResult(roleRepository.GetObject((int)roleEntry)); // role is [Cache]d, no need for async
@@ -56,7 +54,6 @@ namespace Havit.NewProjectTemplate.Facades.Infrastructure.Security.Identity
 		public Task<string> GetNormalizedRoleNameAsync(Role role, CancellationToken cancellationToken)
 		{
 			Contract.Requires<ArgumentNullException>(role != null, nameof(role));
-			cancellationToken.ThrowIfCancellationRequested();
 
 			return Task.FromResult(role.NormalizedName);
 		}
@@ -64,7 +61,6 @@ namespace Havit.NewProjectTemplate.Facades.Infrastructure.Security.Identity
 		public Task<string> GetRoleIdAsync(Role role, CancellationToken cancellationToken)
 		{
 			Contract.Requires<ArgumentNullException>(role != null, nameof(role));
-			cancellationToken.ThrowIfCancellationRequested();
 
 			return Task.FromResult(role.Id.ToString());
 		}
@@ -72,7 +68,6 @@ namespace Havit.NewProjectTemplate.Facades.Infrastructure.Security.Identity
 		public Task<string> GetRoleNameAsync(Role role, CancellationToken cancellationToken)
 		{
 			Contract.Requires<ArgumentNullException>(role != null, nameof(role));
-			cancellationToken.ThrowIfCancellationRequested();
 
 			return Task.FromResult(role.Name);
 		}

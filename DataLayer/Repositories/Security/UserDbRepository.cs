@@ -26,7 +26,6 @@ namespace Havit.NewProjectTemplate.DataLayer.Repositories.Security
 		public async Task<User> GetByUsernameAsync(string username, CancellationToken cancellationToken = default)
 		{
 			Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(username), nameof(username));
-			cancellationToken.ThrowIfCancellationRequested();
 
 			var normalizedUsername = username.ToUpper();
 			return await Data.Include(GetLoadReferences).FirstOrDefaultAsync(u => u.NormalizedUsername == normalizedUsername, cancellationToken);
@@ -35,7 +34,6 @@ namespace Havit.NewProjectTemplate.DataLayer.Repositories.Security
 		public async Task<User> GetByEmailAsync(string email, CancellationToken cancellationToken = default)
 		{
 			Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(email), nameof(email));
-			cancellationToken.ThrowIfCancellationRequested();
 
 			var normalizedEmail = email.ToUpper();
 			return await Data.Include(GetLoadReferences).FirstOrDefaultAsync(u => u.NormalizedEmail == email);
@@ -43,8 +41,6 @@ namespace Havit.NewProjectTemplate.DataLayer.Repositories.Security
 
 		public async Task<List<User>> GetUsersInRoleAsync(Role.Entry roleEntry, CancellationToken cancellationToken = default)
 		{
-			cancellationToken.ThrowIfCancellationRequested();
-
 			return await Data.Include(GetLoadReferences).Where(u => u.UserRoles.Any(ur => ur.RoleId == (int)roleEntry)).ToListAsync();
 		}
 

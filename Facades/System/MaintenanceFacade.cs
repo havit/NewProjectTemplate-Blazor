@@ -25,8 +25,6 @@ namespace Havit.NewProjectTemplate.Facades.System
 
 		public Task ClearCache(CancellationToken cancellationToken = default)
 		{
-			cancellationToken.ThrowIfCancellationRequested();
-
 			cacheService.Clear();
 
 			return Task.CompletedTask;
