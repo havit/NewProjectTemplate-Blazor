@@ -7,7 +7,7 @@ using Havit.Data.EntityFrameworkCore.Patterns.UnitOfWorks.EntityValidation;
 using Havit.Extensions.DependencyInjection;
 using Havit.Extensions.DependencyInjection.Abstractions;
 using Havit.NewProjectTemplate.DataLayer.DataSources.Common;
-using Havit.NewProjectTemplate.DataLayer.Repositories.Crm;
+using Havit.NewProjectTemplate.DataLayer.Repositories.Common;
 using Havit.NewProjectTemplate.DependencyInjection.ConfigrationOptions;
 using Havit.NewProjectTemplate.Entity;
 using Havit.NewProjectTemplate.Services.Infrastructure;

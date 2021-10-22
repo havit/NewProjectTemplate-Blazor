@@ -16,7 +16,6 @@ using Havit.NewProjectTemplate.Contracts;
 using Havit.NewProjectTemplate.Contracts.System;
 using Havit.NewProjectTemplate.Web.Client.Infrastructure.Grpc;
 using Havit.NewProjectTemplate.Web.Client.Infrastructure.Security;
-using Havit.NewProjectTemplate.Web.Client.Services.DataStores;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
@@ -49,8 +48,6 @@ namespace Havit.NewProjectTemplate.Web.Client
 			Havit.NewProjectTemplate.Web.Client.Resources.ResourcesServiceCollectionInstaller.AddGeneratedResourceWrappers(builder.Services);
 			Havit.NewProjectTemplate.Resources.ResourcesServiceCollectionInstaller.AddGeneratedResourceWrappers(builder.Services);
 			SetHxComponents();
-
-			builder.Services.AddScoped<IContactReferenceDataStore, ContactReferenceDataStore>();
 
 			AddGrpcClient(builder);
 
