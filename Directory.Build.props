@@ -1,8 +1,8 @@
 ﻿<Project>
 
 	<PropertyGroup>
-		<Company>HAVIT, s.r.o.</Company>
-		<Copyright>Copyright HAVIT, s.r.o., 2021</Copyright>
+		<Company>HAVIT</Company>
+		<Copyright>Copyright HAVIT, 2021</Copyright>
 		<FileVersion>1.0.0.0</FileVersion>
 		<AssemblyVersion>1.0.0.0</AssemblyVersion>
 		<Product>NewProjectTemplate</Product>
