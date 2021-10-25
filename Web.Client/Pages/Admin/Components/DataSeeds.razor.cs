@@ -25,7 +25,7 @@ namespace Havit.NewProjectTemplate.Web.Client.Pages.Admin.Components
 		{
 			if (selectedSeedProfile is not null && await MessageBox.ConfirmAsync($"Do you really want to seed {selectedSeedProfile}?"))
 			{
-				await DataSeedFacade.SeedDataProfile(selectedSeedProfile);
+				await DataSeedFacade.SeedDataProfileAsync(selectedSeedProfile);
 				Messenger.AddInformation($"Seed successful: {selectedSeedProfile}");
 
 				await offcanvasComponent.HideAsync();
@@ -34,7 +34,7 @@ namespace Havit.NewProjectTemplate.Web.Client.Pages.Admin.Components
 
 		public async Task ShowAsync()
 		{
-			seedProfiles ??= (await DataSeedFacade.GetDataSeedProfiles()).Value;
+			seedProfiles ??= (await DataSeedFacade.GetDataSeedProfilesAsync()).Value;
 
 			await offcanvasComponent.ShowAsync();
 		}

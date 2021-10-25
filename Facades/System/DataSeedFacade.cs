@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using Havit;
 using Havit.Data.Patterns.DataSeeds;
@@ -18,9 +19,6 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace Havit.NewProjectTemplate.Facades.System
 {
-	/// <summary>
-	/// Fasáda k seedování dat.
-	/// </summary>
 	[Service]
 	[Authorize(Roles = nameof(Role.Entry.SystemAdministrator))]
 
@@ -38,10 +36,9 @@ namespace Havit.NewProjectTemplate.Facades.System
 		}
 
 		/// <summary>
-		/// Provede seedování dat daného profilu.
-		/// Pokud jde produkční prostředí a profil není pro produkční prostředí povolen, vrací BadRequest.
+		/// Executes seed for the selected profile.
 		/// </summary>
-		public Task SeedDataProfile(string profileName)
+		public Task SeedDataProfileAsync(string profileName, CancellationToken cancellationToken = default)
 		{
 			// applicationAuthorizationService.VerifyCurrentUserAuthorization(Operations.SystemAdministration); // TODO alternative authorization approach
 
@@ -49,8 +46,12 @@ namespace Havit.NewProjectTemplate.Facades.System
 
 			if (type == null)
 			{
-				throw new OperationFailedException($"Profil {profileName} nebyl nalezen.");
+				throw new OperationFailedException($"DataSeedProfile {profileName} not found.");
 			}
+
+			// Individual seeds do not invalidate cache. If there are any cached entries (incl. empty-GetAll),
+			// they get seeded and another seed asks for GetAll(), the newly seeded entities are not included.
+			cacheService.Clear();
 
 			dataSeedRunner.SeedData(type, forceRun: true);
 
@@ -60,9 +61,9 @@ namespace Havit.NewProjectTemplate.Facades.System
 		}
 
 		/// <summary>
-		/// Returns list of available data seed profiles (names are ready for use as parameter to <see cref="SeedDataProfile"/> method).
+		/// Returns list of available data seed profiles (names are ready for use as parameter to <see cref="SeedDataProfileAsync"/> method).
 		/// </summary>
-		public Task<Dto<string[]>> GetDataSeedProfiles()
+		public Task<Dto<string[]>> GetDataSeedProfilesAsync(CancellationToken cancellationToken = default)
 		{
 			return Task.FromResult(Dto.FromValue(GetProfileTypes()
 							.Select(t => t.Name)
