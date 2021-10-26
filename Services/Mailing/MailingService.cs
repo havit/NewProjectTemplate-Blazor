@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Net;
-using System.Net.Mail;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using Havit.Extensions.DependencyInjection.Abstractions;
 using Havit.NewProjectTemplate.Contracts.Infrastructure;
+using MailKit.Net.Smtp;
 using Microsoft.Extensions.Options;
+using MimeKit;
 
 namespace Havit.NewProjectTemplate.Services.Mailing
 {
@@ -23,25 +18,20 @@ namespace Havit.NewProjectTemplate.Services.Mailing
 			this.options = options.Value;
 		}
 
-		public void Send(MailMessage mailMessage)
+		public void Send(MimeMessage mailMessage)
 		{
 			using (SmtpClient smtpClient = new SmtpClient())
 			{
-				smtpClient.Host = options.SmtpServer;
-				if (options.SmtpPort != null)
-				{
-					smtpClient.Port = options.SmtpPort.Value;
-				}
-				smtpClient.EnableSsl = options.UseSsl;
+				smtpClient.Connect(options.SmtpServer, options.SmtpPort ?? 0, options.UseSsl);
+
 				if (options.HasCredentials())
 				{
-					smtpClient.Credentials = new NetworkCredential(options.SmtpUsername, options.SmtpPassword);
+					smtpClient.Authenticate(options.SmtpUsername, options.SmtpPassword);
 				}
 
-				if ((mailMessage.From == null)
-					|| String.IsNullOrWhiteSpace(mailMessage.From.Address))
+				if (!mailMessage.From.Any())
 				{
-					mailMessage.From = new MailAddress(options.From);
+					mailMessage.From.Add(InternetAddress.Parse(options.From));
 				}
 
 				smtpClient.Send(mailMessage);
