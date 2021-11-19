@@ -1,4 +1,5 @@
 ﻿using System.Security.Claims;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 
 namespace Havit.NewProjectTemplate.Facades.Infrastructure.Security.Authorization
@@ -9,23 +10,23 @@ namespace Havit.NewProjectTemplate.Facades.Infrastructure.Security.Authorization
 	public interface IApplicationAuthorizationService
 	{
 		/// <summary>
-		/// Vrací true, pokud má aktuální uživatel dané oprávnění k danému resource.
-		/// </summary>
-		bool IsCurrentUserAuthorized(IAuthorizationRequirement requirement, object resource = null);
-
-		/// <summary>
-		/// Pokud aktuální uživatel NEMÁ dané oprávnění k danému resource, vyhazuje SecurityException.
-		/// </summary>
-		void VerifyCurrentUserAuthorization(IAuthorizationRequirement requirement, object resource = null);
-
-		/// <summary>
 		/// Vrací true, pokud má uživatel dané oprávnění k danému resource.
 		/// </summary>
-		bool IsAuthorized(ClaimsPrincipal user, IAuthorizationRequirement requirement, object resource = null);
+		Task<bool> IsAuthorizedAsync(ClaimsPrincipal user, IAuthorizationRequirement requirement, object resource = null);
 
 		/// <summary>
 		/// Pokud uživatel NEMÁ dané oprávnění k danému resource, vyhazuje SecurityException.
 		/// </summary>
-		void VerifyAuthorization(ClaimsPrincipal user, IAuthorizationRequirement requirement, object resource = null);
+		Task VerifyAuthorizationAsync(ClaimsPrincipal user, IAuthorizationRequirement requirement, object resource = null);
+
+		/// <summary>
+		/// Vrací true, pokud má aktuální uživatel dané oprávnění k danému resource.
+		/// </summary>
+		Task<bool> IsCurrentUserAuthorizedAsync(IAuthorizationRequirement requirement, object resource = null);
+
+		/// <summary>
+		/// Pokud aktuální uživatel NEMÁ dané oprávnění k danému resource, vyhazuje SecurityException.
+		/// </summary>
+		Task VerifyCurrentUserAuthorizationAsync(IAuthorizationRequirement requirement, object resource = null);
 	}
 }

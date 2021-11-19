@@ -1,33 +1,36 @@
 ﻿using System.Security.Claims;
+using System.Threading.Tasks;
 using Havit.Data.Patterns.Attributes;
 using Microsoft.AspNetCore.Authorization;
 
 namespace Havit.NewProjectTemplate.Facades.Infrastructure.Security.Authorization.Fakes
 {
 	/// <summary>
-	/// Implementace IApplicationAuthorizationService pro účely testů. Veškerá testz na oprávnění procházejí.
+	/// Implementace IApplicationAuthorizationService pro účely testů. Veškeré testy na oprávnění procházejí.
 	/// </summary>
 	[Fake]
 	public class FakeApplicationAuthorizationService : IApplicationAuthorizationService
 	{
-		public void VerifyAuthorization(ClaimsPrincipal user, IAuthorizationRequirement requirement, object resource = null)
+		public async Task VerifyAuthorizationAsync(ClaimsPrincipal user, IAuthorizationRequirement requirement, object resource = null)
 		{
 			// NOOP
+			await Task.FromResult(true);
 		}
 
-		public void VerifyCurrentUserAuthorization(IAuthorizationRequirement requirement, object resource = null)
+		public async Task VerifyCurrentUserAuthorizationAsync(IAuthorizationRequirement requirement, object resource = null)
 		{
 			// NOOP
+			await Task.FromResult(true);
 		}
 
-		public bool IsAuthorized(ClaimsPrincipal user, IAuthorizationRequirement requirement, object resource = null)
+		public async Task<bool> IsAuthorizedAsync(ClaimsPrincipal user, IAuthorizationRequirement requirement, object resource = null)
 		{
-			return true;
+			return await Task.FromResult(true);
 		}
 
-		public bool IsCurrentUserAuthorized(IAuthorizationRequirement requirement, object resource = null)
+		public async Task<bool> IsCurrentUserAuthorizedAsync(IAuthorizationRequirement requirement, object resource = null)
 		{
-			return true;
+			return await Task.FromResult(true);
 		}
 	}
 }
