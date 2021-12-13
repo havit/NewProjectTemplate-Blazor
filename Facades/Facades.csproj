@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>net5.0</TargetFramework>
+		<TargetFramework>net6.0</TargetFramework>
 		<AssemblyName>Havit.NewProjectTemplate.Facades</AssemblyName>
 		<RootNamespace>Havit.NewProjectTemplate.Facades</RootNamespace>
 	</PropertyGroup>
@@ -11,10 +11,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Havit.Data.Patterns" Version="2.1.13" />
+		<PackageReference Include="Havit.Data.Patterns" Version="2.1.14" />
 		<PackageReference Include="Microsoft.AspNetCore.Authentication" Version="2.2.0" />
-		<PackageReference Include="Microsoft.AspNetCore.Authorization" Version="5.0.11" />
-		<PackageReference Include="Microsoft.Extensions.Identity.Core" Version="5.0.11" />
+		<PackageReference Include="Microsoft.AspNetCore.Authorization" Version="6.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Identity.Core" Version="6.0.0" />
 	</ItemGroup>
 
 	<ItemGroup>

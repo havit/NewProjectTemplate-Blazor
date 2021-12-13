@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>net5.0</TargetFramework>
+		<TargetFramework>net6.0</TargetFramework>
 		<IsPackable>false</IsPackable>
 		<AssemblyName>Havit.NewProjectTemplate.Facades.Tests</AssemblyName>
 		<RootNamespace>Havit.NewProjectTemplate.Facades.Tests</RootNamespace>
@@ -10,8 +10,8 @@
 
 	<ItemGroup>
 		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.0.0" />
-		<PackageReference Include="MSTest.TestAdapter" Version="2.2.7" />
-		<PackageReference Include="MSTest.TestFramework" Version="2.2.7" />
+		<PackageReference Include="MSTest.TestAdapter" Version="2.2.8" />
+		<PackageReference Include="MSTest.TestFramework" Version="2.2.8" />
 	</ItemGroup>
 
 	<ItemGroup>
