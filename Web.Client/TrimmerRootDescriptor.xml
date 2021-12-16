@@ -1,4 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
 <linker>
 	<assembly fullname="System.Runtime.Serialization.Primitives" preserve="all" />
+
+	<!--https://github.com/dotnet/aspnetcore/issues/33312-->
+	<assembly fullname="Microsoft.Authentication.WebAssembly.Msal" preserve="all" />
 </linker>
