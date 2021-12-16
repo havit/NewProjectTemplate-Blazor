@@ -2,6 +2,7 @@
 <linker>
 	<assembly fullname="System.Runtime.Serialization.Primitives" preserve="all" />
 
-	<!--https://github.com/dotnet/aspnetcore/issues/33312-->
-	<assembly fullname="Microsoft.Authentication.WebAssembly.Msal" preserve="all" />
+	<!-- TODO Enable if Microsoft.Authentication.WebAssembly.Msal is used -->
+	<!-- https://github.com/dotnet/aspnetcore/issues/33312 -->
+	<!-- <assembly fullname="Microsoft.Authentication.WebAssembly.Msal" preserve="all" /> -->
 </linker>
