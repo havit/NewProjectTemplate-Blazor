@@ -5,11 +5,12 @@ using System.Threading.Tasks;
 using Havit.Diagnostics.Contracts;
 using Havit.Extensions.DependencyInjection.Abstractions;
 using Havit.NewProjectTemplate.Facades.Infrastructure.Security.Authentication;
+using Havit.NewProjectTemplate.Services.Infrastructure;
 using Microsoft.AspNetCore.Authorization;
 
 namespace Havit.NewProjectTemplate.Facades.Infrastructure.Security.Authorization
 {
-	[Service]
+	[Service(Profile = ServiceProfiles.WebServer)]
 	public class ApplicationAuthorizationService : IApplicationAuthorizationService
 	{
 		private readonly IApplicationAuthenticationService applicationAuthenticationService;

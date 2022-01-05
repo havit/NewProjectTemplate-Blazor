@@ -9,11 +9,11 @@
 
 	<ItemGroup>
 		<PackageReference Include="Grpc.AspNetCore.Web" Version="2.41.0" />
-		<PackageReference Include="Hangfire" Version="1.7.27" />
+		<PackageReference Include="Hangfire" Version="1.7.28" />
 		<PackageReference Include="Hangfire.Console" Version="1.4.2" />
 		<PackageReference Include="Havit.AspNetCore" Version="2.0.9" />
 		<PackageReference Include="Havit.Blazor.Grpc.Server" Version="1.0.10" />
-		<PackageReference Include="Havit.Hangfire.Extensions" Version="2.0.3" />
+		<PackageReference Include="Havit.Hangfire.Extensions" Version="2.0.6" />
 		<PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.19.0" />
 		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="6.0.0" />
 		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0" />

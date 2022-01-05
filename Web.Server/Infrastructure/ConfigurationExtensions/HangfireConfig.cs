@@ -17,6 +17,7 @@ namespace Havit.NewProjectTemplate.Web.Server.Infrastructure.ConfigurationExtens
 			services.AddHangfire(configuration =>
 			{
 				configuration.UseSimpleAssemblyNameTypeSerializer();
+				configuration.UseRecommendedSerializerSettings();
 				configuration.UseFilter(new CancelRecurringJobWhenAlreadyInQueueOrCurrentlyRunningFilter());
 				configuration.UseSqlServerStorage(() => new Microsoft.Data.SqlClient.SqlConnection(connectionString), new SqlServerStorageOptions
 				{
