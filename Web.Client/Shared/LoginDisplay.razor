@@ -8,8 +8,8 @@
 	<AuthorizeView>
 		<Authorized>
 
-			<div class="initials rounded-circle text-primary p-1">@NameToInitials(@context.User?.Identity?.Name)</div>
-			<a class="login-display-nickname text-truncate mx-2">@context?.User?.Identity?.Name</a>
+			<div class="initials bg-primary bg-opacity-10 text-primary rounded-circle p-1">@NameToInitials(@context.User?.Identity?.Name)</div>
+			<span class="login-display-nickname text-primary text-truncate mx-2">@context?.User?.Identity?.Name</span>
 			<div class="ms-auto">
 				<HxContextMenu>
 					<CultureSelector />
