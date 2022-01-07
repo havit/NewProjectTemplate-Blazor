@@ -32,20 +32,21 @@ namespace Havit.NewProjectTemplate.Utility
 		{
 			bool useHangfire = args.Length == 0;
 
-			IHostBuilder hostBuidler = Host.CreateDefaultBuilder();
-			hostBuidler.ConfigureAppConfiguration((hostContext, config) =>
-			{
-				config
-					.AddJsonFile(@"appsettings.Utility.json", optional: false)
-					.AddJsonFile($"appsettings.Utility.{hostContext.HostingEnvironment.EnvironmentName}.json", optional: true)
-					.AddEnvironmentVariables();
-			})
+			IHostBuilder hostBuidler = Host.CreateDefaultBuilder()
+				.ConfigureAppConfiguration((hostContext, config) =>
+				{
+					config
+						.AddJsonFile(@"appsettings.Utility.json", optional: false)
+						.AddJsonFile($"appsettings.Utility.{hostContext.HostingEnvironment.EnvironmentName}.json", optional: true)
+						.AddEnvironmentVariables();
+				})
+				.ConfigureLogging(logging =>
+				{
+					logging.AddSimpleConsole(configure => configure.TimestampFormat = "[HH:mm:ss] ");
+				})
 				.ConfigureServices((hostContext, services) =>
 				{
-
 					services.AddMemoryCache();
-
-					services.AddLogging(builder => builder.AddSimpleConsole(options => options.TimestampFormat = "[HH:mm:ss] "));
 
 					services.AddApplicationInsightsTelemetryWorkerService();
 					services.AddApplicationInsightsTelemetryProcessor<IgnoreSucceededDependenciesWithNoParentIdProcessor>(); // ignorujeme infrastrukturní položky Hangfire (předpokládá použití ApplicationInsightAttribute níže)
