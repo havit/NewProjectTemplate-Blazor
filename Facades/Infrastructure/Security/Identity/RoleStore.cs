@@ -1,13 +1,6 @@
-﻿using Havit.Diagnostics.Contracts;
-using Havit.NewProjectTemplate.DataLayer.Repositories.Security;
+﻿using Havit.NewProjectTemplate.DataLayer.Repositories.Security;
 using Havit.NewProjectTemplate.Model.Security;
 using Microsoft.AspNetCore.Identity;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace Havit.NewProjectTemplate.Facades.Infrastructure.Security.Identity
 {

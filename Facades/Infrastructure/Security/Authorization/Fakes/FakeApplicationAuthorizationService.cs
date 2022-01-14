@@ -1,5 +1,4 @@
 ﻿using System.Security.Claims;
-using System.Threading.Tasks;
 using Havit.Data.Patterns.Attributes;
 using Microsoft.AspNetCore.Authorization;
 

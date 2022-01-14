@@ -1,16 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using Hangfire;
-using Hangfire.AspNetCore;
+﻿using Hangfire;
 using Hangfire.Console;
 using Hangfire.Console.Extensions;
 using Hangfire.SqlServer;
 using Havit.ApplicationInsights.DependencyCollector;
 using Havit.AspNetCore.ExceptionMonitoring.Services;
-using Havit.Diagnostics.Contracts;
 using Havit.Hangfire.Extensions.BackgroundJobs;
 using Havit.Hangfire.Extensions.Filters;
 using Havit.Hangfire.Extensions.RecurringJobs;

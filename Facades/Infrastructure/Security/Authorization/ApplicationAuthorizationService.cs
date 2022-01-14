@@ -1,8 +1,5 @@
-﻿using System;
-using System.Security;
+﻿using System.Security;
 using System.Security.Claims;
-using System.Threading.Tasks;
-using Havit.Diagnostics.Contracts;
 using Havit.Extensions.DependencyInjection.Abstractions;
 using Havit.NewProjectTemplate.Facades.Infrastructure.Security.Authentication;
 using Havit.NewProjectTemplate.Services.Infrastructure;

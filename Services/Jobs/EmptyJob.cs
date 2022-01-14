@@ -1,6 +1,4 @@
-﻿using System.Threading;
-using System.Threading.Tasks;
-using Havit.Extensions.DependencyInjection.Abstractions;
+﻿using Havit.Extensions.DependencyInjection.Abstractions;
 using Microsoft.Extensions.Logging;
 
 namespace Havit.NewProjectTemplate.Services.Jobs

@@ -1,5 +1,4 @@
-﻿using System;
-using Hangfire;
+﻿using Hangfire;
 using Hangfire.Console;
 using Hangfire.SqlServer;
 using Havit.Hangfire.Extensions.Filters;

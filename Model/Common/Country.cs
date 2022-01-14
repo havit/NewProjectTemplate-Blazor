@@ -1,6 +1,5 @@
 ﻿using Havit.Data.EntityFrameworkCore.Attributes;
 using Havit.NewProjectTemplate.Model.Localizations;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace Havit.NewProjectTemplate.Model.Common

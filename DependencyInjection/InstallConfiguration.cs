@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Havit.NewProjectTemplate.DependencyInjection
+﻿namespace Havit.NewProjectTemplate.DependencyInjection
 {
 	internal class InstallConfiguration
 	{

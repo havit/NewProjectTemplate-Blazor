@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using Havit.Extensions.DependencyInjection.Abstractions;
+﻿using Havit.Extensions.DependencyInjection.Abstractions;
 using Havit.NewProjectTemplate.Contracts.Infrastructure;
 using MailKit.Net.Smtp;
 using Microsoft.Extensions.Options;

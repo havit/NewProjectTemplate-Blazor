@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using Hangfire;
+﻿using Hangfire;
 using Hangfire.Dashboard;
 using Havit.Blazor.Grpc.Server;
 using Havit.NewProjectTemplate.Contracts;
@@ -20,9 +19,6 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using ProtoBuf.Grpc.Configuration;
-using ProtoBuf.Grpc.Server;
-using ProtoBuf.Meta;
 
 namespace Havit.NewProjectTemplate.Web.Server
 {

@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
+﻿using System.IdentityModel.Tokens.Jwt;
 using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 using Havit.NewProjectTemplate.Facades.Infrastructure.Security.Authentication;
 using Havit.NewProjectTemplate.Facades.Infrastructure.Security.Identity;
 using Havit.NewProjectTemplate.Model.Security;

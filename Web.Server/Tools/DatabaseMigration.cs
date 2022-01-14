@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
-using Havit.Data.EntityFrameworkCore;
-using Havit.Data.EntityFrameworkCore.Metadata.Conventions;
+﻿using Havit.Data.EntityFrameworkCore;
 using Havit.Data.Patterns.DataSeeds;
 using Havit.NewProjectTemplate.DataLayer.Seeds.Core;
 using Microsoft.AspNetCore.Builder;

@@ -1,9 +1,4 @@
 ﻿#pragma warning disable SA1402 // File may only contain a single class
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using ProtoBuf;
 
 namespace Havit.NewProjectTemplate.Contracts

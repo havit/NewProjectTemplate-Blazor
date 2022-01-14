@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Security.Claims;
+﻿using System.Security.Claims;
 using Microsoft.AspNetCore.Http;
-using Havit.Diagnostics.Contracts;
 using Havit.NewProjectTemplate.Facades.Infrastructure.Security.Authentication;
 using Havit.NewProjectTemplate.Model.Security;
-using Microsoft.AspNetCore.Authorization.Infrastructure;
 using Havit.NewProjectTemplate.DataLayer.Repositories.Security;
 
 namespace Havit.NewProjectTemplate.Web.Server.Infrastructure.Security

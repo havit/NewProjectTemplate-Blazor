@@ -1,19 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using Havit;
-using Havit.Data.Patterns.DataSeeds;
+﻿using Havit.Data.Patterns.DataSeeds;
 using Havit.Data.Patterns.DataSeeds.Profiles;
 using Havit.Extensions.DependencyInjection.Abstractions;
 using Havit.NewProjectTemplate.Contracts;
 using Havit.NewProjectTemplate.Contracts.System;
 using Havit.NewProjectTemplate.DataLayer.Seeds.Core;
-using Havit.NewProjectTemplate.Facades.Infrastructure.Security;
-using Havit.NewProjectTemplate.Facades.Infrastructure.Security.Authorization;
 using Havit.NewProjectTemplate.Model.Security;
-using Havit.NewProjectTemplate.Services.Infrastructure;
 using Havit.Services.Caching;
 using Microsoft.AspNetCore.Authorization;
 

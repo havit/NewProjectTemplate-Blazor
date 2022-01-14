@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Havit.NewProjectTemplate.Contracts.Infrastructure
+﻿namespace Havit.NewProjectTemplate.Contracts.Infrastructure
 {
 	public class MailingOptions
 	{

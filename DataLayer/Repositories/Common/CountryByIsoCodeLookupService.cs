@@ -1,16 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq.Expressions;
 using Havit.Data.EntityFrameworkCore.Patterns.Lookups;
 using Havit.Data.EntityFrameworkCore.Patterns.SoftDeletes;
 using Havit.Data.Patterns.DataSources;
 using Havit.Data.Patterns.Infrastructure;
 using Havit.Data.Patterns.Repositories;
-using Havit.Diagnostics.Contracts;
-using Havit.NewProjectTemplate.DataLayer.Repositories.Common;
 using Havit.NewProjectTemplate.Model.Common;
 
 namespace Havit.NewProjectTemplate.DataLayer.Repositories.Common

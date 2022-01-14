@@ -1,7 +1,4 @@
-﻿using System.ServiceModel;
-using System.Threading;
-using System.Threading.Tasks;
-using Havit.ComponentModel;
+﻿using Havit.ComponentModel;
 
 namespace Havit.NewProjectTemplate.Contracts.System
 {
