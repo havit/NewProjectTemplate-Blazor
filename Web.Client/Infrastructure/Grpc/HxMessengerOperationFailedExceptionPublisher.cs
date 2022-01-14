@@ -1,7 +1,4 @@
-﻿using System.Threading.Tasks;
-using Havit.Blazor.Components.Web;
-using Havit.Blazor.Components.Web.Bootstrap;
-using Havit.Blazor.Grpc.Client.ServerExceptions;
+﻿using Havit.Blazor.Grpc.Client.ServerExceptions;
 using Havit.NewProjectTemplate.Resources;
 using Microsoft.Extensions.Localization;
 

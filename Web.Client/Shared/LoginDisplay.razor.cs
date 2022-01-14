@@ -1,7 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
-
-namespace Havit.NewProjectTemplate.Web.Client.Shared
+﻿namespace Havit.NewProjectTemplate.Web.Client.Shared
 {
 	public partial class LoginDisplay
 	{

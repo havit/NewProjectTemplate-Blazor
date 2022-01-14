@@ -1,7 +1,4 @@
-﻿using System.Threading.Tasks;
-using Blazored.LocalStorage;
-using Havit.Blazor.Components.Web;
-using Havit.Blazor.Components.Web.Bootstrap;
+﻿using Blazored.LocalStorage;
 using Havit.NewProjectTemplate.Contracts.System;
 using Havit.NewProjectTemplate.Web.Client.Pages.Admin.Components;
 using Havit.NewProjectTemplate.Web.Client.Resources;

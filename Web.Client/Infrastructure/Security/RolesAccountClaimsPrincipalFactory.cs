@@ -1,9 +1,7 @@
 ﻿using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
 using Microsoft.AspNetCore.Components.WebAssembly.Authentication.Internal;
-using System.Linq;
 using System.Security.Claims;
 using System.Text.Json;
-using System.Threading.Tasks;
 
 namespace Havit.NewProjectTemplate.Web.Client.Infrastructure.Security
 {
