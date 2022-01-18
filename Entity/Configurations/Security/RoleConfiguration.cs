@@ -2,13 +2,12 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Havit.NewProjectTemplate.Entity.Configurations.Security
+namespace Havit.NewProjectTemplate.Entity.Configurations.Security;
+
+public class RoleConfiguration : IEntityTypeConfiguration<Role>
 {
-	public class RoleConfiguration : IEntityTypeConfiguration<Role>
+	public void Configure(EntityTypeBuilder<Role> builder)
 	{
-		public void Configure(EntityTypeBuilder<Role> builder)
-		{
-			builder.Property(a => a.Id).ValueGeneratedNever();
-		}
+		builder.Property(a => a.Id).ValueGeneratedNever();
 	}
 }

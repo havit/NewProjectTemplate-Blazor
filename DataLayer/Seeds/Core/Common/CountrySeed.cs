@@ -2,14 +2,14 @@
 using Havit.NewProjectTemplate.Model.Common;
 using Havit.NewProjectTemplate.Model.Localizations;
 
-namespace Havit.NewProjectTemplate.DataLayer.Seeds.Core.Common
+namespace Havit.NewProjectTemplate.DataLayer.Seeds.Core.Common;
+
+public class CountrySeed : DataSeed<CoreProfile>
 {
-	public class CountrySeed : DataSeed<CoreProfile>
+	public override void SeedData()
 	{
-		public override void SeedData()
+		var countries = new[]
 		{
-			var countries = new[]
-			{
 				new Country()
 				{
 					IsoCode = "CZ",
@@ -2917,7 +2917,6 @@ namespace Havit.NewProjectTemplate.DataLayer.Seeds.Core.Common
 				}
 			};
 
-			Seed(For(countries).PairBy(country => country.IsoCode3));
-		}
+		Seed(For(countries).PairBy(country => country.IsoCode3));
 	}
 }

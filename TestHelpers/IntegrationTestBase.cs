@@ -6,63 +6,62 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Havit.NewProjectTemplate.DependencyInjection;
 
-namespace Havit.NewProjectTemplate.TestHelpers
+namespace Havit.NewProjectTemplate.TestHelpers;
+
+public class IntegrationTestBase
 {
-	public class IntegrationTestBase
+	private IDisposable scope;
+
+	protected IServiceProvider ServiceProvider { get; private set; }
+
+	protected virtual bool UseLocalDb => false;
+	protected virtual bool DeleteDbData => true;
+
+	protected virtual bool SeedData => true;
+
+	[TestInitialize]
+	public virtual void TestInitialize()
 	{
-		private IDisposable scope;
+		IServiceCollection services = CreateServiceCollection();
+		IServiceProvider serviceProvider = services.BuildServiceProvider();
 
-		protected IServiceProvider ServiceProvider { get; private set; }
+		scope = serviceProvider.CreateScope();
 
-		protected virtual bool UseLocalDb => false;
-		protected virtual bool DeleteDbData => true;
-
-		protected virtual bool SeedData => true;
-
-		[TestInitialize]
-		public virtual void TestInitialize()
+		var dbContext = serviceProvider.GetRequiredService<IDbContext>();
+		if (DeleteDbData)
 		{
-			IServiceCollection services = CreateServiceCollection();
-			IServiceProvider serviceProvider = services.BuildServiceProvider();
-
-			scope = serviceProvider.CreateScope();
-
-			var dbContext = serviceProvider.GetRequiredService<IDbContext>();
-			if (DeleteDbData)
-			{
-				dbContext.Database.EnsureDeleted();
-			}
-			if (this.UseLocalDb)
-			{
-				dbContext.Database.Migrate();
-			}
-
-			if (this.SeedData)
-			{
-				var dataSeedRunner = serviceProvider.GetRequiredService<IDataSeedRunner>();
-				dataSeedRunner.SeedData<CoreProfile>();
-			}
-
-			this.ServiceProvider = serviceProvider;
+			dbContext.Database.EnsureDeleted();
+		}
+		if (this.UseLocalDb)
+		{
+			dbContext.Database.Migrate();
 		}
 
-		[TestCleanup]
-		public virtual void TestCleanup()
+		if (this.SeedData)
 		{
-			scope.Dispose();
-			if (this.ServiceProvider is IDisposable)
-			{
-				((IDisposable)this.ServiceProvider).Dispose();
-			}
-			this.ServiceProvider = null;
+			var dataSeedRunner = serviceProvider.GetRequiredService<IDataSeedRunner>();
+			dataSeedRunner.SeedData<CoreProfile>();
 		}
 
-		protected virtual IServiceCollection CreateServiceCollection()
-		{
-			IServiceCollection services = new ServiceCollection();
-			services.ConfigureForTests(useInMemoryDb: !UseLocalDb);
+		this.ServiceProvider = serviceProvider;
+	}
 
-			return services;
+	[TestCleanup]
+	public virtual void TestCleanup()
+	{
+		scope.Dispose();
+		if (this.ServiceProvider is IDisposable)
+		{
+			((IDisposable)this.ServiceProvider).Dispose();
 		}
+		this.ServiceProvider = null;
+	}
+
+	protected virtual IServiceCollection CreateServiceCollection()
+	{
+		IServiceCollection services = new ServiceCollection();
+		services.ConfigureForTests(useInMemoryDb: !UseLocalDb);
+
+		return services;
 	}
 }

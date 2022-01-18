@@ -1,7 +1,6 @@
-﻿namespace Havit.NewProjectTemplate.DataLayer.Repositories.Security
-{
-	public partial interface IRoleRepository
-	{
+﻿namespace Havit.NewProjectTemplate.DataLayer.Repositories.Security;
 
-	}
+public partial interface IRoleRepository
+{
+
 }

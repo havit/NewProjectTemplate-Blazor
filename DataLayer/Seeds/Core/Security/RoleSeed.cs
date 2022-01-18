@@ -1,14 +1,14 @@
 ﻿using Havit.Data.Patterns.DataSeeds;
 using Havit.NewProjectTemplate.Model.Security;
 
-namespace Havit.NewProjectTemplate.DataLayer.Seeds.Core.Security
+namespace Havit.NewProjectTemplate.DataLayer.Seeds.Core.Security;
+
+public class RoleSeed : DataSeed<CoreProfile>
 {
-	public class RoleSeed : DataSeed<CoreProfile>
+	public override void SeedData()
 	{
-		public override void SeedData()
+		var roles = new[]
 		{
-			var roles = new[]
-			{
 				new Role()
 				{
 					Id = (int)Role.Entry.SystemAdministrator,
@@ -23,7 +23,6 @@ namespace Havit.NewProjectTemplate.DataLayer.Seeds.Core.Security
 				}
 			};
 
-			Seed(For(roles).PairBy(r => r.Id));
-		}
+		Seed(For(roles).PairBy(r => r.Id));
 	}
 }

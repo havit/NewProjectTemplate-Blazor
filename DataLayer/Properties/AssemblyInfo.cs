@@ -1,7 +1,6 @@
-﻿namespace Havit.NewProjectTemplate.DataLayer.Properties
-{
-	public class AssemblyInfo
-	{
+﻿namespace Havit.NewProjectTemplate.DataLayer.Properties;
 
-	}
+public class AssemblyInfo
+{
+
 }

@@ -1,9 +1,8 @@
 ﻿using MimeKit;
 
-namespace Havit.NewProjectTemplate.Services.Mailing
+namespace Havit.NewProjectTemplate.Services.Mailing;
+
+public interface IMailingService
 {
-	public interface IMailingService
-	{
-		void Send(MimeMessage mailMessage);
-	}
+	void Send(MimeMessage mailMessage);
 }

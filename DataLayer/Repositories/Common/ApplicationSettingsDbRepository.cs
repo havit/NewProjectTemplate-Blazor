@@ -1,7 +1,6 @@
-﻿namespace Havit.NewProjectTemplate.DataLayer.Repositories.Common
-{
-	public partial class ApplicationSettingsDbRepository : IApplicationSettingsRepository
-	{
+﻿namespace Havit.NewProjectTemplate.DataLayer.Repositories.Common;
 
-	}
+public partial class ApplicationSettingsDbRepository : IApplicationSettingsRepository
+{
+
 }

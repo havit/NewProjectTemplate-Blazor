@@ -1,36 +1,35 @@
 ﻿using Havit.Data.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace Havit.NewProjectTemplate.Entity
+namespace Havit.NewProjectTemplate.Entity;
+
+public class NewProjectTemplateDbContext : Havit.Data.EntityFrameworkCore.DbContext
 {
-	public class NewProjectTemplateDbContext : Havit.Data.EntityFrameworkCore.DbContext
+	/// <summary>
+	/// Konstruktor.
+	/// Pro použití v unit testech, jiné použití nemá.
+	/// </summary>
+	internal NewProjectTemplateDbContext()
 	{
-		/// <summary>
-		/// Konstruktor.
-		/// Pro použití v unit testech, jiné použití nemá.
-		/// </summary>
-		internal NewProjectTemplateDbContext()
-		{
-			// NOOP
-		}
+		// NOOP
+	}
 
-		/// <summary>
-		/// Konstruktor.
-		/// </summary>
-		public NewProjectTemplateDbContext(DbContextOptions options) : base(options)
-		{
-			// NOOP
-		}
+	/// <summary>
+	/// Konstruktor.
+	/// </summary>
+	public NewProjectTemplateDbContext(DbContextOptions options) : base(options)
+	{
+		// NOOP
+	}
 
-		/// <inheritdoc />
-		protected override void CustomizeModelCreating(ModelBuilder modelBuilder)
-		{
-			base.CustomizeModelCreating(modelBuilder);
+	/// <inheritdoc />
+	protected override void CustomizeModelCreating(ModelBuilder modelBuilder)
+	{
+		base.CustomizeModelCreating(modelBuilder);
 
-			modelBuilder.HasSequence<int>("ContactSequence");
+		modelBuilder.HasSequence<int>("ContactSequence");
 
-			modelBuilder.RegisterModelFromAssembly(typeof(Havit.NewProjectTemplate.Model.Localizations.Language).Assembly);
-			modelBuilder.ApplyConfigurationsFromAssembly(this.GetType().Assembly);
-		}
+		modelBuilder.RegisterModelFromAssembly(typeof(Havit.NewProjectTemplate.Model.Localizations.Language).Assembly);
+		modelBuilder.ApplyConfigurationsFromAssembly(this.GetType().Assembly);
 	}
 }

@@ -4,25 +4,24 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.Extensions.DependencyInjection;
 using Havit.NewProjectTemplate.TestHelpers;
 
-namespace Havit.NewProjectTemplate.IntegrationTests.DataLayer.Seeds
+namespace Havit.NewProjectTemplate.IntegrationTests.DataLayer.Seeds;
+
+[TestClass]
+public class DataSeedingTests : IntegrationTestBase
 {
-	[TestClass]
-	public class DataSeedingTests : IntegrationTestBase
+	protected override bool UseLocalDb => true;
+	protected override bool DeleteDbData => true; // default, but to be sure :D
+
+	[TestMethod]
+	public void DataSeeds_CoreProfile()
 	{
-		protected override bool UseLocalDb => true;
-		protected override bool DeleteDbData => true; // default, but to be sure :D
+		// arrange
+		var seedRunner = ServiceProvider.GetRequiredService<IDataSeedRunner>();
 
-		[TestMethod]
-		public void DataSeeds_CoreProfile()
-		{
-			// arrange
-			var seedRunner = ServiceProvider.GetRequiredService<IDataSeedRunner>();
+		// act
+		seedRunner.SeedData<CoreProfile>();
 
-			// act
-			seedRunner.SeedData<CoreProfile>();
-
-			// assert
-			// no exception
-		}
+		// assert
+		// no exception
 	}
 }

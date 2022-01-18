@@ -8,64 +8,63 @@ using Havit.NewProjectTemplate.Model.Security;
 using Havit.Services.Caching;
 using Microsoft.AspNetCore.Authorization;
 
-namespace Havit.NewProjectTemplate.Facades.System
+namespace Havit.NewProjectTemplate.Facades.System;
+
+[Service]
+[Authorize(Roles = nameof(Role.Entry.SystemAdministrator))]
+
+public class DataSeedFacade : IDataSeedFacade
 {
-	[Service]
-	[Authorize(Roles = nameof(Role.Entry.SystemAdministrator))]
+	private readonly IDataSeedRunner dataSeedRunner;
+	private readonly ICacheService cacheService;
 
-	public class DataSeedFacade : IDataSeedFacade
+	public DataSeedFacade(
+		IDataSeedRunner dataSeedRunner,
+		ICacheService cacheService)
 	{
-		private readonly IDataSeedRunner dataSeedRunner;
-		private readonly ICacheService cacheService;
+		this.dataSeedRunner = dataSeedRunner;
+		this.cacheService = cacheService;
+	}
 
-		public DataSeedFacade(
-			IDataSeedRunner dataSeedRunner,
-			ICacheService cacheService)
+	/// <summary>
+	/// Executes seed for the selected profile.
+	/// </summary>
+	public Task SeedDataProfileAsync(string profileName, CancellationToken cancellationToken = default)
+	{
+		// applicationAuthorizationService.VerifyCurrentUserAuthorization(Operations.SystemAdministration); // TODO alternative authorization approach
+
+		Type type = GetProfileTypes().FirstOrDefault(item => String.Equals(item.Name, profileName, StringComparison.InvariantCultureIgnoreCase));
+
+		if (type == null)
 		{
-			this.dataSeedRunner = dataSeedRunner;
-			this.cacheService = cacheService;
+			throw new OperationFailedException($"DataSeedProfile {profileName} not found.");
 		}
 
-		/// <summary>
-		/// Executes seed for the selected profile.
-		/// </summary>
-		public Task SeedDataProfileAsync(string profileName, CancellationToken cancellationToken = default)
-		{
-			// applicationAuthorizationService.VerifyCurrentUserAuthorization(Operations.SystemAdministration); // TODO alternative authorization approach
+		// Individual seeds do not invalidate cache. If there are any cached entries (incl. empty-GetAll),
+		// they get seeded and another seed asks for GetAll(), the newly seeded entities are not included.
+		cacheService.Clear();
 
-			Type type = GetProfileTypes().FirstOrDefault(item => String.Equals(item.Name, profileName, StringComparison.InvariantCultureIgnoreCase));
+		dataSeedRunner.SeedData(type, forceRun: true);
 
-			if (type == null)
-			{
-				throw new OperationFailedException($"DataSeedProfile {profileName} not found.");
-			}
+		cacheService.Clear();
 
-			// Individual seeds do not invalidate cache. If there are any cached entries (incl. empty-GetAll),
-			// they get seeded and another seed asks for GetAll(), the newly seeded entities are not included.
-			cacheService.Clear();
+		return Task.CompletedTask;
+	}
 
-			dataSeedRunner.SeedData(type, forceRun: true);
+	/// <summary>
+	/// Returns list of available data seed profiles (names are ready for use as parameter to <see cref="SeedDataProfileAsync"/> method).
+	/// </summary>
+	public Task<List<string>> GetDataSeedProfilesAsync(CancellationToken cancellationToken = default)
+	{
+		return Task.FromResult(GetProfileTypes()
+						.Select(t => t.Name)
+						.ToList()
+		);
+	}
 
-			cacheService.Clear();
-
-			return Task.CompletedTask;
-		}
-
-		/// <summary>
-		/// Returns list of available data seed profiles (names are ready for use as parameter to <see cref="SeedDataProfileAsync"/> method).
-		/// </summary>
-		public Task<List<string>> GetDataSeedProfilesAsync(CancellationToken cancellationToken = default)
-		{
-			return Task.FromResult(GetProfileTypes()
-							.Select(t => t.Name)
-							.ToList()
-			);
-		}
-
-		private static IEnumerable<Type> GetProfileTypes()
-		{
-			return typeof(CoreProfile).Assembly.GetTypes()
-				.Where(t => t.GetInterfaces().Contains(typeof(IDataSeedProfile)));
-		}
+	private static IEnumerable<Type> GetProfileTypes()
+	{
+		return typeof(CoreProfile).Assembly.GetTypes()
+			.Where(t => t.GetInterfaces().Contains(typeof(IDataSeedProfile)));
 	}
 }

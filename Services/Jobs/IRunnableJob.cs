@@ -1,7 +1,6 @@
-﻿namespace Havit.NewProjectTemplate.Services.Jobs
+﻿namespace Havit.NewProjectTemplate.Services.Jobs;
+
+public interface IRunnableJob
 {
-	public interface IRunnableJob
-	{
-		Task ExecuteAsync(CancellationToken cancellationToken);
-	}
+	Task ExecuteAsync(CancellationToken cancellationToken);
 }

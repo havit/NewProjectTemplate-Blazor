@@ -1,14 +1,14 @@
 ﻿using Havit.Data.Patterns.DataSeeds;
 using Havit.NewProjectTemplate.Model.Localizations;
 
-namespace Havit.NewProjectTemplate.DataLayer.Seeds.Core.Localizations
+namespace Havit.NewProjectTemplate.DataLayer.Seeds.Core.Localizations;
+
+public class LanguageSeed : DataSeed<CoreProfile>
 {
-	public class LanguageSeed : DataSeed<CoreProfile>
+	public override void SeedData()
 	{
-		public override void SeedData()
+		var languages = new[]
 		{
-			var languages = new[]
-			{
 				new Language()
 				{
 					Id = (int)Language.Entry.Czech,
@@ -25,7 +25,6 @@ namespace Havit.NewProjectTemplate.DataLayer.Seeds.Core.Localizations
 				}
 			};
 
-			Seed(For(languages).PairBy(language => language.Id));
-		}
+		Seed(For(languages).PairBy(language => language.Id));
 	}
 }

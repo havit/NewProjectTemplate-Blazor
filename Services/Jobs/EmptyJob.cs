@@ -1,25 +1,24 @@
 ﻿using Havit.Extensions.DependencyInjection.Abstractions;
 using Microsoft.Extensions.Logging;
 
-namespace Havit.NewProjectTemplate.Services.Jobs
+namespace Havit.NewProjectTemplate.Services.Jobs;
+
+[Service(Profile = Jobs.ProfileName)]
+public class EmptyJob : IEmptyJob
 {
-	[Service(Profile = Jobs.ProfileName)]
-	public class EmptyJob : IEmptyJob
+	private readonly ILogger<EmptyJob> logger;
+
+	public EmptyJob(ILogger<EmptyJob> logger)
 	{
-		private readonly ILogger<EmptyJob> logger;
+		this.logger = logger;
+	}
 
-		public EmptyJob(ILogger<EmptyJob> logger)
-		{
-			this.logger = logger;
-		}
+	public async Task ExecuteAsync(CancellationToken cancellationToken)
+	{
+		logger.LogInformation("Begin: EmptyJob");
 
-		public async Task ExecuteAsync(CancellationToken cancellationToken)
-		{
-			logger.LogInformation("Begin: EmptyJob");
+		await Task.Delay(5000, cancellationToken);
 
-			await Task.Delay(5000, cancellationToken);
-
-			logger.LogInformation("End: EmptyJob");
-		}
+		logger.LogInformation("End: EmptyJob");
 	}
 }

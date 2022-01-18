@@ -2,14 +2,13 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Havit.NewProjectTemplate.Entity.Configurations.Common
+namespace Havit.NewProjectTemplate.Entity.Configurations.Common;
+
+public class CountryConfiguration : IEntityTypeConfiguration<Country>
 {
-	public class CountryConfiguration : IEntityTypeConfiguration<Country>
+	public void Configure(EntityTypeBuilder<Country> builder)
 	{
-		public void Configure(EntityTypeBuilder<Country> builder)
-		{
-			builder.HasIndex(c => c.IsoCode).IsUnique();
-			builder.HasIndex(c => c.IsoCode3).IsUnique();
-		}
+		builder.HasIndex(c => c.IsoCode).IsUnique();
+		builder.HasIndex(c => c.IsoCode3).IsUnique();
 	}
 }

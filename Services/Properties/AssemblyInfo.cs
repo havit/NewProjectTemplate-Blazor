@@ -1,7 +1,6 @@
-﻿namespace Havit.NewProjectTemplate.Services.Properties
-{
-	public class AssemblyInfo
-	{
+﻿namespace Havit.NewProjectTemplate.Services.Properties;
 
-	}
+public class AssemblyInfo
+{
+
 }

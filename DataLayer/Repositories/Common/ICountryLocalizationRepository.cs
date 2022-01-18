@@ -1,7 +1,6 @@
-﻿namespace Havit.NewProjectTemplate.DataLayer.Repositories.Common
-{
-	public partial interface ICountryLocalizationRepository
-	{
+﻿namespace Havit.NewProjectTemplate.DataLayer.Repositories.Common;
 
-	}
+public partial interface ICountryLocalizationRepository
+{
+
 }

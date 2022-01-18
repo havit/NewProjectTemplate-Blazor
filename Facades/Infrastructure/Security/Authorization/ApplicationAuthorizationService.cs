@@ -5,51 +5,50 @@ using Havit.NewProjectTemplate.Facades.Infrastructure.Security.Authentication;
 using Havit.NewProjectTemplate.Services.Infrastructure;
 using Microsoft.AspNetCore.Authorization;
 
-namespace Havit.NewProjectTemplate.Facades.Infrastructure.Security.Authorization
+namespace Havit.NewProjectTemplate.Facades.Infrastructure.Security.Authorization;
+
+[Service(Profile = ServiceProfiles.WebServer)]
+public class ApplicationAuthorizationService : IApplicationAuthorizationService
 {
-	[Service(Profile = ServiceProfiles.WebServer)]
-	public class ApplicationAuthorizationService : IApplicationAuthorizationService
+	private readonly IApplicationAuthenticationService applicationAuthenticationService;
+	private readonly IAuthorizationService authorizationService;
+
+	public ApplicationAuthorizationService(IApplicationAuthenticationService applicationAuthenticationService, IAuthorizationService authorizationService)
 	{
-		private readonly IApplicationAuthenticationService applicationAuthenticationService;
-		private readonly IAuthorizationService authorizationService;
+		this.applicationAuthenticationService = applicationAuthenticationService;
+		this.authorizationService = authorizationService;
+	}
 
-		public ApplicationAuthorizationService(IApplicationAuthenticationService applicationAuthenticationService, IAuthorizationService authorizationService)
+	public async Task<bool> IsAuthorizedAsync(ClaimsPrincipal user, IAuthorizationRequirement requirement, object resource = null)
+	{
+		Contract.Requires<ArgumentNullException>(user != null, nameof(user));
+		Contract.Requires<ArgumentNullException>(requirement != null, nameof(requirement));
+
+		return (await authorizationService.AuthorizeAsync(user, resource, requirement)).Succeeded;
+	}
+
+	public async Task VerifyAuthorizationAsync(ClaimsPrincipal user, IAuthorizationRequirement requirement, object resource = null)
+	{
+		Contract.Requires<ArgumentNullException>(user != null, nameof(user));
+		Contract.Requires<ArgumentNullException>(requirement != null, nameof(requirement));
+
+		if (!await IsAuthorizedAsync(user, requirement, resource))
 		{
-			this.applicationAuthenticationService = applicationAuthenticationService;
-			this.authorizationService = authorizationService;
+			throw new SecurityException();
 		}
+	}
 
-		public async Task<bool> IsAuthorizedAsync(ClaimsPrincipal user, IAuthorizationRequirement requirement, object resource = null)
-		{
-			Contract.Requires<ArgumentNullException>(user != null, nameof(user));
-			Contract.Requires<ArgumentNullException>(requirement != null, nameof(requirement));
+	public async Task<bool> IsCurrentUserAuthorizedAsync(IAuthorizationRequirement requirement, object resource = null)
+	{
+		Contract.Requires<ArgumentNullException>(requirement != null, nameof(requirement));
 
-			return (await authorizationService.AuthorizeAsync(user, resource, requirement)).Succeeded;
-		}
+		return await IsAuthorizedAsync(applicationAuthenticationService.GetCurrentClaimsPrincipal(), requirement, resource);
+	}
 
-		public async Task VerifyAuthorizationAsync(ClaimsPrincipal user, IAuthorizationRequirement requirement, object resource = null)
-		{
-			Contract.Requires<ArgumentNullException>(user != null, nameof(user));
-			Contract.Requires<ArgumentNullException>(requirement != null, nameof(requirement));
+	public async Task VerifyCurrentUserAuthorizationAsync(IAuthorizationRequirement requirement, object resource = null)
+	{
+		Contract.Requires<ArgumentNullException>(requirement != null, nameof(requirement));
 
-			if (!await IsAuthorizedAsync(user, requirement, resource))
-			{
-				throw new SecurityException();
-			}
-		}
-
-		public async Task<bool> IsCurrentUserAuthorizedAsync(IAuthorizationRequirement requirement, object resource = null)
-		{
-			Contract.Requires<ArgumentNullException>(requirement != null, nameof(requirement));
-
-			return await IsAuthorizedAsync(applicationAuthenticationService.GetCurrentClaimsPrincipal(), requirement, resource);
-		}
-
-		public async Task VerifyCurrentUserAuthorizationAsync(IAuthorizationRequirement requirement, object resource = null)
-		{
-			Contract.Requires<ArgumentNullException>(requirement != null, nameof(requirement));
-
-			await VerifyAuthorizationAsync(applicationAuthenticationService.GetCurrentClaimsPrincipal(), requirement, resource);
-		}
+		await VerifyAuthorizationAsync(applicationAuthenticationService.GetCurrentClaimsPrincipal(), requirement, resource);
 	}
 }

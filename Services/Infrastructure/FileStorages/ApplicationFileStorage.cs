@@ -1,8 +1,7 @@
 ﻿using Havit.Services.FileStorage;
 
-namespace Havit.NewProjectTemplate.Services.Infrastructure.FileStorages
+namespace Havit.NewProjectTemplate.Services.Infrastructure.FileStorages;
+
+public class ApplicationFileStorage : FileStorageContext
 {
-	public class ApplicationFileStorage : FileStorageContext
-	{
-	}
 }

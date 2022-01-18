@@ -2,13 +2,12 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Havit.NewProjectTemplate.Entity.Configurations.Localizations
+namespace Havit.NewProjectTemplate.Entity.Configurations.Localizations;
+
+public class LanguageConfiguration : IEntityTypeConfiguration<Language>
 {
-	public class LanguageConfiguration : IEntityTypeConfiguration<Language>
+	public void Configure(EntityTypeBuilder<Language> builder)
 	{
-		public void Configure(EntityTypeBuilder<Language> builder)
-		{
-			builder.Property(l => l.Id).ValueGeneratedNever();
-		}
+		builder.Property(l => l.Id).ValueGeneratedNever();
 	}
 }

@@ -1,7 +1,6 @@
-﻿namespace Havit.NewProjectTemplate.Facades.Properties
-{
-	public class AssemblyInfo
-	{
+﻿namespace Havit.NewProjectTemplate.Facades.Properties;
 
-	}
+public class AssemblyInfo
+{
+
 }

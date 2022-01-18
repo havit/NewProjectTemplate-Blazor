@@ -1,7 +1,6 @@
-﻿namespace Havit.NewProjectTemplate.Services.Jobs
+﻿namespace Havit.NewProjectTemplate.Services.Jobs;
+
+public static class Jobs
 {
-	public static class Jobs
-	{
-		public const string ProfileName = "Jobs";
-	}
+	public const string ProfileName = "Jobs";
 }

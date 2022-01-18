@@ -1,7 +1,6 @@
-﻿namespace Havit.NewProjectTemplate.Services.Infrastructure
+﻿namespace Havit.NewProjectTemplate.Services.Infrastructure;
+
+public static class ServiceProfiles
 {
-	public static class ServiceProfiles
-	{
-		public const string WebServer = "WebServer";
-	}
+	public const string WebServer = "WebServer";
 }

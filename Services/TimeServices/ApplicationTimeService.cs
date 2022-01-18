@@ -1,26 +1,25 @@
 ﻿using System.Runtime.InteropServices;
 using Havit.Services.TimeServices;
 
-namespace Havit.NewProjectTemplate.Services.TimeServices
+namespace Havit.NewProjectTemplate.Services.TimeServices;
+
+/// <summary>
+/// Provides current time in local time-zone ("Central Europe Standard Time", "Europe/Prague" for non-Windows platforms).
+/// </summary>
+public class ApplicationTimeService : TimeZoneTimeServiceBase, ITimeService
 {
 	/// <summary>
-	/// Provides current time in local time-zone ("Central Europe Standard Time", "Europe/Prague" for non-Windows platforms).
+	/// Returns time-zone you want to treat as local ("Central Europe Standard Time", "Europe/Prague" for non-Windows platforms).
 	/// </summary>
-	public class ApplicationTimeService : TimeZoneTimeServiceBase, ITimeService
+	protected override TimeZoneInfo CurrentTimeZone
 	{
-		/// <summary>
-		/// Returns time-zone you want to treat as local ("Central Europe Standard Time", "Europe/Prague" for non-Windows platforms).
-		/// </summary>
-		protected override TimeZoneInfo CurrentTimeZone
+		get
 		{
-			get
+			if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
 			{
-				if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-				{
-					return TimeZoneInfo.FindSystemTimeZoneById("Central Europe Standard Time");
-				}
-				return TimeZoneInfo.FindSystemTimeZoneById("Europe/Prague"); // MacOS
+				return TimeZoneInfo.FindSystemTimeZoneById("Central Europe Standard Time");
 			}
+			return TimeZoneInfo.FindSystemTimeZoneById("Europe/Prague"); // MacOS
 		}
 	}
 }

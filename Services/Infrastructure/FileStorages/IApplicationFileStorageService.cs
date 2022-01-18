@@ -1,8 +1,7 @@
 ﻿using Havit.Services.FileStorage;
 
-namespace Havit.NewProjectTemplate.Services.Infrastructure.FileStorages
+namespace Havit.NewProjectTemplate.Services.Infrastructure.FileStorages;
+
+public interface IApplicationFileStorageService : IFileStorageService<ApplicationFileStorage>
 {
-	public interface IApplicationFileStorageService : IFileStorageService<ApplicationFileStorage>
-	{
-	}
 }
