@@ -32,7 +32,7 @@ namespace Havit.NewProjectTemplate.Web.Client.Pages.Admin.Components
 
 		public async Task ShowAsync()
 		{
-			seedProfiles ??= (await DataSeedFacade.GetDataSeedProfilesAsync()).Value;
+			seedProfiles ??= await DataSeedFacade.GetDataSeedProfilesAsync();
 
 			await offcanvasComponent.ShowAsync();
 		}

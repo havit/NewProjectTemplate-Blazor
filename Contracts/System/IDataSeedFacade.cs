@@ -7,6 +7,6 @@ namespace Havit.NewProjectTemplate.Contracts.System
 	{
 		Task SeedDataProfileAsync(string profileName, CancellationToken cancellationToken = default);
 
-		Task<Dto<string[]>> GetDataSeedProfilesAsync(CancellationToken cancellationToken = default);
+		Task<List<string>> GetDataSeedProfilesAsync(CancellationToken cancellationToken = default);
 	}
 }

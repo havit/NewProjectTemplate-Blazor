@@ -54,12 +54,12 @@ namespace Havit.NewProjectTemplate.Facades.System
 		/// <summary>
 		/// Returns list of available data seed profiles (names are ready for use as parameter to <see cref="SeedDataProfileAsync"/> method).
 		/// </summary>
-		public Task<Dto<string[]>> GetDataSeedProfilesAsync(CancellationToken cancellationToken = default)
+		public Task<List<string>> GetDataSeedProfilesAsync(CancellationToken cancellationToken = default)
 		{
-			return Task.FromResult(Dto.FromValue(GetProfileTypes()
+			return Task.FromResult(GetProfileTypes()
 							.Select(t => t.Name)
-							.ToArray()
-			));
+							.ToList()
+			);
 		}
 
 		private static IEnumerable<Type> GetProfileTypes()
