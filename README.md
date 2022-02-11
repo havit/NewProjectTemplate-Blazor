@@ -11,6 +11,7 @@
 1. Create an initial EF migration
    1. Drop the current migrations - delete Entity/Migrations folder
    1. Add new initial migration `Add-Migration Initial -StartupProject Entity.Tests`
+1. Check all configuration files (including PublishScripts folder).
 1. Set Web.Server as the startup project.
 1. Run the app...
 

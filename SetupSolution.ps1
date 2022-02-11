@@ -3,7 +3,9 @@
 	[string]$NewOrganizationName = "HAVIT",
     [string]$NewSolutionName = "YourSolutionName",
 	[string]$NewHttpPort = "9901",
-	[string]$NewHttpsPort = "44301"
+	[string]$NewHttpsPort = "44301",
+	[string]$NewErrorsRecipient = "errors@mydomain.com", # HAVIT developers: use errors@havit.cz
+	[string]$NewErrorsSmptServer = "errorssmtp.server.com" # HAVIT developers: use mx.havit.cz
 )
 
 [string]$SolutionFolder = [System.IO.Path]::GetDirectoryName($MyInvocation.MyCommand.Path);
@@ -14,9 +16,11 @@ Foreach-Object {
     [string]$Content = [IO.File]::ReadAllText($_.FullName)
     $Content = $Content.Replace('Havit.NewProjectTemplate', $NewRootNamespace + '.' + $NewSolutionName)
     $Content = $Content.Replace('NewProjectTemplate', $NewSolutionName)
+    $Content = $Content.Replace("HAVIT", $NewOrganizationName)
     $Content = $Content.Replace('9900', $NewHttpPort)
     $Content = $Content.Replace("44301", $NewHttpsPort)
-    $Content = $Content.Replace("HAVIT", $NewOrganizationName)
+    $Content = $Content.Replace("errors@mydomain.com", $NewErrorsRecipient)
+    $Content = $Content.Replace("errorssmtp.server.com", $NewErrorsSmptServer)
     [IO.File]::WriteAllText($_.FullName, $Content, [System.Text.Encoding]::UTF8)
 }
 
