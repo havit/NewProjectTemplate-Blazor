@@ -10,9 +10,9 @@ namespace Havit.NewProjectTemplate.Services.HealthChecks;
 /// </summary>
 public class NewProjectTemplateDbContextHealthCheck : BaseHealthCheck
 {
-	private readonly IDbContextTransient dbContext;
+	private readonly IDbContext dbContext;
 
-	public NewProjectTemplateDbContextHealthCheck(IDbContextTransient dbContext)
+	public NewProjectTemplateDbContextHealthCheck(IDbContext dbContext)
 	{
 		this.dbContext = dbContext;
 	}

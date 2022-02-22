@@ -94,14 +94,12 @@ public static class ServiceCollectionExtensions
 
 	private static void InstallHavitEntityFramework(IServiceCollection services, InstallConfiguration configuration)
 	{
-		DbContextOptions options = configuration.UseInMemoryDb
-			? new DbContextOptionsBuilder<NewProjectTemplateDbContext>().UseInMemoryDatabase(nameof(NewProjectTemplateDbContext)).Options
-			: new DbContextOptionsBuilder<NewProjectTemplateDbContext>().UseSqlServer(configuration.DatabaseConnectionString, c => c.MaxBatchSize(30)).Options;
-
 		services.WithEntityPatternsInstaller()
 			.AddEntityPatterns()
 			//.AddLocalizationServices<Language>()
-			.AddDbContext<NewProjectTemplateDbContext>(options)
+			.AddDbContext<NewProjectTemplateDbContext>(options => _ = configuration.UseInMemoryDb
+				? options.UseInMemoryDatabase(nameof(NewProjectTemplateDbContext))
+				: options.UseSqlServer(configuration.DatabaseConnectionString, c => c.MaxBatchSize(30)))
 			.AddDataLayer(typeof(IApplicationSettingsDataSource).Assembly)
 			.AddLookupService<ICountryByIsoCodeLookupService, CountryByIsoCodeLookupService>();
 
