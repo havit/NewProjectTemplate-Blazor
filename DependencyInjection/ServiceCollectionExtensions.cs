@@ -97,9 +97,17 @@ public static class ServiceCollectionExtensions
 		services.WithEntityPatternsInstaller()
 			.AddEntityPatterns()
 			//.AddLocalizationServices<Language>()
-			.AddDbContext<NewProjectTemplateDbContext>(options => _ = configuration.UseInMemoryDb
-				? options.UseInMemoryDatabase(nameof(NewProjectTemplateDbContext))
-				: options.UseSqlServer(configuration.DatabaseConnectionString, c => c.MaxBatchSize(30)))
+			.AddDbContext<NewProjectTemplateDbContext>(optionsBuilder =>
+			{
+				if (configuration.UseInMemoryDb)
+				{
+					optionsBuilder.UseInMemoryDatabase(nameof(NewProjectTemplateDbContext));
+				}
+				else
+				{
+					optionsBuilder.UseSqlServer(configuration.DatabaseConnectionString, c => c.MaxBatchSize(30));
+				}
+			})
 			.AddDataLayer(typeof(IApplicationSettingsDataSource).Assembly)
 			.AddLookupService<ICountryByIsoCodeLookupService, CountryByIsoCodeLookupService>();
 
