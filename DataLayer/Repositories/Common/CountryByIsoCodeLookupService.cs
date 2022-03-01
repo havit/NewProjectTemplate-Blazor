@@ -21,7 +21,7 @@ public class CountryByIsoCodeLookupService : LookupServiceBase<string, Country>,
 
 	public Country GetCountryByIsoCode(string isoCode)
 	{
-		Contract.Requires<ArgumentException>(!string.IsNullOrWhiteSpace(isoCode), nameof(isoCode));
+		Contract.Requires<ArgumentException>(!string.IsNullOrWhiteSpace(isoCode));
 
 		return GetEntityByLookupKey(isoCode.ToUpper());
 	}

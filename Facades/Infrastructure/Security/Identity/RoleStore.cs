@@ -30,7 +30,7 @@ public class RoleStore : IRoleStore<Role>
 
 	public Task<Role> FindByIdAsync(string roleId, CancellationToken cancellationToken)
 	{
-		Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(roleId), nameof(roleId));
+		Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(roleId));
 
 		var id = int.Parse(roleId);
 		return Task.FromResult(roleRepository.GetObject(id)); // role is [Cache]d, no need for async
@@ -38,7 +38,7 @@ public class RoleStore : IRoleStore<Role>
 
 	public Task<Role> FindByNameAsync(string normalizedRoleName, CancellationToken cancellationToken)
 	{
-		Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(normalizedRoleName), nameof(normalizedRoleName));
+		Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(normalizedRoleName));
 
 		var roleEntry = Enum.Parse<Role.Entry>(normalizedRoleName, ignoreCase: true);
 		return Task.FromResult(roleRepository.GetObject((int)roleEntry)); // role is [Cache]d, no need for async
@@ -46,21 +46,21 @@ public class RoleStore : IRoleStore<Role>
 
 	public Task<string> GetNormalizedRoleNameAsync(Role role, CancellationToken cancellationToken)
 	{
-		Contract.Requires<ArgumentNullException>(role != null, nameof(role));
+		Contract.Requires<ArgumentNullException>(role != null);
 
 		return Task.FromResult(role.NormalizedName);
 	}
 
 	public Task<string> GetRoleIdAsync(Role role, CancellationToken cancellationToken)
 	{
-		Contract.Requires<ArgumentNullException>(role != null, nameof(role));
+		Contract.Requires<ArgumentNullException>(role != null);
 
 		return Task.FromResult(role.Id.ToString());
 	}
 
 	public Task<string> GetRoleNameAsync(Role role, CancellationToken cancellationToken)
 	{
-		Contract.Requires<ArgumentNullException>(role != null, nameof(role));
+		Contract.Requires<ArgumentNullException>(role != null);
 
 		return Task.FromResult(role.Name);
 	}

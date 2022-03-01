@@ -14,7 +14,7 @@ public partial class UserDbRepository : IUserRepository
 
 	public async Task<User> GetByUsernameAsync(string username, CancellationToken cancellationToken = default)
 	{
-		Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(username), nameof(username));
+		Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(username));
 
 		var normalizedUsername = username.ToUpper();
 		return await Data.Include(GetLoadReferences).FirstOrDefaultAsync(u => u.NormalizedUsername == normalizedUsername, cancellationToken);
@@ -22,7 +22,7 @@ public partial class UserDbRepository : IUserRepository
 
 	public async Task<User> GetByEmailAsync(string email, CancellationToken cancellationToken = default)
 	{
-		Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(email), nameof(email));
+		Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(email));
 
 		var normalizedEmail = email.ToUpper();
 		return await Data.Include(GetLoadReferences).FirstOrDefaultAsync(u => u.NormalizedEmail == email);
