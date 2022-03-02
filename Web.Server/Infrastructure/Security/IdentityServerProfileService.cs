@@ -1,6 +1,6 @@
 ﻿using System.Security.Claims;
-using Duende.IdentityServer.Models;
-using Duende.IdentityServer.Services;
+using IdentityServer4.Models;
+using IdentityServer4.Services;
 using Havit.NewProjectTemplate.Model.Security;
 using IdentityModel;
 using Microsoft.AspNetCore.Identity;

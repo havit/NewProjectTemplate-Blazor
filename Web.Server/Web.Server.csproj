@@ -19,7 +19,10 @@
 		<PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="6.0.2" />
 		<PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.2" />
 		<PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="6.0.2" />
-		<PackageReference Include="Microsoft.AspNetCore.ApiAuthorization.IdentityServer" Version="6.0.2" />
+		
+		<!-- Do not upgrade to 6.x as it changes to commercial Duende.IdentityServer -->
+		<PackageReference Include="Microsoft.AspNetCore.ApiAuthorization.IdentityServer" Version="5.0.14" />
+		
 		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.2" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.2">
 			<PrivateAssets>all</PrivateAssets>
@@ -46,16 +49,16 @@
 		<Copy SourceFiles="@(PublishToCopy)" DestinationFolder="$(PublishDirectory)\Web" />
 	</Target>
 
-    <Target Name="EnsureWebJobInPackage" AfterTargets="CreateReadyToRunImages" BeforeTargets="_PrepareForReadyToRunCompilation">
-        <Error Text="WebJob file Havit.NewProjectTemplate.Utility.exe not found when preparing web deploy package." Condition="!Exists('..\Utility\bin\Release\net6.0\Havit.NewProjectTemplate.Utility.exe')" />
-        <ItemGroup>
-            <!-- Vybereme soubory k publikaci. Předpokládá, že Utility je závislostí WebAPI nastavené v SLN. -->
-            <WebJobFiles Include="..\Utility\bin\Release\net6.0\**" />
-            <!-- Přidej soubory do ResolvedFileToPublish s nastavením cesty, kam mají být umístěny (složka pro webjoby). -->
-            <ResolvedFileToPublish Include="@(WebJobFiles)">
-                <RelativePath>app_data\jobs\continuous\Utility\%(RecursiveDir)%(Filename)%(Extension)</RelativePath>
-                <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-            </ResolvedFileToPublish>
-        </ItemGroup>
-    </Target>
+	<Target Name="EnsureWebJobInPackage" AfterTargets="CreateReadyToRunImages" BeforeTargets="_PrepareForReadyToRunCompilation">
+		<Error Text="WebJob file Havit.NewProjectTemplate.Utility.exe not found when preparing web deploy package." Condition="!Exists('..\Utility\bin\Release\net6.0\Havit.NewProjectTemplate.Utility.exe')" />
+		<ItemGroup>
+			<!-- Vybereme soubory k publikaci. Předpokládá, že Utility je závislostí WebAPI nastavené v SLN. -->
+			<WebJobFiles Include="..\Utility\bin\Release\net6.0\**" />
+			<!-- Přidej soubory do ResolvedFileToPublish s nastavením cesty, kam mají být umístěny (složka pro webjoby). -->
+			<ResolvedFileToPublish Include="@(WebJobFiles)">
+				<RelativePath>app_data\jobs\continuous\Utility\%(RecursiveDir)%(Filename)%(Extension)</RelativePath>
+				<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+			</ResolvedFileToPublish>
+		</ItemGroup>
+	</Target>
 </Project>
