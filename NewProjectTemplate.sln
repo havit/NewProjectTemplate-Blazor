@@ -59,6 +59,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Utility", "Utility\Utility.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Resources", "Resources\Resources.csproj", "{3E4BC2F2-AB6D-41B4-8C56-8E4E7A98DC95}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PublishScripts", "PublishScripts", "{60E7C286-81A9-4DD8-A15F-C62B9B3FEDD2}"
+	ProjectSection(SolutionItems) = preProject
+		PublishScripts\Web\appsettings.WebServer.Stage.json = PublishScripts\Web\appsettings.WebServer.Stage.json
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -165,6 +170,7 @@ Global
 		{CF770CA3-11AC-42A1-9EBF-F62B274FB194} = {EF26518D-89CF-4B91-9346-5FEFE62DE99C}
 		{337135E8-40A5-44B6-85F2-31046F347F20} = {299B9B52-EFCA-4B17-B119-C4681DF12656}
 		{3E4BC2F2-AB6D-41B4-8C56-8E4E7A98DC95} = {EF26518D-89CF-4B91-9346-5FEFE62DE99C}
+		{60E7C286-81A9-4DD8-A15F-C62B9B3FEDD2} = {C07F0EF8-F566-4F3F-BABA-7B5796491863}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2BDD971F-EDF2-4421-8BE7-CAA15520977D}
