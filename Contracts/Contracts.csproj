@@ -14,4 +14,8 @@
 		<PackageReference Include="protobuf-net.Grpc" Version="1.0.152" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <ProjectReference Include="..\Primitives\Primitives.csproj" />
+	</ItemGroup>
+
 </Project>

@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<AssemblyName>Havit.NewProjectTemplate.Primitives</AssemblyName>
+		<RootNamespace>Havit.NewProjectTemplate.Primitives</RootNamespace>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Havit.Core" Version="2.0.25" />
+	</ItemGroup>
+
+</Project>

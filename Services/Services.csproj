@@ -22,5 +22,6 @@
 		<ProjectReference Include="..\Contracts\Contracts.csproj" />
 		<ProjectReference Include="..\DataLayer\DataLayer.csproj" />
 		<ProjectReference Include="..\Model\Model.csproj" />
+		<ProjectReference Include="..\Primitives\Primitives.csproj" />
 	</ItemGroup>
 </Project>	 
