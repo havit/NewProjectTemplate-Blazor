@@ -11,25 +11,25 @@
 		<PackageReference Include="Hangfire" Version="1.7.28" />
 		<PackageReference Include="Hangfire.Console" Version="1.4.2" />
 		<PackageReference Include="Havit.AspNetCore" Version="2.0.9" />
-		<PackageReference Include="Havit.Blazor.Components.Web.Bootstrap" Version="2.2.3" />
+		<PackageReference Include="Havit.Blazor.Components.Web.Bootstrap" Version="2.2.5" />
 		<PackageReference Include="Havit.Blazor.Grpc.Server" Version="1.0.12" />
 		<PackageReference Include="Havit.Hangfire.Extensions" Version="2.0.6" />
 		<PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.20.0" />
-		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="6.0.2" />
-		<PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="6.0.2" />
-		<PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.2" />
-		<PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="6.0.2" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="6.0.3" />
+		<PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="6.0.3" />
+		<PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.3" />
+		<PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="6.0.3" />
 		
 		<!-- Do not upgrade to 6.x as it changes to commercial Duende.IdentityServer -->
-		<PackageReference Include="Microsoft.AspNetCore.ApiAuthorization.IdentityServer" Version="5.0.14" />
+		<PackageReference Include="Microsoft.AspNetCore.ApiAuthorization.IdentityServer" Version="5.0.15" />
 		
-		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.2" />
-		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.2">
+		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.3" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.3">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
 		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0" />
-		<PackageReference Include="Microsoft.Extensions.Logging.AzureAppServices" Version="6.0.2" />
+		<PackageReference Include="Microsoft.Extensions.Logging.AzureAppServices" Version="6.0.3" />
 	</ItemGroup>
 
 	<ItemGroup>
