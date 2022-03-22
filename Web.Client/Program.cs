@@ -27,8 +27,6 @@ public class Program
 
 		AddLoggingAndApplicationInsights(builder);
 
-		builder.RootComponents.Add<App>("app");
-
 		builder.Services.AddSingleton(new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 		builder.Services.AddScoped(typeof(AccountClaimsPrincipalFactory<RemoteUserAccount>), typeof(RolesAccountClaimsPrincipalFactory)); // multiple roles workaround
 		builder.Services.AddApiAuthorization();
