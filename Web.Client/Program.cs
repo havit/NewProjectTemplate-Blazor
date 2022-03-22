@@ -25,6 +25,8 @@ public class Program
 	{
 		var builder = WebAssemblyHostBuilder.CreateDefault(args);
 
+		builder.RootComponents.Add<App>("app");
+
 		AddLoggingAndApplicationInsights(builder);
 
 		builder.Services.AddSingleton(new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
