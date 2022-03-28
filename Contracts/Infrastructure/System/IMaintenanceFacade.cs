@@ -1,6 +1,6 @@
 ﻿using Havit.ComponentModel;
 
-namespace Havit.NewProjectTemplate.Contracts.System;
+namespace Havit.NewProjectTemplate.Contracts.Infrastructure.System;
 
 [ApiContract]
 public interface IMaintenanceFacade

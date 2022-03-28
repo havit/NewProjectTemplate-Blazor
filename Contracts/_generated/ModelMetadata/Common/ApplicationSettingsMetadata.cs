@@ -11,13 +11,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Havit.NewProjectTemplate.Model.Metadata.Localizations
+namespace Havit.NewProjectTemplate.Contracts.ModelMetadata.Common
 {
 	[System.CodeDom.Compiler.GeneratedCode("Havit.Data.EntityFrameworkCore.CodeGenerator", "1.0")]
-	public static class LanguageMetadata
+	public static class ApplicationSettingsMetadata
 	{
-		public const int CultureMaxLength = 10;
-		public const int NameMaxLength = 200;
-		public const int UiCultureMaxLength = 10;
 	}
 }

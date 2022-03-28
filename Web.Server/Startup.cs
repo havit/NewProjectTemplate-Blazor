@@ -2,7 +2,7 @@
 using Hangfire.Dashboard;
 using Havit.Blazor.Grpc.Server;
 using Havit.NewProjectTemplate.Contracts;
-using Havit.NewProjectTemplate.Contracts.System;
+using Havit.NewProjectTemplate.Contracts.Infrastructure.System;
 using Havit.NewProjectTemplate.DependencyInjection;
 using Havit.NewProjectTemplate.Facades.Infrastructure.Security;
 using Havit.NewProjectTemplate.Model.Security;

@@ -11,11 +11,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Havit.NewProjectTemplate.Model.Metadata.Common
+namespace Havit.NewProjectTemplate.Contracts.ModelMetadata.Security
 {
 	[System.CodeDom.Compiler.GeneratedCode("Havit.Data.EntityFrameworkCore.CodeGenerator", "1.0")]
-	public static class CountryLocalizationMetadata
+	public static class RoleMetadata
 	{
-		public const int NameMaxLength = 50;
+		public const int NameMaxLength = 255;
+		public const int NormalizedNameMaxLength = 255;
 	}
 }

@@ -1,5 +1,5 @@
 ﻿using Blazored.LocalStorage;
-using Havit.NewProjectTemplate.Contracts.System;
+using Havit.NewProjectTemplate.Contracts.Infrastructure.System;
 using Havit.NewProjectTemplate.Web.Client.Pages.Admin.Components;
 using Havit.NewProjectTemplate.Web.Client.Resources;
 using Havit.NewProjectTemplate.Web.Client.Resources.Pages.Admin;

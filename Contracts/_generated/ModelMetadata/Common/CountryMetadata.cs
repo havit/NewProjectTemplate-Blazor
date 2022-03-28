@@ -11,17 +11,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Havit.NewProjectTemplate.Model.Metadata.Security
+namespace Havit.NewProjectTemplate.Contracts.ModelMetadata.Common
 {
 	[System.CodeDom.Compiler.GeneratedCode("Havit.Data.EntityFrameworkCore.CodeGenerator", "1.0")]
-	public static class UserMetadata
+	public static class CountryMetadata
 	{
-		public const int DisplayNameMaxLength = 100;
-		public const int EmailMaxLength = 255;
-		public const int NormalizedEmailMaxLength = 255;
-		public const int NormalizedUsernameMaxLength = 50;
-		public const int PasswordHashMaxLength = 2147483647;
-		public const int SecurityStampMaxLength = 255;
-		public const int UsernameMaxLength = 50;
+		public const int IsoCodeMaxLength = 2;
+		public const int IsoCode3MaxLength = 3;
+		public const int PhoneCountryCodeMaxLength = 6;
 	}
 }

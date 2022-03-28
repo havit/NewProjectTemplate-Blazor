@@ -7,7 +7,7 @@ using Havit.Blazor.Grpc.Client;
 using Havit.Blazor.Grpc.Client.ServerExceptions;
 using Havit.Blazor.Grpc.Client.WebAssembly;
 using Havit.NewProjectTemplate.Contracts;
-using Havit.NewProjectTemplate.Contracts.System;
+using Havit.NewProjectTemplate.Contracts.Infrastructure.System;
 using Havit.NewProjectTemplate.Web.Client.Infrastructure.Grpc;
 using Havit.NewProjectTemplate.Web.Client.Infrastructure.Security;
 using Microsoft.AspNetCore.Components;

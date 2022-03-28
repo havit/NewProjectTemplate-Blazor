@@ -1,10 +1,10 @@
 ﻿using Havit.Extensions.DependencyInjection.Abstractions;
-using Havit.NewProjectTemplate.Contracts.System;
+using Havit.NewProjectTemplate.Contracts.Infrastructure.System;
 using Havit.NewProjectTemplate.Model.Security;
 using Havit.Services.Caching;
 using Microsoft.AspNetCore.Authorization;
 
-namespace Havit.NewProjectTemplate.Facades.System;
+namespace Havit.NewProjectTemplate.Facades.Infrastructure.System;
 
 [Service]
 [Authorize(Roles = nameof(Role.Entry.SystemAdministrator))]

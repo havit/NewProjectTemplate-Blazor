@@ -8,7 +8,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Havit.Core" Version="2.0.25" />
+		<PackageReference Include="Havit.Core" Version="2.0.26" />
 	</ItemGroup>
 
 </Project>
