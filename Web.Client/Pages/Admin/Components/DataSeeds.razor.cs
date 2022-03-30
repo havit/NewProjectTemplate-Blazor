@@ -1,4 +1,4 @@
-﻿using Havit.NewProjectTemplate.Contracts.Infrastructure.System;
+﻿using Havit.NewProjectTemplate.Contracts.Infrastructure;
 using Microsoft.AspNetCore.Components;
 
 namespace Havit.NewProjectTemplate.Web.Client.Pages.Admin.Components;

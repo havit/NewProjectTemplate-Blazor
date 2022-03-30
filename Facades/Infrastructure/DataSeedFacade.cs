@@ -2,13 +2,13 @@
 using Havit.Data.Patterns.DataSeeds.Profiles;
 using Havit.Extensions.DependencyInjection.Abstractions;
 using Havit.NewProjectTemplate.Contracts;
-using Havit.NewProjectTemplate.Contracts.Infrastructure.System;
+using Havit.NewProjectTemplate.Contracts.Infrastructure;
 using Havit.NewProjectTemplate.DataLayer.Seeds.Core;
 using Havit.NewProjectTemplate.Model.Security;
 using Havit.Services.Caching;
 using Microsoft.AspNetCore.Authorization;
 
-namespace Havit.NewProjectTemplate.Facades.Infrastructure.System;
+namespace Havit.NewProjectTemplate.Facades.Infrastructure;
 
 [Service]
 [Authorize(Roles = nameof(Role.Entry.SystemAdministrator))]
@@ -33,7 +33,7 @@ public class DataSeedFacade : IDataSeedFacade
 	{
 		// applicationAuthorizationService.VerifyCurrentUserAuthorization(Operations.SystemAdministration); // TODO alternative authorization approach
 
-		Type type = GetProfileTypes().FirstOrDefault(item => String.Equals(item.Name, profileName, StringComparison.InvariantCultureIgnoreCase));
+		Type type = GetProfileTypes().FirstOrDefault(item => string.Equals(item.Name, profileName, StringComparison.InvariantCultureIgnoreCase));
 
 		if (type == null)
 		{

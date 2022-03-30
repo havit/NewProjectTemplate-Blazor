@@ -6,3 +6,4 @@ global using System.Threading;
 global using System.Threading.Tasks;
 
 global using Havit.Diagnostics.Contracts;
+global using Havit.ComponentModel;
