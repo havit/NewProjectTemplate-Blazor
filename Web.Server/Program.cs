@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Hosting;
+﻿using Havit.NewProjectTemplate.Web.Server.Infrastructure.LoggingExtensions;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
@@ -36,7 +37,7 @@ public class Program
 				logging.AddConfiguration(hostingContext.Configuration.GetSection("Logging"));
 				logging.AddConsole();
 				logging.AddDebug();
-				logging.AddAzureWebAppDiagnostics();
+				logging.AddCustomizedAzureWebAppDiagnostics();
 #if !DEBUG
 				logging.AddEventLog();
 #endif
