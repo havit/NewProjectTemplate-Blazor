@@ -9,7 +9,9 @@ using Havit.Hangfire.Extensions.Filters;
 using Havit.Hangfire.Extensions.RecurringJobs;
 using Havit.NewProjectTemplate.DependencyInjection;
 using Havit.NewProjectTemplate.Services.Jobs;
+using Havit.NewProjectTemplate.Utility.Infrastructure.ApplicationInsights;
 using Microsoft.ApplicationInsights;
+using Microsoft.ApplicationInsights.Extensibility;
 using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Extensions.Configuration;
@@ -44,6 +46,7 @@ public static class Program
 				services.AddApplicationInsightsTelemetryWorkerService();
 				services.AddApplicationInsightsTelemetryProcessor<IgnoreSucceededDependenciesWithNoParentIdProcessor>(); // ignorujeme infrastrukturní položky Hangfire (předpokládá použití ApplicationInsightAttribute níže)
 				services.Remove(services.Single(descriptor => descriptor.ImplementationType == typeof(PerformanceCollectorModule))); // odebereme hlášení PerformanceCounters
+				services.AddSingleton<ITelemetryInitializer, UtilityToCloudRoleNameTelemetryInitializer>();
 
 				services.AddExceptionMonitoring(hostContext.Configuration);
 
