@@ -1,4 +1,5 @@
-﻿using Havit.NewProjectTemplate.Web.Server.Infrastructure.LoggingExtensions;
+﻿using System.Runtime.InteropServices;
+using Havit.NewProjectTemplate.Web.Server.Infrastructure.LoggingExtensions;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
@@ -39,7 +40,10 @@ public class Program
 				logging.AddDebug();
 				logging.AddCustomizedAzureWebAppDiagnostics();
 #if !DEBUG
-				logging.AddEventLog();
+				if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+				{
+					logging.AddEventLog();
+				}
 #endif
 			});
 }
