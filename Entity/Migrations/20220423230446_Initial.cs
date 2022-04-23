@@ -1,15 +1,14 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
+#nullable disable
+
 namespace Havit.NewProjectTemplate.Entity.Migrations
 {
     public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.CreateSequence<int>(
-                name: "ContactSequence");
-
             migrationBuilder.CreateTable(
                 name: "__DataSeed",
                 columns: table => new
@@ -221,9 +220,6 @@ namespace Havit.NewProjectTemplate.Entity.Migrations
 
             migrationBuilder.DropTable(
                 name: "User");
-
-            migrationBuilder.DropSequence(
-                name: "ContactSequence");
         }
     }
 }

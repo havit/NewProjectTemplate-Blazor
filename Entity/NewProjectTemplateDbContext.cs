@@ -27,7 +27,7 @@ public class NewProjectTemplateDbContext : Havit.Data.EntityFrameworkCore.DbCont
 	{
 		base.CustomizeModelCreating(modelBuilder);
 
-		modelBuilder.HasSequence<int>("ContactSequence");
+		// modelBuilder.HasSequence<int>("XySequence");
 
 		modelBuilder.RegisterModelFromAssembly(typeof(Havit.NewProjectTemplate.Model.Localizations.Language).Assembly);
 		modelBuilder.ApplyConfigurationsFromAssembly(this.GetType().Assembly);
