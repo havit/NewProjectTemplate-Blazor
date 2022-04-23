@@ -26,6 +26,7 @@ Foreach-Object {
 
 Rename-Item -path ([System.IO.Path]::Combine($SolutionFolder, 'NewProjectTemplate.sln')) -newName ($NewSolutionName + '.sln')
 Rename-Item -path ([System.IO.Path]::Combine($SolutionFolder, 'Entity\NewProjectTemplateDbContext.cs')) -newName ($NewSolutionName + 'DbContext.cs')
+Rename-Item -path ([System.IO.Path]::Combine($SolutionFolder, 'Entity\Migrations\NewProjectTemplateDbContextModelSnapshot.cs')) -newName ($NewSolutionName + 'DbContextModelSnapshot.cs')
 Rename-Item -path ([System.IO.Path]::Combine($SolutionFolder, 'Entity\NewProjectTemplateDesignTimeDbContextFactory.cs')) -newName ($NewSolutionName + 'DesignTimeDbContextFactory.cs')
 Rename-Item -path ([System.IO.Path]::Combine($SolutionFolder, 'Entity.Tests\NewProjectTemplateDbContextTests.cs')) -newName ($NewSolutionName + 'DbContextTests.cs')
 Rename-Item -path ([System.IO.Path]::Combine($SolutionFolder, 'Services\HealthChecks\NewProjectTemplateDbContextHealthCheck.cs')) -newName ($NewSolutionName + 'DbContextHealthCheck.cs')	
