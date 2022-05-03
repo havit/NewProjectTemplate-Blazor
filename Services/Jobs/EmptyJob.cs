@@ -17,7 +17,8 @@ public class EmptyJob : IEmptyJob
 	{
 		logger.LogInformation("Begin: EmptyJob");
 
-		await Task.Delay(5000, cancellationToken);
+		// TODO - Replace job code here.
+		await Task.Delay(1, cancellationToken);
 
 		logger.LogInformation("End: EmptyJob");
 	}
