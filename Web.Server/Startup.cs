@@ -7,10 +7,10 @@ using Havit.NewProjectTemplate.DependencyInjection;
 using Havit.NewProjectTemplate.Facades.Infrastructure.Security;
 using Havit.NewProjectTemplate.Model.Security;
 using Havit.NewProjectTemplate.Services.HealthChecks;
+using Havit.NewProjectTemplate.Services.Infrastructure.MigrationTool;
 using Havit.NewProjectTemplate.Web.Server.Infrastructure.ApplicationInsights;
 using Havit.NewProjectTemplate.Web.Server.Infrastructure.ConfigurationExtensions;
 using Havit.NewProjectTemplate.Web.Server.Infrastructure.HealthChecks;
-using Havit.NewProjectTemplate.Web.Server.Tools;
 using Microsoft.ApplicationInsights.DependencyCollector;
 using Microsoft.ApplicationInsights.Extensibility;
 using Microsoft.AspNetCore.Builder;
@@ -137,6 +137,9 @@ public class Startup
 			.RequireAuthorization(PolicyNames.HangfireDashboardAcccessPolicy);
 		});
 
-		app.UpgradeDatabaseSchemaAndData();
+		if (configuration.GetValue<bool>("AppSettings:Migrations:RunMigrations"))
+		{
+			app.ApplicationServices.GetRequiredService<IMigrationService>().UpgradeDatabaseSchemaAndData();
+		}
 	}
 }

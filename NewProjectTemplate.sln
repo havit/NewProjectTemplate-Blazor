@@ -64,7 +64,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PublishScripts", "PublishSc
 		PublishScripts\Web\appsettings.WebServer.Stage.json = PublishScripts\Web\appsettings.WebServer.Stage.json
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Primitives", "Primitives\Primitives.csproj", "{4747C2BC-B39F-47B4-8A0C-693B65C798CA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Primitives", "Primitives\Primitives.csproj", "{4747C2BC-B39F-47B4-8A0C-693B65C798CA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MigrationTool", "MigrationTool\MigrationTool.csproj", "{B78F3809-FFEC-476C-971F-240B7A01B4EE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -152,6 +154,10 @@ Global
 		{4747C2BC-B39F-47B4-8A0C-693B65C798CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4747C2BC-B39F-47B4-8A0C-693B65C798CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4747C2BC-B39F-47B4-8A0C-693B65C798CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B78F3809-FFEC-476C-971F-240B7A01B4EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B78F3809-FFEC-476C-971F-240B7A01B4EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B78F3809-FFEC-476C-971F-240B7A01B4EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B78F3809-FFEC-476C-971F-240B7A01B4EE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -178,6 +184,7 @@ Global
 		{3E4BC2F2-AB6D-41B4-8C56-8E4E7A98DC95} = {EF26518D-89CF-4B91-9346-5FEFE62DE99C}
 		{60E7C286-81A9-4DD8-A15F-C62B9B3FEDD2} = {C07F0EF8-F566-4F3F-BABA-7B5796491863}
 		{4747C2BC-B39F-47B4-8A0C-693B65C798CA} = {EF26518D-89CF-4B91-9346-5FEFE62DE99C}
+		{B78F3809-FFEC-476C-971F-240B7A01B4EE} = {299B9B52-EFCA-4B17-B119-C4681DF12656}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2BDD971F-EDF2-4421-8BE7-CAA15520977D}

@@ -11,6 +11,7 @@ using Havit.NewProjectTemplate.DependencyInjection.ConfigrationOptions;
 using Havit.NewProjectTemplate.Entity;
 using Havit.NewProjectTemplate.Services.Infrastructure;
 using Havit.NewProjectTemplate.Services.Infrastructure.FileStorages;
+using Havit.NewProjectTemplate.Services.Infrastructure.MigrationTool;
 using Havit.NewProjectTemplate.Services.Jobs;
 using Havit.NewProjectTemplate.Services.TimeServices;
 using Havit.Services.Azure.FileStorage;
@@ -76,6 +77,25 @@ public static class ServiceCollectionExtensions
 		};
 
 		return services.ConfigureForAll(installConfiguration);
+	}
+
+	[MethodImpl(MethodImplOptions.NoInlining)]
+	public static IServiceCollection ConfigureForMigrationTool(this IServiceCollection services, IConfiguration configuration, bool useInMemoryDb = true)
+	{
+		InstallConfiguration installConfiguration = new InstallConfiguration
+		{
+			DatabaseConnectionString = configuration.GetConnectionString("Database"),
+			ServiceProfiles = new[] { ServiceAttribute.DefaultProfile },
+		};
+
+		InstallHavitEntityFramework(services, installConfiguration);
+		InstallHavitServices(services);
+
+		services.AddByServiceAttribute(typeof(DataLayer.Properties.AssemblyInfo).Assembly, installConfiguration.ServiceProfiles);
+		services.AddSingleton<IMigrationService, MigrationService>();
+
+		return services;
+		// there is no ConfigureForAll (migration tool needs only DataLayer and DatabaseMigrationService)
 	}
 
 	[MethodImpl(MethodImplOptions.NoInlining)]
