@@ -1,9 +1,8 @@
-﻿namespace Havit.NewProjectTemplate.Resources
+﻿namespace Havit.NewProjectTemplate.Resources;
+
+/// <summary>
+/// Marker file for RESX source generator.
+/// </summary>
+public static partial class ResourcesServiceCollectionInstaller
 {
-	/// <summary>
-	/// Marker file for RESX source generator.
-	/// </summary>
-	public static partial class ResourcesServiceCollectionInstaller
-	{
-	}
 }
