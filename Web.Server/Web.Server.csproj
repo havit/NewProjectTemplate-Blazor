@@ -5,6 +5,7 @@
 		<DisableImplicitComponentsAnalyzers>true</DisableImplicitComponentsAnalyzers>
 		<AssemblyName>Havit.NewProjectTemplate.Web.Server</AssemblyName>
 		<RootNamespace>Havit.NewProjectTemplate.Web.Server</RootNamespace>
+		<ImplicitUsings>true</ImplicitUsings>
 	</PropertyGroup>
 
 	<ItemGroup>

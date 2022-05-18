@@ -4,6 +4,7 @@
 		<TargetFramework>net6.0</TargetFramework>
 		<AssemblyName>Havit.NewProjectTemplate.DependencyInjection</AssemblyName>
 		<RootNamespace>Havit.NewProjectTemplate.DependencyInjection</RootNamespace>
+		<ImplicitUsings>true</ImplicitUsings>
 	</PropertyGroup>
 
 	<ItemGroup>

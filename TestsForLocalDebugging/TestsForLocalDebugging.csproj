@@ -1,19 +1,20 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
-	<IsPackable>false</IsPackable>
-    <AssemblyName>Havit.NewProjectTemplate.TestsForLocalDebugging</AssemblyName>
-    <RootNamespace>Havit.NewProjectTemplate.TestsForLocalDebugging</RootNamespace>
-    <!-- Nasměrujeme publish složku mimo bin aby nedocházelo ke dvojímu spoštění unit testů (ze bin\Release\netcoreapp a bin\Release\netcoreapp\publish) -->
-    <PublishDir>obj\$(Configuration)\publish</PublishDir>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<IsPackable>false</IsPackable>
+		<AssemblyName>Havit.NewProjectTemplate.TestsForLocalDebugging</AssemblyName>
+		<RootNamespace>Havit.NewProjectTemplate.TestsForLocalDebugging</RootNamespace>
+		<!-- Nasměrujeme publish složku mimo bin aby nedocházelo ke dvojímu spoštění unit testů (ze bin\Release\netcoreapp a bin\Release\netcoreapp\publish) -->
+		<PublishDir>obj\$(Configuration)\publish</PublishDir>
+		<ImplicitUsings>true</ImplicitUsings>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.1.0" />
-    <PackageReference Include="MSTest.TestAdapter" Version="2.2.9" />
-    <PackageReference Include="MSTest.TestFramework" Version="2.2.9" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.1.0" />
+		<PackageReference Include="MSTest.TestAdapter" Version="2.2.9" />
+		<PackageReference Include="MSTest.TestFramework" Version="2.2.9" />
+	</ItemGroup>
 
 	<ItemGroup>
 		<ProjectReference Include="..\DataLayer\DataLayer.csproj" />
@@ -26,9 +27,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <None Update="appsettings.json">
-	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	  </None>
+		<None Update="appsettings.json">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
 	</ItemGroup>
 
 </Project>

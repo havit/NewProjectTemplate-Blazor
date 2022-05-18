@@ -6,6 +6,7 @@
 		<AssemblyName>Havit.NewProjectTemplate.Model.Tests</AssemblyName>
 		<RootNamespace>Havit.NewProjectTemplate.Model.Tests</RootNamespace>
 		<PublishDir>obj\$(Configuration)\publish</PublishDir>
+		<ImplicitUsings>true</ImplicitUsings>
 	</PropertyGroup>
 
 	<ItemGroup>

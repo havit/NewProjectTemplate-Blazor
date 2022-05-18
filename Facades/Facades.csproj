@@ -4,6 +4,7 @@
 		<TargetFramework>net6.0</TargetFramework>
 		<AssemblyName>Havit.NewProjectTemplate.Facades</AssemblyName>
 		<RootNamespace>Havit.NewProjectTemplate.Facades</RootNamespace>
+		<ImplicitUsings>true</ImplicitUsings>
 	</PropertyGroup>
 
 	<ItemGroup>

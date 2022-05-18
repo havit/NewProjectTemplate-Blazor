@@ -5,6 +5,7 @@
 		<IsPackable>false</IsPackable>
 		<AssemblyName>Havit.NewProjectTemplate.IntegrationTests</AssemblyName>
 		<RootNamespace>Havit.NewProjectTemplate.IntegrationTests</RootNamespace>
+		<ImplicitUsings>true</ImplicitUsings>
 	</PropertyGroup>
 
 	<ItemGroup>

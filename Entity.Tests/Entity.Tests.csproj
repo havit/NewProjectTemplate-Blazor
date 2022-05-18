@@ -7,6 +7,7 @@
 		<RootNamespace>Havit.NewProjectTemplate.Entity.Tests</RootNamespace>
 		<!-- Nasměrujeme publish složku mimo bin aby nedocházelo ke dvojímu spoštění unit testů (ze bin\Release\netcoreapp a bin\Release\netcoreapp\publish) -->
 		<PublishDir>obj\$(Configuration)\publish</PublishDir>
+		<ImplicitUsings>true</ImplicitUsings>
 	</PropertyGroup>
 
 	<ItemGroup>
