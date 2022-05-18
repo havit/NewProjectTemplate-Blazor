@@ -1,4 +1,13 @@
-﻿# C# files
+﻿# ALL FILES
+[*]
+
+end_of_line = CRLF
+indent_style = tab
+indent_size = 4
+trim_trailing_whitespace = true
+
+
+# C# files
 [*.cs]
 
 ####################################
@@ -96,7 +105,7 @@ dotnet_diagnostic.CA1504.severity=warning
 
 # CA1822: Member '{0}' does not access instance data and can be marked as static
 dotnet_diagnostic.CA1822.severity=none
-csharp_style_namespace_declarations=file_scoped:silent
+csharp_style_namespace_declarations=file_scoped:suggestion
 
 [*/Migrations/*.cs]
 generated_code=true
