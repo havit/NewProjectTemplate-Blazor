@@ -5,29 +5,23 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Havit.Data.EntityFrameworkCore.Patterns.DataSources.Fakes;
 using Havit.Data.EntityFrameworkCore.Patterns.SoftDeletes;
 using Havit.Data.Patterns.Attributes;
 
-namespace Havit.NewProjectTemplate.DataLayer.DataSources.Security.Fakes
-{
-	[Fake]
-	[System.CodeDom.Compiler.GeneratedCode("Havit.Data.EntityFrameworkCore.CodeGenerator", "1.0")]
-	public class FakeRoleDataSource : FakeDataSource<Havit.NewProjectTemplate.Model.Security.Role>, Havit.NewProjectTemplate.DataLayer.DataSources.Security.IRoleDataSource
-	{
-		public FakeRoleDataSource(params Havit.NewProjectTemplate.Model.Security.Role[] data)
-			: this((IEnumerable<Havit.NewProjectTemplate.Model.Security.Role>)data)
-		{			
-		}
+namespace Havit.NewProjectTemplate.DataLayer.DataSources.Security.Fakes;
 
-		public FakeRoleDataSource(IEnumerable<Havit.NewProjectTemplate.Model.Security.Role> data, ISoftDeleteManager softDeleteManager = null)
-			: base(data, softDeleteManager)
-		{
-		}
+[Fake]
+[System.CodeDom.Compiler.GeneratedCode("Havit.Data.EntityFrameworkCore.CodeGenerator", "1.0")]
+public class FakeRoleDataSource : FakeDataSource<Havit.NewProjectTemplate.Model.Security.Role>, Havit.NewProjectTemplate.DataLayer.DataSources.Security.IRoleDataSource
+{
+	public FakeRoleDataSource(params Havit.NewProjectTemplate.Model.Security.Role[] data)
+		: this((IEnumerable<Havit.NewProjectTemplate.Model.Security.Role>)data)
+	{			
+	}
+
+	public FakeRoleDataSource(IEnumerable<Havit.NewProjectTemplate.Model.Security.Role> data, ISoftDeleteManager softDeleteManager = null)
+		: base(data, softDeleteManager)
+	{
 	}
 }

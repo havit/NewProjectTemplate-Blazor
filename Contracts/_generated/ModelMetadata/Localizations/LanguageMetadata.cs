@@ -5,19 +5,12 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+namespace Havit.NewProjectTemplate.Contracts.ModelMetadata.Localizations;
 
-namespace Havit.NewProjectTemplate.Contracts.ModelMetadata.Localizations
+[System.CodeDom.Compiler.GeneratedCode("Havit.Data.EntityFrameworkCore.CodeGenerator", "1.0")]
+public static class LanguageMetadata
 {
-	[System.CodeDom.Compiler.GeneratedCode("Havit.Data.EntityFrameworkCore.CodeGenerator", "1.0")]
-	public static class LanguageMetadata
-	{
-		public const int CultureMaxLength = 10;
-		public const int NameMaxLength = 200;
-		public const int UiCultureMaxLength = 10;
-	}
+	public const int CultureMaxLength = 10;
+	public const int NameMaxLength = 200;
+	public const int UiCultureMaxLength = 10;
 }

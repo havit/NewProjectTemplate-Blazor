@@ -5,49 +5,19 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Havit.Data.EntityFrameworkCore.Patterns;
-using Havit.Data.Patterns.DataEntries;
-using Havit.Data.Patterns.Repositories;
+namespace Havit.NewProjectTemplate.DataLayer.DataEntries.Localizations;
 
-namespace Havit.NewProjectTemplate.DataLayer.DataEntries.Localizations
+[System.CodeDom.Compiler.GeneratedCode("Havit.Data.EntityFrameworkCore.CodeGenerator", "1.0")]
+public class LanguageEntries : Havit.Data.Patterns.DataEntries.DataEntries<Havit.NewProjectTemplate.Model.Localizations.Language>, ILanguageEntries 
 {
-	[System.CodeDom.Compiler.GeneratedCode("Havit.Data.EntityFrameworkCore.CodeGenerator", "1.0")]
-	public class LanguageEntries : DataEntries<Havit.NewProjectTemplate.Model.Localizations.Language>, ILanguageEntries 
+	private Havit.NewProjectTemplate.Model.Localizations.Language czech;
+	private Havit.NewProjectTemplate.Model.Localizations.Language english;
+
+	public Havit.NewProjectTemplate.Model.Localizations.Language Czech => czech ??= GetEntry(Havit.NewProjectTemplate.Model.Localizations.Language.Entry.Czech);
+	public Havit.NewProjectTemplate.Model.Localizations.Language English => english ??= GetEntry(Havit.NewProjectTemplate.Model.Localizations.Language.Entry.English);
+
+	public LanguageEntries(Havit.NewProjectTemplate.DataLayer.Repositories.Localizations.ILanguageRepository repository)
+		: base(repository)
 	{
-		public Havit.NewProjectTemplate.Model.Localizations.Language Czech
-        {
-            get
-            {
-				if (czech == null)
-				{
-					czech = GetEntry(Havit.NewProjectTemplate.Model.Localizations.Language.Entry.Czech);
-				}
-				return czech;
-            }
-        }
-		private Havit.NewProjectTemplate.Model.Localizations.Language czech;
-
-		public Havit.NewProjectTemplate.Model.Localizations.Language English
-        {
-            get
-            {
-				if (english == null)
-				{
-					english = GetEntry(Havit.NewProjectTemplate.Model.Localizations.Language.Entry.English);
-				}
-				return english;
-            }
-        }
-		private Havit.NewProjectTemplate.Model.Localizations.Language english;
-
-		public LanguageEntries(Havit.NewProjectTemplate.DataLayer.Repositories.Localizations.ILanguageRepository repository)
-			: base(repository)
-		{
-		}
 	}
 }

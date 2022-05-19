@@ -5,23 +5,17 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Havit.Data.EntityFrameworkCore;
 using Havit.Data.EntityFrameworkCore.Patterns.DataSources;
 using Havit.Data.EntityFrameworkCore.Patterns.SoftDeletes;
 
-namespace Havit.NewProjectTemplate.DataLayer.DataSources.Security
+namespace Havit.NewProjectTemplate.DataLayer.DataSources.Security;
+
+[System.CodeDom.Compiler.GeneratedCode("Havit.Data.EntityFrameworkCore.CodeGenerator", "1.0")]
+public partial class RoleDbDataSource : DbDataSource<Havit.NewProjectTemplate.Model.Security.Role>, IRoleDataSource
 {
-	[System.CodeDom.Compiler.GeneratedCode("Havit.Data.EntityFrameworkCore.CodeGenerator", "1.0")]
-	public partial class RoleDbDataSource : DbDataSource<Havit.NewProjectTemplate.Model.Security.Role>, IRoleDataSource
+	public RoleDbDataSource(IDbContext dbContext, ISoftDeleteManager softDeleteManager)
+		: base(dbContext, softDeleteManager)
 	{
-		public RoleDbDataSource(IDbContext dbContext, ISoftDeleteManager softDeleteManager)
-			: base(dbContext, softDeleteManager)
-		{
-		}
 	}
 }

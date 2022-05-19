@@ -5,21 +5,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Havit.Data.Patterns.DataEntries;
+namespace Havit.NewProjectTemplate.DataLayer.DataEntries.Security;
 
-namespace Havit.NewProjectTemplate.DataLayer.DataEntries.Security
+[System.CodeDom.Compiler.GeneratedCode("Havit.Data.EntityFrameworkCore.CodeGenerator", "1.0")]
+public interface IRoleEntries : Havit.Data.Patterns.DataEntries.IDataEntries
 {
-	[System.CodeDom.Compiler.GeneratedCode("Havit.Data.EntityFrameworkCore.CodeGenerator", "1.0")]
-	public interface IRoleEntries : IDataEntries
-	{
-		Havit.NewProjectTemplate.Model.Security.Role SystemAdministrator { get; }
-			
-		Havit.NewProjectTemplate.Model.Security.Role UserSettingsAdministrator { get; }
-			
-	}
+	Havit.NewProjectTemplate.Model.Security.Role SystemAdministrator { get; }
+	Havit.NewProjectTemplate.Model.Security.Role UserSettingsAdministrator { get; }
 }

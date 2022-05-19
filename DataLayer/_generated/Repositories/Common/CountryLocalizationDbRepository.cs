@@ -5,11 +5,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Havit.Data.EntityFrameworkCore;
 using Havit.Data.EntityFrameworkCore.Patterns.Caching;
 using Havit.Data.EntityFrameworkCore.Patterns.Repositories;
@@ -18,14 +13,13 @@ using Havit.Data.Patterns.DataEntries;
 using Havit.Data.Patterns.DataLoaders;
 using Havit.Data.Patterns.Infrastructure;
 
-namespace Havit.NewProjectTemplate.DataLayer.Repositories.Common
+namespace Havit.NewProjectTemplate.DataLayer.Repositories.Common;
+
+[System.CodeDom.Compiler.GeneratedCode("Havit.Data.EntityFrameworkCore.CodeGenerator", "1.0")]
+public partial class CountryLocalizationDbRepository : CountryLocalizationDbRepositoryBase, ICountryLocalizationRepository
 {
-	[System.CodeDom.Compiler.GeneratedCode("Havit.Data.EntityFrameworkCore.CodeGenerator", "1.0")]
-	public partial class CountryLocalizationDbRepository : CountryLocalizationDbRepositoryBase, ICountryLocalizationRepository
+	public CountryLocalizationDbRepository(IDbContext dbContext, Havit.NewProjectTemplate.DataLayer.DataSources.Common.ICountryLocalizationDataSource dataSource, IEntityKeyAccessor<Havit.NewProjectTemplate.Model.Common.CountryLocalization, int> entityKeyAccessor, IDataLoader dataLoader, ISoftDeleteManager softDeleteManager, IEntityCacheManager entityCacheManager)
+		: base(dbContext, dataSource, entityKeyAccessor, dataLoader, softDeleteManager, entityCacheManager)
 	{
-		public CountryLocalizationDbRepository(IDbContext dbContext, Havit.NewProjectTemplate.DataLayer.DataSources.Common.ICountryLocalizationDataSource dataSource, IEntityKeyAccessor<Havit.NewProjectTemplate.Model.Common.CountryLocalization, int> entityKeyAccessor, IDataLoader dataLoader, ISoftDeleteManager softDeleteManager, IEntityCacheManager entityCacheManager)
-			: base(dbContext, dataSource, entityKeyAccessor, dataLoader, softDeleteManager, entityCacheManager)
-		{
-		}
 	}
 }
