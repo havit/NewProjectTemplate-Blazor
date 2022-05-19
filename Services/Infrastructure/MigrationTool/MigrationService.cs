@@ -26,7 +26,7 @@ public class MigrationService : IMigrationService
 		{
 			var context = serviceScope.ServiceProvider.GetService<IDbContext>();
 
-			context.Database.SetCommandTimeout(TimeSpan.FromSeconds(configuration.GetValue<int?>("AppSettings:Migrations:CommandTimeoutSec") ?? 300));
+			context.Database.SetCommandTimeout(TimeSpan.FromSeconds(configuration.GetValue<int?>("AppSettings:Migrations:CommandTimeout") ?? 300));
 			context.Database.Migrate();
 
 			var dataSeedRunner = serviceScope.ServiceProvider.GetService<IDataSeedRunner>();

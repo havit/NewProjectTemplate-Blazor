@@ -2,7 +2,7 @@
   "profiles": {
     "MigrationTool": {
       "commandName": "Project",
-      "commandLineArgs": "--connectionstring \"Data Source=(localdb)\\mssqllocaldb;Initial Catalog=NewProjectTemplate;Application Name=NewProjectTemplate-WebServer\""
+      "commandLineArgs": "--connectionstring \"Data Source=(localdb)\\mssqllocaldb;Initial Catalog=NewProjectTemplate;Application Name=NewProjectTemplate-MigrationTool\""
     }
   }
 }
