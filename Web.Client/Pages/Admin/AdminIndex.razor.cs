@@ -9,7 +9,7 @@ namespace Havit.NewProjectTemplate.Web.Client.Pages.Admin;
 
 public partial class AdminIndex : ComponentBase
 {
-	[Inject] protected IMaintenanceFacade MaintenanceFacade { get; set; }
+	[Inject] protected Func<IMaintenanceFacade> MaintenanceFacade { get; set; }
 	[Inject] protected IHxMessengerService Messenger { get; set; }
 	[Inject] protected IHxMessageBoxService MessageBox { get; set; }
 	[Inject] protected ILocalStorageService LocalStorageService { get; set; }
@@ -31,7 +31,7 @@ public partial class AdminIndex : ComponentBase
 	{
 		if (await MessageBox.ConfirmAsync("Do you really want to clear server cache?"))
 		{
-			await MaintenanceFacade.ClearCache();
+			await MaintenanceFacade().ClearCache();
 			Messenger.AddInformation("Server cache cleared.");
 		}
 	}

@@ -5,7 +5,7 @@ namespace Havit.NewProjectTemplate.Web.Client.Pages.Admin.Components;
 
 public partial class DataSeeds : ComponentBase
 {
-	[Inject] protected IDataSeedFacade DataSeedFacade { get; set; }
+	[Inject] protected Func<IDataSeedFacade> DataSeedFacade { get; set; }
 	[Inject] protected NavigationManager NavigationManager { get; set; }
 	[Inject] protected IHxMessageBoxService MessageBox { get; set; }
 
@@ -17,7 +17,7 @@ public partial class DataSeeds : ComponentBase
 	{
 		if ((selectedSeedProfile is not null) && await MessageBox.ConfirmAsync($"Do you really want to seed {selectedSeedProfile}?"))
 		{
-			await DataSeedFacade.SeedDataProfileAsync(selectedSeedProfile);
+			await DataSeedFacade().SeedDataProfileAsync(selectedSeedProfile);
 
 			if (await MessageBox.ConfirmAsync($"Seed successful: {selectedSeedProfile}", "Seed was successful. Do you want to reload the Blazor client?"))
 			{
@@ -32,7 +32,7 @@ public partial class DataSeeds : ComponentBase
 
 	public async Task ShowAsync()
 	{
-		seedProfiles ??= await DataSeedFacade.GetDataSeedProfilesAsync();
+		seedProfiles ??= await DataSeedFacade().GetDataSeedProfilesAsync();
 
 		await offcanvasComponent.ShowAsync();
 	}
