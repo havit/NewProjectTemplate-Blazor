@@ -51,7 +51,7 @@ public static class ServiceCollectionExtensions
 		{
 			DatabaseConnectionString = configuration.GetConnectionString("Database"),
 			AzureStorageConnectionString = configuration.GetConnectionString("AzureStorageConnectionString"),
-			ServiceProfiles = new[] { ServiceAttribute.DefaultProfile, Jobs.ProfileName },
+			ServiceProfiles = new[] { ServiceAttribute.DefaultProfile, ServiceProfiles.Utility },
 			ApiCommunicationLogStorage = configuration.GetValue<string>("AppSettings:ApiCommunicationLogStorage:Path")
 		};
 

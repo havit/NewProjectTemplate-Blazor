@@ -1,9 +1,10 @@
 ﻿using Havit.Extensions.DependencyInjection.Abstractions;
+using Havit.NewProjectTemplate.Services.Infrastructure;
 using Microsoft.Extensions.Logging;
 
 namespace Havit.NewProjectTemplate.Services.Jobs;
 
-[Service(Profile = Jobs.ProfileName)]
+[Service(Profile = ServiceProfiles.Utility)]
 public class EmptyJob : IEmptyJob
 {
 	private readonly ILogger<EmptyJob> logger;
