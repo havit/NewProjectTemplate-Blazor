@@ -9,10 +9,10 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Hangfire" Version="1.7.28" />
+		<PackageReference Include="Hangfire" Version="1.7.29" />
 		<PackageReference Include="Hangfire.Console" Version="1.4.2" />
 		<PackageReference Include="Havit.AspNetCore" Version="2.0.9" />
-		<PackageReference Include="Havit.Blazor.Components.Web.Bootstrap" Version="2.5.1" />
+		<PackageReference Include="Havit.Blazor.Components.Web.Bootstrap" Version="2.6.3" />
 		<PackageReference Include="Havit.Blazor.Grpc.Server" Version="1.1.1" />
 		<PackageReference Include="Havit.Hangfire.Extensions" Version="2.0.6" />
 		<PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.20.0" />
@@ -22,7 +22,7 @@
 		<PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="6.0.5" />
 		
 		<!-- Do not upgrade to 6.x as it changes to commercial Duende.IdentityServer -->
-		<PackageReference Include="Microsoft.AspNetCore.ApiAuthorization.IdentityServer" Version="5.0.16" />
+		<PackageReference Include="Microsoft.AspNetCore.ApiAuthorization.IdentityServer" Version="5.0.17" />
 		
 		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.5" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.5">
