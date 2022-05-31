@@ -2,6 +2,7 @@
 using Hangfire.Console;
 using Hangfire.Console.Extensions;
 using Hangfire.SqlServer;
+using Hangfire.States;
 using Havit.ApplicationInsights.DependencyCollector;
 using Havit.AspNetCore.ExceptionMonitoring.Services;
 using Havit.Hangfire.Extensions.BackgroundJobs;
@@ -68,6 +69,7 @@ public static class Program
 						})
 						.WithJobExpirationTimeout(TimeSpan.FromDays(30)) // historie hangfire
 						.UseFilter(new AutomaticRetryAttribute { Attempts = 0 }) // do not retry failed jobs
+						.UseFilter(new ContinuationsSupportAttribute(new HashSet<string> { FailedState.StateName, DeletedState.StateName, SucceededState.StateName })) // only valid with AutomaticRetryAttribute with Attempts = 0
 						.UseFilter(new CancelRecurringJobWhenAlreadyInQueueOrCurrentlyRunningFilter()) // joby se (v případě "nestihnutí" zpracování) nezařazují opakovaně
 						.UseFilter(new ExceptionMonitoringAttribute(serviceProvider.GetRequiredService<IExceptionMonitoringService>())) // zajistíme hlášení chyby v případě selhání jobu
 						.UseFilter(new ApplicationInsightAttribute(serviceProvider.GetRequiredService<TelemetryClient>()) { JobNameFunc = backgroundJob => Hangfire.Extensions.Helpers.JobNameHelper.TryGetSimpleNameFromInterfaceName(backgroundJob.Job.Type, out string simpleName) ? simpleName : backgroundJob.Job.ToString() })
