@@ -12,9 +12,9 @@
 		<PackageReference Include="Hangfire" Version="1.7.29" />
 		<PackageReference Include="Hangfire.Console" Version="1.4.2" />
 		<PackageReference Include="Havit.AspNetCore" Version="2.0.9" />
-		<PackageReference Include="Havit.Blazor.Components.Web.Bootstrap" Version="2.6.3" />
+		<PackageReference Include="Havit.Blazor.Components.Web.Bootstrap" Version="2.6.4" />
 		<PackageReference Include="Havit.Blazor.Grpc.Server" Version="1.1.1" />
-		<PackageReference Include="Havit.Hangfire.Extensions" Version="2.0.6" />
+		<PackageReference Include="Havit.Hangfire.Extensions" Version="2.0.7" />
 		<PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.20.0" />
 		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="6.0.5" />
 		<PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="6.0.5" />
