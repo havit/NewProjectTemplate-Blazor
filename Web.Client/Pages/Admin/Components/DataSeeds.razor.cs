@@ -1,4 +1,5 @@
-﻿using Havit.NewProjectTemplate.Contracts.Infrastructure;
+﻿using Havit.NewProjectTemplate.Contracts;
+using Havit.NewProjectTemplate.Contracts.Infrastructure;
 using Microsoft.AspNetCore.Components;
 
 namespace Havit.NewProjectTemplate.Web.Client.Pages.Admin.Components;
@@ -17,7 +18,7 @@ public partial class DataSeeds : ComponentBase
 	{
 		if ((selectedSeedProfile is not null) && await MessageBox.ConfirmAsync($"Do you really want to seed {selectedSeedProfile}?"))
 		{
-			await DataSeedFacade().SeedDataProfileAsync(selectedSeedProfile);
+			await DataSeedFacade().SeedDataProfileAsync(Dto.FromValue(selectedSeedProfile));
 
 			if (await MessageBox.ConfirmAsync($"Seed successful: {selectedSeedProfile}", "Seed was successful. Do you want to reload the Blazor client?"))
 			{

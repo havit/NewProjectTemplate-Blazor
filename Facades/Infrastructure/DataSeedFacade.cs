@@ -29,15 +29,15 @@ public class DataSeedFacade : IDataSeedFacade
 	/// <summary>
 	/// Executes seed for the selected profile.
 	/// </summary>
-	public Task SeedDataProfileAsync(string profileName, CancellationToken cancellationToken = default)
+	public Task SeedDataProfileAsync(Dto<string> profileName, CancellationToken cancellationToken = default)
 	{
 		// applicationAuthorizationService.VerifyCurrentUserAuthorization(Operations.SystemAdministration); // TODO alternative authorization approach
 
-		Type type = GetProfileTypes().FirstOrDefault(item => string.Equals(item.Name, profileName, StringComparison.InvariantCultureIgnoreCase));
+		Type type = GetProfileTypes().FirstOrDefault(item => string.Equals(item.Name, profileName.Value, StringComparison.InvariantCultureIgnoreCase));
 
 		if (type == null)
 		{
-			throw new OperationFailedException($"DataSeedProfile {profileName} not found.");
+			throw new OperationFailedException($"DataSeedProfile {profileName.Value} not found.");
 		}
 
 		// Individual seeds do not invalidate cache. If there are any cached entries (incl. empty-GetAll),

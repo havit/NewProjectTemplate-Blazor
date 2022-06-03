@@ -19,6 +19,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using ProtoBuf.Grpc.Server;
 
 namespace Havit.NewProjectTemplate.Web.Server;
 
@@ -66,6 +67,7 @@ public class Startup
 
 		// gRPC
 		services.AddGrpcServerInfrastructure(assemblyToScanForDataContracts: typeof(Dto).Assembly);
+		services.AddCodeFirstGrpcReflection();
 
 		// Health checks
 		services.AddHealthChecks()
@@ -117,6 +119,7 @@ public class Startup
 				{
 					endpoint.RequireAuthorization(); // TODO? AuthorizationPolicyNames.ApiScopePolicy when needed
 				});
+			endpoints.MapCodeFirstGrpcReflectionService();
 
 			endpoints.MapHealthChecks("/health", new Microsoft.AspNetCore.Diagnostics.HealthChecks.HealthCheckOptions
 			{
