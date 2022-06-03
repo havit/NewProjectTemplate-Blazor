@@ -1,6 +1,7 @@
 ﻿@page "/authentication/{action}"
 @using Microsoft.AspNetCore.Components.WebAssembly.Authentication
 @attribute [AllowAnonymous]
+@layout EmptyLayout
 
 <RemoteAuthenticatorView Action="@Action" />
 
