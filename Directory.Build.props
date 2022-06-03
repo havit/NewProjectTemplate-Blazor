@@ -11,5 +11,9 @@
 		<DisableTransitiveProjectReferences>true</DisableTransitiveProjectReferences>
 	</PropertyGroup>
 
+	<PropertyGroup Condition=" '$(Configuration)'=='Release' ">
+		<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+	</PropertyGroup>
+
 	<Import Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)../'))" Condition="Exists($([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)../')))"/>
 </Project>
