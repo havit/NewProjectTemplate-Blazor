@@ -27,7 +27,7 @@
 		<PackageReference Include="Hangfire.Console.Extensions" Version="1.0.5" />
 		<PackageReference Include="Havit.ApplicationInsights.DependencyCollector" Version="2.0.6" />
 		<PackageReference Include="Havit.AspNetCore" Version="2.0.9" />
-		<PackageReference Include="Havit.Hangfire.Extensions" Version="2.0.7" />
+		<PackageReference Include="Havit.Hangfire.Extensions" Version="2.0.8" />
 		<PackageReference Include="Microsoft.ApplicationInsights.WorkerService" Version="2.20.0" />
 		<PackageReference Include="Microsoft.Azure.WebJobs" Version="3.0.33" />
 		<PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="6.0.1" />
