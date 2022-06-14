@@ -20,6 +20,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Include="Pages\Errors\GenericError.razor" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<PackageReference Include="BlazorApplicationInsights" Version="1.6.0" />
 		<PackageReference Include="Blazored.FluentValidation" Version="2.0.3" />
 		<PackageReference Include="Blazored.LocalStorage" Version="4.2.0" />

@@ -8,28 +8,7 @@
 	<div class="main p-4 flex-grow-1 overflow-hidden">
         <ErrorBoundary @ref="errorBoundaryComponent">
             <ErrorContent Context="exception">
-
-                <HxAlert Color="ThemeColor.Warning">
-                        
-                    <h5>Oops...</h5>
-                    <HxButton OnClick="() => errorBoundaryComponent?.Recover()" Color="ThemeColor.Success" Size="ButtonSize.Small">Recover</HxButton>
-
-                    <HxAccordion CssClass="my-2">
-                        <HxAccordionItem>
-                            <HeaderTemplate>
-                                @exception.GetType().Name: @exception.Message
-                            </HeaderTemplate>
-                            <BodyTemplate>
-                                <code>
-                                    <pre>
-                                        @exception.ToString()
-                                    </pre>
-                                </code>
-                            </BodyTemplate>
-                        </HxAccordionItem>
-                    </HxAccordion>
-                </HxAlert>
-
+                 <Havit.NewProjectTemplate.Web.Client.Pages.Errors.GenericError Exception="exception" OnRecover="() => errorBoundaryComponent?.Recover()" />
             </ErrorContent>
             <ChildContent>
                 @Body

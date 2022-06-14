@@ -1,0 +1,28 @@
+﻿<div class="container-lg">
+    <HxAlert Color="ThemeColor.Warning">
+
+        <div class="d-flex">
+            <h5 class="flex-grow-1">Oops...</h5>
+            <HxCloseButton OnClick="this.OnRecover" Color="ThemeColor.Dark" />
+        </div>
+
+        <HxAccordion CssClass="my-2">
+            <HxAccordionItem>
+                <HeaderTemplate>
+                    @Exception.GetType().Name: @Exception.Message
+                </HeaderTemplate>
+                <BodyTemplate>
+                    <code>
+                        <pre>
+                            @Exception.ToString()
+                    </pre>
+                    </code>
+                </BodyTemplate>
+            </HxAccordionItem>
+        </HxAccordion>
+    </HxAlert>
+</div>
+@code {
+    [Parameter] public Exception Exception { get; set; }
+    [Parameter] public EventCallback OnRecover { get; set; }
+}
