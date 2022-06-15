@@ -75,6 +75,7 @@ public static class ServiceCollectionExtensions
 			UseInMemoryDb = useInMemoryDb,
 		};
 
+		services.AddSingleton<IConfiguration>(configuration);
 		return services.ConfigureForAll(installConfiguration);
 	}
 

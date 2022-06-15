@@ -5,13 +5,12 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Havit.NewProjectTemplate.DependencyInjection;
+using Microsoft.Extensions.Configuration;
 
 namespace Havit.NewProjectTemplate.TestHelpers;
 
 public class IntegrationTestBase
 {
-	private IDisposable scope;
-
 	protected IServiceProvider ServiceProvider { get; private set; }
 
 	protected virtual bool UseLocalDb => false;
@@ -19,42 +18,45 @@ public class IntegrationTestBase
 
 	protected virtual bool SeedData => true;
 
+	private ServiceProvider serviceProvider;
+
 	[TestInitialize]
 	public virtual void TestInitialize()
 	{
 		IServiceCollection services = CreateServiceCollection();
-		IServiceProvider serviceProvider = services.BuildServiceProvider();
-
-		scope = serviceProvider.CreateScope();
-
-		var dbContext = serviceProvider.GetRequiredService<IDbContext>();
-		if (DeleteDbData)
+		serviceProvider = services.BuildServiceProvider(new ServiceProviderOptions
 		{
-			dbContext.Database.EnsureDeleted();
-		}
-		if (this.UseLocalDb)
+			ValidateOnBuild = true,
+			ValidateScopes = true
+		});
+
+		using (var scope = serviceProvider.CreateScope())
 		{
-			dbContext.Database.Migrate();
+			var dbContext = scope.ServiceProvider.GetRequiredService<IDbContext>();
+			if (DeleteDbData)
+			{
+				dbContext.Database.EnsureDeleted();
+			}
+			if (this.UseLocalDb)
+			{
+				dbContext.Database.Migrate();
+			}
+
+			if (this.SeedData)
+			{
+				var dataSeedRunner = scope.ServiceProvider.GetRequiredService<IDataSeedRunner>();
+				dataSeedRunner.SeedData<CoreProfile>();
+			}
 		}
 
-		if (this.SeedData)
-		{
-			var dataSeedRunner = serviceProvider.GetRequiredService<IDataSeedRunner>();
-			dataSeedRunner.SeedData<CoreProfile>();
-		}
-
-		this.ServiceProvider = serviceProvider;
+		this.ServiceProvider = serviceProvider.CreateScope().ServiceProvider;
 	}
 
 	[TestCleanup]
 	public virtual void TestCleanup()
 	{
-		scope.Dispose();
-		if (this.ServiceProvider is IDisposable)
-		{
-			((IDisposable)this.ServiceProvider).Dispose();
-		}
-		this.ServiceProvider = null;
+		((IDisposable)ServiceProvider)?.Dispose();
+		serviceProvider?.Dispose();
 	}
 
 	protected virtual IServiceCollection CreateServiceCollection()
