@@ -1,5 +1,5 @@
 :root {
-	--hx-sidebar-brand-logo-background-color: var(--bs-primary);
+	/* Override component CSS variables here */
 }
 
 #blazor-error-ui {
