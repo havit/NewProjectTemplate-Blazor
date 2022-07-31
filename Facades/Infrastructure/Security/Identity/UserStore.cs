@@ -48,7 +48,7 @@ public class UserStore :
 		Contract.Requires<ArgumentNullException>(user != null);
 
 		unitOfWork.AddForInsert(user);
-		await unitOfWork.CommitAsync();
+		await unitOfWork.CommitAsync(cancellationToken);
 		return IdentityResult.Success;
 	}
 
@@ -57,7 +57,7 @@ public class UserStore :
 		Contract.Requires<ArgumentNullException>(user != null);
 
 		unitOfWork.AddForDelete(user);
-		await unitOfWork.CommitAsync();
+		await unitOfWork.CommitAsync(cancellationToken);
 		return IdentityResult.Success;
 	}
 
@@ -78,14 +78,14 @@ public class UserStore :
 		Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(userId));
 
 		int id = int.Parse(userId);
-		return await userRepository.GetObjectAsync(id);
+		return await userRepository.GetObjectAsync(id, cancellationToken);
 	}
 
 	public async Task<User> FindByNameAsync(string normalizedUserName, CancellationToken cancellationToken)
 	{
 		Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(normalizedUserName));
 
-		return await userRepository.GetByUsernameAsync(normalizedUserName);
+		return await userRepository.GetByUsernameAsync(normalizedUserName, cancellationToken);
 	}
 
 	public Task<int> GetAccessFailedCountAsync(User user, CancellationToken cancellationToken)
@@ -178,7 +178,7 @@ public class UserStore :
 		Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(roleName));
 
 		var roleEntry = Enum.Parse<Role.Entry>(roleName, ignoreCase: true);
-		return await userRepository.GetUsersInRoleAsync(roleEntry);
+		return await userRepository.GetUsersInRoleAsync(roleEntry, cancellationToken);
 	}
 
 	public Task<bool> HasPasswordAsync(User user, CancellationToken cancellationToken)
@@ -304,7 +304,7 @@ public class UserStore :
 		Contract.Requires<ArgumentNullException>(user != null);
 
 		unitOfWork.AddForUpdate(user);
-		await unitOfWork.CommitAsync();
+		await unitOfWork.CommitAsync(cancellationToken);
 		return IdentityResult.Success;
 	}
 }

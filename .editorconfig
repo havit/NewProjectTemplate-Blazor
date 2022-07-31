@@ -49,6 +49,7 @@ csharp_prefer_braces = true:warning
 
 # 'using' directive preferences
 csharp_using_directive_placement = outside_namespace:warning
+csharp_style_namespace_declarations=file_scoped:suggestion
 
 ####################################
 # C# Formatting Rules              #
@@ -105,7 +106,9 @@ dotnet_diagnostic.CA1504.severity=warning
 
 # CA1822: Member '{0}' does not access instance data and can be marked as static
 dotnet_diagnostic.CA1822.severity=none
-csharp_style_namespace_declarations=file_scoped:suggestion
+
+# CA2016: Forward the CancellationToken parameter to methods that take one
+dotnet_diagnostic.CA2016.severity = warning
 
 [*/Migrations/*.cs]
 generated_code=true

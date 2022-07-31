@@ -25,12 +25,12 @@ public partial class UserDbRepository : IUserRepository
 		Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(email));
 
 		var normalizedEmail = email.ToUpper();
-		return await Data.Include(GetLoadReferences).FirstOrDefaultAsync(u => u.NormalizedEmail == email);
+		return await Data.Include(GetLoadReferences).FirstOrDefaultAsync(u => u.NormalizedEmail == email, cancellationToken);
 	}
 
 	public async Task<List<User>> GetUsersInRoleAsync(Role.Entry roleEntry, CancellationToken cancellationToken = default)
 	{
-		return await Data.Include(GetLoadReferences).Where(u => u.UserRoles.Any(ur => ur.RoleId == (int)roleEntry)).ToListAsync();
+		return await Data.Include(GetLoadReferences).Where(u => u.UserRoles.Any(ur => ur.RoleId == (int)roleEntry)).ToListAsync(cancellationToken);
 	}
 
 	protected override IEnumerable<Expression<Func<User, object>>> GetLoadReferences()
