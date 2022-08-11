@@ -1,28 +1,37 @@
 ﻿<div class="container-lg">
-    <HxAlert Color="ThemeColor.Warning">
+	<div class="text-center my-4">
+		<img src="/oops.svg" class="mw-100" width="500" alt="Oops">
+	</div>
 
-        <div class="d-flex">
-            <h5 class="flex-grow-1">Oops...</h5>
-            <HxCloseButton OnClick="this.OnRecover" Color="ThemeColor.Dark" />
-        </div>
+	<div class="text-center">
+		<h1>Oops...</h1>
+		<p class="lead">It seems something went wrong!</p>
+		<HxButton Color="ThemeColor.Primary" OnClick="this.OnRecover">Go back</HxButton>
+	</div>
 
-        <HxAccordion CssClass="my-2">
-            <HxAccordionItem>
-                <HeaderTemplate>
-                    @Exception.GetType().Name: @Exception.Message
-                </HeaderTemplate>
-                <BodyTemplate>
-                    <code>
-                        <pre>
-                            @Exception.ToString()
-                    </pre>
-                    </code>
-                </BodyTemplate>
-            </HxAccordionItem>
-        </HxAccordion>
-    </HxAlert>
+	<HxAccordion CssClass="my-4">
+		<HxAccordionItem>
+			<HeaderTemplate>
+				@Exception.GetType().Name: @Exception.Message
+			</HeaderTemplate>
+			<BodyTemplate>
+				<div class="position-relative">
+					<div class="position-absolute top-0 end-0">
+						<HxTooltip Text="Copy to clipboard">
+							<HxIcon CssClass="text-secondary" Icon="BootstrapIcon.Clipboard" />
+						</HxTooltip>
+					</div>
+					<code>
+						<pre class="mb-0">
+							@Exception.ToString()
+						</pre>
+					</code>
+				</div>
+			</BodyTemplate>
+		</HxAccordionItem>
+	</HxAccordion>
 </div>
 @code {
-    [Parameter] public Exception Exception { get; set; }
-    [Parameter] public EventCallback OnRecover { get; set; }
+	[Parameter] public Exception Exception { get; set; }
+	[Parameter] public EventCallback OnRecover { get; set; }
 }
