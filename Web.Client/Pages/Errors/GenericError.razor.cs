@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
+using Havit.NewProjectTemplate.Web.Client.Resources.Pages.Errors;
 
 namespace Havit.NewProjectTemplate.Web.Client.Pages.Errors;
 
@@ -7,6 +8,8 @@ public partial class GenericError : IAsyncDisposable
 {
 	[Parameter] public Exception Exception { get; set; }
 	[Parameter] public EventCallback OnRecover { get; set; }
+
+	[Inject] public IErrorsLocalizer ErrorsLocalizer { get; set; }
 
 	[Inject] private IJSRuntime JSRuntime { get; set; }
 

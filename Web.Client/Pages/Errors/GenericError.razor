@@ -10,8 +10,8 @@
 
 	<div class="text-center">
 		<h1>Oops...</h1>
-		<p class="lead">It seems something went wrong!</p>
-		<HxButton Color="ThemeColor.Primary" OnClick="this.OnRecover">Go back</HxButton>
+		<p class="lead">@ErrorsLocalizer.ErrorOccured</p>
+		<HxButton Color="ThemeColor.Primary" OnClick="this.OnRecover">@ErrorsLocalizer.GoBack</HxButton>
 	</div>
 
 	<HxAccordion CssClass="my-4">
@@ -22,11 +22,11 @@
 			<BodyTemplate>
 				<div class="position-relative pe-4">
 					<div class="position-absolute top-0 end-0">
-                        <HxTooltip WrapperCssClass="@(copiedToClipboard ? "d-none" : null)" @ref="copyToClipboardTooltip" Text="Copy to clipboard">
+                        <HxTooltip WrapperCssClass="@(copiedToClipboard ? "d-none" : null)" @ref="copyToClipboardTooltip" Text="@ErrorsLocalizer.CopyToClipboard">
 							@copyToClipboardButton
                         </HxTooltip>
 
-                        <HxTooltip WrapperCssClass="@(copiedToClipboard ? null : "d-none")" @ref="copiedToClipboardTooltip" Text="Copied to clipboard">
+                        <HxTooltip WrapperCssClass="@(copiedToClipboard ? null : "d-none")" @ref="copiedToClipboardTooltip" Text="@ErrorsLocalizer.CopiedToClipboard">
                             @copyToClipboardButton
                         </HxTooltip>
                     </div>
