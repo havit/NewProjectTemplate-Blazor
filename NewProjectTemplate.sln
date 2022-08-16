@@ -66,7 +66,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PublishScripts", "PublishSc
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Primitives", "Primitives\Primitives.csproj", "{4747C2BC-B39F-47B4-8A0C-693B65C798CA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MigrationTool", "MigrationTool\MigrationTool.csproj", "{B78F3809-FFEC-476C-971F-240B7A01B4EE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MigrationTool", "MigrationTool\MigrationTool.csproj", "{B78F3809-FFEC-476C-971F-240B7A01B4EE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
