@@ -1,4 +1,9 @@
-﻿<div class="container-lg">
+﻿@{
+    RenderFragment copyToClipboardButton =
+            @<HxButton OnClick="CopyExceptionDetailsToClipboard" CssClass="text-secondary" Icon="BootstrapIcon.Clipboard" />;
+}
+
+<div class="container-lg">
 	<div class="text-center my-4">
 		<img src="/oops.svg" class="mw-100" width="500" alt="Oops">
 	</div>
@@ -17,10 +22,14 @@
 			<BodyTemplate>
 				<div class="position-relative pe-4">
 					<div class="position-absolute top-0 end-0">
-						<HxTooltip Text="Copy to clipboard">
-							<HxButton OnClick="CopyExceptionDetailsToClipboard" CssClass="text-secondary" Icon="BootstrapIcon.Clipboard" />
-						</HxTooltip>
-					</div>
+                        <HxTooltip WrapperCssClass="@(copiedToClipboard ? "d-none" : null)" @ref="copyToClipboardTooltip" Text="Copy to clipboard">
+							@copyToClipboardButton
+                        </HxTooltip>
+
+                        <HxTooltip WrapperCssClass="@(copiedToClipboard ? null : "d-none")" @ref="copiedToClipboardTooltip" Text="Copied to clipboard">
+                            @copyToClipboardButton
+                        </HxTooltip>
+                    </div>
 					<code>
 						<pre class="mb-0">
 							@Exception.ToString()
