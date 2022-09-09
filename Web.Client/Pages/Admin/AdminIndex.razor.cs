@@ -15,6 +15,7 @@ public partial class AdminIndex : ComponentBase
 	[Inject] protected ILocalStorageService LocalStorageService { get; set; }
 	[Inject] protected INavigationLocalizer NavigationLocalizer { get; set; }
 	[Inject] protected IAdminIndexLocalizer AdmninIndexLocalizer { get; set; }
+	[Inject] protected NavigationManager NavigationManager { get; set; }
 
 	private DataSeeds dataSeedsComponent;
 
@@ -32,7 +33,11 @@ public partial class AdminIndex : ComponentBase
 		if (await MessageBox.ConfirmAsync("Do you really want to clear server cache?"))
 		{
 			await MaintenanceFacade().ClearCache();
-			Messenger.AddInformation("Server cache cleared.");
+
+			if (await MessageBox.ConfirmAsync($"Server cache cleared. Do you want to reload the Blazor client?"))
+			{
+				NavigationManager.NavigateTo("", forceLoad: true);
+			}
 		}
 	}
 }
