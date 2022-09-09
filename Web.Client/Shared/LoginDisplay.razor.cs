@@ -1,7 +1,11 @@
-﻿namespace Havit.NewProjectTemplate.Web.Client.Shared;
+﻿using Microsoft.AspNetCore.Components;
+
+namespace Havit.NewProjectTemplate.Web.Client.Shared;
 
 public partial class LoginDisplay
 {
+	[Parameter] public bool ShowOnlyInitials { get; set; }
+
 	private async Task BeginSignOut()
 	{
 		await SignOutManager.SetSignOutState();
