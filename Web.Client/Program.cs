@@ -1,5 +1,4 @@
 ﻿using System.Globalization;
-using System.Net.Http;
 using BlazorApplicationInsights;
 using Blazored.LocalStorage;
 using FluentValidation;
@@ -13,9 +12,6 @@ using Havit.NewProjectTemplate.Web.Client.Infrastructure.Security;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
 
 namespace Havit.NewProjectTemplate.Web.Client;
 
@@ -53,7 +49,23 @@ public class Program
 	}
 	private static void SetHxComponents()
 	{
-		// HxProgressIndicator.DefaultDelay = 0;
+		HxOffcanvas.Defaults.Backdrop = OffcanvasBackdrop.Static;
+		HxModal.Defaults.Backdrop = ModalBackdrop.Static;
+		HxInputDate.Defaults.CalendarIcon = BootstrapIcon.Calendar3;
+
+		// TODO [OPTIONAL] Setup HxInputDateRange.Defaults.PredefinedRanges here
+		//DateTime today = DateTime.Today;
+		//DateTime thisMonthStart = new DateTime(today.Year, today.Month, 1);
+		//DateTime thisMonthEnd = new DateTime(today.Year, today.Month, DateTime.DaysInMonth(today.Year, today.Month));
+		//DateTime thisYearStart = new DateTime(today.Year, 1, 1);
+		//DateTime thisYearEnd = new DateTime(today.Year, 12, 31);
+
+		//HxInputDateRange.Defaults.PredefinedDateRanges = new InputDateRangePredefinedRangesItem[]
+		//{
+		//	new() { Label = "TTM", DateRange = new DateTimeRange(today.AddMonths(-12).AddDays(1), today) },
+		//	new() { Label = "ThisYear", DateRange = new DateTimeRange(thisYearStart, thisYearEnd), ResourceType = typeof(HxInputDateRangePredefinedRanges) },
+		//	new() { Label = "ThisMonth", DateRange = new DateTimeRange(thisMonthStart, thisMonthEnd), ResourceType = typeof(HxInputDateRangePredefinedRanges) },
+		//};
 	}
 
 	private static void AddGrpcClient(WebAssemblyHostBuilder builder)
