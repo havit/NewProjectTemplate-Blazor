@@ -30,8 +30,7 @@ public static class ServiceCollectionExtensions
 	[MethodImpl(MethodImplOptions.NoInlining)]
 	public static IServiceCollection ConfigureForWebServer(this IServiceCollection services, IConfiguration configuration)
 	{
-		FileStorageOptions fileStorageOptions = new FileStorageOptions();
-		configuration.GetSection(FileStorageOptions.FileStorageOptionsKey).Bind(fileStorageOptions);
+		FileStorageOptions fileStorageOptions = configuration.GetSection(FileStorageOptions.FileStorageOptionsKey).Get<FileStorageOptions>();
 
 		InstallConfiguration installConfiguration = new InstallConfiguration
 		{
