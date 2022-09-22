@@ -104,24 +104,7 @@ public class Program
 
 	private static void AddLoggingAndApplicationInsights(WebAssemblyHostBuilder builder)
 	{
-		var instrumentationKey = builder.Configuration.GetValue<string>("ApplicationInsights:InstrumentationKey");
-
-		builder.Services.AddBlazorApplicationInsights(async applicationInsights =>
-		{
-			await applicationInsights.SetInstrumentationKey(instrumentationKey);
-			await applicationInsights.LoadAppInsights();
-
-			var telemetryItem = new TelemetryItem()
-			{
-				Tags = new Dictionary<string, object>()
-				{
-						{ "ai.cloud.role", "Web.Client" },
-					// { "ai.cloud.roleInstance", "..." },
-				}
-			};
-
-			await applicationInsights.AddTelemetryInitializer(telemetryItem);
-		}, addILoggerProvider: true);
+		builder.Services.AddBlazorApplicationInsights();
 
 		builder.Logging.AddFilter<ApplicationInsightsLoggerProvider>(level => (level == LogLevel.Error) || (level == LogLevel.Critical));
 
