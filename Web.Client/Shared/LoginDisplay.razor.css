@@ -5,7 +5,3 @@
 	align-items: center;
 	justify-content: center;
 }
-
-::deep .initials.standalone {
-	cursor: pointer;
-}
