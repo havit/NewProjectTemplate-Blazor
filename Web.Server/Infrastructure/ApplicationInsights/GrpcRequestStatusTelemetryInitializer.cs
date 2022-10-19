@@ -2,7 +2,6 @@
 using Microsoft.ApplicationInsights.Channel;
 using Microsoft.ApplicationInsights.DataContracts;
 using Microsoft.ApplicationInsights.Extensibility;
-using Microsoft.AspNetCore.Http;
 
 namespace Havit.NewProjectTemplate.Web.Server.Infrastructure.ApplicationInsights;
 
@@ -42,6 +41,7 @@ public class GrpcRequestStatusTelemetryInitializer : ITelemetryInitializer
 			if (Enum.TryParse<StatusCode>(grpcStatusHeader[0], out var grpcStatusCode))
 			{
 				if ((grpcStatusCode != StatusCode.OK)
+					&& (grpcStatusCode != StatusCode.Cancelled)            // OperationCancelledException, SQL cancellation, ...
 					&& (grpcStatusCode != StatusCode.FailedPrecondition))  // OperationFailedException
 				{
 					requestTelemetry.Success = false;
