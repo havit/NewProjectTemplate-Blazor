@@ -4,15 +4,17 @@
 <HxMessageBoxHost />
 
 <div class="d-md-flex min-vh-100">
-	<Sidebar />
-	<div class="main p-4 flex-grow-1 overflow-hidden">
-        <ErrorBoundary @ref="errorBoundaryComponent">
-            <ErrorContent Context="exception">
-                 <Havit.NewProjectTemplate.Web.Client.Pages.Errors.GenericError Exception="exception" OnRecover="() => errorBoundaryComponent?.Recover()" />
-            </ErrorContent>
-            <ChildContent>
+    <ErrorBoundary @ref="errorBoundaryComponent">
+        <ErrorContent Context="exception">
+            <div class="main p-4 flex-grow-1">
+                <Havit.NewProjectTemplate.Web.Client.Pages.Errors.GenericError Exception="exception" OnRecover="() => errorBoundaryComponent?.Recover()" />
+            </div>
+        </ErrorContent>
+        <ChildContent>
+            <Sidebar />
+            <div class="main p-4 flex-grow-1">
                 @Body
-            </ChildContent>
-        </ErrorBoundary>
-	</div>
+            </div>
+        </ChildContent>
+    </ErrorBoundary>
 </div>

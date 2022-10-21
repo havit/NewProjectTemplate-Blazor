@@ -3,16 +3,17 @@
             @<HxButton OnClick="CopyExceptionDetailsToClipboard" CssClass="text-secondary" Icon="BootstrapIcon.Clipboard" />;
 }
 
-<div class="container-lg">
+<div class="container-lg generic-error">
 	<div class="text-center my-4">
 		<img src="/oops.svg" class="mw-100" width="500" alt="Oops">
 	</div>
 
 	<div class="text-center">
 		<h1>Oops...</h1>
-		<p class="lead">@ErrorsLocalizer.ErrorOccured</p>
-		<HxButton Color="ThemeColor.Primary" OnClick="this.OnRecover">@ErrorsLocalizer.GoBack</HxButton>
-	</div>
+        <p class="lead">@GenericErrorLocalizer.ErrorOccured</p>
+        <HxButton Color="ThemeColor.Primary" OnClick="this.OnRecover" Text="@GenericErrorLocalizer.Recover" CssClass="me-2" />
+        <HxButton Color="ThemeColor.Secondary" OnClick="HandleRestartClick" Text="@GenericErrorLocalizer.Restart" />
+    </div>
 
 	<HxAccordion CssClass="my-4">
 		<HxAccordionItem>
@@ -22,11 +23,11 @@
 			<BodyTemplate>
 				<div class="position-relative pe-4">
 					<div class="position-absolute top-0 end-0">
-                        <HxTooltip WrapperCssClass="@(copiedToClipboard ? "d-none" : null)" @ref="copyToClipboardTooltip" Text="@ErrorsLocalizer.CopyToClipboard">
+                        <HxTooltip WrapperCssClass="@(copiedToClipboard ? "d-none" : null)" @ref="copyToClipboardTooltip" Text="@GenericErrorLocalizer.CopyToClipboard">
 							@copyToClipboardButton
                         </HxTooltip>
 
-                        <HxTooltip WrapperCssClass="@(copiedToClipboard ? null : "d-none")" @ref="copiedToClipboardTooltip" Text="@ErrorsLocalizer.CopiedToClipboard">
+                        <HxTooltip WrapperCssClass="@(copiedToClipboard ? null : "d-none")" @ref="copiedToClipboardTooltip" Text="@GenericErrorLocalizer.CopiedToClipboard">
                             @copyToClipboardButton
                         </HxTooltip>
                     </div>

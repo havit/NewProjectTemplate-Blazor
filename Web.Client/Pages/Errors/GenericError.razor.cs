@@ -9,8 +9,8 @@ public partial class GenericError : IAsyncDisposable
 	[Parameter] public Exception Exception { get; set; }
 	[Parameter] public EventCallback OnRecover { get; set; }
 
-	[Inject] public IErrorsLocalizer ErrorsLocalizer { get; set; }
-
+	[Inject] public IGenericErrorLocalizer GenericErrorLocalizer { get; set; }
+	[Inject] public NavigationManager NavigationManager { get; set; }
 	[Inject] private IJSRuntime JSRuntime { get; set; }
 
 	private IJSObjectReference jsModule;
@@ -26,6 +26,11 @@ public partial class GenericError : IAsyncDisposable
 	public GenericError()
 	{
 		dotnetObjectReference = DotNetObjectReference.Create(this);
+	}
+
+	private void HandleRestartClick()
+	{
+		NavigationManager.NavigateTo("", forceLoad: true);
 	}
 
 	private async Task EnsureJsModule()

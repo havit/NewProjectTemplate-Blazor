@@ -126,7 +126,10 @@
   <data name="ErrorOccured" xml:space="preserve">
     <value>Došlo k chybě.</value>
   </data>
-  <data name="GoBack" xml:space="preserve">
-    <value>Jít zpět</value>
+  <data name="Recover" xml:space="preserve">
+    <value>Zavřít upozornění</value>
+  </data>
+  <data name="Restart" xml:space="preserve">
+    <value>Restartovat aplikaci</value>
   </data>
 </root>
