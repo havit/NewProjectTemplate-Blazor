@@ -46,3 +46,4 @@ https://github.com/havit/NewProjectTemplate-Blazor/generate
 1. Update the `Web.Server.csproj` the `EnsureWebJobInPackage` target to use `net7.0` in paths.
 1. If you use it, upgrade your GitHub workflow YAML to use net7.
 1. If you are hitting the `"undefined" is not valid JSON` when logging in, disable assembly trimming for `Microsoft.AspNetCore.Components.WebAssembly.Authentication`, see https://github.com/dotnet/aspnetcore/issues/44981
+1. Remove the Blazor GC gRPC workaround when using facades (revert the `Func<IXyFacade>` usage to direct `IXyFacade` usage))
