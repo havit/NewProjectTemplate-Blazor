@@ -37,6 +37,14 @@ https://github.com/havit/NewProjectTemplate-Blazor/generate
 1. Build: Clean solution & Rebuild solution
 1. Deal with `[Obsolete]` APIs:
     1. Replace `SignOutSessionStateManager` (`LoginDisplat.razor`) with `NavigationManager.NavigateToLogout()`, see [CS0618](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/compiler-messages/cs0618)
+1. Deal with *unsupported platform* APIs
+    1. In `Web.Server/Program.cs`, update the `AddEventLog()` call:
+    ```csharp
+	if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+	{
+		logging.AddEventLog();
+	}
+	```
 1. Deal with new code analyzer warnings, e.g.
     1. BL0007: Component parameter 'XY' should be auto property
         1. use `@bind:after` where applicable
