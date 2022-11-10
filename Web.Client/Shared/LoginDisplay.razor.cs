@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
 
 namespace Havit.NewProjectTemplate.Web.Client.Shared;
 
@@ -6,10 +7,11 @@ public partial class LoginDisplay
 {
 	[Parameter] public bool ShowOnlyInitials { get; set; }
 
-	private async Task BeginSignOut()
+	[Inject] protected NavigationManager NavigationManager { get; set; }
+
+	private void BeginSignOut()
 	{
-		await SignOutManager.SetSignOutState();
-		Navigation.NavigateTo("authentication/logout");
+		NavigationManager.NavigateToLogout("authentication/logout");
 	}
 
 	/// <summary>

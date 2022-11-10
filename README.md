@@ -31,3 +31,17 @@ https://github.com/havit/NewProjectTemplate-Blazor/generate
 
 (Use PublishScripts folder for deployment settings.)
 
+# Upgrading existing project from net6 to net7
+1. Replace the `<TargetFramework>net6.0</TargetFramework>` to `<TargetFramework>net7.0</TargetFramework>` in all `.csproj` files.
+1. Update NuGet package references from 6.0.x to 7.0.x version (all except EF Core!) + update other NuGet packages as needed.
+1. Build: Clean solution & Rebuild solution
+1. Deal with `[Obsolete]` APIs:
+    1. Replace `SignOutSessionStateManager` (`LoginDisplat.razor`) with `NavigationManager.NavigateToLogout()`, see [CS0618](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/compiler-messages/cs0618)
+1. Deal with new code analyzer warnings, e.g.
+    1. BL0007: Component parameter 'XY' should be auto property
+        1. use `@bind:after` where applicable
+		1. use `#pragma warning disable` where needed
+1. In `dotnet-tools.json` upgrade `Havit.Data.EntityFrameworkCore.CodeGenerator.Tool` to 2.7.0 version (net7) + try if the `DataLayer/Run-CodeGenerator.ps1` runs currectly
+1. Check the `TfsPublish.xml`. There might be explicit `net6` target, update it to `net7`.
+1. If you use it, upgrade your GitHub workflow YAML to use net7.
+1. If you are hitting the `"undefined" is not valid JSON` when logging in, disable assembly trimming for `Microsoft.AspNetCore.Components.WebAssembly.Authentication`, see https://github.com/dotnet/aspnetcore/issues/44981

@@ -2,7 +2,7 @@
 
 	<PropertyGroup>
 		<OutputType>Exe</OutputType>
-		<TargetFramework>net6.0</TargetFramework>
+		<TargetFramework>net7.0</TargetFramework>
 		<AssemblyName>Havit.NewProjectTemplate.Utility</AssemblyName>
 		<RootNamespace>Havit.NewProjectTemplate.Utility</RootNamespace>
 		<ImplicitUsings>true</ImplicitUsings>
@@ -30,8 +30,8 @@
 		<PackageReference Include="Havit.Hangfire.Extensions" Version="2.0.10" />
 		<PackageReference Include="Microsoft.ApplicationInsights.WorkerService" Version="2.21.0" />
 		<PackageReference Include="Microsoft.Azure.WebJobs" Version="3.0.33" />
-		<PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="6.0.1" />
-		<PackageReference Include="Microsoft.Extensions.Logging.Console" Version="6.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="7.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Console" Version="7.0.0" />
 	</ItemGroup>
 
 	<ItemGroup>

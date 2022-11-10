@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>net6.0</TargetFramework>
+		<TargetFramework>net7.0</TargetFramework>
 		<AssemblyName>Havit.NewProjectTemplate.Services</AssemblyName>
 		<RootNamespace>Havit.NewProjectTemplate.Services</RootNamespace>
 		<ImplicitUsings>true</ImplicitUsings>
@@ -13,11 +13,11 @@
 	
 	<ItemGroup>
 		<PackageReference Include="Havit.Extensions.DependencyInjection.Abstractions" Version="2.0.4" />
-		<PackageReference Include="Havit.Services" Version="2.0.25" />
-		<PackageReference Include="MailKit" Version="3.4.1" />
-		<PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="6.0.0" />
-		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.1" />
-		<PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions" Version="6.0.10" />
+		<PackageReference Include="Havit.Services" Version="2.0.34" />
+		<PackageReference Include="MailKit" Version="3.4.2" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="7.0.0" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions" Version="7.0.0" />
 	</ItemGroup>
 
 	<ItemGroup>

@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net7.0</TargetFramework>
 	  <AssemblyName>Havit.NewProjectTemplate.Resources</AssemblyName>
 	  <RootNamespace>Havit.NewProjectTemplate.Resources</RootNamespace>
 	  <ImplicitUsings>true</ImplicitUsings>
@@ -10,7 +10,7 @@
   <ItemGroup>
     <PackageReference Include="Havit.Extensions.Localization" Version="1.0.5" />
     <PackageReference Include="Havit.SourceGenerators.StrongApiStringLocalizers" Version="1.0.8" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="7.0.0" />
   </ItemGroup>
 
   <ItemGroup>
