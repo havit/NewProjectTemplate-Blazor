@@ -53,11 +53,11 @@
 	</Target>
 
 	<Target Name="EnsureWebJobInPackage" AfterTargets="CreateReadyToRunImages" BeforeTargets="_PrepareForReadyToRunCompilation">
-		<Error Text="WebJob file Havit.NewProjectTemplate.Utility.exe not found when preparing web deploy package." Condition="!Exists('..\Utility\bin\Release\net6.0\Havit.NewProjectTemplate.Utility.exe')" />
+		<Error Text="WebJob file Havit.NewProjectTemplate.Utility.exe not found when preparing web deploy package." Condition="!Exists('..\Utility\bin\Release\net7.0\Havit.NewProjectTemplate.Utility.exe')" />
 		<ItemGroup>
-			<!-- Vybereme soubory k publikaci. Předpokládá, že Utility je závislostí WebAPI nastavené v SLN. -->
-			<WebJobFiles Include="..\Utility\bin\Release\net6.0\**" />
-			<!-- Přidej soubory do ResolvedFileToPublish s nastavením cesty, kam mají být umístěny (složka pro webjoby). -->
+			<!-- Pick files for publish. Assumes that Utility is referenced by Web.Server in SLN. -->
+			<WebJobFiles Include="..\Utility\bin\Release\net7.0\**" />
+			<!-- Add files to ResolvedFileToPublish with path where they should belong (webjobs folder). -->
 			<ResolvedFileToPublish Include="@(WebJobFiles)">
 				<RelativePath>app_data\jobs\continuous\Utility\%(RecursiveDir)%(Filename)%(Extension)</RelativePath>
 				<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>

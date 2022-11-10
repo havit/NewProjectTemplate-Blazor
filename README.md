@@ -43,5 +43,6 @@ https://github.com/havit/NewProjectTemplate-Blazor/generate
 		1. use `#pragma warning disable` where needed
 1. In `dotnet-tools.json` upgrade `Havit.Data.EntityFrameworkCore.CodeGenerator.Tool` to 2.7.0 version (net7) + try if the `DataLayer/Run-CodeGenerator.ps1` runs currectly
 1. Check the `TfsPublish.xml`. There might be explicit `net6` target, update it to `net7`.
+1. Update the `Web.Server.csproj` the `EnsureWebJobInPackage` target to use `net7.0` in paths.
 1. If you use it, upgrade your GitHub workflow YAML to use net7.
 1. If you are hitting the `"undefined" is not valid JSON` when logging in, disable assembly trimming for `Microsoft.AspNetCore.Components.WebAssembly.Authentication`, see https://github.com/dotnet/aspnetcore/issues/44981
