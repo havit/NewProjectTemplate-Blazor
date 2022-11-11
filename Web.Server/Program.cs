@@ -39,11 +39,10 @@ public class Program
 				logging.AddConsole();
 				logging.AddDebug();
 				logging.AddCustomizedAzureWebAppDiagnostics();
-#if !DEBUG
-				if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+
+				if (!hostingContext.HostingEnvironment.IsDevelopment() && RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
 				{
 					logging.AddEventLog();
 				}
-#endif
 			});
 }
