@@ -13,12 +13,7 @@ using Havit.NewProjectTemplate.Web.Server.Infrastructure.ConfigurationExtensions
 using Havit.NewProjectTemplate.Web.Server.Infrastructure.HealthChecks;
 using Microsoft.ApplicationInsights.DependencyCollector;
 using Microsoft.ApplicationInsights.Extensibility;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
+using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using ProtoBuf.Grpc.Server;
 
 namespace Havit.NewProjectTemplate.Web.Server;
@@ -56,8 +51,9 @@ public class Startup
 		services.AddAuthorization(options =>
 		{
 			options.AddPolicy(PolicyNames.HangfireDashboardAcccessPolicy, policy => policy
-				.RequireAuthenticatedUser()
-				.RequireRole(nameof(Role.Entry.SystemAdministrator)));
+					.AddAuthenticationSchemes(OpenIdConnectDefaults.AuthenticationScheme)
+					.RequireAuthenticatedUser()
+					.RequireRole(nameof(Role.Entry.SystemAdministrator)));
 		});
 		services.AddCustomizedAuth(configuration);
 
@@ -136,6 +132,7 @@ public class Startup
 													? simpleName
 													: job.ToString()
 			})
+			//.RequireAuthorization();
 			.RequireAuthorization(PolicyNames.HangfireDashboardAcccessPolicy);
 		});
 
