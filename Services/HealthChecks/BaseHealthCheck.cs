@@ -8,18 +8,13 @@ public abstract class BaseHealthCheck : IHealthCheck
 	{
 		try
 		{
-			CancellationToken token = (Timeout > 0)
-				? CancellationTokenSource.CreateLinkedTokenSource(new CancellationTokenSource(Timeout).Token, cancellationToken).Token
-				: cancellationToken;
-			return await this.CheckHealthAsync(token);
+			return await this.CheckHealthAsync(cancellationToken);
 		}
 		catch (Exception exception)
 		{
 			return HealthCheckResult.Unhealthy(exception: exception);
 		}
 	}
-
-	protected virtual int Timeout => 10_000;
 
 	protected abstract Task<HealthCheckResult> CheckHealthAsync(CancellationToken cancellationToken);
 }
