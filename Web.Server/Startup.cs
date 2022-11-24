@@ -15,6 +15,7 @@ using Havit.NewProjectTemplate.Web.Server.Infrastructure.HealthChecks;
 using Microsoft.ApplicationInsights.DependencyCollector;
 using Microsoft.ApplicationInsights.Extensibility;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
+using Microsoft.Extensions.DependencyInjection;
 using ProtoBuf.Grpc.Server;
 
 namespace Havit.NewProjectTemplate.Web.Server;
@@ -67,8 +68,10 @@ public class Startup
 		services.AddCodeFirstGrpcReflection();
 
 		// Health checks
+		TimeSpan defaultHealthCheckTimeout = TimeSpan.FromSeconds(10);
 		services.AddHealthChecks()
-			.AddCheck<NewProjectTemplateDbContextHealthCheck>("Database");
+			.AddCheck<NewProjectTemplateDbContextHealthCheck>("Database", timeout: defaultHealthCheckTimeout)
+			.AddCheck<MailServiceHealthCheck>("SMTP", timeout: defaultHealthCheckTimeout);
 
 		// Hangfire
 		services.AddCustomizedHangfire(configuration);

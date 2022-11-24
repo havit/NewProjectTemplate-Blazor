@@ -17,23 +17,35 @@ public class MailingService : IMailingService
 		this.options = options.Value;
 	}
 
-	public void Send(MimeMessage mailMessage)
+	public async Task VerifyHealthAsync(CancellationToken cancellationToken)
 	{
-		using (SmtpClient smtpClient = new SmtpClient())
+		// dostupnost ověříme připojením (a autentizací k SMTP serveru)
+		using SmtpClient smtpClient = await CreateConnectedSmtpClientAsync(cancellationToken);
+	}
+
+	public async Task SendAsync(MimeMessage mailMessage, CancellationToken cancellationToken)
+	{
+		using (SmtpClient smtpClient = await CreateConnectedSmtpClientAsync(cancellationToken))
 		{
-			smtpClient.Connect(options.SmtpServer, options.SmtpPort ?? 0, options.UseSsl);
-
-			if (options.HasCredentials())
-			{
-				smtpClient.Authenticate(options.SmtpUsername, options.SmtpPassword);
-			}
-
 			if (!mailMessage.From.Any())
 			{
 				mailMessage.From.Add(InternetAddress.Parse(options.From));
 			}
 
-			smtpClient.Send(mailMessage);
+			await smtpClient.SendAsync(mailMessage, cancellationToken);
 		}
+	}
+
+	private async Task<SmtpClient> CreateConnectedSmtpClientAsync(CancellationToken cancellationToken)
+	{
+		var smtpClient = new SmtpClient();
+		await smtpClient.ConnectAsync(options.SmtpServer, options.SmtpPort ?? 0, options.UseSsl, cancellationToken);
+
+		if (options.HasCredentials())
+		{
+			await smtpClient.AuthenticateAsync(options.SmtpUsername, options.SmtpPassword, cancellationToken);
+		}
+
+		return smtpClient;
 	}
 }
