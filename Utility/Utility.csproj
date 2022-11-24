@@ -22,8 +22,8 @@
 		</Content>
 	</ItemGroup>
 	<ItemGroup>
-		<PackageReference Include="Hangfire.AspNetCore" Version="1.7.31" />
-		<PackageReference Include="Hangfire.SqlServer" Version="1.7.31" />
+		<PackageReference Include="Hangfire.AspNetCore" Version="1.7.32" />
+		<PackageReference Include="Hangfire.SqlServer" Version="1.7.32" />
 		<PackageReference Include="Hangfire.Console.Extensions" Version="1.0.5" />
 		<PackageReference Include="Havit.ApplicationInsights.DependencyCollector" Version="2.0.7" />
 		<PackageReference Include="Havit.AspNetCore" Version="2.0.9" />
