@@ -67,8 +67,7 @@ namespace Havit.NewProjectTemplate.Entity.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true),
-                    NormalizedName = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true)
+                    Name = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -81,19 +80,10 @@ namespace Havit.NewProjectTemplate.Entity.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Username = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
-                    NormalizedUsername = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
                     DisplayName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
                     Email = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true),
-                    NormalizedEmail = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true),
-                    EmailConfirmed = table.Column<bool>(type: "bit", nullable: false),
-                    PasswordHash = table.Column<string>(type: "nvarchar(max)", maxLength: 2147483647, nullable: true),
-                    LockoutEnd = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
-                    LockoutEnabled = table.Column<bool>(type: "bit", nullable: false),
-                    AccessFailedCount = table.Column<int>(type: "int", nullable: false),
-                    SecurityStamp = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true),
+                    IdentityProviderExternalId = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true),
                     Disabled = table.Column<bool>(type: "bit", nullable: false),
-                    MigrationId = table.Column<int>(type: "int", nullable: true),
                     Created = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Deleted = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
@@ -176,16 +166,9 @@ namespace Havit.NewProjectTemplate.Entity.Migrations
                 column: "ParentId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_User_NormalizedEmail",
+                name: "IX_User_IdentityProviderExternalId",
                 table: "User",
-                column: "NormalizedEmail",
-                unique: true,
-                filter: "Deleted IS NULL");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_User_NormalizedUsername",
-                table: "User",
-                column: "NormalizedUsername",
+                column: "IdentityProviderExternalId",
                 unique: true,
                 filter: "Deleted IS NULL");
 

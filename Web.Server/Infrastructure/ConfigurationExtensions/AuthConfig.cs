@@ -1,5 +1,6 @@
 ﻿using System.IdentityModel.Tokens.Jwt;
 using Havit.NewProjectTemplate.Facades.Infrastructure.Security.Authentication;
+using Havit.NewProjectTemplate.Facades.Infrastructure.Security.Claims;
 using Havit.NewProjectTemplate.Web.Server.Infrastructure.Security;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
@@ -31,5 +32,6 @@ public static class AuthConfig
 		JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
 
 		services.AddScoped<IApplicationAuthenticationService, ApplicationAuthenticationService>();
+		services.AddScoped<IUserContextInfoBuilder, UserContextInfoBuilder>();
 	}
 }

@@ -18,4 +18,9 @@ public static class Routes
 	{
 		public const string Info = "/diag/info";
 	}
+
+	public static class Errors
+	{
+		public const string AccessDenied = "/access-denied";
+	}
 }

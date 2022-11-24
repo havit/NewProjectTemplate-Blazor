@@ -12,9 +12,5 @@ public static class UserMetadata
 {
 	public const int DisplayNameMaxLength = 100;
 	public const int EmailMaxLength = 255;
-	public const int NormalizedEmailMaxLength = 255;
-	public const int NormalizedUsernameMaxLength = 50;
-	public const int PasswordHashMaxLength = Int32.MaxValue;
-	public const int SecurityStampMaxLength = 255;
-	public const int UsernameMaxLength = 50;
+	public const int IdentityProviderExternalIdMaxLength = 255;
 }

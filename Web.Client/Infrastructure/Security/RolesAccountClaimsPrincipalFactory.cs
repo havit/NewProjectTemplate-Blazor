@@ -8,9 +8,14 @@ namespace Havit.NewProjectTemplate.Web.Client.Infrastructure.Security;
 // https://docs.microsoft.com/en-us/aspnet/core/blazor/security/webassembly/hosted-with-identity-server?view=aspnetcore-5.0&tabs=visual-studio#custom-user-factory
 public class RolesAccountClaimsPrincipalFactory : AccountClaimsPrincipalFactory<RemoteUserAccount>
 {
-	public RolesAccountClaimsPrincipalFactory(IAccessTokenProviderAccessor accessor) : base(accessor)
+	private readonly IUserClientService userClientService;
+
+	public RolesAccountClaimsPrincipalFactory(
+		IAccessTokenProviderAccessor accessor,
+		IUserClientService userClientService
+		) : base(accessor)
 	{
-		// NOOP
+		this.userClientService = userClientService;
 	}
 
 	public override async ValueTask<ClaimsPrincipal> CreateUserAsync(RemoteUserAccount account, RemoteAuthenticationUserOptions options)
@@ -20,30 +25,18 @@ public class RolesAccountClaimsPrincipalFactory : AccountClaimsPrincipalFactory<
 		if (user.Identity.IsAuthenticated)
 		{
 			var identity = (ClaimsIdentity)user.Identity;
-			var roleClaims = identity.FindAll(identity.RoleClaimType).ToArray();
 
-			if (roleClaims != null && roleClaims.Any())
+			var claims = await userClientService.FetchAdditionalUserClaimsAsync(this.TokenProvider);
+
+			foreach (var claim in claims)
 			{
-				foreach (var existingClaim in roleClaims)
+				if (claim.Type.Equals(ClaimTypes.Role))
 				{
-					identity.RemoveClaim(existingClaim);
+					identity.AddClaim(new Claim(options.RoleClaim, claim.Value));
 				}
-
-				var rolesElem = account.AdditionalProperties[identity.RoleClaimType];
-
-				if (rolesElem is JsonElement roles)
+				else
 				{
-					if (roles.ValueKind == JsonValueKind.Array)
-					{
-						foreach (var role in roles.EnumerateArray())
-						{
-							identity.AddClaim(new Claim(options.RoleClaim, role.GetString()));
-						}
-					}
-					else
-					{
-						identity.AddClaim(new Claim(options.RoleClaim, roles.GetString()));
-					}
+					identity.AddClaim(claim);
 				}
 			}
 		}

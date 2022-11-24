@@ -11,5 +11,4 @@ namespace Havit.NewProjectTemplate.Contracts.ModelMetadata.Security;
 public static class RoleMetadata
 {
 	public const int NameMaxLength = 255;
-	public const int NormalizedNameMaxLength = 255;
 }

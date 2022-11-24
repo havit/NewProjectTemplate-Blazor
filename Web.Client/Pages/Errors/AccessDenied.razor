@@ -1,0 +1,8 @@
+﻿@attribute [Route(Routes.Errors.AccessDenied)]
+@layout EmptyLayout
+@attribute [AllowAnonymous]
+@inject Resources.Pages.IAuthenticationLocalizer AuthenticationLocalizer
+
+<AuthenticationStatusMessage ShowSpinner="false">
+	@AuthenticationLocalizer.AccessDenied
+</AuthenticationStatusMessage>

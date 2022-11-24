@@ -1,9 +1,60 @@
 ﻿@page "/authentication/{action}"
 @using Microsoft.AspNetCore.Components.WebAssembly.Authentication
-@attribute [AllowAnonymous]
 @layout EmptyLayout
+@attribute [AllowAnonymous]
+@inject Resources.Pages.IAuthenticationLocalizer AuthenticationLocalizer
 
-<RemoteAuthenticatorView Action="@Action" />
+<div class="d-flex jsutify-content-center align-items-center vh-100 w-100">
+	<RemoteAuthenticatorView Action="@Action" >
+        <LoggingIn>
+            <AuthenticationStatusMessage ShowSpinner="true">
+                @AuthenticationLocalizer.LoggingIn
+            </AuthenticationStatusMessage>
+        </LoggingIn>
+
+        <UserProfile>
+			<AuthenticationStatusMessage ShowSpinner="true">
+				@AuthenticationLocalizer.UserProfile
+			</AuthenticationStatusMessage>
+		</UserProfile>
+		
+		<Registering>
+			<AuthenticationStatusMessage ShowSpinner="true">
+				@AuthenticationLocalizer.Registering
+			</AuthenticationStatusMessage>
+		</Registering>
+
+        <LogOutFailed>
+			<AuthenticationStatusMessage>
+				@AuthenticationLocalizer.LogOutFailed
+			</AuthenticationStatusMessage>
+        </LogOutFailed>
+
+        <LogOutSucceeded>
+			<AuthenticationStatusMessage>
+				@AuthenticationLocalizer.LogOutSucceeded
+			</AuthenticationStatusMessage>
+        </LogOutSucceeded>
+
+		<LogInFailed>
+			<AuthenticationStatusMessage>
+				@AuthenticationLocalizer.LogInFailed
+			</AuthenticationStatusMessage>
+		</LogInFailed>
+		
+		<CompletingLoggingIn>
+			<AuthenticationStatusMessage ShowSpinner="true">
+				@AuthenticationLocalizer.CompletingLoggingIn
+			</AuthenticationStatusMessage>
+		</CompletingLoggingIn>
+
+		<CompletingLogOut>
+			<AuthenticationStatusMessage ShowSpinner="true">
+				@AuthenticationLocalizer.CompletingLogOut
+			</AuthenticationStatusMessage>
+		</CompletingLogOut>
+	</RemoteAuthenticatorView>
+</div>
 
 @code{
 	[Parameter] public string Action { get; set; }

@@ -1,34 +1,38 @@
 ﻿@attribute [Route(Routes.Administration.Index)]
 
-<h5>User Settings</h5>
-<div class="row row-cols-2 row-cols-lg-3 row-cols-xl-4 row-cols-xxl-6 g-3 mb-4">
-	<div class="col">
-		<NavPanel Title="Panel Title" Icon="BootstrapIcon.CashStack">
-			<NavCard Href="#" Title="TODO" />
-		</NavPanel>
-	</div>
-</div>
+<AuthorizeView Roles="@nameof(RoleEntry.UserSettingsAdministrator)">
+    <h5>User Settings</h5>
+    <div class="row row-cols-2 row-cols-lg-3 row-cols-xl-4 row-cols-xxl-6 g-3 mb-4">
+        <div class="col">
+            <NavPanel Title="Panel Title" Icon="BootstrapIcon.CashStack">
+                <NavCard Href="#" Title="TODO" />
+            </NavPanel>
+        </div>
+    </div>
+</AuthorizeView>
 
-<h5>System Administration</h5>
-<div class="row row-cols-2 row-cols-lg-3 row-cols-xl-4 row-cols-xxl-6 g-3 mb-4">
-	<div class="col">
-		<NavPanel Title="Local" Icon="BootstrapIcon.Laptop">
-			<NavCard OnClick="RemoveCultureFromLocalStorage" Title="Remove culture setting" />
-		</NavPanel>
-	</div>
-	<div class="col">
-		<NavPanel Title="Server" Icon="BootstrapIcon.HddNetwork">
-			<NavCard OnClick="dataSeedsComponent.ShowAsync" Title="Data Seeds" />
-			<NavCard OnClick="HandleClearCache" Title="Clear Server Cache" />
-			<NavCard Href="/hangfire/" Title="Hangfire" />
-		</NavPanel>
-	</div>
-	<div class="col">
-		<NavPanel Title="Diagnostics" Icon="BootstrapIcon.Hammer">
-			<NavCard Href="@Routes.Diagnostics.Info" Title="Info page" />
-			<NavCard OnClick="() => throw new InvalidOperationException()" Title="Raise exception" />
-		</NavPanel>
-	</div>
-</div>
+<AuthorizeView Roles="@nameof(RoleEntry.SystemAdministrator)">
+    <h5>System Administration</h5>
+    <div class="row row-cols-2 row-cols-lg-3 row-cols-xl-4 row-cols-xxl-6 g-3 mb-4">
+        <div class="col">
+            <NavPanel Title="Local" Icon="BootstrapIcon.Laptop">
+                <NavCard OnClick="RemoveCultureFromLocalStorage" Title="Remove culture setting" />
+            </NavPanel>
+        </div>
+        <div class="col">
+            <NavPanel Title="Server" Icon="BootstrapIcon.HddNetwork">
+                <NavCard OnClick="dataSeedsComponent.ShowAsync" Title="Data Seeds" />
+                <NavCard OnClick="HandleClearCache" Title="Clear Server Cache" />
+                <NavCard Href="/hangfire/" Title="Hangfire" />
+            </NavPanel>
+        </div>
+        <div class="col">
+            <NavPanel Title="Diagnostics" Icon="BootstrapIcon.Hammer">
+                <NavCard Href="@Routes.Diagnostics.Info" Title="Info page" />
+                <NavCard OnClick="() => throw new InvalidOperationException()" Title="Raise exception" />
+            </NavPanel>
+        </div>
+    </div>
 
-<Havit.NewProjectTemplate.Web.Client.Pages.Admin.Components.DataSeeds @ref="dataSeedsComponent" />
+    <Havit.NewProjectTemplate.Web.Client.Pages.Admin.Components.DataSeeds @ref="dataSeedsComponent" />
+</AuthorizeView>

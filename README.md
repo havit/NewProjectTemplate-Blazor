@@ -1,5 +1,8 @@
 ﻿# New Project Template - HAVIT Blazor Stack
 
+## Documentation
+See the [documentation](./doc/README.md) (`/doc/README.md`).
+
 ## Clonning template contents into new folder
 If you have a local repository   
 `git checkout-index --prefix=git-export-dir/ -a`

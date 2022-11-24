@@ -6,6 +6,7 @@ using Havit.NewProjectTemplate.Contracts.Infrastructure;
 using Havit.NewProjectTemplate.DependencyInjection;
 using Havit.NewProjectTemplate.Facades.Infrastructure.Security;
 using Havit.NewProjectTemplate.Model.Security;
+using Havit.NewProjectTemplate.Primitives.Model.Security;
 using Havit.NewProjectTemplate.Services.HealthChecks;
 using Havit.NewProjectTemplate.Services.Infrastructure.MigrationTool;
 using Havit.NewProjectTemplate.Web.Server.Infrastructure.ApplicationInsights;
@@ -53,7 +54,7 @@ public class Startup
 			options.AddPolicy(PolicyNames.HangfireDashboardAcccessPolicy, policy => policy
 					.AddAuthenticationSchemes(OpenIdConnectDefaults.AuthenticationScheme)
 					.RequireAuthenticatedUser()
-					.RequireRole(nameof(Role.Entry.SystemAdministrator)));
+					.RequireRole(nameof(RoleEntry.SystemAdministrator)));
 		});
 		services.AddCustomizedAuth(configuration);
 

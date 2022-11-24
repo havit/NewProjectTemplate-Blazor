@@ -1,5 +1,4 @@
-﻿using System.Security.Claims;
-using Microsoft.AspNetCore.Authorization;
+﻿using Havit.NewProjectTemplate.Primitives.Model.Security;
 
 namespace Havit.NewProjectTemplate.Facades.Infrastructure.Security.Authorization;
 
@@ -9,22 +8,13 @@ namespace Havit.NewProjectTemplate.Facades.Infrastructure.Security.Authorization
 public interface IApplicationAuthorizationService
 {
 	/// <summary>
-	/// Vrací true, pokud má uživatel dané oprávnění k danému resource.
+	/// Vrátí seznam rolí aktuálního uživatele.
 	/// </summary>
-	Task<bool> IsAuthorizedAsync(ClaimsPrincipal user, IAuthorizationRequirement requirement, object resource = null);
+	/// <returns></returns>
+	IEnumerable<RoleEntry> GetCurrentUserRoles();
 
 	/// <summary>
-	/// Pokud uživatel NEMÁ dané oprávnění k danému resource, vyhazuje SecurityException.
+	/// Vrací true, pokud má uživatel požadovanou roli.
 	/// </summary>
-	Task VerifyAuthorizationAsync(ClaimsPrincipal user, IAuthorizationRequirement requirement, object resource = null);
-
-	/// <summary>
-	/// Vrací true, pokud má aktuální uživatel dané oprávnění k danému resource.
-	/// </summary>
-	Task<bool> IsCurrentUserAuthorizedAsync(IAuthorizationRequirement requirement, object resource = null);
-
-	/// <summary>
-	/// Pokud aktuální uživatel NEMÁ dané oprávnění k danému resource, vyhazuje SecurityException.
-	/// </summary>
-	Task VerifyCurrentUserAuthorizationAsync(IAuthorizationRequirement requirement, object resource = null);
+	bool IsCurrentUserInRole(RoleEntry role);
 }

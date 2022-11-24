@@ -1,0 +1,19 @@
+﻿<div class="position-absolute top-50 start-50 translate-middle text-center">
+	@if (ShowSpinner)
+	{
+		<div>
+			<HxSpinner Type="SpinnerType.Border" Size="SpinnerSize.Regular" CssClass="text-white" />
+		</div>
+	}
+	<div class="text-nowrap d-flex text-white position-absolute top-100 start-50 translate-middle pt-4">
+		@ChildContent
+	</div>
+</div>
+@code {
+
+	[Parameter]
+	public bool ShowSpinner { get; set; } = false;
+
+	[Parameter]
+	public RenderFragment ChildContent { get; set; }
+}

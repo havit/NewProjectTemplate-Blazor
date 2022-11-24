@@ -16,7 +16,9 @@
 		</HxSidebarItem>
 		<HxSidebarItem Text="Section 2" Icon="@BootstrapIcon.Clock" />
 		<HxSidebarItem Text="Section 3" Icon="@BootstrapIcon.Kanban" />
-		<HxSidebarItem Text="@NavigationLocalizer.Administration" Href="@Routes.Administration.Index" Icon="@BootstrapIcon.Gear" />
+        <AuthorizeView Roles="@(nameof(RoleEntry.SystemAdministrator) + "," + nameof(RoleEntry.UserSettingsAdministrator))">
+		    <HxSidebarItem Text="@NavigationLocalizer.Administration" Href="@Routes.Administration.Index" Icon="@BootstrapIcon.Gear" />
+        </AuthorizeView>
 		<HxSidebarItem Text="Development" Href="/development" Icon="@BootstrapIcon.FileCode" />
 	</ItemsTemplate>
 

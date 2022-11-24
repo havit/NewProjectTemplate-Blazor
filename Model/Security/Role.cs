@@ -10,13 +10,4 @@ public class Role
 
 	[MaxLength(255)]
 	public string Name { get; set; }
-
-	[MaxLength(255)]
-	public string NormalizedName { get; set; }
-
-	public enum Entry
-	{
-		SystemAdministrator = -1,
-		UserSettingsAdministrator = -2
-	}
 }
