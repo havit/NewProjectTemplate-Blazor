@@ -1,4 +1,4 @@
-﻿using Havit.NewProjectTemplate.Contracts.Infrastructure;
+﻿using Havit.NewProjectTemplate.Services.Mailing;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
