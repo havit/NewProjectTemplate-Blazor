@@ -1,4 +1,4 @@
-﻿namespace Havit.NewProjectTemplate.Contracts.Infrastructure;
+﻿namespace Havit.NewProjectTemplate.Services.Mailing;
 
 public class MailingOptions
 {
