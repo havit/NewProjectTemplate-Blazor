@@ -12,20 +12,20 @@
 		<PackageReference Include="Hangfire" Version="1.7.32" />
 		<PackageReference Include="Hangfire.Console" Version="1.4.2" />
 		<PackageReference Include="Havit.AspNetCore" Version="2.0.9" />
-		<PackageReference Include="Havit.Blazor.Components.Web.Bootstrap" Version="3.2.1" />
+		<PackageReference Include="Havit.Blazor.Components.Web.Bootstrap" Version="3.2.2" />
 		<PackageReference Include="Havit.Blazor.Grpc.Server" Version="1.3.0" />
 		<PackageReference Include="Havit.Hangfire.Extensions" Version="2.0.10" />
 		<PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.21.0" />
-		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="7.0.0" />
-		<PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="6.0.10" />
-		<PackageReference Include="Microsoft.Identity.Web" Version="1.25.8" />
-		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.10" />
-		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.10">
+		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="7.0.1" />
+		<PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="6.0.12" />
+		<PackageReference Include="Microsoft.Identity.Web" Version="1.25.10" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.12" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.12">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
 		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0" />
-		<PackageReference Include="Microsoft.Extensions.Logging.AzureAppServices" Version="7.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Logging.AzureAppServices" Version="7.0.1" />
 		<PackageReference Include="protobuf-net.Grpc.AspNetCore.Reflection" Version="1.0.179" />
 	</ItemGroup>
 
