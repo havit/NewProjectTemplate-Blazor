@@ -94,7 +94,7 @@ public class Program
 					var backendUrl = navigationManager.BaseUri;
 
 					return provider.GetRequiredService<AuthorizationMessageHandler>()
-						.ConfigureHandler(authorizedUrls: new[] { backendUrl }); // TODO? as neede: , scopes: new[] { "havit-NewProjectTemplate-api" });
+						.ConfigureHandler(authorizedUrls: new[] { backendUrl }); // TODO? as needed , scopes: new[] { "havit-NewProjectTemplate-api" });
 				})
 				.AddInterceptor<AuthorizationGrpcClientInterceptor>();
 			});

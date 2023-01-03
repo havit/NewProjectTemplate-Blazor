@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Http;
 using Havit.NewProjectTemplate.Facades.Infrastructure.Security.Authentication;
 using Havit.NewProjectTemplate.Model.Security;
 using Havit.NewProjectTemplate.DataLayer.Repositories.Security;
+using Havit.NewProjectTemplate.Contracts.Infrastructure.Security;
 
 namespace Havit.NewProjectTemplate.Web.Server.Infrastructure.Security;
 
@@ -32,7 +33,7 @@ public class ApplicationAuthenticationService : IApplicationAuthenticationServic
 	public int GetCurrentUserId()
 	{
 		var principal = GetCurrentClaimsPrincipal();
-		Claim userIdClaim = principal.Claims.Single(claim => (claim.Type == "sub"));
+		Claim userIdClaim = principal.Claims.Single(claim => (claim.Type == ClaimConstants.UserIdClaim));
 		return Int32.Parse(userIdClaim.Value);
 	}
 }
