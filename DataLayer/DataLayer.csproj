@@ -9,7 +9,7 @@
 
 	<ItemGroup>
 		<PackageReference Include="Havit.Data.EntityFrameworkCore.CodeGenerator" Version="2.6.8" />
-		<PackageReference Include="Havit.Data.EntityFrameworkCore.Patterns" Version="2.6.5" />
+		<PackageReference Include="Havit.Data.EntityFrameworkCore.Patterns" Version="2.6.6" />
 		<PackageReference Include="Havit.Extensions.DependencyInjection.Abstractions" Version="2.0.5" />
 	</ItemGroup>
 
