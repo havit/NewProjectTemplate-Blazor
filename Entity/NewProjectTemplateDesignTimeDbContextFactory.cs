@@ -20,6 +20,7 @@ public class NewProjectTemplateDesignTimeDbContextFactory : IDesignTimeDbContext
 			.SetBasePath(System.IO.Path.GetDirectoryName(this.GetType().Assembly.Location))
 			.AddJsonFile("appSettings.Entity.json")
 			.AddJsonFile($"appSettings.Entity.{environment}.json", true)
+			.AddJsonFile($"appSettings.Entity.{environment}.local.json", true) // .gitignored
 			.Build();
 
 		string connectionString = configuration.GetConnectionString("Database");

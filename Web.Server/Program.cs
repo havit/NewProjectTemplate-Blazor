@@ -31,6 +31,7 @@ public class Program
 				config
 					.AddJsonFile("appsettings.WebServer.json", optional: false)
 					.AddJsonFile($"appsettings.WebServer.{hostContext.HostingEnvironment.EnvironmentName}.json", optional: true)
+					.AddJsonFile($"appsettings.WebServer.{hostContext.HostingEnvironment.EnvironmentName}.local.json", optional: true) // .gitignored
 					.AddEnvironmentVariables();
 			})
 			.ConfigureLogging((hostingContext, logging) =>

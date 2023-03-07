@@ -34,6 +34,7 @@ public static class Program
 				config
 					.AddJsonFile(@"appsettings.Utility.json", optional: false)
 					.AddJsonFile($"appsettings.Utility.{hostContext.HostingEnvironment.EnvironmentName}.json", optional: true)
+					.AddJsonFile($"appsettings.Utility.{hostContext.HostingEnvironment.EnvironmentName}.local.json", optional: true) // .gitignored
 					.AddEnvironmentVariables();
 			})
 			.ConfigureLogging(logging =>

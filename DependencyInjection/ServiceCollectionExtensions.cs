@@ -65,6 +65,7 @@ public static class ServiceCollectionExtensions
 			.SetBasePath(Directory.GetCurrentDirectory())
 			.AddJsonFile("appsettings.json")
 			.AddJsonFile($"appsettings.{environment}.json", true)
+			.AddJsonFile($"appsettings.{environment}.local.json", true) // .gitignored
 			.Build();
 
 		InstallConfiguration installConfiguration = new InstallConfiguration
