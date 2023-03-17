@@ -49,10 +49,10 @@ public class ApplicationClaimsTransformation : IClaimsTransformation
 			});
 		}
 
-		// do not add claims to existing principal, create new one (claims dupplication hazard)
-		ClaimsIdentity claimsIdentity = ((ClaimsIdentity)principal.Identity).Clone();
+		// https://learn.microsoft.com/en-us/aspnet/core/security/authentication/claims?view=aspnetcore-7.0#extend-or-add-custom-claims-using-iclaimstransformation
+		ClaimsIdentity claimsIdentity = new ClaimsIdentity();
 		claimsIdentity.AddClaims(customClaims);
-		ClaimsPrincipal claimsPrincipalWithCustomClaims = new ClaimsPrincipal(claimsIdentity);
-		return await Task.FromResult(claimsPrincipalWithCustomClaims);
+		principal.AddIdentity(claimsIdentity);
+		return principal;
 	}
 }
