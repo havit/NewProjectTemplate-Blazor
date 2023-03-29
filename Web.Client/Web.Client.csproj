@@ -26,7 +26,7 @@
 		<PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.4.0" />
 		<PackageReference Include="Havit.Blazor.Components.Web.Bootstrap" Version="3.2.3" />
 		<PackageReference Include="Havit.Blazor.Grpc.Client.WebAssembly" Version="1.3.0" />
-		<PackageReference Include="Havit.Extensions.Localization" Version="1.0.5" />
+		<PackageReference Include="Havit.Extensions.Localization" Version="1.0.7" />
 		<PackageReference Include="Havit.SourceGenerators.StrongApiStringLocalizers" Version="1.0.8" />
 		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="7.0.1" />
 		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="7.0.1" PrivateAssets="all" />

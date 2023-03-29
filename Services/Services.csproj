@@ -13,7 +13,7 @@
 	
 	<ItemGroup>
 		<PackageReference Include="Havit.Extensions.DependencyInjection.Abstractions" Version="2.0.5" />
-		<PackageReference Include="Havit.Services" Version="2.0.35" />
+		<PackageReference Include="Havit.Services" Version="2.0.37" />
 		<PackageReference Include="MailKit" Version="3.4.3" />
 		<PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="7.0.1" />
 		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0" />
