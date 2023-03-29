@@ -10,7 +10,7 @@
 
 	<ItemGroup>
 		<PackageReference Include="Havit.Data.Patterns" Version="2.1.23" />
-		<PackageReference Include="Microsoft.Extensions.Hosting" Version="7.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Hosting" Version="7.0.1" />
 	</ItemGroup>
 
 	<ItemGroup>
