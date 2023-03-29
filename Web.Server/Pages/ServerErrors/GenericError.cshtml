@@ -1,0 +1,12 @@
+﻿@page "/error"
+@model GenericErrorModel
+
+<h1 class="text-danger">Oops...</h1>
+<h2 class="text-danger">An error occurred while processing your request on server.</h2>
+
+@if (Model.ShowRequestId)
+{
+	<p>
+		<strong>Request ID:</strong> <code>@Model.RequestId</code>
+	</p>
+}
