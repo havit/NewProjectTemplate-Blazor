@@ -44,13 +44,13 @@ public static class ServiceCollectionExtensions
 	}
 
 	[MethodImpl(MethodImplOptions.NoInlining)]
-	public static IServiceCollection ConfigureForUtility(this IServiceCollection services, IConfiguration configuration)
+	public static IServiceCollection ConfigureForJobsRunner(this IServiceCollection services, IConfiguration configuration)
 	{
 		InstallConfiguration installConfiguration = new InstallConfiguration
 		{
 			DatabaseConnectionString = configuration.GetConnectionString("Database"),
 			AzureStorageConnectionString = configuration.GetConnectionString("AzureStorageConnectionString"),
-			ServiceProfiles = new[] { ServiceAttribute.DefaultProfile, ServiceProfiles.Utility }
+			ServiceProfiles = new[] { ServiceAttribute.DefaultProfile, ServiceProfiles.JobsRunner }
 		};
 
 		return services.ConfigureForAll(installConfiguration);

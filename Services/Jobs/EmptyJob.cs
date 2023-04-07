@@ -4,7 +4,7 @@ using Microsoft.Extensions.Logging;
 
 namespace Havit.NewProjectTemplate.Services.Jobs;
 
-[Service(Profile = ServiceProfiles.Utility)]
+[Service(Profile = ServiceProfiles.JobsRunner)]
 public class EmptyJob : IEmptyJob
 {
 	private readonly ILogger<EmptyJob> logger;

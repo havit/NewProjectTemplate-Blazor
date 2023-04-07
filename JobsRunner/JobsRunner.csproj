@@ -3,24 +3,24 @@
 	<PropertyGroup>
 		<OutputType>Exe</OutputType>
 		<TargetFramework>net7.0</TargetFramework>
-		<AssemblyName>Havit.NewProjectTemplate.Utility</AssemblyName>
-		<RootNamespace>Havit.NewProjectTemplate.Utility</RootNamespace>
+		<AssemblyName>Havit.NewProjectTemplate.JobsRunner</AssemblyName>
+		<RootNamespace>Havit.NewProjectTemplate.JobsRunner</RootNamespace>
 		<ImplicitUsings>true</ImplicitUsings>
 	</PropertyGroup>
 
 	<ItemGroup>
-		<None Remove="appsettings.Utility.Development.json" />
-		<None Remove="appsettings.Utility.json" />
+		<None Remove="appsettings.JobsRunner.Development.json" />
+		<None Remove="appsettings.JobsRunner.json" />
 	</ItemGroup>
 
 	<ItemGroup>
-		<Content Include="appsettings.Utility.Development.local.json" Condition="Exists('appsettings.Utility.Development.local.json')">
+		<Content Include="appsettings.JobsRunner.Development.local.json" Condition="Exists('appsettings.JobsRunner.Development.local.json')">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</Content>
-		<Content Include="appsettings.Utility.Development.json">
+		<Content Include="appsettings.JobsRunner.Development.json">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</Content>
-		<Content Include="appsettings.Utility.json">
+		<Content Include="appsettings.JobsRunner.json">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</Content>
 	</ItemGroup>

@@ -10,7 +10,7 @@ using Havit.Hangfire.Extensions.Filters;
 using Havit.Hangfire.Extensions.RecurringJobs;
 using Havit.NewProjectTemplate.DependencyInjection;
 using Havit.NewProjectTemplate.Services.Jobs;
-using Havit.NewProjectTemplate.Utility.Infrastructure.ApplicationInsights;
+using Havit.NewProjectTemplate.JobsRunner.Infrastructure.ApplicationInsights;
 using Microsoft.ApplicationInsights;
 using Microsoft.ApplicationInsights.Extensibility;
 using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector;
@@ -20,7 +20,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
-namespace Havit.NewProjectTemplate.Utility;
+namespace Havit.NewProjectTemplate.JobsRunner;
 
 public static class Program
 {
@@ -32,9 +32,9 @@ public static class Program
 			.ConfigureAppConfiguration((hostContext, config) =>
 			{
 				config
-					.AddJsonFile(@"appsettings.Utility.json", optional: false)
-					.AddJsonFile($"appsettings.Utility.{hostContext.HostingEnvironment.EnvironmentName}.json", optional: true)
-					.AddJsonFile($"appsettings.Utility.{hostContext.HostingEnvironment.EnvironmentName}.local.json", optional: true) // .gitignored
+					.AddJsonFile(@"appsettings.JobsRunner.json", optional: false)
+					.AddJsonFile($"appsettings.JobsRunner.{hostContext.HostingEnvironment.EnvironmentName}.json", optional: true)
+					.AddJsonFile($"appsettings.JobsRunner.{hostContext.HostingEnvironment.EnvironmentName}.local.json", optional: true) // .gitignored
 					.AddEnvironmentVariables();
 			})
 			.ConfigureLogging(logging =>
@@ -48,11 +48,11 @@ public static class Program
 				services.AddApplicationInsightsTelemetryWorkerService();
 				services.AddApplicationInsightsTelemetryProcessor<IgnoreSucceededDependenciesWithNoParentIdProcessor>(); // ignorujeme infrastrukturní položky Hangfire (předpokládá použití ApplicationInsightAttribute níže)
 				services.Remove(services.Single(descriptor => descriptor.ImplementationType == typeof(PerformanceCollectorModule))); // odebereme hlášení PerformanceCounters
-				services.AddSingleton<ITelemetryInitializer, UtilityToCloudRoleNameTelemetryInitializer>();
+				services.AddSingleton<ITelemetryInitializer, JobsRunnerToCloudRoleNameTelemetryInitializer>();
 
 				services.AddExceptionMonitoring(hostContext.Configuration);
 
-				services.ConfigureForUtility(hostContext.Configuration);
+				services.ConfigureForJobsRunner(hostContext.Configuration);
 
 				if (useHangfire)
 				{

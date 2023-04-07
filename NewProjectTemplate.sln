@@ -56,7 +56,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Client", "Client", "{0E8ABF
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{EF26518D-89CF-4B91-9346-5FEFE62DE99C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Utility", "Utility\Utility.csproj", "{337135E8-40A5-44B6-85F2-31046F347F20}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JobsRunner", "JobsRunner\JobsRunner.csproj", "{337135E8-40A5-44B6-85F2-31046F347F20}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Resources", "Resources\Resources.csproj", "{3E4BC2F2-AB6D-41B4-8C56-8E4E7A98DC95}"
 EndProject

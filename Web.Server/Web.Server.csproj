@@ -48,13 +48,13 @@
 	</Target>
 
 	<Target Name="EnsureWebJobInPackage" AfterTargets="CreateReadyToRunImages" BeforeTargets="_PrepareForReadyToRunCompilation">
-		<Error Text="WebJob file Havit.NewProjectTemplate.Utility.exe not found when preparing web deploy package." Condition="!Exists('..\Utility\bin\Release\net7.0\Havit.NewProjectTemplate.Utility.exe')" />
+		<Error Text="WebJob file Havit.NewProjectTemplate.JobsRunner.exe not found when preparing web deploy package." Condition="!Exists('..\JobsRunner\bin\Release\net7.0\Havit.NewProjectTemplate.JobsRunner.exe')" />
 		<ItemGroup>
-			<!-- Pick files for publish. Assumes that Utility is referenced by Web.Server in SLN. -->
-			<WebJobFiles Include="..\Utility\bin\Release\net7.0\**" />
+			<!-- Pick files for publish. Assumes that JobsRunner is referenced by Web.Server in SLN. -->
+			<WebJobFiles Include="..\JobsRunner\bin\Release\net7.0\**" />
 			<!-- Add files to ResolvedFileToPublish with path where they should belong (webjobs folder). -->
 			<ResolvedFileToPublish Include="@(WebJobFiles)">
-				<RelativePath>app_data\jobs\continuous\Utility\%(RecursiveDir)%(Filename)%(Extension)</RelativePath>
+				<RelativePath>app_data\jobs\continuous\JobsRunner\%(RecursiveDir)%(Filename)%(Extension)</RelativePath>
 				<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
 			</ResolvedFileToPublish>
 		</ItemGroup>
