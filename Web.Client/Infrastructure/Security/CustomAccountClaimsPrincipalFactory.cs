@@ -6,16 +6,16 @@ using System.Text.Json;
 namespace Havit.NewProjectTemplate.Web.Client.Infrastructure.Security;
 
 // https://docs.microsoft.com/en-us/aspnet/core/blazor/security/webassembly/hosted-with-identity-server?view=aspnetcore-5.0&tabs=visual-studio#custom-user-factory
-public class RolesAccountClaimsPrincipalFactory : AccountClaimsPrincipalFactory<RemoteUserAccount>
+public class CustomAccountClaimsPrincipalFactory : AccountClaimsPrincipalFactory<RemoteUserAccount>
 {
-	private readonly IUserClientService userClientService;
+	private readonly IUserClaimsRetrievalService userClaimsRetrievalService;
 
-	public RolesAccountClaimsPrincipalFactory(
+	public CustomAccountClaimsPrincipalFactory(
 		IAccessTokenProviderAccessor accessor,
-		IUserClientService userClientService
+		IUserClaimsRetrievalService userClaimsRetrievalService
 		) : base(accessor)
 	{
-		this.userClientService = userClientService;
+		this.userClaimsRetrievalService = userClaimsRetrievalService;
 	}
 
 	public override async ValueTask<ClaimsPrincipal> CreateUserAsync(RemoteUserAccount account, RemoteAuthenticationUserOptions options)
@@ -26,7 +26,7 @@ public class RolesAccountClaimsPrincipalFactory : AccountClaimsPrincipalFactory<
 		{
 			var identity = (ClaimsIdentity)user.Identity;
 
-			var claims = await userClientService.FetchAdditionalUserClaimsAsync(this.TokenProvider);
+			var claims = await userClaimsRetrievalService.FetchAdditionalUserClaimsAsync(this.TokenProvider);
 
 			foreach (var claim in claims)
 			{

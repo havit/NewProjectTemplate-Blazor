@@ -62,6 +62,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Resources", "Resources\Reso
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PublishScripts", "PublishScripts", "{60E7C286-81A9-4DD8-A15F-C62B9B3FEDD2}"
 	ProjectSection(SolutionItems) = preProject
+		PublishScripts\Web\appsettings.Stage.json = PublishScripts\Web\appsettings.Stage.json
 		PublishScripts\Web\appsettings.WebServer.Stage.json = PublishScripts\Web\appsettings.WebServer.Stage.json
 	EndProjectSection
 EndProject
