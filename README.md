@@ -33,7 +33,7 @@ https://github.com/havit/NewProjectTemplate-Blazor/generate
 
 # Upgrading existing project from net6 to net7
 1. Replace the `<TargetFramework>net6.0</TargetFramework>` to `<TargetFramework>net7.0</TargetFramework>` in all `.csproj` files.
-1. Update NuGet package references from 6.0.x to 7.0.x version (all except EF Core!) + update other NuGet packages as needed.
+1. Update NuGet package references from 6.0.x to 7.0.x version + update other NuGet packages as needed.
 1. Build: Clean solution & Rebuild solution
 1. Deal with `[Obsolete]` APIs:
     1. Replace `SignOutSessionStateManager` (`LoginDisplat.razor`) with `NavigationManager.NavigateToLogout()`, see [CS0618](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/compiler-messages/cs0618)
