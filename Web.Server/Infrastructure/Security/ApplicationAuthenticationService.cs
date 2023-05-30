@@ -7,9 +7,6 @@ using Havit.NewProjectTemplate.Contracts.Infrastructure.Security;
 
 namespace Havit.NewProjectTemplate.Web.Server.Infrastructure.Security;
 
-/// <summary>
-/// Poskytuje uživatele z HttpContextu.
-/// </summary>
 public class ApplicationAuthenticationService : IApplicationAuthenticationService
 {
 	private readonly IHttpContextAccessor httpContextAccessor;

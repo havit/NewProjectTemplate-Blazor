@@ -12,7 +12,7 @@ public class Program
 {
 	public static void Main(string[] args)
 	{
-		IHostBuilder hostBuidler = Host.CreateDefaultBuilder()
+		IHostBuilder hostBuilder = Host.CreateDefaultBuilder()
 			.ConfigureAppConfiguration((hostContext, config) =>
 			{
 				config
@@ -28,6 +28,6 @@ public class Program
 				services.ConfigureForMigrationTool(hostContext.Configuration);
 			});
 
-		hostBuidler.Build().Services.GetRequiredService<IMigrationService>().UpgradeDatabaseSchemaAndData();
+		hostBuilder.Build().Services.GetRequiredService<IMigrationService>().UpgradeDatabaseSchemaAndData();
 	}
 }

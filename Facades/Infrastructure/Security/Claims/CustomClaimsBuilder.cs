@@ -32,9 +32,6 @@ public class CustomClaimsBuilder : ICustomClaimsBuilder
 		this.cacheService = cacheService;
 	}
 
-	/// <summary>
-	/// Získá custom claims pro daný principal.
-	/// </summary>
 	public async Task<List<Claim>> GetCustomClaimsAsync(ClaimsPrincipal principal)
 	{
 		Contract.Requires<SecurityException>(principal.Identity.IsAuthenticated);

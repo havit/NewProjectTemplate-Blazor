@@ -2,5 +2,5 @@
 
 public static class PolicyNames
 {
-	public const string HangfireDashboardAcccessPolicy = nameof(HangfireDashboardAcccessPolicy);
+	public const string HangfireDashboardAccessPolicy = nameof(HangfireDashboardAccessPolicy);
 }

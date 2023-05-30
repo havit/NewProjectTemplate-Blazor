@@ -6,17 +6,13 @@ namespace Havit.NewProjectTemplate.Entity;
 public class NewProjectTemplateDbContext : Havit.Data.EntityFrameworkCore.DbContext
 {
 	/// <summary>
-	/// Konstruktor.
-	/// Pro použití v unit testech, jiné použití nemá.
+	/// Constructor for unit tests.
 	/// </summary>
 	internal NewProjectTemplateDbContext()
 	{
 		// NOOP
 	}
 
-	/// <summary>
-	/// Konstruktor.
-	/// </summary>
 	public NewProjectTemplateDbContext(DbContextOptions options) : base(options)
 	{
 		// NOOP

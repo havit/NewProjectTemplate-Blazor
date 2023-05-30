@@ -3,10 +3,6 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Havit.NewProjectTemplate.TestsForLocalDebugging;
 
-/// <summary>
-/// Bázový třída pro testy.
-/// Zpřístupňuje nakonfigurovaný DI container.
-/// </summary>
 public class TestForLocalDebuggingBase : IntegrationTestBase
 {
 	[TestInitialize]

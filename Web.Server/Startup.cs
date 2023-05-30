@@ -52,7 +52,7 @@ public class Startup
 
 		services.AddAuthorization(options =>
 		{
-			options.AddPolicy(PolicyNames.HangfireDashboardAcccessPolicy, policy => policy
+			options.AddPolicy(PolicyNames.HangfireDashboardAccessPolicy, policy => policy
 					.AddAuthenticationSchemes(OpenIdConnectDefaults.AuthenticationScheme)
 					.RequireAuthenticatedUser()
 					.RequireRole(nameof(RoleEntry.SystemAdministrator)));
@@ -137,7 +137,7 @@ public class Startup
 													: job.ToString()
 			})
 			//.RequireAuthorization();
-			.RequireAuthorization(PolicyNames.HangfireDashboardAcccessPolicy);
+			.RequireAuthorization(PolicyNames.HangfireDashboardAccessPolicy);
 		});
 
 		if (configuration.GetValue<bool>("AppSettings:Migrations:RunMigrations"))

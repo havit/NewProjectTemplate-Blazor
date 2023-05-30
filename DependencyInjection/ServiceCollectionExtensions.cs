@@ -7,7 +7,7 @@ using Havit.Extensions.DependencyInjection;
 using Havit.Extensions.DependencyInjection.Abstractions;
 using Havit.NewProjectTemplate.DataLayer.DataSources.Common;
 using Havit.NewProjectTemplate.DataLayer.Repositories.Common;
-using Havit.NewProjectTemplate.DependencyInjection.ConfigrationOptions;
+using Havit.NewProjectTemplate.DependencyInjection.ConfigurationOptions;
 using Havit.NewProjectTemplate.Entity;
 using Havit.NewProjectTemplate.Services.Infrastructure;
 using Havit.NewProjectTemplate.Services.Infrastructure.FileStorages;
@@ -59,13 +59,13 @@ public static class ServiceCollectionExtensions
 	[MethodImpl(MethodImplOptions.NoInlining)]
 	public static IServiceCollection ConfigureForTests(this IServiceCollection services, bool useInMemoryDb = true)
 	{
-		string environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? "Developement";
+		string environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? "Development";
 
 		IConfigurationRoot configuration = new ConfigurationBuilder()
 			.SetBasePath(Directory.GetCurrentDirectory())
-			.AddJsonFile("appsettings.json")
-			.AddJsonFile($"appsettings.{environment}.json", true)
-			.AddJsonFile($"appsettings.{environment}.local.json", true) // .gitignored
+			.AddJsonFile("appSettings.json")
+			.AddJsonFile($"appSettings.{environment}.json", true)
+			.AddJsonFile($"appSettings.{environment}.local.json", true) // .gitignored
 			.Build();
 
 		InstallConfiguration installConfiguration = new InstallConfiguration
@@ -164,9 +164,9 @@ public static class ServiceCollectionExtensions
 	}
 
 	internal static void InstallFileStorageService<TFileStorageService, TFileStorageImplementation, TFileStorageContext>(IServiceCollection services, string azureStorageConnectionString, string storagePath)
-		where TFileStorageService : class, IFileStorageService<TFileStorageContext> // class zde znamená i interface! // např. IDocumentStorageService
-		where TFileStorageImplementation : FileStorageWrappingService<TFileStorageContext>, TFileStorageService // např. DocumentStorageService
-		where TFileStorageContext : FileStorageContext // např. DocumentStorage
+		where TFileStorageService : class, IFileStorageService<TFileStorageContext> // class covers all reference types here, e.g. IDocumentStorageService
+		where TFileStorageImplementation : FileStorageWrappingService<TFileStorageContext>, TFileStorageService // e.g. DocumentStorageService
+		where TFileStorageContext : FileStorageContext // e.g. DocumentStorage
 	{
 		services.AddFileStorageWrappingService<TFileStorageService, TFileStorageImplementation, TFileStorageContext>();
 

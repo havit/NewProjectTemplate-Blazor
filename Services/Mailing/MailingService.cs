@@ -19,7 +19,6 @@ public class MailingService : IMailingService
 
 	public async Task VerifyHealthAsync(CancellationToken cancellationToken)
 	{
-		// dostupnost ověříme připojením (a autentizací k SMTP serveru)
 		using SmtpClient smtpClient = await CreateConnectedSmtpClientAsync(cancellationToken);
 	}
 

@@ -8,14 +8,12 @@ public class NewProjectTemplateDesignTimeDbContextFactory : IDesignTimeDbContext
 {
 	public NewProjectTemplateDbContext CreateDbContext(string[] args)
 	{
-		// Příkazy pro tooling EF Core Migrations (Add-Migration, ...) tooling získávají DbContext z této metody.
-		// Stejně tak  CodeGenerator.
-		// InMemory provider lenze pro tooling EF Core Migrations, je potřeba provider pro SqlServer.
-		// Provider pro SQL Server nejspíš neumí použít connection string z app.configu, lze řešit přes appSettings.json, pokud je startup projectem ASP.NET Core aplikace.
+		// Commands EF Core Migrations (Add-Migration, ...) tooling get DbContext from this method. (+ CodeGenerator)
+		// InMemory provider cannot be used for EF Core Migrations tooling, SqlServer provider has to be used.
 		string environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? "Development";
 
-		// Current path je pro CodeGenerator DataLayer
-		// potřebujeme načíst konfiguraci od Entity, resp. Entity\bin\Debug(Release)\nestandard2.0.
+		// Current path is for CodeGenerator DataLayer
+		// We need to read Entity configuration, Entity\bin\Debug(Release)\nestandard2.0.
 		IConfigurationRoot configuration = new ConfigurationBuilder()
 			.SetBasePath(System.IO.Path.GetDirectoryName(this.GetType().Assembly.Location))
 			.AddJsonFile("appSettings.Entity.json")

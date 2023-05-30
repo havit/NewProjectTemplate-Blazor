@@ -1,4 +1,4 @@
-﻿namespace Havit.NewProjectTemplate.DependencyInjection.ConfigrationOptions;
+﻿namespace Havit.NewProjectTemplate.DependencyInjection.ConfigurationOptions;
 
 public class FileStorageOptions
 {

@@ -3,11 +3,6 @@ using Microsoft.Extensions.Diagnostics.HealthChecks;
 
 namespace Havit.NewProjectTemplate.Services.HealthChecks;
 
-/// <summary>
-/// Kontroluje dostupnost databáze.
-/// De facto jen pro inpiraci pro další health checks, jinak je kontrola dostupnosti databáze pomocí DbContextu vestavěna - viz
-/// metoda AddDbContextCheck(nuget balíček Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore).
-/// </summary>
 public class NewProjectTemplateDbContextHealthCheck : BaseHealthCheck
 {
 	private readonly IDbContext dbContext;

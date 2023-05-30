@@ -10,11 +10,11 @@ public static class AzureWebAppDiagnosticsExtensions
 	{
 		builder.AddAzureWebAppDiagnostics();
 
-		// bežíme v Azure App Service?
-		// inspirace: https://github.com/dotnet/aspnetcore/blob/c00e0e775208cb7cb377f9bd0c8a66a0b3d0ed4d/src/Logging.AzureAppServices/src/WebAppContext.cs#L30
+		// Running in Azure App Service?
+		// inspiration: https://github.com/dotnet/aspnetcore/blob/c00e0e775208cb7cb377f9bd0c8a66a0b3d0ed4d/src/Logging.AzureAppServices/src/WebAppContext.cs#L30
 		if (!String.IsNullOrEmpty(Environment.GetEnvironmentVariable("WEBSITE_SITE_NAME")) && !String.IsNullOrEmpty(Environment.GetEnvironmentVariable("HOME")))
 		{
-			// viz komentář u třídy ConfigurationBasedLevelSwitcherRemoval
+			// see ConfigurationBasedLevelSwitcherRemoval comment
 			builder.Services.AddSingleton<IConfigureOptions<LoggerFilterOptions>, ConfigurationBasedLevelSwitcherRemoval>();
 		}
 		return builder;

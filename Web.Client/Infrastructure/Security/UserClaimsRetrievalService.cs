@@ -11,8 +11,8 @@ namespace Havit.NewProjectTemplate.Web.Client.Infrastructure.Security;
 /// Retrieves additional user claims from Web.Server for RolesAccountClaimsPrincipalFactory.
 /// </summary>
 /// <remarks>
-/// We cannot use facade (gRPC stack) as it is dependant on full user context
-/// UserClientService uses Web.Server named HttpClient via IHttpClientFactory to break the dependecy cycle
+/// We cannot use facade (gRPC stack) as it is dependent on full user context
+/// UserClientService uses Web.Server named HttpClient via IHttpClientFactory to break the dependency cycle
 /// https://github.com/dotnet/aspnetcore/issues/33787
 /// https://stackoverflow.com/questions/70935768/call-api-from-accountclaimsprincipalfactory-in-blazor-wasm
 /// </remarks>

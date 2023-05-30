@@ -46,8 +46,8 @@ public static class Program
 				services.AddMemoryCache();
 
 				services.AddApplicationInsightsTelemetryWorkerService();
-				services.AddApplicationInsightsTelemetryProcessor<IgnoreSucceededDependenciesWithNoParentIdProcessor>(); // ignorujeme infrastrukturní položky Hangfire (předpokládá použití ApplicationInsightAttribute níže)
-				services.Remove(services.Single(descriptor => descriptor.ImplementationType == typeof(PerformanceCollectorModule))); // odebereme hlášení PerformanceCounters
+				services.AddApplicationInsightsTelemetryProcessor<IgnoreSucceededDependenciesWithNoParentIdProcessor>();
+				services.Remove(services.Single(descriptor => descriptor.ImplementationType == typeof(PerformanceCollectorModule)));
 				services.AddSingleton<ITelemetryInitializer, JobsRunnerToCloudRoleNameTelemetryInitializer>();
 
 				services.AddExceptionMonitoring(hostContext.Configuration);
@@ -68,11 +68,11 @@ public static class Program
 							UseRecommendedIsolationLevel = true,
 							DisableGlobalLocks = true,
 						})
-						.WithJobExpirationTimeout(TimeSpan.FromDays(30)) // historie hangfire
+						.WithJobExpirationTimeout(TimeSpan.FromDays(30)) // history
 						.UseFilter(new AutomaticRetryAttribute { Attempts = 0 }) // do not retry failed jobs
 						.UseFilter(new ContinuationsSupportAttribute(new HashSet<string> { FailedState.StateName, DeletedState.StateName, SucceededState.StateName })) // only valid with AutomaticRetryAttribute with Attempts = 0
-						.UseFilter(new CancelRecurringJobWhenAlreadyInQueueOrCurrentlyRunningFilter()) // joby se (v případě "nestihnutí" zpracování) nezařazují opakovaně
-						.UseFilter(new ExceptionMonitoringAttribute(serviceProvider.GetRequiredService<IExceptionMonitoringService>())) // zajistíme hlášení chyby v případě selhání jobu
+						.UseFilter(new CancelRecurringJobWhenAlreadyInQueueOrCurrentlyRunningFilter())
+						.UseFilter(new ExceptionMonitoringAttribute(serviceProvider.GetRequiredService<IExceptionMonitoringService>()))
 						.UseFilter(new ApplicationInsightAttribute(serviceProvider.GetRequiredService<TelemetryClient>()) { JobNameFunc = backgroundJob => Hangfire.Extensions.Helpers.JobNameHelper.TryGetSimpleName(backgroundJob.Job, out string simpleName) ? simpleName : backgroundJob.Job.ToString() })
 						.UseConsole()
 					);

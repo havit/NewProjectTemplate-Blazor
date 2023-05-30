@@ -14,7 +14,7 @@ public partial class AdminIndex : ComponentBase
 	[Inject] protected IHxMessageBoxService MessageBox { get; set; }
 	[Inject] protected ILocalStorageService LocalStorageService { get; set; }
 	[Inject] protected INavigationLocalizer NavigationLocalizer { get; set; }
-	[Inject] protected IAdminIndexLocalizer AdmninIndexLocalizer { get; set; }
+	[Inject] protected IAdminIndexLocalizer AdminIndexLocalizer { get; set; }
 	[Inject] protected NavigationManager NavigationManager { get; set; }
 
 	private DataSeeds dataSeedsComponent;
@@ -24,7 +24,7 @@ public partial class AdminIndex : ComponentBase
 		if (await MessageBox.ConfirmAsync("Do you really want to remove culture cache?"))
 		{
 			await LocalStorageService.RemoveItemAsync("culture");
-			Messenger.AddInformation(AdmninIndexLocalizer["CultureRemoved"]); // TODO Just a demo
+			Messenger.AddInformation(AdminIndexLocalizer["CultureRemoved"]); // TODO Just a demo
 		}
 	}
 

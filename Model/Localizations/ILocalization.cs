@@ -1,14 +1,11 @@
 ﻿namespace Havit.NewProjectTemplate.Model.Localizations;
 
-/// <summary>
-/// Lokalizace.
-/// </summary>
 public interface ILocalization<TLocalizedEntity> : Havit.Model.Localizations.ILocalization<TLocalizedEntity, Language>
 {
-	new TLocalizedEntity Parent { get; set; } // new - Havit.Model.Localizations.ILocalization<,> jiĹľ mĂˇ vlastnost Parent
+	new TLocalizedEntity Parent { get; set; }
 	int ParentId { get; set; }
 
-	new Language Language { get; set; } // new - Havit.Model.Localizations.ILocalization<,> jiĹľ mĂˇ vlastnost Language
+	new Language Language { get; set; }
 	int LanguageId { get; set; }
 
 }

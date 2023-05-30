@@ -92,7 +92,7 @@ public class Program
 		//	config.AddPolicy(...);
 		//});
 
-		// UserClientService uses Web.Server named HttpClient via IHttpClientFactory to break the dependecy cycle
+		// UserClientService uses Web.Server named HttpClient via IHttpClientFactory to break the dependency cycle
 		// https://github.com/dotnet/aspnetcore/issues/33787
 		// https://stackoverflow.com/questions/70935768/call-api-from-accountclaimsprincipalfactory-in-blazor-wasm
 		builder.Services.AddScoped<IUserClaimsRetrievalService, UserClaimsRetrievalService>();
