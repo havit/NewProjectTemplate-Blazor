@@ -57,7 +57,7 @@ public static class Program
 				if (useHangfire)
 				{
 					services.AddHangfire((serviceProvider, configuration) => configuration
-						.SetDataCompatibilityLevel(CompatibilityLevel.Version_170)
+						.SetDataCompatibilityLevel(CompatibilityLevel.Version_180)
 						.UseSimpleAssemblyNameTypeSerializer()
 						.UseRecommendedSerializerSettings()
 						.UseSqlServerStorage(() => new Microsoft.Data.SqlClient.SqlConnection(hostContext.Configuration.GetConnectionString("Database")), new SqlServerStorageOptions
@@ -67,6 +67,7 @@ public static class Program
 							QueuePollInterval = TimeSpan.FromSeconds(5),
 							UseRecommendedIsolationLevel = true,
 							DisableGlobalLocks = true,
+							EnableHeavyMigrations = true
 						})
 						.WithJobExpirationTimeout(TimeSpan.FromDays(30)) // history
 						.UseFilter(new AutomaticRetryAttribute { Attempts = 0 }) // do not retry failed jobs

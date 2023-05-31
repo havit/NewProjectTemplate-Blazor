@@ -25,10 +25,11 @@ public static class HangfireConfig
 				SlidingInvisibilityTimeout = TimeSpan.FromMinutes(5),
 				QueuePollInterval = TimeSpan.FromSeconds(5),
 				UseRecommendedIsolationLevel = true,
-				DisableGlobalLocks = true // Migration to Schema 7 is required
+				DisableGlobalLocks = true, // Migration to Schema 7 is required
+				EnableHeavyMigrations = true
 			});
 			configuration.UseConsole(); // shows "processing log" in hangfire dashboard
-			configuration.SetDataCompatibilityLevel(CompatibilityLevel.Version_170);
+			configuration.SetDataCompatibilityLevel(CompatibilityLevel.Version_180);
 		});
 	}
 }

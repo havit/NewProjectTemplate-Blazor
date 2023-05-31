@@ -128,6 +128,7 @@ public class Startup
 
 			endpoints.MapHangfireDashboard("/hangfire", new DashboardOptions
 			{
+				DefaultRecordsPerPage = 50,
 				Authorization = new List<IDashboardAuthorizationFilter>() { }, // see https://sahansera.dev/securing-hangfire-dashboard-with-endpoint-routing-auth-policy-aspnetcore/
 				DisplayStorageConnectionString = false,
 				DashboardTitle = "NewProjectTemplate - Jobs",
