@@ -5,17 +5,15 @@ using Havit.NewProjectTemplate.Contracts;
 using Havit.NewProjectTemplate.Contracts.Infrastructure;
 using Havit.NewProjectTemplate.DependencyInjection;
 using Havit.NewProjectTemplate.Facades.Infrastructure.Security;
-using Havit.NewProjectTemplate.Model.Security;
 using Havit.NewProjectTemplate.Primitives.Model.Security;
 using Havit.NewProjectTemplate.Services.HealthChecks;
-using Havit.NewProjectTemplate.Services.Infrastructure.MigrationTool;
 using Havit.NewProjectTemplate.Web.Server.Infrastructure.ApplicationInsights;
 using Havit.NewProjectTemplate.Web.Server.Infrastructure.ConfigurationExtensions;
 using Havit.NewProjectTemplate.Web.Server.Infrastructure.HealthChecks;
+using Havit.NewProjectTemplate.Web.Server.Infrastructure.MigrationTool;
 using Microsoft.ApplicationInsights.DependencyCollector;
 using Microsoft.ApplicationInsights.Extensibility;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
-using Microsoft.Extensions.DependencyInjection;
 using ProtoBuf.Grpc.Server;
 
 namespace Havit.NewProjectTemplate.Web.Server;
@@ -75,6 +73,9 @@ public class Startup
 
 		// Hangfire
 		services.AddCustomizedHangfire(configuration);
+
+		services.Configure<MigrationsOptions>(configuration.GetSection(MigrationsOptions.Path));
+		services.AddHostedService<MigrationHostedService>();
 	}
 
 	// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -140,10 +141,5 @@ public class Startup
 			//.RequireAuthorization();
 			.RequireAuthorization(PolicyNames.HangfireDashboardAccessPolicy);
 		});
-
-		if (configuration.GetValue<bool>("AppSettings:Migrations:RunMigrations"))
-		{
-			app.ApplicationServices.GetRequiredService<IMigrationService>().UpgradeDatabaseSchemaAndData();
-		}
 	}
 }
