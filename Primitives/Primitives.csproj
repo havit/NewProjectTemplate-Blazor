@@ -2,7 +2,7 @@
 
 	<PropertyGroup>
 		<TargetFramework>net7.0</TargetFramework>
-		<ImplicitUsings>enable</ImplicitUsings>
+		<ImplicitUsings>true</ImplicitUsings>
 		<AssemblyName>Havit.NewProjectTemplate.Primitives</AssemblyName>
 		<RootNamespace>Havit.NewProjectTemplate.Primitives</RootNamespace>
 	</PropertyGroup>
