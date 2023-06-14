@@ -18,8 +18,8 @@ namespace Havit.NewProjectTemplate.DataLayer.Repositories.Common;
 [System.CodeDom.Compiler.GeneratedCode("Havit.Data.EntityFrameworkCore.CodeGenerator", "1.0")]
 public abstract class CountryDbRepositoryBase : DbRepository<Havit.NewProjectTemplate.Model.Common.Country>
 {
-	protected CountryDbRepositoryBase(IDbContext dbContext, Havit.NewProjectTemplate.DataLayer.DataSources.Common.ICountryDataSource dataSource, IEntityKeyAccessor<Havit.NewProjectTemplate.Model.Common.Country, int> entityKeyAccessor, IDataLoader dataLoader, ISoftDeleteManager softDeleteManager, IEntityCacheManager entityCacheManager)
-		: base(dbContext, dataSource, entityKeyAccessor, dataLoader, softDeleteManager, entityCacheManager)
+	protected CountryDbRepositoryBase(IDbContext dbContext, IEntityKeyAccessor<Havit.NewProjectTemplate.Model.Common.Country, int> entityKeyAccessor, IDataLoader dataLoader, ISoftDeleteManager softDeleteManager, IEntityCacheManager entityCacheManager)
+		: base(dbContext, entityKeyAccessor, dataLoader, softDeleteManager, entityCacheManager)
 	{
 	}
 

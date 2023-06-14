@@ -18,8 +18,8 @@ namespace Havit.NewProjectTemplate.DataLayer.Repositories.Security;
 [System.CodeDom.Compiler.GeneratedCode("Havit.Data.EntityFrameworkCore.CodeGenerator", "1.0")]
 public partial class RoleDbRepository : RoleDbRepositoryBase, IRoleRepository
 {
-	public RoleDbRepository(IDbContext dbContext, Havit.NewProjectTemplate.DataLayer.DataSources.Security.IRoleDataSource dataSource, IEntityKeyAccessor<Havit.NewProjectTemplate.Model.Security.Role, int> entityKeyAccessor, IDataLoader dataLoader, ISoftDeleteManager softDeleteManager, IEntityCacheManager entityCacheManager)
-		: base(dbContext, dataSource, entityKeyAccessor, dataLoader, softDeleteManager, entityCacheManager)
+	public RoleDbRepository(IDbContext dbContext, IEntityKeyAccessor<Havit.NewProjectTemplate.Model.Security.Role, int> entityKeyAccessor, IDataLoader dataLoader, ISoftDeleteManager softDeleteManager, IEntityCacheManager entityCacheManager)
+		: base(dbContext, entityKeyAccessor, dataLoader, softDeleteManager, entityCacheManager)
 	{
 	}
 }

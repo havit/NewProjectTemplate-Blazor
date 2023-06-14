@@ -18,8 +18,8 @@ namespace Havit.NewProjectTemplate.DataLayer.Repositories.Security;
 [System.CodeDom.Compiler.GeneratedCode("Havit.Data.EntityFrameworkCore.CodeGenerator", "1.0")]
 public abstract class UserDbRepositoryBase : DbRepository<Havit.NewProjectTemplate.Model.Security.User>
 {
-	protected UserDbRepositoryBase(IDbContext dbContext, Havit.NewProjectTemplate.DataLayer.DataSources.Security.IUserDataSource dataSource, IEntityKeyAccessor<Havit.NewProjectTemplate.Model.Security.User, int> entityKeyAccessor, IDataLoader dataLoader, ISoftDeleteManager softDeleteManager, IEntityCacheManager entityCacheManager)
-		: base(dbContext, dataSource, entityKeyAccessor, dataLoader, softDeleteManager, entityCacheManager)
+	protected UserDbRepositoryBase(IDbContext dbContext, IEntityKeyAccessor<Havit.NewProjectTemplate.Model.Security.User, int> entityKeyAccessor, IDataLoader dataLoader, ISoftDeleteManager softDeleteManager, IEntityCacheManager entityCacheManager)
+		: base(dbContext, entityKeyAccessor, dataLoader, softDeleteManager, entityCacheManager)
 	{
 	}
 

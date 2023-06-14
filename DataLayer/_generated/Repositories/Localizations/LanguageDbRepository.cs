@@ -18,8 +18,8 @@ namespace Havit.NewProjectTemplate.DataLayer.Repositories.Localizations;
 [System.CodeDom.Compiler.GeneratedCode("Havit.Data.EntityFrameworkCore.CodeGenerator", "1.0")]
 public partial class LanguageDbRepository : LanguageDbRepositoryBase, ILanguageRepository
 {
-	public LanguageDbRepository(IDbContext dbContext, Havit.NewProjectTemplate.DataLayer.DataSources.Localizations.ILanguageDataSource dataSource, IEntityKeyAccessor<Havit.NewProjectTemplate.Model.Localizations.Language, int> entityKeyAccessor, IDataLoader dataLoader, ISoftDeleteManager softDeleteManager, IEntityCacheManager entityCacheManager)
-		: base(dbContext, dataSource, entityKeyAccessor, dataLoader, softDeleteManager, entityCacheManager)
+	public LanguageDbRepository(IDbContext dbContext, IEntityKeyAccessor<Havit.NewProjectTemplate.Model.Localizations.Language, int> entityKeyAccessor, IDataLoader dataLoader, ISoftDeleteManager softDeleteManager, IEntityCacheManager entityCacheManager)
+		: base(dbContext, entityKeyAccessor, dataLoader, softDeleteManager, entityCacheManager)
 	{
 	}
 }

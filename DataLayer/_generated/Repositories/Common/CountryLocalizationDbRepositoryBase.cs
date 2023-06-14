@@ -18,8 +18,8 @@ namespace Havit.NewProjectTemplate.DataLayer.Repositories.Common;
 [System.CodeDom.Compiler.GeneratedCode("Havit.Data.EntityFrameworkCore.CodeGenerator", "1.0")]
 public abstract class CountryLocalizationDbRepositoryBase : DbRepository<Havit.NewProjectTemplate.Model.Common.CountryLocalization>
 {
-	protected CountryLocalizationDbRepositoryBase(IDbContext dbContext, Havit.NewProjectTemplate.DataLayer.DataSources.Common.ICountryLocalizationDataSource dataSource, IEntityKeyAccessor<Havit.NewProjectTemplate.Model.Common.CountryLocalization, int> entityKeyAccessor, IDataLoader dataLoader, ISoftDeleteManager softDeleteManager, IEntityCacheManager entityCacheManager)
-		: base(dbContext, dataSource, entityKeyAccessor, dataLoader, softDeleteManager, entityCacheManager)
+	protected CountryLocalizationDbRepositoryBase(IDbContext dbContext, IEntityKeyAccessor<Havit.NewProjectTemplate.Model.Common.CountryLocalization, int> entityKeyAccessor, IDataLoader dataLoader, ISoftDeleteManager softDeleteManager, IEntityCacheManager entityCacheManager)
+		: base(dbContext, entityKeyAccessor, dataLoader, softDeleteManager, entityCacheManager)
 	{
 	}
 
