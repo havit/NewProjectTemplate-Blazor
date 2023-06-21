@@ -20,14 +20,14 @@ public class MigrationService : IMigrationService
 		this.configuration = configuration;
 	}
 
-	public void UpgradeDatabaseSchemaAndData()
+	public async Task UpgradeDatabaseSchemaAndDataAsync(CancellationToken cancellationToken = default)
 	{
 		using (IServiceScope serviceScope = serviceScopeFactory.CreateScope())
 		{
 			var context = serviceScope.ServiceProvider.GetService<IDbContext>();
 
 			context.Database.SetCommandTimeout(TimeSpan.FromSeconds(configuration.GetValue<int?>("AppSettings:Migrations:CommandTimeout") ?? 300));
-			context.Database.Migrate();
+			await context.Database.MigrateAsync(cancellationToken);
 
 			var dataSeedRunner = serviceScope.ServiceProvider.GetService<IDataSeedRunner>();
 			dataSeedRunner.SeedData<CoreProfile>();

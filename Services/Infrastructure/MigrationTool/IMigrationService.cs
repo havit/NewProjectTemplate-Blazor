@@ -2,5 +2,5 @@
 
 public interface IMigrationService
 {
-	void UpgradeDatabaseSchemaAndData();
+	Task UpgradeDatabaseSchemaAndDataAsync(CancellationToken cancellationToken = default);
 }

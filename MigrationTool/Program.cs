@@ -10,7 +10,7 @@ namespace Havit.NewProjectTemplate.MigrationTool;
 
 public class Program
 {
-	public static void Main(string[] args)
+	public static async Task Main(string[] args)
 	{
 		IHostBuilder hostBuilder = Host.CreateDefaultBuilder()
 			.ConfigureAppConfiguration((hostContext, config) =>
@@ -28,6 +28,6 @@ public class Program
 				services.ConfigureForMigrationTool(hostContext.Configuration);
 			});
 
-		hostBuilder.Build().Services.GetRequiredService<IMigrationService>().UpgradeDatabaseSchemaAndData();
+		await hostBuilder.Build().Services.GetRequiredService<IMigrationService>().UpgradeDatabaseSchemaAndDataAsync();
 	}
 }

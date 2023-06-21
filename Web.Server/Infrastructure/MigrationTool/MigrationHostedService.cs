@@ -1,8 +1,6 @@
 ﻿using Havit.AspNetCore.ExceptionMonitoring.Services;
 using Havit.NewProjectTemplate.Services.Infrastructure.MigrationTool;
-using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.Extensions.Options;
-using ProtoBuf.Meta;
 
 namespace Havit.NewProjectTemplate.Web.Server.Infrastructure.MigrationTool;
 
@@ -17,7 +15,7 @@ public class MigrationHostedService : IHostedService
 		this.migrationsOptions = migrationsOptions.Value;
 	}
 
-	public Task StartAsync(CancellationToken cancellationToken)
+	public async Task StartAsync(CancellationToken cancellationToken)
 	{
 		// https://learn.microsoft.com/en-us/dotnet/core/extensions/scoped-service?pivots=dotnet-7-0
 		// No scope is created for a hosted service by default.
@@ -33,7 +31,7 @@ public class MigrationHostedService : IHostedService
 		{
 			try
 			{
-				migrationService.UpgradeDatabaseSchemaAndData();
+				await migrationService.UpgradeDatabaseSchemaAndDataAsync(cancellationToken);
 			}
 			catch (Exception exception)
 			{
@@ -41,8 +39,6 @@ public class MigrationHostedService : IHostedService
 				throw;
 			}
 		}
-
-		return Task.CompletedTask;
 	}
 
 	public Task StopAsync(CancellationToken cancellationToken)
