@@ -1,4 +1,5 @@
-﻿using Havit.Data.Patterns.DataSeeds;
+﻿using Havit;
+using Havit.Data.Patterns.DataSeeds;
 using Havit.Data.Patterns.DataSeeds.Profiles;
 using Havit.Extensions.DependencyInjection.Abstractions;
 using Havit.NewProjectTemplate.Contracts;
