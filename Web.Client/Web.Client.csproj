@@ -23,14 +23,14 @@
 		<PackageReference Include="BlazorApplicationInsights" Version="2.2.0" />
 		<PackageReference Include="Blazored.FluentValidation" Version="2.1.0" />
 		<PackageReference Include="Blazored.LocalStorage" Version="4.3.0" />
-		<PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.5.2" />
-		<PackageReference Include="Havit.Blazor.Components.Web.Bootstrap" Version="4.0.1" />
+		<PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.6.0" />
+		<PackageReference Include="Havit.Blazor.Components.Web.Bootstrap" Version="4.0.3" />
 		<PackageReference Include="Havit.Blazor.Grpc.Client.WebAssembly" Version="1.4.1" />
 		<PackageReference Include="Havit.Extensions.Localization" Version="1.0.7" />
 		<PackageReference Include="Havit.SourceGenerators.StrongApiStringLocalizers" Version="1.0.8" />
-		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="7.0.5" />
-		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="7.0.5" PrivateAssets="all" />
-		<PackageReference Include="Microsoft.Authentication.WebAssembly.Msal" Version="7.0.5" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="7.0.9" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="7.0.9" PrivateAssets="all" />
+		<PackageReference Include="Microsoft.Authentication.WebAssembly.Msal" Version="7.0.9" />
 	</ItemGroup>
 
 	<ItemGroup>
