@@ -9,7 +9,7 @@
 
 	<ItemGroup>
 		<PackageReference Include="FluentValidation" Version="11.6.0" />
-		<PackageReference Include="Havit.Blazor.Grpc.Core" Version="1.4.1" />
+		<PackageReference Include="Havit.Blazor.Grpc.Core" Version="1.4.2" />
 		<PackageReference Include="Havit.Core" Version="2.0.27" />
 		<PackageReference Include="protobuf-net" Version="3.2.26" />
 		<PackageReference Include="protobuf-net.Grpc" Version="1.1.1" />
