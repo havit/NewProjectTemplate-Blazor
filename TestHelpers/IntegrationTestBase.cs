@@ -1,11 +1,11 @@
 ﻿using Havit.Data.EntityFrameworkCore;
 using Havit.Data.Patterns.DataSeeds;
 using Havit.NewProjectTemplate.DataLayer.Seeds.Core;
+using Havit.NewProjectTemplate.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Havit.NewProjectTemplate.DependencyInjection;
-using Microsoft.Extensions.Configuration;
 
 namespace Havit.NewProjectTemplate.TestHelpers;
 
@@ -19,11 +19,28 @@ public class IntegrationTestBase
 	protected virtual bool SeedData => true;
 
 	private ServiceProvider serviceProvider;
+	private IConfiguration configuration;
+
+	public IConfiguration Configuration
+	{
+		get
+		{
+			if (configuration == null)
+			{
+				var builder = new ConfigurationBuilder().AddJsonFile($"appsettings.json", optional: false);
+				configuration = builder.Build();
+			}
+
+			return configuration;
+		}
+	}
 
 	[TestInitialize]
 	public virtual void TestInitialize()
 	{
-		IServiceCollection services = CreateServiceCollection();
+		IServiceCollection services = new ServiceCollection();
+		ConfigureServices(services, this.Configuration);
+
 		serviceProvider = services.BuildServiceProvider(new ServiceProviderOptions
 		{
 			ValidateOnBuild = true,
@@ -59,11 +76,8 @@ public class IntegrationTestBase
 		serviceProvider?.Dispose();
 	}
 
-	protected virtual IServiceCollection CreateServiceCollection()
+	protected virtual void ConfigureServices(IServiceCollection services, IConfiguration configuration)
 	{
-		IServiceCollection services = new ServiceCollection();
 		services.ConfigureForTests(useInMemoryDb: !UseLocalDb);
-
-		return services;
 	}
 }
