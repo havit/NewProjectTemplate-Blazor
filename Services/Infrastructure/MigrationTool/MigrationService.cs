@@ -30,7 +30,7 @@ public class MigrationService : IMigrationService
 			await context.Database.MigrateAsync(cancellationToken);
 
 			var dataSeedRunner = serviceScope.ServiceProvider.GetService<IDataSeedRunner>();
-			dataSeedRunner.SeedData<CoreProfile>();
+			await dataSeedRunner.SeedDataAsync<CoreProfile>(false, cancellationToken);
 		}
 	}
 }

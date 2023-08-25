@@ -36,7 +36,7 @@ public class IntegrationTestBase
 	}
 
 	[TestInitialize]
-	public virtual void TestInitialize()
+	public virtual async Task TestInitialize()
 	{
 		IServiceCollection services = new ServiceCollection();
 		ConfigureServices(services, this.Configuration);
@@ -52,17 +52,17 @@ public class IntegrationTestBase
 			var dbContext = scope.ServiceProvider.GetRequiredService<IDbContext>();
 			if (DeleteDbData)
 			{
-				dbContext.Database.EnsureDeleted();
+				await dbContext.Database.EnsureDeletedAsync();
 			}
 			if (this.UseLocalDb)
 			{
-				dbContext.Database.Migrate();
+				await dbContext.Database.MigrateAsync();
 			}
 
 			if (this.SeedData)
 			{
 				var dataSeedRunner = scope.ServiceProvider.GetRequiredService<IDataSeedRunner>();
-				dataSeedRunner.SeedData<CoreProfile>();
+				await dataSeedRunner.SeedDataAsync<CoreProfile>();
 			}
 		}
 
