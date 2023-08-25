@@ -13,13 +13,13 @@ public class DataSeedingTests : IntegrationTestBase
 	protected override bool DeleteDbData => true; // default, but to be sure :D
 
 	[TestMethod]
-	public void DataSeeds_CoreProfile()
+	public async Task DataSeeds_CoreProfile()
 	{
 		// arrange
 		var seedRunner = ServiceProvider.GetRequiredService<IDataSeedRunner>();
 
 		// act
-		seedRunner.SeedData<CoreProfile>();
+		await seedRunner.SeedDataAsync<CoreProfile>();
 
 		// assert
 		// no exception
