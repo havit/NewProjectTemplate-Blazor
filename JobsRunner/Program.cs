@@ -19,6 +19,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Havit.NewProjectTemplate.DependencyInjection.Configuration;
 
 namespace Havit.NewProjectTemplate.JobsRunner;
 
@@ -35,6 +36,7 @@ public static class Program
 					.AddJsonFile(@"appsettings.JobsRunner.json", optional: false)
 					.AddJsonFile($"appsettings.JobsRunner.{hostContext.HostingEnvironment.EnvironmentName}.json", optional: true)
 					.AddJsonFile($"appsettings.JobsRunner.{hostContext.HostingEnvironment.EnvironmentName}.local.json", optional: true) // .gitignored
+					.AddCustomizedAzureKeyVault()
 					.AddEnvironmentVariables();
 			})
 			.ConfigureLogging(logging =>

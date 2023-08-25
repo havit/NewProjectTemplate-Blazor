@@ -1,4 +1,5 @@
 ﻿using System.Runtime.InteropServices;
+using Havit.NewProjectTemplate.DependencyInjection.Configuration;
 using Havit.NewProjectTemplate.Web.Server.Infrastructure.LoggingExtensions;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -32,6 +33,7 @@ public class Program
 					.AddJsonFile("appsettings.WebServer.json", optional: false)
 					.AddJsonFile($"appsettings.WebServer.{hostContext.HostingEnvironment.EnvironmentName}.json", optional: true)
 					.AddJsonFile($"appsettings.WebServer.{hostContext.HostingEnvironment.EnvironmentName}.local.json", optional: true) // .gitignored
+					.AddCustomizedAzureKeyVault()
 					.AddEnvironmentVariables();
 			})
 			.ConfigureLogging((hostingContext, logging) =>

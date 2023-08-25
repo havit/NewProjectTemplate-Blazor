@@ -8,6 +8,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+		<PackageReference Include="Azure.Extensions.AspNetCore.Configuration.Secrets" Version="1.2.2" />
 		<PackageReference Include="Havit.Extensions.DependencyInjection" Version="2.0.12" />
 		<PackageReference Include="Havit.Services.Azure" Version="2.0.23" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="7.0.9" />
