@@ -30,12 +30,12 @@ public static class ServiceCollectionExtensions
 	[MethodImpl(MethodImplOptions.NoInlining)]
 	public static IServiceCollection ConfigureForWebServer(this IServiceCollection services, IConfiguration configuration)
 	{
-		FileStorageOptions fileStorageOptions = configuration.GetSection(FileStorageOptions.FileStorageOptionsKey).Get<FileStorageOptions>();
+		FileStorageOptions fileStorageOptions = configuration.GetSection(FileStorageOptions.ApplicationFileStorageOptionsKey).Get<FileStorageOptions>();
 
 		InstallConfiguration installConfiguration = new InstallConfiguration
 		{
 			DatabaseConnectionString = configuration.GetConnectionString("Database"),
-			AzureStorageConnectionString = configuration.GetConnectionString("AzureStorageConnectionString"),
+			AzureStorageConnectionString = configuration.GetConnectionString("AzureStorage"),
 			FileStoragePathOrContainerName = fileStorageOptions.PathOrContainerName,
 			ServiceProfiles = new[] { ServiceAttribute.DefaultProfile, ServiceProfiles.WebServer },
 		};
@@ -49,7 +49,7 @@ public static class ServiceCollectionExtensions
 		InstallConfiguration installConfiguration = new InstallConfiguration
 		{
 			DatabaseConnectionString = configuration.GetConnectionString("Database"),
-			AzureStorageConnectionString = configuration.GetConnectionString("AzureStorageConnectionString"),
+			AzureStorageConnectionString = configuration.GetConnectionString("AzureStorage"),
 			ServiceProfiles = new[] { ServiceAttribute.DefaultProfile, ServiceProfiles.JobsRunner }
 		};
 
