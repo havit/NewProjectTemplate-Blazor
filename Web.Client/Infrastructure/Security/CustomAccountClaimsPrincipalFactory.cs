@@ -26,11 +26,7 @@ public class CustomAccountClaimsPrincipalFactory : AccountClaimsPrincipalFactory
 			var identity = (ClaimsIdentity)user.Identity;
 
 			var claims = await userClaimsRetrievalService.FetchAdditionalUserClaimsAsync(this.TokenProvider);
-
-			foreach (var claim in claims)
-			{
-				identity.AddClaim(claim);
-			}
+			identity.AddClaims(claims);
 		}
 
 		return user;
