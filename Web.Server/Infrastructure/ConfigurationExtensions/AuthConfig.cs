@@ -28,7 +28,7 @@ public static class AuthConfig
 			options.TokenValidationParameters.NameClaimType = "name";
 		});
 
-		// server-side support for User.IsInRole(), see https://leastprivilege.com/2016/08/21/why-does-my-authorize-attribute-not-work/
+		// https://leastprivilege.com/2016/08/21/why-does-my-authorize-attribute-not-work/
 		JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
 
 		services.AddScoped<IApplicationAuthenticationService, ApplicationAuthenticationService>();

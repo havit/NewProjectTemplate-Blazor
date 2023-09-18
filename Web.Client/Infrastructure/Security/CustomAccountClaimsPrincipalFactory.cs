@@ -1,7 +1,6 @@
-﻿using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
+﻿using System.Security.Claims;
+using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
 using Microsoft.AspNetCore.Components.WebAssembly.Authentication.Internal;
-using System.Security.Claims;
-using System.Text.Json;
 
 namespace Havit.NewProjectTemplate.Web.Client.Infrastructure.Security;
 
@@ -30,14 +29,7 @@ public class CustomAccountClaimsPrincipalFactory : AccountClaimsPrincipalFactory
 
 			foreach (var claim in claims)
 			{
-				if (claim.Type.Equals(ClaimTypes.Role))
-				{
-					identity.AddClaim(new Claim(options.RoleClaim, claim.Value));
-				}
-				else
-				{
-					identity.AddClaim(claim);
-				}
+				identity.AddClaim(claim);
 			}
 		}
 

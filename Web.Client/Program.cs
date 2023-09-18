@@ -8,11 +8,8 @@ using Havit.Blazor.Grpc.Client.ServerExceptions;
 using Havit.Blazor.Grpc.Client.WebAssembly;
 using Havit.NewProjectTemplate.Contracts;
 using Havit.NewProjectTemplate.Contracts.Infrastructure;
-using Havit.NewProjectTemplate.Contracts.Infrastructure.Security;
 using Havit.NewProjectTemplate.Web.Client.Infrastructure.Grpc;
 using Havit.NewProjectTemplate.Web.Client.Infrastructure.Security;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 
@@ -81,7 +78,7 @@ public class Program
 			.AddMsalAuthentication(options =>
 			{
 				builder.Configuration.Bind("AzureAd", options.ProviderOptions.Authentication);
-				options.UserOptions.RoleClaim = "role";
+				options.UserOptions.RoleClaim = ClaimTypes.Role;
 				options.ProviderOptions.DefaultAccessTokenScopes.Add(builder.Configuration["Auth:WebServerScope"]);
 				options.ProviderOptions.LoginMode = "redirect";
 			})
