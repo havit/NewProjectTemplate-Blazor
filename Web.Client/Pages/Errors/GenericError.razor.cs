@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
-using Havit.NewProjectTemplate.Web.Client.Resources.Pages.Errors;
 
 namespace Havit.NewProjectTemplate.Web.Client.Pages.Errors;
 
@@ -9,7 +8,7 @@ public partial class GenericError : IAsyncDisposable
 	[Parameter] public Exception Exception { get; set; }
 	[Parameter] public EventCallback OnRecover { get; set; }
 
-	[Inject] public IGenericErrorLocalizer GenericErrorLocalizer { get; set; }
+	[Inject] public Resources.Pages.Errors.IGenericErrorLocalizer GenericErrorLocalizer { get; set; }
 	[Inject] public NavigationManager NavigationManager { get; set; }
 	[Inject] private IJSRuntime JSRuntime { get; set; }
 
@@ -22,10 +21,17 @@ public partial class GenericError : IAsyncDisposable
 	/// Indicates whether the exception's contents have been copied to clipboard.
 	/// </summary>
 	private bool copiedToClipboard = false;
+	private string traceID;
 
 	public GenericError()
 	{
 		dotnetObjectReference = DotNetObjectReference.Create(this);
+	}
+
+	protected override async Task OnInitializedAsync()
+	{
+		await EnsureJsModule();
+		traceID = await jsModule.InvokeAsync<string>("getTraceID");
 	}
 
 	private void HandleRestartClick()
@@ -35,7 +41,7 @@ public partial class GenericError : IAsyncDisposable
 
 	private async Task EnsureJsModule()
 	{
-		jsModule ??= await JSRuntime.ImportModuleAsync("./js/GenericError.js");
+		jsModule ??= await JSRuntime.ImportModuleAsync("./Pages/Errors/GenericError.razor.js");
 	}
 
 	private async Task CopyExceptionDetailsToClipboard()
@@ -44,9 +50,10 @@ public partial class GenericError : IAsyncDisposable
 
 		await EnsureJsModule();
 
-		string clipboardText = Exception.ToString();
-		await jsModule.InvokeVoidAsync("copyToClipboard", clipboardText, dotnetObjectReference);
+		await jsModule.InvokeVoidAsync("copyToClipboard", GetFullExceptionText(), dotnetObjectReference);
 	}
+
+	private string GetFullExceptionText() => "Operation ID:" + traceID + Environment.NewLine + Exception.ToString();
 
 	[JSInvokable("GenericError_HandleCopiedToClipboard")]
 	public async Task HandleCopiedToClipboard()
