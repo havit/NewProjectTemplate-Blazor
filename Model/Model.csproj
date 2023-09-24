@@ -8,7 +8,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Havit.Core" Version="2.0.27" />
+		<PackageReference Include="Havit.Core" Version="2.0.28" />
 		<PackageReference Include="Havit.Data.EntityFrameworkCore.Abstractions" Version="2.1.1" />
 		<PackageReference Include="Havit.Model" Version="2.0.4" />
 	</ItemGroup>
