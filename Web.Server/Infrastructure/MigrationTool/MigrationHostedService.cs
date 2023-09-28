@@ -6,13 +6,13 @@ namespace Havit.NewProjectTemplate.Web.Server.Infrastructure.MigrationTool;
 
 public class MigrationHostedService : IHostedService
 {
-	private readonly IServiceProvider serviceProvider;
-	private readonly MigrationsOptions migrationsOptions;
+	private readonly IServiceProvider _serviceProvider;
+	private readonly MigrationsOptions _migrationsOptions;
 
 	public MigrationHostedService(IServiceProvider serviceProvider, IOptions<MigrationsOptions> migrationsOptions)
 	{
-		this.serviceProvider = serviceProvider;
-		this.migrationsOptions = migrationsOptions.Value;
+		this._serviceProvider = serviceProvider;
+		this._migrationsOptions = migrationsOptions.Value;
 	}
 
 	public async Task StartAsync(CancellationToken cancellationToken)
@@ -20,14 +20,14 @@ public class MigrationHostedService : IHostedService
 		// https://learn.microsoft.com/en-us/dotnet/core/extensions/scoped-service?pivots=dotnet-7-0
 		// No scope is created for a hosted service by default.
 
-		using var scope = serviceProvider.CreateScope();
+		using var scope = _serviceProvider.CreateScope();
 
 		IMigrationService migrationService = scope.ServiceProvider.GetRequiredService<IMigrationService>();
 
 		// Preventivně už zde, abychom v případě problému s DI containarem zjistili problém dříve, než v případném catchi.
 		IExceptionMonitoringService exceptionMonitoringService = scope.ServiceProvider.GetRequiredService<IExceptionMonitoringService>();
 
-		if (migrationsOptions.RunMigrations)
+		if (_migrationsOptions.RunMigrations)
 		{
 			try
 			{

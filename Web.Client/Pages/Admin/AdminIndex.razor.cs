@@ -17,7 +17,7 @@ public partial class AdminIndex : ComponentBase
 	[Inject] protected IAdminIndexLocalizer AdminIndexLocalizer { get; set; }
 	[Inject] protected NavigationManager NavigationManager { get; set; }
 
-	private DataSeeds dataSeedsComponent;
+	private DataSeeds _dataSeedsComponent;
 
 	private async Task RemoveCultureFromLocalStorage()
 	{

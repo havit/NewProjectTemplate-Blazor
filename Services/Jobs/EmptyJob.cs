@@ -7,20 +7,20 @@ namespace Havit.NewProjectTemplate.Services.Jobs;
 [Service(Profile = ServiceProfiles.JobsRunner)]
 public class EmptyJob : IEmptyJob
 {
-	private readonly ILogger<EmptyJob> logger;
+	private readonly ILogger<EmptyJob> _logger;
 
 	public EmptyJob(ILogger<EmptyJob> logger)
 	{
-		this.logger = logger;
+		this._logger = logger;
 	}
 
 	public async Task ExecuteAsync(CancellationToken cancellationToken)
 	{
-		logger.LogInformation("Begin: EmptyJob");
+		_logger.LogInformation("Begin: EmptyJob");
 
 		// TODO - Replace job code here.
 		await Task.Delay(1, cancellationToken);
 
-		logger.LogInformation("End: EmptyJob");
+		_logger.LogInformation("End: EmptyJob");
 	}
 }

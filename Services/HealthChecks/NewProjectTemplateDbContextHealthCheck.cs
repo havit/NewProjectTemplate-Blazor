@@ -5,16 +5,16 @@ namespace Havit.NewProjectTemplate.Services.HealthChecks;
 
 public class NewProjectTemplateDbContextHealthCheck : BaseHealthCheck
 {
-	private readonly IDbContext dbContext;
+	private readonly IDbContext _dbContext;
 
 	public NewProjectTemplateDbContextHealthCheck(IDbContext dbContext)
 	{
-		this.dbContext = dbContext;
+		this._dbContext = dbContext;
 	}
 
 	protected async override Task<HealthCheckResult> CheckHealthAsync(CancellationToken cancellationToken)
 	{
-		return await dbContext.Database.CanConnectAsync(cancellationToken)
+		return await _dbContext.Database.CanConnectAsync(cancellationToken)
 			? HealthCheckResult.Healthy()
 			: HealthCheckResult.Unhealthy();
 	}

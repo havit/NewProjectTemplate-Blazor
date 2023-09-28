@@ -15,11 +15,11 @@ namespace Havit.NewProjectTemplate.Web.Server.Infrastructure.ApplicationInsights
 /// </remarks>
 public class GrpcRequestStatusTelemetryInitializer : ITelemetryInitializer
 {
-	private readonly IHttpContextAccessor httpContextAccessor;
+	private readonly IHttpContextAccessor _httpContextAccessor;
 
 	public GrpcRequestStatusTelemetryInitializer(IHttpContextAccessor httpContextAccessor)
 	{
-		this.httpContextAccessor = httpContextAccessor;
+		this._httpContextAccessor = httpContextAccessor;
 	}
 
 	public void Initialize(ITelemetry telemetry)
@@ -36,7 +36,7 @@ public class GrpcRequestStatusTelemetryInitializer : ITelemetryInitializer
 			return;
 		}
 
-		if (httpContextAccessor.HttpContext.Response.Headers.TryGetValue("grpc-status", out var grpcStatusHeader))
+		if (_httpContextAccessor.HttpContext.Response.Headers.TryGetValue("grpc-status", out var grpcStatusHeader))
 		{
 			if (Enum.TryParse<StatusCode>(grpcStatusHeader[0], out var grpcStatusCode))
 			{

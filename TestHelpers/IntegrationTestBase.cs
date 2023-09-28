@@ -18,20 +18,20 @@ public class IntegrationTestBase
 
 	protected virtual bool SeedData => true;
 
-	private ServiceProvider serviceProvider;
-	private IConfiguration configuration;
+	private ServiceProvider _serviceProvider;
+	private IConfiguration _configuration;
 
 	public IConfiguration Configuration
 	{
 		get
 		{
-			if (configuration == null)
+			if (_configuration == null)
 			{
 				var builder = new ConfigurationBuilder().AddJsonFile($"appsettings.json", optional: false);
-				configuration = builder.Build();
+				_configuration = builder.Build();
 			}
 
-			return configuration;
+			return _configuration;
 		}
 	}
 
@@ -41,13 +41,13 @@ public class IntegrationTestBase
 		IServiceCollection services = new ServiceCollection();
 		ConfigureServices(services, this.Configuration);
 
-		serviceProvider = services.BuildServiceProvider(new ServiceProviderOptions
+		_serviceProvider = services.BuildServiceProvider(new ServiceProviderOptions
 		{
 			ValidateOnBuild = true,
 			ValidateScopes = true
 		});
 
-		using (var scope = serviceProvider.CreateScope())
+		using (var scope = _serviceProvider.CreateScope())
 		{
 			var dbContext = scope.ServiceProvider.GetRequiredService<IDbContext>();
 			if (DeleteDbData)
@@ -66,14 +66,14 @@ public class IntegrationTestBase
 			}
 		}
 
-		this.ServiceProvider = serviceProvider.CreateScope().ServiceProvider;
+		this.ServiceProvider = _serviceProvider.CreateScope().ServiceProvider;
 	}
 
 	[TestCleanup]
 	public virtual void TestCleanup()
 	{
 		((IDisposable)ServiceProvider)?.Dispose();
-		serviceProvider?.Dispose();
+		_serviceProvider?.Dispose();
 	}
 
 	protected virtual void ConfigureServices(IServiceCollection services, IConfiguration configuration)

@@ -11,22 +11,22 @@ namespace Havit.NewProjectTemplate.Services.Infrastructure.MigrationTool;
 [Service]
 public class MigrationService : IMigrationService
 {
-	private readonly IServiceScopeFactory serviceScopeFactory;
-	private readonly IConfiguration configuration;
+	private readonly IServiceScopeFactory _serviceScopeFactory;
+	private readonly IConfiguration _configuration;
 
 	public MigrationService(IServiceScopeFactory serviceScopeFactory, IConfiguration configuration)
 	{
-		this.serviceScopeFactory = serviceScopeFactory;
-		this.configuration = configuration;
+		this._serviceScopeFactory = serviceScopeFactory;
+		this._configuration = configuration;
 	}
 
 	public async Task UpgradeDatabaseSchemaAndDataAsync(CancellationToken cancellationToken = default)
 	{
-		using (IServiceScope serviceScope = serviceScopeFactory.CreateScope())
+		using (IServiceScope serviceScope = _serviceScopeFactory.CreateScope())
 		{
 			var context = serviceScope.ServiceProvider.GetService<IDbContext>();
 
-			context.Database.SetCommandTimeout(TimeSpan.FromSeconds(configuration.GetValue<int?>("AppSettings:Migrations:CommandTimeout") ?? 300));
+			context.Database.SetCommandTimeout(TimeSpan.FromSeconds(_configuration.GetValue<int?>("AppSettings:Migrations:CommandTimeout") ?? 300));
 			await context.Database.MigrateAsync(cancellationToken);
 
 			var dataSeedRunner = serviceScope.ServiceProvider.GetService<IDataSeedRunner>();

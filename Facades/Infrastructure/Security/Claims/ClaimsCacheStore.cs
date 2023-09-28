@@ -8,16 +8,16 @@ namespace Havit.NewProjectTemplate.Facades.Infrastructure.Security.Claims;
 [Service(Profile = ServiceProfiles.WebServer)]
 public class ClaimsCacheStore : IClaimsCacheStore
 {
-	private readonly ICacheService cacheService;
+	private readonly ICacheService _cacheService;
 
 	public ClaimsCacheStore(ICacheService cacheService)
 	{
-		this.cacheService = cacheService;
+		this._cacheService = cacheService;
 	}
 
 	public List<Claim> GetClaims(UserContextInfo userContextInfo)
 	{
-		if (cacheService.TryGet<List<Claim>>(GetCacheKey(userContextInfo), out List<Claim> claims))
+		if (_cacheService.TryGet<List<Claim>>(GetCacheKey(userContextInfo), out List<Claim> claims))
 		{
 			return claims;
 		}
@@ -26,7 +26,7 @@ public class ClaimsCacheStore : IClaimsCacheStore
 
 	public void StoreClaims(UserContextInfo userContextInfo, List<Claim> claims)
 	{
-		cacheService.Add(GetCacheKey(userContextInfo), claims, new CacheOptions
+		_cacheService.Add(GetCacheKey(userContextInfo), claims, new CacheOptions
 		{
 			Priority = CacheItemPriority.Low,
 			AbsoluteExpiration = new TimeSpan(hours: 0, minutes: 15, seconds: 0)

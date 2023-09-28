@@ -11,20 +11,20 @@ namespace Havit.NewProjectTemplate.Facades.Infrastructure.Security.Authorization
 [Service(Profile = ServiceProfiles.WebServer)]
 public class ApplicationAuthorizationService : IApplicationAuthorizationService
 {
-	private readonly IApplicationAuthenticationService applicationAuthenticationService;
+	private readonly IApplicationAuthenticationService _applicationAuthenticationService;
 
 	public ApplicationAuthorizationService(IApplicationAuthenticationService applicationAuthenticationService)
 	{
-		this.applicationAuthenticationService = applicationAuthenticationService;
+		this._applicationAuthenticationService = applicationAuthenticationService;
 	}
 
 	public IEnumerable<RoleEntry> GetCurrentUserRoles()
 	{
-		return applicationAuthenticationService.GetCurrentClaimsPrincipal().FindAll(ClaimTypes.Role).Select(c => Enum.Parse<RoleEntry>(c.Value));
+		return _applicationAuthenticationService.GetCurrentClaimsPrincipal().FindAll(ClaimTypes.Role).Select(c => Enum.Parse<RoleEntry>(c.Value));
 	}
 
 	public bool IsCurrentUserInRole(RoleEntry role)
 	{
-		return applicationAuthenticationService.GetCurrentClaimsPrincipal().IsInRole(role.ToString());
+		return _applicationAuthenticationService.GetCurrentClaimsPrincipal().IsInRole(role.ToString());
 	}
 }

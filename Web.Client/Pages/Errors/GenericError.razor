@@ -23,11 +23,11 @@
 			<BodyTemplate>
 				<div class="position-relative pe-4">
 					<div class="position-absolute top-0 end-0">
-                        <HxTooltip WrapperCssClass="@(copiedToClipboard ? "d-none" : null)" @ref="copyToClipboardTooltip" Text="@GenericErrorLocalizer.CopyToClipboard">
+                        <HxTooltip WrapperCssClass="@(_copiedToClipboard ? "d-none" : null)" @ref="_copyToClipboardTooltip" Text="@GenericErrorLocalizer.CopyToClipboard">
 							@copyToClipboardButton
                         </HxTooltip>
 
-                        <HxTooltip WrapperCssClass="@(copiedToClipboard ? null : "d-none")" @ref="copiedToClipboardTooltip" Text="@GenericErrorLocalizer.CopiedToClipboard">
+                        <HxTooltip WrapperCssClass="@(_copiedToClipboard ? null : "d-none")" @ref="_copiedToClipboardTooltip" Text="@GenericErrorLocalizer.CopiedToClipboard">
                             @copyToClipboardButton
                         </HxTooltip>
                     </div>
@@ -41,6 +41,6 @@
 		</HxAccordionItem>
 	</HxAccordion>
 	<p class="text-center pt-2">
-		Operation ID: @traceID
+		Operation ID: @_traceId
 	</p>
 </div>

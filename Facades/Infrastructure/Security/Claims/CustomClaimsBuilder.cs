@@ -15,10 +15,10 @@ namespace Havit.NewProjectTemplate.Facades.Infrastructure.Security.Claims;
 [Service(Profile = ServiceProfiles.WebServer)]
 public class CustomClaimsBuilder : ICustomClaimsBuilder
 {
-	private readonly IUserRepository userRepository;
-	private readonly IUnitOfWork unitOfWork;
-	private readonly ICacheService cacheService;
-	private readonly IUserContextInfoBuilder userContextInfoBuilder;
+	private readonly IUserRepository _userRepository;
+	private readonly IUnitOfWork _unitOfWork;
+	private readonly ICacheService _cacheService;
+	private readonly IUserContextInfoBuilder _userContextInfoBuilder;
 
 	public CustomClaimsBuilder(
 		IUserContextInfoBuilder userContextInfoBuilder,
@@ -26,10 +26,10 @@ public class CustomClaimsBuilder : ICustomClaimsBuilder
 		IUnitOfWork unitOfWork,
 		ICacheService cacheService)
 	{
-		this.userContextInfoBuilder = userContextInfoBuilder;
-		this.userRepository = userRepository;
-		this.unitOfWork = unitOfWork;
-		this.cacheService = cacheService;
+		this._userContextInfoBuilder = userContextInfoBuilder;
+		this._userRepository = userRepository;
+		this._unitOfWork = unitOfWork;
+		this._cacheService = cacheService;
 	}
 
 	public async Task<List<Claim>> GetCustomClaimsAsync(ClaimsPrincipal principal)
@@ -38,9 +38,9 @@ public class CustomClaimsBuilder : ICustomClaimsBuilder
 
 		List<Claim> result = new();
 
-		UserContextInfo userContextInfo = userContextInfoBuilder.GetUserContextInfo(principal);
+		UserContextInfo userContextInfo = _userContextInfoBuilder.GetUserContextInfo(principal);
 
-		var user = await userRepository.GetByIdentityProviderIdAsync(userContextInfo.IdentityProviderExternalId);
+		var user = await _userRepository.GetByIdentityProviderIdAsync(userContextInfo.IdentityProviderExternalId);
 
 		if (user == null)
 		{
@@ -76,7 +76,7 @@ public class CustomClaimsBuilder : ICustomClaimsBuilder
 
 	private async Task<User> OnboardFirstUserAsync(UserContextInfo userContextInfo, ClaimsPrincipal principal, CancellationToken cancellationToken = default)
 	{
-		if ((await userRepository.GetAllAsync(cancellationToken)).Any())
+		if ((await _userRepository.GetAllAsync(cancellationToken)).Any())
 		{
 			return null;
 		}
@@ -87,10 +87,10 @@ public class CustomClaimsBuilder : ICustomClaimsBuilder
 		user.DisplayName = principal.FindFirst(x => x.Type == "name")?.Value;
 		user.UserRoles.AddRange(Enum.GetValues<RoleEntry>().Select(entry => new UserRole() { RoleId = (int)entry }));
 
-		unitOfWork.AddForInsert(user);
-		await unitOfWork.CommitAsync(cancellationToken);
+		_unitOfWork.AddForInsert(user);
+		await _unitOfWork.CommitAsync(cancellationToken);
 
-		cacheService.Clear();
+		_cacheService.Clear();
 
 		return user;
 	}

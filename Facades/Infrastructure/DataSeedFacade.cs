@@ -17,15 +17,15 @@ namespace Havit.NewProjectTemplate.Facades.Infrastructure;
 
 public class DataSeedFacade : IDataSeedFacade
 {
-	private readonly IDataSeedRunner dataSeedRunner;
-	private readonly ICacheService cacheService;
+	private readonly IDataSeedRunner _dataSeedRunner;
+	private readonly ICacheService _cacheService;
 
 	public DataSeedFacade(
 		IDataSeedRunner dataSeedRunner,
 		ICacheService cacheService)
 	{
-		this.dataSeedRunner = dataSeedRunner;
-		this.cacheService = cacheService;
+		this._dataSeedRunner = dataSeedRunner;
+		this._cacheService = cacheService;
 	}
 
 	/// <summary>
@@ -44,11 +44,11 @@ public class DataSeedFacade : IDataSeedFacade
 
 		// Individual seeds do not invalidate cache. If there are any cached entries (incl. empty-GetAll),
 		// they get seeded and another seed asks for GetAll(), the newly seeded entities are not included.
-		cacheService.Clear();
+		_cacheService.Clear();
 
-		dataSeedRunner.SeedData(type, forceRun: true);
+		_dataSeedRunner.SeedData(type, forceRun: true);
 
-		cacheService.Clear();
+		_cacheService.Clear();
 
 		return Task.CompletedTask;
 	}

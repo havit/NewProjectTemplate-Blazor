@@ -10,28 +10,28 @@ public partial class GenericError : IAsyncDisposable
 
 	[Inject] public Resources.Pages.Errors.IGenericErrorLocalizer GenericErrorLocalizer { get; set; }
 	[Inject] public NavigationManager NavigationManager { get; set; }
-	[Inject] private IJSRuntime JSRuntime { get; set; }
+	[Inject] private IJSRuntime JsRuntime { get; set; }
 
-	private IJSObjectReference jsModule;
-	private DotNetObjectReference<GenericError> dotnetObjectReference;
+	private IJSObjectReference _jsModule;
+	private DotNetObjectReference<GenericError> _dotnetObjectReference;
 
-	private HxTooltip copyToClipboardTooltip, copiedToClipboardTooltip;
+	private HxTooltip _copyToClipboardTooltip, _copiedToClipboardTooltip;
 
 	/// <summary>
 	/// Indicates whether the exception's contents have been copied to clipboard.
 	/// </summary>
-	private bool copiedToClipboard = false;
-	private string traceID;
+	private bool _copiedToClipboard = false;
+	private string _traceId;
 
 	public GenericError()
 	{
-		dotnetObjectReference = DotNetObjectReference.Create(this);
+		_dotnetObjectReference = DotNetObjectReference.Create(this);
 	}
 
 	protected override async Task OnInitializedAsync()
 	{
 		await EnsureJsModule();
-		traceID = await jsModule.InvokeAsync<string>("getTraceID");
+		_traceId = await _jsModule.InvokeAsync<string>("getTraceID");
 	}
 
 	private void HandleRestartClick()
@@ -41,39 +41,39 @@ public partial class GenericError : IAsyncDisposable
 
 	private async Task EnsureJsModule()
 	{
-		jsModule ??= await JSRuntime.ImportModuleAsync("./Pages/Errors/GenericError.razor.js");
+		_jsModule ??= await JsRuntime.ImportModuleAsync("./Pages/Errors/GenericError.razor.js");
 	}
 
 	private async Task CopyExceptionDetailsToClipboard()
 	{
-		await copyToClipboardTooltip.HideAsync();
+		await _copyToClipboardTooltip.HideAsync();
 
 		await EnsureJsModule();
 
-		await jsModule.InvokeVoidAsync("copyToClipboard", GetFullExceptionText(), dotnetObjectReference);
+		await _jsModule.InvokeVoidAsync("copyToClipboard", GetFullExceptionText(), _dotnetObjectReference);
 	}
 
-	private string GetFullExceptionText() => "Operation ID:" + traceID + Environment.NewLine + Exception.ToString();
+	private string GetFullExceptionText() => "Operation ID:" + _traceId + Environment.NewLine + Exception.ToString();
 
 	[JSInvokable("GenericError_HandleCopiedToClipboard")]
 	public async Task HandleCopiedToClipboard()
 	{
-		copiedToClipboard = true;
+		_copiedToClipboard = true;
 		StateHasChanged();
 
-		await copiedToClipboardTooltip.ShowAsync();
+		await _copiedToClipboardTooltip.ShowAsync();
 	}
 
 	public async ValueTask DisposeAsync()
 	{
-		if (dotnetObjectReference is not null)
+		if (_dotnetObjectReference is not null)
 		{
-			dotnetObjectReference.Dispose();
+			_dotnetObjectReference.Dispose();
 		}
 
-		if (jsModule is not null)
+		if (_jsModule is not null)
 		{
-			await jsModule.DisposeAsync();
+			await _jsModule.DisposeAsync();
 		}
 	}
 }

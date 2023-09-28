@@ -21,7 +21,7 @@
         </div>
         <div class="col">
             <NavPanel Title="Server" Icon="BootstrapIcon.HddNetwork">
-                <NavCard OnClick="dataSeedsComponent.ShowAsync" Title="Data Seeds" />
+                <NavCard OnClick="_dataSeedsComponent.ShowAsync" Title="Data Seeds" />
                 <NavCard OnClick="HandleClearCache" Title="Clear Server Cache" />
                 <NavCard Href="/hangfire/recurring" Title="Hangfire" />
             </NavPanel>
@@ -34,5 +34,5 @@
         </div>
     </div>
 
-    <Havit.NewProjectTemplate.Web.Client.Pages.Admin.Components.DataSeeds @ref="dataSeedsComponent" />
+    <Havit.NewProjectTemplate.Web.Client.Pages.Admin.Components.DataSeeds @ref="_dataSeedsComponent" />
 </AuthorizeView>

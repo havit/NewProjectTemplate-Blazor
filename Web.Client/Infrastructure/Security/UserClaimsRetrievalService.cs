@@ -18,20 +18,20 @@ namespace Havit.NewProjectTemplate.Web.Client.Infrastructure.Security;
 /// </remarks>
 public class UserClaimsRetrievalService : IUserClaimsRetrievalService
 {
-	private readonly IHttpClientFactory httpClientFactory;
-	private readonly NavigationManager navigationManager;
+	private readonly IHttpClientFactory _httpClientFactory;
+	private readonly NavigationManager _navigationManager;
 
 	public UserClaimsRetrievalService(
 		IHttpClientFactory httpClientFactory,
 		NavigationManager navigationManager)
 	{
-		this.httpClientFactory = httpClientFactory;
-		this.navigationManager = navigationManager;
+		this._httpClientFactory = httpClientFactory;
+		this._navigationManager = navigationManager;
 	}
 
 	public async Task<IEnumerable<Claim>> FetchAdditionalUserClaimsAsync(IAccessTokenProvider accessTokenProvider, CancellationToken cancellationToken = default)
 	{
-		using var httpClient = httpClientFactory.CreateClient("Web.Server");
+		using var httpClient = _httpClientFactory.CreateClient("Web.Server");
 
 		try
 		{
@@ -40,7 +40,7 @@ public class UserClaimsRetrievalService : IUserClaimsRetrievalService
 		}
 		catch (HttpRequestException ex) when (ex.StatusCode == HttpStatusCode.Forbidden)
 		{
-			navigationManager.NavigateTo(Routes.Errors.AccessDenied);
+			_navigationManager.NavigateTo(Routes.Errors.AccessDenied);
 		}
 		catch (AccessTokenNotAvailableException ex)
 		{

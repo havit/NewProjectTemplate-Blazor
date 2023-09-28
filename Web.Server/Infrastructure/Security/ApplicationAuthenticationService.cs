@@ -9,23 +9,23 @@ namespace Havit.NewProjectTemplate.Web.Server.Infrastructure.Security;
 
 public class ApplicationAuthenticationService : IApplicationAuthenticationService
 {
-	private readonly IHttpContextAccessor httpContextAccessor;
+	private readonly IHttpContextAccessor _httpContextAccessor;
 
-	private readonly Lazy<User> userLazy;
+	private readonly Lazy<User> _userLazy;
 
 	public ApplicationAuthenticationService(IHttpContextAccessor httpContextAccessor, IUserRepository userRepository)
 	{
-		this.httpContextAccessor = httpContextAccessor;
+		this._httpContextAccessor = httpContextAccessor;
 
-		userLazy = new Lazy<User>(() => userRepository.GetObject(GetCurrentUserId()));
+		_userLazy = new Lazy<User>(() => userRepository.GetObject(GetCurrentUserId()));
 	}
 
 	public ClaimsPrincipal GetCurrentClaimsPrincipal()
 	{
-		return httpContextAccessor.HttpContext.User;
+		return _httpContextAccessor.HttpContext.User;
 	}
 
-	public User GetCurrentUser() => userLazy.Value;
+	public User GetCurrentUser() => _userLazy.Value;
 
 	public int GetCurrentUserId()
 	{

@@ -2,11 +2,11 @@
 @using Microsoft.AspNetCore.Components.Web
 @namespace Havit.NewProjectTemplate.Web.Server.Pages
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
-@inject IConfiguration configuration;
+@inject IConfiguration Configuration;
 @{
     // Application Insights - předání connection string pro WASM část
     // (viz https://github.com/IvanJosipovic/BlazorApplicationInsights#set-connection-string-programmatically-blazor-wasm-aspnet-core-hosted)
-    string applicationInsightsConnectionString = configuration["ApplicationInsights:ConnectionString"];
+    string applicationInsightsConnectionString = Configuration["ApplicationInsights:ConnectionString"];
     if (!String.IsNullOrEmpty(applicationInsightsConnectionString))
     {
         Context.Response.Cookies.Append("ai_connString", applicationInsightsConnectionString);

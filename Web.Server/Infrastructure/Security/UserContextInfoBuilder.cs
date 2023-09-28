@@ -5,7 +5,7 @@ namespace Havit.NewProjectTemplate.Web.Server.Infrastructure.Security;
 
 public class UserContextInfoBuilder : IUserContextInfoBuilder
 {
-	private UserContextInfo userContextInfo;
+	private UserContextInfo _userContextInfo;
 
 	public UserContextInfo GetUserContextInfo(ClaimsPrincipal principal)
 	{
@@ -15,13 +15,13 @@ public class UserContextInfoBuilder : IUserContextInfoBuilder
 			return null;
 		}
 
-		if (userContextInfo == null)
+		if (_userContextInfo == null)
 		{
 			Claim externalIdClaim = principal.Claims.Single(claim => claim.Type == "oid");
 
-			userContextInfo = new UserContextInfo(IdentityProviderExternalId: externalIdClaim.Value);
+			_userContextInfo = new UserContextInfo(IdentityProviderExternalId: externalIdClaim.Value);
 		}
 
-		return userContextInfo;
+		return _userContextInfo;
 	}
 }

@@ -2,5 +2,5 @@
 
 public partial class MainLayout
 {
-	private ErrorBoundary errorBoundaryComponent;
+	private ErrorBoundary _errorBoundaryComponent;
 }

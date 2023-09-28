@@ -9,12 +9,12 @@ namespace Havit.NewProjectTemplate.Services.Mailing;
 [Service]
 public class MailingService : IMailingService
 {
-	private readonly MailingOptions options;
+	private readonly MailingOptions _options;
 
 	public MailingService(
 		IOptions<MailingOptions> options)
 	{
-		this.options = options.Value;
+		this._options = options.Value;
 	}
 
 	public async Task VerifyHealthAsync(CancellationToken cancellationToken)
@@ -28,7 +28,7 @@ public class MailingService : IMailingService
 		{
 			if (!mailMessage.From.Any())
 			{
-				mailMessage.From.Add(InternetAddress.Parse(options.From));
+				mailMessage.From.Add(InternetAddress.Parse(_options.From));
 			}
 
 			await smtpClient.SendAsync(mailMessage, cancellationToken);
@@ -38,11 +38,11 @@ public class MailingService : IMailingService
 	private async Task<SmtpClient> CreateConnectedSmtpClientAsync(CancellationToken cancellationToken)
 	{
 		var smtpClient = new SmtpClient();
-		await smtpClient.ConnectAsync(options.SmtpServer, options.SmtpPort ?? 0, options.UseSsl, cancellationToken);
+		await smtpClient.ConnectAsync(_options.SmtpServer, _options.SmtpPort ?? 0, _options.UseSsl, cancellationToken);
 
-		if (options.HasCredentials())
+		if (_options.HasCredentials())
 		{
-			await smtpClient.AuthenticateAsync(options.SmtpUsername, options.SmtpPassword, cancellationToken);
+			await smtpClient.AuthenticateAsync(_options.SmtpUsername, _options.SmtpPassword, cancellationToken);
 		}
 
 		return smtpClient;

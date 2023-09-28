@@ -20,16 +20,16 @@ namespace Havit.NewProjectTemplate.Web.Server;
 
 public class Startup
 {
-	private readonly IConfiguration configuration;
+	private readonly IConfiguration _configuration;
 
 	public Startup(IConfiguration configuration)
 	{
-		this.configuration = configuration;
+		this._configuration = configuration;
 	}
 
 	public void ConfigureServices(IServiceCollection services)
 	{
-		services.ConfigureForWebServer(configuration);
+		services.ConfigureForWebServer(_configuration);
 
 		services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
@@ -37,13 +37,13 @@ public class Startup
 
 		services.AddOptions();
 
-		services.AddCustomizedMailing(configuration);
+		services.AddCustomizedMailing(_configuration);
 
 		// SmtpExceptionMonitoring to errors@havit.cz
-		services.AddExceptionMonitoring(configuration);
+		services.AddExceptionMonitoring(_configuration);
 
 		// Application Insights
-		services.AddApplicationInsightsTelemetry(configuration);
+		services.AddApplicationInsightsTelemetry(_configuration);
 		services.AddSingleton<ITelemetryInitializer, GrpcRequestStatusTelemetryInitializer>();
 		services.AddSingleton<ITelemetryInitializer, EnrichmentTelemetryInitializer>();
 		services.ConfigureTelemetryModule<DependencyTrackingTelemetryModule>((module, o) => { module.EnableSqlCommandTextInstrumentation = true; });
@@ -55,7 +55,7 @@ public class Startup
 					.RequireAuthenticatedUser()
 					.RequireRole(nameof(RoleEntry.SystemAdministrator)));
 		});
-		services.AddCustomizedAuth(configuration);
+		services.AddCustomizedAuth(_configuration);
 
 		// server-side UI
 		services.AddControllersWithViews();
@@ -72,9 +72,9 @@ public class Startup
 			.AddCheck<MailServiceHealthCheck>("SMTP", timeout: defaultHealthCheckTimeout);
 
 		// Hangfire
-		services.AddCustomizedHangfire(configuration);
+		services.AddCustomizedHangfire(_configuration);
 
-		services.Configure<MigrationsOptions>(configuration.GetSection(MigrationsOptions.Path));
+		services.Configure<MigrationsOptions>(_configuration.GetSection(MigrationsOptions.Path));
 		services.AddHostedService<MigrationHostedService>();
 	}
 

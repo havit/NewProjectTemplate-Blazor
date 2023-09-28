@@ -11,16 +11,16 @@ namespace Havit.NewProjectTemplate.Facades.Infrastructure;
 [Authorize(Roles = nameof(RoleEntry.SystemAdministrator))]
 public class MaintenanceFacade : IMaintenanceFacade
 {
-	private readonly ICacheService cacheService;
+	private readonly ICacheService _cacheService;
 
 	public MaintenanceFacade(ICacheService cacheService)
 	{
-		this.cacheService = cacheService;
+		this._cacheService = cacheService;
 	}
 
 	public Task ClearCache(CancellationToken cancellationToken = default)
 	{
-		cacheService.Clear();
+		_cacheService.Clear();
 
 		return Task.CompletedTask;
 	}

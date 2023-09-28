@@ -10,31 +10,31 @@ public partial class DataSeeds : ComponentBase
 	[Inject] protected NavigationManager NavigationManager { get; set; }
 	[Inject] protected IHxMessageBoxService MessageBox { get; set; }
 
-	private IEnumerable<string> seedProfiles;
-	private string selectedSeedProfile;
-	private HxOffcanvas offcanvasComponent;
+	private IEnumerable<string> _seedProfiles;
+	private string _selectedSeedProfile;
+	private HxOffcanvas _offcanvasComponent;
 
 	private async Task HandleSeedClick()
 	{
-		if ((selectedSeedProfile is not null) && await MessageBox.ConfirmAsync($"Do you really want to seed {selectedSeedProfile}?"))
+		if ((_selectedSeedProfile is not null) && await MessageBox.ConfirmAsync($"Do you really want to seed {_selectedSeedProfile}?"))
 		{
-			await DataSeedFacade.SeedDataProfileAsync(Dto.FromValue(selectedSeedProfile));
+			await DataSeedFacade.SeedDataProfileAsync(Dto.FromValue(_selectedSeedProfile));
 
-			if (await MessageBox.ConfirmAsync($"Seed successful: {selectedSeedProfile}", "Seed was successful. Do you want to reload the Blazor client?"))
+			if (await MessageBox.ConfirmAsync($"Seed successful: {_selectedSeedProfile}", "Seed was successful. Do you want to reload the Blazor client?"))
 			{
 				NavigationManager.NavigateTo("", forceLoad: true);
 			}
 			else
 			{
-				await offcanvasComponent.HideAsync();
+				await _offcanvasComponent.HideAsync();
 			}
 		}
 	}
 
 	public async Task ShowAsync()
 	{
-		seedProfiles ??= await DataSeedFacade.GetDataSeedProfilesAsync();
+		_seedProfiles ??= await DataSeedFacade.GetDataSeedProfilesAsync();
 
-		await offcanvasComponent.ShowAsync();
+		await _offcanvasComponent.ShowAsync();
 	}
 }

@@ -9,25 +9,25 @@ namespace Havit.NewProjectTemplate.Facades.Infrastructure.Security.Claims;
 [Service(Profile = ServiceProfiles.WebServer)]
 public class ApplicationClaimsTransformation : IClaimsTransformation
 {
-	private static CriticalSection<UserContextInfo> criticalSection = new CriticalSection<UserContextInfo>();
+	private static CriticalSection<UserContextInfo> s_criticalSection = new CriticalSection<UserContextInfo>();
 
-	private readonly IClaimsCacheStore claimsCacheStore;
-	private readonly IUserContextInfoBuilder contextInfoBuilder;
-	private readonly ICustomClaimsBuilder customClaimsBuilder;
+	private readonly IClaimsCacheStore _claimsCacheStore;
+	private readonly IUserContextInfoBuilder _contextInfoBuilder;
+	private readonly ICustomClaimsBuilder _customClaimsBuilder;
 
 	public ApplicationClaimsTransformation(
 		IClaimsCacheStore claimsCacheStore,
 		IUserContextInfoBuilder contextInfoBuilder,
 		ICustomClaimsBuilder customClaimsBuilder)
 	{
-		this.claimsCacheStore = claimsCacheStore;
-		this.contextInfoBuilder = contextInfoBuilder;
-		this.customClaimsBuilder = customClaimsBuilder;
+		this._claimsCacheStore = claimsCacheStore;
+		this._contextInfoBuilder = contextInfoBuilder;
+		this._customClaimsBuilder = customClaimsBuilder;
 	}
 
 	public async Task<ClaimsPrincipal> TransformAsync(ClaimsPrincipal principal)
 	{
-		UserContextInfo userContextInfo = contextInfoBuilder.GetUserContextInfo(principal);
+		UserContextInfo userContextInfo = _contextInfoBuilder.GetUserContextInfo(principal);
 
 		// user not logged in - no transformation
 		if (userContextInfo == null)
@@ -35,16 +35,16 @@ public class ApplicationClaimsTransformation : IClaimsTransformation
 			return await Task.FromResult(principal);
 		}
 
-		List<Claim> customClaims = claimsCacheStore.GetClaims(userContextInfo);
+		List<Claim> customClaims = _claimsCacheStore.GetClaims(userContextInfo);
 		if (customClaims == null)
 		{
-			await criticalSection.ExecuteActionAsync(userContextInfo, async () =>
+			await s_criticalSection.ExecuteActionAsync(userContextInfo, async () =>
 			{
-				customClaims = claimsCacheStore.GetClaims(userContextInfo);
+				customClaims = _claimsCacheStore.GetClaims(userContextInfo);
 				if (customClaims == null)
 				{
-					customClaims = await customClaimsBuilder.GetCustomClaimsAsync(principal);
-					claimsCacheStore.StoreClaims(userContextInfo, customClaims);
+					customClaims = await _customClaimsBuilder.GetCustomClaimsAsync(principal);
+					_claimsCacheStore.StoreClaims(userContextInfo, customClaims);
 				}
 			});
 		}
