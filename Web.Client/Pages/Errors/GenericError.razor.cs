@@ -66,10 +66,7 @@ public partial class GenericError : IAsyncDisposable
 
 	public async ValueTask DisposeAsync()
 	{
-		if (_dotnetObjectReference is not null)
-		{
-			_dotnetObjectReference.Dispose();
-		}
+		_dotnetObjectReference?.Dispose();
 
 		if (_jsModule is not null)
 		{

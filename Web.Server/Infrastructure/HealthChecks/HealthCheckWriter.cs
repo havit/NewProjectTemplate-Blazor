@@ -4,7 +4,7 @@ using Microsoft.Extensions.Diagnostics.HealthChecks;
 
 namespace Havit.NewProjectTemplate.Web.Server.Infrastructure.HealthChecks;
 
-public class HealthCheckWriter
+public static class HealthCheckWriter
 {
 	public static Task WriteResponse(HttpContext context, HealthReport result)
 	{

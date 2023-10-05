@@ -30,8 +30,7 @@ public class GrpcRequestStatusTelemetryInitializer : ITelemetryInitializer
 			// telemetry.Context.Cloud.RoleInstance = "...";
 		}
 
-		var requestTelemetry = telemetry as RequestTelemetry;
-		if (requestTelemetry == null)
+		if (telemetry is not RequestTelemetry requestTelemetry)
 		{
 			return;
 		}

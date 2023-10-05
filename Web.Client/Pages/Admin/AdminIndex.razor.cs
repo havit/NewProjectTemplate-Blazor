@@ -34,7 +34,7 @@ public partial class AdminIndex : ComponentBase
 		{
 			await MaintenanceFacade.ClearCache();
 
-			if (await MessageBox.ConfirmAsync($"Server cache cleared. Do you want to reload the Blazor client?"))
+			if (await MessageBox.ConfirmAsync("Server cache cleared. Do you want to reload the Blazor client?"))
 			{
 				NavigationManager.NavigateTo("", forceLoad: true);
 			}

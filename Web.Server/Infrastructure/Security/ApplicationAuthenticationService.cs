@@ -1,9 +1,8 @@
 ﻿using System.Security.Claims;
-using Microsoft.AspNetCore.Http;
+using Havit.NewProjectTemplate.Contracts.Infrastructure.Security;
+using Havit.NewProjectTemplate.DataLayer.Repositories.Security;
 using Havit.NewProjectTemplate.Facades.Infrastructure.Security.Authentication;
 using Havit.NewProjectTemplate.Model.Security;
-using Havit.NewProjectTemplate.DataLayer.Repositories.Security;
-using Havit.NewProjectTemplate.Contracts.Infrastructure.Security;
 
 namespace Havit.NewProjectTemplate.Web.Server.Infrastructure.Security;
 

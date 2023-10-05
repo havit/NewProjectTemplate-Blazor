@@ -27,7 +27,7 @@ public class IntegrationTestBase
 		{
 			if (_configuration == null)
 			{
-				var builder = new ConfigurationBuilder().AddJsonFile($"appsettings.json", optional: false);
+				var builder = new ConfigurationBuilder().AddJsonFile("appsettings.json", optional: false);
 				_configuration = builder.Build();
 			}
 

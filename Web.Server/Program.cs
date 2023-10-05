@@ -1,14 +1,10 @@
 ﻿using System.Runtime.InteropServices;
 using Havit.NewProjectTemplate.DependencyInjection.Configuration;
 using Havit.NewProjectTemplate.Web.Server.Infrastructure.LoggingExtensions;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 
 namespace Havit.NewProjectTemplate.Web.Server;
 
-public class Program
+public static class Program
 {
 	public static void Main(string[] args)
 	{

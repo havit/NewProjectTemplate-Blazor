@@ -1,6 +1,5 @@
 ﻿using Havit.NewProjectTemplate.DependencyInjection;
 using Havit.NewProjectTemplate.Services.Infrastructure.MigrationTool;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -8,7 +7,7 @@ using Microsoft.Extensions.Logging;
 
 namespace Havit.NewProjectTemplate.MigrationTool;
 
-public class Program
+public static class Program
 {
 	public static async Task Main(string[] args)
 	{
