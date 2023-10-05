@@ -77,9 +77,10 @@ dotnet_naming_rule.interface_should_be_begins_with_i.severity = warning
 dotnet_naming_rule.interface_should_be_begins_with_i.symbols = interface
 dotnet_naming_rule.interface_should_be_begins_with_i.style = begins_with_i
 
-dotnet_naming_rule.types_should_be_pascal_case.severity = warning
-dotnet_naming_rule.types_should_be_pascal_case.symbols = types
-dotnet_naming_rule.types_should_be_pascal_case.style = pascal_case
+# Disabled for now, does not allow underscore in names (e.g. Product_Category)
+#dotnet_naming_rule.types_should_be_pascal_case.severity = warning
+#dotnet_naming_rule.types_should_be_pascal_case.symbols = types
+#dotnet_naming_rule.types_should_be_pascal_case.style = pascal_case
 
 dotnet_naming_rule.property_should_be_pascal_case.severity = warning
 dotnet_naming_rule.property_should_be_pascal_case.symbols = property
@@ -157,7 +158,7 @@ dotnet_diagnostic.IDE0040.severity = warning # Use accessibility modifiers
 dotnet_diagnostic.IDE0048.severity = warning # Add parenthesis for clarity
 dotnet_diagnostic.IDE0055.severity = warning # Fix formating
 dotnet_diagnostic.IDE0065.severity = warning # Misplaced using directive
-#dotnet_diagnostic.IDE1006.severity = suggestion # Naming Styles
+dotnet_diagnostic.IDE1006.severity = suggestion # Naming Styles
 
 
 #### FxCop analyzers options ####
@@ -183,11 +184,29 @@ dotnet_diagnostic.CA1065.severity=warning
 dotnet_diagnostic.CA1500.severity=warning
 dotnet_diagnostic.CA1504.severity=warning
 
+# CA1707: Identifiers should not contain underscores
+dotnet_diagnostic.CA1707.severity=none
+
 # CA1822: Member '{0}' does not access instance data and can be marked as static
 dotnet_diagnostic.CA1822.severity=none
 
 # CA2016: Forward the CancellationToken parameter to methods that take one
 dotnet_diagnostic.CA2016.severity = warning
+
+# RCS1036: Remove unnecessary blank line.
+dotnet_diagnostic.RCS1036.severity = none
+
+# RCS1032: Remove redundant parentheses.
+dotnet_diagnostic.RCS1032.severity = none
+
+# RCS1021: Convert lambda expression body to expression body.
+dotnet_diagnostic.RCS1021.severity = silent
+
+# IDE0090: Use 'new(...)'
+dotnet_diagnostic.IDE0090.severity = silent
+
+# IDE0063: Use simple 'using' statement
+dotnet_diagnostic.IDE0063.severity = silent
 
 [*/Migrations/*.cs]
 generated_code=true
