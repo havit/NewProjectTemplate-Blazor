@@ -28,9 +28,11 @@ public static class Program
 				config
 					.AddJsonFile("appsettings.WebServer.json", optional: false)
 					.AddJsonFile($"appsettings.WebServer.{hostContext.HostingEnvironment.EnvironmentName}.json", optional: true)
+#if DEBUG
 					.AddJsonFile($"appsettings.WebServer.{hostContext.HostingEnvironment.EnvironmentName}.local.json", optional: true) // .gitignored
-					.AddCustomizedAzureKeyVault()
-					.AddEnvironmentVariables();
+#endif
+					.AddEnvironmentVariables()
+					.AddCustomizedAzureKeyVault();
 			})
 			.ConfigureLogging((hostingContext, logging) =>
 			{

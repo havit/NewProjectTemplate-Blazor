@@ -29,15 +29,17 @@ public static class Program
 	{
 		bool useHangfire = args.Length == 0;
 
-		IHostBuilder hostBuidler = Host.CreateDefaultBuilder()
+		IHostBuilder hostBuilder = Host.CreateDefaultBuilder()
 			.ConfigureAppConfiguration((hostContext, config) =>
 			{
 				config
 					.AddJsonFile("appsettings.JobsRunner.json", optional: false)
 					.AddJsonFile($"appsettings.JobsRunner.{hostContext.HostingEnvironment.EnvironmentName}.json", optional: true)
+#if DEBUG
 					.AddJsonFile($"appsettings.JobsRunner.{hostContext.HostingEnvironment.EnvironmentName}.local.json", optional: true) // .gitignored
-					.AddCustomizedAzureKeyVault()
-					.AddEnvironmentVariables();
+#endif
+					.AddEnvironmentVariables()
+					.AddCustomizedAzureKeyVault();
 			})
 			.ConfigureLogging(logging =>
 			{
@@ -92,7 +94,7 @@ public static class Program
 				}
 			});
 
-		IHost host = hostBuidler.Build();
+		IHost host = hostBuilder.Build();
 
 		if (useHangfire)
 		{
