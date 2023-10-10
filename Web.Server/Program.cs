@@ -13,18 +13,9 @@ public static class Program
 
 	public static IHostBuilder CreateHostBuilder(string[] args) =>
 		Host.CreateDefaultBuilder(args)
-			.ConfigureWebHostDefaults(webBuilder =>
-			{
-				webBuilder.UseStartup<Startup>();
-#if DEBUG
-				webBuilder.UseEnvironment("Development"); // for Red-Gate ANTS Performance Profiler
-				webBuilder.UseUrls("http://localhost:9900"); // for Red-Gate ANTS Performance Profiler
-#endif
-			})
+			.ConfigureWebHostDefaults(webBuilder => webBuilder.UseStartup<Startup>())
 			.ConfigureAppConfiguration((hostContext, config) =>
 			{
-				// delete all default configuration providers
-				config.Sources.Clear();
 				config
 					.AddJsonFile("appsettings.WebServer.json", optional: false)
 					.AddJsonFile($"appsettings.WebServer.{hostContext.HostingEnvironment.EnvironmentName}.json", optional: true)
