@@ -138,7 +138,6 @@ public class Startup
 													? simpleName
 													: job.ToString()
 			})
-			//.RequireAuthorization();
 			.RequireAuthorization(PolicyNames.HangfireDashboardAccessPolicy);
 		});
 	}
