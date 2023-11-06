@@ -11,8 +11,8 @@ public class MigrationHostedService : IHostedService
 
 	public MigrationHostedService(IServiceProvider serviceProvider, IOptions<MigrationsOptions> migrationsOptions)
 	{
-		this._serviceProvider = serviceProvider;
-		this._migrationsOptions = migrationsOptions.Value;
+		_serviceProvider = serviceProvider;
+		_migrationsOptions = migrationsOptions.Value;
 	}
 
 	public async Task StartAsync(CancellationToken cancellationToken)

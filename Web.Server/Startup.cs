@@ -24,7 +24,7 @@ public class Startup
 
 	public Startup(IConfiguration configuration)
 	{
-		this._configuration = configuration;
+		_configuration = configuration;
 	}
 
 	public void ConfigureServices(IServiceCollection services)

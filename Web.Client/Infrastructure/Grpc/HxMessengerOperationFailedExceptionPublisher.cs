@@ -11,8 +11,8 @@ public class HxMessengerOperationFailedExceptionGrpcClientListener : IOperationF
 
 	public HxMessengerOperationFailedExceptionGrpcClientListener(IHxMessengerService messenger, IStringLocalizer<Global> localizer)
 	{
-		this._messenger = messenger;
-		this._localizer = localizer;
+		_messenger = messenger;
+		_localizer = localizer;
 	}
 
 	public Task ProcessAsync(string errorMessage)

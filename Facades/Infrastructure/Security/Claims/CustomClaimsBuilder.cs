@@ -26,10 +26,10 @@ public class CustomClaimsBuilder : ICustomClaimsBuilder
 		IUnitOfWork unitOfWork,
 		ICacheService cacheService)
 	{
-		this._userContextInfoBuilder = userContextInfoBuilder;
-		this._userRepository = userRepository;
-		this._unitOfWork = unitOfWork;
-		this._cacheService = cacheService;
+		_userContextInfoBuilder = userContextInfoBuilder;
+		_userRepository = userRepository;
+		_unitOfWork = unitOfWork;
+		_cacheService = cacheService;
 	}
 
 	public async Task<List<Claim>> GetCustomClaimsAsync(ClaimsPrincipal principal)

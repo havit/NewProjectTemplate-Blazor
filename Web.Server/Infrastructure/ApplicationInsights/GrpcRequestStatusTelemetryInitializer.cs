@@ -19,7 +19,7 @@ public class GrpcRequestStatusTelemetryInitializer : ITelemetryInitializer
 
 	public GrpcRequestStatusTelemetryInitializer(IHttpContextAccessor httpContextAccessor)
 	{
-		this._httpContextAccessor = httpContextAccessor;
+		_httpContextAccessor = httpContextAccessor;
 	}
 
 	public void Initialize(ITelemetry telemetry)

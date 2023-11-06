@@ -15,7 +15,7 @@ public class MaintenanceFacade : IMaintenanceFacade
 
 	public MaintenanceFacade(ICacheService cacheService)
 	{
-		this._cacheService = cacheService;
+		_cacheService = cacheService;
 	}
 
 	public Task ClearCache(CancellationToken cancellationToken = default)

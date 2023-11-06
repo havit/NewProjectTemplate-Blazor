@@ -14,7 +14,7 @@ public class CustomAccountClaimsPrincipalFactory : AccountClaimsPrincipalFactory
 		IUserClaimsRetrievalService userClaimsRetrievalService
 		) : base(accessor)
 	{
-		this._userClaimsRetrievalService = userClaimsRetrievalService;
+		_userClaimsRetrievalService = userClaimsRetrievalService;
 	}
 
 	public override async ValueTask<ClaimsPrincipal> CreateUserAsync(RemoteUserAccount account, RemoteAuthenticationUserOptions options)

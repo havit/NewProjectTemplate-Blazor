@@ -9,7 +9,7 @@ public class NewProjectTemplateDbContextHealthCheck : BaseHealthCheck
 
 	public NewProjectTemplateDbContextHealthCheck(IDbContext dbContext)
 	{
-		this._dbContext = dbContext;
+		_dbContext = dbContext;
 	}
 
 	protected async override Task<HealthCheckResult> CheckHealthAsync(CancellationToken cancellationToken)

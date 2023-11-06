@@ -25,8 +25,8 @@ public class UserClaimsRetrievalService : IUserClaimsRetrievalService
 		IHttpClientFactory httpClientFactory,
 		NavigationManager navigationManager)
 	{
-		this._httpClientFactory = httpClientFactory;
-		this._navigationManager = navigationManager;
+		_httpClientFactory = httpClientFactory;
+		_navigationManager = navigationManager;
 	}
 
 	public async Task<IEnumerable<Claim>> FetchAdditionalUserClaimsAsync(IAccessTokenProvider accessTokenProvider, CancellationToken cancellationToken = default)

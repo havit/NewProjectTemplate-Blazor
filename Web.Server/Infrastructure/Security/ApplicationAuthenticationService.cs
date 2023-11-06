@@ -14,7 +14,7 @@ public class ApplicationAuthenticationService : IApplicationAuthenticationServic
 
 	public ApplicationAuthenticationService(IHttpContextAccessor httpContextAccessor, IUserRepository userRepository)
 	{
-		this._httpContextAccessor = httpContextAccessor;
+		_httpContextAccessor = httpContextAccessor;
 
 		_userLazy = new Lazy<User>(() => userRepository.GetObject(GetCurrentUserId()));
 	}

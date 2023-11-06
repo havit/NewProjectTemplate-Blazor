@@ -15,7 +15,7 @@ public class ApplicationAuthorizationService : IApplicationAuthorizationService
 
 	public ApplicationAuthorizationService(IApplicationAuthenticationService applicationAuthenticationService)
 	{
-		this._applicationAuthenticationService = applicationAuthenticationService;
+		_applicationAuthenticationService = applicationAuthenticationService;
 	}
 
 	public IEnumerable<RoleEntry> GetCurrentUserRoles()

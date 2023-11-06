@@ -12,7 +12,7 @@ public class ClaimsCacheStore : IClaimsCacheStore
 
 	public ClaimsCacheStore(ICacheService cacheService)
 	{
-		this._cacheService = cacheService;
+		_cacheService = cacheService;
 	}
 
 	public List<Claim> GetClaims(UserContextInfo userContextInfo)

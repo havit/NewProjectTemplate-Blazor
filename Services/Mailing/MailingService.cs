@@ -14,7 +14,7 @@ public class MailingService : IMailingService
 	public MailingService(
 		IOptions<MailingOptions> options)
 	{
-		this._options = options.Value;
+		_options = options.Value;
 	}
 
 	public async Task VerifyHealthAsync(CancellationToken cancellationToken)

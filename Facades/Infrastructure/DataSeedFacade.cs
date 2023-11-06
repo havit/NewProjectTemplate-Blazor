@@ -24,8 +24,8 @@ public class DataSeedFacade : IDataSeedFacade
 		IDataSeedRunner dataSeedRunner,
 		ICacheService cacheService)
 	{
-		this._dataSeedRunner = dataSeedRunner;
-		this._cacheService = cacheService;
+		_dataSeedRunner = dataSeedRunner;
+		_cacheService = cacheService;
 	}
 
 	/// <summary>

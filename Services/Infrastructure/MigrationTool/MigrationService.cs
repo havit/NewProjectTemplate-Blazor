@@ -16,8 +16,8 @@ public class MigrationService : IMigrationService
 
 	public MigrationService(IServiceScopeFactory serviceScopeFactory, IConfiguration configuration)
 	{
-		this._serviceScopeFactory = serviceScopeFactory;
-		this._configuration = configuration;
+		_serviceScopeFactory = serviceScopeFactory;
+		_configuration = configuration;
 	}
 
 	public async Task UpgradeDatabaseSchemaAndDataAsync(CancellationToken cancellationToken = default)

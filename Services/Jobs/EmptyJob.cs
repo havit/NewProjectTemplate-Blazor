@@ -11,7 +11,7 @@ public class EmptyJob : IEmptyJob
 
 	public EmptyJob(ILogger<EmptyJob> logger)
 	{
-		this._logger = logger;
+		_logger = logger;
 	}
 
 	public async Task ExecuteAsync(CancellationToken cancellationToken)

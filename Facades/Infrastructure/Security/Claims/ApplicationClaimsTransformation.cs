@@ -20,9 +20,9 @@ public class ApplicationClaimsTransformation : IClaimsTransformation
 		IUserContextInfoBuilder contextInfoBuilder,
 		ICustomClaimsBuilder customClaimsBuilder)
 	{
-		this._claimsCacheStore = claimsCacheStore;
-		this._contextInfoBuilder = contextInfoBuilder;
-		this._customClaimsBuilder = customClaimsBuilder;
+		_claimsCacheStore = claimsCacheStore;
+		_contextInfoBuilder = contextInfoBuilder;
+		_customClaimsBuilder = customClaimsBuilder;
 	}
 
 	public async Task<ClaimsPrincipal> TransformAsync(ClaimsPrincipal principal)

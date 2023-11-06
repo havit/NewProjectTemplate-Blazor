@@ -9,7 +9,7 @@ public class MailServiceHealthCheck : BaseHealthCheck
 
 	public MailServiceHealthCheck(IMailingService mailingService)
 	{
-		this._mailingService = mailingService;
+		_mailingService = mailingService;
 	}
 
 	protected async override Task<HealthCheckResult> CheckHealthAsync(CancellationToken cancellationToken)
