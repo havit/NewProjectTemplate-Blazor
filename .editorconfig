@@ -153,6 +153,7 @@ dotnet_naming_style.s_camelcase.capitalization = camel_case
 dotnet_diagnostic.IDE0009.severity = warning # Member access should be qualified
 dotnet_diagnostic.IDE0011.severity = warning # Add braces
 dotnet_diagnostic.IDE0035.severity = warning # Unreachable code detected
+dotnet_diagnostic.IDE0037.severity = none    # Use inferred member name
 dotnet_diagnostic.IDE0040.severity = warning # Use accessibility modifiers
 dotnet_diagnostic.IDE0048.severity = warning # Add parenthesis for clarity
 dotnet_diagnostic.IDE0055.severity = warning # Fix formating
@@ -161,8 +162,6 @@ dotnet_diagnostic.IDE1006.severity = suggestion # Naming Styles
 
 
 #### FxCop analyzers options ####
-# Adopted from:
-# \\topol.havit.local\Library\VS2019\CodeAnalysis\HavitMain.ruleset
 
 dotnet_diagnostic.CA1010.severity=warning
 dotnet_diagnostic.CA1012.severity=warning
