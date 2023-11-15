@@ -1,10 +1,10 @@
-﻿using System.IdentityModel.Tokens.Jwt;
-using Havit.NewProjectTemplate.Facades.Infrastructure.Security.Authentication;
+﻿using Havit.NewProjectTemplate.Facades.Infrastructure.Security.Authentication;
 using Havit.NewProjectTemplate.Facades.Infrastructure.Security.Claims;
 using Havit.NewProjectTemplate.Web.Server.Infrastructure.Security;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.Identity.Web;
+using Microsoft.IdentityModel.JsonWebTokens;
 
 namespace Havit.NewProjectTemplate.Web.Server.Infrastructure.ConfigurationExtensions;
 
@@ -29,7 +29,7 @@ public static class AuthConfig
 		});
 
 		// https://leastprivilege.com/2016/08/21/why-does-my-authorize-attribute-not-work/
-		JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
+		JsonWebTokenHandler.DefaultInboundClaimTypeMap.Clear();
 
 		services.AddScoped<IApplicationAuthenticationService, ApplicationAuthenticationService>();
 		services.AddScoped<IUserContextInfoBuilder, UserContextInfoBuilder>();

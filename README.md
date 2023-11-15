@@ -46,7 +46,7 @@ https://github.com/havit/NewProjectTemplate-Blazor/generate
 1. Check the `TfsPublish.xml`. There might be explicit `net7` target, update it to `net8`.
 1. Update the `Web.Server.csproj` the `EnsureWebJobInPackage` target to use `net8.0` in paths.
 1. If you use it, upgrade your GitHub workflow YAML to use net8.
-
+1. For AAD, if you use `JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();`, replace it with `JsonWebTokenHandler.DefaultInboundClaimTypeMap.Clear();`.
 
 
 # Upgrading existing project from net6 to net7
