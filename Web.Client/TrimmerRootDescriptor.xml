@@ -6,5 +6,6 @@
 	<!--<assembly fullname="Microsoft.Authentication.WebAssembly.Msal" preserve="all" />-->
 
 	<!-- https://github.com/dotnet/aspnetcore/issues/44981 resolved in net7.0.1 -->
-	<!--<assembly fullname="Microsoft.AspNetCore.Components.WebAssembly.Authentication" preserve="all" />-->
+	<!-- https://github.com/dotnet/aspnetcore/issues/49956 reintroduced in net8.0 -->
+	<assembly fullname="Microsoft.AspNetCore.Components.WebAssembly.Authentication" preserve="all" />
 </linker>
