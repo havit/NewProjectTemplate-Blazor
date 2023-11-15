@@ -47,6 +47,7 @@ https://github.com/havit/NewProjectTemplate-Blazor/generate
 1. Update the `Web.Server.csproj` the `EnsureWebJobInPackage` target to use `net8.0` in paths.
 1. If you use it, upgrade your GitHub workflow YAML to use net8.
 1. For AAD, if you use `JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();`, replace it with `JsonWebTokenHandler.DefaultInboundClaimTypeMap.Clear();`.
+1. If you are hitting the `"undefined" is not valid JSON` when logging in (or just "Login failed"), disable assembly trimming for `Microsoft.AspNetCore.Components.WebAssembly.Authentication` (yes, again), see https://github.com/dotnet/aspnetcore/issues/49956
 
 
 # Upgrading existing project from net6 to net7
