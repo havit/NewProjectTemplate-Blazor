@@ -25,13 +25,32 @@ https://github.com/havit/NewProjectTemplate-Blazor/generate
 1. Check all configuration files (including PublishScripts folder).
 1. Run the app...
 
+
+
 ## Further Steps
 1. Update NuGet packages in solution.
 1. Application Insights - configure connection string
 
 (Use PublishScripts folder for deployment settings.)
 
+
+
+# Upgrading existing project from net7 to net8
+
+1. Replace the `<TargetFramework>net7.0</TargetFramework>` to `<TargetFramework>net8.0</TargetFramework>` in all `.csproj` files.
+1. Update NuGet package references from 7.0.x to 8.0.x version + update other NuGet packages as needed (**do not update to EF Core 8 until fully supported by HFW**).
+1. Build: Clean solution & Rebuild solution
+1. Deal with `[Obsolete]` APIs:
+   1. Remove `<HxAnchorFragmentNavigation />` component, if you are using it (anchor-navigation is handled by Blazor now)
+1. In `dotnet-tools.json` upgrade `Havit.Data.EntityFrameworkCore.CodeGenerator.Tool` to 2.8.0+ version (net8) + try if the `DataLayer/Run-CodeGenerator.ps1` runs correctly
+1. Check the `TfsPublish.xml`. There might be explicit `net7` target, update it to `net8`.
+1. Update the `Web.Server.csproj` the `EnsureWebJobInPackage` target to use `net8.0` in paths.
+1. If you use it, upgrade your GitHub workflow YAML to use net8.
+
+
+
 # Upgrading existing project from net6 to net7
+
 1. Replace the `<TargetFramework>net6.0</TargetFramework>` to `<TargetFramework>net7.0</TargetFramework>` in all `.csproj` files.
 1. Update NuGet package references from 6.0.x to 7.0.x version + update other NuGet packages as needed.
 1. Build: Clean solution & Rebuild solution
@@ -49,7 +68,7 @@ https://github.com/havit/NewProjectTemplate-Blazor/generate
     1. BL0007: Component parameter 'XY' should be auto property
         1. use `@bind:after` where applicable
 		1. use `#pragma warning disable` where needed
-1. In `dotnet-tools.json` upgrade `Havit.Data.EntityFrameworkCore.CodeGenerator.Tool` to 2.7.0 version (net7) + try if the `DataLayer/Run-CodeGenerator.ps1` runs currectly
+1. In `dotnet-tools.json` upgrade `Havit.Data.EntityFrameworkCore.CodeGenerator.Tool` to 2.7.0 version (net7) + try if the `DataLayer/Run-CodeGenerator.ps1` runs correctly
 1. Check the `TfsPublish.xml`. There might be explicit `net6` target, update it to `net7`.
 1. Update the `Web.Server.csproj` the `EnsureWebJobInPackage` target to use `net7.0` in paths.
 1. If you use it, upgrade your GitHub workflow YAML to use net7.

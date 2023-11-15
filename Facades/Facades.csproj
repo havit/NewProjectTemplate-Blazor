@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>net7.0</TargetFramework>
+		<TargetFramework>net8.0</TargetFramework>
 		<AssemblyName>Havit.NewProjectTemplate.Facades</AssemblyName>
 		<RootNamespace>Havit.NewProjectTemplate.Facades</RootNamespace>
 		<ImplicitUsings>true</ImplicitUsings>
@@ -17,8 +17,8 @@
 
 	<ItemGroup>
 		<PackageReference Include="Havit.Data.Patterns" Version="2.1.25" />
-		<PackageReference Include="Microsoft.AspNetCore.Authorization" Version="7.0.13" />
-		<PackageReference Include="Microsoft.Extensions.Identity.Core" Version="7.0.13" />
+		<PackageReference Include="Microsoft.AspNetCore.Authorization" Version="8.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Identity.Core" Version="8.0.0" />
 	</ItemGroup>
 
 	<ItemGroup>

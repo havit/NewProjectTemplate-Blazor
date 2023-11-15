@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
 
 	<PropertyGroup>
-		<TargetFramework>net7.0</TargetFramework>
+		<TargetFramework>net8.0</TargetFramework>
 		<AssemblyName>Havit.NewProjectTemplate.Web.Client</AssemblyName>
 		<RootNamespace>Havit.NewProjectTemplate.Web.Client</RootNamespace>
 		<BlazorWebAssemblyLoadAllGlobalizationData>true</BlazorWebAssemblyLoadAllGlobalizationData>
@@ -24,15 +24,15 @@
 		<PackageReference Include="Blazored.FluentValidation" Version="2.1.0" />
 		<PackageReference Include="Blazored.LocalStorage" Version="4.4.0" />
 		<PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.8.0" />
-		<PackageReference Include="Havit.Blazor.Components.Web.Bootstrap" Version="4.2.5" />
-		<PackageReference Include="Havit.Blazor.Grpc.Client.WebAssembly" Version="1.4.4" />
+		<PackageReference Include="Havit.Blazor.Components.Web.Bootstrap" Version="4.3.1" />
+		<PackageReference Include="Havit.Blazor.Grpc.Client.WebAssembly" Version="1.5.0" />
 		<PackageReference Include="Havit.Extensions.Localization" Version="1.0.8" />
 		<PackageReference Include="Havit.SourceGenerators.StrongApiStringLocalizers" Version="1.0.9">
 		  <PrivateAssets>all</PrivateAssets>
 		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
-		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="7.0.13" />
-		<PackageReference Include="Microsoft.Authentication.WebAssembly.Msal" Version="7.0.13" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="8.0.0" />
+		<PackageReference Include="Microsoft.Authentication.WebAssembly.Msal" Version="8.0.0" />
 	</ItemGroup>
 
 	<ItemGroup>

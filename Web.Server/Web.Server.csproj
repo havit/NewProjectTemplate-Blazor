@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
 	<PropertyGroup>
-		<TargetFramework>net7.0</TargetFramework>
+		<TargetFramework>net8.0</TargetFramework>
 		<DisableImplicitComponentsAnalyzers>true</DisableImplicitComponentsAnalyzers>
 		<AssemblyName>Havit.NewProjectTemplate.Web.Server</AssemblyName>
 		<RootNamespace>Havit.NewProjectTemplate.Web.Server</RootNamespace>
@@ -12,11 +12,11 @@
 		<PackageReference Include="Hangfire" Version="1.8.6" />
 		<PackageReference Include="Hangfire.Console" Version="1.4.2" />
 		<PackageReference Include="Havit.AspNetCore" Version="2.0.12" />
-		<PackageReference Include="Havit.Blazor.Components.Web.Bootstrap" Version="4.2.5" />
-		<PackageReference Include="Havit.Blazor.Grpc.Server" Version="1.4.4" />
+		<PackageReference Include="Havit.Blazor.Components.Web.Bootstrap" Version="4.3.1" />
+		<PackageReference Include="Havit.Blazor.Grpc.Server" Version="1.5.0" />
 		<PackageReference Include="Havit.Hangfire.Extensions" Version="2.0.12" />
 		<PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.21.0" />
-		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="7.0.13" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="8.0.0" />
 		<PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="7.0.13" />
 		<PackageReference Include="Microsoft.Identity.Web" Version="2.15.3" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.13" />
@@ -24,8 +24,8 @@
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
-		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0" />
-		<PackageReference Include="Microsoft.Extensions.Logging.AzureAppServices" Version="7.0.13" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Logging.AzureAppServices" Version="8.0.0" />
 		<PackageReference Include="protobuf-net.Grpc.AspNetCore.Reflection" Version="1.1.1" />
 	</ItemGroup>
 
@@ -48,10 +48,10 @@
 	</Target>
 
 	<Target Name="EnsureWebJobInPackage" AfterTargets="CreateReadyToRunImages" BeforeTargets="_PrepareForReadyToRunCompilation">
-		<Error Text="WebJob file Havit.NewProjectTemplate.JobsRunner.exe not found when preparing web deploy package." Condition="!Exists('..\JobsRunner\bin\Release\net7.0\Havit.NewProjectTemplate.JobsRunner.exe')" />
+		<Error Text="WebJob file Havit.NewProjectTemplate.JobsRunner.exe not found when preparing web deploy package." Condition="!Exists('..\JobsRunner\bin\Release\net8.0\Havit.NewProjectTemplate.JobsRunner.exe')" />
 		<ItemGroup>
 			<!-- Pick files for publish. Assumes that JobsRunner is referenced by Web.Server in SLN. -->
-			<WebJobFiles Include="..\JobsRunner\bin\Release\net7.0\**" />
+			<WebJobFiles Include="..\JobsRunner\bin\Release\net8.0\**" />
 			<!-- Add files to ResolvedFileToPublish with path where they should belong (webjobs folder). -->
 			<ResolvedFileToPublish Include="@(WebJobFiles)">
 				<RelativePath>app_data\jobs\continuous\JobsRunner\%(RecursiveDir)%(Filename)%(Extension)</RelativePath>
