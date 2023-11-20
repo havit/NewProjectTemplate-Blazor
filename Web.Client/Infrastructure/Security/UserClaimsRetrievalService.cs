@@ -41,10 +41,12 @@ public class UserClaimsRetrievalService : IUserClaimsRetrievalService
 		catch (HttpRequestException ex) when (ex.StatusCode == HttpStatusCode.Forbidden)
 		{
 			_navigationManager.NavigateTo(Routes.Errors.AccessDenied);
+			return null;
 		}
 		catch (AccessTokenNotAvailableException ex)
 		{
 			ex.Redirect();
+			return null;
 		}
 
 		throw new InvalidOperationException("Unreachable code.");

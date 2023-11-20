@@ -9,6 +9,7 @@ using Havit.NewProjectTemplate.Primitives.Model.Security;
 using Havit.NewProjectTemplate.Services.HealthChecks;
 using Havit.NewProjectTemplate.Web.Server.Infrastructure.ApplicationInsights;
 using Havit.NewProjectTemplate.Web.Server.Infrastructure.ConfigurationExtensions;
+using Havit.NewProjectTemplate.Web.Server.Infrastructure.ExceptionHandling;
 using Havit.NewProjectTemplate.Web.Server.Infrastructure.HealthChecks;
 using Havit.NewProjectTemplate.Web.Server.Infrastructure.MigrationTool;
 using Microsoft.ApplicationInsights.DependencyCollector;
@@ -93,6 +94,8 @@ public class Startup
 			// The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
 			// TODO app.UseHsts();
 		}
+
+		app.UseMiddleware<CustomResponseForKnownExceptionsMiddleware>();
 
 		app.UseHttpsRedirection();
 		app.UseBlazorFrameworkFiles();

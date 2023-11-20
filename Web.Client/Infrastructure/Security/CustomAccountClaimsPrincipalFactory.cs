@@ -26,7 +26,15 @@ public class CustomAccountClaimsPrincipalFactory : AccountClaimsPrincipalFactory
 			var identity = (ClaimsIdentity)user.Identity;
 
 			var claims = await _userClaimsRetrievalService.FetchAdditionalUserClaimsAsync(this.TokenProvider);
-			identity.AddClaims(claims);
+			if (claims != null)
+			{
+				identity.AddClaims(claims);
+			}
+			else
+			{
+				// null indicates rejection from the server
+				return new ClaimsPrincipal();
+			}
 		}
 
 		return user;
