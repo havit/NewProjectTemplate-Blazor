@@ -5,7 +5,7 @@ using Havit.NewProjectTemplate.Contracts;
 using Havit.NewProjectTemplate.Contracts.Infrastructure;
 using Havit.NewProjectTemplate.DependencyInjection;
 using Havit.NewProjectTemplate.Facades.Infrastructure.Security;
-using Havit.NewProjectTemplate.Primitives.Model.Security;
+using Havit.NewProjectTemplate.Primitives.Security;
 using Havit.NewProjectTemplate.Services.HealthChecks;
 using Havit.NewProjectTemplate.Web.Server.Infrastructure.ApplicationInsights;
 using Havit.NewProjectTemplate.Web.Server.Infrastructure.ConfigurationExtensions;

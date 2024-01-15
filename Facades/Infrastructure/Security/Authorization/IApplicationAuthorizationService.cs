@@ -1,4 +1,4 @@
-﻿using Havit.NewProjectTemplate.Primitives.Model.Security;
+﻿using Havit.NewProjectTemplate.Primitives.Security;
 
 namespace Havit.NewProjectTemplate.Facades.Infrastructure.Security.Authorization;
 

@@ -6,7 +6,7 @@ using Havit.Extensions.DependencyInjection.Abstractions;
 using Havit.NewProjectTemplate.Contracts.Infrastructure.Security;
 using Havit.NewProjectTemplate.DataLayer.Repositories.Security;
 using Havit.NewProjectTemplate.Model.Security;
-using Havit.NewProjectTemplate.Primitives.Model.Security;
+using Havit.NewProjectTemplate.Primitives.Security;
 using Havit.NewProjectTemplate.Services.Infrastructure;
 using Havit.Services.Caching;
 

@@ -6,7 +6,7 @@ using Havit.NewProjectTemplate.Contracts;
 using Havit.NewProjectTemplate.Contracts.Infrastructure;
 using Havit.NewProjectTemplate.DataLayer.Seeds.Core;
 using Havit.NewProjectTemplate.Model.Security;
-using Havit.NewProjectTemplate.Primitives.Model.Security;
+using Havit.NewProjectTemplate.Primitives.Security;
 using Havit.Services.Caching;
 using Microsoft.AspNetCore.Authorization;
 

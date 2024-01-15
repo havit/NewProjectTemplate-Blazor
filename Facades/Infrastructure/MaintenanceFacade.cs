@@ -1,7 +1,7 @@
 ﻿using Havit.Extensions.DependencyInjection.Abstractions;
 using Havit.NewProjectTemplate.Contracts.Infrastructure;
 using Havit.NewProjectTemplate.Model.Security;
-using Havit.NewProjectTemplate.Primitives.Model.Security;
+using Havit.NewProjectTemplate.Primitives.Security;
 using Havit.Services.Caching;
 using Microsoft.AspNetCore.Authorization;
 

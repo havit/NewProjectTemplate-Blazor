@@ -2,7 +2,7 @@
 using System.Security.Claims;
 using Havit.Extensions.DependencyInjection.Abstractions;
 using Havit.NewProjectTemplate.Facades.Infrastructure.Security.Authentication;
-using Havit.NewProjectTemplate.Primitives.Model.Security;
+using Havit.NewProjectTemplate.Primitives.Security;
 using Havit.NewProjectTemplate.Services.Infrastructure;
 using Microsoft.AspNetCore.Authorization;
 

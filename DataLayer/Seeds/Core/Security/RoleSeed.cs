@@ -1,6 +1,6 @@
 ﻿using Havit.Data.Patterns.DataSeeds;
 using Havit.NewProjectTemplate.Model.Security;
-using Havit.NewProjectTemplate.Primitives.Model.Security;
+using Havit.NewProjectTemplate.Primitives.Security;
 
 namespace Havit.NewProjectTemplate.DataLayer.Seeds.Core.Security;
 
