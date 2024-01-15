@@ -9,23 +9,23 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Hangfire" Version="1.8.6" />
+		<PackageReference Include="Hangfire" Version="1.8.7" />
 		<PackageReference Include="Hangfire.Console" Version="1.4.2" />
 		<PackageReference Include="Havit.AspNetCore" Version="2.0.12" />
-		<PackageReference Include="Havit.Blazor.Components.Web.Bootstrap" Version="4.3.5" />
-		<PackageReference Include="Havit.Blazor.Grpc.Server" Version="1.5.0" />
+		<PackageReference Include="Havit.Blazor.Components.Web.Bootstrap" Version="4.4.1" />
+		<PackageReference Include="Havit.Blazor.Grpc.Server" Version="1.5.1" />
 		<PackageReference Include="Havit.Hangfire.Extensions" Version="2.0.12" />
 		<PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.22.0" />
-		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="8.0.0" />
-		<PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="8.0.0" />
-		<PackageReference Include="Microsoft.Identity.Web" Version="2.16.0" />
-		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.0" />
-		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.0">
+		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="8.0.1" />
+		<PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="8.0.1" />
+		<PackageReference Include="Microsoft.Identity.Web" Version="2.16.1" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.1" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.1">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
 		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
-		<PackageReference Include="Microsoft.Extensions.Logging.AzureAppServices" Version="8.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Logging.AzureAppServices" Version="8.0.1" />
 		<PackageReference Include="protobuf-net.Grpc.AspNetCore.Reflection" Version="1.1.1" />
 	</ItemGroup>
 
