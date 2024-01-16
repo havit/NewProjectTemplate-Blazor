@@ -1,6 +1,7 @@
 ﻿using System.Globalization;
 using System.Security.Claims;
 using BlazorApplicationInsights;
+using BlazorApplicationInsights.Models;
 using Blazored.LocalStorage;
 using FluentValidation;
 using Havit.Blazor.Grpc.Client;
@@ -134,7 +135,21 @@ public static class Program
 
 	private static void AddLoggingAndApplicationInsights(WebAssemblyHostBuilder builder)
 	{
-		builder.Services.AddBlazorApplicationInsights();
+		builder.Services.AddBlazorApplicationInsights(null,
+			async applicationInsights =>
+			{
+				var telemetryItem = new TelemetryItem()
+				{
+					Tags = new Dictionary<string, object>()
+					{
+						{ "ai.cloud.role", "Web.Client" },
+						// { "ai.cloud.roleInstance", "..." },
+					}
+				};
+
+				await applicationInsights.AddTelemetryInitializer(telemetryItem);
+			},
+			addWasmLogger: true);
 
 		builder.Logging.AddFilter<ApplicationInsightsLoggerProvider>(level => (level == LogLevel.Error) || (level == LogLevel.Critical));
 

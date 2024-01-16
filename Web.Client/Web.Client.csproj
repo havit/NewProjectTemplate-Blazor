@@ -20,7 +20,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="BlazorApplicationInsights" Version="2.2.2" />
+		<PackageReference Include="BlazorApplicationInsights" Version="3.0.4" />
 		<PackageReference Include="Blazored.FluentValidation" Version="2.1.0" />
 		<PackageReference Include="Blazored.LocalStorage" Version="4.4.0" />
 		<PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.9.0" />
