@@ -6,12 +6,12 @@
 		<AssemblyName>Havit.NewProjectTemplate.IntegrationTests</AssemblyName>
 		<RootNamespace>Havit.NewProjectTemplate.IntegrationTests</RootNamespace>
 		<ImplicitUsings>true</ImplicitUsings>
+		<EnableMSTestRunner>true</EnableMSTestRunner>
+		<OutputType>Exe</OutputType>
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.8.0" />
-		<PackageReference Include="MSTest.TestAdapter" Version="3.1.1" />
-		<PackageReference Include="MSTest.TestFramework" Version="3.1.1" />
+		<PackageReference Include="MSTest" Version="3.2.0" />
 	</ItemGroup>
 
 	<ItemGroup>
