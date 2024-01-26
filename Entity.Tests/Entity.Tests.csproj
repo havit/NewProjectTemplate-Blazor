@@ -5,7 +5,7 @@
 		<IsPackable>false</IsPackable>
 		<AssemblyName>Havit.NewProjectTemplate.Entity.Tests</AssemblyName>
 		<RootNamespace>Havit.NewProjectTemplate.Entity.Tests</RootNamespace>
-		<!-- Nasměrujeme publish složku mimo bin aby nedocházelo ke dvojímu spoštění unit testů (ze bin\Release\netcoreapp a bin\Release\netcoreapp\publish) -->
+		<!-- Route the publish folder outside of the bin folder to avoid running unit tests twice (from bin\Release\netcoreapp and bin\Release\netcoreapp\publish) -->
 		<PublishDir>obj\$(Configuration)\publish</PublishDir>
 		<ImplicitUsings>true</ImplicitUsings>
 		<EnableMSTestRunner>true</EnableMSTestRunner>
