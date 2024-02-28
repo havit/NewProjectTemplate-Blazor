@@ -4,8 +4,8 @@ using Microsoft.Extensions.Configuration;
 namespace Havit.NewProjectTemplate.DependencyInjection.Configuration;
 
 /// <summary>
-/// Nastavuje Azure KeyVault jako configuration provider.
-/// Umístění zde v DependencyInjection není šťastné, ale jde asi o nejlepší místo, které sdílí jak Utility, tak Web.Server.
+/// Sets up Azure KeyVault as a configuration provider.
+/// The location here in DependencyInjection is not ideal, but it is probably the best place that is shared by both Utility and Web.Server.
 /// </summary>
 public static class KeyVaultConfig
 {
