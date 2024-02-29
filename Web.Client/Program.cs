@@ -22,8 +22,6 @@ public static class Program
 	{
 		var builder = WebAssemblyHostBuilder.CreateDefault(args);
 
-		builder.RootComponents.Add<App>("app");
-
 		AddLoggingAndApplicationInsights(builder);
 		AddAuthWithHttpClient(builder);
 
@@ -74,6 +72,8 @@ public static class Program
 		builder.Services.AddHttpClient("Web.Server", client => client.BaseAddress = new Uri(builder.HostEnvironment.BaseAddress))
 			.AddHttpMessageHandler<BaseAddressAuthorizationMessageHandler>();
 		builder.Services.AddScoped(sp => sp.GetRequiredService<IHttpClientFactory>().CreateClient("Web.Server"));
+
+		builder.Services.AddCascadingAuthenticationState();
 
 		builder.Services
 			.AddMsalAuthentication(options =>
@@ -135,23 +135,23 @@ public static class Program
 
 	private static void AddLoggingAndApplicationInsights(WebAssemblyHostBuilder builder)
 	{
-		builder.Services.AddBlazorApplicationInsights(null,
-			async applicationInsights =>
-			{
-				var telemetryItem = new TelemetryItem()
-				{
-					Tags = new Dictionary<string, object>()
-					{
-						{ "ai.cloud.role", "Web.Client" },
-						// { "ai.cloud.roleInstance", "..." },
-					}
-				};
+		//builder.Services.AddBlazorApplicationInsights(null,
+		//	async applicationInsights =>
+		//	{
+		//		var telemetryItem = new TelemetryItem()
+		//		{
+		//			Tags = new Dictionary<string, object>()
+		//			{
+		//				{ "ai.cloud.role", "Web.Client" },
+		//				// { "ai.cloud.roleInstance", "..." },
+		//			}
+		//		};
 
-				await applicationInsights.AddTelemetryInitializer(telemetryItem);
-			},
-			addWasmLogger: true);
+		//		await applicationInsights.AddTelemetryInitializer(telemetryItem);
+		//	},
+		//	addWasmLogger: true);
 
-		builder.Logging.AddFilter<ApplicationInsightsLoggerProvider>(level => (level == LogLevel.Error) || (level == LogLevel.Critical));
+		//builder.Logging.AddFilter<ApplicationInsightsLoggerProvider>(level => (level == LogLevel.Error) || (level == LogLevel.Critical));
 
 #if DEBUG
 		builder.Logging.SetMinimumLevel(LogLevel.Debug);

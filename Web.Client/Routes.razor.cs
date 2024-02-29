@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Components;
 
 namespace Havit.NewProjectTemplate.Web.Client;
 
-public partial class App
+public partial class Routes
 {
 	[Inject] protected IFluentValidationDefaultMessagesLocalizer ValidationMessagesLocalizer { get; set; }
 

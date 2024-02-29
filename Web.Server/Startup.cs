@@ -58,6 +58,9 @@ public class Startup
 		});
 		services.AddCustomizedAuth(_configuration);
 
+		services.AddRazorComponents()
+			.AddInteractiveWebAssemblyComponents();
+
 		// server-side UI
 		services.AddControllersWithViews();
 		services.AddRazorPages();
@@ -98,7 +101,6 @@ public class Startup
 		app.UseMiddleware<CustomResponseForKnownExceptionsMiddleware>();
 
 		app.UseHttpsRedirection();
-		app.UseBlazorFrameworkFiles();
 		app.UseStaticFiles();
 
 		app.UseExceptionMonitoring();
@@ -108,13 +110,17 @@ public class Startup
 		app.UseAuthentication();
 		app.UseAuthorization();
 
+		app.UseAntiforgery();
+
 		app.UseGrpcWeb(new GrpcWebOptions() { DefaultEnabled = true });
 
 		app.UseEndpoints(endpoints =>
 		{
 			endpoints.MapRazorPages();
 			endpoints.MapControllers();
-			endpoints.MapFallbackToPage("/_Host");
+			endpoints.MapRazorComponents<App>()
+				.AddInteractiveWebAssemblyRenderMode()
+				.AddAdditionalAssemblies(typeof(Havit.NewProjectTemplate.Web.Client.Program).Assembly);
 
 			endpoints.MapGrpcServicesByApiContractAttributes(
 				typeof(IDataSeedFacade).Assembly,

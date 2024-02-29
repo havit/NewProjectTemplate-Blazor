@@ -5,8 +5,11 @@
 		<AssemblyName>Havit.NewProjectTemplate.Web.Client</AssemblyName>
 		<RootNamespace>Havit.NewProjectTemplate.Web.Client</RootNamespace>
 		<BlazorWebAssemblyLoadAllGlobalizationData>true</BlazorWebAssemblyLoadAllGlobalizationData>
-		<!--  Allow HandleXyClick methods (without Async) -> Suppress 'Use "Async" suffix in names of methods that return an awaitable type' -->
-		<NoWarn>$(NoWarn);VSTHRD200</NoWarn>
+		<NoDefaultLaunchSettingsFile>true</NoDefaultLaunchSettingsFile>
+		<StaticWebAssetProjectMode>Default</StaticWebAssetProjectMode>
+		<!--  VSTHRD003: Avoid awaiting or returning a Task representing work that was not started within your context as that can lead to deadlocks. -->
+		<!--  VSTHRD200: Allow HandleXyClick methods (without Async) -> Suppress 'Use "Async" suffix in names of methods that return an awaitable type' -->
+		<NoWarn>$(NoWarn);VSTHRD003;VSTHRD200</NoWarn>
 	</PropertyGroup>
 
 	<ItemGroup>
