@@ -6,7 +6,6 @@
 		<AssemblyName>Havit.NewProjectTemplate.DataLayer.Tests</AssemblyName>
 		<RootNamespace>Havit.NewProjectTemplate.DataLayer.Tests</RootNamespace>
 		<PublishDir>obj\$(Configuration)\publish</PublishDir>
-		<ImplicitUsings>true</ImplicitUsings>
 		<EnableMSTestRunner>true</EnableMSTestRunner>
 		<OutputType>Exe</OutputType>
 	</PropertyGroup>

@@ -5,7 +5,6 @@
 		<TargetFramework>net8.0</TargetFramework>
 		<AssemblyName>Havit.NewProjectTemplate.JobsRunner</AssemblyName>
 		<RootNamespace>Havit.NewProjectTemplate.JobsRunner</RootNamespace>
-		<ImplicitUsings>true</ImplicitUsings>
 	</PropertyGroup>
 
 	<ItemGroup>

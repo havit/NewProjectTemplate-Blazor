@@ -4,7 +4,6 @@
 		<TargetFramework>net8.0</TargetFramework>
 		<AssemblyName>Havit.NewProjectTemplate.DataLayer</AssemblyName>
 		<RootNamespace>Havit.NewProjectTemplate.DataLayer</RootNamespace>
-		<ImplicitUsings>true</ImplicitUsings>
 	</PropertyGroup>
 
 	<ItemGroup>

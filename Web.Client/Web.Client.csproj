@@ -5,7 +5,6 @@
 		<AssemblyName>Havit.NewProjectTemplate.Web.Client</AssemblyName>
 		<RootNamespace>Havit.NewProjectTemplate.Web.Client</RootNamespace>
 		<BlazorWebAssemblyLoadAllGlobalizationData>true</BlazorWebAssemblyLoadAllGlobalizationData>
-		<ImplicitUsings>true</ImplicitUsings>
 	</PropertyGroup>
 
 	<ItemGroup>

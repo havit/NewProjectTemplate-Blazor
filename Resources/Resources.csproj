@@ -4,7 +4,6 @@
     <TargetFramework>net8.0</TargetFramework>
 	  <AssemblyName>Havit.NewProjectTemplate.Resources</AssemblyName>
 	  <RootNamespace>Havit.NewProjectTemplate.Resources</RootNamespace>
-	  <ImplicitUsings>true</ImplicitUsings>
   </PropertyGroup>
 
   <ItemGroup>
