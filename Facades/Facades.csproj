@@ -17,8 +17,8 @@
 
 	<ItemGroup>
 		<PackageReference Include="Havit.Data.Patterns" Version="2.1.25" />
-		<PackageReference Include="Microsoft.AspNetCore.Authorization" Version="8.0.1" />
-		<PackageReference Include="Microsoft.Extensions.Identity.Core" Version="8.0.1" />
+		<PackageReference Include="Microsoft.AspNetCore.Authorization" Version="8.0.2" />
+		<PackageReference Include="Microsoft.Extensions.Identity.Core" Version="8.0.2" />
 	</ItemGroup>
 
 	<ItemGroup>
