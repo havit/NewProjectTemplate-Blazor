@@ -41,7 +41,7 @@ public static class Program
 
 		WebAssemblyHost webAssemblyHost = builder.Build();
 
-		await SetLanguage(webAssemblyHost);
+		await SetLanguageAsync(webAssemblyHost);
 
 		await webAssemblyHost.RunAsync();
 	}
@@ -120,7 +120,7 @@ public static class Program
 			});
 	}
 
-	private static async ValueTask SetLanguage(WebAssemblyHost webAssemblyHost)
+	private static async ValueTask SetLanguageAsync(WebAssemblyHost webAssemblyHost)
 	{
 		var localStorageService = webAssemblyHost.Services.GetService<ILocalStorageService>();
 

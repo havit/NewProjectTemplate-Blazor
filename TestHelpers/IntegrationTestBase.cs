@@ -36,7 +36,7 @@ public class IntegrationTestBase
 	}
 
 	[TestInitialize]
-	public virtual async Task TestInitialize()
+	public virtual async Task TestInitializeAsync()
 	{
 		IServiceCollection services = new ServiceCollection();
 		ConfigureServices(services, this.Configuration);

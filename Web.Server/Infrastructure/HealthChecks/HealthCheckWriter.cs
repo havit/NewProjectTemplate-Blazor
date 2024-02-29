@@ -6,7 +6,7 @@ namespace Havit.NewProjectTemplate.Web.Server.Infrastructure.HealthChecks;
 
 public static class HealthCheckWriter
 {
-	public static Task WriteResponse(HttpContext context, HealthReport result)
+	public static Task WriteResponseAsync(HttpContext context, HealthReport result)
 	{
 		context.Response.ContentType = "application/json; charset=utf-8";
 

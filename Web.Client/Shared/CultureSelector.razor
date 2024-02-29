@@ -1,8 +1,8 @@
 ﻿@if (System.Threading.Thread.CurrentThread.CurrentUICulture.TwoLetterISOLanguageName != "cs")
 {
-	<HxDropdownItem OnClick="@(async () => await SetCulture("cs-cz"))" >Česky</HxDropdownItem>
+	<HxDropdownItem OnClick="@(async () => await SetCultureAsync("cs-cz"))" >Česky</HxDropdownItem>
 }
 @if (System.Threading.Thread.CurrentThread.CurrentUICulture.TwoLetterISOLanguageName != "en")
 {
-	<HxDropdownItem OnClick="@(async () => await SetCulture("en-us"))" >English</HxDropdownItem>
+	<HxDropdownItem OnClick="@(async () => await SetCultureAsync("en-us"))" >English</HxDropdownItem>
 }

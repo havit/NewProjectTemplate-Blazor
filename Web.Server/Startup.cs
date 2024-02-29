@@ -127,7 +127,7 @@ public class Startup
 			endpoints.MapHealthChecks("/health", new Microsoft.AspNetCore.Diagnostics.HealthChecks.HealthCheckOptions
 			{
 				AllowCachingResponses = false,
-				ResponseWriter = HealthCheckWriter.WriteResponse
+				ResponseWriter = HealthCheckWriter.WriteResponseAsync
 			});
 
 			endpoints.MapHangfireDashboard("/hangfire", new DashboardOptions

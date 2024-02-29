@@ -11,6 +11,10 @@
 		<PackageReference Include="Havit.Extensions.DependencyInjection" Version="2.0.12" />
 		<PackageReference Include="Havit.Services.Azure" Version="2.0.24" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="8.0.2" />
+		<PackageReference Include="Microsoft.VisualStudio.Threading.Analyzers" Version="17.9.28">
+		  <PrivateAssets>all</PrivateAssets>
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
 		<PackageReference Include="Scrutor" Version="4.2.2" />
 	</ItemGroup>
 

@@ -19,7 +19,7 @@ public partial class AdminIndex : ComponentBase
 
 	private DataSeeds _dataSeedsComponent;
 
-	private async Task RemoveCultureFromLocalStorage()
+	private async Task HandleRemoveCultureFromLocalStorageClick()
 	{
 		if (await MessageBox.ConfirmAsync("Do you really want to remove culture cache?"))
 		{
@@ -28,11 +28,11 @@ public partial class AdminIndex : ComponentBase
 		}
 	}
 
-	private async Task HandleClearCache()
+	private async Task HandleClearCacheClick()
 	{
 		if (await MessageBox.ConfirmAsync("Do you really want to clear server cache?"))
 		{
-			await MaintenanceFacade.ClearCache();
+			await MaintenanceFacade.ClearCacheAsync();
 
 			if (await MessageBox.ConfirmAsync("Server cache cleared. Do you want to reload the Blazor client?"))
 			{

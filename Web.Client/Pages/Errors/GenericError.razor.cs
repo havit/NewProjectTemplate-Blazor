@@ -30,7 +30,7 @@ public partial class GenericError : IAsyncDisposable
 
 	protected override async Task OnInitializedAsync()
 	{
-		await EnsureJsModule();
+		await EnsureJsModuleAsync();
 		_traceId = await _jsModule.InvokeAsync<string>("getTraceID");
 	}
 
@@ -39,16 +39,16 @@ public partial class GenericError : IAsyncDisposable
 		NavigationManager.NavigateTo("", forceLoad: true);
 	}
 
-	private async Task EnsureJsModule()
+	private async Task EnsureJsModuleAsync()
 	{
 		_jsModule ??= await JsRuntime.ImportModuleAsync("./Pages/Errors/GenericError.razor.js");
 	}
 
-	private async Task CopyExceptionDetailsToClipboard()
+	private async Task HandleCopyExceptionDetailsToClipboardClick()
 	{
 		await _copyToClipboardTooltip.HideAsync();
 
-		await EnsureJsModule();
+		await EnsureJsModuleAsync();
 
 		await _jsModule.InvokeVoidAsync("copyToClipboard", GetFullExceptionText(), _dotnetObjectReference);
 	}

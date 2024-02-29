@@ -12,7 +12,9 @@ public class CustomResponseForKnownExceptionsMiddleware
 		_next = next;
 	}
 
+#pragma warning disable VSTHRD200 // Use "Async" suffix for async methods
 	public async Task Invoke(HttpContext context)
+#pragma warning restore VSTHRD200 // Use "Async" suffix for async methods
 	{
 		try
 		{
