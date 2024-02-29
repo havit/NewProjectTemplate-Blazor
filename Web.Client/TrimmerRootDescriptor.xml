@@ -1,11 +1,4 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
 <linker>
 	<assembly fullname="System.Runtime.Serialization.Primitives" preserve="all" />
-
-	<!-- https://github.com/dotnet/aspnetcore/issues/33312 resolved in net7-rc2 -->
-	<!--<assembly fullname="Microsoft.Authentication.WebAssembly.Msal" preserve="all" />-->
-
-	<!-- https://github.com/dotnet/aspnetcore/issues/44981 resolved in net7.0.1 -->
-	<!-- https://github.com/dotnet/aspnetcore/issues/49956 reintroduced in net8.0 -->
-	<assembly fullname="Microsoft.AspNetCore.Components.WebAssembly.Authentication" preserve="all" />
 </linker>

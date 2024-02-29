@@ -36,7 +36,6 @@
 		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
 		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="8.0.2" />
-		<PackageReference Include="Microsoft.Authentication.WebAssembly.Msal" Version="8.0.2" />
 		<PackageReference Include="Microsoft.VisualStudio.Threading.Analyzers" Version="17.9.28">
 		  <PrivateAssets>all</PrivateAssets>
 		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

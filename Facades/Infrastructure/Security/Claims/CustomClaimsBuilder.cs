@@ -18,34 +18,29 @@ public class CustomClaimsBuilder : ICustomClaimsBuilder
 	private readonly IUserRepository _userRepository;
 	private readonly IUnitOfWork _unitOfWork;
 	private readonly ICacheService _cacheService;
-	private readonly IUserContextInfoBuilder _userContextInfoBuilder;
 
 	public CustomClaimsBuilder(
-		IUserContextInfoBuilder userContextInfoBuilder,
 		IUserRepository userRepository,
 		IUnitOfWork unitOfWork,
 		ICacheService cacheService)
 	{
-		_userContextInfoBuilder = userContextInfoBuilder;
 		_userRepository = userRepository;
 		_unitOfWork = unitOfWork;
 		_cacheService = cacheService;
 	}
 
-	public async Task<List<Claim>> GetCustomClaimsAsync(ClaimsPrincipal principal)
+	public async Task<List<Claim>> GetCustomClaimsAsync(ClaimsPrincipal principal, CancellationToken cancellationToken = default)
 	{
 		Contract.Requires<SecurityException>(principal.Identity.IsAuthenticated);
 
 		List<Claim> result = new();
 
-		UserContextInfo userContextInfo = _userContextInfoBuilder.GetUserContextInfo(principal);
-
-		var user = await _userRepository.GetByIdentityProviderIdAsync(userContextInfo.IdentityProviderExternalId);
+		var user = await _userRepository.GetByIdentityProviderIdAsync(principal.FindFirst("oid").Value, cancellationToken);
 
 		if (user == null)
 		{
 #if DEBUG
-			user = await OnboardFirstUserAsync(userContextInfo, principal);
+			user = await OnboardFirstUserAsync(principal);
 #endif
 			if (user == null)
 			{
@@ -74,7 +69,7 @@ public class CustomClaimsBuilder : ICustomClaimsBuilder
 		return result;
 	}
 
-	private async Task<User> OnboardFirstUserAsync(UserContextInfo userContextInfo, ClaimsPrincipal principal, CancellationToken cancellationToken = default)
+	private async Task<User> OnboardFirstUserAsync(ClaimsPrincipal principal, CancellationToken cancellationToken = default)
 	{
 		if ((await _userRepository.GetAllAsync(cancellationToken)).Any())
 		{
@@ -82,7 +77,7 @@ public class CustomClaimsBuilder : ICustomClaimsBuilder
 		}
 
 		var user = new User();
-		user.IdentityProviderExternalId = userContextInfo.IdentityProviderExternalId;
+		user.IdentityProviderExternalId = principal.FindFirst("oid").Value;
 		user.Email = principal.FindFirst(x => x.Type == "upn")?.Value.Replace("@", "@devmail.");
 		user.DisplayName = principal.FindFirst(x => x.Type == "name")?.Value;
 		user.UserRoles.AddRange(Enum.GetValues<RoleEntry>().Select(entry => new UserRole() { RoleId = (int)entry }));

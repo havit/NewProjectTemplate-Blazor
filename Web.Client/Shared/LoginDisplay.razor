@@ -18,12 +18,18 @@
 				</HxDropdownToggleElement>
 				<HxDropdownMenu>
 					<CultureSelector />
-					<HxDropdownItem OnClick="BeginSignOut">Log out</HxDropdownItem>
+					<li>                        
+                        <form action="authentication/logout" method="post">
+                            <AntiforgeryToken />
+                            <input type="hidden" name="ReturnUrl" value="@currentUrl" />
+                            <button class="dropdown-item">Log out</button>
+                        </form>
+                    </li>
 				</HxDropdownMenu>
 			</HxDropdown>
 		</Authorized>
 		<NotAuthorized>
-			<span><a href="authentication/login">Log in</a></span>
+            <span><a href="authentication/login">Log in</a></span>
 		</NotAuthorized>
 	</AuthorizeView>
 </div>

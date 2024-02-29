@@ -11,6 +11,7 @@ using Havit.NewProjectTemplate.Contracts;
 using Havit.NewProjectTemplate.Contracts.Infrastructure;
 using Havit.NewProjectTemplate.Web.Client.Infrastructure.Grpc;
 using Havit.NewProjectTemplate.Web.Client.Infrastructure.Security;
+using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 
@@ -66,34 +67,18 @@ public static class Program
 
 	public static void AddAuthWithHttpClient(WebAssemblyHostBuilder builder)
 	{
-		builder.Services.AddScoped<IUserClaimsRetrievalService, UserClaimsRetrievalService>();
-		builder.Services.AddScoped(typeof(AccountClaimsPrincipalFactory<RemoteUserAccount>), typeof(CustomAccountClaimsPrincipalFactory));
-
 		builder.Services.AddHttpClient("Web.Server", client => client.BaseAddress = new Uri(builder.HostEnvironment.BaseAddress))
 			.AddHttpMessageHandler<BaseAddressAuthorizationMessageHandler>();
 		builder.Services.AddScoped(sp => sp.GetRequiredService<IHttpClientFactory>().CreateClient("Web.Server"));
 
+		builder.Services.AddAuthorizationCore();
 		builder.Services.AddCascadingAuthenticationState();
-
-		builder.Services
-			.AddMsalAuthentication(options =>
-			{
-				builder.Configuration.Bind("AzureAd", options.ProviderOptions.Authentication);
-				options.UserOptions.RoleClaim = ClaimTypes.Role;
-				options.ProviderOptions.DefaultAccessTokenScopes.Add(builder.Configuration["Auth:WebServerScope"]);
-				options.ProviderOptions.LoginMode = "redirect";
-			})
-			.AddAccountClaimsPrincipalFactory<CustomAccountClaimsPrincipalFactory>();
+		builder.Services.AddSingleton<AuthenticationStateProvider, PersistentAuthenticationStateProvider>();
 
 		//builder.Services.Configure<AuthorizationOptions>(config =>
 		//{
 		//	config.AddPolicy(...);
 		//});
-
-		// UserClientService uses Web.Server named HttpClient via IHttpClientFactory to break the dependency cycle
-		// https://github.com/dotnet/aspnetcore/issues/33787
-		// https://stackoverflow.com/questions/70935768/call-api-from-accountclaimsprincipalfactory-in-blazor-wasm
-		builder.Services.AddScoped<IUserClaimsRetrievalService, UserClaimsRetrievalService>();
 	}
 
 	private static void AddGrpcClient(WebAssemblyHostBuilder builder)
@@ -108,14 +93,6 @@ public static class Program
 			configureGrpcClientWithAuthorization: grpcClient =>
 			{
 				grpcClient
-					.AddHttpMessageHandler(provider =>
-					{
-						return provider.GetRequiredService<AuthorizationMessageHandler>()
-							.ConfigureHandler(
-								authorizedUrls: new[] { builder.HostEnvironment.BaseAddress },
-								scopes: new[] { builder.Configuration["Auth:WebServerScope"] }
-							);
-					})
 					.AddInterceptor<AuthorizationGrpcClientInterceptor>();
 			});
 	}

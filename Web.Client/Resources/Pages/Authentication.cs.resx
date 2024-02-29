@@ -120,31 +120,4 @@
   <data name="AccessDenied" xml:space="preserve">
     <value>Přístup odepřen.</value>
   </data>
-  <data name="CompletingLoggingIn" xml:space="preserve">
-    <value>Dokončování přihlášení...</value>
-  </data>
-  <data name="CompletingLogOut" xml:space="preserve">
-    <value>Dokončování odhlášení...</value>
-  </data>
-  <data name="LoggingIn" xml:space="preserve">
-    <value>Přihlašování...</value>
-  </data>
-  <data name="LogInFailed" xml:space="preserve">
-    <value>Přihlášení selhalo.</value>
-  </data>
-  <data name="LogOut" xml:space="preserve">
-    <value>Odhlašování...</value>
-  </data>
-  <data name="LogOutFailed" xml:space="preserve">
-    <value>Odhlášení selhalo.</value>
-  </data>
-  <data name="LogOutSucceeded" xml:space="preserve">
-    <value>Odhlášení bylo úspěšné.</value>
-  </data>
-  <data name="Registering" xml:space="preserve">
-    <value>Registrace...</value>
-  </data>
-  <data name="UserProfile" xml:space="preserve">
-    <value>Načítání uživatelského profilu...</value>
-  </data>
 </root>

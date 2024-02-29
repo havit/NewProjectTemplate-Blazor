@@ -1,8 +1,10 @@
 ﻿using System.Security.Claims;
+using Havit.Extensions.DependencyInjection.Abstractions;
 using Havit.NewProjectTemplate.Contracts.Infrastructure.Security;
 using Havit.NewProjectTemplate.DataLayer.Repositories.Security;
 using Havit.NewProjectTemplate.Facades.Infrastructure.Security.Authentication;
 using Havit.NewProjectTemplate.Model.Security;
+using Havit.NewProjectTemplate.Services.Infrastructure;
 
 namespace Havit.NewProjectTemplate.Web.Server.Infrastructure.Security;
 

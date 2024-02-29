@@ -1,17 +1,28 @@
 ﻿using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Routing;
 using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
 
 namespace Havit.NewProjectTemplate.Web.Client.Shared;
 
-public partial class LoginDisplay
+public partial class LoginDisplay : IDisposable
 {
 	[Parameter] public bool ShowOnlyInitials { get; set; }
 
 	[Inject] protected NavigationManager NavigationManager { get; set; }
 
-	private void BeginSignOut()
+	private string currentUrl;
+
+	// TODO: Dořešit <form> vs. HxDropdownMenu/HxDropdownItem
+	protected override void OnInitialized()
 	{
-		NavigationManager.NavigateToLogout("authentication/logout");
+		currentUrl = NavigationManager.ToBaseRelativePath(NavigationManager.Uri);
+		NavigationManager.LocationChanged += OnLocationChanged;
+	}
+
+	private void OnLocationChanged(object sender, LocationChangedEventArgs e)
+	{
+		currentUrl = NavigationManager.ToBaseRelativePath(e.Location);
+		StateHasChanged();
 	}
 
 	/// <summary>
@@ -45,4 +56,8 @@ public partial class LoginDisplay
 		return (names[0][0].ToString() + names[^1][0].ToString()).ToUpper();
 	}
 
+	public void Dispose()
+	{
+		NavigationManager.LocationChanged -= OnLocationChanged;
+	}
 }

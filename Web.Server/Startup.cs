@@ -5,6 +5,7 @@ using Havit.NewProjectTemplate.Contracts;
 using Havit.NewProjectTemplate.Contracts.Infrastructure;
 using Havit.NewProjectTemplate.DependencyInjection;
 using Havit.NewProjectTemplate.Facades.Infrastructure.Security;
+using Havit.NewProjectTemplate.Facades.Infrastructure.Security.Authentication;
 using Havit.NewProjectTemplate.Primitives.Security;
 using Havit.NewProjectTemplate.Services.HealthChecks;
 using Havit.NewProjectTemplate.Web.Server.Infrastructure.ApplicationInsights;
@@ -12,9 +13,11 @@ using Havit.NewProjectTemplate.Web.Server.Infrastructure.ConfigurationExtensions
 using Havit.NewProjectTemplate.Web.Server.Infrastructure.ExceptionHandling;
 using Havit.NewProjectTemplate.Web.Server.Infrastructure.HealthChecks;
 using Havit.NewProjectTemplate.Web.Server.Infrastructure.MigrationTool;
+using Havit.NewProjectTemplate.Web.Server.Infrastructure.Security;
 using Microsoft.ApplicationInsights.DependencyCollector;
 using Microsoft.ApplicationInsights.Extensibility;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
+using Microsoft.AspNetCore.Components.Authorization;
 using ProtoBuf.Grpc.Server;
 
 namespace Havit.NewProjectTemplate.Web.Server;
@@ -49,6 +52,7 @@ public class Startup
 		services.AddSingleton<ITelemetryInitializer, EnrichmentTelemetryInitializer>();
 		services.ConfigureTelemetryModule<DependencyTrackingTelemetryModule>((module, o) => { module.EnableSqlCommandTextInstrumentation = true; });
 
+		services.AddCustomAuthentication(_configuration);
 		services.AddAuthorization(options =>
 		{
 			options.AddPolicy(PolicyNames.HangfireDashboardAccessPolicy, policy => policy
@@ -56,14 +60,16 @@ public class Startup
 					.RequireAuthenticatedUser()
 					.RequireRole(nameof(RoleEntry.SystemAdministrator)));
 		});
-		services.AddCustomizedAuth(_configuration);
+
+		services.AddScoped<AuthenticationStateProvider, PersistingAuthenticationStateProvider>();
+		services.AddScoped<IApplicationAuthenticationService, ApplicationAuthenticationService>();
 
 		services.AddRazorComponents()
 			.AddInteractiveWebAssemblyComponents();
 
 		// server-side UI
-		services.AddControllersWithViews();
 		services.AddRazorPages();
+		services.AddControllersWithViews();
 
 		// gRPC
 		services.AddGrpcServerInfrastructure(assemblyToScanForDataContracts: typeof(Dto).Assembly);
@@ -129,6 +135,8 @@ public class Startup
 					endpoint.RequireAuthorization(); // TODO? AuthorizationPolicyNames.ApiScopePolicy when needed
 				});
 			endpoints.MapCodeFirstGrpcReflectionService();
+
+			endpoints.MapGroup("/authentication").MapLoginAndLogout();
 
 			endpoints.MapHealthChecks("/health", new Microsoft.AspNetCore.Diagnostics.HealthChecks.HealthCheckOptions
 			{

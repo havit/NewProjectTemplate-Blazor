@@ -120,31 +120,4 @@
   <data name="AccessDenied" xml:space="preserve">
     <value>Access denied.</value>
   </data>
-  <data name="CompletingLoggingIn" xml:space="preserve">
-    <value>Completing logging in...</value>
-  </data>
-  <data name="CompletingLogOut" xml:space="preserve">
-    <value>Completing log out...</value>
-  </data>
-  <data name="LoggingIn" xml:space="preserve">
-    <value>Logging in...</value>
-  </data>
-  <data name="LogInFailed" xml:space="preserve">
-    <value>Login failed.</value>
-  </data>
-  <data name="LogOut" xml:space="preserve">
-    <value>Log out...</value>
-  </data>
-  <data name="LogOutFailed" xml:space="preserve">
-    <value>Log out failed.</value>
-  </data>
-  <data name="LogOutSucceeded" xml:space="preserve">
-    <value>Log out succeeded.</value>
-  </data>
-  <data name="Registering" xml:space="preserve">
-    <value>Registering...</value>
-  </data>
-  <data name="UserProfile" xml:space="preserve">
-    <value>Loading user profile...</value>
-  </data>
 </root>
