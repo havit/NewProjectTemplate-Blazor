@@ -40,7 +40,7 @@ public class UserClaimsRetrievalService : IUserClaimsRetrievalService
 		}
 		catch (HttpRequestException ex) when (ex.StatusCode == HttpStatusCode.Forbidden)
 		{
-			_navigationManager.NavigateTo(Routes.Errors.AccessDenied);
+			_navigationManager.NavigateTo(NavigationRoutes.Errors.AccessDenied);
 			return null;
 		}
 		catch (AccessTokenNotAvailableException ex)

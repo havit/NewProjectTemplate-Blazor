@@ -1,6 +1,6 @@
 ﻿namespace Havit.NewProjectTemplate.Web.Client;
 
-public static class Routes
+public static class NavigationRoutes
 {
 	public const string Home = "/";
 

@@ -1,4 +1,4 @@
-﻿@attribute [Route(Routes.Administration.Index)]
+﻿@attribute [Route(NavigationRoutes.Administration.Index)]
 
 <AuthorizeView Roles="@nameof(RoleEntry.UserSettingsAdministrator)">
     <h5>User Settings</h5>
@@ -28,7 +28,7 @@
         </div>
         <div class="col">
             <NavPanel Title="Diagnostics" Icon="BootstrapIcon.Hammer">
-                <NavCard Href="@Routes.Diagnostics.Info" Title="Info page" />
+                <NavCard Href="@NavigationRoutes.Diagnostics.Info" Title="Info page" />
                 <NavCard OnClick="() => throw new InvalidOperationException()" Title="Raise exception" />
             </NavPanel>
         </div>
