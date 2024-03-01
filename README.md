@@ -34,6 +34,12 @@ https://github.com/havit/NewProjectTemplate-Blazor/generate
 (Use PublishScripts folder for deployment settings.)
 
 
+# Upgrading Blazor Web App security to OIDC & cookie authentication
+1. Repeat changes in the commit ce3cf6a7ddc472804046c68d323a13e74c9af1ba
+
+# Upgrading Blazor WebAssembly to Blazor Web App (net8)
+1. Repeat changes in the commit ed6fb5c13cb5f2bea15d4429bbaa8d982e601798 ("core update")
+1. Repeat changes in the commit 72fd697a29660f8218bfc7754d973634ee8b11c8 (updates BlazorApplicationInsights)
 
 # Upgrading existing project from net7 to net8
 
