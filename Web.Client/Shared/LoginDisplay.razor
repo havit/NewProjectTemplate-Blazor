@@ -21,7 +21,7 @@
 					<li>                        
                         <form action="authentication/logout" method="post">
                             <AntiforgeryToken />
-                            <input type="hidden" name="ReturnUrl" value="@currentUrl" />
+                            <input type="hidden" name="ReturnUrl" value="" />@* TODO Set ReturnUrl if you want to return to a specific/current page. *@
                             <button class="dropdown-item">Log out</button>
                         </form>
                     </li>
