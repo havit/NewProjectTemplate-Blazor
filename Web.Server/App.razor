@@ -1,16 +1,5 @@
-﻿@using Microsoft.ApplicationInsights.Extensibility
+﻿@using Havit.NewProjectTemplate.Web.Client
 @using Microsoft.AspNetCore.Components.Web
-@using Microsoft.AspNetCore.Mvc.ViewFeatures
-@using Microsoft.Extensions.Options
-@using Havit.Blazor.Components.Web.Bootstrap
-@using Havit.NewProjectTemplate.Web.Client
-
-@namespace Havit.NewProjectTemplate.Web.Server
-
-@inject IOptions<TelemetryConfiguration> telemetryConfigurationOptions;
-@inject IHttpContextAccessor httpContextAccessor
-@inject IFileVersionProvider fileVersionProvider
-
 <!DOCTYPE html>
 <html translate="no">
 <head>
@@ -48,13 +37,3 @@
     @((MarkupString)HxSetup.RenderBootstrapJavaScriptReference())
 </body>
 </html>
-
-@code {
-    // source: https://learn.microsoft.com/en-us/answers/questions/1493923/asp-append-version-true-in-blazor-net-8
-    private static readonly PathString pathBase = new PathString("/");
-
-    private string GetFileVersionPath(string path)
-    {
-        return fileVersionProvider.AddFileVersionToPath(pathBase, path);
-    }
-}

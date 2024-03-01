@@ -1,6 +1,6 @@
-﻿<Router AppAssembly="@typeof(Program).Assembly" PreferExactMatches="@true">
+﻿<Router AppAssembly="@typeof(Program).Assembly">
 	<Found Context="routeData">
-		<AuthorizeRouteView RouteData="@routeData" DefaultLayout="@typeof(EmptyLayout)">
+		<AuthorizeRouteView RouteData="routeData" DefaultLayout="typeof(EmptyLayout)">
 			<NotAuthorized>
 				@if (context.User.Identity?.IsAuthenticated != true)
 				{
@@ -16,7 +16,7 @@
 		</AuthorizeRouteView>
 	</Found>
 	<NotFound>
-		<LayoutView Layout="@typeof(MainLayout)">
+		<LayoutView Layout="typeof(MainLayout)">
 			<p>Sorry, there's nothing at this address.</p>
 		</LayoutView>
 	</NotFound>
