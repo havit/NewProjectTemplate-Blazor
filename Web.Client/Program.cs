@@ -122,7 +122,7 @@ public static class Program
 		ApplicationInsightsOptions applicationInsightsOptions = builder.Configuration.GetSection(ApplicationInsightsOptions.Path).Get<ApplicationInsightsOptions>();
 
 		builder.Services.AddBlazorApplicationInsights(
-			b => b.ConnectionString = applicationInsightsOptions.ConnectionString ?? String.Empty,
+			c => c.ConnectionString = applicationInsightsOptions.ConnectionString ?? String.Empty,
 			async applicationInsights =>
 			{
 				var telemetryItem = new TelemetryItem()
