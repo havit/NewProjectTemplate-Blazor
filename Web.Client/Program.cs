@@ -9,6 +9,7 @@ using Havit.Blazor.Grpc.Client.ServerExceptions;
 using Havit.Blazor.Grpc.Client.WebAssembly;
 using Havit.NewProjectTemplate.Contracts;
 using Havit.NewProjectTemplate.Contracts.Infrastructure;
+using Havit.NewProjectTemplate.Web.Client.Infrastructure.Configuration;
 using Havit.NewProjectTemplate.Web.Client.Infrastructure.Grpc;
 using Havit.NewProjectTemplate.Web.Client.Infrastructure.Security;
 using Microsoft.AspNetCore.Components.Authorization;
@@ -23,7 +24,13 @@ public static class Program
 	{
 		var builder = WebAssemblyHostBuilder.CreateDefault(args);
 
-		AddLoggingAndApplicationInsights(builder);
+		// Na disku nemáme Web.Client/wwwroot/appsettings.(...).json, takže není uveden v blazor.boot.json.
+		// V důsledku toho si sám od sebe Blazor nařekne o konfiguraci na serveru, což musíme zajistit "ručně"
+		// doplněním stažení konfigurace z předpokládaného endpointu, viz:
+		// https://learn.microsoft.com/en-us/aspnet/core/blazor/fundamentals/configuration?view=aspnetcore-8.0#app-settings-configuration
+		builder = await builder.AddJsonStreamAsync(WebClientOptions.WebClientConfigurationRoute);
+
+		AddLoggingAndBlazorApplicationInsights(builder);
 		AddAuthWithHttpClient(builder);
 
 		builder.Services.AddBlazoredLocalStorage();
@@ -110,25 +117,26 @@ public static class Program
 		}
 	}
 
-	private static void AddLoggingAndApplicationInsights(WebAssemblyHostBuilder builder)
+	private static void AddLoggingAndBlazorApplicationInsights(WebAssemblyHostBuilder builder)
 	{
-		//builder.Services.AddBlazorApplicationInsights(null,
-		//	async applicationInsights =>
-		//	{
-		//		var telemetryItem = new TelemetryItem()
-		//		{
-		//			Tags = new Dictionary<string, object>()
-		//			{
-		//				{ "ai.cloud.role", "Web.Client" },
-		//				// { "ai.cloud.roleInstance", "..." },
-		//			}
-		//		};
+		ApplicationInsightsOptions applicationInsightsOptions = builder.Configuration.GetSection(ApplicationInsightsOptions.Path).Get<ApplicationInsightsOptions>();
 
-		//		await applicationInsights.AddTelemetryInitializer(telemetryItem);
-		//	},
-		//	addWasmLogger: true);
+		builder.Services.AddBlazorApplicationInsights(
+			b => b.ConnectionString = applicationInsightsOptions.ConnectionString ?? String.Empty,
+			async applicationInsights =>
+			{
+				var telemetryItem = new TelemetryItem()
+				{
+					Tags = new Dictionary<string, object>()
+					{
+						{ "ai.cloud.role", "Web.Client" },
+					}
+				};
 
-		//builder.Logging.AddFilter<ApplicationInsightsLoggerProvider>(level => (level == LogLevel.Error) || (level == LogLevel.Critical));
+				await applicationInsights.AddTelemetryInitializer(telemetryItem);
+			});
+
+		builder.Logging.AddFilter<ApplicationInsightsLoggerProvider>(level => (level == LogLevel.Error) || (level == LogLevel.Critical));
 
 #if DEBUG
 		builder.Logging.SetMinimumLevel(LogLevel.Debug);

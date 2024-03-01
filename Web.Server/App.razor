@@ -30,6 +30,8 @@
     <link href="manifest.json" rel="manifest" />
     <link rel="apple-touch-icon" sizes="512x512" href="icon-512.png" />
 
+    <BlazorApplicationInsights.ApplicationInsightsInit @rendermode="@RenderMode.InteractiveWebAssembly" />
+
     <HeadOutlet @rendermode="new InteractiveWebAssemblyRenderMode(prerender: false)" />
 </head>
 

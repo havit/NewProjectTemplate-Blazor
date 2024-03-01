@@ -1,4 +1,5 @@
-﻿using Hangfire;
+﻿using BlazorApplicationInsights;
+using Hangfire;
 using Hangfire.Dashboard;
 using Havit.Blazor.Grpc.Server;
 using Havit.NewProjectTemplate.Contracts;
@@ -8,6 +9,7 @@ using Havit.NewProjectTemplate.Facades.Infrastructure.Security;
 using Havit.NewProjectTemplate.Facades.Infrastructure.Security.Authentication;
 using Havit.NewProjectTemplate.Primitives.Security;
 using Havit.NewProjectTemplate.Services.HealthChecks;
+using Havit.NewProjectTemplate.Web.Client.Infrastructure.Configuration;
 using Havit.NewProjectTemplate.Web.Server.Infrastructure.ApplicationInsights;
 using Havit.NewProjectTemplate.Web.Server.Infrastructure.ConfigurationExtensions;
 using Havit.NewProjectTemplate.Web.Server.Infrastructure.ExceptionHandling;
@@ -33,13 +35,14 @@ public class Startup
 
 	public void ConfigureServices(IServiceCollection services)
 	{
+		services.AddOptions();
+		services.Configure<WebClientOptions>(_configuration.GetSection("WebClient"));
+
 		services.ConfigureForWebServer(_configuration);
 
 		services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
 		services.AddDatabaseDeveloperPageExceptionFilter();
-
-		services.AddOptions();
 
 		services.AddCustomizedMailing(_configuration);
 
@@ -52,6 +55,13 @@ public class Startup
 		services.AddSingleton<ITelemetryInitializer, EnrichmentTelemetryInitializer>();
 		services.ConfigureTelemetryModule<DependencyTrackingTelemetryModule>((module, o) => { module.EnableSqlCommandTextInstrumentation = true; });
 
+		// BlazorApplicationInsights
+		// Pro prerendering BlazorApplicationInsights musíme mít v DI containeru zaregistrovanou konfiguraci ApplicationInsightsInitConfig,
+		// přestože se reálně nepoužije - OnAfterPrerender se na nezavolá.
+		// Skutečnou konfiguraci provádí až klient.
+		services.AddBlazorApplicationInsights(c => c.ConnectionString = "");
+
+		// Authentication & Authorization
 		services.AddCustomAuthentication(_configuration);
 		services.AddAuthorization(options =>
 		{
@@ -64,6 +74,7 @@ public class Startup
 		services.AddScoped<AuthenticationStateProvider, PersistingAuthenticationStateProvider>();
 		services.AddScoped<IApplicationAuthenticationService, ApplicationAuthenticationService>();
 
+		// Blazor components
 		services.AddRazorComponents()
 			.AddInteractiveWebAssemblyComponents();
 
@@ -84,6 +95,7 @@ public class Startup
 		// Hangfire
 		services.AddCustomizedHangfire(_configuration);
 
+		// Migrations
 		services.Configure<MigrationsOptions>(_configuration.GetSection(MigrationsOptions.Path));
 		services.AddHostedService<MigrationHostedService>();
 	}
