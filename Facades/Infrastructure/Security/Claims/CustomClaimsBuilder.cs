@@ -40,7 +40,7 @@ public class CustomClaimsBuilder : ICustomClaimsBuilder
 		if (user == null)
 		{
 #if DEBUG
-			user = await OnboardFirstUserAsync(principal);
+			user = await OnboardFirstUserAsync(principal, cancellationToken);
 #endif
 			if (user == null)
 			{
