@@ -23,6 +23,7 @@ https://github.com/havit/NewProjectTemplate-Blazor/generate
    1. Drop the current migrations - delete Entity/Migrations folder
    1. Add new initial migration `Add-Migration Initial`
 1. Check all configuration files (including PublishScripts folder).
+    1. Remove connection string AzureKeyVault from appsettings.WebServer.Development.json (or update the endpoint).
 1. Run the app...
 
 
