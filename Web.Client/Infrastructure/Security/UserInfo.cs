@@ -8,26 +8,30 @@ namespace Havit.NewProjectTemplate.Web.Client.Infrastructure.Security;
 // to expose more information about the authenticated user to the client.
 public sealed class UserInfo
 {
-	public required string UserId { get; init; }
-	public required string Name { get; init; }
+	// Typ Claim není serializovatelný do JSON, proto použijeme vlastní třídu (resp. record).
+
+	public required SerializableClaim[] Claims { get; init; }
 
 	public const string UserIdClaimType = "sub";
 	public const string NameClaimType = "name";
+	public const string RoleClaimType = ClaimTypes.Role;
 
 	public static UserInfo FromClaimsPrincipal(ClaimsPrincipal principal) =>
-		new()
+		new UserInfo
 		{
-			UserId = GetRequiredClaim(principal, UserIdClaimType),
-			Name = GetRequiredClaim(principal, NameClaimType),
+			// vybereme Claims, které jsou pro klienta užitečné, neposíláme více zbytečných údajů
+			Claims = principal.Claims
+				.Where(claim => claim.Type is UserIdClaimType or NameClaimType or RoleClaimType)
+				.Select(claim => new SerializableClaim(claim.Type, claim.Value))
+				.ToArray()
 		};
 
 	public ClaimsPrincipal ToClaimsPrincipal() =>
-		new(new ClaimsIdentity(
-			[new(UserIdClaimType, UserId), new(NameClaimType, Name)],
+		new ClaimsPrincipal(new ClaimsIdentity(
+			claims: Claims.Select(serializedClaim => new Claim(serializedClaim.Type, serializedClaim.Value)),
 			authenticationType: nameof(UserInfo),
 			nameType: NameClaimType,
-			roleType: null));
+			roleType: RoleClaimType));
 
-	private static string GetRequiredClaim(ClaimsPrincipal principal, string claimType) =>
-		principal.FindFirst(claimType)?.Value ?? throw new InvalidOperationException($"Could not find required '{claimType}' claim.");
+	public record SerializableClaim(string Type, string Value);
 }
