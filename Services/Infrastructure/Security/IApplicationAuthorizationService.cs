@@ -1,6 +1,6 @@
 ﻿using Havit.NewProjectTemplate.Primitives.Security;
 
-namespace Havit.NewProjectTemplate.Facades.Infrastructure.Security.Authorization;
+namespace Havit.NewProjectTemplate.Services.Infrastructure.Security;
 
 public interface IApplicationAuthorizationService
 {
