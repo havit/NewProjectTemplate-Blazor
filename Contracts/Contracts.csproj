@@ -8,19 +8,17 @@
 
 	<ItemGroup>
 		<PackageReference Include="FluentValidation" Version="11.9.0" />
-		<PackageReference Include="Havit.Blazor.Grpc.Core" Version="1.5.1" />
 		<PackageReference Include="Havit.Core" Version="2.0.29" />
 		<PackageReference Include="Microsoft.VisualStudio.Threading.Analyzers" Version="17.9.28">
-		  <PrivateAssets>all</PrivateAssets>
-		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
 		<PackageReference Include="protobuf-net" Version="3.2.30" />
-		<PackageReference Include="protobuf-net.Grpc" Version="1.1.1" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\Primitives\Primitives.csproj" />
-	  <ProjectReference Include="..\Resources\Resources.csproj" />
+		<ProjectReference Include="..\Primitives\Primitives.csproj" />
+		<ProjectReference Include="..\Resources\Resources.csproj" />
 	</ItemGroup>
 
 </Project>
