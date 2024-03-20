@@ -13,17 +13,13 @@ namespace Havit.NewProjectTemplate.Web.Server.Infrastructure.Security;
 
 // zdroj: https://github.com/dotnet/blazor-samples/tree/main/8.0/BlazorWebAppOidc
 
-// https://github.com/dotnet/aspnetcore/issues/8175
-internal sealed class CookieOidcRefresher(IOptionsMonitor<OpenIdConnectOptions> oidcOptionsMonitor) : IDisposable
+internal sealed class CookieOidcRefresher(IOptionsMonitor<OpenIdConnectOptions> oidcOptionsMonitor)
 {
-	private readonly HttpClient refreshClient = new();
 	private readonly OpenIdConnectProtocolValidator oidcTokenValidator = new()
 	{
-		// Refresh requests do not use the nonce parameter. Otherwise, we'd use oidcOptions.ProtocolValidator.
+		// We no longer have the original nonce cookie which is deleted at the end of the authorization code flow having served its purpose.
+		// Even if we had the nonce, it's likely expired. It's not intended for refresh requests. Otherwise, we'd use oidcOptions.ProtocolValidator.
 		RequireNonce = false,
-		// Workaround: BlazorWebAppOidc IDX21323: RequireNonce is 'False' 
-		// viz https://github.com/dotnet/aspnetcore/issues/53585#issuecomment-1934790055
-		NonceLifetime = TimeSpan.FromDays(365 * 100)
 	};
 
 	public async Task ValidateOrRefreshCookieAsync(CookieValidatePrincipalContext validateContext, string oidcScheme)
@@ -44,7 +40,7 @@ internal sealed class CookieOidcRefresher(IOptionsMonitor<OpenIdConnectOptions> 
 		var oidcConfiguration = await oidcOptions.ConfigurationManager!.GetConfigurationAsync(validateContext.HttpContext.RequestAborted);
 		var tokenEndpoint = oidcConfiguration.TokenEndpoint ?? throw new InvalidOperationException("Cannot refresh cookie. TokenEndpoint missing!");
 
-		using var refreshResponse = await refreshClient.PostAsync(tokenEndpoint,
+		using var refreshResponse = await oidcOptions.Backchannel.PostAsync(tokenEndpoint,
 			new FormUrlEncodedContent(new Dictionary<string, string>()
 			{
 				["grant_type"] = "refresh_token",
@@ -82,16 +78,13 @@ internal sealed class CookieOidcRefresher(IOptionsMonitor<OpenIdConnectOptions> 
 			return;
 		}
 
-		// Workaround: BlazorWebAppOidc IDX21323: RequireNonce is 'False' 
-		// viz https://github.com/dotnet/aspnetcore/issues/53585#issuecomment-1934790055
 		var validatedIdToken = JwtSecurityTokenConverter.Convert(validationResult.SecurityToken as JsonWebToken);
-
+		validatedIdToken.Payload["nonce"] = null;
 		oidcTokenValidator.ValidateTokenResponse(new()
 		{
 			ProtocolMessage = message,
-			Nonce = validatedIdToken.Payload.Nonce, // Workaround: BlazorWebAppOidc IDX21323: RequireNonce is 'False', viz https://github.com/dotnet/aspnetcore/issues/53585#issuecomment-1934790055
 			ClientId = oidcOptions.ClientId,
-			ValidatedIdToken = JwtSecurityTokenConverter.Convert(validationResult.SecurityToken as JsonWebToken),
+			ValidatedIdToken = validatedIdToken,
 		});
 
 		validateContext.ShouldRenew = true;
@@ -107,6 +100,4 @@ internal sealed class CookieOidcRefresher(IOptionsMonitor<OpenIdConnectOptions> 
 			new() { Name = "expires_at", Value = expiresAt.ToString("o", CultureInfo.InvariantCulture) },
 		]);
 	}
-
-	public void Dispose() => refreshClient.Dispose();
 }
