@@ -1,19 +1,16 @@
 ﻿using System.Globalization;
-using System.Security.Claims;
 using BlazorApplicationInsights;
 using BlazorApplicationInsights.Models;
 using Blazored.LocalStorage;
 using FluentValidation;
 using Havit.Blazor.Grpc.Client;
 using Havit.Blazor.Grpc.Client.ServerExceptions;
-using Havit.Blazor.Grpc.Client.WebAssembly;
 using Havit.NewProjectTemplate.Contracts;
 using Havit.NewProjectTemplate.Contracts.Infrastructure;
 using Havit.NewProjectTemplate.Web.Client.Infrastructure.Configuration;
 using Havit.NewProjectTemplate.Web.Client.Infrastructure.Grpc;
 using Havit.NewProjectTemplate.Web.Client.Infrastructure.Security;
 using Microsoft.AspNetCore.Components.Authorization;
-using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 
 namespace Havit.NewProjectTemplate.Web.Client;
@@ -74,8 +71,7 @@ public static class Program
 
 	public static void AddAuthWithHttpClient(WebAssemblyHostBuilder builder)
 	{
-		builder.Services.AddHttpClient("Web.Server", client => client.BaseAddress = new Uri(builder.HostEnvironment.BaseAddress))
-			.AddHttpMessageHandler<BaseAddressAuthorizationMessageHandler>();
+		builder.Services.AddHttpClient("Web.Server", client => client.BaseAddress = new Uri(builder.HostEnvironment.BaseAddress));
 		builder.Services.AddScoped(sp => sp.GetRequiredService<IHttpClientFactory>().CreateClient("Web.Server"));
 
 		builder.Services.AddAuthorizationCore();
@@ -91,17 +87,10 @@ public static class Program
 	private static void AddGrpcClient(WebAssemblyHostBuilder builder)
 	{
 		builder.Services.AddTransient<IOperationFailedExceptionGrpcClientListener, HxMessengerOperationFailedExceptionGrpcClientListener>();
-		builder.Services.AddTransient<AuthorizationGrpcClientInterceptor>();
 
 		builder.Services.AddGrpcClientInfrastructure(assemblyToScanForDataContracts: typeof(Dto).Assembly);
 
-		builder.Services.AddGrpcClientsByApiContractAttributes(
-			typeof(IDataSeedFacade).Assembly,
-			configureGrpcClientWithAuthorization: grpcClient =>
-			{
-				grpcClient
-					.AddInterceptor<AuthorizationGrpcClientInterceptor>();
-			});
+		builder.Services.AddGrpcClientsByApiContractAttributes(typeof(IDataSeedFacade).Assembly);
 	}
 
 	private static async ValueTask SetLanguageAsync(WebAssemblyHost webAssemblyHost)
