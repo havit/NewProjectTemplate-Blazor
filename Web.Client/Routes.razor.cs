@@ -1,4 +1,4 @@
-using Havit.NewProjectTemplate.Contracts.Infrastructure;
+﻿using Havit.NewProjectTemplate.Contracts.Infrastructure;
 using Havit.NewProjectTemplate.Resources;
 using Microsoft.AspNetCore.Components;
 

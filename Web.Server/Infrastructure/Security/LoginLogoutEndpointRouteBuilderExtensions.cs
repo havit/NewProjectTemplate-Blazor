@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Authentication;
+ï»¿using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.AspNetCore.Mvc;
@@ -27,7 +27,7 @@ internal static class LoginLogoutEndpointRouteBuilderExtensions
 
 	private static AuthenticationProperties GetAuthProperties(string returnUrl)
 	{
-		// Pøevzatý komentáø: T_O_D_O: Use HttpContext.Request.PathBase instead.
+		// PÅ™evzatÃ½ komentÃ¡Å™: T_O_D_O: Use HttpContext.Request.PathBase instead.
 		const string pathBase = "/";
 
 		// Prevent open redirects.

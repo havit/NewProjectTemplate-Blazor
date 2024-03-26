@@ -1,4 +1,4 @@
-using Havit.NewProjectTemplate.Web.Client.Infrastructure.Security;
+﻿using Havit.NewProjectTemplate.Web.Client.Infrastructure.Security;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.Web;
