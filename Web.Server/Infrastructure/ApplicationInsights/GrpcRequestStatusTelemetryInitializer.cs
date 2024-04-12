@@ -24,12 +24,6 @@ public class GrpcRequestStatusTelemetryInitializer : ITelemetryInitializer
 
 	public void Initialize(ITelemetry telemetry)
 	{
-		if (string.IsNullOrEmpty(telemetry.Context.Cloud.RoleName))
-		{
-			telemetry.Context.Cloud.RoleName = "Web.Server";
-			// telemetry.Context.Cloud.RoleInstance = "...";
-		}
-
 		if (telemetry is not RequestTelemetry requestTelemetry)
 		{
 			return;

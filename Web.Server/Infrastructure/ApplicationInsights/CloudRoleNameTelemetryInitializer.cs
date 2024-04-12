@@ -3,7 +3,7 @@ using Microsoft.ApplicationInsights.Extensibility;
 
 namespace Havit.NewProjectTemplate.Web.Server.Infrastructure.ApplicationInsights;
 
-public class EnrichmentTelemetryInitializer : ITelemetryInitializer
+public class CloudRoleNameTelemetryInitializer : ITelemetryInitializer
 {
 	public void Initialize(ITelemetry telemetry)
 	{

@@ -52,7 +52,7 @@ public class Startup
 		// Application Insights
 		services.AddApplicationInsightsTelemetry(_configuration);
 		services.AddSingleton<ITelemetryInitializer, GrpcRequestStatusTelemetryInitializer>();
-		services.AddSingleton<ITelemetryInitializer, EnrichmentTelemetryInitializer>();
+		services.AddSingleton<ITelemetryInitializer, CloudRoleNameTelemetryInitializer>();
 		services.ConfigureTelemetryModule<DependencyTrackingTelemetryModule>((module, o) => { module.EnableSqlCommandTextInstrumentation = true; });
 
 		// BlazorApplicationInsights

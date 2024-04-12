@@ -13,13 +13,6 @@ public class JobsRunnerToCloudRoleNameTelemetryInitializer : ITelemetryInitializ
 {
 	public void Initialize(ITelemetry telemetry)
 	{
-		if (String.IsNullOrEmpty(telemetry.Context.Cloud.RoleName))
-		{
-			telemetry.Context.Cloud.RoleName = "JobsRunner";
-		}
-		else if (!telemetry.Context.Cloud.RoleName.EndsWith("JobsRunner"))
-		{
-			telemetry.Context.Cloud.RoleName += "_JobsRunner";
-		}
+		telemetry.Context.Cloud.RoleName = "JobsRunner";
 	}
 }
