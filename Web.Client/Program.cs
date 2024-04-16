@@ -53,6 +53,7 @@ public static class Program
 		HxOffcanvas.Defaults.Backdrop = OffcanvasBackdrop.Static;
 		HxModal.Defaults.Backdrop = ModalBackdrop.Static;
 		HxInputDate.Defaults.CalendarIcon = BootstrapIcon.Calendar3;
+		HxInputDateRange.Defaults.CalendarIcon = BootstrapIcon.Calendar3;
 
 		// TODO [OPTIONAL] Setup HxInputDateRange.Defaults.PredefinedRanges here
 		//DateTime today = DateTime.Today;
