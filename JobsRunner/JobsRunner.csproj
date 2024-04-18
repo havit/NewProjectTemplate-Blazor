@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<OutputType>Exe</OutputType>
@@ -24,20 +24,16 @@
 		</Content>
 	</ItemGroup>
 	<ItemGroup>
-		<PackageReference Include="Hangfire.AspNetCore" Version="1.8.12" />
-		<PackageReference Include="Hangfire.SqlServer" Version="1.8.12" />
-		<PackageReference Include="Hangfire.Console.Extensions" Version="2.0.0" />
-		<PackageReference Include="Havit.ApplicationInsights.DependencyCollector" Version="2.0.8" />
-		<PackageReference Include="Havit.AspNetCore" Version="2.0.12" />
-		<PackageReference Include="Havit.Hangfire.Extensions" Version="2.0.13" />
-		<PackageReference Include="Microsoft.ApplicationInsights.WorkerService" Version="2.22.0" />
-		<PackageReference Include="Microsoft.Azure.WebJobs" Version="3.0.39" />
-		<PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="8.0.0" />
-		<PackageReference Include="Microsoft.Extensions.Logging.Console" Version="8.0.0" />
-		<PackageReference Include="Microsoft.VisualStudio.Threading.Analyzers" Version="17.9.28">
-		  <PrivateAssets>all</PrivateAssets>
-		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-		</PackageReference>
+		<PackageReference Include="Hangfire.AspNetCore" />
+		<PackageReference Include="Hangfire.SqlServer" />
+		<PackageReference Include="Hangfire.Console.Extensions" />
+		<PackageReference Include="Havit.ApplicationInsights.DependencyCollector" />
+		<PackageReference Include="Havit.AspNetCore" />
+		<PackageReference Include="Havit.Hangfire.Extensions" />
+		<PackageReference Include="Microsoft.ApplicationInsights.WorkerService" />
+		<PackageReference Include="Microsoft.Azure.WebJobs" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Console" />
 	</ItemGroup>
 
 	<ItemGroup>
