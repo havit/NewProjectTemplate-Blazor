@@ -1,3 +1,16 @@
-﻿@attribute [Route(NavigationRoutes.Home)]
+﻿@using Havit.NewProjectTemplate.Contracts.Absences
+@attribute [Route(NavigationRoutes.Home)]
+@inject IAbsenceFacade AbsenceFacade
 
-Hello world!
+<p>Hello world!</p>
+
+<HxButton Text="Create absence (causes notifications count update)"
+		  Color="ThemeColor.Primary"
+		  OnClick="HandleCreateAbsenceClick"/>
+
+@code {
+	private async Task HandleCreateAbsenceClick()
+	{
+		await AbsenceFacade.CreateAbsenceAsync();
+	}
+}

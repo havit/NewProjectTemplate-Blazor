@@ -9,6 +9,7 @@ using Havit.NewProjectTemplate.Facades.Infrastructure.Security;
 using Havit.NewProjectTemplate.Primitives.Security;
 using Havit.NewProjectTemplate.Services.HealthChecks;
 using Havit.NewProjectTemplate.Services.Infrastructure.Security;
+using Havit.NewProjectTemplate.Services.Notifications;
 using Havit.NewProjectTemplate.Web.Client.Infrastructure.Configuration;
 using Havit.NewProjectTemplate.Web.Server.Infrastructure.ApplicationInsights;
 using Havit.NewProjectTemplate.Web.Server.Infrastructure.ConfigurationExtensions;
@@ -16,10 +17,12 @@ using Havit.NewProjectTemplate.Web.Server.Infrastructure.ExceptionHandling;
 using Havit.NewProjectTemplate.Web.Server.Infrastructure.HealthChecks;
 using Havit.NewProjectTemplate.Web.Server.Infrastructure.MigrationTool;
 using Havit.NewProjectTemplate.Web.Server.Infrastructure.Security;
+using Havit.NewProjectTemplate.Web.Server.SignalR;
 using Microsoft.ApplicationInsights.DependencyCollector;
 using Microsoft.ApplicationInsights.Extensibility;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.AspNetCore.Components.Authorization;
+using Microsoft.AspNetCore.ResponseCompression;
 using ProtoBuf.Grpc.Server;
 
 namespace Havit.NewProjectTemplate.Web.Server;
@@ -86,6 +89,19 @@ public class Startup
 		services.AddGrpcServerInfrastructure(assemblyToScanForDataContracts: typeof(Dto).Assembly);
 		services.AddCodeFirstGrpcReflection();
 
+		// SignalR
+		services.AddSignalR(hubOptions =>
+		{
+			hubOptions.EnableDetailedErrors = true;
+			hubOptions.KeepAliveInterval = TimeSpan.FromSeconds(10);
+			hubOptions.HandshakeTimeout = TimeSpan.FromSeconds(5);
+		});
+		services.AddResponseCompression(opts =>
+		{
+			opts.MimeTypes = ResponseCompressionDefaults.MimeTypes.Concat(["application/octet-stream"]);
+		});
+		services.AddTransient<INotificationsPushService, NotificationsPushService>();
+
 		// Health checks
 		TimeSpan defaultHealthCheckTimeout = TimeSpan.FromSeconds(10);
 		services.AddHealthChecks()
@@ -118,6 +134,9 @@ public class Startup
 
 		app.UseMiddleware<CustomResponseForKnownExceptionsMiddleware>();
 
+		// SignalR
+		app.UseResponseCompression();
+
 		app.UseHttpsRedirection();
 		app.UseStaticFiles();
 
@@ -139,6 +158,8 @@ public class Startup
 			endpoints.MapRazorComponents<App>()
 				.AddInteractiveWebAssemblyRenderMode()
 				.AddAdditionalAssemblies(typeof(Havit.NewProjectTemplate.Web.Client.Program).Assembly);
+
+			endpoints.MapHub<NotificationsHub>("/notifications-hub");
 
 			endpoints.MapGrpcServicesByApiContractAttributes(
 				typeof(IDataSeedFacade).Assembly,

@@ -7,6 +7,12 @@
 	</HeaderTemplate>
 
 	<ItemsTemplate>
+		<HxSidebarItem>
+			<ContentTemplate>
+				Notifications
+				<HxBadge Color="ThemeColor.Danger" CssClass="ms-2">@_notificationsCount.ToString("n0")</HxBadge>
+			</ContentTemplate>
+		</HxSidebarItem>
 		<HxSidebarItem Text="Dashboard" Href="@NavigationRoutes.Home" Icon="@BootstrapIcon.Columns" Match="NavLinkMatch.All" />
 		<HxSidebarItem Text="Section 1" Icon="@BootstrapIcon.Person">
 			<HxSidebarItem Text="Section Item 1" Href="/one" />
