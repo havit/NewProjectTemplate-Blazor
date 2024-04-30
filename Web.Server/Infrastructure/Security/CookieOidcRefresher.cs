@@ -1,6 +1,7 @@
 ﻿using System.Globalization;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
+using Havit.NewProjectTemplate.Contracts.Infrastructure.Security;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
@@ -88,7 +89,12 @@ internal sealed class CookieOidcRefresher(IOptionsMonitor<OpenIdConnectOptions> 
 		});
 
 		validateContext.ShouldRenew = true;
-		validateContext.ReplacePrincipal(new ClaimsPrincipal(validationResult.ClaimsIdentity));
+		validateContext.ReplacePrincipal(new ClaimsPrincipal(
+		[
+			new ClaimsIdentity(validationResult.ClaimsIdentity),
+			// přidáme též naše vlastní claims, které jsme sami vytvořili v CustomClaimsBuilderu
+			new ClaimsIdentity(validateContext.Principal.Claims.Where(claim => claim.Issuer == ClaimConstants.ApplicationIssuer).ToList())
+		]));
 
 		var expiresIn = int.Parse(message.ExpiresIn, NumberStyles.Integer, CultureInfo.InvariantCulture);
 		var expiresAt = now + TimeSpan.FromSeconds(expiresIn);
