@@ -11,13 +11,15 @@ namespace Havit.NewProjectTemplate.Web.Server.Infrastructure.ConfigurationExtens
 
 public static class AuthenticationConfigurationExtension
 {
+	public const string MsOidcScheme = "MicrosoftOidc";
+
 	public static IServiceCollection AddCustomAuthentication(this IServiceCollection services, IConfiguration configuration)
 	{
 		AzureAdOptions azureAdOptions = configuration.GetSection(AzureAdOptions.Path).Get<AzureAdOptions>();
 
 		// Add services to the container.
-		services.AddAuthentication(OpenIdConnectDefaults.AuthenticationScheme)
-			.AddOpenIdConnect(OpenIdConnectDefaults.AuthenticationScheme, oidcOptions =>
+		services.AddAuthentication(MsOidcScheme)
+			.AddOpenIdConnect(MsOidcScheme, oidcOptions =>
 			{
 				// For the following OIDC settings, any line that's commented out
 				// represents a DEFAULT setting. If you adopt the default, you can
@@ -158,7 +160,7 @@ public static class AuthenticationConfigurationExtension
 
 		// This attaches a cookie OnValidatePrincipal callback to get a new access token when the current one expires, and
 		// reissue a cookie with the new access token saved inside. If the refresh fails, the user will be signed out.
-		services.ConfigureCookieOidcRefresh(CookieAuthenticationDefaults.AuthenticationScheme, OpenIdConnectDefaults.AuthenticationScheme);
+		services.ConfigureCookieOidcRefresh(CookieAuthenticationDefaults.AuthenticationScheme, MsOidcScheme);
 
 		return services;
 	}

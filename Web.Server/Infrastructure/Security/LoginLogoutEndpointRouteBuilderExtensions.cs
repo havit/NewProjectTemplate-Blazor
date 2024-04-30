@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authentication;
+﻿using Havit.NewProjectTemplate.Web.Server.Infrastructure.ConfigurationExtensions;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.AspNetCore.Mvc;
@@ -20,7 +21,7 @@ internal static class LoginLogoutEndpointRouteBuilderExtensions
 		// the user will automatically be signed back in the next time they visit a page that requires authentication
 		// without being able to choose another account.
 		group.MapPost("/logout", ([FromForm] string returnUrl) => TypedResults.SignOut(GetAuthProperties(returnUrl),
-			[CookieAuthenticationDefaults.AuthenticationScheme, OpenIdConnectDefaults.AuthenticationScheme]));
+			[CookieAuthenticationDefaults.AuthenticationScheme, AuthenticationConfigurationExtension.MsOidcScheme]));
 
 		return group;
 	}

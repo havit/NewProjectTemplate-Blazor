@@ -66,7 +66,7 @@ public class Startup
 		services.AddAuthorization(options =>
 		{
 			options.AddPolicy(PolicyNames.HangfireDashboardAccessPolicy, policy => policy
-					.AddAuthenticationSchemes(OpenIdConnectDefaults.AuthenticationScheme)
+					.AddAuthenticationSchemes(AuthenticationConfigurationExtension.MsOidcScheme)
 					.RequireAuthenticatedUser()
 					.RequireRole(nameof(RoleEntry.SystemAdministrator)));
 		});
