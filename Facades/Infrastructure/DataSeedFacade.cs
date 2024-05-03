@@ -31,7 +31,7 @@ public class DataSeedFacade : IDataSeedFacade
 	/// <summary>
 	/// Executes seed for the selected profile.
 	/// </summary>
-	public Task SeedDataProfileAsync(Dto<string> profileName, CancellationToken cancellationToken = default)
+	public async Task SeedDataProfileAsync(Dto<string> profileName, CancellationToken cancellationToken = default)
 	{
 		// applicationAuthorizationService.VerifyCurrentUserAuthorization(Operations.SystemAdministration); // TODO alternative authorization approach
 
@@ -46,11 +46,9 @@ public class DataSeedFacade : IDataSeedFacade
 		// they get seeded and another seed asks for GetAll(), the newly seeded entities are not included.
 		_cacheService.Clear();
 
-		_dataSeedRunner.SeedData(type, forceRun: true);
+		await _dataSeedRunner.SeedDataAsync(type, forceRun: true, cancellationToken);
 
 		_cacheService.Clear();
-
-		return Task.CompletedTask;
 	}
 
 	/// <summary>
