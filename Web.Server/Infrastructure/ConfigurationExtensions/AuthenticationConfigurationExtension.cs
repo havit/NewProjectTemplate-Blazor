@@ -2,8 +2,8 @@
 using Havit.NewProjectTemplate.Facades.Infrastructure.Security.Claims;
 using Havit.NewProjectTemplate.Web.Client;
 using Havit.NewProjectTemplate.Web.Server.Infrastructure.Security;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.IdentityModel.JsonWebTokens;
 using Microsoft.IdentityModel.Protocols.OpenIdConnect;
 
@@ -149,6 +149,8 @@ public static class AuthenticationConfigurationExtension
 				//var microsoftIssuerValidator = AadIssuerValidator.GetAadIssuerValidator(oidcOptions.Authority);
 				//oidcOptions.TokenValidationParameters.IssuerValidator = microsoftIssuerValidator.Validate;
 				// ........................................................................
+
+				oidcOptions.Events.OnRemoteFailure = HandleRemoteFailureAsync;
 			})
 			.AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, options =>
 			{
@@ -163,6 +165,18 @@ public static class AuthenticationConfigurationExtension
 		services.ConfigureCookieOidcRefresh(CookieAuthenticationDefaults.AuthenticationScheme, MsOidcScheme);
 
 		return services;
+	}
+
+	/// <summary>
+	/// V okamžiku přerušení přihlašování dojde k výjimce. Tu touto metodou obsloužíme a přesměrujeme uživatele na homepage.
+	/// </summary>
+	private static Task HandleRemoteFailureAsync(RemoteFailureContext context)
+	{
+		// zdroj: https://github.com/openiddict/openiddict-core/issues/334#issuecomment-273487558
+		context.Response.Redirect("/");
+		context.HandleResponse();
+
+		return Task.FromResult(0);
 	}
 
 	// Zdroj: https://stackoverflow.com/questions/51314443/why-doesnt-claims-transformation-reduce-the-cookie-size
