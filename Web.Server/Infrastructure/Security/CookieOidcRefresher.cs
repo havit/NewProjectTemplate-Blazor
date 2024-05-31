@@ -12,7 +12,7 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace Havit.NewProjectTemplate.Web.Server.Infrastructure.Security;
 
-// zdroj: https://github.com/dotnet/blazor-samples/tree/main/8.0/BlazorWebAppOidc
+// Source: https://github.com/dotnet/blazor-samples/tree/main/8.0/BlazorWebAppOidc
 
 internal sealed class CookieOidcRefresher(IOptionsMonitor<OpenIdConnectOptions> oidcOptionsMonitor)
 {
@@ -92,7 +92,7 @@ internal sealed class CookieOidcRefresher(IOptionsMonitor<OpenIdConnectOptions> 
 		validateContext.ReplacePrincipal(new ClaimsPrincipal(
 		[
 			new ClaimsIdentity(validationResult.ClaimsIdentity),
-			// přidáme též naše vlastní claims, které jsme sami vytvořili v CustomClaimsBuilderu
+			// We will also add our custom claims that we created in the CustomClaimsBuilder.
 			new ClaimsIdentity(validateContext.Principal.Claims.Where(claim => claim.Issuer == ClaimConstants.ApplicationIssuer).ToList())
 		]));
 

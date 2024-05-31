@@ -3,7 +3,7 @@
 namespace Havit.NewProjectTemplate.DataLayer.Seeds.Core;
 
 /// <summary>
-/// Profil pro seedování základních systémových dat. Spouštěno v produkci.
+/// Profile for seeding basic system data. Executed in production.
 /// </summary>
 public class CoreProfile : DataSeedProfile
 {

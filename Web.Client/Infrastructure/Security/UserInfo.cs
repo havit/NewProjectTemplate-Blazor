@@ -2,13 +2,13 @@
 
 namespace Havit.NewProjectTemplate.Web.Client.Infrastructure.Security;
 
-// zdroj: https://github.com/dotnet/blazor-samples/tree/main/8.0/BlazorWebAppOidc
+// source: https://github.com/dotnet/blazor-samples/tree/main/8.0/BlazorWebAppOidc
 
 // Add properties to this class and update the server and client AuthenticationStateProviders
 // to expose more information about the authenticated user to the client.
 public sealed class UserInfo
 {
-	// Typ Claim není serializovatelný do JSON, proto použijeme vlastní třídu (resp. record).
+	// The Claim type is not serializable to JSON, so we will use a custom class (or record).
 
 	public required SerializableClaim[] Claims { get; init; }
 
@@ -19,7 +19,7 @@ public sealed class UserInfo
 	public static UserInfo FromClaimsPrincipal(ClaimsPrincipal principal) =>
 		new UserInfo
 		{
-			// vybereme Claims, které jsou pro klienta užitečné, neposíláme více zbytečných údajů
+			// Select Claims that are useful for the client, avoiding sending unnecessary data
 			Claims = principal.Claims
 				.Where(claim => claim.Type is UserIdClaimType or NameClaimType or RoleClaimType)
 				.Select(claim => new SerializableClaim(claim.Type, claim.Value))

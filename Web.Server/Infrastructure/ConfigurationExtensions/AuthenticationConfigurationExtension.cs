@@ -101,8 +101,8 @@ public static class AuthenticationConfigurationExtension
 				// ........................................................................
 
 				// ........................................................................
-				// JK: Scope s ClientId řeší chybu na Azure AD B2C: OpenIdConnectProtocolException: IDX21336: Both 'id_token' and 'access_token' should be present in OpenIdConnectProtocolValidationContext.ProtocolMessage received from Token Endpoint. Cannot process the message.
-				// Zdroj: https://github.com/dotnet/aspnetcore/issues/23284#issuecomment-648775392
+				// JK: Scope s ClientId resolves the issue on Azure AD B2C: OpenIdConnectProtocolException: IDX21336: Both 'id_token' and 'access_token' should be present in OpenIdConnectProtocolValidationContext.ProtocolMessage received from Token Endpoint. Cannot process the message.
+				// Source: https://github.com/dotnet/aspnetcore/issues/23284#issuecomment-648775392
 				// oidcOptions.Scope.Add(oidcOptions.ClientId);
 				// ........................................................................
 
@@ -156,7 +156,7 @@ public static class AuthenticationConfigurationExtension
 			{
 				options.AccessDeniedPath = NavigationRoutes.Errors.AccessDenied; // Blazor page
 
-				// Zajistíme customizaci claimů pro identitu "drženou v cookie".
+				// Customize claims for the identity "held in the cookie".
 				options.Events.OnSigningIn = HandleSigningInAsync;
 			});
 
@@ -168,22 +168,22 @@ public static class AuthenticationConfigurationExtension
 	}
 
 	/// <summary>
-	/// V okamžiku přerušení přihlašování dojde k výjimce. Tu touto metodou obsloužíme a přesměrujeme uživatele na homepage.
+	/// In case of a remote failure during the authentication process, handle the exception and redirect the user to the homepage.
 	/// </summary>
 	private static Task HandleRemoteFailureAsync(RemoteFailureContext context)
 	{
-		// zdroj: https://github.com/openiddict/openiddict-core/issues/334#issuecomment-273487558
+		// Source: https://github.com/openiddict/openiddict-core/issues/334#issuecomment-273487558
 		context.Response.Redirect("/");
 		context.HandleResponse();
 
 		return Task.FromResult(0);
 	}
 
-	// Zdroj: https://stackoverflow.com/questions/51314443/why-doesnt-claims-transformation-reduce-the-cookie-size
+	// Source: https://stackoverflow.com/questions/51314443/why-doesnt-claims-transformation-reduce-the-cookie-size
 	private static async Task<ClaimsPrincipal> HandleSigningInAsync(CookieSigningInContext context)
 	{
-		// Chtěli bychom ještě reagovat na checkbox "remember me" vystavením cookie s delší platností.
-		// Bohužel ale nedostáváme žádnou informaci, ze které bychom zjistili použítí "remember me".
+		// We would like to react to the "remember me" checkbox by issuing a cookie with a longer expiration time.
+		// Unfortunately, we don't receive any information to determine the use of "remember me".
 		ICustomClaimsBuilder customClaimsBuilder = context.Request.HttpContext.RequestServices.GetRequiredService<ICustomClaimsBuilder>();
 		ClaimsPrincipal principal = context.Principal;
 		List<Claim> customClaims = await customClaimsBuilder.GetCustomClaimsAsync(principal);
@@ -197,5 +197,4 @@ public static class AuthenticationConfigurationExtension
 
 		return principal;
 	}
-
 }

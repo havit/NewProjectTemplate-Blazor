@@ -21,9 +21,9 @@ public static class Program
 	{
 		var builder = WebAssemblyHostBuilder.CreateDefault(args);
 
-		// Na disku nemáme Web.Client/wwwroot/appsettings.(...).json, takže není uveden v blazor.boot.json.
-		// V důsledku toho si sám od sebe Blazor nařekne o konfiguraci na serveru, což musíme zajistit "ručně"
-		// doplněním stažení konfigurace z předpokládaného endpointu, viz:
+		// We don't have the Web.Client/wwwroot/appsettings.(...).json file on disk, so it is not listed in blazor.boot.json.
+		// As a result, Blazor will automatically request the configuration from the server, which we need to handle "manually"
+		// by adding the download of the configuration from the expected endpoint, see:
 		// https://learn.microsoft.com/en-us/aspnet/core/blazor/fundamentals/configuration?view=aspnetcore-8.0#app-settings-configuration
 		builder = await builder.AddJsonStreamAsync(WebClientOptions.WebClientConfigurationRoute);
 

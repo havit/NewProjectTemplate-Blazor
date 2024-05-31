@@ -24,7 +24,7 @@ public class MigrationHostedService : IHostedService
 
 		IMigrationService migrationService = scope.ServiceProvider.GetRequiredService<IMigrationService>();
 
-		// Preventivně už zde, abychom v případě problému s DI containarem zjistili problém dříve, než v případném catchi.
+		// Preemptively placed here to detect any issues with the DI container before the catch block, if any.
 		IExceptionMonitoringService exceptionMonitoringService = scope.ServiceProvider.GetRequiredService<IExceptionMonitoringService>();
 
 		if (_migrationsOptions.RunMigrations)

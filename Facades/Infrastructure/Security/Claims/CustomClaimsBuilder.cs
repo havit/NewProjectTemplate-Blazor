@@ -33,8 +33,8 @@ public class CustomClaimsBuilder : ICustomClaimsBuilder
 	{
 		Contract.Requires<SecurityException>(principal.Identity.IsAuthenticated);
 
-		// Veškeré claims je nutno vytvořit s ClaimConstants.ApplicationIssuer, protože to používá jako selector CookieOidcRefresher
-		// při vytvoření nového ("aktualizovaného") principalu.
+		// All claims must be created with ClaimConstants.ApplicationIssuer because it is used as a selector by CookieOidcRefresher
+		// when creating a new ("refreshed") principal.
 
 		List<Claim> result = new();
 

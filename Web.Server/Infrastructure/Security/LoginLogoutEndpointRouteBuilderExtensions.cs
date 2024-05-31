@@ -28,7 +28,7 @@ internal static class LoginLogoutEndpointRouteBuilderExtensions
 
 	private static AuthenticationProperties GetAuthProperties(string returnUrl)
 	{
-		// Převzatý komentář: T_O_D_O: Use HttpContext.Request.PathBase instead.
+		// Original comment: T_O_D_O: Use HttpContext.Request.PathBase instead.
 		const string pathBase = "/";
 
 		// Prevent open redirects.

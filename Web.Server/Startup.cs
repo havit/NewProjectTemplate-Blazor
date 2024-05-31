@@ -56,9 +56,9 @@ public class Startup
 		services.ConfigureTelemetryModule<DependencyTrackingTelemetryModule>((module, o) => { module.EnableSqlCommandTextInstrumentation = true; });
 
 		// BlazorApplicationInsights
-		// Pro prerendering BlazorApplicationInsights musíme mít v DI containeru zaregistrovanou konfiguraci ApplicationInsightsInitConfig,
-		// přestože se reálně nepoužije - OnAfterPrerender se na nezavolá.
-		// Skutečnou konfiguraci provádí až klient.
+		// For prerendering BlazorApplicationInsights, we need to have the ApplicationInsightsInitConfig configuration registered in the DI container,
+		// even though it is not actually used - OnAfterPrerender is not called on it.
+		// The actual configuration is performed by the client.
 		services.AddBlazorApplicationInsights(c => c.ConnectionString = "");
 
 		// Authentication & Authorization
