@@ -100,10 +100,9 @@ public class Startup
 		services.AddHostedService<MigrationHostedService>();
 	}
 
-	// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-	public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+	public void ConfigureMiddleware(WebApplication app)
 	{
-		if (env.IsDevelopment())
+		if (app.Environment.IsDevelopment())
 		{
 			app.UseDeveloperExceptionPage();
 			app.UseMigrationsEndPoint();
@@ -131,43 +130,43 @@ public class Startup
 		app.UseAntiforgery();
 
 		app.UseGrpcWeb(new GrpcWebOptions() { DefaultEnabled = true });
+	}
 
-		app.UseEndpoints(endpoints =>
-		{
-			endpoints.MapRazorPages();
-			endpoints.MapControllers();
-			endpoints.MapRazorComponents<App>()
-				.AddInteractiveWebAssemblyRenderMode()
-				.AddAdditionalAssemblies(typeof(Havit.NewProjectTemplate.Web.Client.Program).Assembly);
+	public void ConfigureEndpoints(WebApplication app)
+	{
+		app.MapRazorPages();
+		app.MapControllers();
+		app.MapRazorComponents<App>()
+			.AddInteractiveWebAssemblyRenderMode()
+			.AddAdditionalAssemblies(typeof(Havit.NewProjectTemplate.Web.Client.Program).Assembly);
 
-			endpoints.MapGrpcServicesByApiContractAttributes(
+		app.MapGrpcServicesByApiContractAttributes(
 				typeof(IDataSeedFacade).Assembly,
 				configureEndpointWithAuthorization: endpoint =>
 				{
 					endpoint.RequireAuthorization(); // TODO? AuthorizationPolicyNames.ApiScopePolicy when needed
 				});
-			endpoints.MapCodeFirstGrpcReflectionService();
+		app.MapCodeFirstGrpcReflectionService();
 
-			endpoints.MapGroup("/authentication").MapLoginAndLogout();
+		app.MapGroup("/authentication").MapLoginAndLogout();
 
-			endpoints.MapHealthChecks("/health", new Microsoft.AspNetCore.Diagnostics.HealthChecks.HealthCheckOptions
-			{
-				AllowCachingResponses = false,
-				ResponseWriter = HealthCheckWriter.WriteResponseAsync
-			});
-
-			endpoints.MapHangfireDashboard("/hangfire", new DashboardOptions
-			{
-				DefaultRecordsPerPage = 50,
-				Authorization = new List<IDashboardAuthorizationFilter>(), // see https://sahansera.dev/securing-hangfire-dashboard-with-endpoint-routing-auth-policy-aspnetcore/
-				DisplayStorageConnectionString = false,
-				DashboardTitle = "NewProjectTemplate - Jobs",
-				StatsPollingInterval = 60_000, // once a minute
-				DisplayNameFunc = (_, job) => Havit.Hangfire.Extensions.Helpers.JobNameHelper.TryGetSimpleName(job, out string simpleName)
-													? simpleName
-													: job.ToString()
-			})
-			.RequireAuthorization(PolicyNames.HangfireDashboardAccessPolicy);
+		app.MapHealthChecks("/health", new Microsoft.AspNetCore.Diagnostics.HealthChecks.HealthCheckOptions
+		{
+			AllowCachingResponses = false,
+			ResponseWriter = HealthCheckWriter.WriteResponseAsync
 		});
+
+		app.MapHangfireDashboard("/hangfire", new DashboardOptions
+		{
+			DefaultRecordsPerPage = 50,
+			Authorization = new List<IDashboardAuthorizationFilter>(), // see https://sahansera.dev/securing-hangfire-dashboard-with-endpoint-routing-auth-policy-aspnetcore/
+			DisplayStorageConnectionString = false,
+			DashboardTitle = "NewProjectTemplate - Jobs",
+			StatsPollingInterval = 60_000, // once a minute
+			DisplayNameFunc = (_, job) => Havit.Hangfire.Extensions.Helpers.JobNameHelper.TryGetSimpleName(job, out string simpleName)
+												? simpleName
+												: job.ToString()
+		})
+		.RequireAuthorization(PolicyNames.HangfireDashboardAccessPolicy);
 	}
 }

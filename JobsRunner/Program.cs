@@ -30,73 +30,66 @@ public static class Program
 	{
 		bool useHangfire = args.Length == 0;
 
-		IHostBuilder hostBuilder = Host.CreateDefaultBuilder()
-			.ConfigureAppConfiguration((hostContext, config) =>
-			{
-				config
-					.AddJsonFile("appsettings.JobsRunner.json", optional: false)
-					.AddJsonFile($"appsettings.JobsRunner.{hostContext.HostingEnvironment.EnvironmentName}.json", optional: true)
+		var builder = Host.CreateApplicationBuilder();
+
+		builder.Configuration.AddJsonFile("appsettings.JobsRunner.json", optional: false);
+		builder.Configuration.AddJsonFile($"appsettings.JobsRunner.{builder.Environment.EnvironmentName}.json", optional: true);
 #if DEBUG
-					.AddJsonFile($"appsettings.JobsRunner.{hostContext.HostingEnvironment.EnvironmentName}.local.json", optional: true) // .gitignored
+		builder.Configuration.AddJsonFile($"appsettings.JobsRunner.{builder.Environment.EnvironmentName}.local.json", optional: true); // .gitignored
 #endif
-					.AddEnvironmentVariables()
-					.AddCustomizedAzureKeyVault();
-			})
-			.ConfigureLogging(logging =>
-			{
-				logging.AddSimpleConsole(configure => configure.TimestampFormat = "[HH:mm:ss] ");
-			})
-			.ConfigureServices((hostContext, services) =>
-			{
-				services.AddMemoryCache();
+		builder.Configuration.AddEnvironmentVariables();
+		builder.Configuration.AddCustomizedAzureKeyVault();
 
-				services.AddApplicationInsightsTelemetryWorkerService();
-				services.AddApplicationInsightsTelemetryProcessor<IgnoreSucceededDependenciesWithNoParentIdProcessor>();
-				services.ConfigureTelemetryModule<DependencyTrackingTelemetryModule>((module, o) => { module.EnableSqlCommandTextInstrumentation = true; });
-				services.Remove(services.Single(descriptor => descriptor.ImplementationType == typeof(PerformanceCollectorModule)));
-				services.AddSingleton<ITelemetryInitializer, JobsRunnerToCloudRoleNameTelemetryInitializer>();
+		builder.Logging.AddSimpleConsole(configure => configure.TimestampFormat = "[HH:mm:ss] ");
 
-				services.AddExceptionMonitoring(hostContext.Configuration);
+		builder.Services.AddMemoryCache();
 
-				services.ConfigureForJobsRunner(hostContext.Configuration);
+		builder.Services.AddApplicationInsightsTelemetryWorkerService();
+		builder.Services.AddApplicationInsightsTelemetryProcessor<IgnoreSucceededDependenciesWithNoParentIdProcessor>();
+		builder.Services.ConfigureTelemetryModule<DependencyTrackingTelemetryModule>((module, o) => { module.EnableSqlCommandTextInstrumentation = true; });
+		builder.Services.Remove(builder.Services.Single(descriptor => descriptor.ImplementationType == typeof(PerformanceCollectorModule)));
+		builder.Services.AddSingleton<ITelemetryInitializer, JobsRunnerToCloudRoleNameTelemetryInitializer>();
 
-				if (useHangfire)
+		builder.Services.AddExceptionMonitoring(builder.Configuration);
+
+		builder.Services.ConfigureForJobsRunner(builder.Configuration);
+
+		if (useHangfire)
+		{
+			builder.Services.AddHangfire((serviceProvider, configuration) => configuration
+				.SetDataCompatibilityLevel(CompatibilityLevel.Version_180)
+				.UseSimpleAssemblyNameTypeSerializer()
+				.UseRecommendedSerializerSettings()
+				.UseSqlServerStorage(() => new Microsoft.Data.SqlClient.SqlConnection(builder.Configuration.GetConnectionString("Database")), new SqlServerStorageOptions
 				{
-					services.AddHangfire((serviceProvider, configuration) => configuration
-						.SetDataCompatibilityLevel(CompatibilityLevel.Version_180)
-						.UseSimpleAssemblyNameTypeSerializer()
-						.UseRecommendedSerializerSettings()
-						.UseSqlServerStorage(() => new Microsoft.Data.SqlClient.SqlConnection(hostContext.Configuration.GetConnectionString("Database")), new SqlServerStorageOptions
-						{
-							CommandBatchMaxTimeout = TimeSpan.FromMinutes(5),
-							SlidingInvisibilityTimeout = TimeSpan.FromMinutes(5),
-							QueuePollInterval = TimeSpan.FromSeconds(5),
-							UseRecommendedIsolationLevel = true,
-							DisableGlobalLocks = true,
-							EnableHeavyMigrations = true
-						})
-						.WithJobExpirationTimeout(TimeSpan.FromDays(30)) // history
-						.UseFilter(new AutomaticRetryAttribute { Attempts = 0 }) // do not retry failed jobs
-						.UseFilter(new ContinuationsSupportAttribute(new HashSet<string> { FailedState.StateName, DeletedState.StateName, SucceededState.StateName })) // only valid with AutomaticRetryAttribute with Attempts = 0
-						.UseFilter(new CancelRecurringJobWhenAlreadyInQueueOrCurrentlyRunningFilter())
-						.UseFilter(new ExceptionMonitoringAttribute(serviceProvider.GetRequiredService<IExceptionMonitoringService>()))
-						.UseFilter(new ApplicationInsightAttribute(serviceProvider.GetRequiredService<TelemetryClient>()) { JobNameFunc = backgroundJob => Havit.Hangfire.Extensions.Helpers.JobNameHelper.TryGetSimpleName(backgroundJob.Job, out string simpleName) ? simpleName : backgroundJob.Job.ToString() })
-						.UseConsole()
-					);
+					CommandBatchMaxTimeout = TimeSpan.FromMinutes(5),
+					SlidingInvisibilityTimeout = TimeSpan.FromMinutes(5),
+					QueuePollInterval = TimeSpan.FromSeconds(5),
+					UseRecommendedIsolationLevel = true,
+					DisableGlobalLocks = true,
+					EnableHeavyMigrations = true
+				})
+				.WithJobExpirationTimeout(TimeSpan.FromDays(30)) // history
+				.UseFilter(new AutomaticRetryAttribute { Attempts = 0 }) // do not retry failed jobs
+				.UseFilter(new ContinuationsSupportAttribute(new HashSet<string> { FailedState.StateName, DeletedState.StateName, SucceededState.StateName })) // only valid with AutomaticRetryAttribute with Attempts = 0
+				.UseFilter(new CancelRecurringJobWhenAlreadyInQueueOrCurrentlyRunningFilter())
+				.UseFilter(new ExceptionMonitoringAttribute(serviceProvider.GetRequiredService<IExceptionMonitoringService>()))
+				.UseFilter(new ApplicationInsightAttribute(serviceProvider.GetRequiredService<TelemetryClient>()) { JobNameFunc = backgroundJob => Havit.Hangfire.Extensions.Helpers.JobNameHelper.TryGetSimpleName(backgroundJob.Job, out string simpleName) ? simpleName : backgroundJob.Job.ToString() })
+				.UseConsole()
+			);
 
-					services.AddHangfireConsoleExtensions(); // adds support for Hangfire jobs logging  to a dashboard using ILogger<T> (.UseConsole() in hangfire configuration is required!)
+			builder.Services.AddHangfireConsoleExtensions(); // adds support for Hangfire jobs logging  to a dashboard using ILogger<T> (.UseConsole() in hangfire configuration is required!)
 
 #if DEBUG
-					services.AddHangfireEnqueuedJobsCleanupOnApplicationStartup();
+			builder.Services.AddHangfireEnqueuedJobsCleanupOnApplicationStartup();
 #endif
-					services.AddHangfireRecurringJobsSchedulerOnApplicationStartup(GetRecurringJobsToSchedule().ToArray());
+			builder.Services.AddHangfireRecurringJobsSchedulerOnApplicationStartup(GetRecurringJobsToSchedule().ToArray());
 
-					// Add the processing server as IHostedService
-					services.AddHangfireServer(o => o.WorkerCount = 1);
-				}
-			});
+			// Add the processing server as IHostedService
+			builder.Services.AddHangfireServer(o => o.WorkerCount = 1);
+		}
 
-		IHost host = hostBuilder.Build();
+		IHost host = builder.Build();
 
 		if (useHangfire)
 		{

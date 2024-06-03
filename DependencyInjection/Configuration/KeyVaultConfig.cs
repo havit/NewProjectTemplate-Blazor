@@ -5,19 +5,18 @@ namespace Havit.NewProjectTemplate.DependencyInjection.Configuration;
 
 /// <summary>
 /// Sets up Azure KeyVault as a configuration provider.
-/// The location here in DependencyInjection is not ideal, but it is probably the best place that is shared by both Utility and Web.Server.
 /// </summary>
 public static class KeyVaultConfig
 {
-	public static IConfigurationBuilder AddCustomizedAzureKeyVault(this IConfigurationBuilder builder)
+	public static IConfigurationBuilder AddCustomizedAzureKeyVault(this IConfigurationManager configurationManager)
 	{
-		string keyVaultUri = builder.Build().GetConnectionString("AzureKeyVault");
+		string keyVaultUri = configurationManager.GetConnectionString("AzureKeyVault");
 
 		if (!String.IsNullOrEmpty(keyVaultUri))
 		{
-			builder = builder.AddAzureKeyVault(new Uri(keyVaultUri), new DefaultAzureCredential());
+			configurationManager.AddAzureKeyVault(new Uri(keyVaultUri), new DefaultAzureCredential());
 		}
 
-		return builder;
+		return configurationManager;
 	}
 }
