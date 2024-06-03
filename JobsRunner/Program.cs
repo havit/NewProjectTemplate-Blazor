@@ -13,6 +13,7 @@ using Havit.NewProjectTemplate.DependencyInjection.Configuration;
 using Havit.NewProjectTemplate.JobsRunner.Infrastructure.ApplicationInsights;
 using Havit.NewProjectTemplate.Services.Jobs;
 using Microsoft.ApplicationInsights;
+using Microsoft.ApplicationInsights.DependencyCollector;
 using Microsoft.ApplicationInsights.Extensibility;
 using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector;
 using Microsoft.Azure.WebJobs;
@@ -51,6 +52,7 @@ public static class Program
 
 				services.AddApplicationInsightsTelemetryWorkerService();
 				services.AddApplicationInsightsTelemetryProcessor<IgnoreSucceededDependenciesWithNoParentIdProcessor>();
+				services.ConfigureTelemetryModule<DependencyTrackingTelemetryModule>((module, o) => { module.EnableSqlCommandTextInstrumentation = true; });
 				services.Remove(services.Single(descriptor => descriptor.ImplementationType == typeof(PerformanceCollectorModule)));
 				services.AddSingleton<ITelemetryInitializer, JobsRunnerToCloudRoleNameTelemetryInitializer>();
 
