@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="MSTest.Sdk/3.4.1">
 
 	<PropertyGroup>
 		<TargetFramework>net8.0</TargetFramework>
@@ -9,10 +9,6 @@
 		<EnableMSTestRunner>true</EnableMSTestRunner>
 		<OutputType>Exe</OutputType>
 	</PropertyGroup>
-
-	<ItemGroup>
-		<PackageReference Include="MSTest" />
-	</ItemGroup>
 
 	<ItemGroup>
 		<ProjectReference Include="..\Model\Model.csproj" />

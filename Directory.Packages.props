@@ -58,8 +58,6 @@
     <PackageVersion Include="Microsoft.Extensions.Identity.Core" Version="8.0.4" />
     <PackageVersion Include="Microsoft.Extensions.Logging.AzureAppServices" Version="8.0.4" />
     <PackageVersion Include="Microsoft.Extensions.Logging.Console" Version="8.0.0" />
-    <PackageVersion Include="MSTest" Version="3.3.1" />
-    <PackageVersion Include="MSTest.TestFramework" Version="3.3.1" />
     <PackageVersion Include="protobuf-net" Version="3.2.30" />
     <PackageVersion Include="protobuf-net.Grpc.AspNetCore.Reflection" Version="1.1.1" />
     <PackageVersion Include="Scrutor" Version="4.2.2" />
