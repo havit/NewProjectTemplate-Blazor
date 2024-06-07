@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
-namespace Havit.NewProjectTemplate.Web.Server.Infrastructure.LoggingExtensions;
+namespace Havit.NewProjectTemplate.Services.Infrastructure.Logging;
 
 /// <summary>
 /// Modifies logging to File / Azure Blob Storage to ignore the logging level settings in the Azure portal (Error, Warning, Information, Verbose).
@@ -18,7 +18,7 @@ internal class ConfigurationBasedLevelSwitcherRemoval : IConfigureOptions<Logger
 {
 	public void Configure(LoggerFilterOptions options)
 	{
-		// Services are registered only when running in Azure App Service. Therefore, this class can only be used in Azure App Service.
+		// Služby jsou zaregistrovány jen při běhu v Azure App Service. Proto tato třída může být použita jen v Azure App Service.
 		options.Rules.Remove(options.Rules.Single(rule => rule.ProviderName == typeof(Microsoft.Extensions.Logging.AzureAppServices.FileLoggerProvider).FullName));
 		options.Rules.Remove(options.Rules.Single(rule => rule.ProviderName == typeof(Microsoft.Extensions.Logging.AzureAppServices.BlobLoggerProvider).FullName));
 	}

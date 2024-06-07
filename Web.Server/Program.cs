@@ -1,6 +1,6 @@
 ﻿using System.Runtime.InteropServices;
 using Havit.NewProjectTemplate.DependencyInjection.Configuration;
-using Havit.NewProjectTemplate.Web.Server.Infrastructure.LoggingExtensions;
+using Havit.NewProjectTemplate.Services.Infrastructure.Logging;
 
 namespace Havit.NewProjectTemplate.Web.Server;
 
@@ -34,7 +34,7 @@ public static class Program
 		builder.Logging.AddConfiguration(builder.Configuration.GetSection("Logging"));
 		builder.Logging.AddConsole();
 		builder.Logging.AddDebug();
-		builder.Logging.AddCustomizedAzureWebAppDiagnostics();
+		builder.Logging.AddCustomizedAzureWebAppDiagnostics("WebServer");
 
 		if (!builder.Environment.IsDevelopment() && RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
 		{

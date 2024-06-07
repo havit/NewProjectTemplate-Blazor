@@ -11,6 +11,7 @@ using Havit.Hangfire.Extensions.RecurringJobs;
 using Havit.NewProjectTemplate.DependencyInjection;
 using Havit.NewProjectTemplate.DependencyInjection.Configuration;
 using Havit.NewProjectTemplate.JobsRunner.Infrastructure.ApplicationInsights;
+using Havit.NewProjectTemplate.Services.Infrastructure.Logging;
 using Havit.NewProjectTemplate.Services.Jobs;
 using Microsoft.ApplicationInsights;
 using Microsoft.ApplicationInsights.DependencyCollector;
@@ -41,6 +42,7 @@ public static class Program
 		builder.Configuration.AddCustomizedAzureKeyVault();
 
 		builder.Logging.AddSimpleConsole(configure => configure.TimestampFormat = "[HH:mm:ss] ");
+		builder.Logging.AddCustomizedAzureWebAppDiagnostics("JobsRunner");
 
 		builder.Services.AddMemoryCache();
 

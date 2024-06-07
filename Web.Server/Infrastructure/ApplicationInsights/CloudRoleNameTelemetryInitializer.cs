@@ -7,6 +7,6 @@ public class CloudRoleNameTelemetryInitializer : ITelemetryInitializer
 {
 	public void Initialize(ITelemetry telemetry)
 	{
-		telemetry.Context.Cloud.RoleName = "Web.Server";
+		telemetry.Context.Cloud.RoleName = "WebServer";
 	}
 }

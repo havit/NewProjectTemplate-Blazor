@@ -24,7 +24,6 @@
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
 		<PackageReference Include="Microsoft.Extensions.DependencyInjection" />
-		<PackageReference Include="Microsoft.Extensions.Logging.AzureAppServices" />
 		<PackageReference Include="protobuf-net.Grpc.AspNetCore.Reflection" />
 	</ItemGroup>
 
