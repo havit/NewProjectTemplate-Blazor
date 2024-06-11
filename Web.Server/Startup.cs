@@ -63,13 +63,11 @@ public class Startup
 
 		// Authentication & Authorization
 		services.AddCustomAuthentication(_configuration);
-		services.AddAuthorization(options =>
-		{
-			options.AddPolicy(PolicyNames.HangfireDashboardAccessPolicy, policy => policy
+		services.AddAuthorizationBuilder()
+			.AddPolicy(PolicyNames.HangfireDashboardAccessPolicy, policy => policy
 					.AddAuthenticationSchemes(AuthenticationConfigurationExtension.MsOidcScheme)
 					.RequireAuthenticatedUser()
 					.RequireRole(nameof(RoleEntry.SystemAdministrator)));
-		});
 
 		services.AddScoped<AuthenticationStateProvider, PersistingAuthenticationStateProvider>();
 		services.AddScoped<IApplicationAuthenticationService, ApplicationAuthenticationService>();
