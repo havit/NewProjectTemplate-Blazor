@@ -8,6 +8,7 @@
 		<Product>NewProjectTemplate</Product>
 		<LangVersion>latest</LangVersion>
 		<EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+		<AnalysisLevel>latest</AnalysisLevel>
 		<DisableTransitiveProjectReferences>true</DisableTransitiveProjectReferences>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>disable</Nullable>
