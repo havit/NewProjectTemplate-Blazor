@@ -55,11 +55,8 @@ public class Startup
 		services.AddSingleton<ITelemetryInitializer, CloudRoleNameTelemetryInitializer>();
 		services.ConfigureTelemetryModule<DependencyTrackingTelemetryModule>((module, o) => { module.EnableSqlCommandTextInstrumentation = true; });
 
-		// BlazorApplicationInsights
-		// For prerendering BlazorApplicationInsights, we need to have the ApplicationInsightsInitConfig configuration registered in the DI container,
-		// even though it is not actually used - OnAfterPrerender is not called on it.
-		// The actual configuration is performed by the client.
-		services.AddBlazorApplicationInsights(c => c.ConnectionString = "");
+		// The configuration is transferred to the client through prerendering
+		services.AddBlazorApplicationInsights(c => c.ConnectionString = _configuration.GetSection("ApplicationInsights").GetValue<string>("ConnectionString"));
 
 		// Authentication & Authorization
 		services.AddCustomAuthentication(_configuration);
