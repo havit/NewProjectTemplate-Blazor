@@ -115,8 +115,6 @@ public class Startup
 		app.UseHttpsRedirection();
 		app.UseStaticFiles();
 
-		app.UseExceptionMonitoring();
-
 		app.UseRouting();
 
 		app.UseAuthentication();

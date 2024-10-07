@@ -9,30 +9,30 @@
     <PackageVersion Include="Blazored.LocalStorage" Version="4.5.0" />
     <PackageVersion Include="FluentValidation" Version="11.9.0" />
     <PackageVersion Include="FluentValidation.DependencyInjectionExtensions" Version="11.9.0" />
-    <PackageVersion Include="Hangfire" Version="1.8.12" />
-    <PackageVersion Include="Hangfire.AspNetCore" Version="1.8.12" />
+    <PackageVersion Include="Hangfire" Version="1.8.14" />
+    <PackageVersion Include="Hangfire.AspNetCore" Version="1.8.14" />
     <PackageVersion Include="Hangfire.Console" Version="1.4.3" />
     <PackageVersion Include="Hangfire.Console.Extensions" Version="2.0.0" />
-    <PackageVersion Include="Hangfire.SqlServer" Version="1.8.12" />
+    <PackageVersion Include="Hangfire.SqlServer" Version="1.8.14" />
     <PackageVersion Include="Havit.ApplicationInsights.DependencyCollector" Version="2.0.8" />
-    <PackageVersion Include="Havit.AspNetCore" Version="2.0.12" />
-    <PackageVersion Include="Havit.Blazor.Components.Web.Bootstrap" Version="4.6.3" />
-    <PackageVersion Include="Havit.Blazor.Grpc.Client" Version="1.5.5" />
-    <PackageVersion Include="Havit.Blazor.Grpc.Server" Version="1.5.5" />
-    <PackageVersion Include="Havit.Core" Version="2.0.29" />
-    <PackageVersion Include="Havit.Data.EntityFrameworkCore" Version="2.8.7" />
+    <PackageVersion Include="Havit.AspNetCore" Version="2.0.21" />
+    <PackageVersion Include="Havit.Blazor.Components.Web.Bootstrap" Version="4.6.15" />
+    <PackageVersion Include="Havit.Blazor.Grpc.Client" Version="1.5.6" />
+    <PackageVersion Include="Havit.Blazor.Grpc.Server" Version="1.5.6" />
+    <PackageVersion Include="Havit.Core" Version="2.0.30" />
+    <PackageVersion Include="Havit.Data.EntityFrameworkCore" Version="2.8.9" />
     <PackageVersion Include="Havit.Data.EntityFrameworkCore.Abstractions" Version="2.1.1" />
-    <PackageVersion Include="Havit.Data.EntityFrameworkCore.CodeGenerator" Version="2.8.3" />
+    <PackageVersion Include="Havit.Data.EntityFrameworkCore.CodeGenerator" Version="2.8.4" />
     <PackageVersion Include="Havit.Data.EntityFrameworkCore.Patterns" Version="2.8.5" />
-    <PackageVersion Include="Havit.Data.Patterns" Version="2.1.25" />
-    <PackageVersion Include="Havit.Extensions.DependencyInjection" Version="2.0.12" />
-    <PackageVersion Include="Havit.Extensions.DependencyInjection.Abstractions" Version="2.0.6" />
-    <PackageVersion Include="Havit.Extensions.Localization" Version="1.0.8" />
-    <PackageVersion Include="Havit.Hangfire.Extensions" Version="2.0.13" />
+    <PackageVersion Include="Havit.Data.Patterns" Version="2.1.26" />
+    <PackageVersion Include="Havit.Extensions.DependencyInjection" Version="2.0.13" />
+    <PackageVersion Include="Havit.Extensions.DependencyInjection.Abstractions" Version="2.0.20" />
+    <PackageVersion Include="Havit.Extensions.Localization" Version="1.0.9" />
+    <PackageVersion Include="Havit.Hangfire.Extensions" Version="2.0.16" />
     <PackageVersion Include="Havit.Model" Version="2.0.4" />
-    <PackageVersion Include="Havit.Services" Version="2.0.42" />
-    <PackageVersion Include="Havit.Services.Azure" Version="2.0.25" />
-    <PackageVersion Include="Havit.SourceGenerators.StrongApiStringLocalizers" Version="1.0.9" />
+    <PackageVersion Include="Havit.Services" Version="2.0.43" />
+    <PackageVersion Include="Havit.Services.Azure" Version="2.0.26" />
+    <PackageVersion Include="Havit.SourceGenerators.StrongApiStringLocalizers" Version="1.0.10" />
     <PackageVersion Include="MailKit" Version="4.5.0" />
     <PackageVersion Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.22.0" />
     <PackageVersion Include="Microsoft.ApplicationInsights.WorkerService" Version="2.22.0" />
@@ -41,12 +41,12 @@
     <PackageVersion Include="Microsoft.AspNetCore.Components.Authorization" Version="8.0.4" />
     <PackageVersion Include="Microsoft.AspNetCore.Components.WebAssembly" Version="8.0.4" />
     <PackageVersion Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="8.0.4" />
-    <PackageVersion Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="8.0.4" />
+    <PackageVersion Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="8.0.8" />
     <PackageVersion Include="Microsoft.Azure.WebJobs" Version="3.0.39" />
-    <PackageVersion Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.4" />
-    <PackageVersion Include="Microsoft.EntityFrameworkCore.InMemory" Version="8.0.4" />
-    <PackageVersion Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.4" />
-    <PackageVersion Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.4" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.8" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.InMemory" Version="8.0.8" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.8" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.8" />
     <PackageVersion Include="Microsoft.Extensions.Configuration.Binder" Version="8.0.1" />
     <PackageVersion Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="8.0.0" />
     <PackageVersion Include="Microsoft.Extensions.Configuration.FileExtensions" Version="8.0.0" />

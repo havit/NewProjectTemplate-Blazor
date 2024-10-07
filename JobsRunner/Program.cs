@@ -8,6 +8,7 @@ using Havit.AspNetCore.ExceptionMonitoring.Services;
 using Havit.Hangfire.Extensions.BackgroundJobs;
 using Havit.Hangfire.Extensions.Filters;
 using Havit.Hangfire.Extensions.RecurringJobs;
+using Havit.Hangfire.Extensions.States;
 using Havit.NewProjectTemplate.DependencyInjection;
 using Havit.NewProjectTemplate.DependencyInjection.Configuration;
 using Havit.NewProjectTemplate.JobsRunner.Infrastructure.ApplicationInsights;
@@ -72,9 +73,11 @@ public static class Program
 					EnableHeavyMigrations = true
 				})
 				.WithJobExpirationTimeout(TimeSpan.FromDays(30)) // history
+				.UseFilter(new FinalFailedStateElectStateFilter()) // zapojíme FinalFailedState, který zajistí expiraci i failovaných jobů
 				.UseFilter(new AutomaticRetryAttribute { Attempts = 0 }) // do not retry failed jobs
-				.UseFilter(new ContinuationsSupportAttribute(new HashSet<string> { FailedState.StateName, DeletedState.StateName, SucceededState.StateName })) // only valid with AutomaticRetryAttribute with Attempts = 0
+				.UseFilter(new ContinuationsSupportAttribute(new HashSet<string> { FinalFailedState.StateName, DeletedState.StateName, SucceededState.StateName })) // only working with AutomaticRetryAttribute with Attempts = 0
 				.UseFilter(new CancelRecurringJobWhenAlreadyInQueueOrCurrentlyRunningFilter())
+				.UseFilter(new DeleteSequenceRecurringJobSchedulerFilter()) // zajistí odstranění systémových stavů jobů zajišťujících běh recurring jobů v sekvenci
 				.UseFilter(new ExceptionMonitoringAttribute(serviceProvider.GetRequiredService<IExceptionMonitoringService>()))
 				.UseFilter(new ApplicationInsightAttribute(serviceProvider.GetRequiredService<TelemetryClient>()) { JobNameFunc = backgroundJob => Havit.Hangfire.Extensions.Helpers.JobNameHelper.TryGetSimpleName(backgroundJob.Job, out string simpleName) ? simpleName : backgroundJob.Job.ToString() })
 				.UseConsole()
