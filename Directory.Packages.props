@@ -28,7 +28,7 @@
     <PackageVersion Include="Havit.Extensions.DependencyInjection" Version="2.0.13" />
     <PackageVersion Include="Havit.Extensions.DependencyInjection.Abstractions" Version="2.0.20" />
     <PackageVersion Include="Havit.Extensions.Localization" Version="1.0.9" />
-    <PackageVersion Include="Havit.Hangfire.Extensions" Version="2.0.16" />
+    <PackageVersion Include="Havit.Hangfire.Extensions" Version="2.0.17" />
     <PackageVersion Include="Havit.Model" Version="2.0.4" />
     <PackageVersion Include="Havit.Services" Version="2.0.43" />
     <PackageVersion Include="Havit.Services.Azure" Version="2.0.26" />

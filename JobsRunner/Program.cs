@@ -73,7 +73,7 @@ public static class Program
 					EnableHeavyMigrations = true
 				})
 				.WithJobExpirationTimeout(TimeSpan.FromDays(30)) // history
-				.UseFilter(new FinalFailedStateElectStateFilter()) // zapojíme FinalFailedState, který zajistí expiraci i failovaných jobů
+				.UseFilter(new FinalFailedStateFilter()) // zapojíme FinalFailedState, který zajistí expiraci i failovaných jobů
 				.UseFilter(new AutomaticRetryAttribute { Attempts = 0 }) // do not retry failed jobs
 				.UseFilter(new ContinuationsSupportAttribute(new HashSet<string> { FinalFailedState.StateName, DeletedState.StateName, SucceededState.StateName })) // only working with AutomaticRetryAttribute with Attempts = 0
 				.UseFilter(new CancelRecurringJobWhenAlreadyInQueueOrCurrentlyRunningFilter())
