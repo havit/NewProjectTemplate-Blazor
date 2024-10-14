@@ -24,12 +24,12 @@ public class MigrationService : IMigrationService
 	{
 		using (IServiceScope serviceScope = _serviceScopeFactory.CreateScope())
 		{
-			var context = serviceScope.ServiceProvider.GetService<IDbContext>();
+			var context = serviceScope.ServiceProvider.GetRequiredService<IDbContext>();
 
 			context.Database.SetCommandTimeout(TimeSpan.FromSeconds(_configuration.GetValue<int?>("AppSettings:Migrations:CommandTimeout") ?? 300));
 			await context.Database.MigrateAsync(cancellationToken);
 
-			var dataSeedRunner = serviceScope.ServiceProvider.GetService<IDataSeedRunner>();
+			var dataSeedRunner = serviceScope.ServiceProvider.GetRequiredService<IDataSeedRunner>();
 			await dataSeedRunner.SeedDataAsync<CoreProfile>(false, cancellationToken);
 		}
 	}
