@@ -73,12 +73,12 @@ public static class Program
 					EnableHeavyMigrations = true
 				})
 				.WithJobExpirationTimeout(TimeSpan.FromDays(30)) // history
-.UseFilter(new FinalFailedStateFilter()) // Enable FinalFailedState, which ensures expiration of failed jobs as well
-.UseFilter(new AutomaticRetryAttribute { Attempts = 0 }) // Do not retry failed jobs
+				.UseFilter(new FinalFailedStateFilter()) // Enable FinalFailedState, which ensures expiration of failed jobs as well
+				.UseFilter(new AutomaticRetryAttribute { Attempts = 0 }) // Do not retry failed jobs
 				.UseFilter(new ContinuationsSupportAttribute(new HashSet<string> { FinalFailedState.StateName, DeletedState.StateName, SucceededState.StateName })) // only working with AutomaticRetryAttribute with Attempts = 0
 				.UseFilter(new CancelRecurringJobWhenAlreadyInQueueOrCurrentlyRunningFilter())
-.UseFilter(new DeleteSequenceRecurringJobSchedulerFilter()) // ensures the removal of system states of jobs that ensure the execution of recurring jobs in sequence
-.UseFilter(new ExceptionMonitoringAttribute(serviceProvider.GetRequiredService<IExceptionMonitoringService>()))
+				.UseFilter(new DeleteSequenceRecurringJobSchedulerFilter()) // ensures the removal of system states of jobs that ensure the execution of recurring jobs in sequence
+				.UseFilter(new ExceptionMonitoringAttribute(serviceProvider.GetRequiredService<IExceptionMonitoringService>()))
 				.UseFilter(new ApplicationInsightAttribute(serviceProvider.GetRequiredService<TelemetryClient>()) { JobNameFunc = backgroundJob => Havit.Hangfire.Extensions.Helpers.JobNameHelper.TryGetSimpleName(backgroundJob.Job, out string simpleName) ? simpleName : backgroundJob.Job.ToString() })
 				.UseConsole()
 			);
