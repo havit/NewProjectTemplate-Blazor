@@ -1,1 +1,2 @@
-﻿global using Havit.Diagnostics.Contracts;
+﻿global using Microsoft.VisualStudio.TestTools.UnitTesting;
+global using Havit.Diagnostics.Contracts;

@@ -1,4 +1,4 @@
-<Project Sdk="MSTest.Sdk/3.6.1">
+<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<TargetFramework>net8.0</TargetFramework>
@@ -21,7 +21,9 @@
 		</Content>
 	</ItemGroup>
 
+
 	<ItemGroup>
+		<PackageReference Include="MSTest" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Design">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
