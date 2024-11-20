@@ -10,17 +10,15 @@
     <title>NewProjectTemplate</title>
     <base href="/" />
 
-	@((MarkupString)HxSetup.RenderBootstrapCssReference())
-
-    <link href="@GetFileVersionPath("_content/Havit.Blazor.Components.Web.Bootstrap/defaults.css")" rel="stylesheet" />
-    <link href="@GetFileVersionPath("Havit.NewProjectTemplate.Web.Server.styles.css" )" rel="stylesheet" /> <!-- CSS Isolation -->
-    <link href="@GetFileVersionPath("css/site.css")" rel="stylesheet")" />
+	<link rel="stylesheet" href="@Assets["_content/Havit.Blazor.Components.Web.Bootstrap/bootstrap.min.css"]" />
+	<link rel="stylesheet" href="@Assets["Havit.NewProjectTemplate.Web.Server.styles.css"]" />
+	<link rel="stylesheet" href="@Assets["css/site.css"]" />
 
     <link href="manifest.json" rel="manifest" />
     <link rel="apple-touch-icon" sizes="512x512" href="icon-512.png" />
 
     <BlazorApplicationInsights.ApplicationInsightsInit @rendermode="@RenderMode.InteractiveWebAssembly" />
-
+	<ImportMap />
     <HeadOutlet @rendermode="new InteractiveWebAssemblyRenderMode(prerender: false)" />
 </head>
 
@@ -33,7 +31,7 @@
         <a class="dismiss">&times;</a>
     </div>
 
-    <script src="@GetFileVersionPath("_framework/blazor.web.js")"></script>
+    <script src="_framework/blazor.web.js"></script>
     @((MarkupString)HxSetup.RenderBootstrapJavaScriptReference())
 </body>
 </html>

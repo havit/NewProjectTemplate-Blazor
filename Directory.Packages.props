@@ -7,8 +7,8 @@
     <PackageVersion Include="BlazorApplicationInsights" Version="3.1.0" />
     <PackageVersion Include="Blazored.FluentValidation" Version="2.2.0" />
     <PackageVersion Include="Blazored.LocalStorage" Version="4.5.0" />
-    <PackageVersion Include="FluentValidation" Version="11.10.0" />
-    <PackageVersion Include="FluentValidation.DependencyInjectionExtensions" Version="11.10.0" />
+    <PackageVersion Include="FluentValidation" Version="11.11.0" />
+    <PackageVersion Include="FluentValidation.DependencyInjectionExtensions" Version="11.11.0" />
     <PackageVersion Include="Hangfire" Version="1.8.15" />
     <PackageVersion Include="Hangfire.AspNetCore" Version="1.8.15" />
     <PackageVersion Include="Hangfire.Console" Version="1.4.3" />
@@ -16,62 +16,62 @@
     <PackageVersion Include="Hangfire.SqlServer" Version="1.8.15" />
     <PackageVersion Include="Havit.ApplicationInsights.DependencyCollector" Version="2.0.8" />
     <PackageVersion Include="Havit.AspNetCore" Version="2.0.22" />
-    <PackageVersion Include="Havit.Blazor.Components.Web.Bootstrap" Version="4.6.18" />
-    <PackageVersion Include="Havit.Blazor.Grpc.Client" Version="1.5.6" />
-    <PackageVersion Include="Havit.Blazor.Grpc.Server" Version="1.5.6" />
-    <PackageVersion Include="Havit.Core" Version="2.0.30" />
-    <PackageVersion Include="Havit.Data.EntityFrameworkCore" Version="2.8.9" />
+    <PackageVersion Include="Havit.Blazor.Components.Web.Bootstrap" Version="4.7.1" />
+    <PackageVersion Include="Havit.Blazor.Grpc.Client" Version="1.6.0" />
+    <PackageVersion Include="Havit.Blazor.Grpc.Server" Version="1.6.0" />
+    <PackageVersion Include="Havit.Core" Version="2.0.31" />
+    <PackageVersion Include="Havit.Data.EntityFrameworkCore" Version="2.9.0" />
     <PackageVersion Include="Havit.Data.EntityFrameworkCore.Abstractions" Version="2.1.1" />
-    <PackageVersion Include="Havit.Data.EntityFrameworkCore.CodeGenerator" Version="2.8.4" />
-    <PackageVersion Include="Havit.Data.EntityFrameworkCore.Patterns" Version="2.8.5" />
-    <PackageVersion Include="Havit.Data.Patterns" Version="2.1.26" />
+    <PackageVersion Include="Havit.Data.EntityFrameworkCore.CodeGenerator" Version="2.9.0" />
+    <PackageVersion Include="Havit.Data.EntityFrameworkCore.Patterns" Version="2.9.1" />
+    <PackageVersion Include="Havit.Data.Patterns" Version="2.1.27" />
     <PackageVersion Include="Havit.Extensions.DependencyInjection" Version="2.0.13" />
     <PackageVersion Include="Havit.Extensions.DependencyInjection.Abstractions" Version="2.0.20" />
-    <PackageVersion Include="Havit.Extensions.Localization" Version="1.0.9" />
+    <PackageVersion Include="Havit.Extensions.Localization" Version="1.0.10" />
     <PackageVersion Include="Havit.Hangfire.Extensions" Version="2.0.18" />
     <PackageVersion Include="Havit.Model" Version="2.0.4" />
     <PackageVersion Include="Havit.Services" Version="2.0.44" />
     <PackageVersion Include="Havit.Services.Azure" Version="2.0.26" />
-    <PackageVersion Include="Havit.SourceGenerators.StrongApiStringLocalizers" Version="1.0.10" />
+    <PackageVersion Include="Havit.SourceGenerators.StrongApiStringLocalizers" Version="1.0.11" />
     <PackageVersion Include="MailKit" Version="4.8.0" />
     <PackageVersion Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.22.0" />
     <PackageVersion Include="Microsoft.ApplicationInsights.WorkerService" Version="2.22.0" />
-    <PackageVersion Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="8.0.10" />
-    <PackageVersion Include="Microsoft.AspNetCore.Authorization" Version="8.0.10" />
-    <PackageVersion Include="Microsoft.AspNetCore.Components.Authorization" Version="8.0.10" />
-    <PackageVersion Include="Microsoft.AspNetCore.Components.WebAssembly" Version="8.0.10" />
-    <PackageVersion Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="8.0.10" />
-    <PackageVersion Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="8.0.10" />
+    <PackageVersion Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="9.0.0" />
+    <PackageVersion Include="Microsoft.AspNetCore.Authorization" Version="9.0.0" />
+    <PackageVersion Include="Microsoft.AspNetCore.Components.Authorization" Version="9.0.0" />
+    <PackageVersion Include="Microsoft.AspNetCore.Components.WebAssembly" Version="9.0.0" />
+    <PackageVersion Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="9.0.0" />
+    <PackageVersion Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="9.0.0" />
     <PackageVersion Include="Microsoft.Azure.WebJobs" Version="3.0.41" />
-    <PackageVersion Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.10" />
-    <PackageVersion Include="Microsoft.EntityFrameworkCore.InMemory" Version="8.0.10" />
-    <PackageVersion Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.10" />
-    <PackageVersion Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.10" />
-    <PackageVersion Include="Microsoft.Extensions.Configuration.Binder" Version="8.0.2" />
-    <PackageVersion Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="8.0.0" />
-    <PackageVersion Include="Microsoft.Extensions.Configuration.FileExtensions" Version="8.0.1" />
-    <PackageVersion Include="Microsoft.Extensions.Configuration.Json" Version="8.0.1" />
-    <PackageVersion Include="Microsoft.Extensions.DependencyInjection" Version="8.0.1" />
-    <PackageVersion Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.2" />
-    <PackageVersion Include="Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions" Version="8.0.10" />
-    <PackageVersion Include="Microsoft.Extensions.Hosting" Version="8.0.1" />
-    <PackageVersion Include="Microsoft.Extensions.Identity.Core" Version="8.0.10" />
-    <PackageVersion Include="Microsoft.Extensions.Logging.AzureAppServices" Version="8.0.10" />
-    <PackageVersion Include="Microsoft.Extensions.Logging.Console" Version="8.0.1" />
-    <PackageVersion Include="MSTest" Version="3.6.1" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.0" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.InMemory" Version="9.0.0" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.0" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.0" />
+    <PackageVersion Include="Microsoft.Extensions.Configuration.Binder" Version="9.0.0" />
+    <PackageVersion Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="9.0.0" />
+    <PackageVersion Include="Microsoft.Extensions.Configuration.FileExtensions" Version="9.0.0" />
+    <PackageVersion Include="Microsoft.Extensions.Configuration.Json" Version="9.0.0" />
+    <PackageVersion Include="Microsoft.Extensions.DependencyInjection" Version="9.0.0" />
+    <PackageVersion Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.0" />
+    <PackageVersion Include="Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions" Version="9.0.0" />
+    <PackageVersion Include="Microsoft.Extensions.Hosting" Version="9.0.0" />
+    <PackageVersion Include="Microsoft.Extensions.Identity.Core" Version="9.0.0" />
+    <PackageVersion Include="Microsoft.Extensions.Logging.AzureAppServices" Version="9.0.0" />
+    <PackageVersion Include="Microsoft.Extensions.Logging.Console" Version="9.0.0" />
+    <PackageVersion Include="MSTest" Version="3.6.3" />
     <PackageVersion Include="protobuf-net" Version="3.2.45" />
     <PackageVersion Include="protobuf-net.Grpc.AspNetCore.Reflection" Version="1.2.2" />
-    <PackageVersion Include="Scrutor" Version="5.0.1" />
+    <PackageVersion Include="Scrutor" Version="5.0.2" />
   </ItemGroup>
   <ItemGroup>
     <!-- https://github.com/microsoft/MSBuildSdks/tree/main/src/CopyOnWrite -->
-    <GlobalPackageReference Include="Microsoft.Build.CopyOnWrite" Version="1.0.330">
+    <GlobalPackageReference Include="Microsoft.Build.CopyOnWrite" Version="1.0.334">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </GlobalPackageReference>
   </ItemGroup>
   <ItemGroup Condition="'$(ProjectName.EndsWith(`Tests`))' == 'False'">
-    <GlobalPackageReference Include="Microsoft.VisualStudio.Threading.Analyzers" Version="17.11.20">
+    <GlobalPackageReference Include="Microsoft.VisualStudio.Threading.Analyzers" Version="17.12.19">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </GlobalPackageReference>

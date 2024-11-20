@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>net8.0</TargetFramework>
+		<TargetFramework>net9.0</TargetFramework>
 		<IsPackable>false</IsPackable>
 		<AssemblyName>Havit.NewProjectTemplate.Entity.Tests</AssemblyName>
 		<RootNamespace>Havit.NewProjectTemplate.Entity.Tests</RootNamespace>

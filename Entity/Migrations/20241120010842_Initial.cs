@@ -5,8 +5,10 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Havit.NewProjectTemplate.Entity.Migrations
 {
+    /// <inheritdoc />
     public partial class Initial : Migration
     {
+        /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
@@ -161,9 +163,10 @@ namespace Havit.NewProjectTemplate.Entity.Migrations
                 column: "LanguageId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_CountryLocalization_ParentId",
+                name: "IX_CountryLocalization_ParentId_LanguageId",
                 table: "CountryLocalization",
-                column: "ParentId");
+                columns: new[] { "ParentId", "LanguageId" },
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_User_IdentityProviderExternalId",
@@ -178,6 +181,7 @@ namespace Havit.NewProjectTemplate.Entity.Migrations
                 column: "RoleId");
         }
 
+        /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(

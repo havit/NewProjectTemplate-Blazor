@@ -1,18 +1,19 @@
-﻿using System.IO;
-using System.Runtime.CompilerServices;
+﻿using System.Runtime.CompilerServices;
 using Azure.Identity;
+using Havit.Data.EntityFrameworkCore;
 using Havit.Data.EntityFrameworkCore.Patterns.DependencyInjection;
 using Havit.Data.EntityFrameworkCore.Patterns.UnitOfWorks.EntityValidation;
 using Havit.Extensions.DependencyInjection;
 using Havit.Extensions.DependencyInjection.Abstractions;
-using Havit.NewProjectTemplate.DataLayer.DataSources.Common;
+using Havit.NewProjectTemplate.DataLayer;
 using Havit.NewProjectTemplate.DataLayer.Repositories.Common;
+using Havit.NewProjectTemplate.DataLayer.Seeds.Core;
 using Havit.NewProjectTemplate.DependencyInjection.ConfigurationOptions;
 using Havit.NewProjectTemplate.Entity;
+using Havit.NewProjectTemplate.Model.Localizations;
 using Havit.NewProjectTemplate.Services.Infrastructure;
 using Havit.NewProjectTemplate.Services.Infrastructure.FileStorages;
 using Havit.NewProjectTemplate.Services.Infrastructure.MigrationTool;
-using Havit.NewProjectTemplate.Services.Jobs;
 using Havit.NewProjectTemplate.Services.TimeServices;
 using Havit.Services.Azure.FileStorage;
 using Havit.Services.Caching;
@@ -114,10 +115,7 @@ public static class ServiceCollectionExtensions
 
 	private static void InstallHavitEntityFramework(IServiceCollection services, InstallConfiguration configuration)
 	{
-		services.WithEntityPatternsInstaller()
-			.AddEntityPatterns()
-			//.AddLocalizationServices<Language>()
-			.AddDbContext<NewProjectTemplateDbContext>(optionsBuilder =>
+		services.AddDbContext<IDbContext, NewProjectTemplateDbContext>(optionsBuilder =>
 			{
 				if (configuration.UseInMemoryDb)
 				{
@@ -127,8 +125,11 @@ public static class ServiceCollectionExtensions
 				{
 					optionsBuilder.UseSqlServer(configuration.DatabaseConnectionString, c => c.MaxBatchSize(30));
 				}
+				optionsBuilder.UseDefaultHavitConventions();
 			})
-			.AddDataLayer(typeof(IApplicationSettingsDataSource).Assembly)
+			.AddDataLayerServices()
+			.AddDataSeeds(typeof(CoreProfile).Assembly)
+			.AddLocalizationServices<Language>()
 			.AddLookupService<ICountryByIsoCodeLookupService, CountryByIsoCodeLookupService>();
 
 		services.AddSingleton<IEntityValidator<object>, ValidatableObjectEntityValidator>();

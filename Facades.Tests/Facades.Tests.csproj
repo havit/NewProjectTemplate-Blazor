@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>net8.0</TargetFramework>
+		<TargetFramework>net9.0</TargetFramework>
 		<IsPackable>false</IsPackable>
 		<AssemblyName>Havit.NewProjectTemplate.Facades.Tests</AssemblyName>
 		<RootNamespace>Havit.NewProjectTemplate.Facades.Tests</RootNamespace>

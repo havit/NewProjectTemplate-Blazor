@@ -35,50 +35,45 @@ https://github.com/havit/NewProjectTemplate-Blazor/generate
 (Use PublishScripts folder for deployment settings.)
 
 
-# Upgrading Blazor Web App security to OIDC & cookie authentication
-1. Repeat changes in the commit ce3cf6a7ddc472804046c68d323a13e74c9af1ba
+# Upgrading existing project from net8 to net9
 
-# Upgrading Blazor WebAssembly to Blazor Web App (net8)
-1. Repeat changes in the commit ed6fb5c13cb5f2bea15d4429bbaa8d982e601798 ("core update")
-1. Repeat changes in the commit 72fd697a29660f8218bfc7754d973634ee8b11c8 (updates BlazorApplicationInsights)
-
-# Upgrading existing project from net7 to net8
-
-1. Replace the `<TargetFramework>net7.0</TargetFramework>` to `<TargetFramework>net8.0</TargetFramework>` in all `.csproj` files.
-1. Update NuGet package references from 7.0.x to 8.0.x version + update other NuGet packages as needed (**do not update to EF Core 8 until fully supported by HFW**).
+1. Replace the `<TargetFramework>net8.0</TargetFramework>` to `<TargetFramework>net9.0</TargetFramework>` in all `.csproj` files.
+1. Update NuGet package references from 8.0.x to 9.0.x version + update other NuGet packages as needed (**for EF Core 9 upgrade see below**).
 1. Build: Clean solution & Rebuild solution
-1. Deal with `[Obsolete]` APIs:
-   1. Remove `<HxAnchorFragmentNavigation />` component, if you are using it (anchor-navigation is handled by Blazor now)
-1. In `dotnet-tools.json` upgrade `Havit.Data.EntityFrameworkCore.CodeGenerator.Tool` to 2.8.0+ version (net8) + try if the `DataLayer/Run-CodeGenerator.ps1` runs correctly
-1. Check the `TfsPublish.xml`. There might be explicit `net7` target, update it to `net8`.
-1. Update the `Web.Server.csproj` the `EnsureWebJobInPackage` target to use `net8.0` in paths.
-1. If you use it, upgrade your GitHub workflow YAML to use net8.
-1. For AAD, if you use `JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();`, replace it with `JsonWebTokenHandler.DefaultInboundClaimTypeMap.Clear();`.
-1. If you are hitting the `"undefined" is not valid JSON` when logging in (or just "Login failed"), disable assembly trimming for `Microsoft.AspNetCore.Components.WebAssembly.Authentication` (yes, again), see https://github.com/dotnet/aspnetcore/issues/49956
+1. Check the `TfsPublish.xml`. There might be explicit `net8.0` target, remove the line.
+1. Update the `Web.Server.csproj` the `EnsureWebJobInPackage` target to use `net9.0` in paths.
+1. Implement [Static Assets Middleware](https://learn.microsoft.com/en-us/aspnet/core/migration/80-90?view=aspnetcore-9.0&tabs=visual-studio#replace-usestaticfiles-with-mapstaticassets) (`MapStaticAssets` instead of `UseStaticFiles`, `App.razor` adjustments, custom versioning removal, ...)
+1. Remove link to `_content/Havit.Blazor.Components.Web.Bootstrap/defaults.css`.
+1. If you use it, upgrade your GitHub workflow YAML to use net9.
 
 
-# Upgrading existing project from net6 to net7
+### EF Core 8 to EF Core 9 Migration Guide
 
-1. Replace the `<TargetFramework>net6.0</TargetFramework>` to `<TargetFramework>net7.0</TargetFramework>` in all `.csproj` files.
-1. Update NuGet package references from 6.0.x to 7.0.x version + update other NuGet packages as needed.
-1. Build: Clean solution & Rebuild solution
-1. Deal with `[Obsolete]` APIs:
-    1. Replace `SignOutSessionStateManager` (`LoginDisplat.razor`) with `NavigationManager.NavigateToLogout()`, see [CS0618](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/compiler-messages/cs0618)
-1. Deal with *unsupported platform* APIs
-    1. In `Web.Server/Program.cs`, update the `AddEventLog()` call:
-    ```csharp
-	if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-	{
-		logging.AddEventLog();
-	}
-	```
-1. Deal with new code analyzer warnings, e.g.
-    1. BL0007: Component parameter 'XY' should be auto property
-        1. use `@bind:after` where applicable
-		1. use `#pragma warning disable` where needed
-1. In `dotnet-tools.json` upgrade `Havit.Data.EntityFrameworkCore.CodeGenerator.Tool` to 2.7.0 version (net7) + try if the `DataLayer/Run-CodeGenerator.ps1` runs correctly
-1. Check the `TfsPublish.xml`. There might be explicit `net6` target, update it to `net7`.
-1. Update the `Web.Server.csproj` the `EnsureWebJobInPackage` target to use `net7.0` in paths.
-1. If you use it, upgrade your GitHub workflow YAML to use net7.
-1. If you are hitting the `"undefined" is not valid JSON` when logging in, disable assembly trimming for `Microsoft.AspNetCore.Components.WebAssembly.Authentication`, see https://github.com/dotnet/aspnetcore/issues/44981
-1. Remove the Blazor GC gRPC workaround when using facades (revert the `Func<IXyFacade>` usage to direct `IXyFacade` usage))
+1. Update HFW NuGet packages and Microsoft packages to EF Core 9.
+1. Update the dotnet tool `Havit.Data.EntityFrameworkCore.CodeGenerator.Tool` (`dotnet tool update Havit.Data.EntityFrameworkCore.CodeGenerator.Tool`).
+1. Build the Entity project (building the entire solution will fail initially).
+1. Run the code generator.
+1. Adjust Before Commit Processors (if any) to accommodate the new return values.
+1. Update method overrides for `PerformAddForInsert/Update/Delete` in custom Unit of Work, if needed.
+1. Modify the service registration in dependency injection:
+    1. Remove the call to `WithEntityPatterns`,
+    1. Remove the call to `AddEntityPatterns`,
+    1. Add the generic parameter `IDbContext` to the `AddDbContext` call,
+    1. Add `UseDefaultHavitConventions()` to the `optionsBuilder` in the `AddDbContext` call,
+    1. Replace `AddDataLayer` with `AddDataLayerServices` (remove the assembly argument),
+    1. Add a call to `AddDataSeeds` if data seeds are used.
+1. Methods `AddLocalizationServices` and `AddLookupServices` remain unchanged.
+
+#### Updated Service Registration Example
+```csharp
+services
+    .AddDbContext<IDbContext, MyShopDbContext>(optionsBuilder =>
+    {
+        string databaseConnectionString = configuration.Configuration.GetConnectionString("Database");
+        optionsBuilder.UseSqlServer(databaseConnectionString, c => c.MaxBatchSize(30));
+        optionsBuilder.UseDefaultHavitConventions();
+    })
+    .AddDataLayerServices()
+    .AddDataSeeds(typeof(CoreProfile).Assembly)
+    .AddLocalizationServices<Language>();
+```

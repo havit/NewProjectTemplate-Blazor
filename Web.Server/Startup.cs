@@ -113,7 +113,8 @@ public class Startup
 		app.UseMiddleware<CustomResponseForKnownExceptionsMiddleware>();
 
 		app.UseHttpsRedirection();
-		app.UseStaticFiles();
+		app.MapStaticAssets();
+		//app.UseStaticFiles();
 
 		app.UseRouting();
 
