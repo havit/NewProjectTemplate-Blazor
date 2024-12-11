@@ -117,7 +117,7 @@ public class Startup
 
 		app.UseHttpsRedirection();
 		app.MapStaticAssets();
-		//app.UseStaticFiles();
+		app.UseStaticFiles();
 
 		app.UseRouting();
 
