@@ -2,10 +2,11 @@
 
 	<PropertyGroup>
 		<TargetFramework>net9.0</TargetFramework>
-		<IsPackable>false</IsPackable>
 		<AssemblyName>Havit.NewProjectTemplate.Services.Tests</AssemblyName>
 		<RootNamespace>Havit.NewProjectTemplate.Services.Tests</RootNamespace>
 		<PublishDir>obj\$(Configuration)\publish</PublishDir>
+		<IsPackable>false</IsPackable>
+		<IsTestProject>true</IsTestProject>
 		<EnableMSTestRunner>true</EnableMSTestRunner>
 		<OutputType>Exe</OutputType>
 	</PropertyGroup>

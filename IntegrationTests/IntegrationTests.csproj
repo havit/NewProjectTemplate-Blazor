@@ -2,9 +2,10 @@
 
 	<PropertyGroup>
 		<TargetFramework>net9.0</TargetFramework>
-		<IsPackable>false</IsPackable>
 		<AssemblyName>Havit.NewProjectTemplate.IntegrationTests</AssemblyName>
 		<RootNamespace>Havit.NewProjectTemplate.IntegrationTests</RootNamespace>
+		<IsPackable>false</IsPackable>
+		<IsTestProject>true</IsTestProject>
 		<EnableMSTestRunner>true</EnableMSTestRunner>
 		<OutputType>Exe</OutputType>
 	</PropertyGroup>

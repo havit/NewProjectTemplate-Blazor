@@ -2,11 +2,12 @@
 
 	<PropertyGroup>
 		<TargetFramework>net9.0</TargetFramework>
-		<IsPackable>false</IsPackable>
 		<AssemblyName>Havit.NewProjectTemplate.TestsForLocalDebugging</AssemblyName>
 		<RootNamespace>Havit.NewProjectTemplate.TestsForLocalDebugging</RootNamespace>
 		<!-- Route the publish folder outside of the bin folder to avoid running unit tests twice (from bin\Release\netcoreapp and bin\Release\netcoreapp\publish) -->
 		<PublishDir>obj\$(Configuration)\publish</PublishDir>
+		<IsPackable>false</IsPackable>
+		<IsTestProject>true</IsTestProject>
 		<EnableMSTestRunner>true</EnableMSTestRunner>
 		<OutputType>Exe</OutputType>
 	</PropertyGroup>
