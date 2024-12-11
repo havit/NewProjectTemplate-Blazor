@@ -23,11 +23,11 @@
     <PackageVersion Include="Havit.Core" Version="2.0.31" />
     <PackageVersion Include="Havit.Data.EntityFrameworkCore" Version="2.9.1" />
     <PackageVersion Include="Havit.Data.EntityFrameworkCore.Abstractions" Version="2.1.1" />
-    <PackageVersion Include="Havit.Data.EntityFrameworkCore.CodeGenerator" Version="2.9.0" />
+    <PackageVersion Include="Havit.Data.EntityFrameworkCore.CodeGenerator" Version="2.9.1" />
     <PackageVersion Include="Havit.Data.EntityFrameworkCore.Patterns" Version="2.9.2" />
-    <PackageVersion Include="Havit.Data.Patterns" Version="2.1.27" />
+    <PackageVersion Include="Havit.Data.Patterns" Version="2.1.28" />
     <PackageVersion Include="Havit.Extensions.DependencyInjection" Version="2.0.13" />
-    <PackageVersion Include="Havit.Extensions.DependencyInjection.Abstractions" Version="2.0.20" />
+    <PackageVersion Include="Havit.Extensions.DependencyInjection.Abstractions" Version="2.0.21" />
     <PackageVersion Include="Havit.Extensions.Localization" Version="1.0.10" />
     <PackageVersion Include="Havit.Hangfire.Extensions" Version="2.0.18" />
     <PackageVersion Include="Havit.Model" Version="2.0.4" />
