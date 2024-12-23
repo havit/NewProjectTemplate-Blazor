@@ -10,6 +10,7 @@ using Havit.NewProjectTemplate.Primitives.Security;
 using Havit.NewProjectTemplate.Services.HealthChecks;
 using Havit.NewProjectTemplate.Services.Infrastructure.Security;
 using Havit.NewProjectTemplate.Web.Client.Infrastructure.Configuration;
+using Havit.NewProjectTemplate.Web.Client.Infrastructure.Security;
 using Havit.NewProjectTemplate.Web.Server.Infrastructure.Antiforgery;
 using Havit.NewProjectTemplate.Web.Server.Infrastructure.ApplicationInsights;
 using Havit.NewProjectTemplate.Web.Server.Infrastructure.ConfigurationExtensions;
@@ -68,12 +69,13 @@ public class Startup
 					.RequireAuthenticatedUser()
 					.RequireRole(nameof(RoleEntry.SystemAdministrator)));
 
-		services.AddScoped<AuthenticationStateProvider, PersistingAuthenticationStateProvider>();
 		services.AddScoped<IApplicationAuthenticationService, ApplicationAuthenticationService>();
 
 		// Blazor components
 		services.AddRazorComponents()
-			.AddInteractiveWebAssemblyComponents();
+			.AddInteractiveWebAssemblyComponents()
+			.AddAuthenticationStateSerialization(options => options.SerializationCallback = ClaimsSerializer.SerializeAuthenticationState);
+
 		services.AddScoped<AntiforgeryStateProvider, WorkaroundEndpointAntiforgeryStateProvider>();
 
 		// server-side UI
@@ -136,6 +138,7 @@ public class Startup
 		app.MapRazorComponents<App>()
 			.AddInteractiveWebAssemblyRenderMode()
 			.AddAdditionalAssemblies(typeof(Havit.NewProjectTemplate.Web.Client.Program).Assembly);
+
 
 		app.MapGrpcServicesByApiContractAttributes(
 				typeof(IDataSeedFacade).Assembly,

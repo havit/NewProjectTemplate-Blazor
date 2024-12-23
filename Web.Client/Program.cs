@@ -9,8 +9,6 @@ using Havit.NewProjectTemplate.Contracts;
 using Havit.NewProjectTemplate.Contracts.Infrastructure;
 using Havit.NewProjectTemplate.Web.Client.Infrastructure.Configuration;
 using Havit.NewProjectTemplate.Web.Client.Infrastructure.Grpc;
-using Havit.NewProjectTemplate.Web.Client.Infrastructure.Security;
-using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 
 namespace Havit.NewProjectTemplate.Web.Client;
@@ -77,7 +75,7 @@ public static class Program
 
 		builder.Services.AddAuthorizationCore();
 		builder.Services.AddCascadingAuthenticationState();
-		builder.Services.AddSingleton<AuthenticationStateProvider, PersistentAuthenticationStateProvider>();
+		builder.Services.AddAuthenticationStateDeserialization();
 
 		//builder.Services.Configure<AuthorizationOptions>(config =>
 		//{

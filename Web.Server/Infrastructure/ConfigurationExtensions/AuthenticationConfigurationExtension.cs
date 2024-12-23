@@ -190,8 +190,11 @@ public static class AuthenticationConfigurationExtension
 
 		if (customClaims.Any())
 		{
-			ClaimsIdentity customClaimsIdentity = new ClaimsIdentity();
-			customClaimsIdentity.AddClaims(customClaims);
+			ClaimsIdentity identity = principal.Identities.First();
+			ClaimsIdentity customClaimsIdentity = new ClaimsIdentity(customClaims,
+				authenticationType: nameof(CustomClaimsBuilder),
+				nameType: identity.NameClaimType,
+				roleType: identity.RoleClaimType);
 			principal.AddIdentity(customClaimsIdentity);
 		}
 

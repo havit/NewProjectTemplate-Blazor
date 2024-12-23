@@ -64,9 +64,12 @@ public class CustomClaimsBuilder : ICustomClaimsBuilder
 		result.Add(new Claim(ClaimConstants.UserIdClaim, user.Id.ToString(), null, ClaimConstants.ApplicationIssuer));
 
 		var roles = user.UserRoles.Select(ur => (RoleEntry)ur.RoleId);
+
+		// Pro Blazor je potřeba, aby všechny (obě) identity používali pro role stejný claim type.
+		string roleClaimType = principal.Identities.First().RoleClaimType;
 		foreach (var role in roles)
 		{
-			result.Add(new Claim(ClaimTypes.Role, role.ToString(), null, ClaimConstants.ApplicationIssuer));
+			result.Add(new Claim(roleClaimType, role.ToString(), null, ClaimConstants.ApplicationIssuer));
 		}
 
 		return result;
