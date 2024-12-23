@@ -6,10 +6,10 @@ namespace Havit.NewProjectTemplate.DataLayer.Seeds.Core.Security;
 
 public class RoleSeed : DataSeed<CoreProfile>
 {
-	public override void SeedData()
+	public override async Task SeedDataAsync(CancellationToken cancellationToken)
 	{
 		var roles = Enum.GetValues<RoleEntry>().Select(entry => new Role { Id = (int)entry, Name = entry.ToString() }).ToArray();
 
-		Seed(For(roles).PairBy(r => r.Id));
+		await SeedAsync(For(roles).PairBy(r => r.Id), cancellationToken);
 	}
 }

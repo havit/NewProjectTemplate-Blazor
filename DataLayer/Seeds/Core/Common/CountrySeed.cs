@@ -6,7 +6,7 @@ namespace Havit.NewProjectTemplate.DataLayer.Seeds.Core.Common;
 
 public class CountrySeed : DataSeed<CoreProfile>
 {
-	public override void SeedData()
+	public override async Task SeedDataAsync(CancellationToken cancellationToken)
 	{
 		var countries = new[]
 		{
@@ -2917,6 +2917,6 @@ public class CountrySeed : DataSeed<CoreProfile>
 				}
 			};
 
-		Seed(For(countries).PairBy(country => country.IsoCode3));
+		await SeedAsync(For(countries).PairBy(country => country.IsoCode3), cancellationToken);
 	}
 }

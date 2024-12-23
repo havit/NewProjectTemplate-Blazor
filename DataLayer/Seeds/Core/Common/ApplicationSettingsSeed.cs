@@ -5,7 +5,7 @@ namespace Havit.NewProjectTemplate.DataLayer.Seeds.Core.Common;
 
 public class ApplicationSettingsSeed : DataSeed<CoreProfile>
 {
-	public override void SeedData()
+	public override async Task SeedDataAsync(CancellationToken cancellationToken)
 	{
 		ApplicationSettings settings = new ApplicationSettings
 		{
@@ -13,6 +13,6 @@ public class ApplicationSettingsSeed : DataSeed<CoreProfile>
 			// TODO: Výchozí nastavení
 		};
 
-		Seed(For(settings).PairBy(item => item.Id).WithoutUpdate());
+		await SeedAsync(For(settings).PairBy(item => item.Id).WithoutUpdate(), cancellationToken);
 	}
 }

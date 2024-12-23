@@ -5,7 +5,7 @@ namespace Havit.NewProjectTemplate.DataLayer.Seeds.Core.Localizations;
 
 public class LanguageSeed : DataSeed<CoreProfile>
 {
-	public override void SeedData()
+	public override async Task SeedDataAsync(CancellationToken cancellationToken)
 	{
 		var languages = new[]
 		{
@@ -25,6 +25,6 @@ public class LanguageSeed : DataSeed<CoreProfile>
 				}
 			};
 
-		Seed(For(languages).PairBy(language => language.Id));
+		await SeedAsync(For(languages).PairBy(language => language.Id), cancellationToken);
 	}
 }
