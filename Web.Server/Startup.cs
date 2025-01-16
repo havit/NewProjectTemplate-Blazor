@@ -119,7 +119,7 @@ public class Startup
 
 		app.UseHttpsRedirection();
 		app.MapStaticAssets();
-		app.UseStaticFiles();
+		app.UseStaticFiles(requestPath: "/version.txt");
 
 		app.UseRouting();
 
