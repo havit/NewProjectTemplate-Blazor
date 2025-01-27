@@ -2,6 +2,7 @@
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using Havit.NewProjectTemplate.Contracts.Infrastructure.Security;
+using Havit.Threading;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
@@ -14,8 +15,13 @@ namespace Havit.NewProjectTemplate.Web.Server.Infrastructure.Security;
 
 // Source: https://github.com/dotnet/blazor-samples/tree/main/8.0/BlazorWebAppOidc
 
-internal sealed class CookieOidcRefresher(IOptionsMonitor<OpenIdConnectOptions> oidcOptionsMonitor)
+internal sealed class CookieOidcRefresher(
+	IRefreshTokenEndpointResponseCacheStore refreshTokenEndpointResponseCacheStore,
+	IOptionsMonitor<OpenIdConnectOptions> oidcOptionsMonitor)
 {
+	// Static - we need to share the instance of the critical section across all requests.
+	private static readonly CriticalSection<string> s_criticalSection = new();
+
 	private readonly OpenIdConnectProtocolValidator oidcTokenValidator = new()
 	{
 		// We no longer have the original nonce cookie which is deleted at the end of the authorization code flow having served its purpose.
@@ -23,6 +29,11 @@ internal sealed class CookieOidcRefresher(IOptionsMonitor<OpenIdConnectOptions> 
 		RequireNonce = false,
 	};
 
+	/// <remarks>
+	/// This implementation assumes that only one instance of the application is running.
+	/// If we have multiple instances (production environment) then we can configure refresh tokens to be reusable
+	/// as multiple instances could be hit with parallel requests where one would consume the refresh token and the others would fail.
+	/// </remarks>
 	public async Task ValidateOrRefreshCookieAsync(CookieValidatePrincipalContext validateContext, string oidcScheme)
 	{
 		var accessTokenExpirationText = validateContext.Properties.GetTokenValue("expires_at");
@@ -40,25 +51,37 @@ internal sealed class CookieOidcRefresher(IOptionsMonitor<OpenIdConnectOptions> 
 
 		var oidcConfiguration = await oidcOptions.ConfigurationManager!.GetConfigurationAsync(validateContext.HttpContext.RequestAborted);
 		var tokenEndpoint = oidcConfiguration.TokenEndpoint ?? throw new InvalidOperationException("Cannot refresh cookie. TokenEndpoint missing!");
+		var refreshToken = validateContext.Properties.GetTokenValue("refresh_token") ?? throw new InvalidOperationException("Cannot refresh cookie. RefreshToken missing!");
 
-		using var refreshResponse = await oidcOptions.Backchannel.PostAsync(tokenEndpoint,
-			new FormUrlEncodedContent(new Dictionary<string, string>()
-			{
-				["grant_type"] = "refresh_token",
-				["client_id"] = oidcOptions.ClientId,
-				["client_secret"] = oidcOptions.ClientSecret,
-				["scope"] = string.Join(" ", oidcOptions.Scope),
-				["refresh_token"] = validateContext.Properties.GetTokenValue("refresh_token"),
-			}));
-
-		if (!refreshResponse.IsSuccessStatusCode)
+		// When multiple requests come in parallel with expired access token
+		// we want to use the refresh token only once to request a new access token.
+		OpenIdConnectMessage message = null;
+		await s_criticalSection.ExecuteActionAsync(refreshToken, async () =>
 		{
-			validateContext.RejectPrincipal();
-			return;
-		}
+			message = refreshTokenEndpointResponseCacheStore.GetResponse(refreshToken);
+			if (message is null)
+			{
+				using var refreshResponse = await oidcOptions.Backchannel.PostAsync(tokenEndpoint,
+					new FormUrlEncodedContent(new Dictionary<string, string>()
+					{
+						["grant_type"] = "refresh_token",
+						["client_id"] = oidcOptions.ClientId,
+						["client_secret"] = oidcOptions.ClientSecret,
+						["scope"] = string.Join(" ", oidcOptions.Scope),
+						["refresh_token"] = refreshToken
+					}));
 
-		var refreshJson = await refreshResponse.Content.ReadAsStringAsync();
-		var message = new OpenIdConnectMessage(refreshJson);
+				if (!refreshResponse.IsSuccessStatusCode)
+				{
+					validateContext.RejectPrincipal();
+					return;
+				}
+
+				var refreshJson = await refreshResponse.Content.ReadAsStringAsync();
+				message = new OpenIdConnectMessage(refreshJson);
+				refreshTokenEndpointResponseCacheStore.StoreResponse(refreshToken, message);
+			}
+		});
 
 		var validationParameters = oidcOptions.TokenValidationParameters.Clone();
 		if (oidcOptions.ConfigurationManager is BaseConfigurationManager baseConfigurationManager)

@@ -10,6 +10,8 @@ internal static partial class CookieOidcServiceCollectionExtensions
 	public static IServiceCollection ConfigureCookieOidcRefresh(this IServiceCollection services, string cookieScheme, string oidcScheme)
 	{
 		services.AddSingleton<CookieOidcRefresher>();
+		services.AddSingleton<IRefreshTokenEndpointResponseCacheStore, RefreshTokenEndpointResponseCacheStore>();
+
 		services.AddOptions<CookieAuthenticationOptions>(cookieScheme).Configure<CookieOidcRefresher>((cookieOptions, refresher) =>
 		{
 			cookieOptions.Events.OnValidatePrincipal = context => refresher.ValidateOrRefreshCookieAsync(context, oidcScheme);
