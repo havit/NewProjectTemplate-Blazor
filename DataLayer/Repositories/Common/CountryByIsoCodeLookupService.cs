@@ -12,7 +12,7 @@ public class CountryByIsoCodeLookupService : LookupServiceBase<string, Country>,
 {
 	public CountryByIsoCodeLookupService(
 		IEntityLookupDataStorage lookupStorage,
-		IRepository<Country> repository,
+		ICountryRepository repository,
 		IDbContext dbContext,
 		IEntityKeyAccessor entityKeyAccessor,
 		ISoftDeleteManager softDeleteManager) : base(lookupStorage, repository, dbContext, entityKeyAccessor, softDeleteManager)
