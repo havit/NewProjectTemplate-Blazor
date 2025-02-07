@@ -24,7 +24,7 @@ public partial class AdminIndex : ComponentBase
 		if (await MessageBox.ConfirmAsync("Do you really want to remove culture cache?"))
 		{
 			await LocalStorageService.RemoveItemAsync("culture");
-			Messenger.AddInformation(AdminIndexLocalizer["CultureRemoved"]); // TODO Just a demo
+			Messenger.AddInformation(AdminIndexLocalizer.CultureRemoved); // TODO Just a demo
 		}
 	}
 
