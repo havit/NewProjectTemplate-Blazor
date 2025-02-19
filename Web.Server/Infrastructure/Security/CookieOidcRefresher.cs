@@ -2,6 +2,7 @@
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using Havit.NewProjectTemplate.Contracts.Infrastructure.Security;
+using Havit.NewProjectTemplate.Facades.Infrastructure.Security.Claims;
 using Havit.Threading;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -116,7 +117,11 @@ internal sealed class CookieOidcRefresher(
 		[
 			new ClaimsIdentity(validationResult.ClaimsIdentity),
 			// We will also add our custom claims that we created in the CustomClaimsBuilder.
-			new ClaimsIdentity(validateContext.Principal.Claims.Where(claim => claim.Issuer == ClaimConstants.ApplicationIssuer).ToList())
+			new ClaimsIdentity(
+				validateContext.Principal.Claims.Where(claim => claim.Issuer == ClaimConstants.ApplicationIssuer),
+				authenticationType: nameof(CustomClaimsBuilder),
+				nameType: validationResult.ClaimsIdentity.NameClaimType,
+				roleType: validationResult.ClaimsIdentity.RoleClaimType)
 		]));
 
 		var expiresIn = int.Parse(message.ExpiresIn, NumberStyles.Integer, CultureInfo.InvariantCulture);
