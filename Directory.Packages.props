@@ -60,7 +60,7 @@
     <PackageVersion Include="Microsoft.Extensions.Identity.Core" Version="9.0.0" />
     <PackageVersion Include="Microsoft.Extensions.Logging.AzureAppServices" Version="9.0.0" />
     <PackageVersion Include="Microsoft.Extensions.Logging.Console" Version="9.0.0" />
-    <PackageVersion Include="MSTest" Version="3.6.4" />
+    <PackageVersion Include="MSTest" Version="3.8.2" />
     <PackageVersion Include="protobuf-net" Version="3.2.45" />
     <PackageVersion Include="protobuf-net.Grpc.AspNetCore.Reflection" Version="1.2.2" />
     <PackageVersion Include="Scrutor" Version="5.0.2" />
