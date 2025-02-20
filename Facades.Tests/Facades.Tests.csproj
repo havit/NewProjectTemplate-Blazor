@@ -6,8 +6,6 @@
 		<RootNamespace>Havit.NewProjectTemplate.Facades.Tests</RootNamespace>
 		<PublishDir>obj\$(Configuration)\publish</PublishDir>
 		<IsPackable>false</IsPackable>
-		<IsTestProject>true</IsTestProject>
-		<EnableMSTestRunner>true</EnableMSTestRunner>
 		<OutputType>Exe</OutputType>
 	</PropertyGroup>
 
