@@ -1,5 +1,6 @@
 ﻿using System.Security.Claims;
 using Havit.Extensions.DependencyInjection.Abstractions;
+using Havit.NewProjectTemplate.Model.Security;
 using Havit.NewProjectTemplate.Primitives.Security;
 
 namespace Havit.NewProjectTemplate.Services.Infrastructure.Security;
@@ -16,7 +17,12 @@ public class ApplicationAuthorizationService : IApplicationAuthorizationService
 
 	public IEnumerable<RoleEntry> GetCurrentUserRoles()
 	{
-		return _applicationAuthenticationService.GetCurrentClaimsPrincipal().FindAll(ClaimTypes.Role).Select(c => Enum.Parse<RoleEntry>(c.Value));
+		var roles = new List<RoleEntry>();
+		foreach (var identity in _applicationAuthenticationService.GetCurrentClaimsPrincipal().Identities)
+		{
+			roles.AddRange(identity.FindAll(identity.RoleClaimType).Select(c => Enum.Parse<RoleEntry>(c.Value)));
+		}
+		return roles;
 	}
 
 	public bool IsCurrentUserInRole(RoleEntry role)
