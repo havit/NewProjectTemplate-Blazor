@@ -1,14 +1,14 @@
 ﻿using System.Security.Claims;
 using Microsoft.AspNetCore.Components.Authorization;
 
-namespace Havit.NewProjectTemplate.Web.Client.Infrastructure.Security;
+namespace Havit.NewProjectTemplate.Web.Server.Infrastructure.Security;
 
-public static class ClaimsSerializer
+public static class CustomClaimsSerializer
 {
 	/// <summary>
-	/// Serializuje omezenou množinu claims.
+	/// Serializes custom set of claims.
 	/// </summary>
-	public static ValueTask<AuthenticationStateData> SerializeAuthenticationState(AuthenticationState authenticationState)
+	public static ValueTask<AuthenticationStateData> SerializeAuthenticationStateAsync(AuthenticationState authenticationState)
 	{
 		if (authenticationState.User.Identity?.IsAuthenticated ?? false)
 		{
@@ -29,7 +29,5 @@ public static class ClaimsSerializer
 		}
 
 		return ValueTask.FromResult<AuthenticationStateData>(null);
-
 	}
-
 }

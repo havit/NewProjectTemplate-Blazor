@@ -10,7 +10,6 @@ using Havit.NewProjectTemplate.Primitives.Security;
 using Havit.NewProjectTemplate.Services.HealthChecks;
 using Havit.NewProjectTemplate.Services.Infrastructure.Security;
 using Havit.NewProjectTemplate.Web.Client.Infrastructure.Configuration;
-using Havit.NewProjectTemplate.Web.Client.Infrastructure.Security;
 using Havit.NewProjectTemplate.Web.Server.Infrastructure.Antiforgery;
 using Havit.NewProjectTemplate.Web.Server.Infrastructure.ApplicationInsights;
 using Havit.NewProjectTemplate.Web.Server.Infrastructure.ConfigurationExtensions;
@@ -20,8 +19,6 @@ using Havit.NewProjectTemplate.Web.Server.Infrastructure.MigrationTool;
 using Havit.NewProjectTemplate.Web.Server.Infrastructure.Security;
 using Microsoft.ApplicationInsights.DependencyCollector;
 using Microsoft.ApplicationInsights.Extensibility;
-using Microsoft.AspNetCore.Authentication.OpenIdConnect;
-using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.Forms;
 using ProtoBuf.Grpc.Server;
 
@@ -74,7 +71,7 @@ public class Startup
 		// Blazor components
 		services.AddRazorComponents()
 			.AddInteractiveWebAssemblyComponents()
-			.AddAuthenticationStateSerialization(options => options.SerializationCallback = ClaimsSerializer.SerializeAuthenticationState);
+			.AddAuthenticationStateSerialization(options => options.SerializationCallback = CustomClaimsSerializer.SerializeAuthenticationStateAsync);
 
 		services.AddScoped<AntiforgeryStateProvider, WorkaroundEndpointAntiforgeryStateProvider>();
 
