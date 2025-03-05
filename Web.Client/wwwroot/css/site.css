@@ -14,9 +14,13 @@
 	z-index: 10000;
 }
 
-	#blazor-error-ui .dismiss {
-		cursor: pointer;
-		position: absolute;
-		right: 0.75rem;
-		top: 0.5rem;
-	}
+#blazor-error-ui .dismiss {
+	cursor: pointer;
+	position: absolute;
+	right: 0.75rem;
+	top: 0.5rem;
+}
+
+body:has(.main) #blazor-loading-ui {
+	display: none !important;
+}

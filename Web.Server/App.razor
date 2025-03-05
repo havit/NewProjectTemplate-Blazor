@@ -31,6 +31,11 @@
         <a class="dismiss">&times;</a>
     </div>
 
+    <div id="blazor-loading-ui" class="h-100 w-100 position-absolute top-0 start-0 d-flex flex-grow flex-column justify-content-center align-items-center">
+        <div class="spinner-border text-primary" role="status"></div>
+        <div class="mt-2">Loading app...</div>
+    </div>
+
     <script src="_framework/blazor.web.js"></script>
     @((MarkupString)HxSetup.RenderBootstrapJavaScriptReference())
 </body>
