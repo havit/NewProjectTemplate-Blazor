@@ -7,6 +7,7 @@
 
 using Havit.Data.EntityFrameworkCore.Patterns.DependencyInjection;
 using Havit.Data.EntityFrameworkCore.Patterns.Infrastructure;
+using Havit.Data.EntityFrameworkCore.Patterns.Repositories;
 using Havit.Data.Patterns.DataEntries;
 using Havit.Data.Patterns.DataSources;
 using Havit.Data.Patterns.Infrastructure;
@@ -27,8 +28,6 @@ public static partial class DataLayerServiceExtensions
 		AddRepositories(services);
 		AddDataEntries(services);
 		AddEntityKeyAccessors(services);
-
-		AddNextDataLayerServices(services); // partial method for custom extensibility
 
 		return services;
 	}
@@ -58,22 +57,28 @@ public static partial class DataLayerServiceExtensions
 	private static void AddRepositories(IServiceCollection services)
 	{
 		services.TryAddScoped<Havit.NewProjectTemplate.DataLayer.Repositories.Common.IApplicationSettingsRepository, Havit.NewProjectTemplate.DataLayer.Repositories.Common.ApplicationSettingsDbRepository>();
-		services.TryAddScoped<IRepository<Havit.NewProjectTemplate.Model.Common.ApplicationSettings>>(sp => sp.GetRequiredService<Havit.NewProjectTemplate.DataLayer.Repositories.Common.IApplicationSettingsRepository>());
+		services.TryAddScoped<IRepository<Havit.NewProjectTemplate.Model.Common.ApplicationSettings, System.Int32>>(sp => sp.GetRequiredService<Havit.NewProjectTemplate.DataLayer.Repositories.Common.IApplicationSettingsRepository>());
+		services.TryAddSingleton<IRepositoryQueryProvider<Havit.NewProjectTemplate.Model.Common.ApplicationSettings, System.Int32>, Havit.NewProjectTemplate.DataLayer.Repositories.Common.ApplicationSettingsDbRepositoryQueryProvider>();
 
 		services.TryAddScoped<Havit.NewProjectTemplate.DataLayer.Repositories.Common.ICountryRepository, Havit.NewProjectTemplate.DataLayer.Repositories.Common.CountryDbRepository>();
-		services.TryAddScoped<IRepository<Havit.NewProjectTemplate.Model.Common.Country>>(sp => sp.GetRequiredService<Havit.NewProjectTemplate.DataLayer.Repositories.Common.ICountryRepository>());
+		services.TryAddScoped<IRepository<Havit.NewProjectTemplate.Model.Common.Country, System.Int32>>(sp => sp.GetRequiredService<Havit.NewProjectTemplate.DataLayer.Repositories.Common.ICountryRepository>());
+		services.TryAddSingleton<IRepositoryQueryProvider<Havit.NewProjectTemplate.Model.Common.Country, System.Int32>, Havit.NewProjectTemplate.DataLayer.Repositories.Common.CountryDbRepositoryQueryProvider>();
 
 		services.TryAddScoped<Havit.NewProjectTemplate.DataLayer.Repositories.Common.ICountryLocalizationRepository, Havit.NewProjectTemplate.DataLayer.Repositories.Common.CountryLocalizationDbRepository>();
-		services.TryAddScoped<IRepository<Havit.NewProjectTemplate.Model.Common.CountryLocalization>>(sp => sp.GetRequiredService<Havit.NewProjectTemplate.DataLayer.Repositories.Common.ICountryLocalizationRepository>());
+		services.TryAddScoped<IRepository<Havit.NewProjectTemplate.Model.Common.CountryLocalization, System.Int32>>(sp => sp.GetRequiredService<Havit.NewProjectTemplate.DataLayer.Repositories.Common.ICountryLocalizationRepository>());
+		services.TryAddSingleton<IRepositoryQueryProvider<Havit.NewProjectTemplate.Model.Common.CountryLocalization, System.Int32>, Havit.NewProjectTemplate.DataLayer.Repositories.Common.CountryLocalizationDbRepositoryQueryProvider>();
 
 		services.TryAddScoped<Havit.NewProjectTemplate.DataLayer.Repositories.Localizations.ILanguageRepository, Havit.NewProjectTemplate.DataLayer.Repositories.Localizations.LanguageDbRepository>();
-		services.TryAddScoped<IRepository<Havit.NewProjectTemplate.Model.Localizations.Language>>(sp => sp.GetRequiredService<Havit.NewProjectTemplate.DataLayer.Repositories.Localizations.ILanguageRepository>());
+		services.TryAddScoped<IRepository<Havit.NewProjectTemplate.Model.Localizations.Language, System.Int32>>(sp => sp.GetRequiredService<Havit.NewProjectTemplate.DataLayer.Repositories.Localizations.ILanguageRepository>());
+		services.TryAddSingleton<IRepositoryQueryProvider<Havit.NewProjectTemplate.Model.Localizations.Language, System.Int32>, Havit.NewProjectTemplate.DataLayer.Repositories.Localizations.LanguageDbRepositoryQueryProvider>();
 
 		services.TryAddScoped<Havit.NewProjectTemplate.DataLayer.Repositories.Security.IRoleRepository, Havit.NewProjectTemplate.DataLayer.Repositories.Security.RoleDbRepository>();
-		services.TryAddScoped<IRepository<Havit.NewProjectTemplate.Model.Security.Role>>(sp => sp.GetRequiredService<Havit.NewProjectTemplate.DataLayer.Repositories.Security.IRoleRepository>());
+		services.TryAddScoped<IRepository<Havit.NewProjectTemplate.Model.Security.Role, System.Int32>>(sp => sp.GetRequiredService<Havit.NewProjectTemplate.DataLayer.Repositories.Security.IRoleRepository>());
+		services.TryAddSingleton<IRepositoryQueryProvider<Havit.NewProjectTemplate.Model.Security.Role, System.Int32>, Havit.NewProjectTemplate.DataLayer.Repositories.Security.RoleDbRepositoryQueryProvider>();
 
 		services.TryAddScoped<Havit.NewProjectTemplate.DataLayer.Repositories.Security.IUserRepository, Havit.NewProjectTemplate.DataLayer.Repositories.Security.UserDbRepository>();
-		services.TryAddScoped<IRepository<Havit.NewProjectTemplate.Model.Security.User>>(sp => sp.GetRequiredService<Havit.NewProjectTemplate.DataLayer.Repositories.Security.IUserRepository>());
+		services.TryAddScoped<IRepository<Havit.NewProjectTemplate.Model.Security.User, System.Int32>>(sp => sp.GetRequiredService<Havit.NewProjectTemplate.DataLayer.Repositories.Security.IUserRepository>());
+		services.TryAddSingleton<IRepositoryQueryProvider<Havit.NewProjectTemplate.Model.Security.User, System.Int32>, Havit.NewProjectTemplate.DataLayer.Repositories.Security.UserDbRepositoryQueryProvider>();
 
 	}
 
@@ -87,13 +92,11 @@ public static partial class DataLayerServiceExtensions
 
 	private static void AddEntityKeyAccessors(IServiceCollection services)
 	{
-		services.TryAddTransient<IEntityKeyAccessor<Havit.NewProjectTemplate.Model.Common.ApplicationSettings, int>, DbEntityKeyAccessor<Havit.NewProjectTemplate.Model.Common.ApplicationSettings, int>>();
-		services.TryAddTransient<IEntityKeyAccessor<Havit.NewProjectTemplate.Model.Common.Country, int>, DbEntityKeyAccessor<Havit.NewProjectTemplate.Model.Common.Country, int>>();
-		services.TryAddTransient<IEntityKeyAccessor<Havit.NewProjectTemplate.Model.Common.CountryLocalization, int>, DbEntityKeyAccessor<Havit.NewProjectTemplate.Model.Common.CountryLocalization, int>>();
-		services.TryAddTransient<IEntityKeyAccessor<Havit.NewProjectTemplate.Model.Localizations.Language, int>, DbEntityKeyAccessor<Havit.NewProjectTemplate.Model.Localizations.Language, int>>();
-		services.TryAddTransient<IEntityKeyAccessor<Havit.NewProjectTemplate.Model.Security.Role, int>, DbEntityKeyAccessor<Havit.NewProjectTemplate.Model.Security.Role, int>>();
-		services.TryAddTransient<IEntityKeyAccessor<Havit.NewProjectTemplate.Model.Security.User, int>, DbEntityKeyAccessor<Havit.NewProjectTemplate.Model.Security.User, int>>();
+		services.TryAddTransient<IEntityKeyAccessor<Havit.NewProjectTemplate.Model.Common.ApplicationSettings, System.Int32>, DbEntityKeyAccessor<Havit.NewProjectTemplate.Model.Common.ApplicationSettings, System.Int32>>();
+		services.TryAddTransient<IEntityKeyAccessor<Havit.NewProjectTemplate.Model.Common.Country, System.Int32>, DbEntityKeyAccessor<Havit.NewProjectTemplate.Model.Common.Country, System.Int32>>();
+		services.TryAddTransient<IEntityKeyAccessor<Havit.NewProjectTemplate.Model.Common.CountryLocalization, System.Int32>, DbEntityKeyAccessor<Havit.NewProjectTemplate.Model.Common.CountryLocalization, System.Int32>>();
+		services.TryAddTransient<IEntityKeyAccessor<Havit.NewProjectTemplate.Model.Localizations.Language, System.Int32>, DbEntityKeyAccessor<Havit.NewProjectTemplate.Model.Localizations.Language, System.Int32>>();
+		services.TryAddTransient<IEntityKeyAccessor<Havit.NewProjectTemplate.Model.Security.Role, System.Int32>, DbEntityKeyAccessor<Havit.NewProjectTemplate.Model.Security.Role, System.Int32>>();
+		services.TryAddTransient<IEntityKeyAccessor<Havit.NewProjectTemplate.Model.Security.User, System.Int32>, DbEntityKeyAccessor<Havit.NewProjectTemplate.Model.Security.User, System.Int32>>();
 	}
-
-	static partial void AddNextDataLayerServices(IServiceCollection services);
 }

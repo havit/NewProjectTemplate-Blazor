@@ -8,13 +8,13 @@
 namespace Havit.NewProjectTemplate.DataLayer.DataEntries.Localizations;
 
 [System.CodeDom.Compiler.GeneratedCode("Havit.Data.EntityFrameworkCore.CodeGenerator", "1.0")]
-public class LanguageEntries : Havit.Data.Patterns.DataEntries.DataEntries<Havit.NewProjectTemplate.Model.Localizations.Language>, ILanguageEntries 
+public class LanguageEntries : Havit.Data.Patterns.DataEntries.DataEntries<Havit.NewProjectTemplate.Model.Localizations.Language, System.Int32>, ILanguageEntries
 {
-	private Havit.NewProjectTemplate.Model.Localizations.Language czech;
-	private Havit.NewProjectTemplate.Model.Localizations.Language english;
+	private Havit.NewProjectTemplate.Model.Localizations.Language _czech;
+	private Havit.NewProjectTemplate.Model.Localizations.Language _english;
 
-	public Havit.NewProjectTemplate.Model.Localizations.Language Czech => czech ??= GetEntry(Havit.NewProjectTemplate.Model.Localizations.Language.Entry.Czech);
-	public Havit.NewProjectTemplate.Model.Localizations.Language English => english ??= GetEntry(Havit.NewProjectTemplate.Model.Localizations.Language.Entry.English);
+	public Havit.NewProjectTemplate.Model.Localizations.Language Czech => _czech ??= GetEntry(Havit.NewProjectTemplate.Model.Localizations.Language.Entry.Czech);
+	public Havit.NewProjectTemplate.Model.Localizations.Language English => _english ??= GetEntry(Havit.NewProjectTemplate.Model.Localizations.Language.Entry.English);
 
 	public LanguageEntries(Havit.NewProjectTemplate.DataLayer.Repositories.Localizations.ILanguageRepository repository)
 		: base(repository)

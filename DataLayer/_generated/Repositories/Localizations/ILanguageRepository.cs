@@ -10,6 +10,6 @@ using Havit.Data.Patterns.Repositories;
 namespace Havit.NewProjectTemplate.DataLayer.Repositories.Localizations;
 
 [System.CodeDom.Compiler.GeneratedCode("Havit.Data.EntityFrameworkCore.CodeGenerator", "1.0")]
-public partial interface ILanguageRepository : IRepository<Havit.NewProjectTemplate.Model.Localizations.Language>
+public partial interface ILanguageRepository : IRepository<Havit.NewProjectTemplate.Model.Localizations.Language, System.Int32>
 {
 }

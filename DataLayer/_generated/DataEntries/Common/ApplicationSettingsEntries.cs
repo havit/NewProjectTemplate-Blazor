@@ -8,11 +8,11 @@
 namespace Havit.NewProjectTemplate.DataLayer.DataEntries.Common;
 
 [System.CodeDom.Compiler.GeneratedCode("Havit.Data.EntityFrameworkCore.CodeGenerator", "1.0")]
-public class ApplicationSettingsEntries : Havit.Data.Patterns.DataEntries.DataEntries<Havit.NewProjectTemplate.Model.Common.ApplicationSettings>, IApplicationSettingsEntries 
+public class ApplicationSettingsEntries : Havit.Data.Patterns.DataEntries.DataEntries<Havit.NewProjectTemplate.Model.Common.ApplicationSettings, System.Int32>, IApplicationSettingsEntries
 {
-	private Havit.NewProjectTemplate.Model.Common.ApplicationSettings current;
+	private Havit.NewProjectTemplate.Model.Common.ApplicationSettings _current;
 
-	public Havit.NewProjectTemplate.Model.Common.ApplicationSettings Current => current ??= GetEntry(Havit.NewProjectTemplate.Model.Common.ApplicationSettings.Entry.Current);
+	public Havit.NewProjectTemplate.Model.Common.ApplicationSettings Current => _current ??= GetEntry(Havit.NewProjectTemplate.Model.Common.ApplicationSettings.Entry.Current);
 
 	public ApplicationSettingsEntries(Havit.NewProjectTemplate.DataLayer.Repositories.Common.IApplicationSettingsRepository repository)
 		: base(repository)

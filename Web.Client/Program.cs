@@ -34,8 +34,8 @@ public static class Program
 		builder.Services.AddHxServices();
 		builder.Services.AddHxMessenger();
 		builder.Services.AddHxMessageBoxHost();
-		Havit.NewProjectTemplate.Web.Client.Resources.ResourcesServiceCollectionInstaller.AddGeneratedResourceWrappers(builder.Services);
-		Havit.NewProjectTemplate.Resources.ResourcesServiceCollectionInstaller.AddGeneratedResourceWrappers(builder.Services);
+		Havit.NewProjectTemplate.Web.Client.ServiceCollectionExtensions.AddGeneratedResourceWrappers(builder.Services);
+		Havit.NewProjectTemplate.Resources.ServiceCollectionExtensions.AddGeneratedResourceWrappers(builder.Services);
 		SetHxComponents();
 
 		AddGrpcClient(builder);

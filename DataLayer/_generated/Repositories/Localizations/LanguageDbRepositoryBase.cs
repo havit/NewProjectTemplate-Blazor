@@ -16,9 +16,9 @@ using Havit.Data.Patterns.Infrastructure;
 namespace Havit.NewProjectTemplate.DataLayer.Repositories.Localizations;
 
 [System.CodeDom.Compiler.GeneratedCode("Havit.Data.EntityFrameworkCore.CodeGenerator", "1.0")]
-public abstract class LanguageDbRepositoryBase : DbRepository<Havit.NewProjectTemplate.Model.Localizations.Language>
+public abstract class LanguageDbRepositoryBase : DbRepository<Havit.NewProjectTemplate.Model.Localizations.Language, System.Int32>
 {
-	protected LanguageDbRepositoryBase(IDbContext dbContext, IEntityKeyAccessor<Havit.NewProjectTemplate.Model.Localizations.Language, int> entityKeyAccessor, IDataLoader dataLoader, ISoftDeleteManager softDeleteManager, IEntityCacheManager entityCacheManager, IRepositoryQueryProvider repositoryQueryProvider)
+	protected LanguageDbRepositoryBase(IDbContext dbContext, IEntityKeyAccessor<Havit.NewProjectTemplate.Model.Localizations.Language, System.Int32> entityKeyAccessor, IDataLoader dataLoader, ISoftDeleteManager softDeleteManager, IEntityCacheManager entityCacheManager, IRepositoryQueryProvider<Havit.NewProjectTemplate.Model.Localizations.Language, System.Int32> repositoryQueryProvider)
 		: base(dbContext, entityKeyAccessor, dataLoader, softDeleteManager, entityCacheManager, repositoryQueryProvider)
 	{
 	}

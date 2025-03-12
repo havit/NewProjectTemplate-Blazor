@@ -16,9 +16,9 @@ using Havit.Data.Patterns.Infrastructure;
 namespace Havit.NewProjectTemplate.DataLayer.Repositories.Security;
 
 [System.CodeDom.Compiler.GeneratedCode("Havit.Data.EntityFrameworkCore.CodeGenerator", "1.0")]
-public abstract class RoleDbRepositoryBase : DbRepository<Havit.NewProjectTemplate.Model.Security.Role>
+public abstract class RoleDbRepositoryBase : DbRepository<Havit.NewProjectTemplate.Model.Security.Role, System.Int32>
 {
-	protected RoleDbRepositoryBase(IDbContext dbContext, IEntityKeyAccessor<Havit.NewProjectTemplate.Model.Security.Role, int> entityKeyAccessor, IDataLoader dataLoader, ISoftDeleteManager softDeleteManager, IEntityCacheManager entityCacheManager, IRepositoryQueryProvider repositoryQueryProvider)
+	protected RoleDbRepositoryBase(IDbContext dbContext, IEntityKeyAccessor<Havit.NewProjectTemplate.Model.Security.Role, System.Int32> entityKeyAccessor, IDataLoader dataLoader, ISoftDeleteManager softDeleteManager, IEntityCacheManager entityCacheManager, IRepositoryQueryProvider<Havit.NewProjectTemplate.Model.Security.Role, System.Int32> repositoryQueryProvider)
 		: base(dbContext, entityKeyAccessor, dataLoader, softDeleteManager, entityCacheManager, repositoryQueryProvider)
 	{
 	}
