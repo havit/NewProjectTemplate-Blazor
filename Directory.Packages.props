@@ -69,13 +69,6 @@
     <PackageVersion Include="System.Net.Http" Version="4.3.4" />
     <PackageVersion Include="System.Text.RegularExpressions" Version="4.3.1" />
   </ItemGroup>
-  <ItemGroup>
-    <!-- https://github.com/microsoft/MSBuildSdks/tree/main/src/CopyOnWrite -->
-    <GlobalPackageReference Include="Microsoft.Build.CopyOnWrite" Version="1.0.334">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
-    </GlobalPackageReference>
-  </ItemGroup>
   <ItemGroup Condition="'$(ProjectName.EndsWith(`Tests`))' == 'False'">
     <GlobalPackageReference Include="Microsoft.VisualStudio.Threading.Analyzers" Version="17.13.2">
       <PrivateAssets>all</PrivateAssets>
