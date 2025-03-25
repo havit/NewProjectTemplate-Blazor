@@ -3,14 +3,15 @@ using Azure.Identity;
 using Havit.Data.EntityFrameworkCore;
 using Havit.Data.EntityFrameworkCore.Patterns.DependencyInjection;
 using Havit.Data.EntityFrameworkCore.Patterns.UnitOfWorks.EntityValidation;
-using Havit.Extensions.DependencyInjection;
 using Havit.Extensions.DependencyInjection.Abstractions;
 using Havit.NewProjectTemplate.DataLayer;
 using Havit.NewProjectTemplate.DataLayer.Repositories.Common;
 using Havit.NewProjectTemplate.DataLayer.Seeds.Core;
 using Havit.NewProjectTemplate.DependencyInjection.ConfigurationOptions;
 using Havit.NewProjectTemplate.Entity;
+using Havit.NewProjectTemplate.Facades;
 using Havit.NewProjectTemplate.Model.Localizations;
+using Havit.NewProjectTemplate.Services;
 using Havit.NewProjectTemplate.Services.Infrastructure;
 using Havit.NewProjectTemplate.Services.Infrastructure.FileStorages;
 using Havit.NewProjectTemplate.Services.Infrastructure.MigrationTool;
@@ -92,7 +93,7 @@ public static class ServiceCollectionExtensions
 		InstallHavitEntityFramework(services, installConfiguration);
 		InstallHavitServices(services);
 
-		services.AddByServiceAttribute(typeof(DataLayer.Properties.AssemblyInfo).Assembly, installConfiguration.ServiceProfiles);
+		services.AddDataLayerByServiceAttribute(installConfiguration.ServiceProfiles);
 		services.AddSingleton<IMigrationService, MigrationService>();
 
 		return services;
@@ -145,9 +146,9 @@ public static class ServiceCollectionExtensions
 
 	private static void InstallByServiceAttribute(IServiceCollection services, InstallConfiguration configuration)
 	{
-		services.AddByServiceAttribute(typeof(Havit.NewProjectTemplate.DataLayer.Properties.AssemblyInfo).Assembly, configuration.ServiceProfiles);
-		services.AddByServiceAttribute(typeof(Havit.NewProjectTemplate.Services.Properties.AssemblyInfo).Assembly, configuration.ServiceProfiles);
-		services.AddByServiceAttribute(typeof(Havit.NewProjectTemplate.Facades.Properties.AssemblyInfo).Assembly, configuration.ServiceProfiles);
+		services.AddDataLayerByServiceAttribute(configuration.ServiceProfiles);
+		services.AddServicesByServiceAttribute(configuration.ServiceProfiles);
+		services.AddFacadesByServiceAttribute(configuration.ServiceProfiles);
 	}
 
 	private static void InstallAuthorizationHandlers(IServiceCollection services)
