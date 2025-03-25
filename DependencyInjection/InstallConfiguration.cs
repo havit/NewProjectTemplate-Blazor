@@ -1,11 +1,11 @@
-﻿namespace Havit.NewProjectTemplate.DependencyInjection;
+﻿using Microsoft.Extensions.Configuration;
+
+namespace Havit.NewProjectTemplate.DependencyInjection;
 
 internal class InstallConfiguration
 {
-	public string DatabaseConnectionString { get; set; }
-	public string[] ServiceProfiles { get; set; }
-	public bool UseInMemoryDb { get; internal set; }
-
-	public string AzureStorageConnectionString { get; set; }
-	public string FileStoragePathOrContainerName { get; set; }
+	public required IConfiguration Configuration { get; init; }
+	public required string DatabaseConnectionString { get; set; }
+	public required string[] ServiceProfiles { get; set; }
+	public required bool UseInMemoryDb { get; internal set; }
 }

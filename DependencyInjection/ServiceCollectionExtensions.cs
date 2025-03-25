@@ -21,6 +21,7 @@ using Havit.Services.Caching;
 using Havit.Services.FileStorage;
 using Havit.Services.TimeServices;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -32,14 +33,12 @@ public static class ServiceCollectionExtensions
 	[MethodImpl(MethodImplOptions.NoInlining)]
 	public static IServiceCollection ConfigureForWebServer(this IServiceCollection services, IConfiguration configuration)
 	{
-		FileStorageOptions fileStorageOptions = configuration.GetSection(FileStorageOptions.ApplicationFileStorageOptionsKey).Get<FileStorageOptions>();
-
 		InstallConfiguration installConfiguration = new InstallConfiguration
 		{
+			Configuration = configuration,
 			DatabaseConnectionString = configuration.GetConnectionString("Database"),
-			AzureStorageConnectionString = configuration.GetConnectionString("AzureStorage"),
-			FileStoragePathOrContainerName = fileStorageOptions.PathOrContainerName,
 			ServiceProfiles = new[] { ServiceAttribute.DefaultProfile, ServiceProfiles.WebServer },
+			UseInMemoryDb = false
 		};
 
 		return services.ConfigureForAll(installConfiguration);
@@ -50,9 +49,10 @@ public static class ServiceCollectionExtensions
 	{
 		InstallConfiguration installConfiguration = new InstallConfiguration
 		{
+			Configuration = configuration,
 			DatabaseConnectionString = configuration.GetConnectionString("Database"),
-			AzureStorageConnectionString = configuration.GetConnectionString("AzureStorage"),
-			ServiceProfiles = new[] { ServiceAttribute.DefaultProfile, ServiceProfiles.JobsRunner }
+			ServiceProfiles = new[] { ServiceAttribute.DefaultProfile, ServiceProfiles.JobsRunner },
+			UseInMemoryDb = false
 		};
 
 		return services.ConfigureForAll(installConfiguration);
@@ -72,9 +72,10 @@ public static class ServiceCollectionExtensions
 
 		InstallConfiguration installConfiguration = new InstallConfiguration
 		{
-			DatabaseConnectionString = configuration.GetConnectionString("Database"),
+			Configuration = configuration,
+			DatabaseConnectionString = AddAgentNameToDatabaseName(configuration.GetConnectionString("Database")),
 			ServiceProfiles = new[] { ServiceAttribute.DefaultProfile },
-			UseInMemoryDb = useInMemoryDb,
+			UseInMemoryDb = useInMemoryDb
 		};
 
 		services.AddSingleton<IConfiguration>(configuration);
@@ -86,8 +87,10 @@ public static class ServiceCollectionExtensions
 	{
 		InstallConfiguration installConfiguration = new InstallConfiguration
 		{
+			Configuration = configuration,
 			DatabaseConnectionString = configuration.GetConnectionString("Database"),
 			ServiceProfiles = new[] { ServiceAttribute.DefaultProfile },
+			UseInMemoryDb = false
 		};
 
 		InstallHavitEntityFramework(services, installConfiguration);
@@ -162,7 +165,10 @@ public static class ServiceCollectionExtensions
 
 	private static void InstallFileServices(IServiceCollection services, InstallConfiguration installConfiguration)
 	{
-		InstallFileStorageService<IApplicationFileStorageService, ApplicationFileStorageService, ApplicationFileStorage>(services, installConfiguration.AzureStorageConnectionString, installConfiguration.FileStoragePathOrContainerName);
+		string azureStorageConnectionString = installConfiguration.Configuration.GetConnectionString("AzureStorage");
+		FileStorageOptions fileStorageOptions = installConfiguration.Configuration.GetSection(FileStorageOptions.ApplicationFileStorageOptionsKey).Get<FileStorageOptions>();
+
+		InstallFileStorageService<IApplicationFileStorageService, ApplicationFileStorageService, ApplicationFileStorage>(services, azureStorageConnectionString, fileStorageOptions.PathOrContainerName);
 	}
 
 	internal static void InstallFileStorageService<TFileStorageService, TFileStorageImplementation, TFileStorageContext>(IServiceCollection services, string azureStorageConnectionString, string storagePath)
@@ -184,6 +190,22 @@ public static class ServiceCollectionExtensions
 		else
 		{
 			services.AddFileSystemStorageService<TFileStorageContext>(storagePath);
+		}
+	}
+
+	private static string AddAgentNameToDatabaseName(string databaseConnectionString)
+	{
+		string agentName = Environment.GetEnvironmentVariable("AGENT_NAME");
+		if (!String.IsNullOrEmpty(agentName))
+		{
+			// pokud by connection string obsahoval heslo, musí být též Persist Security Info=true
+			var databaseConnectionStringBuilder = new SqlConnectionStringBuilder(databaseConnectionString);
+			databaseConnectionStringBuilder.InitialCatalog = $"{databaseConnectionStringBuilder.InitialCatalog}-{agentName}";
+			return databaseConnectionStringBuilder.ToString();
+		}
+		else
+		{
+			return databaseConnectionString;
 		}
 	}
 }
