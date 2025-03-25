@@ -168,7 +168,7 @@ public static class ServiceCollectionExtensions
 		string azureStorageConnectionString = installConfiguration.Configuration.GetConnectionString("AzureStorage");
 		FileStorageOptions fileStorageOptions = installConfiguration.Configuration.GetSection(FileStorageOptions.ApplicationFileStorageOptionsKey).Get<FileStorageOptions>();
 
-		InstallFileStorageService<IApplicationFileStorageService, ApplicationFileStorageService, ApplicationFileStorage>(services, azureStorageConnectionString, fileStorageOptions.PathOrContainerName);
+		InstallFileStorageService<IApplicationFileStorageService, ApplicationFileStorageService, ApplicationFileStorage>(services, azureStorageConnectionString, fileStorageOptions?.PathOrContainerName);
 	}
 
 	internal static void InstallFileStorageService<TFileStorageService, TFileStorageImplementation, TFileStorageContext>(IServiceCollection services, string azureStorageConnectionString, string storagePath)
