@@ -112,8 +112,6 @@ public static class ServiceCollectionExtensions
 		InstallAuthorizationHandlers(services);
 		InstallFileServices(services, installConfiguration);
 
-		services.AddMemoryCache();
-
 		return services;
 	}
 
@@ -143,6 +141,7 @@ public static class ServiceCollectionExtensions
 	{
 		// HAVIT .NET Framework Extensions
 		services.AddSingleton<ITimeService, ApplicationTimeService>();
+		services.AddMemoryCache();
 		services.AddSingleton<ICacheService, MemoryCacheService>();
 		services.AddSingleton(new MemoryCacheServiceOptions { UseCacheDependenciesSupport = false });
 	}
