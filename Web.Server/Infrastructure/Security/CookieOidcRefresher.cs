@@ -84,6 +84,12 @@ internal sealed class CookieOidcRefresher(
 			}
 		});
 
+		if (message is null)
+		{
+			validateContext.RejectPrincipal();
+			return;
+		}
+
 		var validationParameters = oidcOptions.TokenValidationParameters.Clone();
 		if (oidcOptions.ConfigurationManager is BaseConfigurationManager baseConfigurationManager)
 		{
