@@ -28,7 +28,6 @@
     <PackageVersion Include="Havit.Data.Patterns" Version="2.1.30" />
     <PackageVersion Include="Havit.Extensions.DependencyInjection.Abstractions" Version="2.0.22" />
     <PackageVersion Include="Havit.Extensions.DependencyInjection.SourceGenerators" Version="2.0.2" />
-    <PackageVersion Include="Havit.Extensions.Localization" Version="1.0.10" />
     <PackageVersion Include="Havit.Hangfire.Extensions" Version="2.0.19" />
     <PackageVersion Include="Havit.Model" Version="2.0.4" />
     <PackageVersion Include="Havit.Services" Version="2.0.46" />
@@ -57,7 +56,8 @@
     <PackageVersion Include="Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions" Version="9.0.3" />
     <PackageVersion Include="Microsoft.Extensions.Hosting" Version="9.0.3" />
     <PackageVersion Include="Microsoft.Extensions.Identity.Core" Version="9.0.3" />
-    <PackageVersion Include="Microsoft.Extensions.Logging.AzureAppServices" Version="9.0.3" />
+	<PackageVersion Include="Microsoft.Extensions.Localization" Version="9.0.3" />
+	<PackageVersion Include="Microsoft.Extensions.Logging.AzureAppServices" Version="9.0.3" />
     <PackageVersion Include="Microsoft.Extensions.Logging.Console" Version="9.0.3" />
     <PackageVersion Include="MSTest" Version="3.8.2" />
     <PackageVersion Include="protobuf-net" Version="3.2.46" />
