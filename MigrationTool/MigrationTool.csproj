@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<OutputType>Exe</OutputType>
@@ -23,4 +23,11 @@
 		</ItemGroup>
 		<Copy SourceFiles="@(FilesToCopy)" DestinationFiles="@(FilesToCopy-&gt;'$(PublishDirectory)\MigrationTool\%(RecursiveDir)%(Filename)%(Extension)')" />
 	</Target>
+
+    <ItemGroup>
+      <PackageReference Update="Microsoft.VisualStudio.Threading.Analyzers">
+        <PrivateAssets>all</PrivateAssets>
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+      </PackageReference>
+    </ItemGroup>
 </Project>

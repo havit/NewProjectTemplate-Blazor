@@ -29,4 +29,11 @@
 		<ProjectReference Include="..\Model\Model.csproj" />
 		<ProjectReference Include="..\Primitives\Primitives.csproj" />
 	</ItemGroup>
+
+	<ItemGroup>
+	  <PackageReference Update="Microsoft.VisualStudio.Threading.Analyzers">
+	    <PrivateAssets>all</PrivateAssets>
+	    <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+	  </PackageReference>
+	</ItemGroup>
 </Project>	 

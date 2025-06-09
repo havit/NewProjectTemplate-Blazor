@@ -59,6 +59,7 @@
 	<PackageVersion Include="Microsoft.Extensions.Localization" Version="9.0.3" />
 	<PackageVersion Include="Microsoft.Extensions.Logging.AzureAppServices" Version="9.0.3" />
     <PackageVersion Include="Microsoft.Extensions.Logging.Console" Version="9.0.3" />
+	  <PackageVersion Update="Microsoft.VisualStudio.Threading.Analyzers" Version="17.14.15" />
     <PackageVersion Include="MSTest" Version="3.8.2" />
     <PackageVersion Include="protobuf-net" Version="3.2.46" />
     <PackageVersion Include="protobuf-net.Grpc.AspNetCore.Reflection" Version="1.2.2" />
@@ -67,11 +68,5 @@
     <PackageVersion Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageVersion Include="System.Net.Http" Version="4.3.4" />
     <PackageVersion Include="System.Text.RegularExpressions" Version="4.3.1" />
-  </ItemGroup>
-  <ItemGroup Condition="'$(ProjectName.EndsWith(`Tests`))' == 'False'">
-    <GlobalPackageReference Include="Microsoft.VisualStudio.Threading.Analyzers" Version="17.13.2">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
-    </GlobalPackageReference>
   </ItemGroup>
 </Project>
