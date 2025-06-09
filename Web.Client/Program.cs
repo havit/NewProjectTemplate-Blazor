@@ -30,13 +30,15 @@ public static class Program
 
 		builder.Services.AddBlazoredLocalStorage();
 		builder.Services.AddValidatorsFromAssemblyContaining<Dto<object>>();
+		builder.Services.AddClientByServiceAttribute();
 
 		builder.Services.AddHxServices();
 		builder.Services.AddHxMessenger();
 		builder.Services.AddHxMessageBoxHost();
-		Havit.NewProjectTemplate.Web.Client.ServiceCollectionExtensions.AddGeneratedResourceWrappers(builder.Services);
-		Havit.NewProjectTemplate.Resources.ServiceCollectionExtensions.AddGeneratedResourceWrappers(builder.Services);
+		Havit.NewProjectTemplate.Web.Client.ResourcesServiceCollectionExtensions.AddGeneratedResourceWrappers(builder.Services);
+		Havit.NewProjectTemplate.Resources.ResourcesServiceCollectionExtensions.AddGeneratedResourceWrappers(builder.Services);
 		SetHxComponents();
+
 
 		AddGrpcClient(builder);
 
@@ -85,8 +87,6 @@ public static class Program
 
 	private static void AddGrpcClient(WebAssemblyHostBuilder builder)
 	{
-		builder.Services.AddTransient<IOperationFailedExceptionGrpcClientListener, HxMessengerOperationFailedExceptionGrpcClientListener>();
-
 		builder.Services.AddGrpcClientInfrastructure(assemblyToScanForDataContracts: typeof(Dto).Assembly);
 
 		builder.Services.AddGrpcClientsByApiContractAttributes(typeof(IDataSeedFacade).Assembly);

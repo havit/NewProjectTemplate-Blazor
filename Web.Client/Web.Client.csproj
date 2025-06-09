@@ -16,12 +16,6 @@
 		<TrimmerRootDescriptor Include="TrimmerRootDescriptor.xml" />
 	</ItemGroup>
 
-	<ItemGroup>
-	  <Compile Remove="Resources\Model\**" />
-	  <Content Remove="Resources\Model\**" />
-	  <EmbeddedResource Remove="Resources\Model\**" />
-	  <None Remove="Resources\Model\**" />
-	</ItemGroup>
 
 	<ItemGroup>
 		<PackageReference Include="BlazorApplicationInsights" />
@@ -30,9 +24,14 @@
 		<PackageReference Include="FluentValidation.DependencyInjectionExtensions" />
 		<PackageReference Include="Havit.Blazor.Components.Web.Bootstrap" />
 		<PackageReference Include="Havit.Blazor.Grpc.Client" />
+		<PackageReference Include="Havit.Extensions.DependencyInjection.Abstractions" />
 		<PackageReference Include="Havit.SourceGenerators.StrongApiStringLocalizers">
 		  <PrivateAssets>all</PrivateAssets>
 		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Havit.Extensions.DependencyInjection.SourceGenerators">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
 		<PackageReference Include="Microsoft.AspNetCore.Components.Authorization" />
 		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" />
@@ -51,6 +50,11 @@
 	    <PrivateAssets>all</PrivateAssets>
 	    <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
 	  </PackageReference>
+	</ItemGroup>
+
+	<!-- Required for Havit.SourceGenerators.StrongApiStringLocalizers -->
+	<ItemGroup>
+		<AdditionalFiles Include="**\*.resx" />
 	</ItemGroup>
 
 </Project>
