@@ -1,6 +1,7 @@
 ﻿param (
     [string]$NewRootNamespace = "Havit",
 	[string]$NewOrganizationName = "HAVIT",
+    [string]$NewProjectCode = "999.ABC",
     [string]$NewSolutionName = "YourSolutionName",
 	[string]$NewHttpPort = "9901",
 	[string]$NewHttpsPort = "44301",
@@ -8,12 +9,14 @@
 	[string]$NewErrorsSmptServer = "errorssmtp.server.com" # HAVIT developers: use mx.havit.cz
 )
 
+
 [string]$SolutionFolder = [System.IO.Path]::GetDirectoryName($MyInvocation.MyCommand.Path);
 
-Get-ChildItem -recurse $SolutionFolder -include *.cs,*.csproj,*.config,*.ps1,*.json,*.tsx,*.cshtml,*.props,*.razor,*.json,*.html,*.js | where { $_ -is [System.IO.FileInfo] } | where { !$_.FullName.Contains("\packages\") } | where { !$_.FullName.Contains("\obj\") } | where { !$_.FullName.Contains("package.json") } | where { !$_.Name.Equals("_SetApplicationName.ps1") } |
+Get-ChildItem -recurse $SolutionFolder -include *.cs,*.csproj,*.config,*.ps1,*.json,*.tsx,*.cshtml,*.props,*.razor,*.json,*.html,*.js,*.yml | where { $_ -is [System.IO.FileInfo] } | where { !$_.FullName.Contains("\packages\") } | where { !$_.FullName.Contains("\obj\") } | where { !$_.FullName.Contains("package.json") } | where { !$_.Name.Equals("SetupSolution.ps1") } |
 Foreach-Object {
     Set-ItemProperty $_.FullName -name IsReadOnly -value $false
     [string]$Content = [IO.File]::ReadAllText($_.FullName)
+    $Content = $Content.Replace('002.HFW-NewProjectTemplate-Blazor', $NewProjectCode)
     $Content = $Content.Replace('Havit.NewProjectTemplate', $NewRootNamespace + '.' + $NewSolutionName)
     $Content = $Content.Replace('NewProjectTemplate', $NewSolutionName)
     $Content = $Content.Replace("HAVIT", $NewOrganizationName)
@@ -30,4 +33,5 @@ Rename-Item -path ([System.IO.Path]::Combine($SolutionFolder, 'Entity\NewProject
 Rename-Item -path ([System.IO.Path]::Combine($SolutionFolder, 'Entity\Migrations\NewProjectTemplateDbContextModelSnapshot.cs')) -newName ($NewSolutionName + 'DbContextModelSnapshot.cs')
 Rename-Item -path ([System.IO.Path]::Combine($SolutionFolder, 'Entity\NewProjectTemplateDesignTimeDbContextFactory.cs')) -newName ($NewSolutionName + 'DesignTimeDbContextFactory.cs')
 Rename-Item -path ([System.IO.Path]::Combine($SolutionFolder, 'Entity.Tests\NewProjectTemplateDbContextTests.cs')) -newName ($NewSolutionName + 'DbContextTests.cs')
-Rename-Item -path ([System.IO.Path]::Combine($SolutionFolder, 'Services\HealthChecks\NewProjectTemplateDbContextHealthCheck.cs')) -newName ($NewSolutionName + 'DbContextHealthCheck.cs')	
+Rename-Item -path ([System.IO.Path]::Combine($SolutionFolder, 'Services\HealthChecks\NewProjectTemplateDbContextHealthCheck.cs')) -newName ($NewSolutionName + 'DbContextHealthCheck.cs')
+Rename-Item -path ([System.IO.Path]::Combine($SolutionFolder, 'BuildPipeline-002.HFW-NewProjectTemplate-Blazor.yml')) -newName ('BuildPipeline-' + $NewProjectCode + '.yml')
