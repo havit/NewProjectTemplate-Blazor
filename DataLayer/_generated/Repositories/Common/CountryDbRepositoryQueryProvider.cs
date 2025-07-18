@@ -14,19 +14,13 @@ namespace Havit.NewProjectTemplate.DataLayer.Repositories.Common;
 
 internal class CountryDbRepositoryQueryProvider : IRepositoryQueryProvider<Havit.NewProjectTemplate.Model.Common.Country, System.Int32>
 {
-	private readonly ISoftDeleteManager _softDeleteManager;
-
 	private readonly Func<DbContext, System.Int32, Havit.NewProjectTemplate.Model.Common.Country> _getObjectQuery;
 	private readonly Func<DbContext, System.Int32, CancellationToken, Task<Havit.NewProjectTemplate.Model.Common.Country>> _getObjectAsyncQuery;
 	private readonly Func<DbContext, System.Int32[], IEnumerable<Havit.NewProjectTemplate.Model.Common.Country>> _getObjectsQuery;
 	private readonly Func<DbContext, System.Int32[], IAsyncEnumerable<Havit.NewProjectTemplate.Model.Common.Country>> _getObjectsAsyncQuery;
-	private readonly Func<DbContext, IEnumerable<Havit.NewProjectTemplate.Model.Common.Country>> _getAllQuery;
-	private readonly Func<DbContext, IAsyncEnumerable<Havit.NewProjectTemplate.Model.Common.Country>> _getAllAsyncQuery;
 
-	public CountryDbRepositoryQueryProvider(ISoftDeleteManager softDeleteManager)
+	public CountryDbRepositoryQueryProvider()
 	{
-		_softDeleteManager = softDeleteManager;
-
 		_getObjectQuery = EF.CompileQuery((DbContext dbContext, System.Int32 id) => dbContext
 			.Set<Havit.NewProjectTemplate.Model.Common.Country>()
 			.TagWith("CountryDbRepository.GetObject")
@@ -48,22 +42,10 @@ internal class CountryDbRepositoryQueryProvider : IRepositoryQueryProvider<Havit
 			.Set<Havit.NewProjectTemplate.Model.Common.Country>()
 			.TagWith("CountryDbRepository.GetObjectsAsync")
 			.Where(entity => ids.Contains(entity.Id)));
-
-		_getAllQuery = EF.CompileQuery((DbContext dbContext) => dbContext
-			.Set<Havit.NewProjectTemplate.Model.Common.Country>()
-			.TagWith("CountryDbRepository.GetAll")
-			.WhereNotDeleted(_softDeleteManager));
-
-		_getAllAsyncQuery = EF.CompileAsyncQuery((DbContext dbContext) => dbContext
-			.Set<Havit.NewProjectTemplate.Model.Common.Country>()
-			.TagWith("CountryDbRepository.GetAllAsync")
-			.WhereNotDeleted(_softDeleteManager));
 	}
 
 	public Func<DbContext, System.Int32, Havit.NewProjectTemplate.Model.Common.Country> GetGetObjectQuery() => _getObjectQuery;
 	public Func<DbContext, System.Int32, CancellationToken, Task<Havit.NewProjectTemplate.Model.Common.Country>> GetGetObjectAsyncQuery() => _getObjectAsyncQuery;
 	public Func<DbContext, System.Int32[], IEnumerable<Havit.NewProjectTemplate.Model.Common.Country>> GetGetObjectsQuery() => _getObjectsQuery;
 	public Func<DbContext, System.Int32[], IAsyncEnumerable<Havit.NewProjectTemplate.Model.Common.Country>> GetGetObjectsAsyncQuery() => _getObjectsAsyncQuery;
-	public Func<DbContext, IAsyncEnumerable<Havit.NewProjectTemplate.Model.Common.Country>> GetGetAllAsyncQuery() => _getAllAsyncQuery;
-	public Func<DbContext, IEnumerable<Havit.NewProjectTemplate.Model.Common.Country>> GetGetAllQuery() => _getAllQuery;
 }

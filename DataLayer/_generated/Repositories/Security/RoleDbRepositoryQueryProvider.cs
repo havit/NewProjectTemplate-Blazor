@@ -14,19 +14,13 @@ namespace Havit.NewProjectTemplate.DataLayer.Repositories.Security;
 
 internal class RoleDbRepositoryQueryProvider : IRepositoryQueryProvider<Havit.NewProjectTemplate.Model.Security.Role, System.Int32>
 {
-	private readonly ISoftDeleteManager _softDeleteManager;
-
 	private readonly Func<DbContext, System.Int32, Havit.NewProjectTemplate.Model.Security.Role> _getObjectQuery;
 	private readonly Func<DbContext, System.Int32, CancellationToken, Task<Havit.NewProjectTemplate.Model.Security.Role>> _getObjectAsyncQuery;
 	private readonly Func<DbContext, System.Int32[], IEnumerable<Havit.NewProjectTemplate.Model.Security.Role>> _getObjectsQuery;
 	private readonly Func<DbContext, System.Int32[], IAsyncEnumerable<Havit.NewProjectTemplate.Model.Security.Role>> _getObjectsAsyncQuery;
-	private readonly Func<DbContext, IEnumerable<Havit.NewProjectTemplate.Model.Security.Role>> _getAllQuery;
-	private readonly Func<DbContext, IAsyncEnumerable<Havit.NewProjectTemplate.Model.Security.Role>> _getAllAsyncQuery;
 
-	public RoleDbRepositoryQueryProvider(ISoftDeleteManager softDeleteManager)
+	public RoleDbRepositoryQueryProvider()
 	{
-		_softDeleteManager = softDeleteManager;
-
 		_getObjectQuery = EF.CompileQuery((DbContext dbContext, System.Int32 id) => dbContext
 			.Set<Havit.NewProjectTemplate.Model.Security.Role>()
 			.TagWith("RoleDbRepository.GetObject")
@@ -48,22 +42,10 @@ internal class RoleDbRepositoryQueryProvider : IRepositoryQueryProvider<Havit.Ne
 			.Set<Havit.NewProjectTemplate.Model.Security.Role>()
 			.TagWith("RoleDbRepository.GetObjectsAsync")
 			.Where(entity => ids.Contains(entity.Id)));
-
-		_getAllQuery = EF.CompileQuery((DbContext dbContext) => dbContext
-			.Set<Havit.NewProjectTemplate.Model.Security.Role>()
-			.TagWith("RoleDbRepository.GetAll")
-			.WhereNotDeleted(_softDeleteManager));
-
-		_getAllAsyncQuery = EF.CompileAsyncQuery((DbContext dbContext) => dbContext
-			.Set<Havit.NewProjectTemplate.Model.Security.Role>()
-			.TagWith("RoleDbRepository.GetAllAsync")
-			.WhereNotDeleted(_softDeleteManager));
 	}
 
 	public Func<DbContext, System.Int32, Havit.NewProjectTemplate.Model.Security.Role> GetGetObjectQuery() => _getObjectQuery;
 	public Func<DbContext, System.Int32, CancellationToken, Task<Havit.NewProjectTemplate.Model.Security.Role>> GetGetObjectAsyncQuery() => _getObjectAsyncQuery;
 	public Func<DbContext, System.Int32[], IEnumerable<Havit.NewProjectTemplate.Model.Security.Role>> GetGetObjectsQuery() => _getObjectsQuery;
 	public Func<DbContext, System.Int32[], IAsyncEnumerable<Havit.NewProjectTemplate.Model.Security.Role>> GetGetObjectsAsyncQuery() => _getObjectsAsyncQuery;
-	public Func<DbContext, IAsyncEnumerable<Havit.NewProjectTemplate.Model.Security.Role>> GetGetAllAsyncQuery() => _getAllAsyncQuery;
-	public Func<DbContext, IEnumerable<Havit.NewProjectTemplate.Model.Security.Role>> GetGetAllQuery() => _getAllQuery;
 }

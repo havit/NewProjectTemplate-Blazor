@@ -14,19 +14,13 @@ namespace Havit.NewProjectTemplate.DataLayer.Repositories.Localizations;
 
 internal class LanguageDbRepositoryQueryProvider : IRepositoryQueryProvider<Havit.NewProjectTemplate.Model.Localizations.Language, System.Int32>
 {
-	private readonly ISoftDeleteManager _softDeleteManager;
-
 	private readonly Func<DbContext, System.Int32, Havit.NewProjectTemplate.Model.Localizations.Language> _getObjectQuery;
 	private readonly Func<DbContext, System.Int32, CancellationToken, Task<Havit.NewProjectTemplate.Model.Localizations.Language>> _getObjectAsyncQuery;
 	private readonly Func<DbContext, System.Int32[], IEnumerable<Havit.NewProjectTemplate.Model.Localizations.Language>> _getObjectsQuery;
 	private readonly Func<DbContext, System.Int32[], IAsyncEnumerable<Havit.NewProjectTemplate.Model.Localizations.Language>> _getObjectsAsyncQuery;
-	private readonly Func<DbContext, IEnumerable<Havit.NewProjectTemplate.Model.Localizations.Language>> _getAllQuery;
-	private readonly Func<DbContext, IAsyncEnumerable<Havit.NewProjectTemplate.Model.Localizations.Language>> _getAllAsyncQuery;
 
-	public LanguageDbRepositoryQueryProvider(ISoftDeleteManager softDeleteManager)
+	public LanguageDbRepositoryQueryProvider()
 	{
-		_softDeleteManager = softDeleteManager;
-
 		_getObjectQuery = EF.CompileQuery((DbContext dbContext, System.Int32 id) => dbContext
 			.Set<Havit.NewProjectTemplate.Model.Localizations.Language>()
 			.TagWith("LanguageDbRepository.GetObject")
@@ -48,22 +42,10 @@ internal class LanguageDbRepositoryQueryProvider : IRepositoryQueryProvider<Havi
 			.Set<Havit.NewProjectTemplate.Model.Localizations.Language>()
 			.TagWith("LanguageDbRepository.GetObjectsAsync")
 			.Where(entity => ids.Contains(entity.Id)));
-
-		_getAllQuery = EF.CompileQuery((DbContext dbContext) => dbContext
-			.Set<Havit.NewProjectTemplate.Model.Localizations.Language>()
-			.TagWith("LanguageDbRepository.GetAll")
-			.WhereNotDeleted(_softDeleteManager));
-
-		_getAllAsyncQuery = EF.CompileAsyncQuery((DbContext dbContext) => dbContext
-			.Set<Havit.NewProjectTemplate.Model.Localizations.Language>()
-			.TagWith("LanguageDbRepository.GetAllAsync")
-			.WhereNotDeleted(_softDeleteManager));
 	}
 
 	public Func<DbContext, System.Int32, Havit.NewProjectTemplate.Model.Localizations.Language> GetGetObjectQuery() => _getObjectQuery;
 	public Func<DbContext, System.Int32, CancellationToken, Task<Havit.NewProjectTemplate.Model.Localizations.Language>> GetGetObjectAsyncQuery() => _getObjectAsyncQuery;
 	public Func<DbContext, System.Int32[], IEnumerable<Havit.NewProjectTemplate.Model.Localizations.Language>> GetGetObjectsQuery() => _getObjectsQuery;
 	public Func<DbContext, System.Int32[], IAsyncEnumerable<Havit.NewProjectTemplate.Model.Localizations.Language>> GetGetObjectsAsyncQuery() => _getObjectsAsyncQuery;
-	public Func<DbContext, IAsyncEnumerable<Havit.NewProjectTemplate.Model.Localizations.Language>> GetGetAllAsyncQuery() => _getAllAsyncQuery;
-	public Func<DbContext, IEnumerable<Havit.NewProjectTemplate.Model.Localizations.Language>> GetGetAllQuery() => _getAllQuery;
 }
