@@ -1,24 +1,24 @@
-using Microsoft.Extensions.Caching.Memory;
+using Havit.Services.Caching;
 using Microsoft.IdentityModel.Protocols.OpenIdConnect;
 
 namespace Havit.NewProjectTemplate.Web.Server.Infrastructure.Security;
 
-public sealed class RefreshTokenEndpointResponseCacheStore(IMemoryCache memoryCache)
+public sealed class RefreshTokenEndpointResponseCacheStore(ICacheService cacheService)
 	: IRefreshTokenEndpointResponseCacheStore
 {
 	public OpenIdConnectMessage GetResponse(string refreshToken)
 	{
-		return memoryCache.TryGetValue(refreshToken, out OpenIdConnectMessage response)
+		return cacheService.TryGet(refreshToken, out OpenIdConnectMessage response)
 			? response
 			: null;
 	}
 
 	public void StoreResponse(string refreshToken, OpenIdConnectMessage response)
 	{
-		memoryCache.Set(refreshToken, response, new MemoryCacheEntryOptions
+		cacheService.Add(refreshToken, response, new CacheOptions
 		{
 			Priority = CacheItemPriority.Low,
-			AbsoluteExpirationRelativeToNow = new TimeSpan(0, 15, 0) /* 15 minutes */
+			AbsoluteExpiration = TimeSpan.FromMinutes(15)
 		});
 	}
 }
