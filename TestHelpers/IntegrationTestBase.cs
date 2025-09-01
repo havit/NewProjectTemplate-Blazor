@@ -5,12 +5,13 @@ using Havit.NewProjectTemplate.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Havit.NewProjectTemplate.TestHelpers;
 
 public class IntegrationTestBase
 {
+	public TestContext TestContext { get; set; }
+
 	protected IServiceProvider ServiceProvider { get; private set; }
 
 	protected virtual bool UseLocalDb => false;
@@ -52,17 +53,17 @@ public class IntegrationTestBase
 			var dbContext = scope.ServiceProvider.GetRequiredService<IDbContext>();
 			if (DeleteDbData)
 			{
-				await dbContext.Database.EnsureDeletedAsync();
+				await dbContext.Database.EnsureDeletedAsync(TestContext.CancellationTokenSource.Token);
 			}
 			if (this.UseLocalDb)
 			{
-				await dbContext.Database.MigrateAsync();
+				await dbContext.Database.MigrateAsync(TestContext.CancellationTokenSource.Token);
 			}
 
 			if (this.SeedData)
 			{
 				var dataSeedRunner = scope.ServiceProvider.GetRequiredService<IDataSeedRunner>();
-				await dataSeedRunner.SeedDataAsync<CoreProfile>();
+				await dataSeedRunner.SeedDataAsync<CoreProfile>(cancellationToken: TestContext.CancellationTokenSource.Token);
 			}
 		}
 

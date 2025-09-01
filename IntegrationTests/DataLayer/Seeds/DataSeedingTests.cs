@@ -1,6 +1,5 @@
 ﻿using Havit.Data.Patterns.DataSeeds;
 using Havit.NewProjectTemplate.DataLayer.Seeds.Core;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.Extensions.DependencyInjection;
 using Havit.NewProjectTemplate.TestHelpers;
 
@@ -19,7 +18,7 @@ public class DataSeedingTests : IntegrationTestBase
 		var seedRunner = ServiceProvider.GetRequiredService<IDataSeedRunner>();
 
 		// act
-		await seedRunner.SeedDataAsync<CoreProfile>();
+		await seedRunner.SeedDataAsync<CoreProfile>(cancellationToken: TestContext.CancellationTokenSource.Token);
 
 		// assert
 		// no exception
