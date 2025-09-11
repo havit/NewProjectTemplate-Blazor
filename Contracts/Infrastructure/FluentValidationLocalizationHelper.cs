@@ -4,6 +4,7 @@ using FluentValidation.Resources;
 using Microsoft.Extensions.Localization;
 
 namespace Havit.NewProjectTemplate.Contracts.Infrastructure;
+
 public static class FluentValidationLocalizationHelper
 {
 	public static void RegisterDefaultValidationMessages(IStringLocalizer localizer)
