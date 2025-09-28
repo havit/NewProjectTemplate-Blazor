@@ -194,6 +194,9 @@ dotnet_diagnostic.CA1823.severity = warning
 # CA2016: Forward the CancellationToken parameter to methods that take one
 dotnet_diagnostic.CA2016.severity = warning
 
+# CS9113 Parameter is unread.
+dotnet_diagnostic.CS9113.severity = warning
+
 # RCS1036: Remove unnecessary blank line.
 dotnet_diagnostic.RCS1036.severity = none
 
