@@ -188,6 +188,9 @@ dotnet_diagnostic.CA1707.severity=none
 # CA1822: Member '{0}' does not access instance data and can be marked as static
 dotnet_diagnostic.CA1822.severity=none
 
+# CA 1823: Remove unused private members
+dotnet_diagnostic.CA1823.severity = warning
+
 # CA2016: Forward the CancellationToken parameter to methods that take one
 dotnet_diagnostic.CA2016.severity = warning
 
