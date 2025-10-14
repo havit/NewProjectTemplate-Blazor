@@ -83,7 +83,7 @@ public static class ServiceCollectionExtensions
 	}
 
 	[MethodImpl(MethodImplOptions.NoInlining)]
-	public static IServiceCollection ConfigureForMigrationTool(this IServiceCollection services, IConfiguration configuration, bool useInMemoryDb = true)
+	public static IServiceCollection ConfigureForMigrationTool(this IServiceCollection services, IConfiguration configuration)
 	{
 		InstallConfiguration installConfiguration = new InstallConfiguration
 		{
