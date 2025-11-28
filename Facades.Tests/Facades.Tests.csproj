@@ -1,13 +1,11 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>net9.0</TargetFramework>
 		<AssemblyName>Havit.NewProjectTemplate.Facades.Tests</AssemblyName>
 		<RootNamespace>Havit.NewProjectTemplate.Facades.Tests</RootNamespace>
 		<PublishDir>obj\$(Configuration)\publish</PublishDir>
 		<IsPackable>false</IsPackable>
 		<IsTestProject>true</IsTestProject>
-		<EnableMSTestRunner>true</EnableMSTestRunner>
 		<OutputType>Exe</OutputType>
 	</PropertyGroup>
 

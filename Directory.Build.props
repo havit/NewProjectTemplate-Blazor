@@ -6,6 +6,7 @@
 		<FileVersion>1.0.0.0</FileVersion>
 		<AssemblyVersion>1.0.0.0</AssemblyVersion>
 		<Product>NewProjectTemplate</Product>
+		<TargetFramework>net10.0</TargetFramework>
 		<LangVersion>latest</LangVersion>
 		<EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
 		<AnalysisLevel>latest</AnalysisLevel>
@@ -13,7 +14,18 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>disable</Nullable>
 		<AccelerateBuildsInVisualStudio>true</AccelerateBuildsInVisualStudio>
+
+		<EnableMSTestRunner>true</EnableMSTestRunner>
+		<TestingPlatformDotnetTestSupport>true</TestingPlatformDotnetTestSupport>
+		<TestingPlatformShowTestsFailure>true</TestingPlatformShowTestsFailure>
+		<MSTestAnalysisMode>Recommended</MSTestAnalysisMode>
 	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="System.Linq.Async">
+			<ExcludeAssets>compile</ExcludeAssets>
+		</PackageReference>
+	</ItemGroup>
 
 	<PropertyGroup Condition=" '$(Configuration)'=='Release' ">
 		<TreatWarningsAsErrors>true</TreatWarningsAsErrors>

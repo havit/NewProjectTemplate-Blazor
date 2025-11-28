@@ -19,10 +19,10 @@ public static class Program
 	{
 		var builder = WebAssemblyHostBuilder.CreateDefault(args);
 
-		// We don't have the Web.Client/wwwroot/appsettings.(...).json file on disk, so it is not listed in blazor.boot.json.
+		// We don't have the Web.Client/wwwroot/appsettings.(...).json file on disk, so it is not included in the boot configuration.
 		// As a result, Blazor will automatically request the configuration from the server, which we need to handle "manually"
 		// by adding the download of the configuration from the expected endpoint, see:
-		// https://learn.microsoft.com/en-us/aspnet/core/blazor/fundamentals/configuration?view=aspnetcore-8.0#app-settings-configuration
+		// https://learn.microsoft.com/en-us/aspnet/core/blazor/fundamentals/configuration?view=aspnetcore-10.0#app-settings-configuration
 		builder = await builder.AddJsonStreamAsync(WebClientOptions.WebClientConfigurationRoute);
 
 		AddLoggingAndBlazorApplicationInsights(builder);

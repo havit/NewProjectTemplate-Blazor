@@ -1,7 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>net9.0</TargetFramework>
 		<AssemblyName>Havit.NewProjectTemplate.Services</AssemblyName>
 		<RootNamespace>Havit.NewProjectTemplate.Services</RootNamespace>
 	</PropertyGroup>

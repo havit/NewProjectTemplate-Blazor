@@ -53,17 +53,17 @@ public class IntegrationTestBase
 			var dbContext = scope.ServiceProvider.GetRequiredService<IDbContext>();
 			if (DeleteDbData)
 			{
-				await dbContext.Database.EnsureDeletedAsync(TestContext.CancellationTokenSource.Token);
+				await dbContext.Database.EnsureDeletedAsync(TestContext.CancellationToken);
 			}
 			if (this.UseLocalDb)
 			{
-				await dbContext.Database.MigrateAsync(TestContext.CancellationTokenSource.Token);
+				await dbContext.Database.MigrateAsync(TestContext.CancellationToken);
 			}
 
 			if (this.SeedData)
 			{
 				var dataSeedRunner = scope.ServiceProvider.GetRequiredService<IDataSeedRunner>();
-				await dataSeedRunner.SeedDataAsync<CoreProfile>(cancellationToken: TestContext.CancellationTokenSource.Token);
+				await dataSeedRunner.SeedDataAsync<CoreProfile>(cancellationToken: TestContext.CancellationToken);
 			}
 		}
 

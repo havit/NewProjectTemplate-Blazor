@@ -10,6 +10,8 @@
     <title>NewProjectTemplate</title>
     <base href="/" />
 
+	<ResourcePreloader />
+
 	<link rel="stylesheet" href="@Assets["_content/Havit.Blazor.Components.Web.Bootstrap/bootstrap.min.css"]" />
 	<link rel="stylesheet" href="@Assets["Havit.NewProjectTemplate.Web.Server.styles.css"]" />
 	<link rel="stylesheet" href="@Assets["css/site.css"]" />
@@ -36,7 +38,7 @@
         <div class="mt-2">Loading app...</div>
     </div>
 
-    <script src="_framework/blazor.web.js"></script>
-    @((MarkupString)HxSetup.RenderBootstrapJavaScriptReference())
+	<script src="@Assets["_framework/blazor.web.js"]"></script>
+	@((MarkupString)HxSetup.RenderBootstrapJavaScriptReference())
 </body>
 </html>

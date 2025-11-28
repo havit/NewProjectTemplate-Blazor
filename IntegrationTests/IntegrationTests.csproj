@@ -1,12 +1,10 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>net9.0</TargetFramework>
 		<AssemblyName>Havit.NewProjectTemplate.IntegrationTests</AssemblyName>
 		<RootNamespace>Havit.NewProjectTemplate.IntegrationTests</RootNamespace>
 		<IsPackable>false</IsPackable>
 		<IsTestProject>true</IsTestProject>
-		<EnableMSTestRunner>true</EnableMSTestRunner>
 		<OutputType>Exe</OutputType>
 	</PropertyGroup>
 

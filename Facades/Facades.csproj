@@ -1,7 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>net9.0</TargetFramework>
 		<AssemblyName>Havit.NewProjectTemplate.Facades</AssemblyName>
 		<RootNamespace>Havit.NewProjectTemplate.Facades</RootNamespace>
 	</PropertyGroup>
@@ -20,8 +19,6 @@
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
-		<PackageReference Include="Microsoft.AspNetCore.Authorization" />
-		<PackageReference Include="Microsoft.Extensions.Identity.Core" />
 	</ItemGroup>
 
 	<ItemGroup>
