@@ -1,0 +1,53 @@
+name: .NET Build
+
+on:
+  workflow_dispatch:
+    inputs:
+      build_configuration:
+        description: 'Build configuration'
+        required: false
+        default: 'Release'
+        type: choice
+        options:
+        - Debug
+        - Release
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      with:
+        submodules: true
+      
+    - name: Setup .NET 10
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '10.0.x'
+        
+    - name: Cache NuGet packages
+      uses: actions/cache@v4
+      with:
+        path: ~/.nuget/packages
+        key: ${{ runner.os }}-nuget-${{ hashFiles('**/packages.lock.json', '**/*.csproj', '**/Directory.Packages.props') }}
+        restore-keys: |
+          ${{ runner.os }}-nuget-
+        
+    - name: Display .NET version
+      run: dotnet --version
+      
+    - name: Restore .NET tools
+      run: dotnet tool restore
+      continue-on-error: true
+      
+    - name: Restore dependencies
+      run: dotnet restore
+      
+    - name: Build solution
+      run: dotnet build --configuration ${{ inputs.build_configuration || 'Release' }} --no-restore
+      
+    - name: Run tests
+      run: dotnet test --configuration ${{ inputs.build_configuration || 'Release' }} --no-build --verbosity normal
+      continue-on-error: true
