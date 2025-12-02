@@ -2,6 +2,7 @@
 using Hangfire;
 using Hangfire.Dashboard;
 using Havit.Blazor.Grpc.Server;
+using Havit.Hangfire.Extensions.HealthChecks;
 using Havit.NewProjectTemplate.Contracts;
 using Havit.NewProjectTemplate.Contracts.Infrastructure;
 using Havit.NewProjectTemplate.DependencyInjection;
@@ -87,7 +88,8 @@ public class Startup
 		TimeSpan defaultHealthCheckTimeout = TimeSpan.FromSeconds(10);
 		services.AddHealthChecks()
 			.AddCheck<NewProjectTemplateDbContextHealthCheck>("Database", timeout: defaultHealthCheckTimeout)
-			.AddCheck<MailServiceHealthCheck>("SMTP", timeout: defaultHealthCheckTimeout);
+			.AddCheck<MailServiceHealthCheck>("SMTP", timeout: defaultHealthCheckTimeout)
+			.AddCheck<HangfireServerHealthCheck>("HangfireServer", timeout: defaultHealthCheckTimeout);
 
 		// Hangfire
 		services.AddCustomizedHangfire(_configuration);

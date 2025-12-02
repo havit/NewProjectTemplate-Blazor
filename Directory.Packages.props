@@ -28,7 +28,7 @@
     <PackageVersion Include="Havit.Data.Patterns" Version="2.1.33" />
     <PackageVersion Include="Havit.Extensions.DependencyInjection.Abstractions" Version="2.0.22" />
     <PackageVersion Include="Havit.Extensions.DependencyInjection.SourceGenerators" Version="2.0.4" />
-    <PackageVersion Include="Havit.Hangfire.Extensions" Version="2.0.21" />
+    <PackageVersion Include="Havit.Hangfire.Extensions" Version="2.0.22" />
     <PackageVersion Include="Havit.Model" Version="2.0.5" />
     <PackageVersion Include="Havit.Services" Version="2.0.50" />
     <PackageVersion Include="Havit.Services.Azure" Version="2.0.50" />
@@ -64,7 +64,6 @@
     <PackageVersion Include="protobuf-net" Version="3.2.56" />
     <PackageVersion Include="protobuf-net.Grpc.AspNetCore.Reflection" Version="1.2.2" />
     <PackageVersion Include="Scrutor" Version="7.0.0" />
-	  
     <!-- net10 replaces System.Linq.Async-->
     <PackageVersion Include="System.Linq.Async" Version="7.0.0" />
   </ItemGroup>
