@@ -1,0 +1,48 @@
+<Solution>
+  <Folder Name="/Client/">
+    <Project Path="Web.Client/Web.Client.csproj" />
+  </Folder>
+  <Folder Name="/Server/">
+    <Project Path="DataLayer.Tests/DataLayer.Tests.csproj" />
+    <Project Path="DataLayer/DataLayer.csproj" />
+    <Project Path="DependencyInjection/DependencyInjection.csproj" />
+    <Project Path="Entity.Tests/Entity.Tests.csproj" />
+    <Project Path="Entity/Entity.csproj" />
+    <Project Path="Facades.Tests/Facades.Tests.csproj" />
+    <Project Path="Facades/Facades.csproj" />
+    <Project Path="IntegrationTests/IntegrationTests.csproj" />
+    <Project Path="JobsRunner/JobsRunner.csproj" />
+    <Project Path="MigrationTool/MigrationTool.csproj" />
+    <Project Path="Model.Tests/Model.Tests.csproj" />
+    <Project Path="Model/Model.csproj" />
+    <Project Path="Services.Tests/Services.Tests.csproj" />
+    <Project Path="Services/Services.csproj" />
+    <Project Path="TestHelpers/TestHelpers.csproj" />
+    <Project Path="TestsForLocalDebugging/TestsForLocalDebugging.csproj" />
+    <Project Path="Web.Server/Web.Server.csproj" />
+  </Folder>
+  <Folder Name="/Shared/">
+    <Project Path="Contracts/Contracts.csproj" />
+    <Project Path="Primitives/Primitives.csproj" />
+    <Project Path="Resources/Resources.csproj" />
+  </Folder>
+  <Folder Name="/Solution Items/">
+    <File Path=".config/dotnet-tools.json" />
+    <File Path=".editorconfig" />
+    <File Path=".gitattributes" />
+    <File Path=".gitignore" />
+    <File Path="BuildPipeline-002.HFW-NewProjectTemplate-Blazor.yml" />
+    <File Path="Directory.Build.props" />
+    <File Path="Directory.Packages.props" />
+    <File Path="exclusion.dic" />
+    <File Path="Generate-BootstrapIntellisenseFakes.ps1" />
+    <File Path="NuGet.config" />
+    <File Path="README.md" />
+  </Folder>
+  <Folder Name="/Solution Items/PublishScripts/">
+    <File Path="PublishScripts/Web/appsettings.WebServer.Stage.json" />
+  </Folder>
+  <Properties Name="Performance">
+    <Property Name="HasPerformanceSessions" Value="true" />
+  </Properties>
+</Solution>
