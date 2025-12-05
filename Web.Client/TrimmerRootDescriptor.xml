@@ -1,4 +1,13 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
 <linker>
+	<!-- gRPC protobuf issues -->
 	<assembly fullname="System.Runtime.Serialization.Primitives" preserve="all" />
+
+	<!-- AntiforgeryRequestToken deserialization issues -->
+	<assembly fullname="Microsoft.AspNetCore.Components.Web">
+		<type fullname="Microsoft.AspNetCore.Components.Forms.AntiforgeryRequestToken" preserve="all" />
+	</assembly>
+	<assembly fullname="Microsoft.AspNetCore.Components.WebAssembly">
+		<type fullname="Microsoft.AspNetCore.Components.Forms.DefaultAntiforgeryStateProvider" preserve="all" />
+	</assembly>
 </linker>

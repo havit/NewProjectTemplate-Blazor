@@ -11,7 +11,6 @@ using Havit.NewProjectTemplate.Primitives.Security;
 using Havit.NewProjectTemplate.Services.HealthChecks;
 using Havit.NewProjectTemplate.Services.Infrastructure.Security;
 using Havit.NewProjectTemplate.Web.Client.Infrastructure.Configuration;
-using Havit.NewProjectTemplate.Web.Server.Infrastructure.Antiforgery;
 using Havit.NewProjectTemplate.Web.Server.Infrastructure.ApplicationInsights;
 using Havit.NewProjectTemplate.Web.Server.Infrastructure.ConfigurationExtensions;
 using Havit.NewProjectTemplate.Web.Server.Infrastructure.ExceptionHandling;
@@ -73,8 +72,6 @@ public class Startup
 		services.AddRazorComponents()
 			.AddInteractiveWebAssemblyComponents()
 			.AddAuthenticationStateSerialization(options => options.SerializationCallback = CustomClaimsSerializer.SerializeAuthenticationStateAsync);
-
-		services.AddScoped<AntiforgeryStateProvider, WorkaroundEndpointAntiforgeryStateProvider>();
 
 		// server-side UI
 		services.AddRazorPages();
