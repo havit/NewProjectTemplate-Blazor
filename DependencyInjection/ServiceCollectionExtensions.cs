@@ -125,7 +125,11 @@ public static class ServiceCollectionExtensions
 				}
 				else
 				{
-					optionsBuilder.UseSqlServer(configuration.DatabaseConnectionString, c => c.MaxBatchSize(30));
+					optionsBuilder.UseSqlServer(configuration.DatabaseConnectionString, c =>
+					{
+						c.MaxBatchSize(30);
+						c.UseQuerySplittingBehavior(QuerySplittingBehavior.SplitQuery);
+					});
 				}
 				optionsBuilder.UseDefaultHavitConventions();
 			})
