@@ -32,8 +32,7 @@ This is a large-scale ASP.NET Core Blazor WebAssembly application.
 dotnet test
 
 # Run specific test project
-dotnet test Model.Tests/Model.Tests.csproj
-dotnet test IntegrationTests/IntegrationTests.csproj
+dotnet test --project Model.Tests/Model.Tests.csproj
 
 # Run tests with detailed output
 dotnet test --logger:detailed

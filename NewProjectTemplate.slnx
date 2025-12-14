@@ -39,6 +39,9 @@
     <File Path="NuGet.config" />
     <File Path="README.md" />
   </Folder>
+  <Folder Name="/Solution Items/.github/">
+    <File Path=".github/copilot-instructions.md" />
+  </Folder>
   <Folder Name="/Solution Items/PublishScripts/">
     <File Path="PublishScripts/Web/appsettings.WebServer.Stage.json" />
   </Folder>
