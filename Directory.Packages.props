@@ -15,12 +15,12 @@
     <PackageVersion Include="Hangfire.Console" Version="1.4.3" />
     <PackageVersion Include="Hangfire.Console.Extensions" Version="2.1.0" />
     <PackageVersion Include="Hangfire.SqlServer" Version="1.8.22" />
-    <PackageVersion Include="Havit.ApplicationInsights.DependencyCollector" Version="2.0.9" />
-    <PackageVersion Include="Havit.AspNetCore" Version="2.0.30" />
+    <PackageVersion Include="Havit.ApplicationInsights.DependencyCollector" Version="2.0.10" />
+    <PackageVersion Include="Havit.AspNetCore" Version="2.0.31" />
     <PackageVersion Include="Havit.Blazor.Components.Web.Bootstrap" Version="4.20.1" />
     <PackageVersion Include="Havit.Blazor.Grpc.Client" Version="1.7.0" />
     <PackageVersion Include="Havit.Blazor.Grpc.Server" Version="1.7.0" />
-    <PackageVersion Include="Havit.Core" Version="2.0.34" />
+    <PackageVersion Include="Havit.Core" Version="2.0.35" />
     <PackageVersion Include="Havit.Data.EntityFrameworkCore" Version="2.10.0" />
     <PackageVersion Include="Havit.Data.EntityFrameworkCore.Abstractions" Version="2.10.0" />
     <PackageVersion Include="Havit.Data.EntityFrameworkCore.CodeGenerator" Version="2.10.0" />

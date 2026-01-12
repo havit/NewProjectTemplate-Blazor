@@ -8,6 +8,7 @@
 	<ItemGroup>
 		<PackageReference Include="Hangfire" />
 		<PackageReference Include="Hangfire.Console" />
+		<PackageReference Include="Havit.ApplicationInsights.DependencyCollector" />
 		<PackageReference Include="Havit.Blazor.Components.Web.Bootstrap" />
 		<PackageReference Include="Havit.Blazor.Grpc.Server" />
 		<PackageReference Include="Havit.Hangfire.Extensions" />

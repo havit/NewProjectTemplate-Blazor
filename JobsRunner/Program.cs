@@ -49,6 +49,7 @@ public static class Program
 
 		builder.Services.AddApplicationInsightsTelemetryWorkerService();
 		builder.Services.AddApplicationInsightsTelemetryProcessor<IgnoreSucceededDependenciesWithNoParentIdProcessor>();
+		builder.Services.AddApplicationInsightsTelemetryProcessor<IgnoreCancellationExceptionsTelemetryProcessor>();
 		builder.Services.ConfigureTelemetryModule<DependencyTrackingTelemetryModule>((module, o) => { module.EnableSqlCommandTextInstrumentation = true; });
 		builder.Services.Remove(builder.Services.Single(descriptor => descriptor.ImplementationType == typeof(PerformanceCollectorModule)));
 		builder.Services.AddSingleton<ITelemetryInitializer, JobsRunnerToCloudRoleNameTelemetryInitializer>();

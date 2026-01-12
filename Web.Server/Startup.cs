@@ -1,6 +1,7 @@
 ﻿using BlazorApplicationInsights;
 using Hangfire;
 using Hangfire.Dashboard;
+using Havit.ApplicationInsights.DependencyCollector;
 using Havit.Blazor.Grpc.Server;
 using Havit.Hangfire.Extensions.HealthChecks;
 using Havit.NewProjectTemplate.Contracts;
@@ -54,6 +55,7 @@ public class Startup
 		services.AddSingleton<ITelemetryInitializer, GrpcRequestStatusTelemetryInitializer>();
 		services.AddSingleton<ITelemetryInitializer, CloudRoleNameTelemetryInitializer>();
 		services.ConfigureTelemetryModule<DependencyTrackingTelemetryModule>((module, o) => { module.EnableSqlCommandTextInstrumentation = true; });
+		services.AddApplicationInsightsTelemetryProcessor<IgnoreCancellationExceptionsTelemetryProcessor>();
 
 		// The configuration is transferred to the client through prerendering
 		services.AddBlazorApplicationInsights(c => c.ConnectionString = _configuration.GetSection("ApplicationInsights").GetValue<string>("ConnectionString"));
