@@ -6,8 +6,8 @@
   <ItemGroup>
     <PackageVersion Include="Azure.Extensions.AspNetCore.Configuration.Secrets" Version="1.4.0" />
     <PackageVersion Include="Blazilla" Version="2.1.0" />
+    <PackageVersion Include="Blazor.Storage" Version="5.0.0" />
     <PackageVersion Include="BlazorApplicationInsights" Version="3.3.0" />
-    <PackageVersion Include="Blazored.LocalStorage" Version="4.5.0" />
     <PackageVersion Include="FluentValidation" Version="12.1.1" />
     <PackageVersion Include="FluentValidation.DependencyInjectionExtensions" Version="12.1.1" />
     <PackageVersion Include="Hangfire" Version="1.8.22" />
@@ -64,5 +64,6 @@
     <PackageVersion Include="Scrutor" Version="7.0.0" />
     <!-- net10 replaces System.Linq.Async-->
     <PackageVersion Include="System.Linq.Async" Version="7.0.0" />
+    <PackageVersion Include="Blazor.Extensions.Storage" Version="3.0.0" />
   </ItemGroup>
 </Project>
