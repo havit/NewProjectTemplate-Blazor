@@ -13,7 +13,6 @@
 		<PackageReference Include="Havit.Blazor.Grpc.Server" />
 		<PackageReference Include="Havit.Hangfire.Extensions" />
 		<PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" />
-		<PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" />
 		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" />
 		<PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" />
@@ -21,6 +20,8 @@
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
+		<PackageReference Include="Microsoft.Extensions.Caching.SqlServer" />
+		<PackageReference Include="Microsoft.Identity.Web" />
 		<PackageReference Include="protobuf-net.Grpc.AspNetCore.Reflection" />
 	</ItemGroup>
 

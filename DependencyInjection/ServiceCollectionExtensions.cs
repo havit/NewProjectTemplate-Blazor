@@ -21,6 +21,7 @@ using Havit.Services.Caching;
 using Havit.Services.FileStorage;
 using Havit.Services.TimeServices;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.DataProtection;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -111,6 +112,7 @@ public static class ServiceCollectionExtensions
 		InstallByServiceAttribute(services, installConfiguration);
 		InstallAuthorizationHandlers(services);
 		InstallFileServices(services, installConfiguration);
+		InstallDataProtection(services, installConfiguration);
 
 		return services;
 	}
@@ -193,6 +195,25 @@ public static class ServiceCollectionExtensions
 		else
 		{
 			services.AddFileSystemStorageService<TFileStorageContext>(storagePath);
+		}
+	}
+
+	internal static void InstallDataProtection(IServiceCollection services, InstallConfiguration installConfiguration)
+	{
+		var dataProtectionBuilder = services
+				.AddDataProtection()
+				.SetApplicationName("NewProjectTemplate");
+
+		string azureStorageConnectionString = installConfiguration.Configuration.GetConnectionString("AzureStorage");
+		DataProtectionStorageOptions dataProtectionStorageOptions = installConfiguration.Configuration.GetSection(DataProtectionStorageOptions.DataProtectionStorageOptionsKey).Get<DataProtectionStorageOptions>();
+
+		if (!String.IsNullOrEmpty(azureStorageConnectionString))
+		{
+			dataProtectionBuilder.PersistKeysToAzureBlobStorage(azureStorageConnectionString, dataProtectionStorageOptions?.PathOrContainerName ?? "dataprotection", "dataprotection.xml");
+		}
+		else if (!String.IsNullOrEmpty(dataProtectionStorageOptions?.PathOrContainerName))
+		{
+			dataProtectionBuilder.PersistKeysToFileSystem(new DirectoryInfo(dataProtectionStorageOptions.PathOrContainerName));
 		}
 	}
 

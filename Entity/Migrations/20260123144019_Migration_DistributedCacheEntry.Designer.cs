@@ -5,6 +5,7 @@ using Havit.NewProjectTemplate.Entity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -12,9 +13,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Havit.NewProjectTemplate.Entity.Migrations
 {
     [DbContext(typeof(NewProjectTemplateDbContext))]
-    partial class NewProjectTemplateDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260123144019_Migration_DistributedCacheEntry")]
+    partial class Migration_DistributedCacheEntry
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -138,8 +141,6 @@ namespace Havit.NewProjectTemplate.Entity.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("DistributedCacheEntry");
-
-                    b.HasAnnotation("IsApplicationEntity", false);
                 });
 
             modelBuilder.Entity("Havit.NewProjectTemplate.Model.Localizations.Language", b =>
