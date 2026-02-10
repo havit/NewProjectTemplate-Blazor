@@ -1,4 +1,4 @@
-﻿using System.Runtime.InteropServices;
+using System.Runtime.InteropServices;
 using Havit.NewProjectTemplate.DependencyInjection.Configuration;
 using Havit.NewProjectTemplate.Services.Infrastructure.Logging;
 
@@ -9,11 +9,14 @@ public static class Program
 	public static void Main(string[] args)
 	{
 		WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
+		builder.AddServiceDefaults();
 
 		ConfigureConfigurationAndLogging(builder);
 		ConfigureServices(builder);
 
 		var app = builder.Build();
+
+		app.MapDefaultEndpoints();
 
 		ConfigureMiddleware(app);
 		ConfigureEndpoints(app);

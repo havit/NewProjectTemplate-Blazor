@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
 	<PropertyGroup>
 		<AssemblyName>Havit.NewProjectTemplate.Web.Server</AssemblyName>
@@ -29,6 +29,7 @@
 		<ProjectReference Include="..\DependencyInjection\DependencyInjection.csproj" />
 		<ProjectReference Include="..\Facades\Facades.csproj" />
 		<ProjectReference Include="..\Model\Model.csproj" />
+		<ProjectReference Include="..\ServiceDefaults\ServiceDefaults.csproj" />
 		<ProjectReference Include="..\Primitives\Primitives.csproj" />
 		<ProjectReference Include="..\Services\Services.csproj" />
 		<ProjectReference Include="..\Web.Client\Web.Client.csproj" />

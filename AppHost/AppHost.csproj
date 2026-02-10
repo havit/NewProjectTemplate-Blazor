@@ -1,0 +1,18 @@
+﻿<Project Sdk="Aspire.AppHost.Sdk/13.1.0">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <UserSecretsId>35b64123-fdfe-4681-b144-17e060a70b8a</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Aspire.Hosting.SqlServer" />
+    <PackageReference Include="Aspire.Microsoft.EntityFrameworkCore.SqlServer" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\JobsRunner\JobsRunner.csproj" />
+    <ProjectReference Include="..\Web.Server\Web.Server.csproj" />
+  </ItemGroup>
+
+</Project>
