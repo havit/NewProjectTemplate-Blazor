@@ -1,36 +1,39 @@
 using Microsoft.Extensions.Configuration;
+using System.Runtime.InteropServices;
 
 var builder = DistributedApplication.CreateBuilder(args);
 
-
-// Check if connection string is defined in appsettings
 var connectionString = builder.Configuration.GetConnectionString("Database");
-var useAspireDatabase = string.IsNullOrEmpty(connectionString);
 
-IResourceBuilder<IResourceWithConnectionString> databaseResource;
+var webServerBuilder = builder.AddProject<Projects.Web_Server>("web-server");
+var jobsRunnerBuilder = builder.AddProject<Projects.JobsRunner>("jobsrunner")
+	.WithExplicitStart();
 
-if (useAspireDatabase)
+if (!string.IsNullOrEmpty(connectionString))
 {
-	// No connection string provided - use Aspire-managed SQL Server container
-	var sqlServerResource = builder.AddSqlServer("cloudcore-sql", port: 1433)
+	// Connection string is defined in AppHost configuration - propagate it to services
+	var databaseResource = builder.AddConnectionString("Database");
+
+	webServerBuilder.WithReference(databaseResource);
+	jobsRunnerBuilder.WithReference(databaseResource);
+}
+else if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+{
+	// No connection string and non-Windows platform - use Aspire-managed SQL Server container
+	var sqlServerResource = builder.AddSqlServer("SqlServer")
 		.WithLifetime(ContainerLifetime.Persistent)
 		.WithDataVolume();
 
-	databaseResource = sqlServerResource.AddDatabase("CisCloudCore");
-}
-else
-{
-	// Connection string is defined - use it
-	databaseResource = builder.AddConnectionString("Database");
-}
+	var databaseResource = sqlServerResource.AddDatabase("Database");
 
-builder.AddProject<Projects.Web_Server>("web-server")
-	.WithReference(databaseResource)
-	.WaitFor(databaseResource);
+	webServerBuilder
+		.WithReference(databaseResource)
+		.WaitFor(databaseResource);
 
-builder.AddProject<Projects.JobsRunner>("jobsrunner")
-	.WithReference(databaseResource)
-	.WaitFor(databaseResource)
-	.WithExplicitStart();
+	jobsRunnerBuilder
+		.WithReference(databaseResource)
+		.WaitFor(databaseResource);
+}
+// else: Windows without connection string - services use their own connection strings from appsettings (localdb)
 
 builder.Build().Run();
