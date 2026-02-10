@@ -17,9 +17,9 @@
 
 
 	<ItemGroup>
+		<PackageReference Include="Blazilla" />
+		<PackageReference Include="Blazor.Storage" />
 		<PackageReference Include="BlazorApplicationInsights" />
-		<PackageReference Include="Blazored.FluentValidation" />
-		<PackageReference Include="Blazored.LocalStorage" />
 		<PackageReference Include="FluentValidation.DependencyInjectionExtensions" />
 		<PackageReference Include="Havit.Blazor.Components.Web.Bootstrap" />
 		<PackageReference Include="Havit.Blazor.Grpc.Client" />

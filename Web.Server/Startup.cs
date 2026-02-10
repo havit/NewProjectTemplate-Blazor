@@ -1,12 +1,14 @@
 ﻿using BlazorApplicationInsights;
 using Hangfire;
 using Hangfire.Dashboard;
+using Havit.ApplicationInsights.DependencyCollector;
 using Havit.Blazor.Grpc.Server;
 using Havit.Hangfire.Extensions.HealthChecks;
 using Havit.NewProjectTemplate.Contracts;
 using Havit.NewProjectTemplate.Contracts.Infrastructure;
 using Havit.NewProjectTemplate.DependencyInjection;
 using Havit.NewProjectTemplate.Facades.Infrastructure.Security;
+using Havit.NewProjectTemplate.Model.Infrastructure;
 using Havit.NewProjectTemplate.Primitives.Security;
 using Havit.NewProjectTemplate.Services.HealthChecks;
 using Havit.NewProjectTemplate.Services.Infrastructure.Security;
@@ -19,7 +21,7 @@ using Havit.NewProjectTemplate.Web.Server.Infrastructure.MigrationTool;
 using Havit.NewProjectTemplate.Web.Server.Infrastructure.Security;
 using Microsoft.ApplicationInsights.DependencyCollector;
 using Microsoft.ApplicationInsights.Extensibility;
-using Microsoft.AspNetCore.Components.Forms;
+using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using ProtoBuf.Grpc.Server;
 
 namespace Havit.NewProjectTemplate.Web.Server;
@@ -54,15 +56,24 @@ public class Startup
 		services.AddSingleton<ITelemetryInitializer, GrpcRequestStatusTelemetryInitializer>();
 		services.AddSingleton<ITelemetryInitializer, CloudRoleNameTelemetryInitializer>();
 		services.ConfigureTelemetryModule<DependencyTrackingTelemetryModule>((module, o) => { module.EnableSqlCommandTextInstrumentation = true; });
+		services.AddApplicationInsightsTelemetryProcessor<IgnoreCancellationExceptionsTelemetryProcessor>();
 
 		// The configuration is transferred to the client through prerendering
 		services.AddBlazorApplicationInsights(c => c.ConnectionString = _configuration.GetSection("ApplicationInsights").GetValue<string>("ConnectionString"));
+
+		// Distributed cache (to be used by Authentication)
+		services.AddDistributedSqlServerCache(options =>
+		{
+			options.ConnectionString = _configuration.GetConnectionString("Database");
+			options.SchemaName = "dbo";
+			options.TableName = nameof(DistributedCacheEntry);
+		});
 
 		// Authentication & Authorization
 		services.AddCustomAuthentication(_configuration);
 		services.AddAuthorizationBuilder()
 			.AddPolicy(PolicyNames.HangfireDashboardAccessPolicy, policy => policy
-					.AddAuthenticationSchemes(AuthenticationConfigurationExtension.MsOidcScheme)
+					.AddAuthenticationSchemes(OpenIdConnectDefaults.AuthenticationScheme)
 					.RequireAuthenticatedUser()
 					.RequireRole(nameof(RoleEntry.SystemAdministrator)));
 

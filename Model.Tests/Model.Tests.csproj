@@ -3,9 +3,6 @@
 	<PropertyGroup>
 		<AssemblyName>Havit.NewProjectTemplate.Model.Tests</AssemblyName>
 		<RootNamespace>Havit.NewProjectTemplate.Model.Tests</RootNamespace>
-		<PublishDir>obj\$(Configuration)\publish</PublishDir>
-		<IsPackable>false</IsPackable>
-		<IsTestProject>true</IsTestProject>
 		<OutputType>Exe</OutputType>
 	</PropertyGroup>
 
