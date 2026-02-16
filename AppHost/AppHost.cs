@@ -3,11 +3,24 @@ using System.Runtime.InteropServices;
 
 var builder = DistributedApplication.CreateBuilder(args);
 
+// Read launch profile configuration from environment variables
+var servicesMode = Environment.GetEnvironmentVariable("APPHOST_SERVICES") ?? "All";
+var forceContainerDatabase = Environment.GetEnvironmentVariable("APPHOST_FORCE_CONTAINER_DATABASE") == "true";
+
 var connectionString = builder.Configuration.GetConnectionString("Database");
 
 var webServerBuilder = builder.AddProject<Projects.Web_Server>("web-server");
-var jobsRunnerBuilder = builder.AddProject<Projects.JobsRunner>("jobsrunner")
-	.WithExplicitStart();
+
+// Add JobsRunner only if servicesMode is "All"
+IResourceBuilder<ProjectResource> jobsRunnerBuilder = null;
+if (servicesMode == "All")
+{
+	jobsRunnerBuilder = builder.AddProject<Projects.JobsRunner>("jobsrunner")
+		.WithExplicitStart();
+}
+
+// Determine database configuration
+bool useContainerDatabase = forceContainerDatabase || (string.IsNullOrEmpty(connectionString) && !RuntimeInformation.IsOSPlatform(OSPlatform.Windows));
 
 if (!string.IsNullOrEmpty(connectionString))
 {
@@ -15,11 +28,11 @@ if (!string.IsNullOrEmpty(connectionString))
 	var databaseResource = builder.AddConnectionString("Database");
 
 	webServerBuilder.WithReference(databaseResource);
-	jobsRunnerBuilder.WithReference(databaseResource);
+	jobsRunnerBuilder?.WithReference(databaseResource);
 }
-else if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+else if (useContainerDatabase)
 {
-	// No connection string and non-Windows platform - use Aspire-managed SQL Server container
+	// No connection string and (non-Windows platform OR forced) - use Aspire-managed SQL Server container
 	var sqlServerResource = builder.AddSqlServer("SqlServer")
 		.WithLifetime(ContainerLifetime.Persistent)
 		.WithDataVolume();
@@ -30,7 +43,7 @@ else if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
 		.WithReference(databaseResource)
 		.WaitFor(databaseResource);
 
-	jobsRunnerBuilder
+	jobsRunnerBuilder?
 		.WithReference(databaseResource)
 		.WaitFor(databaseResource);
 }
