@@ -34,6 +34,8 @@ public static class Program
 
 		var builder = Host.CreateApplicationBuilder();
 
+		builder.AddServiceDefaults();
+
 		builder.Configuration.AddJsonFile("appsettings.JobsRunner.json", optional: false);
 		builder.Configuration.AddJsonFile($"appsettings.JobsRunner.{builder.Environment.EnvironmentName}.json", optional: true);
 #if DEBUG
