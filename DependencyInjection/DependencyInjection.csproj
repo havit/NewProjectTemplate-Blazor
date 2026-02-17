@@ -10,7 +10,6 @@
 		<PackageReference Include="Azure.Extensions.AspNetCore.DataProtection.Blobs" />
 		<PackageReference Include="Havit.Services.Azure" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" />
-		<PackageReference Include="Scrutor" />
 	</ItemGroup>
 
 	<ItemGroup>

@@ -20,7 +20,6 @@ using Havit.Services.Azure.FileStorage;
 using Havit.Services.Caching;
 using Havit.Services.FileStorage;
 using Havit.Services.TimeServices;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
@@ -110,7 +109,6 @@ public static class ServiceCollectionExtensions
 		InstallHavitEntityFramework(services, installConfiguration);
 		InstallHavitServices(services);
 		InstallByServiceAttribute(services, installConfiguration);
-		InstallAuthorizationHandlers(services);
 		InstallFileServices(services, installConfiguration);
 		InstallDataProtection(services, installConfiguration);
 
@@ -157,15 +155,6 @@ public static class ServiceCollectionExtensions
 		services.AddDataLayerByServiceAttribute(configuration.ServiceProfiles);
 		services.AddServicesByServiceAttribute(configuration.ServiceProfiles);
 		services.AddFacadesByServiceAttribute(configuration.ServiceProfiles);
-	}
-
-	private static void InstallAuthorizationHandlers(IServiceCollection services)
-	{
-		services.Scan(scan => scan.FromAssemblyOf<Havit.NewProjectTemplate.Services.Properties.AssemblyInfo>()
-			.AddClasses(classes => classes.AssignableTo<IAuthorizationHandler>())
-			.As<IAuthorizationHandler>()
-			.WithScopedLifetime()
-		);
 	}
 
 	private static void InstallFileServices(IServiceCollection services, InstallConfiguration installConfiguration)
