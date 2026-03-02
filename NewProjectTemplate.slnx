@@ -1,6 +1,7 @@
 <Solution>
   <Folder Name="/Aspire/">
     <Project Path="AppHost/AppHost.csproj" />
+    <Project Path="Aspire/DistributedTests/Aspire.Tests.csproj" />
     <Project Path="ServiceDefaults/ServiceDefaults.csproj" />
   </Folder>
   <Folder Name="/Client/">

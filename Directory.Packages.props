@@ -67,6 +67,7 @@
 		<!-- net10 replaces System.Linq.Async-->
 		<PackageVersion Include="System.Linq.Async" Version="7.0.0" />
 		<PackageVersion Include="Blazor.Extensions.Storage" Version="3.0.0" />
+		<PackageVersion Include="Aspire.Hosting.Testing" Version="13.1.0" />
 		<PackageVersion Include="Aspire.Hosting.SqlServer" Version="13.1.0" />
 		<PackageVersion Include="Aspire.Microsoft.EntityFrameworkCore.SqlServer" Version="13.1.0" />
 		<PackageVersion Include="Microsoft.Extensions.Http.Resilience" Version="10.2.0" />
