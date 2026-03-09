@@ -85,7 +85,7 @@ public static class AuthenticationConfigurationExtension
 		context.Response.Redirect("/");
 		context.HandleResponse();
 
-		return Task.FromResult(0);
+		return Task.CompletedTask;
 	}
 
 	/// <summary>
@@ -119,7 +119,7 @@ public static class AuthenticationConfigurationExtension
 		ClaimsPrincipal principal = context.Principal;
 		List<Claim> customClaims = await customClaimsBuilder.GetCustomClaimsAsync(principal);
 
-		if (customClaims.Any())
+		if (customClaims.Count != 0)
 		{
 			ClaimsIdentity identity = principal.Identities.First();
 			ClaimsIdentity customClaimsIdentity = new ClaimsIdentity(customClaims,

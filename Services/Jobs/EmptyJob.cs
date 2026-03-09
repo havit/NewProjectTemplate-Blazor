@@ -5,15 +5,8 @@ using Microsoft.Extensions.Logging;
 namespace Havit.NewProjectTemplate.Services.Jobs;
 
 [Service(Profile = ServiceProfiles.JobsRunner)]
-public class EmptyJob : IEmptyJob
+public class EmptyJob(ILogger<EmptyJob> _logger) : IEmptyJob
 {
-	private readonly ILogger<EmptyJob> _logger;
-
-	public EmptyJob(ILogger<EmptyJob> logger)
-	{
-		_logger = logger;
-	}
-
 	public async Task ExecuteAsync(CancellationToken cancellationToken)
 	{
 		_logger.LogInformation("Begin: EmptyJob");

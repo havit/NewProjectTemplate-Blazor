@@ -15,19 +15,10 @@ namespace Havit.NewProjectTemplate.Facades.Infrastructure;
 [Service]
 [Authorize(Roles = nameof(RoleEntry.SystemAdministrator))]
 
-public class DataSeedFacade : IDataSeedFacade
+public class DataSeedFacade(
+	IDataSeedRunner _dataSeedRunner,
+	ICacheService _cacheService) : IDataSeedFacade
 {
-	private readonly IDataSeedRunner _dataSeedRunner;
-	private readonly ICacheService _cacheService;
-
-	public DataSeedFacade(
-		IDataSeedRunner dataSeedRunner,
-		ICacheService cacheService)
-	{
-		_dataSeedRunner = dataSeedRunner;
-		_cacheService = cacheService;
-	}
-
 	/// <summary>
 	/// Executes seed for the selected profile.
 	/// </summary>

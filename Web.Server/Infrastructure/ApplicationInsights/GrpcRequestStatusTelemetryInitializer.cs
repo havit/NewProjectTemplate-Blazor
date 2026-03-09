@@ -13,15 +13,8 @@ namespace Havit.NewProjectTemplate.Web.Server.Infrastructure.ApplicationInsights
 /// <remarks>
 /// https://docs.microsoft.com/en-us/azure/azure-monitor/app/api-filtering-sampling#addmodify-properties-itelemetryinitializer
 /// </remarks>
-public class GrpcRequestStatusTelemetryInitializer : ITelemetryInitializer
+public class GrpcRequestStatusTelemetryInitializer(IHttpContextAccessor _httpContextAccessor) : ITelemetryInitializer
 {
-	private readonly IHttpContextAccessor _httpContextAccessor;
-
-	public GrpcRequestStatusTelemetryInitializer(IHttpContextAccessor httpContextAccessor)
-	{
-		_httpContextAccessor = httpContextAccessor;
-	}
-
 	public void Initialize(ITelemetry telemetry)
 	{
 		if (telemetry is not RequestTelemetry requestTelemetry)
