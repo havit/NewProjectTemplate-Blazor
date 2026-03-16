@@ -31,6 +31,7 @@
     <File Path=".editorconfig" />
     <File Path=".gitattributes" />
     <File Path=".gitignore" />
+    <File Path="AGENTS.md" />
     <File Path="BuildPipeline-002.HFW-NewProjectTemplate-Blazor.yml" />
     <File Path="Directory.Build.props" />
     <File Path="Directory.Packages.props" />
@@ -38,9 +39,6 @@
     <File Path="Generate-BootstrapIntellisenseFakes.ps1" />
     <File Path="NuGet.config" />
     <File Path="README.md" />
-  </Folder>
-  <Folder Name="/Solution Items/.github/">
-    <File Path=".github/copilot-instructions.md" />
   </Folder>
   <Folder Name="/Solution Items/PublishScripts/">
     <File Path="PublishScripts/Web/appsettings.WebServer.Stage.json" />
