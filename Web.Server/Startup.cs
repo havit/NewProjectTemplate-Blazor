@@ -1,4 +1,5 @@
 ﻿using BlazorApplicationInsights;
+using Calzolari.Grpc.AspNetCore.Validation;
 using Hangfire;
 using Hangfire.Dashboard;
 using Havit.ApplicationInsights.DependencyCollector;
@@ -89,7 +90,9 @@ public class Startup
 		services.AddControllersWithViews();
 
 		// gRPC
-		services.AddGrpcServerInfrastructure(assemblyToScanForDataContracts: typeof(Dto).Assembly);
+		services.AddGrpcServerInfrastructure(assemblyToScanForDataContracts: typeof(Dto).Assembly,
+			options => options.EnableMessageValidation());
+		services.AddGrpcValidation();
 		services.AddCodeFirstGrpcReflection();
 
 		// Health checks

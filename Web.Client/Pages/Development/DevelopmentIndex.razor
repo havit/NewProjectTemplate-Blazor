@@ -1,9 +1,19 @@
-﻿@page "/development" 
+@page "/development"
+@inject Havit.NewProjectTemplate.Contracts.Infrastructure.IMaintenanceFacade MaintenanceFacade
 
 <div class="row row-cols-2 row-cols-lg-5 g-3 mt-4">
 	<div class="col">
 		<NavPanel Title="Development" Icon="BootstrapIcon.FileCode">
 			<NavCard Href="#" Title="TODO" />
+			<NavCard OnClick="RaiseServerGrpcRequestValidationError" Title="Raise server (gRPC) request validation error" />
 		</NavPanel>
 	</div>
 </div>
+
+@code {
+	private async Task RaiseServerGrpcRequestValidationError()
+	{
+		var invalidDto = new Havit.NewProjectTemplate.Contracts.Infrastructure.MaintenanceTestDto(); // Value is required as NotEmpty()
+		await MaintenanceFacade.RaiseRequestDtoValidationErrorAsync(invalidDto);
+	}
+}

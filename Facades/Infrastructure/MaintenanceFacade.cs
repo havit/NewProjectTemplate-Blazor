@@ -17,4 +17,10 @@ public class MaintenanceFacade(ICacheService _cacheService) : IMaintenanceFacade
 
 		return Task.CompletedTask;
 	}
+
+	public Task RaiseRequestDtoValidationErrorAsync(MaintenanceTestDto dto, CancellationToken cancellationToken = default)
+	{
+		// this should never be called, validation interceptor should catch the invalid input DTO
+		throw new InvalidOperationException("Validation PASSed, no error found!");
+	}
 }

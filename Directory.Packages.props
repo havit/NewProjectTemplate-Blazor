@@ -9,6 +9,7 @@
     <PackageVersion Include="Blazilla" Version="2.3.0" />
     <PackageVersion Include="Blazor.Storage" Version="5.0.0" />
     <PackageVersion Include="BlazorApplicationInsights" Version="3.3.0" />
+    <PackageVersion Include="Calzolari.Grpc.AspNetCore.Validation" Version="9.0.0" />
     <PackageVersion Include="FluentValidation" Version="12.1.1" />
     <PackageVersion Include="FluentValidation.DependencyInjectionExtensions" Version="12.1.1" />
     <PackageVersion Include="Hangfire" Version="1.8.23" />

@@ -6,6 +6,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+		<PackageReference Include="Calzolari.Grpc.AspNetCore.Validation" />
 		<PackageReference Include="Hangfire" />
 		<PackageReference Include="Hangfire.Console" />
 		<PackageReference Include="Havit.ApplicationInsights.DependencyCollector" />

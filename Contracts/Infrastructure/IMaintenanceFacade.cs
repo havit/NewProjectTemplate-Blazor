@@ -6,4 +6,5 @@ namespace Havit.NewProjectTemplate.Contracts.Infrastructure;
 public interface IMaintenanceFacade
 {
 	Task ClearCacheAsync(CancellationToken cancellationToken = default);
+	Task RaiseRequestDtoValidationErrorAsync(MaintenanceTestDto dto, CancellationToken cancellationToken = default);
 }

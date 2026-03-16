@@ -1,5 +1,6 @@
 ﻿using System.Runtime.CompilerServices;
 using Azure.Identity;
+using FluentValidation;
 using Havit.Data.EntityFrameworkCore;
 using Havit.Data.EntityFrameworkCore.Patterns.DependencyInjection;
 using Havit.Data.EntityFrameworkCore.Patterns.UnitOfWorks.EntityValidation;
@@ -111,6 +112,11 @@ public static class ServiceCollectionExtensions
 		InstallByServiceAttribute(services, installConfiguration);
 		InstallFileServices(services, installConfiguration);
 		InstallDataProtection(services, installConfiguration);
+
+		services.AddLocalization();
+		Havit.NewProjectTemplate.Resources.ResourcesServiceCollectionExtensions.AddGeneratedResourceWrappers(services);
+
+		services.AddValidatorsFromAssemblyContaining<Contracts.Properties.AssemblyInfo>();
 
 		return services;
 	}
