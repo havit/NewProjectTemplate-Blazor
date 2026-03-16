@@ -19,6 +19,9 @@
 		<TestingPlatformDotnetTestSupport>true</TestingPlatformDotnetTestSupport>
 		<TestingPlatformShowTestsFailure>true</TestingPlatformShowTestsFailure>
 		<MSTestAnalysisMode>Recommended</MSTestAnalysisMode>
+
+		<!-- As a default, we want to disable all Meziantou analyzers and adopt an OPT-IN approach -->
+		<MeziantouAnalysisMode>None</MeziantouAnalysisMode>
 	</PropertyGroup>
 
 	<ItemGroup>

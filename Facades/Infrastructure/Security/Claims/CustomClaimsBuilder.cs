@@ -61,7 +61,7 @@ public class CustomClaimsBuilder : ICustomClaimsBuilder
 			throw new SecurityException("User is deleted.");
 		}
 
-		result.Add(new Claim(ClaimConstants.UserIdClaim, user.Id.ToString(), null, ClaimConstants.ApplicationIssuer));
+		result.Add(new Claim(ClaimConstants.UserIdClaim, user.Id.ToString(), valueType: null, ClaimConstants.ApplicationIssuer));
 
 		var roles = user.UserRoles.Select(ur => (RoleEntry)ur.RoleId);
 
@@ -69,7 +69,7 @@ public class CustomClaimsBuilder : ICustomClaimsBuilder
 		string roleClaimType = principal.Identities.First().RoleClaimType;
 		foreach (var role in roles)
 		{
-			result.Add(new Claim(roleClaimType, role.ToString(), null, ClaimConstants.ApplicationIssuer));
+			result.Add(new Claim(roleClaimType, role.ToString(), valueType: null, ClaimConstants.ApplicationIssuer));
 		}
 
 		return result;

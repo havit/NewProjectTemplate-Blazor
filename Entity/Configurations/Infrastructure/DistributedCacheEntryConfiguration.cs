@@ -10,6 +10,6 @@ public class DistributedCacheEntryConfiguration : IEntityTypeConfiguration<Distr
 	public void Configure(EntityTypeBuilder<DistributedCacheEntry> builder)
 	{
 		// DistributedCacheEntry is not an application entity, do not generate data source, repository, etc.
-		builder.HasAnnotation(ApplicationEntityAnnotationConstants.IsApplicationEntityAnnotationName, false);
+		builder.HasAnnotation(ApplicationEntityAnnotationConstants.IsApplicationEntityAnnotationName, value: false);
 	}
 }
