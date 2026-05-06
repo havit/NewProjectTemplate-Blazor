@@ -6,13 +6,15 @@
 	[string]$NewHttpPort = "9901",
 	[string]$NewHttpsPort = "44301",
 	[string]$NewErrorsRecipient = "errors@mydomain.com", # HAVIT developers: use errors@havit.cz
-	[string]$NewErrorsSmptServer = "errorssmtp.server.com" # HAVIT developers: use mx.havit.cz
+	[string]$NewErrorsSmptServer = "errorssmtp.server.com", # HAVIT developers: use mx.havit.cz
+	[string]$CodeOwnerGitHubUsername = "your-github-username", # HAVIT developers: use your github username (without starting @)
+	[string]$CodeOwnerFullName = "Your Name" # HAVIT developers: use your FullName
 )
 
 
 [string]$SolutionFolder = [System.IO.Path]::GetDirectoryName($MyInvocation.MyCommand.Path);
 
-Get-ChildItem -recurse $SolutionFolder -include *.cs,*.csproj,*.config,*.ps1,*.json,*.tsx,*.cshtml,*.props,*.razor,*.json,*.html,*.js,*.yml,*.slnx | where { $_ -is [System.IO.FileInfo] } | where { !$_.FullName.Contains("\packages\") } | where { !$_.FullName.Contains("\obj\") } | where { !$_.FullName.Contains("package.json") } | where { !$_.Name.Equals("SetupSolution.ps1") } |
+Get-ChildItem -recurse $SolutionFolder -include *.cs,*.csproj,*.config,*.ps1,*.json,*.tsx,*.cshtml,*.props,*.razor,*.json,*.html,*.js,*.yml,*.slnx,tmp.CODEOWNERS | where { $_ -is [System.IO.FileInfo] } | where { !$_.FullName.Contains("\packages\") } | where { !$_.FullName.Contains("\obj\") } | where { !$_.FullName.Contains("package.json") } | where { !$_.Name.Equals("SetupSolution.ps1") } |
 Foreach-Object {
     Set-ItemProperty $_.FullName -name IsReadOnly -value $false
     [string]$Content = [IO.File]::ReadAllText($_.FullName)
@@ -24,6 +26,9 @@ Foreach-Object {
     $Content = $Content.Replace("44301", $NewHttpsPort)
     $Content = $Content.Replace("errors@mydomain.com", $NewErrorsRecipient)
     $Content = $Content.Replace("errorssmtp.server.com", $NewErrorsSmptServer)
+    $Content = $Content.Replace("CODEOWNER_GITHUBUSERNAME", $CodeOwnerGitHubUsername)
+    $Content = $Content.Replace("CODEOWNER_FULLNAME", $CodeOwnerFullName)
+    $Content = $Content.Replace("tmp.CODEOWNERS", "CODEOWNERS") # fixes SLNX content where CODEOWNERS is referenced as tmp.CODEOWNERS
     [IO.File]::WriteAllText($_.FullName, $Content, [System.Text.Encoding]::UTF8)
 }
 
@@ -35,3 +40,4 @@ Rename-Item -path ([System.IO.Path]::Combine($SolutionFolder, 'Entity\NewProject
 Rename-Item -path ([System.IO.Path]::Combine($SolutionFolder, 'Entity.Tests\NewProjectTemplateDbContextTests.cs')) -newName ($NewSolutionName + 'DbContextTests.cs')
 Rename-Item -path ([System.IO.Path]::Combine($SolutionFolder, 'Services\HealthChecks\NewProjectTemplateDbContextHealthCheck.cs')) -newName ($NewSolutionName + 'DbContextHealthCheck.cs')
 Rename-Item -path ([System.IO.Path]::Combine($SolutionFolder, 'BuildPipeline-002.HFW-NewProjectTemplate-Blazor.yml')) -newName ('BuildPipeline-' + $NewProjectCode + '.yml')
+Rename-Item -path ([System.IO.Path]::Combine($SolutionFolder, '.github\tmp.CODEOWNERS')) -newName ('CODEOWNERS')
