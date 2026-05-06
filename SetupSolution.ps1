@@ -41,3 +41,5 @@ Rename-Item -path ([System.IO.Path]::Combine($SolutionFolder, 'Entity.Tests\NewP
 Rename-Item -path ([System.IO.Path]::Combine($SolutionFolder, 'Services\HealthChecks\NewProjectTemplateDbContextHealthCheck.cs')) -newName ($NewSolutionName + 'DbContextHealthCheck.cs')
 Rename-Item -path ([System.IO.Path]::Combine($SolutionFolder, 'BuildPipeline-002.HFW-NewProjectTemplate-Blazor.yml')) -newName ('BuildPipeline-' + $NewProjectCode + '.yml')
 Rename-Item -path ([System.IO.Path]::Combine($SolutionFolder, '.github\tmp.CODEOWNERS')) -newName ('CODEOWNERS')
+
+Remove-Item -Path ([System.IO.Path]::Combine($SolutionFolder, 'SetupSolution.ps1')) -Force
