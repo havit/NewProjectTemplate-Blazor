@@ -204,7 +204,9 @@ public static class ServiceCollectionExtensions
 
 		if (!String.IsNullOrEmpty(azureStorageConnectionString))
 		{
-			dataProtectionBuilder.PersistKeysToAzureBlobStorage(azureStorageConnectionString, dataProtectionStorageOptions?.PathOrContainerName ?? "dataprotection", "dataprotection.xml");
+			dataProtectionBuilder.PersistKeysToAzureBlobStorage(azureStorageConnectionString,
+				!String.IsNullOrEmpty(dataProtectionStorageOptions?.PathOrContainerName) ? dataProtectionStorageOptions.PathOrContainerName : "dataprotection",
+				"dataprotection.xml");
 		}
 		else if (!String.IsNullOrEmpty(dataProtectionStorageOptions?.PathOrContainerName))
 		{
