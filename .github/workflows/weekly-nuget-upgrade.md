@@ -9,8 +9,9 @@ permissions:
   contents: read
   issues: read
   pull-requests: read
-  copilot-requests: write
 strict: true
+features:
+  copilot-requests: false
 network:
   allowed: [defaults, github, dotnet]
 tools:
