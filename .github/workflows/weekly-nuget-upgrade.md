@@ -13,13 +13,19 @@ engine:
   env:
     COPILOT_PROVIDER_BASE_URL: ${{ secrets.AZURE_OPENAI_BASE_URL }}
     COPILOT_PROVIDER_API_KEY: ${{ secrets.AZURE_OPENAI_API_KEY }}
-    COPILOT_PROVIDER_TYPE: azure
+    COPILOT_PROVIDER_TYPE: openai
     COPILOT_PROVIDER_WIRE_API: responses
-    COPILOT_PROVIDER_MODEL_ID: ${{ vars.AZURE_OPENAI_DEPLOYMENT }}
-    COPILOT_MODEL: gpt-5.3-codex
+    COPILOT_MODEL: ${{ vars.AZURE_OPENAI_DEPLOYMENT }}
 
 permissions:
   contents: read
+
+sandbox:
+  agent:
+    model-fallback: false
+    targets:
+      openai:
+        authHeader: "api-key"
 
 tools:
   edit:
@@ -143,4 +149,4 @@ Expected repository secrets:
 
 - `AZURE_OPENAI_BASE_URL` — Azure OpenAI base URL (recommended form: `https://<resource>.openai.azure.com/openai/v1`)
 - `AZURE_OPENAI_API_KEY` — API key for that Azure OpenAI resource
-- repository variable `AZURE_OPENAI_DEPLOYMENT` — deployment name used on Azure (wire model id)
+- repository variable `AZURE_OPENAI_DEPLOYMENT` — deployment name used on Azure (this value is sent as `COPILOT_MODEL`)
