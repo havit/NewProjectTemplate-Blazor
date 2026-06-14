@@ -8,20 +8,18 @@ on:
   workflow_dispatch:
 
 engine:
-  id: codex
+  id: copilot
   model: gpt-5.3-codex
   env:
-    OPENAI_BASE_URL: ${{ vars.AZURE_OPENAI_BASE_URL }}
+    COPILOT_PROVIDER_BASE_URL: ${{ secrets.AZURE_OPENAI_BASE_URL }}
+    COPILOT_PROVIDER_API_KEY: ${{ secrets.AZURE_OPENAI_API_KEY }}
+    COPILOT_PROVIDER_TYPE: azure
+    COPILOT_PROVIDER_WIRE_API: responses
+    COPILOT_PROVIDER_MODEL_ID: ${{ vars.AZURE_OPENAI_DEPLOYMENT }}
+    COPILOT_MODEL: gpt-5.3-codex
 
 permissions:
   contents: read
-
-sandbox:
-  agent:
-    model-fallback: false
-    targets:
-      openai:
-        authHeader: "api-key"
 
 tools:
   edit:
@@ -139,9 +137,10 @@ Runs automatically every Sunday at 22:00 UTC. Trigger manually with:
 gh aw run weekly-nuget-upgrade
 ```
 
-## Azure OpenAI setup
+## Azure OpenAI BYOK setup (Copilot engine)
 
 Expected repository secrets:
 
-- repository variable `AZURE_OPENAI_BASE_URL` — full deployment URL, e.g. `https://<resource>.openai.azure.com/openai/deployments/<deployment-name>`
-- repository secret `CODEX_API_KEY` (or `OPENAI_API_KEY`) — API key for that Azure OpenAI deployment
+- `AZURE_OPENAI_BASE_URL` — Azure OpenAI base URL (recommended form: `https://<resource>.openai.azure.com/openai/v1`)
+- `AZURE_OPENAI_API_KEY` — API key for that Azure OpenAI resource
+- repository variable `AZURE_OPENAI_DEPLOYMENT` — deployment name used on Azure (wire model id)
