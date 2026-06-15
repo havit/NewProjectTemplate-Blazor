@@ -37,6 +37,10 @@ safe-outputs:
       - "**/*.config"
       - "**/*.cs"
       - "**/*.razor"
+    protected-files:
+      policy: request_review
+      exclude:
+        - "Directory.Packages.props"
   create-issue:
     title-prefix: "[deps] "
     labels: [dependencies, needs-manual-work]
