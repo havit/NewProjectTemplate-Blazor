@@ -23,6 +23,7 @@ tools:
 safe-outputs:
   create-pull-request:
     title-prefix: "[deps] "
+    branch-prefix: "nuget/"
     labels: [dependencies, automated]
     draft: true
     if-no-changes: ignore
