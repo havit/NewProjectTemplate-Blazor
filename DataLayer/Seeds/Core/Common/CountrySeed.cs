@@ -1,4 +1,5 @@
 ﻿using Havit.Data.Patterns.DataSeeds;
+using Havit.NewProjectTemplate.DataLayer.Seeds.Core.Localizations;
 using Havit.NewProjectTemplate.Model.Common;
 using Havit.NewProjectTemplate.Model.Localizations;
 
@@ -6,6 +7,11 @@ namespace Havit.NewProjectTemplate.DataLayer.Seeds.Core.Common;
 
 public class CountrySeed : DataSeed<CoreProfile>
 {
+	public override IEnumerable<Type> GetPrerequisiteDataSeeds()
+	{
+		yield return typeof(LanguageSeed);
+	}
+
 	public override async Task SeedDataAsync(CancellationToken cancellationToken)
 	{
 		var countries = new[]
