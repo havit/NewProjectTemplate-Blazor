@@ -3,7 +3,7 @@
 public class ApplicationInsightsOptions
 {
 	/// <summary>
-	/// Lokalita konfigurace ve appSettings.WebClient.json.
+	/// Lokalita konfigurace ve appsettings.WebClient.json.
 	/// </summary>
 	public const string Path = "ApplicationInsights";
 

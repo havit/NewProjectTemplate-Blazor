@@ -16,9 +16,9 @@ public class NewProjectTemplateDesignTimeDbContextFactory : IDesignTimeDbContext
 		// We need to read Entity configuration, Entity\bin\Debug(Release)\nestandard2.0.
 		IConfigurationRoot configuration = new ConfigurationBuilder()
 			.SetBasePath(System.IO.Path.GetDirectoryName(this.GetType().Assembly.Location))
-			.AddJsonFile("appSettings.Entity.json")
-			.AddJsonFile($"appSettings.Entity.{environment}.json", optional: true)
-			.AddJsonFile($"appSettings.Entity.{environment}.local.json", optional: true) // .gitignored
+			.AddJsonFile("appsettings.Entity.json")
+			.AddJsonFile($"appsettings.Entity.{environment}.json", optional: true)
+			.AddJsonFile($"appsettings.Entity.{environment}.local.json", optional: true) // .gitignored
 			.Build();
 
 		string connectionString = configuration.GetConnectionString("Database");
