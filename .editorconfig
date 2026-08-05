@@ -215,5 +215,5 @@ dotnet_diagnostic.IDE0090.severity = silent
 # IDE0063: Use simple 'using' statement
 dotnet_diagnostic.IDE0063.severity = silent
 
-[**/Migrations/*.cs]
+[**/Migrations/**.cs]
 generated_code=true
