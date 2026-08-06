@@ -18,6 +18,7 @@ jobs:
       build_projects_to_build: |
         [
           { "ProjectFile": "NewProjectTemplate.slnx" },
+          { "ProjectFile": "JobsRunner/JobsRunner.csproj", "DotnetCommand": "publish", "NoBuild": true },
           { "ProjectFile": "Web.Server/Web.Server.csproj", "DotnetCommand": "publish", "NoBuild": true }
         ]
       run_unit_tests_databases_to_drop_pattern: 'NewProjectTemplate-IntegrationTests-#AGENTNAME#'
