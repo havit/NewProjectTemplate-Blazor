@@ -1,0 +1,25 @@
+name: "[Template] Build template"
+
+on:
+  workflow_call:
+    inputs:
+      checkout_sources_scheduled_build_ref:
+        type: string
+        default: ''
+      publish_to_stage_enabled:
+        type: boolean
+        default: true
+
+jobs:
+  build:
+    uses: havit-internal/002.HFW-PipelineTemplates/.github/workflows/build-net.yml@master
+    with:
+      checkout_sources_scheduled_build_ref: ${{ inputs.checkout_sources_scheduled_build_ref }}
+      build_projects_to_build: |
+        [
+          { "ProjectFile": "NewProjectTemplate.slnx" },
+          { "ProjectFile": "src/JobsRunnerWeb/JobsRunnerWeb.csproj", "DotnetCommand": "publish", "NoBuild": true },
+          { "ProjectFile": "src/Web.Server/Web.Server.csproj", "DotnetCommand": "publish", "NoBuild": true }
+        ]
+      run_unit_tests_databases_to_drop_pattern: 'NewProjectTemplate-IntegrationTests-#AGENTNAME#'
+      publish_to_stage_enabled: ${{ inputs.publish_to_stage_enabled }}

@@ -32,7 +32,6 @@
     <File Path=".gitattributes" />
     <File Path=".gitignore" />
     <File Path="AGENTS.md" />
-    <File Path="BuildPipeline-002.HFW-NewProjectTemplate-Blazor.yml" />
     <File Path="Directory.Build.props" />
     <File Path="Directory.Packages.props" />
     <File Path="exclusion.dic" />
@@ -42,6 +41,10 @@
   </Folder>
   <Folder Name="/Solution Items/.github/">
     <File Path=".github/tmp.CODEOWNERS" />
+  </Folder>
+  <Folder Name="/Solution Items/.github/workflows/">
+    <File Path=".github/workflows/build.yml" />
+    <File Path=".github/workflows/_build-template.yml" />
   </Folder>
   <Folder Name="/Solution Items/PublishScripts/">
     <File Path="PublishScripts/Web/appsettings.WebServer.Stage.json" />
