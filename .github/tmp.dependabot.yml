@@ -1,0 +1,58 @@
+version: 2
+
+registries:
+  HavitADOS:
+    type: nuget-feed
+    url: https://nuget.pkg.github.com/havit-internal/index.json
+    token: ${{secrets.DEPENDABOT_PACKAGES_TOKEN}}
+
+updates:
+  - package-ecosystem: "nuget"
+    directory: "/"
+    schedule:
+      interval: "daily"
+      time: "06:00"
+      timezone: "Europe/Prague"
+    registries:
+      - HavitADOS
+    open-pull-requests-limit: 6
+    # Reviewers řízeni přes .github/CODEOWNERS
+    commit-message:
+      prefix: "Nuget packages update"
+      include: "scope"
+    #cooldown:
+    #  default-days: 7
+    #  semver-major-days: 14
+    ignore:
+      # Balíčky, které přes Dependabot neřešíme.
+      - dependency-name: "Aspose.*"
+      - dependency-name: "Microsoft.ApplicationInsights*"
+    groups:
+      # Proč skupiny s "patterns" a proč v tomto pořadí:
+      # Dependabot NuGet updater u velké solution analyzuje a restoruje každý balíček zvlášť napříč všemi projekty
+      # (včetně .sln, testů a tools). U velké solution se tak celý běh nemusí vejít do 55minutového limitu jobu.
+      #
+      # Cílem skupin NENÍ zkrátit celkový běh (víc skupin = víc discovery/analýza průchodů, běh se spíš prodlouží),
+      # ale dostat první PR ven co nejdříve: PR vzniká hned po dokončení každé skupiny. Programátor tak má PR k merge
+      # i když běh spadne na timeout, a další běh už zmergované balíčky odbaví rychlou cestou "already at version".
+      # Repo se tak dokonverguje během několika dní.
+      #
+      # Skupiny běží v pořadí z tohoto souboru a balíček spadne do PRVNÍ odpovídající skupiny. Konkrétní pattern
+      # skupiny proto musí být nad catch-all skupinami, jinak by je catch-all minor "spolkla".
+      microsoft-aspnetcore-and-efcore-and-extensions-dependencies:
+        patterns:
+          - "Microsoft.AspNetCore.*"
+          - "Microsoft.Extensions.*"
+          - "Microsoft.VisualStudio.Threading.Analyzers"
+          - "Microsoft.EntityFrameworkCore*"
+          - "System.*"
+        update-types:
+          - "minor"
+          - "patch"
+      minor-dependencies:
+        update-types:
+          - "minor"
+          - "patch"
+      major-dependencies:
+        update-types:
+          - "major"

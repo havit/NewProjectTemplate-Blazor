@@ -9,6 +9,7 @@
 	[string]$NewErrorsSmptServer = "errorssmtp.server.com", # HAVIT developers: use mx.havit.cz
 	[string]$CodeOwnerGitHubUsername = "your-github-username", # HAVIT developers: use your github username (without starting @)
 	[string]$CodeOwnerFullName = "Your Name" # HAVIT developers: use your FullName
+	[bool]$UseDependabot = false # HAVIT users: choose whatever you want
 )
 
 
@@ -40,5 +41,13 @@ Rename-Item -path ([System.IO.Path]::Combine($SolutionFolder, 'Entity\NewProject
 Rename-Item -path ([System.IO.Path]::Combine($SolutionFolder, 'Entity.Tests\NewProjectTemplateDbContextTests.cs')) -newName ($NewSolutionName + 'DbContextTests.cs')
 Rename-Item -path ([System.IO.Path]::Combine($SolutionFolder, 'Services\HealthChecks\NewProjectTemplateDbContextHealthCheck.cs')) -newName ($NewSolutionName + 'DbContextHealthCheck.cs')
 Rename-Item -path ([System.IO.Path]::Combine($SolutionFolder, '.github\tmp.CODEOWNERS')) -newName ('CODEOWNERS')
-
 Remove-Item -Path ([System.IO.Path]::Combine($SolutionFolder, 'SetupSolution.ps1')) -Force
+
+if ($UseDependabot)
+{
+	Rename-Item -path ([System.IO.Path]::Combine($SolutionFolder, '.github\tmp.dependabot.yml')) -newName ('dependabot.yml')
+}
+else
+{
+	Delete-Item -path ([System.IO.Path]::Combine($SolutionFolder, '.github\tmp.dependabot.yml'))
+}
