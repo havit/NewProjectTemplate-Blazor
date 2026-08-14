@@ -54,10 +54,22 @@ public class CountrySeed : DataSeed<CoreProfile>
 				},
 				new Country()
 				{
+					IsoCode = "AX",
+					IsoCode3 = "ALA",
+					PhoneCountryCode = "+358",
+					UiOrder = 4,
+					Localizations =
+					{
+						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Alandské ostrovy" },
+						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Aland Islands" }
+					}
+				},
+				new Country()
+				{
 					IsoCode = "AL",
 					IsoCode3 = "ALB",
 					PhoneCountryCode = "+355",
-					UiOrder = 4,
+					UiOrder = 5,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Albánie" },
@@ -69,7 +81,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "DZ",
 					IsoCode3 = "DZA",
 					PhoneCountryCode = "+213",
-					UiOrder = 5,
+					UiOrder = 6,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Alžírsko" },
@@ -81,7 +93,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "AS",
 					IsoCode3 = "ASM",
 					PhoneCountryCode = "+1-684",
-					UiOrder = 6,
+					UiOrder = 7,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Americká Samoa" },
@@ -90,10 +102,22 @@ public class CountrySeed : DataSeed<CoreProfile>
 				},
 				new Country()
 				{
+					IsoCode = "VI",
+					IsoCode3 = "VIR",
+					PhoneCountryCode = "+1",
+					UiOrder = 8,
+					Localizations =
+					{
+						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Americké Panenské ostrovy" },
+						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Virgin Islands (USA)" }
+					}
+				},
+				new Country()
+				{
 					IsoCode = "AD",
 					IsoCode3 = "AND",
 					PhoneCountryCode = "+376",
-					UiOrder = 7,
+					UiOrder = 9,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Andorra" },
@@ -105,7 +129,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "AO",
 					IsoCode3 = "AGO",
 					PhoneCountryCode = "+244",
-					UiOrder = 8,
+					UiOrder = 10,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Angola" },
@@ -117,7 +141,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "AI",
 					IsoCode3 = "AIA",
 					PhoneCountryCode = "+1-264",
-					UiOrder = 9,
+					UiOrder = 11,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Anguilla" },
@@ -126,10 +150,22 @@ public class CountrySeed : DataSeed<CoreProfile>
 				},
 				new Country()
 				{
+					IsoCode = "AQ",
+					IsoCode3 = "ATA",
+					PhoneCountryCode = "+672",
+					UiOrder = 12,
+					Localizations =
+					{
+						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Antarktida" },
+						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Antarctica" }
+					}
+				},
+				new Country()
+				{
 					IsoCode = "AG",
 					IsoCode3 = "ATG",
 					PhoneCountryCode = "+1-268",
-					UiOrder = 10,
+					UiOrder = 13,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Antigua a Barbuda" },
@@ -141,7 +177,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "AR",
 					IsoCode3 = "ARG",
 					PhoneCountryCode = "+54",
-					UiOrder = 11,
+					UiOrder = 14,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Argentina" },
@@ -153,7 +189,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "AM",
 					IsoCode3 = "ARM",
 					PhoneCountryCode = "+374",
-					UiOrder = 12,
+					UiOrder = 15,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Arménie" },
@@ -165,7 +201,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "AW",
 					IsoCode3 = "ABW",
 					PhoneCountryCode = "+297",
-					UiOrder = 13,
+					UiOrder = 16,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Aruba" },
@@ -177,7 +213,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "AU",
 					IsoCode3 = "AUS",
 					PhoneCountryCode = "+61",
-					UiOrder = 14,
+					UiOrder = 17,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Austrálie" },
@@ -189,7 +225,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "AZ",
 					IsoCode3 = "AZE",
 					PhoneCountryCode = "+994",
-					UiOrder = 15,
+					UiOrder = 18,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Azerbajdžán" },
@@ -201,7 +237,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "BS",
 					IsoCode3 = "BHS",
 					PhoneCountryCode = "+1-242",
-					UiOrder = 16,
+					UiOrder = 19,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Bahamy" },
@@ -213,7 +249,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "BH",
 					IsoCode3 = "BHR",
 					PhoneCountryCode = "+973",
-					UiOrder = 17,
+					UiOrder = 20,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Bahrajn" },
@@ -225,7 +261,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "BD",
 					IsoCode3 = "BGD",
 					PhoneCountryCode = "+880",
-					UiOrder = 18,
+					UiOrder = 21,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Bangladéš" },
@@ -237,7 +273,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "BB",
 					IsoCode3 = "BRB",
 					PhoneCountryCode = "+1-246",
-					UiOrder = 19,
+					UiOrder = 22,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Barbados" },
@@ -249,7 +285,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "BE",
 					IsoCode3 = "BEL",
 					PhoneCountryCode = "+32",
-					UiOrder = 20,
+					UiOrder = 23,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Belgie" },
@@ -261,7 +297,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "BZ",
 					IsoCode3 = "BLZ",
 					PhoneCountryCode = "+501",
-					UiOrder = 21,
+					UiOrder = 24,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Belize" },
@@ -273,7 +309,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "BY",
 					IsoCode3 = "BLR",
 					PhoneCountryCode = "+375",
-					UiOrder = 22,
+					UiOrder = 25,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Bělorusko" },
@@ -285,7 +321,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "BJ",
 					IsoCode3 = "BEN",
 					PhoneCountryCode = "+229",
-					UiOrder = 23,
+					UiOrder = 26,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Benin" },
@@ -297,7 +333,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "BM",
 					IsoCode3 = "BMU",
 					PhoneCountryCode = "+1-441",
-					UiOrder = 24,
+					UiOrder = 27,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Bermudy" },
@@ -309,7 +345,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "BT",
 					IsoCode3 = "BTN",
 					PhoneCountryCode = "+975",
-					UiOrder = 25,
+					UiOrder = 28,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Bhútán" },
@@ -321,7 +357,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "BO",
 					IsoCode3 = "BOL",
 					PhoneCountryCode = "+591",
-					UiOrder = 26,
+					UiOrder = 29,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Bolívie" },
@@ -330,10 +366,22 @@ public class CountrySeed : DataSeed<CoreProfile>
 				},
 				new Country()
 				{
+					IsoCode = "BQ",
+					IsoCode3 = "BES",
+					PhoneCountryCode = "+599",
+					UiOrder = 30,
+					Localizations =
+					{
+						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Bonaire, Svatý Eustach a Saba" },
+						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Bonaire, Sint Eustatius and Saba" }
+					}
+				},
+				new Country()
+				{
 					IsoCode = "BA",
 					IsoCode3 = "BIH",
 					PhoneCountryCode = "+387",
-					UiOrder = 27,
+					UiOrder = 31,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Bosna a Hercegovina" },
@@ -345,7 +393,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "BW",
 					IsoCode3 = "BWA",
 					PhoneCountryCode = "+267",
-					UiOrder = 28,
+					UiOrder = 32,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Botswana" },
@@ -357,7 +405,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "BV",
 					IsoCode3 = "BVT",
 					PhoneCountryCode = "",
-					UiOrder = 29,
+					UiOrder = 33,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Bouvetův ostrov" },
@@ -369,7 +417,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "BR",
 					IsoCode3 = "BRA",
 					PhoneCountryCode = "+55",
-					UiOrder = 30,
+					UiOrder = 34,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Brazílie" },
@@ -381,7 +429,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "IO",
 					IsoCode3 = "IOT",
 					PhoneCountryCode = "+246",
-					UiOrder = 31,
+					UiOrder = 35,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Britské indickooceánské úz." },
@@ -390,10 +438,22 @@ public class CountrySeed : DataSeed<CoreProfile>
 				},
 				new Country()
 				{
+					IsoCode = "VG",
+					IsoCode3 = "VGB",
+					PhoneCountryCode = "+1284",
+					UiOrder = 36,
+					Localizations =
+					{
+						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Britské Panenské ostrovy" },
+						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Virgin Islands (British)" }
+					}
+				},
+				new Country()
+				{
 					IsoCode = "BN",
 					IsoCode3 = "BRN",
 					PhoneCountryCode = "+673",
-					UiOrder = 32,
+					UiOrder = 37,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Brunej Darussalam" },
@@ -405,7 +465,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "BG",
 					IsoCode3 = "BGR",
 					PhoneCountryCode = "+359",
-					UiOrder = 33,
+					UiOrder = 38,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Bulharsko" },
@@ -414,10 +474,22 @@ public class CountrySeed : DataSeed<CoreProfile>
 				},
 				new Country()
 				{
+					IsoCode = "BF",
+					IsoCode3 = "BFA",
+					PhoneCountryCode = "+226",
+					UiOrder = 39,
+					Localizations =
+					{
+						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Burkina Faso" },
+						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Burkina Faso" }
+					}
+				},
+				new Country()
+				{
 					IsoCode = "BI",
 					IsoCode3 = "BDI",
 					PhoneCountryCode = "+257",
-					UiOrder = 34,
+					UiOrder = 40,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Burundi" },
@@ -426,34 +498,10 @@ public class CountrySeed : DataSeed<CoreProfile>
 				},
 				new Country()
 				{
-					IsoCode = "CL",
-					IsoCode3 = "CHL",
-					PhoneCountryCode = "+56",
-					UiOrder = 35,
-					Localizations =
-					{
-						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Chile" },
-						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Chile" }
-					}
-				},
-				new Country()
-				{
-					IsoCode = "HR",
-					IsoCode3 = "HRV",
-					PhoneCountryCode = "+385",
-					UiOrder = 36,
-					Localizations =
-					{
-						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Chorvatsko" },
-						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Croatia" }
-					}
-				},
-				new Country()
-				{
 					IsoCode = "CK",
 					IsoCode3 = "COK",
 					PhoneCountryCode = "+682",
-					UiOrder = 37,
+					UiOrder = 41,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Cookovy ostrovy" },
@@ -462,10 +510,22 @@ public class CountrySeed : DataSeed<CoreProfile>
 				},
 				new Country()
 				{
+					IsoCode = "CW",
+					IsoCode3 = "CUW",
+					PhoneCountryCode = "+599",
+					UiOrder = 42,
+					Localizations =
+					{
+						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Curaçao" },
+						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Curaçao" }
+					}
+				},
+				new Country()
+				{
 					IsoCode = "TD",
 					IsoCode3 = "TCD",
 					PhoneCountryCode = "+235",
-					UiOrder = 38,
+					UiOrder = 43,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Čad" },
@@ -476,8 +536,8 @@ public class CountrySeed : DataSeed<CoreProfile>
 				{
 					IsoCode = "ME",
 					IsoCode3 = "MNE",
-					PhoneCountryCode = "+248",
-					UiOrder = 39,
+					PhoneCountryCode = "+382",
+					UiOrder = 44,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Černá Hora" },
@@ -489,7 +549,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "CN",
 					IsoCode3 = "CHN",
 					PhoneCountryCode = "+86",
-					UiOrder = 40,
+					UiOrder = 45,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Čína" },
@@ -501,7 +561,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "DK",
 					IsoCode3 = "DNK",
 					PhoneCountryCode = "+45",
-					UiOrder = 41,
+					UiOrder = 46,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Dánsko" },
@@ -510,10 +570,22 @@ public class CountrySeed : DataSeed<CoreProfile>
 				},
 				new Country()
 				{
+					IsoCode = "DM",
+					IsoCode3 = "DMA",
+					PhoneCountryCode = "+1-767",
+					UiOrder = 47,
+					Localizations =
+					{
+						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Dominica" },
+						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Dominica" }
+					}
+				},
+				new Country()
+				{
 					IsoCode = "DO",
 					IsoCode3 = "DOM",
-					PhoneCountryCode = "+1-767",
-					UiOrder = 42,
+					PhoneCountryCode = "+1-809",
+					UiOrder = 48,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Dominikánská republika" },
@@ -525,7 +597,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "DJ",
 					IsoCode3 = "DJI",
 					PhoneCountryCode = "+253",
-					UiOrder = 43,
+					UiOrder = 49,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Džibuti" },
@@ -537,7 +609,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "EG",
 					IsoCode3 = "EGY",
 					PhoneCountryCode = "+20",
-					UiOrder = 44,
+					UiOrder = 50,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Egypt" },
@@ -549,7 +621,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "EC",
 					IsoCode3 = "ECU",
 					PhoneCountryCode = "+593",
-					UiOrder = 45,
+					UiOrder = 51,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Ekvádor" },
@@ -561,7 +633,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "ER",
 					IsoCode3 = "ERI",
 					PhoneCountryCode = "+291",
-					UiOrder = 46,
+					UiOrder = 52,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Eritrea" },
@@ -573,7 +645,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "EE",
 					IsoCode3 = "EST",
 					PhoneCountryCode = "+372",
-					UiOrder = 47,
+					UiOrder = 53,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Estonsko" },
@@ -585,7 +657,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "ET",
 					IsoCode3 = "ETH",
 					PhoneCountryCode = "+251",
-					UiOrder = 48,
+					UiOrder = 54,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Etiopie" },
@@ -597,7 +669,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "FO",
 					IsoCode3 = "FRO",
 					PhoneCountryCode = "+298",
-					UiOrder = 49,
+					UiOrder = 55,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Faerské ostrovy" },
@@ -609,7 +681,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "FK",
 					IsoCode3 = "FLK",
 					PhoneCountryCode = "+500",
-					UiOrder = 50,
+					UiOrder = 56,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Falklandské ostrovy (Malvíny)" },
@@ -621,7 +693,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "FJ",
 					IsoCode3 = "FJI",
 					PhoneCountryCode = "+679",
-					UiOrder = 51,
+					UiOrder = 57,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Fidži" },
@@ -633,7 +705,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "PH",
 					IsoCode3 = "PHL",
 					PhoneCountryCode = "+63",
-					UiOrder = 52,
+					UiOrder = 58,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Filipíny" },
@@ -645,7 +717,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "FI",
 					IsoCode3 = "FIN",
 					PhoneCountryCode = "+358",
-					UiOrder = 53,
+					UiOrder = 59,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Finsko" },
@@ -657,7 +729,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "FR",
 					IsoCode3 = "FRA",
 					PhoneCountryCode = "+33",
-					UiOrder = 54,
+					UiOrder = 60,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Francie" },
@@ -669,7 +741,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "GF",
 					IsoCode3 = "GUF",
 					PhoneCountryCode = "+594",
-					UiOrder = 55,
+					UiOrder = 61,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Francouzská Guayana" },
@@ -678,10 +750,22 @@ public class CountrySeed : DataSeed<CoreProfile>
 				},
 				new Country()
 				{
+					IsoCode = "TF",
+					IsoCode3 = "ATF",
+					PhoneCountryCode = "+262",
+					UiOrder = 62,
+					Localizations =
+					{
+						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Francouzská jižní území" },
+						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "French Southern Territories" }
+					}
+				},
+				new Country()
+				{
 					IsoCode = "PF",
 					IsoCode3 = "PYF",
 					PhoneCountryCode = "+689",
-					UiOrder = 56,
+					UiOrder = 63,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Francouzská Polynésie" },
@@ -693,7 +777,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "GA",
 					IsoCode3 = "GAB",
 					PhoneCountryCode = "+241",
-					UiOrder = 57,
+					UiOrder = 64,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Gabon" },
@@ -705,7 +789,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "GM",
 					IsoCode3 = "GMB",
 					PhoneCountryCode = "+220",
-					UiOrder = 58,
+					UiOrder = 65,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Gambie" },
@@ -717,7 +801,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "GH",
 					IsoCode3 = "GHA",
 					PhoneCountryCode = "+233",
-					UiOrder = 59,
+					UiOrder = 66,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Ghana" },
@@ -729,7 +813,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "GI",
 					IsoCode3 = "GIB",
 					PhoneCountryCode = "+350",
-					UiOrder = 60,
+					UiOrder = 67,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Gibraltar" },
@@ -741,7 +825,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "GD",
 					IsoCode3 = "GRD",
 					PhoneCountryCode = "+1-473",
-					UiOrder = 61,
+					UiOrder = 68,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Grenada" },
@@ -753,7 +837,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "GL",
 					IsoCode3 = "GRL",
 					PhoneCountryCode = "+299",
-					UiOrder = 62,
+					UiOrder = 69,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Grónsko" },
@@ -765,7 +849,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "GE",
 					IsoCode3 = "GEO",
 					PhoneCountryCode = "+995",
-					UiOrder = 63,
+					UiOrder = 70,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Gruzie" },
@@ -777,7 +861,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "GP",
 					IsoCode3 = "GLP",
 					PhoneCountryCode = "+590",
-					UiOrder = 64,
+					UiOrder = 71,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Guadeloupe" },
@@ -789,7 +873,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "GU",
 					IsoCode3 = "GUM",
 					PhoneCountryCode = "+1-671",
-					UiOrder = 65,
+					UiOrder = 72,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Guam" },
@@ -801,7 +885,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "GT",
 					IsoCode3 = "GTM",
 					PhoneCountryCode = "+502",
-					UiOrder = 66,
+					UiOrder = 73,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Guatemala" },
@@ -810,10 +894,22 @@ public class CountrySeed : DataSeed<CoreProfile>
 				},
 				new Country()
 				{
+					IsoCode = "GG",
+					IsoCode3 = "GGY",
+					PhoneCountryCode = "+44",
+					UiOrder = 74,
+					Localizations =
+					{
+						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Guernsey" },
+						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Guernsey" }
+					}
+				},
+				new Country()
+				{
 					IsoCode = "GN",
 					IsoCode3 = "GIN",
 					PhoneCountryCode = "+224",
-					UiOrder = 67,
+					UiOrder = 75,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Guinea" },
@@ -825,7 +921,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "GW",
 					IsoCode3 = "GNB",
 					PhoneCountryCode = "+245",
-					UiOrder = 68,
+					UiOrder = 76,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Guinea-Bissau" },
@@ -837,7 +933,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "GY",
 					IsoCode3 = "GUY",
 					PhoneCountryCode = "+592",
-					UiOrder = 69,
+					UiOrder = 77,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Guyana" },
@@ -849,7 +945,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "HT",
 					IsoCode3 = "HTI",
 					PhoneCountryCode = "+509",
-					UiOrder = 70,
+					UiOrder = 78,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Haiti" },
@@ -861,7 +957,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "HM",
 					IsoCode3 = "HMD",
 					PhoneCountryCode = "",
-					UiOrder = 71,
+					UiOrder = 79,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Heardův ostrov a McDonaldovy ostrovy" },
@@ -873,7 +969,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "HN",
 					IsoCode3 = "HND",
 					PhoneCountryCode = "+504",
-					UiOrder = 72,
+					UiOrder = 80,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Honduras" },
@@ -885,7 +981,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "HK",
 					IsoCode3 = "HKG",
 					PhoneCountryCode = "+852",
-					UiOrder = 73,
+					UiOrder = 81,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Hong Kong" },
@@ -894,10 +990,34 @@ public class CountrySeed : DataSeed<CoreProfile>
 				},
 				new Country()
 				{
+					IsoCode = "CL",
+					IsoCode3 = "CHL",
+					PhoneCountryCode = "+56",
+					UiOrder = 82,
+					Localizations =
+					{
+						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Chile" },
+						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Chile" }
+					}
+				},
+				new Country()
+				{
+					IsoCode = "HR",
+					IsoCode3 = "HRV",
+					PhoneCountryCode = "+385",
+					UiOrder = 83,
+					Localizations =
+					{
+						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Chorvatsko" },
+						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Croatia" }
+					}
+				},
+				new Country()
+				{
 					IsoCode = "IN",
 					IsoCode3 = "IND",
 					PhoneCountryCode = "+91",
-					UiOrder = 74,
+					UiOrder = 84,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Indie" },
@@ -909,7 +1029,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "ID",
 					IsoCode3 = "IDN",
 					PhoneCountryCode = "+62",
-					UiOrder = 75,
+					UiOrder = 85,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Indonésie" },
@@ -921,7 +1041,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "IQ",
 					IsoCode3 = "IRQ",
 					PhoneCountryCode = "+964",
-					UiOrder = 76,
+					UiOrder = 86,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Irák" },
@@ -933,7 +1053,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "IR",
 					IsoCode3 = "IRN",
 					PhoneCountryCode = "+98",
-					UiOrder = 77,
+					UiOrder = 87,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Irán" },
@@ -945,7 +1065,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "IE",
 					IsoCode3 = "IRL",
 					PhoneCountryCode = "+353",
-					UiOrder = 78,
+					UiOrder = 88,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Irsko" },
@@ -957,7 +1077,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "IS",
 					IsoCode3 = "ISL",
 					PhoneCountryCode = "+354",
-					UiOrder = 79,
+					UiOrder = 89,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Island" },
@@ -969,7 +1089,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "IT",
 					IsoCode3 = "ITA",
 					PhoneCountryCode = "+39",
-					UiOrder = 80,
+					UiOrder = 90,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Itálie" },
@@ -981,7 +1101,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "IL",
 					IsoCode3 = "ISR",
 					PhoneCountryCode = "+972",
-					UiOrder = 81,
+					UiOrder = 91,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Izrael" },
@@ -993,7 +1113,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "JM",
 					IsoCode3 = "JAM",
 					PhoneCountryCode = "+1-876",
-					UiOrder = 82,
+					UiOrder = 92,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Jamajka" },
@@ -1005,7 +1125,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "JP",
 					IsoCode3 = "JPN",
 					PhoneCountryCode = "+81",
-					UiOrder = 83,
+					UiOrder = 93,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Japonsko" },
@@ -1017,7 +1137,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "YE",
 					IsoCode3 = "YEM",
 					PhoneCountryCode = "+967",
-					UiOrder = 84,
+					UiOrder = 94,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Jemen" },
@@ -1026,10 +1146,22 @@ public class CountrySeed : DataSeed<CoreProfile>
 				},
 				new Country()
 				{
+					IsoCode = "JE",
+					IsoCode3 = "JEY",
+					PhoneCountryCode = "+44",
+					UiOrder = 95,
+					Localizations =
+					{
+						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Jersey" },
+						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Jersey" }
+					}
+				},
+				new Country()
+				{
 					IsoCode = "ZA",
 					IsoCode3 = "ZAF",
 					PhoneCountryCode = "+27",
-					UiOrder = 85,
+					UiOrder = 96,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Jihoafrická republika" },
@@ -1041,11 +1173,23 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "GS",
 					IsoCode3 = "SGS",
 					PhoneCountryCode = "",
-					UiOrder = 86,
+					UiOrder = 97,
 					Localizations =
 					{
-						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "J. Geogie a J. Sandwichovy ostrovy" },
-						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "S. Georgia and S. Sandwitch Islands" }
+						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Jižní Georgie a Jižní Sandwichovy ostrovy" },
+						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "South Georgia and the South Sandwich Islands" }
+					}
+				},
+				new Country()
+				{
+					IsoCode = "SS",
+					IsoCode3 = "SSD",
+					PhoneCountryCode = "+211",
+					UiOrder = 98,
+					Localizations =
+					{
+						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Jižní Súdán" },
+						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "South Sudan" }
 					}
 				},
 				new Country()
@@ -1053,7 +1197,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "JO",
 					IsoCode3 = "JOR",
 					PhoneCountryCode = "+962",
-					UiOrder = 87,
+					UiOrder = 99,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Jordánsko" },
@@ -1065,7 +1209,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "KY",
 					IsoCode3 = "CYM",
 					PhoneCountryCode = "+1-345",
-					UiOrder = 88,
+					UiOrder = 100,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Kajmanské ostrovy" },
@@ -1077,7 +1221,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "KH",
 					IsoCode3 = "KHM",
 					PhoneCountryCode = "+855",
-					UiOrder = 89,
+					UiOrder = 101,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Kambodža" },
@@ -1089,7 +1233,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "CM",
 					IsoCode3 = "CMR",
 					PhoneCountryCode = "+237",
-					UiOrder = 90,
+					UiOrder = 102,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Kamerun" },
@@ -1101,7 +1245,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "CA",
 					IsoCode3 = "CAN",
 					PhoneCountryCode = "+1",
-					UiOrder = 91,
+					UiOrder = 103,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Kanada" },
@@ -1113,7 +1257,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "CV",
 					IsoCode3 = "CPV",
 					PhoneCountryCode = "+238",
-					UiOrder = 92,
+					UiOrder = 104,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Kapverdy" },
@@ -1125,7 +1269,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "QA",
 					IsoCode3 = "QAT",
 					PhoneCountryCode = "+974",
-					UiOrder = 93,
+					UiOrder = 105,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Katar" },
@@ -1137,7 +1281,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "KZ",
 					IsoCode3 = "KAZ",
 					PhoneCountryCode = "+7",
-					UiOrder = 94,
+					UiOrder = 106,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Kazachstán" },
@@ -1149,7 +1293,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "KE",
 					IsoCode3 = "KEN",
 					PhoneCountryCode = "+254",
-					UiOrder = 95,
+					UiOrder = 107,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Keňa" },
@@ -1161,7 +1305,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "KI",
 					IsoCode3 = "KIR",
 					PhoneCountryCode = "+686",
-					UiOrder = 96,
+					UiOrder = 108,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Kiribati" },
@@ -1173,7 +1317,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "CC",
 					IsoCode3 = "CCK",
 					PhoneCountryCode = "+61",
-					UiOrder = 97,
+					UiOrder = 109,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Kokosové (Keelingovy) ostrovy" },
@@ -1185,7 +1329,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "CO",
 					IsoCode3 = "COL",
 					PhoneCountryCode = "+57",
-					UiOrder = 98,
+					UiOrder = 110,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Kolumbie" },
@@ -1197,7 +1341,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "KM",
 					IsoCode3 = "COM",
 					PhoneCountryCode = "+269",
-					UiOrder = 99,
+					UiOrder = 111,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Komory" },
@@ -1208,8 +1352,8 @@ public class CountrySeed : DataSeed<CoreProfile>
 				{
 					IsoCode = "CD",
 					IsoCode3 = "COD",
-					PhoneCountryCode = "+242",
-					UiOrder = 100,
+					PhoneCountryCode = "+243",
+					UiOrder = 112,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Kongo, demokratická republika" },
@@ -1221,7 +1365,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "CG",
 					IsoCode3 = "COG",
 					PhoneCountryCode = "+242",
-					UiOrder = 101,
+					UiOrder = 113,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Konžská republika" },
@@ -1233,7 +1377,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "KP",
 					IsoCode3 = "PRK",
 					PhoneCountryCode = "+850",
-					UiOrder = 102,
+					UiOrder = 114,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Korea (KLDR)" },
@@ -1245,7 +1389,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "KR",
 					IsoCode3 = "KOR",
 					PhoneCountryCode = "+82",
-					UiOrder = 103,
+					UiOrder = 115,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Korejská republika" },
@@ -1257,7 +1401,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "CR",
 					IsoCode3 = "CRI",
 					PhoneCountryCode = "+506",
-					UiOrder = 104,
+					UiOrder = 116,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Kostarika" },
@@ -1269,7 +1413,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "CU",
 					IsoCode3 = "CUB",
 					PhoneCountryCode = "+53",
-					UiOrder = 105,
+					UiOrder = 117,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Kuba" },
@@ -1281,7 +1425,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "KW",
 					IsoCode3 = "KWT",
 					PhoneCountryCode = "+965",
-					UiOrder = 106,
+					UiOrder = 118,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Kuvajt" },
@@ -1293,7 +1437,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "CY",
 					IsoCode3 = "CYP",
 					PhoneCountryCode = "+357",
-					UiOrder = 107,
+					UiOrder = 119,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Kypr" },
@@ -1305,7 +1449,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "KG",
 					IsoCode3 = "KGZ",
 					PhoneCountryCode = "+996",
-					UiOrder = 108,
+					UiOrder = 120,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Kyrgyzstán" },
@@ -1317,7 +1461,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "LA",
 					IsoCode3 = "LAO",
 					PhoneCountryCode = "+856",
-					UiOrder = 109,
+					UiOrder = 121,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Laoská lidově demokratická republika" },
@@ -1329,7 +1473,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "LS",
 					IsoCode3 = "LSO",
 					PhoneCountryCode = "+266",
-					UiOrder = 110,
+					UiOrder = 122,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Lesotho" },
@@ -1341,7 +1485,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "LB",
 					IsoCode3 = "LBN",
 					PhoneCountryCode = "+961",
-					UiOrder = 111,
+					UiOrder = 123,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Libanon" },
@@ -1353,7 +1497,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "LR",
 					IsoCode3 = "LBR",
 					PhoneCountryCode = "+231",
-					UiOrder = 112,
+					UiOrder = 124,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Libérie" },
@@ -1365,7 +1509,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "LY",
 					IsoCode3 = "LBY",
 					PhoneCountryCode = "+218",
-					UiOrder = 113,
+					UiOrder = 125,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Libyjská arabská džamáhírije" },
@@ -1377,7 +1521,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "LI",
 					IsoCode3 = "LIE",
 					PhoneCountryCode = "+423",
-					UiOrder = 114,
+					UiOrder = 126,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Lichtenštejnsko" },
@@ -1389,7 +1533,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "LT",
 					IsoCode3 = "LTU",
 					PhoneCountryCode = "+370",
-					UiOrder = 115,
+					UiOrder = 127,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Litva" },
@@ -1401,7 +1545,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "LV",
 					IsoCode3 = "LVA",
 					PhoneCountryCode = "+371",
-					UiOrder = 116,
+					UiOrder = 128,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Lotyšsko" },
@@ -1413,7 +1557,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "LU",
 					IsoCode3 = "LUX",
 					PhoneCountryCode = "+352",
-					UiOrder = 117,
+					UiOrder = 129,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Lucembursko" },
@@ -1425,7 +1569,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "MO",
 					IsoCode3 = "MAC",
 					PhoneCountryCode = "+853",
-					UiOrder = 118,
+					UiOrder = 130,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Macao" },
@@ -1437,7 +1581,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "MG",
 					IsoCode3 = "MDG",
 					PhoneCountryCode = "+261",
-					UiOrder = 119,
+					UiOrder = 131,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Madagaskar" },
@@ -1449,7 +1593,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "HU",
 					IsoCode3 = "HUN",
 					PhoneCountryCode = "+36",
-					UiOrder = 120,
+					UiOrder = 132,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Maďarsko" },
@@ -1460,8 +1604,8 @@ public class CountrySeed : DataSeed<CoreProfile>
 				{
 					IsoCode = "MK",
 					IsoCode3 = "MKD",
-					PhoneCountryCode = "+382",
-					UiOrder = 121,
+					PhoneCountryCode = "+389",
+					UiOrder = 133,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Makedonie" },
@@ -1473,7 +1617,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "MY",
 					IsoCode3 = "MYS",
 					PhoneCountryCode = "+60",
-					UiOrder = 122,
+					UiOrder = 134,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Malajsie" },
@@ -1485,7 +1629,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "MW",
 					IsoCode3 = "MWI",
 					PhoneCountryCode = "+265",
-					UiOrder = 123,
+					UiOrder = 135,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Malawi" },
@@ -1497,7 +1641,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "MV",
 					IsoCode3 = "MDV",
 					PhoneCountryCode = "+960",
-					UiOrder = 124,
+					UiOrder = 136,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Maledivy" },
@@ -1509,7 +1653,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "ML",
 					IsoCode3 = "MLI",
 					PhoneCountryCode = "+223",
-					UiOrder = 125,
+					UiOrder = 137,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Mali" },
@@ -1521,7 +1665,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "MT",
 					IsoCode3 = "MLT",
 					PhoneCountryCode = "+356",
-					UiOrder = 126,
+					UiOrder = 138,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Malta" },
@@ -1533,20 +1677,19 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "MA",
 					IsoCode3 = "MAR",
 					PhoneCountryCode = "+212",
-					UiOrder = 127,
+					UiOrder = 139,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Maroko" },
 						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Morocco" }
 					}
 				},
-
 				new Country()
 				{
 					IsoCode = "MH",
 					IsoCode3 = "MHL",
 					PhoneCountryCode = "+692",
-					UiOrder = 128,
+					UiOrder = 140,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Marshallovy ostrovy" },
@@ -1558,7 +1701,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "MQ",
 					IsoCode3 = "MTQ",
 					PhoneCountryCode = "+596",
-					UiOrder = 129,
+					UiOrder = 141,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Martinik" },
@@ -1567,22 +1710,10 @@ public class CountrySeed : DataSeed<CoreProfile>
 				},
 				new Country()
 				{
-					IsoCode = "MU",
-					IsoCode3 = "MUS",
-					PhoneCountryCode = "+230",
-					UiOrder = 130,
-					Localizations =
-					{
-						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Mauricius" },
-						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Mauritius" }
-					}
-				},
-				new Country()
-				{
 					IsoCode = "MR",
 					IsoCode3 = "MRT",
 					PhoneCountryCode = "+222",
-					UiOrder = 131,
+					UiOrder = 142,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Mauretánie" },
@@ -1591,10 +1722,22 @@ public class CountrySeed : DataSeed<CoreProfile>
 				},
 				new Country()
 				{
+					IsoCode = "MU",
+					IsoCode3 = "MUS",
+					PhoneCountryCode = "+230",
+					UiOrder = 143,
+					Localizations =
+					{
+						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Mauricius" },
+						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Mauritius" }
+					}
+				},
+				new Country()
+				{
 					IsoCode = "YT",
 					IsoCode3 = "MYT",
 					PhoneCountryCode = "+262",
-					UiOrder = 132,
+					UiOrder = 144,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Mayotte" },
@@ -1603,10 +1746,22 @@ public class CountrySeed : DataSeed<CoreProfile>
 				},
 				new Country()
 				{
+					IsoCode = "UM",
+					IsoCode3 = "UMI",
+					PhoneCountryCode = "",
+					UiOrder = 145,
+					Localizations =
+					{
+						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Menší odlehlé ostrovy USA" },
+						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "United States Minor Outlying Islands" }
+					}
+				},
+				new Country()
+				{
 					IsoCode = "MX",
 					IsoCode3 = "MEX",
 					PhoneCountryCode = "+52",
-					UiOrder = 133,
+					UiOrder = 146,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Mexiko" },
@@ -1618,7 +1773,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "FM",
 					IsoCode3 = "FSM",
 					PhoneCountryCode = "+691",
-					UiOrder = 134,
+					UiOrder = 147,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Mikronésie, federativní státy" },
@@ -1630,7 +1785,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "MD",
 					IsoCode3 = "MDA",
 					PhoneCountryCode = "+373",
-					UiOrder = 135,
+					UiOrder = 148,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Moldávie" },
@@ -1642,7 +1797,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "MC",
 					IsoCode3 = "MCO",
 					PhoneCountryCode = "+377",
-					UiOrder = 136,
+					UiOrder = 149,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Monako" },
@@ -1654,7 +1809,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "MN",
 					IsoCode3 = "MNG",
 					PhoneCountryCode = "+976",
-					UiOrder = 137,
+					UiOrder = 150,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Mongolsko" },
@@ -1666,7 +1821,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "MS",
 					IsoCode3 = "MSR",
 					PhoneCountryCode = "+1-664",
-					UiOrder = 138,
+					UiOrder = 151,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Montserrat" },
@@ -1678,7 +1833,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "MZ",
 					IsoCode3 = "MOZ",
 					PhoneCountryCode = "+258",
-					UiOrder = 139,
+					UiOrder = 152,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Mozambik" },
@@ -1690,7 +1845,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "MM",
 					IsoCode3 = "MMR",
 					PhoneCountryCode = "+95",
-					UiOrder = 140,
+					UiOrder = 153,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Myanmar (Barma)" },
@@ -1702,7 +1857,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "NA",
 					IsoCode3 = "NAM",
 					PhoneCountryCode = "+264",
-					UiOrder = 141,
+					UiOrder = 154,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Namibie" },
@@ -1714,7 +1869,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "NR",
 					IsoCode3 = "NRU",
 					PhoneCountryCode = "+674",
-					UiOrder = 142,
+					UiOrder = 155,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Nauru" },
@@ -1726,7 +1881,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "DE",
 					IsoCode3 = "DEU",
 					PhoneCountryCode = "+49",
-					UiOrder = 143,
+					UiOrder = 156,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Německo" },
@@ -1738,7 +1893,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "NP",
 					IsoCode3 = "NPL",
 					PhoneCountryCode = "+977",
-					UiOrder = 144,
+					UiOrder = 157,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Nepál" },
@@ -1750,7 +1905,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "NE",
 					IsoCode3 = "NER",
 					PhoneCountryCode = "+227",
-					UiOrder = 145,
+					UiOrder = 158,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Niger" },
@@ -1762,7 +1917,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "NG",
 					IsoCode3 = "NGA",
 					PhoneCountryCode = "+234",
-					UiOrder = 146,
+					UiOrder = 159,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Nigérie" },
@@ -1774,7 +1929,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "NI",
 					IsoCode3 = "NIC",
 					PhoneCountryCode = "+505",
-					UiOrder = 147,
+					UiOrder = 160,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Nikaragua" },
@@ -1786,7 +1941,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "NU",
 					IsoCode3 = "NIU",
 					PhoneCountryCode = "+683",
-					UiOrder = 148,
+					UiOrder = 161,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Niue" },
@@ -1798,7 +1953,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "NL",
 					IsoCode3 = "NLD",
 					PhoneCountryCode = "+31",
-					UiOrder = 149,
+					UiOrder = 162,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Nizozemí" },
@@ -1810,7 +1965,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "NO",
 					IsoCode3 = "NOR",
 					PhoneCountryCode = "+47",
-					UiOrder = 150,
+					UiOrder = 163,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Norsko" },
@@ -1822,7 +1977,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "NC",
 					IsoCode3 = "NCL",
 					PhoneCountryCode = "+687",
-					UiOrder = 151,
+					UiOrder = 164,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Nová Kaledonie" },
@@ -1834,7 +1989,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "NZ",
 					IsoCode3 = "NZL",
 					PhoneCountryCode = "+64",
-					UiOrder = 152,
+					UiOrder = 165,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Nový Zéland" },
@@ -1846,7 +2001,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "OM",
 					IsoCode3 = "OMN",
 					PhoneCountryCode = "+968",
-					UiOrder = 153,
+					UiOrder = 166,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Omán" },
@@ -1857,8 +2012,8 @@ public class CountrySeed : DataSeed<CoreProfile>
 				{
 					IsoCode = "IM",
 					IsoCode3 = "IMN",
-					PhoneCountryCode = "+95",
-					UiOrder = 154,
+					PhoneCountryCode = "+44",
+					UiOrder = 167,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Ostrov Man" },
@@ -1870,7 +2025,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "NF",
 					IsoCode3 = "NFK",
 					PhoneCountryCode = "+672",
-					UiOrder = 155,
+					UiOrder = 168,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Ostrov Norfolk" },
@@ -1882,7 +2037,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "MP",
 					IsoCode3 = "MNP",
 					PhoneCountryCode = "+1-670",
-					UiOrder = 156,
+					UiOrder = 169,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Ostrovy Severní Mariany" },
@@ -1891,22 +2046,10 @@ public class CountrySeed : DataSeed<CoreProfile>
 				},
 				new Country()
 				{
-					IsoCode = "TC",
-					IsoCode3 = "TCA",
-					PhoneCountryCode = "+1-649",
-					UiOrder = 157,
-					Localizations =
-					{
-						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Turks a Ciacos ostrovy" },
-						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Turks and Ciacos Islands" }
-					}
-				},
-				new Country()
-				{
 					IsoCode = "PK",
 					IsoCode3 = "PAK",
 					PhoneCountryCode = "+92",
-					UiOrder = 158,
+					UiOrder = 170,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Pakistán" },
@@ -1918,7 +2061,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "PW",
 					IsoCode3 = "PLW",
 					PhoneCountryCode = "+680",
-					UiOrder = 159,
+					UiOrder = 171,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Palau" },
@@ -1930,7 +2073,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "PS",
 					IsoCode3 = "PSE",
 					PhoneCountryCode = "+970",
-					UiOrder = 160,
+					UiOrder = 172,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Palestinské území (okupované)" },
@@ -1942,7 +2085,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "PA",
 					IsoCode3 = "PAN",
 					PhoneCountryCode = "+507",
-					UiOrder = 161,
+					UiOrder = 173,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Panama" },
@@ -1954,7 +2097,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "PG",
 					IsoCode3 = "PNG",
 					PhoneCountryCode = "+675",
-					UiOrder = 162,
+					UiOrder = 174,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Papua Nová Guinea" },
@@ -1966,7 +2109,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "PY",
 					IsoCode3 = "PRY",
 					PhoneCountryCode = "+595",
-					UiOrder = 163,
+					UiOrder = 175,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Paraguay" },
@@ -1978,7 +2121,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "PE",
 					IsoCode3 = "PER",
 					PhoneCountryCode = "+51",
-					UiOrder = 164,
+					UiOrder = 176,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Peru" },
@@ -1990,7 +2133,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "PN",
 					IsoCode3 = "PCN",
 					PhoneCountryCode = "",
-					UiOrder = 165,
+					UiOrder = 177,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Pitcairn" },
@@ -2002,7 +2145,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "CI",
 					IsoCode3 = "CIV",
 					PhoneCountryCode = "+225",
-					UiOrder = 166,
+					UiOrder = 178,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Pobřeží slonoviny" },
@@ -2014,7 +2157,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "PL",
 					IsoCode3 = "POL",
 					PhoneCountryCode = "+48",
-					UiOrder = 167,
+					UiOrder = 179,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Polsko" },
@@ -2026,7 +2169,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "PR",
 					IsoCode3 = "PRI",
 					PhoneCountryCode = "+1-787",
-					UiOrder = 168,
+					UiOrder = 180,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Portoriko" },
@@ -2038,7 +2181,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "PT",
 					IsoCode3 = "PRT",
 					PhoneCountryCode = "+351",
-					UiOrder = 169,
+					UiOrder = 181,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Portugalsko" },
@@ -2050,7 +2193,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "AT",
 					IsoCode3 = "AUT",
 					PhoneCountryCode = "+43",
-					UiOrder = 170,
+					UiOrder = 182,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Rakousko" },
@@ -2062,7 +2205,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "RE",
 					IsoCode3 = "REU",
 					PhoneCountryCode = "+262",
-					UiOrder = 171,
+					UiOrder = 183,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Réunion" },
@@ -2074,7 +2217,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "GQ",
 					IsoCode3 = "GNQ",
 					PhoneCountryCode = "+240",
-					UiOrder = 172,
+					UiOrder = 184,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Rovníková Guinea" },
@@ -2086,7 +2229,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "RO",
 					IsoCode3 = "ROU",
 					PhoneCountryCode = "+40",
-					UiOrder = 173,
+					UiOrder = 185,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Rumunsko" },
@@ -2098,7 +2241,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "RU",
 					IsoCode3 = "RUS",
 					PhoneCountryCode = "+7",
-					UiOrder = 174,
+					UiOrder = 186,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Ruská federace" },
@@ -2110,7 +2253,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "RW",
 					IsoCode3 = "RWA",
 					PhoneCountryCode = "+250",
-					UiOrder = 175,
+					UiOrder = 187,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Rwanda" },
@@ -2122,7 +2265,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "GR",
 					IsoCode3 = "GRC",
 					PhoneCountryCode = "+30",
-					UiOrder = 176,
+					UiOrder = 188,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Řecko" },
@@ -2131,22 +2274,10 @@ public class CountrySeed : DataSeed<CoreProfile>
 				},
 				new Country()
 				{
-					IsoCode = "PM",
-					IsoCode3 = "SPM",
-					PhoneCountryCode = "+508",
-					UiOrder = 177,
-					Localizations =
-					{
-						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "St. Pierre a Miquelon" },
-						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "St. Pierre and Miquelon" }
-					}
-				},
-				new Country()
-				{
 					IsoCode = "SV",
 					IsoCode3 = "SLV",
 					PhoneCountryCode = "+503",
-					UiOrder = 178,
+					UiOrder = 189,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Salvador" },
@@ -2155,22 +2286,10 @@ public class CountrySeed : DataSeed<CoreProfile>
 				},
 				new Country()
 				{
-					IsoCode = "WS",
-					IsoCode3 = "WSM",
-					PhoneCountryCode = "+685",
-					UiOrder = 179,
-					Localizations =
-					{
-						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Západní Samoa" },
-						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Western Samoa" }
-					}
-				},
-				new Country()
-				{
 					IsoCode = "SM",
 					IsoCode3 = "SMR",
 					PhoneCountryCode = "+378",
-					UiOrder = 180,
+					UiOrder = 190,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "San Marino" },
@@ -2182,7 +2301,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "SA",
 					IsoCode3 = "SAU",
 					PhoneCountryCode = "+966",
-					UiOrder = 181,
+					UiOrder = 191,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Saúdská Arábie" },
@@ -2194,7 +2313,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "SN",
 					IsoCode3 = "SEN",
 					PhoneCountryCode = "+221",
-					UiOrder = 182,
+					UiOrder = 192,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Senegal" },
@@ -2206,7 +2325,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "SC",
 					IsoCode3 = "SYC",
 					PhoneCountryCode = "+248",
-					UiOrder = 183,
+					UiOrder = 193,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Seychely" },
@@ -2218,7 +2337,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "SL",
 					IsoCode3 = "SLE",
 					PhoneCountryCode = "+232",
-					UiOrder = 184,
+					UiOrder = 194,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Sierra Leone" },
@@ -2230,7 +2349,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "SG",
 					IsoCode3 = "SGP",
 					PhoneCountryCode = "+65",
-					UiOrder = 185,
+					UiOrder = 195,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Singapur" },
@@ -2242,7 +2361,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "SI",
 					IsoCode3 = "SVN",
 					PhoneCountryCode = "+386",
-					UiOrder = 186,
+					UiOrder = 196,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Slovinsko" },
@@ -2254,7 +2373,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "SO",
 					IsoCode3 = "SOM",
 					PhoneCountryCode = "+252",
-					UiOrder = 187,
+					UiOrder = 197,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Somálsko" },
@@ -2266,7 +2385,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "AE",
 					IsoCode3 = "ARE",
 					PhoneCountryCode = "+971",
-					UiOrder = 188,
+					UiOrder = 198,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Spojené arabské emiráty" },
@@ -2275,10 +2394,22 @@ public class CountrySeed : DataSeed<CoreProfile>
 				},
 				new Country()
 				{
+					IsoCode = "GB",
+					IsoCode3 = "GBR",
+					PhoneCountryCode = "+44",
+					UiOrder = 199,
+					Localizations =
+					{
+						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Spojené království" },
+						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "United Kingdom" }
+					}
+				},
+				new Country()
+				{
 					IsoCode = "US",
 					IsoCode3 = "USA",
 					PhoneCountryCode = "+1",
-					UiOrder = 189,
+					UiOrder = 200,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Spojené státy americké" },
@@ -2289,8 +2420,8 @@ public class CountrySeed : DataSeed<CoreProfile>
 				{
 					IsoCode = "RS",
 					IsoCode3 = "SRB",
-					PhoneCountryCode = "+248",
-					UiOrder = 190,
+					PhoneCountryCode = "+381",
+					UiOrder = 201,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Srbsko" },
@@ -2302,7 +2433,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "LK",
 					IsoCode3 = "LKA",
 					PhoneCountryCode = "+94",
-					UiOrder = 191,
+					UiOrder = 202,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Srí Lanka" },
@@ -2311,10 +2442,22 @@ public class CountrySeed : DataSeed<CoreProfile>
 				},
 				new Country()
 				{
+					IsoCode = "PM",
+					IsoCode3 = "SPM",
+					PhoneCountryCode = "+508",
+					UiOrder = 203,
+					Localizations =
+					{
+						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "St. Pierre a Miquelon" },
+						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "St. Pierre and Miquelon" }
+					}
+				},
+				new Country()
+				{
 					IsoCode = "CF",
 					IsoCode3 = "CAF",
 					PhoneCountryCode = "+236",
-					UiOrder = 192,
+					UiOrder = 204,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Středoafrická republika" },
@@ -2326,7 +2469,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "SD",
 					IsoCode3 = "SDN",
 					PhoneCountryCode = "+249",
-					UiOrder = 193,
+					UiOrder = 205,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Súdán" },
@@ -2338,7 +2481,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "SR",
 					IsoCode3 = "SUR",
 					PhoneCountryCode = "+597",
-					UiOrder = 194,
+					UiOrder = 206,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Surinam" },
@@ -2350,7 +2493,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "SJ",
 					IsoCode3 = "SJM",
 					PhoneCountryCode = "+47",
-					UiOrder = 195,
+					UiOrder = 207,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Svalbard a ostrov Jan Mayen" },
@@ -2362,7 +2505,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "SH",
 					IsoCode3 = "SHN",
 					PhoneCountryCode = "+290",
-					UiOrder = 196,
+					UiOrder = 208,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Svatá Helena, Ascension a Tristan da Cunha" },
@@ -2374,7 +2517,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "LC",
 					IsoCode3 = "LCA",
 					PhoneCountryCode = "+1-758",
-					UiOrder = 197,
+					UiOrder = 209,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Svatá Lucie" },
@@ -2383,10 +2526,22 @@ public class CountrySeed : DataSeed<CoreProfile>
 				},
 				new Country()
 				{
+					IsoCode = "BL",
+					IsoCode3 = "BLM",
+					PhoneCountryCode = "+590",
+					UiOrder = 210,
+					Localizations =
+					{
+						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Svatý Bartoloměj" },
+						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Saint Barthélemy" }
+					}
+				},
+				new Country()
+				{
 					IsoCode = "KN",
 					IsoCode3 = "KNA",
 					PhoneCountryCode = "+1-869",
-					UiOrder = 198,
+					UiOrder = 211,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Svatý Kryštof a Nevis" },
@@ -2395,10 +2550,34 @@ public class CountrySeed : DataSeed<CoreProfile>
 				},
 				new Country()
 				{
+					IsoCode = "MF",
+					IsoCode3 = "MAF",
+					PhoneCountryCode = "+590",
+					UiOrder = 212,
+					Localizations =
+					{
+						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Svatý Martin (francouzská část)" },
+						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Saint Martin (French part)" }
+					}
+				},
+				new Country()
+				{
+					IsoCode = "SX",
+					IsoCode3 = "SXM",
+					PhoneCountryCode = "+1-721",
+					UiOrder = 213,
+					Localizations =
+					{
+						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Svatý Martin (nizozemská část)" },
+						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Sint Maarten (Dutch part)" }
+					}
+				},
+				new Country()
+				{
 					IsoCode = "ST",
 					IsoCode3 = "STP",
 					PhoneCountryCode = "+239",
-					UiOrder = 199,
+					UiOrder = 214,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Svatý Tomáš a Princův ostrov" },
@@ -2410,7 +2589,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "VC",
 					IsoCode3 = "VCT",
 					PhoneCountryCode = "+1-784",
-					UiOrder = 200,
+					UiOrder = 215,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Svatý Vincenc a Grenadiny" },
@@ -2422,7 +2601,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "SZ",
 					IsoCode3 = "SWZ",
 					PhoneCountryCode = "+268",
-					UiOrder = 201,
+					UiOrder = 216,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Svazijsko" },
@@ -2434,7 +2613,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "SY",
 					IsoCode3 = "SYR",
 					PhoneCountryCode = "+963",
-					UiOrder = 202,
+					UiOrder = 217,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Syrská arabská republika" },
@@ -2446,7 +2625,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "SB",
 					IsoCode3 = "SLB",
 					PhoneCountryCode = "+677",
-					UiOrder = 203,
+					UiOrder = 218,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Šalamounovy ostrovy" },
@@ -2458,7 +2637,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "ES",
 					IsoCode3 = "ESP",
 					PhoneCountryCode = "+34",
-					UiOrder = 204,
+					UiOrder = 219,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Španělsko" },
@@ -2470,7 +2649,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "SE",
 					IsoCode3 = "SWE",
 					PhoneCountryCode = "+46",
-					UiOrder = 205,
+					UiOrder = 220,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Švédsko" },
@@ -2482,7 +2661,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "CH",
 					IsoCode3 = "CHE",
 					PhoneCountryCode = "+41",
-					UiOrder = 206,
+					UiOrder = 221,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Švýcarsko" },
@@ -2494,7 +2673,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "TJ",
 					IsoCode3 = "TJK",
 					PhoneCountryCode = "+992",
-					UiOrder = 207,
+					UiOrder = 222,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Tádžikistán" },
@@ -2506,7 +2685,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "TZ",
 					IsoCode3 = "TZA",
 					PhoneCountryCode = "+255",
-					UiOrder = 208,
+					UiOrder = 223,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Tanzánie" },
@@ -2515,22 +2694,10 @@ public class CountrySeed : DataSeed<CoreProfile>
 				},
 				new Country()
 				{
-					IsoCode = "TW",
-					IsoCode3 = "TWN",
-					PhoneCountryCode = "+886",
-					UiOrder = 209,
-					Localizations =
-					{
-						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Tchaj-wan (čínská provincie)" },
-						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Taiwan" }
-					}
-				},
-				new Country()
-				{
 					IsoCode = "TH",
 					IsoCode3 = "THA",
 					PhoneCountryCode = "+66",
-					UiOrder = 210,
+					UiOrder = 224,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Thajsko" },
@@ -2539,10 +2706,34 @@ public class CountrySeed : DataSeed<CoreProfile>
 				},
 				new Country()
 				{
+					IsoCode = "TW",
+					IsoCode3 = "TWN",
+					PhoneCountryCode = "+886",
+					UiOrder = 225,
+					Localizations =
+					{
+						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Tchaj-wan (čínská provincie)" },
+						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Taiwan" }
+					}
+				},
+				new Country()
+				{
+					IsoCode = "TL",
+					IsoCode3 = "TLS",
+					PhoneCountryCode = "+670",
+					UiOrder = 226,
+					Localizations =
+					{
+						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Timor-Leste" },
+						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Timor-Leste" }
+					}
+				},
+				new Country()
+				{
 					IsoCode = "TG",
 					IsoCode3 = "TGO",
 					PhoneCountryCode = "+228",
-					UiOrder = 211,
+					UiOrder = 227,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Togo" },
@@ -2554,7 +2745,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "TK",
 					IsoCode3 = "TKL",
 					PhoneCountryCode = "+690",
-					UiOrder = 212,
+					UiOrder = 228,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Tokelau" },
@@ -2566,7 +2757,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "TO",
 					IsoCode3 = "TON",
 					PhoneCountryCode = "+676",
-					UiOrder = 213,
+					UiOrder = 229,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Tonga" },
@@ -2578,7 +2769,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "TT",
 					IsoCode3 = "TTO",
 					PhoneCountryCode = "+1-868",
-					UiOrder = 214,
+					UiOrder = 230,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Trinidad a Tobago" },
@@ -2590,7 +2781,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "TN",
 					IsoCode3 = "TUN",
 					PhoneCountryCode = "+216",
-					UiOrder = 215,
+					UiOrder = 231,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Tunisko" },
@@ -2602,7 +2793,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "TR",
 					IsoCode3 = "TUR",
 					PhoneCountryCode = "+90",
-					UiOrder = 216,
+					UiOrder = 232,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Turecko" },
@@ -2614,7 +2805,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "TM",
 					IsoCode3 = "TKM",
 					PhoneCountryCode = "+993",
-					UiOrder = 217,
+					UiOrder = 233,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Turkmenistán" },
@@ -2623,10 +2814,22 @@ public class CountrySeed : DataSeed<CoreProfile>
 				},
 				new Country()
 				{
+					IsoCode = "TC",
+					IsoCode3 = "TCA",
+					PhoneCountryCode = "+1-649",
+					UiOrder = 234,
+					Localizations =
+					{
+						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Turks a Ciacos ostrovy" },
+						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Turks and Ciacos Islands" }
+					}
+				},
+				new Country()
+				{
 					IsoCode = "TV",
 					IsoCode3 = "TUV",
 					PhoneCountryCode = "+688",
-					UiOrder = 218,
+					UiOrder = 235,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Tuvalu" },
@@ -2638,7 +2841,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "UG",
 					IsoCode3 = "UGA",
 					PhoneCountryCode = "+256",
-					UiOrder = 219,
+					UiOrder = 236,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Uganda" },
@@ -2650,7 +2853,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "UA",
 					IsoCode3 = "UKR",
 					PhoneCountryCode = "+380",
-					UiOrder = 220,
+					UiOrder = 237,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Ukrajina" },
@@ -2662,7 +2865,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "UY",
 					IsoCode3 = "URY",
 					PhoneCountryCode = "+598",
-					UiOrder = 221,
+					UiOrder = 238,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Uruguay" },
@@ -2674,7 +2877,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "UZ",
 					IsoCode3 = "UZB",
 					PhoneCountryCode = "+998",
-					UiOrder = 222,
+					UiOrder = 239,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Uzbekistán" },
@@ -2686,7 +2889,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "CX",
 					IsoCode3 = "CXR",
 					PhoneCountryCode = "+61",
-					UiOrder = 223,
+					UiOrder = 240,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Vánoční ostrov" },
@@ -2698,7 +2901,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "VU",
 					IsoCode3 = "VUT",
 					PhoneCountryCode = "+678",
-					UiOrder = 224,
+					UiOrder = 241,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Vanuatu" },
@@ -2710,7 +2913,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "VA",
 					IsoCode3 = "VAT",
 					PhoneCountryCode = "+379",
-					UiOrder = 225,
+					UiOrder = 242,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Vatikán" },
@@ -2719,22 +2922,10 @@ public class CountrySeed : DataSeed<CoreProfile>
 				},
 				new Country()
 				{
-					IsoCode = "GB",
-					IsoCode3 = "GBR",
-					PhoneCountryCode = "+44",
-					UiOrder = 226,
-					Localizations =
-					{
-						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Spojené království" },
-						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "United Kingdom" }
-					}
-				},
-				new Country()
-				{
 					IsoCode = "VE",
 					IsoCode3 = "VEN",
 					PhoneCountryCode = "+58",
-					UiOrder = 227,
+					UiOrder = 243,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Venezuela" },
@@ -2746,7 +2937,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "VN",
 					IsoCode3 = "VNM",
 					PhoneCountryCode = "+84",
-					UiOrder = 228,
+					UiOrder = 244,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Vietnam" },
@@ -2755,22 +2946,10 @@ public class CountrySeed : DataSeed<CoreProfile>
 				},
 				new Country()
 				{
-					IsoCode = "TL",
-					IsoCode3 = "TLS",
-					PhoneCountryCode = "+670",
-					UiOrder = 229,
-					Localizations =
-					{
-						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Timor-Leste" },
-						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Timor-Leste" }
-					}
-				},
-				new Country()
-				{
 					IsoCode = "WF",
 					IsoCode3 = "WLF",
 					PhoneCountryCode = "+681",
-					UiOrder = 230,
+					UiOrder = 245,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Wallis a Futuna" },
@@ -2782,7 +2961,7 @@ public class CountrySeed : DataSeed<CoreProfile>
 					IsoCode = "ZM",
 					IsoCode3 = "ZMB",
 					PhoneCountryCode = "+260",
-					UiOrder = 231,
+					UiOrder = 246,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Zambie" },
@@ -2791,70 +2970,10 @@ public class CountrySeed : DataSeed<CoreProfile>
 				},
 				new Country()
 				{
-					IsoCode = "ZW",
-					IsoCode3 = "ZWE",
-					PhoneCountryCode = "+263",
-					UiOrder = 232,
-					Localizations =
-					{
-						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Zimbabwe" },
-						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Zimbabwe" }
-					}
-				},
-				new Country()
-				{
-					IsoCode = "AQ",
-					IsoCode3 = "ATA",
-					PhoneCountryCode = "+672",
-					UiOrder = 233,
-					Localizations =
-					{
-						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Antarktida" },
-						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Antarctica" }
-					}
-				},
-				new Country()
-				{
-					IsoCode = "AX",
-					IsoCode3 = "ALA",
-					PhoneCountryCode = "+358",
-					UiOrder = 234,
-					Localizations =
-					{
-						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Alandské ostrovy" },
-						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Aland Islands" }
-					}
-				},
-				new Country()
-				{
-					IsoCode = "BF",
-					IsoCode3 = "BFA",
-					PhoneCountryCode = "+226",
-					UiOrder = 235,
-					Localizations =
-					{
-						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Burkina Faso" },
-						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Burkina Faso" }
-					}
-				},
-				new Country()
-				{
-					IsoCode = "DM",
-					IsoCode3 = "DMA",
-					PhoneCountryCode = "+767",
-					UiOrder = 236,
-					Localizations =
-					{
-						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Dominica" },
-						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Dominica" }
-					}
-				},
-				new Country()
-				{
 					IsoCode = "EH",
 					IsoCode3 = "ESH",
 					PhoneCountryCode = "+212",
-					UiOrder = 237,
+					UiOrder = 247,
 					Localizations =
 					{
 						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Západní Sahara" },
@@ -2863,64 +2982,29 @@ public class CountrySeed : DataSeed<CoreProfile>
 				},
 				new Country()
 				{
-					IsoCode = "GG",
-					IsoCode3 = "GGY",
-					PhoneCountryCode = "+44",
-					UiOrder = 238,
+					IsoCode = "WS",
+					IsoCode3 = "WSM",
+					PhoneCountryCode = "+685",
+					UiOrder = 248,
 					Localizations =
 					{
-						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Guernsey" },
-						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Guernsey" }
+						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Západní Samoa" },
+						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Western Samoa" }
 					}
 				},
 				new Country()
 				{
-					IsoCode = "JE",
-					IsoCode3 = "JEY",
-					PhoneCountryCode = "+44",
-					UiOrder = 239,
+					IsoCode = "ZW",
+					IsoCode3 = "ZWE",
+					PhoneCountryCode = "+263",
+					UiOrder = 249,
 					Localizations =
 					{
-						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Jersey" },
-						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Jersey" }
-					}
-				},
-				new Country()
-				{
-					IsoCode = "TF",
-					IsoCode3 = "ATF",
-					PhoneCountryCode = "+262",
-					UiOrder = 240,
-					Localizations =
-					{
-						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Francouzská jižní území" },
-						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "French Southern Territories" }
-					}
-				},
-				new Country()
-				{
-					IsoCode = "VG",
-					IsoCode3 = "VGB",
-					PhoneCountryCode = "+1284",
-					UiOrder = 241,
-					Localizations =
-					{
-						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Britské Panenské ostrovy" },
-						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Virgin Islands (British)" }
-					}
-				},
-				new Country()
-				{
-					IsoCode = "VI",
-					IsoCode3 = "VIR",
-					PhoneCountryCode = "+1",
-					UiOrder = 242,
-					Localizations =
-					{
-						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Americké Panenské ostrovy" },
-						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Virgin Islands (USA)" }
+						new CountryLocalization { LanguageId = (int)Language.Entry.Czech, Name = "Zimbabwe" },
+						new CountryLocalization { LanguageId = (int)Language.Entry.English, Name = "Zimbabwe" }
 					}
 				}
+
 			};
 
 		await SeedAsync(For(countries).PairBy(country => country.IsoCode3), cancellationToken);
