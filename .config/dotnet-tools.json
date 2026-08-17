@@ -3,7 +3,7 @@
   "isRoot": true,
   "tools": {
     "havit.data.entityframeworkcore.codegenerator.tool": {
-      "version": "2.10.0",
+      "version": "2.10.4",
       "commands": [
         "efcodegenerator"
       ],

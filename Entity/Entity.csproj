@@ -11,7 +11,10 @@
 
 	<ItemGroup>
 		<PackageReference Include="Havit.Data.EntityFrameworkCore" />
-		<PackageReference Include="Havit.Data.EntityFrameworkCore.CodeGenerator" />
+		<PackageReference Include="Havit.Data.EntityFrameworkCore.CodeGenerator">
+		  <PrivateAssets>all</PrivateAssets>
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
 		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools">
 			<PrivateAssets>all</PrivateAssets>
