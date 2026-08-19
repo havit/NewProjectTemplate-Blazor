@@ -9,8 +9,9 @@ on:
     branches:
       - master
   schedule:
-    # Neděle 08:00 UTC
-    - cron: '0 8 * * 0'
+    # Neděle 07:00 Europe/Prague
+    - cron: '0 7 * * 0'
+      timezone: "Europe/Prague"
   workflow_dispatch:
 
 jobs:
