@@ -1,4 +1,4 @@
-﻿using Blazored.LocalStorage;
+﻿using Havit.Blazor.Storage;
 using Microsoft.AspNetCore.Components;
 
 namespace Havit.NewProjectTemplate.Web.Client.Shared;
@@ -10,7 +10,7 @@ public partial class CultureSelector : ComponentBase
 
 	private async Task SetCultureAsync(string culture)
 	{
-		await LocalStorageService.SetItemAsStringAsync("culture", culture);
+		await LocalStorageService.SetStringValueAsync("culture", culture);
 		NavigationManager.NavigateTo(NavigationManager.Uri, forceLoad: true);
 	}
 }

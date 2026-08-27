@@ -1,14 +1,12 @@
 ﻿using System.Globalization;
-using BlazorApplicationInsights;
-using BlazorApplicationInsights.Models;
-using Blazored.LocalStorage;
 using FluentValidation;
+using Havit.Blazor.ApplicationInsights;
+using Havit.Blazor.ApplicationInsights.Logging;
 using Havit.Blazor.Grpc.Client;
-using Havit.Blazor.Grpc.Client.ServerExceptions;
+using Havit.Blazor.Storage;
 using Havit.NewProjectTemplate.Contracts;
 using Havit.NewProjectTemplate.Contracts.Infrastructure;
 using Havit.NewProjectTemplate.Web.Client.Infrastructure.Configuration;
-using Havit.NewProjectTemplate.Web.Client.Infrastructure.Grpc;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 
 namespace Havit.NewProjectTemplate.Web.Client;
@@ -28,7 +26,7 @@ public static class Program
 		AddLoggingAndBlazorApplicationInsights(builder);
 		AddAuthWithHttpClient(builder);
 
-		builder.Services.AddBlazoredLocalStorage();
+		builder.Services.AddHavitBlazorStorage();
 		builder.Services.AddValidatorsFromAssemblyContaining<Dto<object>>();
 		builder.Services.AddClientByServiceAttribute();
 
@@ -48,6 +46,7 @@ public static class Program
 
 		await webAssemblyHost.RunAsync();
 	}
+
 	private static void SetHxComponents()
 	{
 		HxOffcanvas.Defaults.Backdrop = OffcanvasBackdrop.Static;
@@ -56,18 +55,18 @@ public static class Program
 		HxInputDateRange.Defaults.CalendarIcon = BootstrapIcon.Calendar3;
 
 		// TODO [OPTIONAL] Setup HxInputDateRange.Defaults.PredefinedRanges here
-		//DateTime today = DateTime.Today;
-		//DateTime thisMonthStart = new DateTime(today.Year, today.Month, 1);
-		//DateTime thisMonthEnd = new DateTime(today.Year, today.Month, DateTime.DaysInMonth(today.Year, today.Month));
-		//DateTime thisYearStart = new DateTime(today.Year, 1, 1);
-		//DateTime thisYearEnd = new DateTime(today.Year, 12, 31);
+		// DateTime today = DateTime.Today;
+		// DateTime thisMonthStart = new DateTime(today.Year, today.Month, 1);
+		// DateTime thisMonthEnd = new DateTime(today.Year, today.Month, DateTime.DaysInMonth(today.Year, today.Month));
+		// DateTime thisYearStart = new DateTime(today.Year, 1, 1);
+		// DateTime thisYearEnd = new DateTime(today.Year, 12, 31);
 
-		//HxInputDateRange.Defaults.PredefinedDateRanges = new InputDateRangePredefinedRangesItem[]
-		//{
-		//	new() { Label = "TTM", DateRange = new DateTimeRange(today.AddMonths(-12).AddDays(1), today) },
-		//	new() { Label = "ThisYear", DateRange = new DateTimeRange(thisYearStart, thisYearEnd), ResourceType = typeof(HxInputDateRangePredefinedRanges) },
-		//	new() { Label = "ThisMonth", DateRange = new DateTimeRange(thisMonthStart, thisMonthEnd), ResourceType = typeof(HxInputDateRangePredefinedRanges) },
-		//};
+		// HxInputDateRange.Defaults.PredefinedDateRanges = new InputDateRangePredefinedRangesItem[]
+		// {
+		// 	new() { Label = "TTM", DateRange = new DateTimeRange(today.AddMonths(-12).AddDays(1), today) },
+		// 	new() { Label = "ThisYear", DateRange = new DateTimeRange(thisYearStart, thisYearEnd), ResourceType = typeof(HxInputDateRangePredefinedRanges) },
+		// 	new() { Label = "ThisMonth", DateRange = new DateTimeRange(thisMonthStart, thisMonthEnd), ResourceType = typeof(HxInputDateRangePredefinedRanges) },
+		// };
 	}
 
 	public static void AddAuthWithHttpClient(WebAssemblyHostBuilder builder)
@@ -79,10 +78,10 @@ public static class Program
 		builder.Services.AddCascadingAuthenticationState();
 		builder.Services.AddAuthenticationStateDeserialization();
 
-		//builder.Services.Configure<AuthorizationOptions>(config =>
-		//{
-		//	config.AddPolicy(...);
-		//});
+		// builder.Services.Configure<AuthorizationOptions>(config =>
+		// {
+		//     config.AddPolicy(...);
+		// });
 	}
 
 	private static void AddGrpcClient(WebAssemblyHostBuilder builder)
@@ -96,8 +95,8 @@ public static class Program
 	{
 		var localStorageService = webAssemblyHost.Services.GetService<ILocalStorageService>();
 
-		var culture = await localStorageService.GetItemAsStringAsync("culture");
-		if (!String.IsNullOrWhiteSpace(culture))
+		var (cultureFound, culture) = await localStorageService.TryGetStringValueAsync("culture");
+		if (cultureFound && !String.IsNullOrWhiteSpace(culture))
 		{
 			var cultureInfo = new CultureInfo(culture);
 			CultureInfo.DefaultThreadCurrentCulture = cultureInfo;
@@ -107,24 +106,9 @@ public static class Program
 
 	private static void AddLoggingAndBlazorApplicationInsights(WebAssemblyHostBuilder builder)
 	{
-		ApplicationInsightsOptions applicationInsightsOptions = builder.Configuration.GetSection(ApplicationInsightsOptions.Path).Get<ApplicationInsightsOptions>();
-
-		builder.Services.AddBlazorApplicationInsights(
-			c => c.ConnectionString = applicationInsightsOptions.ConnectionString ?? String.Empty,
-			async applicationInsights =>
-			{
-				var telemetryItem = new TelemetryItem()
-				{
-					Tags = new Dictionary<string, object>()
-					{
-						{ "ai.cloud.role", "Web.Client" },
-					}
-				};
-
-				await applicationInsights.AddTelemetryInitializer(telemetryItem);
-			});
-
-		builder.Logging.AddFilter<ApplicationInsightsLoggerProvider>(level => (level == LogLevel.Error) || (level == LogLevel.Critical));
+		builder.Services.AddBlazorApplicationInsights();
+		builder.Logging.AddBlazorApplicationInsights();
+		builder.Logging.AddFilter<BlazorApplicationInsightsLoggerProvider>(level => (level == LogLevel.Error) || (level == LogLevel.Critical));
 
 #if DEBUG
 		builder.Logging.SetMinimumLevel(LogLevel.Debug);

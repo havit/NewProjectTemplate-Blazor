@@ -1,4 +1,5 @@
 ﻿@using Havit.NewProjectTemplate.Web.Client
+@using Havit.Blazor.ApplicationInsights.Components
 @using Microsoft.AspNetCore.Components.Web
 <!DOCTYPE html>
 <html translate="no">
@@ -19,7 +20,7 @@
     <link href="manifest.json" rel="manifest" />
     <link rel="apple-touch-icon" sizes="512x512" href="icon-512.png" />
 
-    <BlazorApplicationInsights.ApplicationInsightsInit @rendermode="@RenderMode.InteractiveWebAssembly" />
+    <HxApplicationInsights @rendermode="@RenderMode.InteractiveWebAssembly" />
 	<ImportMap />
     <HeadOutlet @rendermode="new InteractiveWebAssemblyRenderMode(prerender: false)" />
 </head>

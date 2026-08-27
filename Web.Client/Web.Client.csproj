@@ -18,11 +18,11 @@
 
 	<ItemGroup>
 		<PackageReference Include="Blazilla" />
-		<PackageReference Include="Blazor.Storage" />
-		<PackageReference Include="BlazorApplicationInsights" />
 		<PackageReference Include="FluentValidation.DependencyInjectionExtensions" />
+		<PackageReference Include="Havit.Blazor.ApplicationInsights" />
 		<PackageReference Include="Havit.Blazor.Components.Web.Bootstrap" />
 		<PackageReference Include="Havit.Blazor.Grpc.Client" />
+		<PackageReference Include="Havit.Blazor.Storage" />
 		<PackageReference Include="Havit.Extensions.DependencyInjection.Abstractions" />
 		<PackageReference Include="Havit.SourceGenerators.StrongApiStringLocalizers">
 		  <PrivateAssets>all</PrivateAssets>

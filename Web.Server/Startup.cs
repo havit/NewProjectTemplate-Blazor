@@ -1,8 +1,8 @@
-﻿using BlazorApplicationInsights;
-using Calzolari.Grpc.AspNetCore.Validation;
+﻿using Calzolari.Grpc.AspNetCore.Validation;
 using Hangfire;
 using Hangfire.Dashboard;
 using Havit.ApplicationInsights.DependencyCollector;
+using Havit.Blazor.ApplicationInsights;
 using Havit.Blazor.Grpc.Server;
 using Havit.Hangfire.Extensions.HealthChecks;
 using Havit.NewProjectTemplate.Contracts;
@@ -39,7 +39,7 @@ public class Startup
 	public void ConfigureServices(IServiceCollection services)
 	{
 		services.AddOptions();
-		services.Configure<WebClientOptions>(_configuration.GetSection("WebClient"));
+		services.Configure<WebClientOptions>(_configuration.GetSection(WebClientOptions.Path));
 
 		services.ConfigureForWebServer(_configuration);
 
@@ -60,7 +60,12 @@ public class Startup
 		services.AddApplicationInsightsTelemetryProcessor<IgnoreCancellationExceptionsTelemetryProcessor>();
 
 		// The configuration is transferred to the client through prerendering
-		services.AddBlazorApplicationInsights(c => c.ConnectionString = _configuration.GetSection("ApplicationInsights").GetValue<string>("ConnectionString"));
+		services.AddBlazorApplicationInsights(options =>
+		{
+			options.JsSdkOptions.ConnectionString = _configuration.GetSection("ApplicationInsights").GetValue<string>("ConnectionString");
+			options.JsSdkOptions.EnableAutoRouteTracking = true;
+			options.DefaultTelemetryInitializer = new Blazor.ApplicationInsights.Telemetry.TelemetryInitializer { CloudRoleName = "Web.Client" };
+		});
 
 		// Distributed cache (to be used by Authentication)
 		services.AddDistributedSqlServerCache(options =>

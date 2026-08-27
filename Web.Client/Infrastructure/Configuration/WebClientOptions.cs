@@ -12,6 +12,4 @@ public record WebClientOptions
 	/// Path in appsettings.WebServer.json (not ...WebClient...), where the default configuration for the client is located.
 	/// </summary>
 	public const string Path = "WebClient";
-
-	public ApplicationInsightsOptions ApplicationInsights { get; set; }
 }

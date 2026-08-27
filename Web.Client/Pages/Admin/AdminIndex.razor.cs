@@ -1,4 +1,4 @@
-﻿using Blazored.LocalStorage;
+﻿using Havit.Blazor.Storage;
 using Havit.NewProjectTemplate.Contracts.Infrastructure;
 using Havit.NewProjectTemplate.Web.Client.Pages.Admin.Components;
 using Havit.NewProjectTemplate.Web.Client.Resources;
@@ -23,7 +23,7 @@ public partial class AdminIndex : ComponentBase
 	{
 		if (await MessageBox.ConfirmAsync("Do you really want to remove culture cache?"))
 		{
-			await LocalStorageService.RemoveItemAsync("culture");
+			await LocalStorageService.RemoveAsync("culture");
 			Messenger.AddInformation(AdminIndexLocalizer.CultureRemoved); // TODO Just a demo
 		}
 	}
