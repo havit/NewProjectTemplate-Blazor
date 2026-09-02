@@ -5,10 +5,13 @@ on:
     inputs:
       checkout_sources_scheduled_build_ref:
         type: string
-        default: ''
+        required: true
       publish_to_stage_enabled:
         type: boolean
         default: true
+      publish_artifacts_enabled:
+        type: boolean
+        default: false
 
 jobs:
   build:
@@ -23,3 +26,4 @@ jobs:
         ]
       run_unit_tests_databases_to_drop_pattern: 'NewProjectTemplate-IntegrationTests-#AGENTNAME#'
       publish_to_stage_enabled: ${{ inputs.publish_to_stage_enabled }}
+      publish_artifacts_enabled: ${{ inputs.publish_artifacts_enabled }}
