@@ -10,7 +10,8 @@ updates:
   - package-ecosystem: "nuget"
     directory: "/"
     schedule:
-      interval: "daily"
+      interval: "weekly"
+      day: "sunday"
       time: "06:00"
       timezone: "Europe/Prague"
     registries:
