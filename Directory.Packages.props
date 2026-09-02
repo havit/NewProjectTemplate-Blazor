@@ -4,24 +4,24 @@
     <CentralPackageTransitivePinningEnabled>true</CentralPackageTransitivePinningEnabled>
   </PropertyGroup>
   <ItemGroup Condition="'$(ProjectName.EndsWith(`Tests`))' == 'False' AND '$(ProjectName)' != 'Entity'">
-    <GlobalPackageReference Include="Meziantou.Analyzer" Version="3.0.159">
+    <GlobalPackageReference Include="Meziantou.Analyzer" Version="3.0.200">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </GlobalPackageReference>
   </ItemGroup>
   <ItemGroup>
-    <PackageVersion Include="Azure.Extensions.AspNetCore.Configuration.Secrets" Version="1.5.1" />
-    <PackageVersion Include="Azure.Extensions.AspNetCore.DataProtection.Blobs" Version="1.5.3" />
+    <PackageVersion Include="Azure.Extensions.AspNetCore.Configuration.Secrets" Version="1.5.2" />
+    <PackageVersion Include="Azure.Extensions.AspNetCore.DataProtection.Blobs" Version="1.5.4" />
     <PackageVersion Include="Azure.Identity" Version="1.21.0" />
     <PackageVersion Include="Blazilla" Version="2.4.1" />
     <PackageVersion Include="Calzolari.Grpc.AspNetCore.Validation" Version="10.1.0" />
     <PackageVersion Include="FluentValidation" Version="12.1.1" />
     <PackageVersion Include="FluentValidation.DependencyInjectionExtensions" Version="12.1.1" />
-    <PackageVersion Include="Hangfire" Version="1.8.24" />
-    <PackageVersion Include="Hangfire.AspNetCore" Version="1.8.24" />
+    <PackageVersion Include="Hangfire" Version="1.8.25" />
+    <PackageVersion Include="Hangfire.AspNetCore" Version="1.8.25" />
     <PackageVersion Include="Hangfire.Console" Version="1.4.3" />
     <PackageVersion Include="Hangfire.Console.Extensions" Version="2.1.2" />
-    <PackageVersion Include="Hangfire.SqlServer" Version="1.8.24" />
+    <PackageVersion Include="Hangfire.SqlServer" Version="1.8.25" />
     <PackageVersion Include="Havit.ApplicationInsights.DependencyCollector" Version="2.0.10" />
     <PackageVersion Include="Havit.AspNetCore" Version="2.0.32" />
     <PackageVersion Include="Havit.Blazor.ApplicationInsights" Version="1.0.1" />
@@ -70,8 +70,8 @@
     <PackageVersion Include="Microsoft.Identity.Web" Version="4.14.2" />
     <PackageVersion Include="MSTest" Version="4.3.3" />
     <PackageVersion Include="MSTest.TestFramework" Version="4.3.3" />
-    <PackageVersion Include="protobuf-net" Version="3.3.8" />
-    <PackageVersion Include="protobuf-net.Grpc.AspNetCore.Reflection" Version="1.3.6" />
+    <PackageVersion Include="protobuf-net" Version="3.4.21" />
+    <PackageVersion Include="protobuf-net.Grpc.AspNetCore.Reflection" Version="1.3.14" />
     <!-- net10 replaces System.Linq.Async-->
     <PackageVersion Include="System.Linq.Async" Version="7.0.1" />
     <!-- Vulnerable transitive dependencies updates -->
