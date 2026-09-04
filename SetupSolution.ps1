@@ -30,6 +30,7 @@ Foreach-Object {
     $Content = $Content.Replace("CODEOWNER_GITHUBUSERNAME", $CodeOwnerGitHubUsername)
     $Content = $Content.Replace("CODEOWNER_FULLNAME", $CodeOwnerFullName)
     $Content = $Content.Replace("tmp.CODEOWNERS", "CODEOWNERS") # fixes SLNX content where CODEOWNERS is referenced as tmp.CODEOWNERS
+	$Content = $Content.Replace("https://newprojecttemplatekv.vault.azure.net/", "") # do not use KeyVault for new project template anymore
     [IO.File]::WriteAllText($_.FullName, $Content, [System.Text.Encoding]::UTF8)
 }
 
