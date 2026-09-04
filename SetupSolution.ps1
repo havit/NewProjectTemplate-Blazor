@@ -8,8 +8,8 @@
 	[string]$NewErrorsRecipient = "errors@mydomain.com", # HAVIT developers: use errors@havit.cz
 	[string]$NewErrorsSmptServer = "errorssmtp.server.com", # HAVIT developers: use mx.havit.cz
 	[string]$CodeOwnerGitHubUsername = "your-github-username", # HAVIT developers: use your github username (without starting @)
-	[string]$CodeOwnerFullName = "Your Name" # HAVIT developers: use your FullName
-	[bool]$UseDependabot = false # HAVIT users: choose whatever you want
+	[string]$CodeOwnerFullName = "Your Name", # HAVIT developers: use your FullName
+	[bool]$UseDependabot = $false # HAVIT users: choose whatever you want
 )
 
 
@@ -49,5 +49,5 @@ if ($UseDependabot)
 }
 else
 {
-	Delete-Item -path ([System.IO.Path]::Combine($SolutionFolder, '.github\tmp.dependabot.yml'))
+	Remove-Item -path ([System.IO.Path]::Combine($SolutionFolder, '.github\tmp.dependabot.yml'))
 }
