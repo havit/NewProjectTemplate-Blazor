@@ -11,13 +11,13 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\DataLayer\DataLayer.csproj" />
-		<ProjectReference Include="..\Entity\Entity.csproj" />
-		<ProjectReference Include="..\Facades\Facades.csproj" />
-		<ProjectReference Include="..\Model\Model.csproj" />
-		<ProjectReference Include="..\Services\Services.csproj" />
+		<ProjectReference Include="..\..\src\DataLayer\DataLayer.csproj" />
+		<ProjectReference Include="..\..\src\Entity\Entity.csproj" />
+		<ProjectReference Include="..\..\src\Facades\Facades.csproj" />
+		<ProjectReference Include="..\..\src\Model\Model.csproj" />
+		<ProjectReference Include="..\..\src\Services\Services.csproj" />
 		<ProjectReference Include="..\TestHelpers\TestHelpers.csproj" />
-		<ProjectReference Include="..\DependencyInjection\DependencyInjection.csproj" />
+		<ProjectReference Include="..\..\src\DependencyInjection\DependencyInjection.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>

@@ -1,30 +1,30 @@
 <Solution>
   <Folder Name="/Client/">
-    <Project Path="Web.Client/Web.Client.csproj" />
+    <Project Path="src/Web.Client/Web.Client.csproj" />
   </Folder>
   <Folder Name="/Server/">
-    <Project Path="DataLayer.Tests/DataLayer.Tests.csproj" />
-    <Project Path="DataLayer/DataLayer.csproj" />
-    <Project Path="DependencyInjection/DependencyInjection.csproj" />
-    <Project Path="Entity.Tests/Entity.Tests.csproj" />
-    <Project Path="Entity/Entity.csproj" />
-    <Project Path="Facades.Tests/Facades.Tests.csproj" />
-    <Project Path="Facades/Facades.csproj" />
-    <Project Path="IntegrationTests/IntegrationTests.csproj" />
-    <Project Path="JobsRunner/JobsRunner.csproj" />
-    <Project Path="MigrationTool/MigrationTool.csproj" />
-    <Project Path="Model.Tests/Model.Tests.csproj" />
-    <Project Path="Model/Model.csproj" />
-    <Project Path="Services.Tests/Services.Tests.csproj" />
-    <Project Path="Services/Services.csproj" />
-    <Project Path="TestHelpers/TestHelpers.csproj" />
-    <Project Path="TestsForLocalDebugging/TestsForLocalDebugging.csproj" />
-    <Project Path="Web.Server/Web.Server.csproj" />
+    <Project Path="tests/DataLayer.Tests/DataLayer.Tests.csproj" />
+    <Project Path="src/DataLayer/DataLayer.csproj" />
+    <Project Path="src/DependencyInjection/DependencyInjection.csproj" />
+    <Project Path="tests/Entity.Tests/Entity.Tests.csproj" />
+    <Project Path="src/Entity/Entity.csproj" />
+    <Project Path="tests/Facades.Tests/Facades.Tests.csproj" />
+    <Project Path="src/Facades/Facades.csproj" />
+    <Project Path="tests/IntegrationTests/IntegrationTests.csproj" />
+    <Project Path="src/JobsRunner/JobsRunner.csproj" />
+    <Project Path="src/MigrationTool/MigrationTool.csproj" />
+    <Project Path="tests/Model.Tests/Model.Tests.csproj" />
+    <Project Path="src/Model/Model.csproj" />
+    <Project Path="tests/Services.Tests/Services.Tests.csproj" />
+    <Project Path="src/Services/Services.csproj" />
+    <Project Path="tests/TestHelpers/TestHelpers.csproj" />
+    <Project Path="tests/TestsForLocalDebugging/TestsForLocalDebugging.csproj" />
+    <Project Path="src/Web.Server/Web.Server.csproj" />
   </Folder>
   <Folder Name="/Shared/">
-    <Project Path="Contracts/Contracts.csproj" />
-    <Project Path="Primitives/Primitives.csproj" />
-    <Project Path="Resources/Resources.csproj" />
+    <Project Path="src/Contracts/Contracts.csproj" />
+    <Project Path="src/Primitives/Primitives.csproj" />
+    <Project Path="src/Resources/Resources.csproj" />
   </Folder>
   <Folder Name="/Solution Items/">
     <File Path=".config/dotnet-tools.json" />

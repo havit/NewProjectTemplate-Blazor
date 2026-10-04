@@ -18,9 +18,9 @@ https://github.com/havit/NewProjectTemplate-Blazor/generate
 1. Set Web.Server as the startup project.
 1. Adjust the Model - remove unnecessary entities (Country, Localizations, ...)
 1. Rebuild the solution
-1. Run DataLayer CodeGenerator (Run-CodeGenerator.ps1)
+1. Run DataLayer CodeGenerator (src/DataLayer/Run-CodeGenerator.ps1)
 1. Create an initial EF migration
-   1. Drop the current migrations - delete Entity/Migrations folder
+   1. Drop the current migrations - delete src/Entity/Migrations folder
    1. Add new initial migration `Add-Migration Initial`
 1. Check all configuration files (including PublishScripts folder).
     1. Remove connection string AzureKeyVault from appsettings.WebServer.Development.json (or update the endpoint).

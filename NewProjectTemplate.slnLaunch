@@ -3,7 +3,7 @@
     "Name": "Web.Server (IIS Express)",
     "Projects": [
       {
-        "Path": "Web.Server\\Web.Server.csproj",
+        "Path": "src\\Web.Server\\Web.Server.csproj",
         "Action": "Start",
         "DebugTarget": "IIS Express"
       }
@@ -13,12 +13,12 @@
     "Name": "Web.Server (IIS) + JobsRunner",
     "Projects": [
       {
-        "Path": "Web.Server\\Web.Server.csproj",
+        "Path": "src\\Web.Server\\Web.Server.csproj",
         "Action": "Start",
         "DebugTarget": "IIS Express"
       },
       {
-        "Path": "JobsRunner\\JobsRunner.csproj",
+        "Path": "src\\JobsRunner\\JobsRunner.csproj",
         "Action": "Start",
         "DebugTarget": "JobsRunner"
       }

@@ -10,8 +10,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\DataLayer\DataLayer.csproj" />
-	  <ProjectReference Include="..\DependencyInjection\DependencyInjection.csproj" />
+	  <ProjectReference Include="..\..\src\DataLayer\DataLayer.csproj" />
+	  <ProjectReference Include="..\..\src\DependencyInjection\DependencyInjection.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>

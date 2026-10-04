@@ -1,0 +1,7 @@
+{
+	"EntityProjectPath": "src/Entity/Entity.csproj",
+	"ModelProjectPath": "src/Model/Model.csproj",
+	"MetadataProjectPath": "src/Contracts",
+	"MetadataNamespace": "ModelMetadata",
+	"DataLayerProjectPath": "src/DataLayer/DataLayer.csproj"
+}

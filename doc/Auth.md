@@ -18,7 +18,7 @@ Adjust the `CustomClaimsBuilder.GetCustomClaimsAsync()` implementation. There al
 
 Web.Client (`RolesAccountClaimsPrincipalFactory`) asks Web.Server (REST API call to /user-claims) for additional claims when building the user identity.
 
-Adjust the `UserProfileController.GetAdditionalClaims()` method (Web.Server/Controllers). There already are some claims being sent to Web.Client.
+Adjust the `UserProfileController.GetAdditionalClaims()` method (src/Web.Server/Controllers). There already are some claims being sent to Web.Client.
 
 ### Web.Server: Authenticating server-served content
 

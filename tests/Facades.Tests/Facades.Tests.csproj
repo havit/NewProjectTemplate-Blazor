@@ -11,7 +11,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\Facades\Facades.csproj" />
+		<ProjectReference Include="..\..\src\Facades\Facades.csproj" />
 	</ItemGroup>
 
 </Project>

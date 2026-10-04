@@ -1,7 +1,7 @@
 ﻿param (
     [string]$Url = "https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.css",
-    [string]$OutputFile1 = "Web.Client/wwwroot/css/bootstrap-intellisense-fakes.css",
-    [string]$OutputFile2 = "Web.Server/wwwroot/bootstrap-intellisense-fakes.css"
+    [string]$OutputFile1 = "src/Web.Client/wwwroot/css/bootstrap-intellisense-fakes.css",
+    [string]$OutputFile2 = "src/Web.Server/wwwroot/bootstrap-intellisense-fakes.css"
 )
 
 Write-Host "Downloading CSS from $Url..."

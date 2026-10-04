@@ -27,8 +27,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\Entity\Entity.csproj" />
-		<ProjectReference Include="..\Model\Model.csproj" />
+		<ProjectReference Include="..\..\src\Entity\Entity.csproj" />
+		<ProjectReference Include="..\..\src\Model\Model.csproj" />
 	</ItemGroup>
 
 </Project>
