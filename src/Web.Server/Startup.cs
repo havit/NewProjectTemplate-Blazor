@@ -90,6 +90,12 @@ public class Startup
 			.AddInteractiveWebAssemblyComponents()
 			.AddAuthenticationStateSerialization(options => options.SerializationCallback = CustomClaimsSerializer.SerializeAuthenticationStateAsync);
 
+		// Hangfire dashboard běží přes UsePathBase("/hangfire"), antiforgery by mu proto (bez explicitního Path) vydávalo cookie s Path=/hangfire
+		// vedle cookie aplikace (Blazor) s Path=/. Při requestu na /hangfire/* pak prohlížeč posílá obě a server validuje proti té s Path=/,
+		// zatímco token ve stránce dashboardu je spárován s tou s Path=/hangfire → ruční spuštění jobu z dashboardu končilo 403 Forbidden.
+		// Sjednocením Path sdílí aplikace i dashboard jedinou cookie.
+		services.AddAntiforgery(options => options.Cookie.Path = "/");
+
 		// server-side UI
 		services.AddRazorPages();
 		services.AddControllersWithViews();
