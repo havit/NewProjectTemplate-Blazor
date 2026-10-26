@@ -28,6 +28,7 @@
 		<PackageReference Include="System.Linq.Async">
 			<ExcludeAssets>compile</ExcludeAssets>
 		</PackageReference>
+		<AdditionalFiles Include="$(MSBuildThisFileDirectory)vs-threading.SyncMethodsToExcludeFromVSTHRD103.txt" />
 	</ItemGroup>
 
 	<PropertyGroup Condition=" '$(Configuration)'=='Release' ">
