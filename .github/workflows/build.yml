@@ -1,0 +1,21 @@
+name: Build
+run-name: "Build | #${{ github.run_number }}${{ github.event_name == 'schedule' && ' [Scheduled]' || (github.event_name == 'pull_request' && ' [PullRequest]' || '') }}"
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+  schedule:
+    # Neděle 07:00 Europe/Prague
+    - cron: '0 7 * * 0'
+      timezone: "Europe/Prague"
+  workflow_dispatch:
+
+jobs:
+  build:
+    uses: ./.github/workflows/_build-template.yml
+    with:
+      checkout_sources_scheduled_build_ref: 'master'

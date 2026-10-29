@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<AssemblyName>Havit.NewProjectTemplate.DataLayer</AssemblyName>
+		<RootNamespace>Havit.NewProjectTemplate.DataLayer</RootNamespace>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Havit.Data.EntityFrameworkCore.Patterns" />
+		<PackageReference Include="Havit.Extensions.DependencyInjection.Abstractions" />
+		<PackageReference Include="Havit.Extensions.DependencyInjection.SourceGenerators">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\Contracts\Contracts.csproj" />
+		<ProjectReference Include="..\Entity\Entity.csproj" />
+		<ProjectReference Include="..\Model\Model.csproj" />
+		<ProjectReference Include="..\Primitives\Primitives.csproj" />
+	</ItemGroup>
+
+</Project>

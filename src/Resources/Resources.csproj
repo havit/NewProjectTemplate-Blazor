@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<AssemblyName>Havit.NewProjectTemplate.Resources</AssemblyName>
+		<RootNamespace>Havit.NewProjectTemplate.Resources</RootNamespace>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Havit.SourceGenerators.StrongApiStringLocalizers">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" />
+		<PackageReference Include="Microsoft.Extensions.Localization" />
+	</ItemGroup>
+
+	<!-- Required for Havit.SourceGenerators.StrongApiStringLocalizers -->
+	<ItemGroup>
+		<AdditionalFiles Include="**\*.resx" />
+	</ItemGroup>
+
+</Project>

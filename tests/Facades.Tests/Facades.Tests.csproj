@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<AssemblyName>Havit.NewProjectTemplate.Facades.Tests</AssemblyName>
+		<RootNamespace>Havit.NewProjectTemplate.Facades.Tests</RootNamespace>
+		<OutputType>Exe</OutputType>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="MSTest" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\..\src\Facades\Facades.csproj" />
+	</ItemGroup>
+
+</Project>

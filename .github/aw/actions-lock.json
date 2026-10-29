@@ -1,0 +1,19 @@
+{
+  "entries": {
+    "actions/github-script@v9.0.0": {
+      "repo": "actions/github-script",
+      "version": "v9.0.0",
+      "sha": "3a2844b7e9c422d3c10d287c895573f7108da1b3"
+    },
+    "actions/setup-dotnet@v4": {
+      "repo": "actions/setup-dotnet",
+      "version": "v4",
+      "sha": "67a3573c9a986a3f9c594539f4ab511d57bb3ce9"
+    },
+    "github/gh-aw-actions/setup@v0.79.6": {
+      "repo": "github/gh-aw-actions/setup",
+      "version": "v0.79.6",
+      "sha": "5c2fe865bb4dc46e1450f6ee0d0541d759aea73a"
+    }
+  }
+}

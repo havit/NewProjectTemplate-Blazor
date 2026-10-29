@@ -1,0 +1,45 @@
+﻿@using Havit.NewProjectTemplate.Web.Client
+@using Havit.Blazor.ApplicationInsights.Components
+@using Microsoft.AspNetCore.Components.Web
+<!DOCTYPE html>
+<html translate="no">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="author" content="Developed by HAVIT, https://www.havit.cz" />
+
+    <title>NewProjectTemplate</title>
+    <base href="/" />
+
+	<ResourcePreloader />
+
+	<link rel="stylesheet" href="@Assets["_content/Havit.Blazor.Components.Web.Bootstrap/bootstrap.min.css"]" />
+	<link rel="stylesheet" href="@Assets["Havit.NewProjectTemplate.Web.Server.styles.css"]" />
+	<link rel="stylesheet" href="@Assets["css/site.css"]" />
+
+    <link href="manifest.json" rel="manifest" />
+    <link rel="apple-touch-icon" sizes="512x512" href="icon-512.png" />
+
+    <HxApplicationInsights @rendermode="@RenderMode.InteractiveWebAssembly" />
+	<ImportMap />
+    <HeadOutlet @rendermode="new InteractiveWebAssemblyRenderMode(prerender: false)" />
+</head>
+
+<body>
+  <Routes @rendermode="new InteractiveWebAssemblyRenderMode(prerender: false)" />
+
+    <div id="blazor-error-ui">
+        An unhandled error has occurred.
+        <a href="" class="reload">Reload</a>
+        <a class="dismiss">&times;</a>
+    </div>
+
+    <div id="blazor-loading-ui" class="h-100 w-100 position-absolute top-0 start-0 d-flex flex-grow flex-column justify-content-center align-items-center">
+        <div class="spinner-border text-primary" role="status"></div>
+        <div class="mt-2">Loading app...</div>
+    </div>
+
+	<script src="@Assets["_framework/blazor.web.js"]"></script>
+	@((MarkupString)HxSetup.RenderBootstrapJavaScriptReference())
+</body>
+</html>

@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<AssemblyName>Havit.NewProjectTemplate.Facades</AssemblyName>
+		<RootNamespace>Havit.NewProjectTemplate.Facades</RootNamespace>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<FrameworkReference Include="Microsoft.AspNetCore.App" />
+	</ItemGroup>
+	
+	<ItemGroup>
+		<InternalsVisibleTo Include="Havit.NewProjectTemplate.Facades.Tests" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Havit.Data.Patterns" />
+		<PackageReference Include="Havit.Extensions.DependencyInjection.SourceGenerators">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\Contracts\Contracts.csproj" />
+		<ProjectReference Include="..\DataLayer\DataLayer.csproj" />
+		<ProjectReference Include="..\Model\Model.csproj" />
+		<ProjectReference Include="..\Primitives\Primitives.csproj" />
+		<ProjectReference Include="..\Services\Services.csproj" />
+	</ItemGroup>
+</Project>

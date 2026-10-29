@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<AssemblyName>Havit.NewProjectTemplate.Model.Tests</AssemblyName>
+		<RootNamespace>Havit.NewProjectTemplate.Model.Tests</RootNamespace>
+		<OutputType>Exe</OutputType>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="MSTest" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\..\src\Model\Model.csproj" />
+	</ItemGroup>
+
+</Project>

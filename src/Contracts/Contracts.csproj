@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<AssemblyName>Havit.NewProjectTemplate.Contracts</AssemblyName>
+		<RootNamespace>Havit.NewProjectTemplate.Contracts</RootNamespace>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="FluentValidation" />
+		<PackageReference Include="Havit.Core" />
+		<PackageReference Include="protobuf-net" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\Primitives\Primitives.csproj" />
+		<ProjectReference Include="..\Resources\Resources.csproj" />
+	</ItemGroup>
+
+</Project>

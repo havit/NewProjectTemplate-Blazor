@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>Exe</OutputType>
+		<AssemblyName>Havit.NewProjectTemplate.MigrationTool</AssemblyName>
+		<RootNamespace>Havit.NewProjectTemplate.MigrationTool</RootNamespace>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Havit.Data.Patterns" />
+		<PackageReference Include="Microsoft.Extensions.Hosting" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\DependencyInjection\DependencyInjection.csproj" />
+		<ProjectReference Include="..\Services\Services.csproj" />
+	</ItemGroup>
+
+    <Target Name="TfsPublish" AfterTargets="AfterBuild" Condition="'$(PublishDirectory)' != ''">
+		<ItemGroup>
+			<FilesToCopy Include="$(OutputPath)\**\*.*" />
+		</ItemGroup>
+		<Copy SourceFiles="@(FilesToCopy)" DestinationFiles="@(FilesToCopy-&gt;'$(PublishDirectory)\MigrationTool\%(RecursiveDir)%(Filename)%(Extension)')" />
+	</Target>
+</Project>

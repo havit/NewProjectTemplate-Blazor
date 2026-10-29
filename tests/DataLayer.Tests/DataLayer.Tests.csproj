@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<AssemblyName>Havit.NewProjectTemplate.DataLayer.Tests</AssemblyName>
+		<RootNamespace>Havit.NewProjectTemplate.DataLayer.Tests</RootNamespace>
+		<OutputType>Exe</OutputType>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="MSTest" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\..\src\DataLayer\DataLayer.csproj" />
+	</ItemGroup>
+
+</Project>

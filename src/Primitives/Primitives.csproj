@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<AssemblyName>Havit.NewProjectTemplate.Primitives</AssemblyName>
+		<RootNamespace>Havit.NewProjectTemplate.Primitives</RootNamespace>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Havit.Core" />
+	</ItemGroup>
+
+</Project>

@@ -29,17 +29,16 @@ Foreach-Object {
     $Content = $Content.Replace("CODEOWNER_GITHUBUSERNAME", $CodeOwnerGitHubUsername)
     $Content = $Content.Replace("CODEOWNER_FULLNAME", $CodeOwnerFullName)
     $Content = $Content.Replace("tmp.CODEOWNERS", "CODEOWNERS") # fixes SLNX content where CODEOWNERS is referenced as tmp.CODEOWNERS
+	$Content = $Content.Replace("https://newprojecttemplatekv.vault.azure.net/", "") # do not use KeyVault for new project template anymore
     [IO.File]::WriteAllText($_.FullName, $Content, [System.Text.Encoding]::UTF8)
 }
 
 Rename-Item -path ([System.IO.Path]::Combine($SolutionFolder, 'NewProjectTemplate.slnx')) -newName ($NewSolutionName + '.slnx')
 Rename-Item -path ([System.IO.Path]::Combine($SolutionFolder, 'NewProjectTemplate.slnLaunch')) -newName ($NewSolutionName + '.slnLaunch')
-Rename-Item -path ([System.IO.Path]::Combine($SolutionFolder, 'Entity\NewProjectTemplateDbContext.cs')) -newName ($NewSolutionName + 'DbContext.cs')
-Rename-Item -path ([System.IO.Path]::Combine($SolutionFolder, 'Entity\Migrations\NewProjectTemplateDbContextModelSnapshot.cs')) -newName ($NewSolutionName + 'DbContextModelSnapshot.cs')
-Rename-Item -path ([System.IO.Path]::Combine($SolutionFolder, 'Entity\NewProjectTemplateDesignTimeDbContextFactory.cs')) -newName ($NewSolutionName + 'DesignTimeDbContextFactory.cs')
-Rename-Item -path ([System.IO.Path]::Combine($SolutionFolder, 'Entity.Tests\NewProjectTemplateDbContextTests.cs')) -newName ($NewSolutionName + 'DbContextTests.cs')
-Rename-Item -path ([System.IO.Path]::Combine($SolutionFolder, 'Services\HealthChecks\NewProjectTemplateDbContextHealthCheck.cs')) -newName ($NewSolutionName + 'DbContextHealthCheck.cs')
-Rename-Item -path ([System.IO.Path]::Combine($SolutionFolder, 'BuildPipeline-002.HFW-NewProjectTemplate-Blazor.yml')) -newName ('BuildPipeline-' + $NewProjectCode + '.yml')
+Rename-Item -path ([System.IO.Path]::Combine($SolutionFolder, 'src\Entity\NewProjectTemplateDbContext.cs')) -newName ($NewSolutionName + 'DbContext.cs')
+Rename-Item -path ([System.IO.Path]::Combine($SolutionFolder, 'src\Entity\Migrations\NewProjectTemplateDbContextModelSnapshot.cs')) -newName ($NewSolutionName + 'DbContextModelSnapshot.cs')
+Rename-Item -path ([System.IO.Path]::Combine($SolutionFolder, 'src\Entity\NewProjectTemplateDesignTimeDbContextFactory.cs')) -newName ($NewSolutionName + 'DesignTimeDbContextFactory.cs')
+Rename-Item -path ([System.IO.Path]::Combine($SolutionFolder, 'tests\Entity.Tests\NewProjectTemplateDbContextTests.cs')) -newName ($NewSolutionName + 'DbContextTests.cs')
+Rename-Item -path ([System.IO.Path]::Combine($SolutionFolder, 'src\Services\HealthChecks\NewProjectTemplateDbContextHealthCheck.cs')) -newName ($NewSolutionName + 'DbContextHealthCheck.cs')
 Rename-Item -path ([System.IO.Path]::Combine($SolutionFolder, '.github\tmp.CODEOWNERS')) -newName ('CODEOWNERS')
-
 Remove-Item -Path ([System.IO.Path]::Combine($SolutionFolder, 'SetupSolution.ps1')) -Force

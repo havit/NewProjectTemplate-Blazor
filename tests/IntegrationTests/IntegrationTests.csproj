@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<AssemblyName>Havit.NewProjectTemplate.IntegrationTests</AssemblyName>
+		<RootNamespace>Havit.NewProjectTemplate.IntegrationTests</RootNamespace>
+		<IsPackable>false</IsPackable>
+		<IsTestProject>true</IsTestProject>
+		<OutputType>Exe</OutputType>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="MSTest" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\..\src\DataLayer\DataLayer.csproj" />
+		<ProjectReference Include="..\..\src\Facades\Facades.csproj" />
+		<ProjectReference Include="..\..\src\DependencyInjection\DependencyInjection.csproj" />
+		<ProjectReference Include="..\..\src\Model\Model.csproj" />
+		<ProjectReference Include="..\TestHelpers\TestHelpers.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Update="appsettings.json">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+	</ItemGroup>
+
+</Project>

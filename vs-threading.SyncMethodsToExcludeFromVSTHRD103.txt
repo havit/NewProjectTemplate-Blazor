@@ -1,0 +1,4 @@
+# The async variants only matter for HiLo identifier generation (same reason the analyzer excludes DbContext.Add/AddRange by default); this solution does not use HiLo.
+[Havit.Data.Patterns.UnitOfWorks.IUnitOfWork]::AddForInsert
+[Havit.Data.Patterns.UnitOfWorks.IUnitOfWork]::AddRangeForInsert
+[Havit.Data.Patterns.UnitOfWorks.UnitOfWorkExt]::AddUpdateFromResult

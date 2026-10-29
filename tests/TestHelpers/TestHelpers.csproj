@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<AssemblyName>Havit.NewProjectTemplate.TestHelpers</AssemblyName>
+		<RootNamespace>Havit.NewProjectTemplate.TestHelpers</RootNamespace>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <PackageReference Include="MSTest.TestFramework" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\..\src\DataLayer\DataLayer.csproj" />
+	  <ProjectReference Include="..\..\src\DependencyInjection\DependencyInjection.csproj" />
+	</ItemGroup>
+
+</Project>

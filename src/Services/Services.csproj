@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<AssemblyName>Havit.NewProjectTemplate.Services</AssemblyName>
+		<RootNamespace>Havit.NewProjectTemplate.Services</RootNamespace>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<InternalsVisibleTo Include="Havit.NewProjectTemplate.Services.Tests" />
+	</ItemGroup>
+	
+	<ItemGroup>
+		<PackageReference Include="Havit.Extensions.DependencyInjection.Abstractions" />
+		<PackageReference Include="Havit.Extensions.DependencyInjection.SourceGenerators">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Havit.Services" />
+		<PackageReference Include="MailKit" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.Binder" />
+		<PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions" />
+		<PackageReference Include="Microsoft.Extensions.Logging.AzureAppServices" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\Contracts\Contracts.csproj" />
+		<ProjectReference Include="..\DataLayer\DataLayer.csproj" />
+		<ProjectReference Include="..\Model\Model.csproj" />
+		<ProjectReference Include="..\Primitives\Primitives.csproj" />
+	</ItemGroup>
+</Project>	 
